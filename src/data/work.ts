@@ -53,8 +53,8 @@ export const workCases: WorkCase[] = [
     liveLabel: 'HEADWEAR mağazasını ziyaret edin',
     image: {
       src: '/images/work/headwear/headwear-web-deneyimi.webp',
-      width: 1265,
-      height: 712,
+      width: 1600,
+      height: 1000,
       alt: 'HEADWEAR e-ticaret sitesinin masaüstü ana sayfa görünümü',
     },
     need: {
@@ -98,8 +98,8 @@ export const workCases: WorkCase[] = [
     liveLabel: 'Misima Group web sitesini ziyaret edin',
     image: {
       src: '/images/work/misima/misima-web-deneyimi.webp',
-      width: 1265,
-      height: 300,
+      width: 1600,
+      height: 1000,
       alt: 'Misima Group kurumsal web sitesinin masaüstü ana sayfa görünümü',
     },
     need: {
@@ -143,8 +143,8 @@ export const workCases: WorkCase[] = [
     liveLabel: 'Artman Group web sitesini ziyaret edin',
     image: {
       src: '/images/work/artman/artman-web-deneyimi.webp',
-      width: 740,
-      height: 416,
+      width: 1600,
+      height: 1000,
       alt: 'Artman Group kurumsal web sitesinin masaüstü ana sayfa görünümü',
     },
     need: {

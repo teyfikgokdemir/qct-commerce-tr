@@ -82,6 +82,7 @@
 
 .qct-work-card__image,
 .qct-selected-work__image {
+	aspect-ratio: 16 / 10;
 	background: var(--qct-color-ink);
 	display: block;
 	overflow: hidden;
@@ -97,7 +98,8 @@
 .qct-selected-work__image img,
 .qct-work-case__cover img {
 	display: block;
-	height: auto;
+	height: 100%;
+	object-fit: cover;
 	width: 100%;
 }
 
@@ -189,8 +191,10 @@
 }
 
 .qct-work-case__cover img {
+	aspect-ratio: 16 / 10;
 	background: var(--qct-color-surface);
 	border: 1px solid var(--qct-color-line);
+	height: auto;
 }
 
 .qct-work-case__cover figcaption {
@@ -428,13 +432,7 @@
 }
 
 .qct-selected-work__image {
-	aspect-ratio: 16 / 9;
 	margin-bottom: 24px;
-}
-
-.qct-selected-work__image img {
-	height: 100%;
-	object-fit: cover;
 }
 
 .qct-selected-work__item > div > span {
