@@ -8,10 +8,7 @@ Hizmet pazarı Türkiye, sitenin ana dili Türkçedir.
 
 QCT Commerce, [QCT Studio](https://qctstudio.com/) ağının Türkiye pazarına odaklanan e-ticaret ve dijital büyüme markasıdır.
 
-Doğrulanmış iletişim bilgileri:
-
-- E-posta: info@qctcommerce.com
-- Telefon ve WhatsApp: +90 543 385 66 56
+Doğrulanmış iletişim bilgileri: info@qctcommerce.com; telefon ve WhatsApp: +90 543 385 66 56.
 
 ## Temel sayfalar
 
@@ -49,8 +46,3 @@ Doğrulanmış iletişim bilgileri:
 - [Gizlilik politikası](https://qctcommerce.com/gizlilik-politikasi/): Kişisel verilerin işlenmesine ilişkin açıklamalar.
 - [Kullanım koşulları](https://qctcommerce.com/kullanim-kosullari/): Site kullanımına ilişkin koşullar.
 - [Çerez politikası](https://qctcommerce.com/cerez-politikasi/): Çerez tercihleri ve kullanım amaçları.
-
-## Teknik keşif
-
-- [XML sitemap](https://qctcommerce.com/sitemap-index.xml): Sitedeki dizine eklenebilir sayfaların listesi.
-- [Robots.txt](https://qctcommerce.com/robots.txt): Arama ve yapay zekâ tarayıcılarına yönelik erişim kuralları.
