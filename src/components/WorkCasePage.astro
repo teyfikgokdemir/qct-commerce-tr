@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import type { WorkCase } from '../data/work';
+import type { SeoPage } from '../i18n/seo';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props {
+  work: WorkCase;
+  seoKey: SeoPage;
+}
+
+const { work, seoKey } = Astro.props;
+const seo = getPageSeo(seoKey);
+const siteUrl = 'https://qctcommerce.com';
+const canonical = `${siteUrl}/calismalar/${work.slug}/`;
+const studio = { '@type': 'Organization', '@id': 'https://qctstudio.com/#organization', name: 'QCT Studio', url: 'https://qctstudio.com' };
+const creativeWorkSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  '@id': `${canonical}#project`,
+  url: canonical,
+  name: work.title,
+  description: seo.description,
+  inLanguage: 'tr-TR',
+  image: `${siteUrl}${work.image.src}`,
+  about: work.sector,
+  creator: studio,
+  provider: studio,
+  mainEntityOfPage: { '@id': `${canonical}#webpage` },
+};
+---
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  lang="tr"
+  image={work.image.src}
+  imageWidth={work.image.width}
+  imageHeight={work.image.height}
+  pageType="WebPage"
+  breadcrumbs={[
+    { name: 'Ana sayfa', url: '/' },
+    { name: 'Çalışmalar', url: '/calismalar/' },
+    { name: work.name, url: `/calismalar/${work.slug}/` },
+  ]}
+  includeWorkStyles={true}
+>
+  <Header slot="header" lang="tr" />
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(creativeWorkSchema)} />
+
+  <article class="qct-work-case">
+    <header class="qct-work-case__hero">
+      <div class="container">
+        <nav class="qct-work-breadcrumb" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a><span aria-hidden="true">/</span><a href="/calismalar/">Çalışmalar</a><span aria-hidden="true">/</span><span>{work.name}</span></nav>
+        <p class="qct-work-eyebrow">{work.eyebrow}</p>
+        <h1>{work.title}</h1>
+        <p class="qct-work-case__lead">{work.summary}</p>
+        <div class="qct-work-case__actions">
+          <a class="qct-button qct-button--primary" href={work.liveUrl} target="_blank" rel="noopener noreferrer">{work.liveLabel} <span aria-hidden="true">↗</span></a>
+          <a class="qct-work-link" href="#proje-kapsami">Proje kapsamına geçin <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </header>
+
+    <figure class="qct-work-case__cover container">
+      <img src={work.image.src} width={work.image.width} height={work.image.height} alt={work.image.alt} loading="eager" decoding="async" />
+      <figcaption>{work.name} — canlı web deneyiminden güncel görünüm.</figcaption>
+    </figure>
+
+    <section id="proje-kapsami" class="qct-work-case__overview">
+      <div class="container qct-work-case__split">
+        <div>
+          <p class="qct-work-eyebrow">BAŞLANGIÇ İHTİYACI</p>
+          <h2>{work.need.title}</h2>
+          <p>{work.need.text}</p>
+        </div>
+        <dl class="qct-work-facts">
+          {work.facts.map((fact) => <div><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}
+        </dl>
+      </div>
+    </section>
+
+    <section class="qct-work-case__approach">
+      <div class="container qct-work-case__split">
+        <div>
+          <p class="qct-work-eyebrow">QCT STUDIO YAKLAŞIMI</p>
+          <h2>{work.approach.title}</h2>
+          <p>{work.approach.text}</p>
+        </div>
+        <p class="qct-work-source-note">Bu çalışma QCT Studio ağı kapsamında gerçekleştirilmiştir.<br />Sayfada yalnızca projenin web, e-ticaret ve dijital deneyim kapsamı ele alınır.</p>
+      </div>
+    </section>
+
+    <section class="qct-work-case__work" aria-labelledby="qct-work-done-title">
+      <div class="container">
+        <p class="qct-work-eyebrow">YAPILAN ÇALIŞMALAR</p>
+        <h2 id="qct-work-done-title">Dijital kapsamın temel parçaları</h2>
+        <div class="qct-work-steps">
+          {work.work.map((item, index) => <article><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-work-case__outputs">
+      <div class="container qct-work-case__split">
+        <div>
+          <p class="qct-work-eyebrow">TESLİM EDİLEN ÇIKTILAR</p>
+          <h2>Projede doğrulanabilen dijital çıktılar</h2>
+        </div>
+        <ul>{work.outputs.map((output) => <li>{output}</li>)}</ul>
+      </div>
+    </section>
+
+    <section class="qct-work-case__outcome">
+      <div class="container qct-work-case__split">
+        <div>
+          <p class="qct-work-eyebrow">GÖZLEMLENEBİLİR ÇIKTI</p>
+          <h2>{work.outcome.title}</h2>
+        </div>
+        <p>{work.outcome.text}</p>
+      </div>
+    </section>
+
+    <section class="qct-work-related" aria-labelledby="qct-work-related-title">
+      <div class="container">
+        <p class="qct-work-eyebrow">İLGİLİ QCT COMMERCE HİZMETLERİ</p>
+        <h2 id="qct-work-related-title">Benzer bir dijital ihtiyaca nereden başlanabilir?</h2>
+        <div class="qct-work-related__links">{work.services.map((service) => <a href={service.href}>{service.label} <span aria-hidden="true">→</span></a>)}</div>
+      </div>
+    </section>
+
+    <section class="qct-work-case__cta">
+      <div class="container qct-work-case__split">
+        <div><p class="qct-work-eyebrow">PROJENİZİ KONUŞALIM</p><h2>İhtiyacınıza uygun dijital yapıyı birlikte netleştirelim.</h2></div>
+        <div><p>Mevcut altyapınızı, satış sürecinizi ve geliştirmek istediğiniz alanı paylaşın; uygulanabilir başlangıç noktasını belirleyelim.</p><a class="qct-button qct-button--primary" href="/iletisim/">QCT Commerce ile iletişime geçin</a></div>
+      </div>
+    </section>
+  </article>
+
+  <Footer slot="footer" lang="tr" />
+</BaseLayout>

@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { workCases } from '../data/work';
+import { getPageSeo } from '../i18n/seo';
+
+const seo = getPageSeo('work');
+const siteUrl = 'https://qctcommerce.com';
+const pageUrl = `${siteUrl}/calismalar/`;
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `${pageUrl}#item-list`,
+  name: 'QCT Commerce seçili çalışmalar',
+  numberOfItems: workCases.length,
+  itemListElement: workCases.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    url: `${siteUrl}/calismalar/${item.slug}/`,
+  })),
+};
+---
+<BaseLayout title={seo.title} description={seo.description} lang="tr" pageType="CollectionPage" breadcrumbLabel="Çalışmalar" includeWorkStyles={true}>
+  <Header slot="header" lang="tr" />
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <section class="qct-work-index" aria-labelledby="qct-work-index-title">
+    <div class="container">
+      <nav class="qct-work-breadcrumb" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a><span aria-hidden="true">/</span><span>Çalışmalar</span></nav>
+      <p class="qct-work-eyebrow">SEÇİLİ ÇALIŞMALAR</p>
+      <h1 id="qct-work-index-title">Gerçek iş ihtiyaçları için kurulmuş dijital deneyimler.</h1>
+      <p class="qct-work-index__lead">Bu seçki, QCT Studio ağı kapsamında gerçekleştirilen web, e-ticaret ve dijital deneyim çalışmalarını içerir. QCT Commerce, aynı teknik ve ticari yaklaşımı Türkiye pazarındaki projelere taşır.</p>
+    </div>
+  </section>
+
+  <section class="qct-work-list" aria-label="Vaka çalışmaları">
+    <div class="container qct-work-list__grid">
+      {workCases.map((item, index) => (
+        <article class="qct-work-card">
+          <a class="qct-work-card__image" href={`/calismalar/${item.slug}/`} aria-label={`${item.name} çalışmasını görüntüleyin`}>
+            <img src={item.image.src} width={item.image.width} height={item.image.height} alt={item.image.alt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+          </a>
+          <div class="qct-work-card__body">
+            <div class="qct-work-card__meta"><span>0{index + 1}</span><span>{item.sector}</span></div>
+            <h2>{item.name}</h2>
+            <p>{item.summary}</p>
+            <a class="qct-work-link" href={`/calismalar/${item.slug}/`}>{item.name} vaka çalışmasını okuyun <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <Footer slot="footer" lang="tr" />
+</BaseLayout>

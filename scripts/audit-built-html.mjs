@@ -82,6 +82,9 @@ const servicePaths = new Set([
   '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/',
   '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/',
 ]);
+const workCasePaths = new Set([
+  '/calismalar/headwear/', '/calismalar/misima/', '/calismalar/artman/',
+]);
 
 function registerUnique(map, value, file, label) {
   if (!value) return;
@@ -225,6 +228,54 @@ for (const file of htmlFiles) {
     }
     if (!servicePaths.has(expectedPath) && serviceNodes.length) {
       errors.push(`${file}: Service schema is only allowed on service detail pages.`);
+    }
+
+    const creativeWorkNodes = nodes.filter((node) => node['@type'] === 'CreativeWork');
+    if (workCasePaths.has(expectedPath)) {
+      if (creativeWorkNodes.length !== 1) {
+        errors.push(`${file}: case page must emit exactly one CreativeWork node.`);
+      } else {
+        const creativeWork = creativeWorkNodes[0];
+        if (creativeWork.creator?.name !== 'QCT Studio' || creativeWork.provider?.name !== 'QCT Studio') {
+          errors.push(`${file}: CreativeWork creator and provider must identify QCT Studio.`);
+        }
+        if (creativeWork.mainEntityOfPage?.['@id'] !== `${expectedCanonical}#webpage`) {
+          errors.push(`${file}: CreativeWork must reference the current WebPage node.`);
+        }
+      }
+      if (!html.includes('Bu çalışma QCT Studio ağı kapsamında gerçekleştirilmiştir.')) {
+        errors.push(`${file}: visible QCT Studio source note is missing.`);
+      }
+
+      const projectImages = tags(html, 'img').filter((tag) => attribute(tag, 'src')?.startsWith('/images/work/'));
+      if (projectImages.length !== 1) {
+        errors.push(`${file}: case page must contain exactly one local project image.`);
+      }
+      for (const image of projectImages) {
+        const src = attribute(image, 'src');
+        const width = Number(attribute(image, 'width'));
+        const height = Number(attribute(image, 'height'));
+        if (!attribute(image, 'alt') || !Number.isInteger(width) || width < 1 || !Number.isInteger(height) || height < 1) {
+          errors.push(`${file}: project image requires descriptive alt and explicit positive dimensions.`);
+        }
+        if (attribute(image, 'loading') !== 'eager' || attribute(image, 'decoding') !== 'async') {
+          errors.push(`${file}: case cover image must be eager with async decoding.`);
+        }
+        if (!fs.existsSync(path.join(DIST, src.replace(/^\//, '')))) {
+          errors.push(`${file}: local project image is missing from build output: ${src}.`);
+        }
+      }
+    } else if (creativeWorkNodes.length) {
+      errors.push(`${file}: CreativeWork schema is only allowed on published case pages.`);
+    }
+
+    const itemListNodes = nodes.filter((node) => node['@type'] === 'ItemList');
+    if (expectedPath === '/calismalar/') {
+      if (itemListNodes.length !== 1 || itemListNodes[0].numberOfItems !== 3 || itemListNodes[0].itemListElement?.length !== 3) {
+        errors.push(`${file}: work collection must emit one ItemList matching the three visible projects.`);
+      }
+    } else if (itemListNodes.length) {
+      errors.push(`${file}: ItemList schema is only allowed on the work collection page.`);
     }
 
     const faqNodes = nodes.filter((node) => node['@type'] === 'FAQPage');

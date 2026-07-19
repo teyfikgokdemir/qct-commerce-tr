@@ -22,6 +22,12 @@ const entries = fs.readFileSync(redirectsFile, 'utf8')
   });
 
 const sources = new Set();
+const requiredWorkRedirects = new Map([
+  ['/work/', '/calismalar/'],
+  ['/work/headwear/', '/calismalar/headwear/'],
+  ['/work/misima/', '/calismalar/misima/'],
+  ['/work/artman/', '/calismalar/artman/'],
+]);
 
 for (const entry of entries) {
   if (!entry.source?.startsWith('/') || !entry.target?.startsWith('/')) {
@@ -37,6 +43,17 @@ for (const entry of entries) {
     errors.push(`${entry.source}: yinelenen yönlendirme kaynağı.`);
   }
   sources.add(entry.source);
+}
+
+for (const [source, target] of requiredWorkRedirects) {
+  const entry = entries.find((candidate) => candidate.source === source);
+  if (!entry || entry.target !== target || entry.status !== '301') {
+    errors.push(`${source}: yayımlanan çalışma için beklenen birebir 301 bulunamadı (${target}).`);
+  }
+}
+
+if (entries.some((entry) => entry.source.includes('phiaderm') || entry.target.includes('phiaderm'))) {
+  errors.push('Phiaderm yayımlanmadığı için çalışma yönlendirmesi bulunmamalı.');
 }
 
 for (const entry of entries) {

@@ -13,7 +13,11 @@ export type SeoPage =
   | 'blog'
   | 'blog-shopify'
   | 'blog-mistakes'
-  | 'blog-marketplace';
+  | 'blog-marketplace'
+  | 'work'
+  | 'work-headwear'
+  | 'work-misima'
+  | 'work-artman';
 
 interface SeoEntry { title: string; description: string; }
 
@@ -77,6 +81,22 @@ const seo: Record<SeoPage, SeoEntry> = {
   'blog-marketplace': {
     title: 'Pazaryerinden Kendi E-ticaret Sitenize Geçiş',
     description: 'Pazaryeri satışlarını kesmeden kendi e-ticaret kanalınızı kurmak için veri, operasyon, maliyet, marka deneyimi ve geçiş planını değerlendirin.',
+  },
+  work: {
+    title: 'Seçili Web ve E-ticaret Çalışmaları — QCT Commerce',
+    description: 'QCT Studio ağı kapsamında gerçekleştirilen seçili web, e-ticaret ve dijital deneyim çalışmalarını QCT Commerce Türkiye bağlamında inceleyin.',
+  },
+  'work-headwear': {
+    title: 'HEADWEAR E-ticaret Vaka Çalışması — QCT Commerce',
+    description: 'HEADWEAR için ürün keşfi, çok dilli mağaza yapısı, mobil alışveriş ve teknik arama temellerini birleştiren e-ticaret çalışmasını inceleyin.',
+  },
+  'work-misima': {
+    title: 'Misima Group Web Vaka Çalışması — QCT Commerce',
+    description: 'Misima Group için web stratejisi, bilgi mimarisi, arayüz tasarımı ve geliştirmeyi birleştiren kurumsal dijital deneyimi inceleyin.',
+  },
+  'work-artman': {
+    title: 'Artman Group Web Vaka Çalışması — QCT Commerce',
+    description: 'Artman Group’un geniş kurumsal hizmet portföyünü açık kategoriler, güven içeriği ve iletişim yollarıyla düzenleyen web çalışmasını inceleyin.',
   },
 };
 

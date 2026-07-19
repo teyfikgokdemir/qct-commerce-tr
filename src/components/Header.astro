@@ -20,7 +20,6 @@ const isServiceCurrent = servicePaths.includes(currentPath);
 		<nav id="site-navigation" class="main-navigation" aria-label="Ana menü">
 			<ul class="primary-menu">
 				<li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
-				<li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li>
 				<li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}>
 					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button>
 					<ul class="sub-menu">
@@ -38,8 +37,9 @@ const isServiceCurrent = servicePaths.includes(currentPath);
 						</li>
 					</ul>
 				</li>
+				<li><a href="/calismalar/" aria-current={currentPath.startsWith('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li>
+				<li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li>
 				<li><a href="/blog/" aria-current={currentPath.startsWith('/blog/') ? 'page' : undefined}>Blog</a></li>
-				<li><a href="/kariyer/" aria-current={isCurrent('/kariyer/') ? 'page' : undefined}>Kariyer</a></li>
 				<li><a href="/iletisim/" aria-current={isCurrent('/iletisim/') ? 'page' : undefined}>İletişim</a></li>
 			</ul>
 		</nav>

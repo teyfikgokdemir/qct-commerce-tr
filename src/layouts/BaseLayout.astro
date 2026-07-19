@@ -13,6 +13,8 @@ export interface Props {
 	description?: string;
 	lang?: string;
 	image?: string;
+	imageWidth?: number;
+	imageHeight?: number;
 	type?: 'website' | 'article';
 	noindex?: boolean;
 	isHome?: boolean;
@@ -24,6 +26,10 @@ export interface Props {
 	service?: { name: string; description: string };
 	/** Adds the verified founder Person node and links it from Organization on the About page. */
 	includeFounder?: boolean;
+	/** Optional visible-breadcrumb mirror for pages with more than two levels. */
+	breadcrumbs?: Array<{ name: string; url: string }>;
+	/** Loads the case-study visual layer only where it is used. */
+	includeWorkStyles?: boolean;
 }
 
 const {
@@ -31,6 +37,8 @@ const {
 	description = 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.',
 	lang = 'tr',
 	image = '/og-default.png',
+	imageWidth = 1200,
+	imageHeight = 630,
 	type = 'website',
 	noindex = false,
 	isHome = false,
@@ -38,10 +46,16 @@ const {
 	breadcrumbLabel,
 	service,
 	includeFounder = false,
+	breadcrumbs,
+	includeWorkStyles = false,
 } = Astro.props;
 
 const isIndexable = !noindex;
-const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg';
+const ogImageType = image.toLowerCase().endsWith('.png')
+	? 'image/png'
+	: image.toLowerCase().endsWith('.webp')
+		? 'image/webp'
+		: 'image/jpeg';
 
 const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
@@ -129,7 +143,20 @@ const webpageSchema: Record<string, unknown> = {
 // BreadcrumbList — mirrors the visible "Home / X" breadcrumb rendered by ServicePage/LegalPage.
 // Omitted on the home page (no breadcrumb shown there).
 let breadcrumbSchema: Record<string, unknown> | null = null;
-if (breadcrumbLabel) {
+if (breadcrumbs?.length) {
+	const breadcrumbId = `${canonicalUrl}#breadcrumb`;
+	breadcrumbSchema = {
+		'@type': 'BreadcrumbList',
+		'@id': breadcrumbId,
+		itemListElement: breadcrumbs.map((item, index) => ({
+			'@type': 'ListItem',
+			position: index + 1,
+			name: item.name,
+			item: new URL(item.url, SITE_URL).toString(),
+		})),
+	};
+	webpageSchema.breadcrumb = { '@id': breadcrumbId };
+} else if (breadcrumbLabel) {
 	const breadcrumbId = `${canonicalUrl}#breadcrumb`;
 	breadcrumbSchema = {
 		'@type': 'BreadcrumbList',
@@ -184,8 +211,8 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<meta property="og:url" content={canonicalUrl} />
 	<meta property="og:image" content={ogImageUrl} />
 	<meta property="og:image:type" content={ogImageType} />
-	<meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="630" />
+	<meta property="og:image:width" content={String(imageWidth)} />
+	<meta property="og:image:height" content={String(imageHeight)} />
 	<meta property="og:locale" content={LOCALE} />
 
 	<!-- Twitter Card -->
@@ -210,6 +237,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	)}
 	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
 	<link rel="stylesheet" href="/styles/brand.css?v=20260719-1" />
+	{includeWorkStyles && <link rel="stylesheet" href="/styles/work.css?v=20260719-1" />}
 </head>
 <body>
 	<div id="page" class="site">

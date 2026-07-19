@@ -1,0 +1,23 @@
+---
+import { workCases } from '../data/work';
+const selected = workCases.slice(0, 3);
+---
+<section class="qct-selected-work" aria-labelledby="qct-selected-work-title">
+  <div class="container">
+    <div class="qct-section__header qct-section__header--split">
+      <div><p class="qct-section__eyebrow">SEÇİLİ ÇALIŞMALAR</p><h2 id="qct-selected-work-title" class="qct-section__title">Farklı iş modelleri için gerçek dijital yapılar.</h2></div>
+      <p class="qct-section__lead">QCT Studio ağı kapsamında gerçekleştirilen web ve e-ticaret çalışmalarından seçili örnekler.</p>
+    </div>
+    <div class="qct-selected-work__grid">
+      {selected.map((item, index) => (
+        <article class="qct-selected-work__item">
+          <a class="qct-selected-work__image" href={`/calismalar/${item.slug}/`} aria-label={`${item.name} vaka çalışmasını okuyun`}>
+            <img src={item.image.src} width={item.image.width} height={item.image.height} alt={item.image.alt} loading="lazy" decoding="async" />
+          </a>
+          <div><span>0{index + 1} / {item.sector}</span><h3>{item.name}</h3><p>{item.summary}</p><a class="qct-work-link" href={`/calismalar/${item.slug}/`}>{item.name} vaka çalışmasını okuyun <span aria-hidden="true">→</span></a></div>
+        </article>
+      ))}
+    </div>
+    <a class="qct-work-link qct-selected-work__all" href="/calismalar/">Tüm seçili çalışmaları görüntüleyin <span aria-hidden="true">→</span></a>
+  </div>
+</section>
