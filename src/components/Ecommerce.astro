@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ServicePage from './service/ServicePage.astro';
+import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const seo = getPageSeo('e-commerce', lang);
+---
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('E-commerce')} service={{ name: t('E-commerce'), description: t('We build e-commerce websites for established businesses that need clear product pages, smooth mobile shopping and a checkout people can complete with confidence. Your store should be easy for customers to use and easy for your team to manage.') }}>
+  <Header slot="header" lang={lang} />
+  <ServicePage
+    lang={lang}
+    eyebrow={t('E-commerce')}
+    title={t('E-commerce websites built for clear shopping and confident checkout.')}
+    lead={t('We build e-commerce websites for established businesses that need clear product pages, smooth mobile shopping and a checkout people can complete with confidence. Your store should be easy for customers to use and easy for your team to manage.')}
+    ctaPrimary={t('Start Your Project')}
+    ctaSecondary={t('View Our Work')}
+    problem={{
+      eyebrow: t('PROBLEM'),
+      title: t('A store can lose sales long before the basket opens.'),
+      intro: [
+        t('People make quick decisions when they shop online. If product information feels thin, checkout looks uncertain or the experience is awkward on mobile, they pause. That pause is often enough to lose the order.'),
+      ],
+      items: [
+        { title: t('Product pages need enough detail to answer questions quickly.'), text: t('When dimensions, materials, availability or delivery details are hard to find, customers hesitate before they add to cart.') },
+        { title: t('Checkout has to feel calm on a small screen.'), text: t('If buttons are crowded, forms are long or delivery steps are unclear, mobile shoppers abandon the basket instead of finishing it.') },
+        { title: t('The store also has to be manageable after launch.'), text: t('If product updates, category changes and page edits are difficult, the website starts slowing the business down instead of supporting it.') },
+      ],
+    }}
+    benefits={{
+      eyebrow: t('BENEFITS'),
+      title: t('A better store helps customers move from interest to order.'),
+      lead: t('The goal is not to add noise. The goal is to make the buying path easier to understand, easier to trust and easier to complete.'),
+      items: [
+        { title: t('Clear product structure'), text: t('Categories, filters and product pages are arranged so customers can compare options without getting lost, even when they start on a phone.') },
+        { title: t('Mobile-first shopping'), text: t('The store is designed for people who browse, ask questions and place orders from their phones without losing the thread.') },
+        { title: t('Checkout that feels dependable'), text: t('Delivery steps, payment options and form fields are kept clear so customers know what happens next before they commit.') },
+      ],
+    }}
+    included={{
+      eyebrow: t('WHAT YOU GET'),
+      title: t("What's included"),
+      lead: t('Every QCT Studio e-commerce site is planned around trust, usability and long-term manageability.'),
+      items: [
+        { title: t('Store architecture'), text: t('Categories, collections and internal links built for browsing and search.') },
+        { title: t('Product pages'), text: t('Layouts that give customers the details they need before they buy.') },
+        { title: t('Checkout flow'), text: t('A checkout sequence that keeps the next step clear from cart to confirmation.') },
+        { title: t('Mobile shopping'), text: t('Responsive screens designed for smaller displays and fast decisions.') },
+        { title: t('Product management'), text: t('A CMS setup that makes product, stock and page updates easier for your team.') },
+        { title: t('Search-ready structure'), text: t('Clean page foundations that support visibility as the store grows.') },
+      ],
+    }}
+    process={{
+      eyebrow: t('PROCESS'),
+      title: t('A straightforward process from planning to launch.'),
+      steps: [
+        { number: '01', title: t('Understand the store'), text: t('We learn how the business sells, what the products need and where customers drop off.') },
+        { number: '02', title: t('Plan the buying path'), text: t('We map product pages, filters, cart actions and checkout steps before design begins.') },
+        { number: '03', title: t('Design and build'), text: t('The store is designed and built for clarity, speed and mobile reliability.') },
+        { number: '04', title: t('Launch and support'), text: t('After testing, the site goes live with a smooth handover and clear next priorities.') },
+      ],
+    }}
+    faq={{
+      eyebrow: t('FAQ'),
+      title: t('Questions we hear most often.'),
+      items: [
+        { q: t('How long does an e-commerce project take?'), a: t('Most projects are completed within a few weeks, depending on product count, content and integrations.') },
+        { q: t('Can you redesign an existing store?'), a: `${t('Yes.')} ${t('We can improve an existing store or build a new one around your current products and systems.')}` },
+        { q: t('Will the store work on mobile devices?'), a: `${t('Yes.')} ${t('Every store is designed to work clearly on phones, tablets and desktop screens.')}` },
+        { q: t('Can we manage products ourselves?'), a: `${t('Yes.')} ${t('You will be able to update products, prices, images and page content without technical help.')}` },
+        { q: t('Do you help with checkout and payment setup?'), a: `${t('Yes.')} ${t('We help make sure the checkout path is clear, reliable and ready for how your business takes orders.')}` },
+      ],
+    }}
+    final={{
+      title: t('Ready for a store that feels easier to use and easier to trust?'),
+      text: t('Whether you need a better checkout, clearer product pages or a store that is simpler to manage, we can help you build it properly.'),
+      cta: t('Start Your Project'),
+      ctaSecondary: t('Contact Us'),
+    }}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

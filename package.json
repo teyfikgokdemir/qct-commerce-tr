@@ -1,0 +1,21 @@
+{
+  "name": "qct-studio",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run audit:i18n && npm run audit:metadata && astro build && npm run audit:html",
+    "preview": "astro preview",
+    "astro": "astro",
+    "audit:i18n": "node scripts/audit-translations.mjs",
+    "audit:metadata": "node scripts/audit-metadata.mjs",
+    "audit:html": "node scripts/audit-built-html.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.0"
+  }
+}

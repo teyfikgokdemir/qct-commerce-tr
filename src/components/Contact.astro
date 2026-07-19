@@ -1,0 +1,65 @@
+---
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section id="contact" class="qct-section qct-contact" aria-labelledby="qct-contact-title">
+	<div class="container">
+		<div class="qct-contact__grid">
+			<div class="qct-contact__content">
+				<p class="qct-section__eyebrow">{t('Contact')}</p>
+				<h2 id="qct-contact-title" class="qct-section__title">
+					{t('Let us map the best digital path for your business.')}
+				</h2>
+				<p class="qct-section__lead">
+					{t('Send the essentials and we will review the project direction. You can also email us directly at info@qctstudio.com.')}
+				</p>
+
+				<div class="qct-contact__links">
+					<a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a>
+					<a href="https://qctstudio.com">{t('qctstudio.com')}</a>
+				</div>
+
+				<div class="qct-faq-ready" aria-labelledby="qct-faq-title">
+					<h3 id="qct-faq-title">{t('FAQ')}</h3>
+					<p>{t('Questions we hear most often.')}</p>
+					<details>
+						<summary>{t('How long does a website project take?')}</summary>
+						<p>{t('Every project is different, but most business websites are completed within a few weeks.')}</p>
+					</details>
+					<details>
+						<summary>{t('Can you redesign our existing website?')}</summary>
+						<p>{t('Yes. We can improve an existing website or build a completely new one.')}</p>
+					</details>
+					<details>
+						<summary>{t('Will our website work on mobile devices?')}</summary>
+						<p>{t('Every website we build is fully responsive and designed for phones, tablets and desktops.')}</p>
+					</details>
+					<details>
+						<summary>{t('Do you provide support after launch?')}</summary>
+						<p>{t('Yes. We continue supporting our clients after launch whenever they need us.')}</p>
+					</details>
+					<details>
+						<summary>{t('Can you help with SEO and digital marketing?')}</summary>
+						<p>{t('Yes. We can also help improve visibility, traffic and online enquiries after launch.')}</p>
+					</details>
+				</div>
+			</div>
+
+			<div class="qct-contact-form">
+				<div class="qct-form-field qct-form-field--full">
+					<p>{t('Use the address that matches your inquiry.')}</p>
+					<p><a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a></p>
+				</div>
+
+				<a class="qct-button qct-button--primary qct-contact-form__submit" href="mailto:info@qctstudio.com">
+					<span>{t('Contact Us')}</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

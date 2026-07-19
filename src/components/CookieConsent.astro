@@ -1,0 +1,288 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const copy = {
+  en: {
+    label: 'Cookie preferences',
+    text: 'We use optional analytics cookies to understand how the website is used. Analytics only starts if you accept.',
+    accept: 'Accept analytics',
+    reject: 'Reject',
+    settings: 'Cookie settings',
+    policy: 'Cookie Policy',
+  },
+  sq: {
+    label: 'Preferencat e cookies',
+    text: 'Përdorim cookies opsionale analitike për të kuptuar si përdoret faqja. Analitika aktivizohet vetëm nëse pranoni.',
+    accept: 'Prano analitikën',
+    reject: 'Refuzo',
+    settings: 'Cilësimet e cookies',
+    policy: 'Politika e Cookies',
+  },
+  mk: {
+    label: 'Поставки за колачиња',
+    text: 'Користиме изборни аналитички колачиња за да разбереме како се користи веб-страницата. Аналитиката се активира само со ваша согласност.',
+    accept: 'Прифати аналитика',
+    reject: 'Одбиј',
+    settings: 'Поставки за колачиња',
+    policy: 'Политика за колачиња',
+  },
+  sr: {
+    label: 'Podešavanja kolačića',
+    text: 'Koristimo opcione analitičke kolačiće da bismo razumeli kako se sajt koristi. Analitika se pokreće samo ako prihvatite.',
+    accept: 'Prihvati analitiku',
+    reject: 'Odbij',
+    settings: 'Podešavanja kolačića',
+    policy: 'Politika kolačića',
+  },
+};
+
+const c = copy[lang as keyof typeof copy] ?? copy.en;
+const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
+---
+
+<div
+  class="qct-cookie-consent"
+  data-cookie-consent
+  role="region"
+  aria-label={c.label}
+  hidden
+>
+  <div>
+    <strong>{c.label}</strong>
+    <p>{c.text} <a href={policyUrl}>{c.policy}</a></p>
+  </div>
+
+  <div class="qct-cookie-consent__actions">
+    <button type="button" data-cookie-reject>{c.reject}</button>
+    <button type="button" class="is-primary" data-cookie-accept>{c.accept}</button>
+  </div>
+</div>
+
+<button
+  class="qct-cookie-settings"
+  type="button"
+  data-cookie-settings
+  aria-label={c.settings}
+  hidden
+>
+  {c.settings}
+</button>
+
+<script is:inline>
+  (() => {
+    const storageKey = 'qct-analytics-consent';
+    const measurementId = 'G-GPHPRQG328';
+    const banner = document.querySelector('[data-cookie-consent]');
+    const settings = document.querySelector('[data-cookie-settings]');
+    const accept = document.querySelector('[data-cookie-accept]');
+    const reject = document.querySelector('[data-cookie-reject]');
+
+    let analyticsLoaded = false;
+
+    const loadAnalytics = () => {
+      if (analyticsLoaded) return;
+      analyticsLoaded = true;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId, { anonymize_ip: true });
+
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      document.head.appendChild(script);
+    };
+
+    const closeBanner = () => {
+      if (banner) banner.hidden = true;
+      if (settings) settings.hidden = false;
+    };
+
+    const openBanner = () => {
+      if (banner) banner.hidden = false;
+      if (settings) settings.hidden = true;
+    };
+
+    const savedConsent = localStorage.getItem(storageKey);
+
+    if (savedConsent === 'granted') {
+      loadAnalytics();
+      closeBanner();
+    } else if (savedConsent === 'denied') {
+      closeBanner();
+    } else {
+      openBanner();
+    }
+
+    accept?.addEventListener('click', () => {
+      localStorage.setItem(storageKey, 'granted');
+      loadAnalytics();
+      closeBanner();
+    });
+
+    reject?.addEventListener('click', () => {
+      localStorage.setItem(storageKey, 'denied');
+      closeBanner();
+    });
+
+    settings?.addEventListener('click', openBanner);
+  })();
+</script>
+
+<style>
+  .qct-cookie-consent {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.25rem;
+    width: min(680px, calc(100vw - 2.5rem));
+    padding: 1rem 1rem 1rem 1.15rem;
+    color: #f8f5ef;
+    background:
+      linear-gradient(135deg, rgba(77, 46, 98, 0.3), transparent 48%),
+      #1c181f;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-top: 2px solid #e75757;
+    border-radius: 1rem;
+    box-shadow:
+      0 24px 70px rgba(23, 21, 26, 0.3),
+      0 4px 14px rgba(23, 21, 26, 0.16);
+    backdrop-filter: blur(16px);
+  }
+
+  .qct-cookie-consent[hidden],
+  .qct-cookie-settings[hidden] {
+    display: none;
+  }
+
+  .qct-cookie-consent strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .qct-cookie-consent p {
+    max-width: 440px;
+    margin: 0;
+    color: rgba(248, 245, 239, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .qct-cookie-consent a {
+    color: rgba(248, 245, 239, 0.92);
+    text-decoration-color: rgba(231, 87, 87, 0.8);
+    text-underline-offset: 3px;
+  }
+
+  .qct-cookie-consent__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .qct-cookie-consent button,
+  .qct-cookie-settings {
+    min-height: 42px;
+    padding: 0.65rem 0.9rem;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: rgba(248, 245, 239, 0.82);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    transition:
+      color 180ms ease,
+      background 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .qct-cookie-consent button:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.42);
+    transform: translateY(-1px);
+  }
+
+  .qct-cookie-consent button.is-primary {
+    color: #17151a;
+    background: #e75757;
+    border-color: #e75757;
+    box-shadow: 0 8px 24px rgba(231, 87, 87, 0.22);
+  }
+
+  .qct-cookie-consent button.is-primary:hover {
+    background: #ef6666;
+    border-color: #ef6666;
+  }
+
+  .qct-cookie-settings {
+    position: fixed;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    z-index: 9998;
+    min-height: 34px;
+    padding: 0.4rem 0.65rem;
+    color: #f8f5ef;
+    background: rgba(23, 21, 26, 0.92);
+    border-color: rgba(255, 255, 255, 0.14);
+    font-size: 0.7rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .qct-cookie-consent button:focus-visible,
+  .qct-cookie-settings:focus-visible,
+  .qct-cookie-consent a:focus-visible {
+    outline: 3px solid rgba(231, 87, 87, 0.45);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 760px) {
+    .qct-cookie-consent {
+      right: 0.75rem;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      grid-template-columns: 1fr;
+      width: auto;
+      gap: 0.9rem;
+      padding: 1rem;
+      border-radius: 0.9rem;
+    }
+
+    .qct-cookie-consent p {
+      max-width: none;
+    }
+
+    .qct-cookie-consent__actions {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+    }
+
+    .qct-cookie-consent button {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .qct-cookie-consent button,
+    .qct-cookie-settings {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+import { useTranslations, getLocalizedUrl, getPathWithoutLocale, languages, languageNames } from '../i18n';
+
+interface Props {
+  lang: string;
+  languagePath?: string;
+}
+const { lang, languagePath } = Astro.props;
+const t = useTranslations(lang);
+const url = (path: string) => getLocalizedUrl(lang, path);
+
+// Path of the current page with any locale prefix stripped, e.g. "/sq/about/" -> "/about/".
+// Used so the language switcher links to the translated version of THIS page, not just home.
+const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
+---
+<header id="masthead" class="site-header" data-site-header>
+	<div class="site-header__inner container">
+		<div class="site-branding">
+			<a class="site-title" href={url('/')} rel="home">{t('QCT Studio')}</a>
+		</div>
+
+		<button class="site-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
+			<span class="screen-reader-text">{t('Open menu')}</span>
+			<span class="site-menu-toggle__bar"></span>
+			<span class="site-menu-toggle__bar"></span>
+		</button>
+
+		<nav id="site-navigation" class="main-navigation" aria-label={t('Primary menu')}>
+			<ul class="primary-menu">
+				<li><a href={url('/')}>{t('Home')}</a></li>
+				<li><a href={url('/about/')}>{t('About')}</a></li>
+				<li><a href={url('/work/')}>{t('Work')}</a></li>
+				<li class="menu-item-has-children">
+					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
+						<span>{t('Services')}</span>
+					</button>
+					<ul class="sub-menu">
+						<li><a href={url('/services/')}>{t('Services overview')}</a></li>
+						<li><a href={url('/website-design/')}>{t('Website Design')}</a></li>
+						<li><a href={url('/e-commerce/')}>{t('E-commerce')}</a></li>
+						<li><a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a></li>
+						<li><a href={url('/seo-performance/')}>{t('SEO & Performance')}</a></li>
+						<li><a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads Landing Pages')}</a></li>
+						<li><a href={url('/ai-automation/')}>{t('AI Automation')}</a></li>
+					</ul>
+				</li>
+				<li><a href={url('/careers/')}>{t('Careers')}</a></li>
+				<li><a href={url('/contact/')}>{t('Contact')}</a></li>
+			</ul>
+
+			<div class="site-language-switcher">
+				{Object.entries(languages).map(([code, label]) => (
+					<a
+						href={getLocalizedUrl(code, currentPath)}
+						aria-current={code === lang ? 'true' : undefined}
+						hreflang={code}
+						lang={code}
+						aria-label={languageNames[code as keyof typeof languageNames]}
+					>{label}</a>
+				))}
+			</div>
+		</nav>
+	</div>
+</header>

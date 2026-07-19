@@ -1,0 +1,108 @@
+---
+import { useTranslations, getLocalizedUrl } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const url = (path: string) => getLocalizedUrl(lang, path);
+
+const services = [
+	{
+		modifier: 'qct-service-card--website qct-service-card--featured qct-service-card--website-image',
+		preview: 'website',
+		image: 'homepage-service-website-design.webp',
+		href: url('/website-design/'),
+		kicker: t('Website Design'),
+		title: t('Premium websites'),
+		text: t('Clear positioning, sharp visuals and conversion-focused structure from the first screen.'),
+	},
+	{
+		modifier: 'qct-service-card--commerce qct-service-card--service-image',
+		preview: 'commerce',
+		image: 'homepage-service-ecommerce.webp',
+		href: url('/e-commerce/'),
+		kicker: t('E-commerce'),
+		title: t('E-commerce stores'),
+		text: t('Product pages, mobile checkout and order flows built for serious online selling.'),
+	},
+	{
+		modifier: 'qct-service-card--whatsapp-service qct-service-card--service-image',
+		preview: 'whatsapp',
+		image: 'homepage-service-whatsapp.webp',
+		href: url('/whatsapp-commerce/'),
+		kicker: t('WhatsApp Commerce'),
+		title: t('Sell inside the conversation'),
+		text: t('Turn customer questions into catalog views, order summaries and follow-up flows inside WhatsApp.'),
+	},
+	{
+		modifier: 'qct-service-card--performance qct-service-card--service-image',
+		preview: 'performance',
+		image: 'homepage-service-seo-geo.webp',
+		href: url('/seo-performance/'),
+		kicker: t('SEO & Performance'),
+		title: t('Fast, visible and measurable'),
+		text: t('Technical SEO, Core Web Vitals and semantic structure for long-term visibility.'),
+	},
+	{
+		modifier: 'qct-service-card--landing qct-service-card--wide qct-service-card--service-image',
+		preview: 'landing',
+		image: 'homepage-service-meta-ads.webp',
+		href: url('/meta-ads-landing-pages/'),
+		kicker: t('Meta Ads Landing Pages'),
+		title: t('Campaign landing pages'),
+		text: t('Focused pages that match ad intent, explain the offer and drive the next action.'),
+	},
+	{
+		modifier: 'qct-service-card--automation qct-service-card--service-image',
+		preview: 'automation',
+		image: 'homepage-service-ai-automation.webp',
+		href: url('/ai-automation/'),
+		kicker: t('AI Automation'),
+		title: t('AI automation'),
+		text: t('Automations that save time, reduce repetitive work and improve everyday operations.'),
+	},
+];
+---
+<section id="services" class="qct-section qct-services" aria-labelledby="qct-services-title">
+	<div class="container">
+		<div class="qct-section__header qct-section__header--split">
+			<div>
+				<p class="qct-section__eyebrow">{t('Services')}</p>
+				<h2 id="qct-services-title" class="qct-section__title">
+					{t('Digital systems built for Balkan businesses ready to look premium.')}
+				</h2>
+			</div>
+			<p class="qct-section__lead">
+				{t('Each service is designed to improve trust, speed and conversion before you spend more on ads.')}
+			</p>
+		</div>
+
+		<div class="qct-services__grid">
+			{services.map((service) => (
+				<a class={`qct-service-card ${service.modifier}`} href={service.href} data-qct-reveal>
+					<span class="qct-service-card__top">
+						<span class="qct-service-card__icon" aria-hidden="true"></span>
+						<span class="qct-service-card__kicker">{service.kicker}</span>
+					</span>
+
+					<span class="qct-service-card__body">
+						<span class="qct-service-card__title">{service.title}</span>
+						<span class="qct-service-card__text">{service.text}</span>
+					</span>
+
+					<span class={`qct-service-preview qct-svc-scene qct-svc-scene--${service.preview}`}>
+						{service.preview === 'website' ? (
+							<img class="qct-service-website-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt={`${service.kicker}: ${service.title}`} />
+						) : (
+							<img class="qct-service-card-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt={`${service.kicker}: ${service.title}`} />
+						)}
+					</span>
+
+					<span class="qct-service-card__cta">{t('Learn more')}</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,130 @@
+---
+import { useTranslations, getLocalizedUrl } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const url = (path: string) => getLocalizedUrl(lang, path);
+
+const workItems = [
+	{
+		modifier: 'qct-work-card--editorial',
+		scene: 'editorial',
+		industry: t('Business Websites'),
+		type: '',
+		description: t('Professional websites built around your business, not around a template.'),
+	},
+	{
+		modifier: 'qct-work-card--storefront',
+		scene: 'storefront',
+		industry: t('E-commerce'),
+		type: '',
+		description: t('Online stores designed to make buying simple and managing products easy.'),
+	},
+	{
+		modifier: 'qct-work-card--operations',
+		scene: 'operations',
+		industry: t('AI Automation'),
+		type: '',
+		description: t('Automations that save time, reduce repetitive work and improve everyday operations.'),
+	},
+];
+
+const labelSets: Record<string, string[]> = {
+	en: ['Capability Concepts', 'Explore Capability', 'Overview', 'Services', 'Established business', 'Clear structure', 'Collection', 'Product', 'Cart', 'Checkout', 'Intake', 'Team review', 'Approved', 'CRM', 'Task handoff'],
+	sq: ['Koncepte të Aftësive', 'Shiko Aftësinë', 'Përmbledhje', 'Shërbime', 'Biznes i konsoliduar', 'Strukturë e qartë', 'Koleksioni', 'Produkti', 'Shporta', 'Pagesa', 'Pranimi', 'Shqyrtim nga ekipi', 'Miratuar', 'CRM', 'Kalimi i detyrës'],
+	mk: ['Концепти на Услуги', 'Истражете ја Услугата', 'Преглед', 'Услуги', 'Етаблирана компанија', 'Јасна структура', 'Колекција', 'Производ', 'Кошничка', 'Наплата', 'Прием', 'Проверка од тимот', 'Одобрено', 'CRM', 'Предавање задача'],
+	sr: ['Koncepti Usluga', 'Istražite Uslugu', 'Pregled', 'Usluge', 'Etablirana kompanija', 'Jasna struktura', 'Kolekcija', 'Proizvod', 'Korpa', 'Plaćanje', 'Prijem', 'Pregled tima', 'Odobreno', 'CRM', 'Predaja zadatka'],
+};
+const L = labelSets[lang] ?? labelSets.en;
+---
+<section id="work" class="qct-section qct-work" aria-labelledby="qct-work-title">
+	<div class="container">
+		<div class="qct-section__header qct-section__header--split">
+			<div>
+				<p class="qct-section__eyebrow">{L[0]}</p>
+				<h2 id="qct-work-title" class="qct-section__title">
+					{t('Every project starts with a business.')}<br />
+					{t('Not a template.')}
+				</h2>
+			</div>
+			<p class="qct-section__lead">
+				{t('Every company has different goals.')}<br />
+				{t('Different customers.')}<br />
+				{t('Different challenges.')}<br />
+				{t('Different opportunities.')}<br />
+				{t('That is why we never start with a design.')}<br />
+				{t('We start by understanding the business.')}
+			</p>
+		</div>
+
+		<div class="qct-work-showcase" data-work-showcase>
+			<div class="qct-work__grid" aria-live="polite">
+				{workItems.map((item, index) => (
+					<article class={`qct-work-card ${item.modifier}${index === 0 ? ' is-active' : ''}`} data-work-panel={index}>
+						<div class="qct-work-card__preview" aria-hidden="true">
+							{item.scene === 'editorial' && (
+								<div class="qct-work-editorial">
+									<header class="qct-work-editorial__bar"><i></i><b>QCT</b><nav><span>{L[2]}</span><span>{L[3]}</span></nav></header>
+									<div class="qct-work-editorial__hero"><small>{L[4]}</small><strong>{L[5]}</strong><p></p><button type="button" tabindex="-1">{L[3]}</button></div>
+									<div class="qct-work-editorial__columns"><i></i><i></i><i></i></div>
+									<aside class="qct-work-editorial__mobile"><b>QCT</b><i></i><i></i><i></i></aside>
+								</div>
+							)}
+							{item.scene === 'storefront' && (
+								<div class="qct-work-store">
+									<header><strong>{L[6]}</strong><span>{L[8]}</span></header>
+									<div class="qct-work-store__products">
+										<article><i></i><small>{L[7]}</small></article>
+										<article><i></i><small>{L[7]}</small></article>
+										<article><i></i><small>{L[7]}</small></article>
+										<article><i></i><small>{L[7]}</small></article>
+									</div>
+									<aside class="qct-work-store__cart"><strong>{L[8]}</strong><i></i><i></i><button type="button" tabindex="-1">{L[9]}</button></aside>
+								</div>
+							)}
+							{item.scene === 'operations' && (
+								<div class="qct-work-ops">
+									<section class="qct-work-ops__intake"><small>{L[10]}</small><strong>{item.industry}</strong><i></i></section>
+									<section class="qct-work-ops__review"><small>{L[11]}</small><strong>{L[12]}</strong><i></i></section>
+									<div class="qct-work-ops__routes">
+										<section><strong>{L[13]}</strong><small>{L[12]}</small></section>
+										<section><strong>{L[14]}</strong><small>{L[12]}</small></section>
+									</div>
+								</div>
+							)}
+						</div>
+
+						<div class="qct-work-card__meta">
+							<p>{item.industry}</p>
+							<span>{item.type}</span>
+						</div>
+
+						<div class="qct-work-card__body">
+							<p>{item.description}</p>
+						</div>
+
+						<a class="qct-work-card__link" href={url('/contact/')}>
+							{L[1]}
+						</a>
+					</article>
+				))}
+			</div>
+			<div class="qct-work-showcase__controls">
+				<button type="button" data-work-previous aria-label={workItems[2].industry}>&#8592;</button>
+				<div class="qct-work-showcase__steps" role="group" aria-label={L[0]}>
+					{workItems.map((item, index) => (
+						<button type="button" data-work-control={index} aria-pressed={index === 0 ? 'true' : 'false'} aria-label={item.industry}><span>{item.industry}</span></button>
+					))}
+				</div>
+				<button type="button" data-work-next aria-label={workItems[1].industry}>&#8594;</button>
+			</div>
+		</div>
+
+		<p class="qct-section__lead">
+			{t('Every project is planned, designed and developed specifically for the business behind it.')}
+		</p>
+	</div>
+</section>

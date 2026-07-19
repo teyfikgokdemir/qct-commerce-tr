@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ServicePage from './service/ServicePage.astro';
+import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const seo = getPageSeo('meta-ads', lang);
+---
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('Meta Ads Landing Pages')} service={{ name: t('Meta Ads Landing Pages'), description: t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.') }}>
+  <Header slot="header" lang={lang} />
+  <ServicePage
+    lang={lang}
+    eyebrow={t('Meta Ads Landing Pages')}
+    title={t('Meta Ads landing pages built around one clear campaign goal.')}
+    lead={t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.')}
+    ctaPrimary={t('Start Your Project')}
+    ctaSecondary={t('View Our Work')}
+    problem={{
+      eyebrow: t('PROBLEM'),
+      title: t('Good ads often send people to pages that were never designed to convert.'),
+      intro: [t('Many businesses invest in advertising but send every visitor to the homepage. That creates unnecessary friction and makes campaigns less effective.')],
+      items: [
+        { title: t('Too many distractions.'), text: t('Visitors leave when they cannot quickly understand what the advertisement promised.') },
+        { title: t('Campaigns lose momentum.'), text: t('Every extra click between the advertisement and the enquiry reduces the chance of conversion.') },
+        { title: t('Results become difficult to measure.'), text: t('Without dedicated landing pages it becomes harder to understand what is actually working.') },
+      ],
+    }}
+    benefits={{
+      eyebrow: t('BENEFITS'),
+      title: t('Landing pages built around one clear objective.'),
+      lead: t('Every page is designed to support a specific campaign, audience and business goal.'),
+      items: [
+        { title: t('Message consistency'), text: t('Visitors immediately recognise the same offer they clicked in the advertisement.') },
+        { title: t('Clear next steps'), text: t('Simple page structure helps customers contact your business with less hesitation.') },
+        { title: t('Better decision making'), text: t('Dedicated landing pages make advertising performance easier to evaluate and improve.') },
+      ],
+    }}
+    included={{
+      eyebrow: t('WHAT YOU GET'),
+      title: t("What's included"),
+      lead: t('Every landing page is designed to support advertising performance without unnecessary complexity.'),
+      items: [
+        { title: t('Campaign-specific landing page'), text: t('One focused page for one clear advertising objective.') },
+        { title: t('Conversion-focused structure'), text: t('Content organised to help visitors make decisions more easily.') },
+        { title: t('Mobile-first experience'), text: t('Optimised for users arriving from mobile advertising.') },
+        { title: t('Fast loading'), text: t('Lightweight pages that reduce unnecessary waiting.') },
+        { title: t('Clear calls to action'), text: t('Every important action is easy to find and easy to complete.') },
+        { title: t('Performance-ready foundation'), text: t('Prepared for measurement, testing and future optimisation.') },
+      ],
+    }}
+    process={{
+      eyebrow: t('PROCESS'),
+      title: t('A structured process from advertisement to enquiry.'),
+      steps: [
+        { number: '01', title: t('Understand the campaign'), text: t('We review your audience, offer and advertising goals.') },
+        { number: '02', title: t('Plan the landing page'), text: t('We organise content around the specific action visitors should take.') },
+        { number: '03', title: t('Build the experience'), text: t('We design and develop a page focused on clarity, speed and conversion.') },
+        { number: '04', title: t('Launch and improve'), text: t('After launch we review behaviour and identify future improvements.') },
+      ],
+    }}
+    faq={{
+      eyebrow: t('FAQ'),
+      title: t('Questions we hear most often.'),
+      items: [
+        { q: t('Do I need a separate landing page for every campaign?'), a: t('No. Use a separate page when audiences, offers or campaign intent differ materially; closely related campaigns can sometimes share a focused page.') },
+        { q: t('Can landing pages work without Meta Ads?'), a: `${t('Yes.')} ${t('They can also support Google Ads, email campaigns and other traffic sources.')}` },
+        { q: t('Will the page work on mobile devices?'), a: `${t('Yes.')} ${t('Every landing page is designed with mobile users in mind.')}` },
+        { q: t('Can you connect forms with WhatsApp or email?'), a: `${t('Yes.')} ${t('We can connect enquiries to the communication channels that fit your business.')}` },
+        { q: t('Can an existing website be used?'), a: `${t('Yes.')} ${t('Landing pages can be added to your current website without rebuilding everything.')}` },
+      ],
+    }}
+    final={{
+      eyebrow: t('READY WHEN YOU ARE'),
+      title: t('Give every campaign a better destination.'),
+      text: t('The right landing page gives every advertising campaign a stronger chance to generate meaningful enquiries.'),
+      cta: t("Let's Talk"),
+    }}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

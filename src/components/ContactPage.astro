@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ServicePage from './service/ServicePage.astro';
+import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const seo = getPageSeo('contact', lang);
+---
+<BaseLayout title={seo.title} lang={lang} description={seo.description} pageType="ContactPage" breadcrumbLabel={t('Contact')}>
+  <Header slot="header" lang={lang} />
+  <ServicePage
+    lang={lang}
+    eyebrow={t('Contact')}
+    title={t('For serious business inquiries.')}
+    lead={t('QCT Studio works with businesses across the Balkans that need websites, e-commerce, WhatsApp Commerce, SEO, GEO and landing pages. The first conversation should be practical, so a clear brief helps us understand the business and the work that needs attention.')}
+    ctaPrimary={t('Start Your Project')}
+    problem={{
+      eyebrow: t('WHAT TO CONTACT US ABOUT'),
+      title: t('We handle projects that need clarity, structure and a practical next step.'),
+      intro: [t('The work usually starts when a business wants a website, an online store, WhatsApp Commerce, SEO or GEO improvements, or a landing page for a specific campaign.')],
+      items: [
+        { title: t('Website design'), text: t('For businesses that need a clearer first impression and a more serious online presence.') },
+        { title: t('E-commerce and WhatsApp Commerce'), text: t('For products, enquiries and sales flows that need to be easier to manage and easier to understand.') },
+        { title: t('SEO, GEO and landing pages'), text: t('For visibility, campaign structure and a stronger path from discovery to enquiry.') },
+      ],
+    }}
+    benefits={{
+      eyebrow: t('BEFORE YOU WRITE'),
+      title: t('A useful first message is short and specific.'),
+      lead: t('You do not need a perfect brief. Start with the basics and we can work from there.'),
+      items: [
+        { title: t('Business name'), text: t('Tell us who the inquiry is for.') },
+        { title: t('Website or current situation'), text: t('Share the website if you have one, or briefly describe the current setup.') },
+        { title: t('What needs to improve'), text: t('Explain what should change, what should be easier or what is not working well now.') },
+        { title: t('Country and city'), text: t('This helps us understand the market and the practical context.') },
+        { title: t('Timeline and language'), text: t('Let us know your timing and preferred language for the conversation.') },
+      ],
+    }}
+    included={{
+      eyebrow: t('CONTACT DETAILS'),
+      title: t('Use the address that matches your inquiry.'),
+      lead: t('Projects and general inquiries should go to the main address. Career-related messages should go to the careers address.'),
+      items: [
+        { title: t('Project inquiries'), text: 'info@qctstudio.com' },
+        { title: t('Career inquiries'), text: 'careers@qctstudio.com' },
+        { title: t('What to include'), text: t('Business name, website if available, country or city, what needs to improve, expected timeline and preferred language.') },
+      ],
+    }}
+    process={{
+      eyebrow: t('HOW WE HANDLE INQUIRIES'),
+      title: t('We keep the first exchange practical.'),
+      steps: [
+        { number: t('01'), title: t('Read the brief'), text: t('We look at the business, the project type and what needs attention first.') },
+        { number: t('02'), title: t('Check the fit'), text: t('We decide whether the request is a good match for the kind of work QCT Studio does.') },
+        { number: t('03'), title: t('Ask what is missing'), text: t('If needed, we ask for the few details that help us understand the next step.') },
+        { number: t('04'), title: t('Respond clearly'), text: t('We reply with the most practical next step, whether that is a project discussion or a careers reply.') },
+      ],
+    }}
+    faq={{
+      eyebrow: t('FAQ'),
+      title: t('Questions we hear most often.'),
+      items: [
+        { q: t('What should I include in the first message?'), a: t('Share the business name, website if available, country or city, what needs to improve, expected timeline and preferred language.') },
+        { q: t('Do you work with businesses across the Balkans?'), a: t('Yes. We work across the region and also handle cross-border projects where the context is clear.') },
+        { q: t('What if the inquiry is about a career?'), a: t('Send career-related messages to careers@qctstudio.com with relevant work and a short note.') },
+        { q: t('Can I contact you without a full brief?'), a: t('Yes. Start with the basics and we can ask for the missing details if the project looks like a fit.') },
+        { q: t('Do you reply to every inquiry?'), a: t('We respond to relevant business and career inquiries as clearly as possible.') },
+      ],
+    }}
+    final={{
+      eyebrow: t('READY WHEN YOU ARE'),
+      title: t('Start with the part of your digital presence that matters most.'),
+      text: t('If your business is ready for a clearer and more serious online presence, we can help you decide what comes next.'),
+      cta: t('Start Your Project'),
+    }}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+

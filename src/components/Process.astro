@@ -1,0 +1,86 @@
+---
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const steps = [
+	{ number: '01', visual: 'audit', title: t('Understand'), text: t('We learn about your business, your customers and your goals before anything is designed.') },
+	{ number: '02', visual: 'map', title: t('Plan'), text: t('We organise the structure, content and user journey before development begins.') },
+	{ number: '03', visual: 'build', title: t('Design'), text: t('Every page is designed around clarity, trust and ease of use.') },
+	{ number: '04', visual: 'launch', title: t('Build'), text: t('Fast, responsive and carefully developed for every screen size.') },
+	{ number: '05', visual: 'improve', title: t('Launch'), text: t('After testing everything, your new website goes live with a smooth handover.') },
+];
+---
+<section id="process" class="qct-section qct-process" aria-labelledby="qct-process-title">
+	<div class="container">
+		<div class="qct-section__header qct-section__header--split">
+			<div>
+				<p class="qct-section__eyebrow">{t('OUR PROCESS')}</p>
+				<h2 id="qct-process-title" class="qct-section__title">
+					{t('A straightforward process from the first conversation')}<br />
+					{t('to launch.')}
+				</h2>
+			</div>
+			<p class="qct-section__lead">
+				{t('We keep things simple.')}<br />
+				{t("You'll always know what we're working on, what's coming next and why every decision is being made.")}
+			</p>
+		</div>
+
+		<div class="qct-process__timeline" data-process-timeline>
+			{steps.map((step) => (
+				<article class="qct-process-card" data-process-step data-qct-reveal>
+					<div class="qct-process-card__top">
+						<span class="qct-process-card__number">{step.number}</span>
+						<span class={`qct-process-card__detail qct-process-card__detail--${step.visual}`} aria-hidden="true">
+							{step.visual === 'audit' && (
+								<>
+									<span class="qct-process-mini__bar"></span>
+									<span class="qct-process-mini__score"></span>
+									<span class="qct-process-mini__rows"><span></span><span></span><span></span></span>
+								</>
+							)}
+							{step.visual === 'map' && (
+								<>
+									<span class="qct-process-mini__node"></span>
+									<span class="qct-process-mini__node"></span>
+									<span class="qct-process-mini__node"></span>
+									<span class="qct-process-mini__line"></span>
+								</>
+							)}
+							{step.visual === 'build' && (
+								<>
+									<span class="qct-process-mini__browser"></span>
+									<span class="qct-process-mini__code"><span></span><span></span><span></span></span>
+								</>
+							)}
+							{step.visual === 'launch' && (
+								<>
+									<span class="qct-process-mini__status"></span>
+									<span class="qct-process-mini__progress"></span>
+									<span class="qct-process-mini__checks"><span></span><span></span><span></span></span>
+								</>
+							)}
+							{step.visual === 'improve' && (
+								<>
+									<span class="qct-process-mini__metric"></span>
+									<span class="qct-process-mini__chart"><span></span><span></span><span></span></span>
+								</>
+							)}
+						</span>
+					</div>
+					<h3>{step.title}</h3>
+					<p set:html={step.text.replace(/\n/g, '<br />')} />
+				</article>
+			))}
+		</div>
+
+		<p class="qct-section__lead">
+			{t('No unnecessary complexity. Just a process that works.')}
+		</p>
+	</div>
+</section>

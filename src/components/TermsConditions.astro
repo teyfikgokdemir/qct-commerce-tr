@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import LegalPage from './service/LegalPage.astro';
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<BaseLayout title={`${t('Terms & Conditions')} — QCT Studio`} lang={lang} description={t('Plain-language terms for how visitors use the QCT Studio website and what they should reasonably expect from it.')} breadcrumbLabel={t('Legal')}>
+  <Header slot="header" lang={lang} />
+  <LegalPage
+    lang={lang}
+    eyebrow={t('Legal')}
+    title={t('Terms & Conditions')}
+    lead={t('Plain-language terms for how visitors use the QCT Studio website and what they should reasonably expect from it.')}
+    lastUpdated="July 2026"
+    sections={[
+      { id: 'using-this-website', title: t('Using this website'), text: t('This website exists to give visitors information about QCT Studio and the services it offers. It is intended to help people understand what the business does and how to contact it.') },
+      { id: 'information-accuracy', title: t('Information accuracy'), text: t('The information on this website is kept up to date where practical, but it may change over time. Pages may be revised as services, contact details or other information change.') },
+      { id: 'services', title: t('Services'), text: t('Every project is different. If you ask about a service, the details are discussed before work begins so both sides understand the scope, timing and practical next steps.') },
+      { id: 'intellectual-property', title: t('Intellectual property'), text: t('Website content, branding and original materials belong to QCT Studio unless something else is agreed in writing. Any third-party material remains subject to the rights of its owner or licensor.') },
+      { id: 'third-party-links', title: t('Third-party links'), text: t('Links to other websites are provided for convenience. Once you leave this website, those external sites are outside QCT Studio\u2019s control.') },
+      { id: 'changes', title: t('Changes'), text: t('These terms may change as the website and the business evolve. The version on this page is the one that applies unless a different written agreement says otherwise.') },
+      { id: 'contact', title: t('Contact'), text: t('Questions about these terms can be sent to info@qctstudio.com. Career-related messages should be sent to careers@qctstudio.com.') },
+    ]}
+    faqTitle={t('FAQ')}
+    faqItems={[
+      { q: t('What is this page for?'), a: t('It explains how visitors use the website and what they can reasonably expect from QCT Studio when using it.') },
+      { q: t('Do these terms describe every project in detail?'), a: t('No. Every project is different, so the real scope, timing and deliverables are discussed before work begins.') },
+      { q: t('Can the website content change?'), a: t('Yes. Information is updated where practical, but content, services and contact details may change over time.') },
+      { q: t('Are external links controlled by QCT Studio?'), a: t('No. External websites are outside QCT Studio\u2019s control once you leave this site.') },
+      { q: t('How can I ask a question about these terms?'), a: t('You can contact info@qctstudio.com with your question or write to careers@qctstudio.com if it is related to a job or collaboration inquiry.') },
+    ]}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

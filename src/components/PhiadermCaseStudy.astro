@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props { lang: string; }
+const { lang } = Astro.props;
+const url = (path: string) => getLocalizedUrl(lang, path);
+const seo = getPageSeo('phiaderm-case-study', lang);
+
+const copy = {
+  en: {
+    breadcrumb:'Selected Work', eyebrow:'Beauty e-commerce — pre-launch case study',
+    title:'Phiaderm: preparing a calmer, more credible beauty shopping experience.',
+    lead:'An in-progress e-commerce project led by QCT Studio with its affiliated implementation agency Rexcode, currently in final pre-launch preparation.',
+    visit:'View the pre-launch website', overview:'Project overview',
+    overviewTitle:'A beauty storefront needs trust, clarity and a confident path to purchase.',
+    overviewText:'The current experience introduces Phiaderm while the full store is being prepared. The work focuses on a refined presentation, secure commerce foundations and a simpler route from product discovery to purchase.',
+    yearLabel:'Project status',yearValue:'Pre-launch',typeLabel:'Project type',typeValue:'Beauty e-commerce',scopeLabel:'Delivery model',scopeValue:'QCT Studio with affiliated agency Rexcode',
+    challenge:'The challenge',challengeTitle:'Build anticipation without making claims the unfinished store cannot yet prove.',
+    challengeText:'Before launch, the experience must communicate the brand direction, set clear expectations and support early interest while the catalogue, checkout and operational details are completed.',
+    approach:'The approach',approachTitle:'Treat the holding experience as the first chapter of the store.',
+    items:[['Premium clarity','Use a restrained visual system and direct messaging to establish a more refined brand impression.'],['Pre-launch transparency','State clearly that the store is being prepared and avoid presenting unfinished functionality as live.'],['Commerce foundations','Prepare the Shopify environment for product discovery, secure checkout and future campaign traffic.'],['Connected delivery','Coordinate QCT Studio’s project direction with implementation support from affiliated agency Rexcode.']],
+    evidence:'Current status',evidenceTitle:'The public page is live; the complete shopping experience is still being prepared.',
+    evidenceText:'This case study documents work in progress. It will be updated after launch when the final catalogue, shopping journeys and live experience can be verified.',
+    cta:'Planning a beauty or lifestyle e-commerce launch?',ctaText:'We can help structure the brand, storefront and launch path without overstating what is not yet live.',contact:'Start a project'
+  },
+  sq: {
+    breadcrumb:'Punë të përzgjedhura',eyebrow:'E-commerce bukurie — rast para lansimit',
+    title:'Phiaderm: përgatitja e një përvoje blerjeje më të qetë dhe më të besueshme.',
+    lead:'Një projekt e-commerce në zhvillim, i drejtuar nga QCT Studio me agjencinë e lidhur të zbatimit Rexcode, aktualisht në përgatitjet përfundimtare.',
+    visit:'Shikoni faqen para lansimit',overview:'Përmbledhja e projektit',
+    overviewTitle:'Një dyqan bukurie kërkon besim, qartësi dhe një rrugë të sigurt drejt blerjes.',
+    overviewText:'Përvoja aktuale prezanton Phiaderm ndërsa dyqani i plotë po përgatitet. Puna fokusohet në paraqitje të rafinuar, bazë të sigurt tregtie dhe zbulim më të thjeshtë të produkteve.',
+    yearLabel:'Statusi',yearValue:'Para lansimit',typeLabel:'Lloji',typeValue:'E-commerce bukurie',scopeLabel:'Modeli i realizimit',scopeValue:'QCT Studio me agjencinë e lidhur Rexcode',
+    challenge:'Sfida',challengeTitle:'Të ndërtohet pritshmëri pa pretendime që dyqani i papërfunduar ende nuk mund t’i provojë.',
+    challengeText:'Para lansimit, përvoja duhet të shpjegojë drejtimin e markës, të vendosë pritshmëri të qarta dhe të mbështesë interesin e hershëm.',
+    approach:'Qasja',approachTitle:'Faqja e pritjes trajtohet si kapitulli i parë i dyqanit.',
+    items:[['Qartësi premium','Sistem vizual i përmbajtur dhe mesazhe të drejtpërdrejta për një përshtypje të rafinuar.'],['Transparencë para lansimit','Statusi i përgatitjes thuhet qartë pa paraqitur funksione të papërfunduara si aktive.'],['Baza e tregtisë','Mjedisi Shopify përgatitet për produkte, pagesë të sigurt dhe trafik nga fushatat.'],['Realizim i lidhur','Drejtimi i QCT Studio koordinohet me zbatimin nga agjencia e lidhur Rexcode.']],
+    evidence:'Statusi aktual',evidenceTitle:'Faqja publike është aktive; përvoja e plotë e blerjes është ende në përgatitje.',
+    evidenceText:'Ky studim dokumenton punën në zhvillim dhe do të përditësohet pas lansimit.',cta:'Po planifikoni një e-commerce bukurie?',ctaText:'Mund të strukturojmë markën, dyqanin dhe rrugën e lansimit me komunikim të saktë.',contact:'Nisni një projekt'
+  },
+  mk: {
+    breadcrumb:'Избрани проекти',eyebrow:'Beauty e-commerce — студија пред лансирање',
+    title:'Phiaderm: подготовка на посмирено и подоверливо искуство за купување.',
+    lead:'E-commerce проект во развој, воден од QCT Studio со поврзаната агенција за имплементација Rexcode, во завршна подготовка пред лансирање.',
+    visit:'Погледнете ја страницата пред лансирање',overview:'Преглед на проектот',
+    overviewTitle:'На beauty продавница ѝ треба доверба, јасност и сигурен пат до купување.',
+    overviewText:'Тековното искуство го претставува Phiaderm додека се подготвува целосната продавница. Фокусот е на префинета презентација, сигурна e-commerce основа и поедноставно откривање производи.',
+    yearLabel:'Статус',yearValue:'Пред лансирање',typeLabel:'Тип',typeValue:'Beauty e-commerce',scopeLabel:'Модел на реализација',scopeValue:'QCT Studio со поврзаната агенција Rexcode',
+    challenge:'Предизвикот',challengeTitle:'Да се создаде исчекување без тврдења што незавршената продавница сè уште не може да ги докаже.',
+    challengeText:'Пред лансирање, искуството треба јасно да ја претстави насоката на брендот и да го поддржи раниот интерес.',
+    approach:'Пристапот',approachTitle:'Страницата за најава ја третираме како прво поглавје на продавницата.',
+    items:[['Премиум јасност','Смирен визуелен систем и директни пораки за префинет впечаток.'],['Транспарентност','Јасно се кажува дека продавницата се подготвува, без незавршени функции да се прикажат како активни.'],['E-commerce основа','Shopify се подготвува за производи, сигурна наплата и кампањски сообраќај.'],['Поврзана реализација','Насоката на QCT Studio се координира со имплементацијата од поврзаната агенција Rexcode.']],
+    evidence:'Тековен статус',evidenceTitle:'Јавната страница е активна; целосното купувачко искуство сè уште се подготвува.',
+    evidenceText:'Оваа студија документира работа во тек и ќе се ажурира по лансирањето.',cta:'Планирате beauty или lifestyle e-commerce?',ctaText:'Можеме прецизно да ги структурираме брендот, продавницата и лансирањето.',contact:'Започнете проект'
+  },
+  sr: {
+    breadcrumb:'Izabrani projekti',eyebrow:'Beauty e-commerce — studija pre lansiranja',
+    title:'Phiaderm: priprema mirnijeg i pouzdanijeg iskustva kupovine.',
+    lead:'E-commerce projekat u razvoju koji vodi QCT Studio sa povezanom agencijom za implementaciju Rexcode, trenutno u završnoj pripremi.',
+    visit:'Pogledajte stranicu pre lansiranja',overview:'Pregled projekta',
+    overviewTitle:'Beauty prodavnici su potrebni poverenje, jasnoća i siguran put do kupovine.',
+    overviewText:'Trenutno iskustvo predstavlja Phiaderm dok se priprema kompletna prodavnica. Rad je usmeren na prefinjenu prezentaciju, sigurnu commerce osnovu i jednostavnije otkrivanje proizvoda.',
+    yearLabel:'Status',yearValue:'Pre lansiranja',typeLabel:'Tip',typeValue:'Beauty e-commerce',scopeLabel:'Model realizacije',scopeValue:'QCT Studio sa povezanom agencijom Rexcode',
+    challenge:'Izazov',challengeTitle:'Graditi iščekivanje bez tvrdnji koje nedovršena prodavnica još ne može da potvrdi.',
+    challengeText:'Pre lansiranja iskustvo mora jasno predstaviti smer brenda, postaviti očekivanja i podržati rano interesovanje.',
+    approach:'Pristup',approachTitle:'Najavnu stranicu tretiramo kao prvo poglavlje prodavnice.',
+    items:[['Premijum jasnoća','Smiren vizuelni sistem i direktne poruke stvaraju prefinjen utisak.'],['Transparentnost','Jasno se navodi da je prodavnica u pripremi bez predstavljanja nedovršenih funkcija kao aktivnih.'],['Commerce osnova','Shopify okruženje se priprema za proizvode, sigurnu naplatu i kampanjski saobraćaj.'],['Povezana realizacija','Smer QCT Studija koordinira se sa implementacijom povezane agencije Rexcode.']],
+    evidence:'Trenutni status',evidenceTitle:'Javna stranica je aktivna; kompletno iskustvo kupovine još se priprema.',
+    evidenceText:'Ova studija dokumentuje rad u toku i biće ažurirana posle lansiranja.',cta:'Planirate beauty ili lifestyle e-commerce?',ctaText:'Možemo precizno strukturirati brend, prodavnicu i put do lansiranja.',contact:'Pokrenite projekat'
+  }
+};
+const c = copy[lang as keyof typeof copy] ?? copy.en;
+---
+
+<BaseLayout title={seo.title} description={seo.description} lang={lang} pageType="WebPage" breadcrumbLabel="Phiaderm">
+  <Header slot="header" lang={lang} />
+  <main class="qct-case">
+    <section class="qct-case__hero"><div class="container">
+      <p class="qct-case__breadcrumb"><a href={url('/work/')}>{c.breadcrumb}</a> / Phiaderm</p>
+      <p class="qct-case__eyebrow">{c.eyebrow}</p><h1>{c.title}</h1><p class="qct-case__lead">{c.lead}</p>
+      <a class="qct-case__button" href="https://www.phiaderm.com.tr/" target="_blank" rel="noopener">{c.visit}</a>
+    </div></section>
+    <section class="qct-case__section"><div class="container qct-case__split">
+      <div><p class="qct-case__eyebrow">{c.overview}</p><h2>{c.overviewTitle}</h2><p>{c.overviewText}</p></div>
+      <dl class="qct-case__facts"><div><dt>{c.yearLabel}</dt><dd>{c.yearValue}</dd></div><div><dt>{c.typeLabel}</dt><dd>{c.typeValue}</dd></div><div><dt>{c.scopeLabel}</dt><dd>{c.scopeValue}</dd></div></dl>
+    </div></section>
+    <section class="qct-case__section qct-case__section--dark"><div class="container"><p class="qct-case__eyebrow">{c.challenge}</p><h2>{c.challengeTitle}</h2><p class="qct-case__measure">{c.challengeText}</p></div></section>
+    <section class="qct-case__section"><div class="container"><p class="qct-case__eyebrow">{c.approach}</p><h2>{c.approachTitle}</h2><div class="qct-case__grid">{c.items.map(([title,text],index)=><article><span>0{index+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+    <section class="qct-case__section qct-case__section--dark"><div class="container"><p class="qct-case__eyebrow">{c.evidence}</p><h2>{c.evidenceTitle}</h2><p class="qct-case__measure">{c.evidenceText}</p></div></section>
+    <section class="qct-case__cta"><div class="container"><h2>{c.cta}</h2><p>{c.ctaText}</p><a class="qct-case__button" href={url('/contact/')}>{c.contact}</a></div></section>
+  </main>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+  .qct-case { color: #17151a; background: #f4f0e8; }
+  .qct-case__hero, .qct-case__section, .qct-case__cta { padding: clamp(3.75rem, 6.5vw, 6.5rem) 0; }
+  .qct-case__hero { border-bottom: 1px solid rgba(23, 21, 26, .14); }
+  .qct-case__breadcrumb { margin: 0 0 3rem; font-weight: 700; }
+  .qct-case__breadcrumb a { color: inherit; }
+  .qct-case__eyebrow { margin: 0 0 1rem; color: #e75757; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+  .qct-case h1 { max-width: 980px; margin: 0; font-size: clamp(2.75rem, 4.8vw, 5rem); line-height: .98; letter-spacing: -.045em; }
+  .qct-case h2 { max-width: 800px; margin: 0 0 1.25rem; font-size: clamp(2rem, 3.1vw, 3.25rem); line-height: 1.05; letter-spacing: -.035em; }
+  .qct-case__lead, .qct-case__measure, .qct-case__split > div > p:last-child, .qct-case__cta p { max-width: 720px; color: #656066; font-size: clamp(1rem, 1.25vw, 1.18rem); line-height: 1.65; }
+  .qct-case__button { display: inline-flex; min-height: 52px; align-items: center; margin-top: 1.5rem; padding: .85rem 1.25rem; color: #17151a; background: #ef5959; border-radius: 999px; font-weight: 800; text-decoration: none; }
+  .qct-case__split { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, .7fr); gap: clamp(2.5rem, 6vw, 7rem); align-items: start; }
+  .qct-case__facts { margin: 0; border-top: 1px solid rgba(23, 21, 26, .18); }
+  .qct-case__facts div { padding: 1.2rem 0; border-bottom: 1px solid rgba(23, 21, 26, .18); }
+  .qct-case__facts dt { color: #777177; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .qct-case__facts dd { margin: .35rem 0 0; font-weight: 750; }
+  .qct-case__section--dark { color: #f8f5ef; background: #17151a; }
+  .qct-case__section--dark .qct-case__measure { color: rgba(248, 245, 239, .7); }
+  .qct-case__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 3rem; background: rgba(23, 21, 26, .16); border: 1px solid rgba(23, 21, 26, .16); }
+  .qct-case__grid article { min-height: 250px; padding: clamp(1.5rem, 3vw, 2.5rem); background: #f4f0e8; }
+  .qct-case__grid span { color: #e75757; font-weight: 800; }
+  .qct-case__grid h3 { margin: 2.5rem 0 .75rem; font-size: clamp(1.5rem, 2.4vw, 2.25rem); }
+  .qct-case__grid p { max-width: 520px; color: #656066; line-height: 1.65; }
+  .qct-case__cta { text-align: center; }
+  .qct-case__cta h2, .qct-case__cta p { margin-right: auto; margin-left: auto; }
+  @media (max-width: 760px) {
+    .qct-case__hero, .qct-case__section, .qct-case__cta { padding: 3.5rem 0; }
+    .qct-case__breadcrumb { margin-bottom: 2rem; }
+    .qct-case h1 { font-size: clamp(2.35rem, 11vw, 3.15rem); line-height: 1; }
+    .qct-case h2 { font-size: clamp(1.85rem, 8vw, 2.5rem); }
+    .qct-case__split, .qct-case__grid { grid-template-columns: 1fr; }
+    .qct-case__grid article { min-height: auto; }
+  }
+</style>

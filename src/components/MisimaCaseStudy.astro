@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props { lang: string; }
+
+const { lang } = Astro.props;
+const url = (path: string) => getLocalizedUrl(lang, path);
+const seo = getPageSeo('misima-case-study', lang);
+
+const copy = {
+  en: {
+    breadcrumb: 'Selected Work', eyebrow: 'Corporate website case study',
+    title: 'Misima Group: a clear digital home for cosmetics expertise.',
+    lead: 'A 2025 website strategy, design and development project connecting corporate credibility, brand services and product discovery in one coherent system.',
+    visit: 'Visit the live website', overview: 'Project overview',
+    overviewTitle: 'A broad cosmetics offering needs a structure that people can understand quickly.',
+    overviewText: 'Misima Group works across global brand management, private label, white label, custom production and distribution. The website brings those capabilities together while also presenting the group’s brands and featured products.',
+    yearLabel: 'Project year', yearValue: '2025', typeLabel: 'Project type', typeValue: 'Corporate and B2B website', scopeLabel: 'QCT Studio scope', scopeValue: 'Strategy, design and development',
+    challenge: 'The challenge', challengeTitle: 'Present multiple business models without making the company feel fragmented.',
+    challengeText: 'A visitor may arrive as a brand owner, distribution partner or product buyer. The structure needs to explain the group, separate its services clearly and still make the wider brand ecosystem feel connected.',
+    approach: 'Our approach', approachTitle: 'Build the site around the questions different audiences need answered.',
+    items: [
+      ['Service architecture', 'Private label, white label, custom production and distribution receive clear paths within the wider corporate story.'],
+      ['Corporate credibility', 'Company positioning and experience are presented before visitors move into detailed services and products.'],
+      ['Brand and product discovery', 'Brand pages and featured products give the business tangible evidence beyond corporate statements.'],
+      ['Search-ready structure', 'Dedicated service, corporate, brand and policy pages give crawlers and answer engines clearer context.'],
+    ],
+    evidence: 'What this work demonstrates', evidenceTitle: 'Complex businesses become stronger when their digital structure feels simple.',
+    evidenceText: 'The live Misima Group website shows QCT Studio’s full-project approach: understand the business model, organise its information and turn it into a clear, usable corporate experience.',
+    cta: 'Does your business need a clearer corporate website?', ctaText: 'Tell us what the company does, who needs to understand it and where the current website falls short.', contact: 'Start a project',
+  },
+  sq: {
+    breadcrumb: 'Punë të përzgjedhura', eyebrow: 'Studim rasti për faqe korporative',
+    title: 'Misima Group: një qendër digjitale e qartë për ekspertizën kozmetike.',
+    lead: 'Projekt i vitit 2025 për strategji, dizajn dhe zhvillim faqeje, që lidh besueshmërinë korporative, shërbimet për markat dhe zbulimin e produkteve.',
+    visit: 'Vizitoni faqen aktive', overview: 'Përmbledhja e projektit',
+    overviewTitle: 'Një ofertë e gjerë kozmetike ka nevojë për një strukturë që kuptohet shpejt.',
+    overviewText: 'Misima Group punon me menaxhim global markash, private label, white label, prodhim të personalizuar dhe distribucion. Faqja i bashkon këto aftësi dhe paraqet markat e produktet kryesore të grupit.',
+    yearLabel: 'Viti i projektit', yearValue: '2025', typeLabel: 'Lloji i projektit', typeValue: 'Faqe korporative dhe B2B', scopeLabel: 'Fusha e QCT Studio', scopeValue: 'Strategji, dizajn dhe zhvillim',
+    challenge: 'Sfida', challengeTitle: 'Të paraqiten disa modele biznesi pa e bërë kompaninë të duket e fragmentuar.',
+    challengeText: 'Një vizitor mund të jetë pronar marke, partner distribucioni ose blerës produkti. Struktura duhet të shpjegojë grupin, të ndajë qartë shërbimet dhe ta mbajë ekosistemin të lidhur.',
+    approach: 'Qasja jonë', approachTitle: 'Faqja ndërtohet rreth pyetjeve që audiencat e ndryshme duan të marrin përgjigje.',
+    items: [
+      ['Arkitekturë shërbimesh', 'Private label, white label, prodhimi i personalizuar dhe distribucioni kanë rrugë të qarta brenda historisë korporative.'],
+      ['Besueshmëri korporative', 'Pozicionimi dhe përvoja e kompanisë paraqiten para detajeve të shërbimeve dhe produkteve.'],
+      ['Zbulim markash dhe produktesh', 'Faqet e markave dhe produktet e zgjedhura japin prova konkrete përtej deklaratave korporative.'],
+      ['Strukturë për kërkimin', 'Faqet e dedikuara u japin motorëve të kërkimit dhe sistemeve të përgjigjeve kontekst më të qartë.'],
+    ],
+    evidence: 'Çfarë demonstron kjo punë', evidenceTitle: 'Bizneset komplekse bëhen më të forta kur struktura digjitale duket e thjeshtë.',
+    evidenceText: 'Faqja aktive e Misima Group tregon qasjen e plotë të QCT Studio: kupton modelin e biznesit, organizon informacionin dhe e kthen në një përvojë të qartë korporative.',
+    cta: 'Biznesi juaj ka nevojë për një faqe korporative më të qartë?', ctaText: 'Na tregoni çfarë bën kompania, kush duhet ta kuptojë dhe ku dështon faqja aktuale.', contact: 'Nisni një projekt',
+  },
+  mk: {
+    breadcrumb: 'Избрани проекти', eyebrow: 'Студија за корпоративна веб-страница',
+    title: 'Misima Group: јасен дигитален дом за козметичка експертиза.',
+    lead: 'Проект од 2025 година за стратегија, дизајн и развој што ги поврзува корпоративната доверба, услугите за брендови и откривањето производи.',
+    visit: 'Посетете ја активната веб-страница', overview: 'Преглед на проектот',
+    overviewTitle: 'На широка козметичка понуда ѝ треба структура што брзо се разбира.',
+    overviewText: 'Misima Group работи со глобално управување брендови, private label, white label, производство по нарачка и дистрибуција. Веб-страницата ги обединува овие можности и ги претставува брендовите и избраните производи.',
+    yearLabel: 'Година на проектот', yearValue: '2025', typeLabel: 'Тип на проект', typeValue: 'Корпоративна и B2B веб-страница', scopeLabel: 'Опфат на QCT Studio', scopeValue: 'Стратегија, дизајн и развој',
+    challenge: 'Предизвикот', challengeTitle: 'Повеќе деловни модели да се прикажат без компанијата да изгледа фрагментирано.',
+    challengeText: 'Посетителот може да биде сопственик на бренд, партнер за дистрибуција или купувач. Структурата треба да ја објасни групата, јасно да ги одвои услугите и да го задржи екосистемот поврзан.',
+    approach: 'Нашиот пристап', approachTitle: 'Веб-страницата ја градиме околу прашањата на различните публики.',
+    items: [
+      ['Архитектура на услуги', 'Private label, white label, производството по нарачка и дистрибуцијата добиваат јасни патеки во корпоративната приказна.'],
+      ['Корпоративна доверба', 'Позиционирањето и искуството на компанијата се прикажуваат пред деталните услуги и производи.'],
+      ['Откривање брендови и производи', 'Страниците за брендови и избраните производи нудат конкретни докази надвор од корпоративните изјави.'],
+      ['Структура за пребарување', 'Посебните страници им даваат појасен контекст на пребарувачите и системите за одговори.'],
+    ],
+    evidence: 'Што покажува оваа работа', evidenceTitle: 'Комплексните бизниси се посилни кога дигиталната структура изгледа едноставно.',
+    evidenceText: 'Активната веб-страница на Misima Group го покажува целосниот пристап на QCT Studio: разбирање на моделот, организација на информациите и јасно корпоративно искуство.',
+    cta: 'На вашиот бизнис му треба појасна корпоративна веб-страница?', ctaText: 'Кажете ни што работи компанијата, кој треба да ја разбере и каде сегашната веб-страница заостанува.', contact: 'Започнете проект',
+  },
+  sr: {
+    breadcrumb: 'Izabrani projekti', eyebrow: 'Studija korporativnog sajta',
+    title: 'Misima Group: jasan digitalni dom za kozmetičku ekspertizu.',
+    lead: 'Projekat iz 2025. godine koji obuhvata strategiju, dizajn i razvoj i povezuje korporativno poverenje, usluge za brendove i otkrivanje proizvoda.',
+    visit: 'Posetite aktivan sajt', overview: 'Pregled projekta',
+    overviewTitle: 'Širokoj kozmetičkoj ponudi potrebna je struktura koja se brzo razume.',
+    overviewText: 'Misima Group radi sa globalnim upravljanjem brendovima, private label, white label, proizvodnjom po meri i distribucijom. Sajt objedinjuje te mogućnosti i predstavlja brendove i izdvojene proizvode grupe.',
+    yearLabel: 'Godina projekta', yearValue: '2025', typeLabel: 'Tip projekta', typeValue: 'Korporativni i B2B sajt', scopeLabel: 'Obim QCT Studija', scopeValue: 'Strategija, dizajn i razvoj',
+    challenge: 'Izazov', challengeTitle: 'Predstaviti više poslovnih modela bez utiska da je kompanija nepovezana.',
+    challengeText: 'Posetilac može biti vlasnik brenda, distributivni partner ili kupac proizvoda. Struktura mora da objasni grupu, jasno odvoji usluge i zadrži širi ekosistem povezanim.',
+    approach: 'Naš pristup', approachTitle: 'Sajt gradimo oko pitanja na koja različite publike traže odgovore.',
+    items: [
+      ['Arhitektura usluga', 'Private label, white label, proizvodnja po meri i distribucija dobijaju jasne putanje unutar korporativne priče.'],
+      ['Korporativno poverenje', 'Pozicioniranje i iskustvo kompanije predstavljeni su pre detaljnih usluga i proizvoda.'],
+      ['Otkrivanje brendova i proizvoda', 'Stranice brendova i izdvojeni proizvodi pružaju konkretne dokaze izvan korporativnih tvrdnji.'],
+      ['Struktura za pretragu', 'Namenske stranice pružaju pretraživačima i sistemima odgovora jasniji kontekst.'],
+    ],
+    evidence: 'Šta ovaj rad pokazuje', evidenceTitle: 'Kompleksni biznisi postaju snažniji kada digitalna struktura deluje jednostavno.',
+    evidenceText: 'Aktivan sajt Misima Group pokazuje pristup QCT Studija celom projektu: razumevanje modela, organizovanje informacija i pretvaranje u jasno korporativno iskustvo.',
+    cta: 'Da li vašem biznisu treba jasniji korporativni sajt?', ctaText: 'Recite nam šta kompanija radi, ko treba da je razume i gde trenutni sajt zaostaje.', contact: 'Pokrenite projekat',
+  },
+};
+
+const c = copy[lang as keyof typeof copy] ?? copy.en;
+---
+
+<BaseLayout title={seo.title} description={seo.description} lang={lang} pageType="WebPage" breadcrumbLabel="Misima Group">
+  <Header slot="header" lang={lang} />
+  <main class="qct-case">
+    <section class="qct-case__hero"><div class="container">
+      <p class="qct-case__breadcrumb"><a href={url('/work/')}>{c.breadcrumb}</a> / Misima Group</p>
+      <p class="qct-case__eyebrow">{c.eyebrow}</p><h1>{c.title}</h1>
+      <p class="qct-case__lead">{c.lead}</p>
+      <a class="qct-case__button" href="https://www.misima.com.tr/" target="_blank" rel="noopener">{c.visit}</a>
+    </div></section>
+
+    <section class="qct-case__section"><div class="container qct-case__split">
+      <div><p class="qct-case__eyebrow">{c.overview}</p><h2>{c.overviewTitle}</h2><p>{c.overviewText}</p></div>
+      <dl class="qct-case__facts">
+        <div><dt>{c.yearLabel}</dt><dd>{c.yearValue}</dd></div>
+        <div><dt>{c.typeLabel}</dt><dd>{c.typeValue}</dd></div>
+        <div><dt>{c.scopeLabel}</dt><dd>{c.scopeValue}</dd></div>
+      </dl>
+    </div></section>
+
+    <section class="qct-case__section qct-case__section--dark"><div class="container">
+      <p class="qct-case__eyebrow">{c.challenge}</p><h2>{c.challengeTitle}</h2><p class="qct-case__measure">{c.challengeText}</p>
+    </div></section>
+
+    <section class="qct-case__section"><div class="container">
+      <p class="qct-case__eyebrow">{c.approach}</p><h2>{c.approachTitle}</h2>
+      <div class="qct-case__grid">{c.items.map(([title, text], index) => (
+        <article><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>
+      ))}</div>
+    </div></section>
+
+    <section class="qct-case__section qct-case__section--dark"><div class="container">
+      <p class="qct-case__eyebrow">{c.evidence}</p><h2>{c.evidenceTitle}</h2><p class="qct-case__measure">{c.evidenceText}</p>
+    </div></section>
+
+    <section class="qct-case__cta"><div class="container">
+      <h2>{c.cta}</h2><p>{c.ctaText}</p><a class="qct-case__button" href={url('/contact/')}>{c.contact}</a>
+    </div></section>
+  </main>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+  .qct-case { color: #17151a; background: #f4f0e8; }
+  .qct-case__hero, .qct-case__section, .qct-case__cta { padding: clamp(3.75rem, 6.5vw, 6.5rem) 0; }
+  .qct-case__hero { border-bottom: 1px solid rgba(23, 21, 26, .14); }
+  .qct-case__breadcrumb { margin: 0 0 3rem; font-weight: 700; }
+  .qct-case__breadcrumb a { color: inherit; }
+  .qct-case__eyebrow { margin: 0 0 1rem; color: #e75757; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+  .qct-case h1 { max-width: 980px; margin: 0; font-size: clamp(2.75rem, 4.8vw, 5rem); line-height: .98; letter-spacing: -.045em; }
+  .qct-case h2 { max-width: 800px; margin: 0 0 1.25rem; font-size: clamp(2rem, 3.1vw, 3.25rem); line-height: 1.05; letter-spacing: -.035em; }
+  .qct-case__lead, .qct-case__measure, .qct-case__split > div > p:last-child, .qct-case__cta p { max-width: 720px; color: #656066; font-size: clamp(1rem, 1.25vw, 1.18rem); line-height: 1.65; }
+  .qct-case__button { display: inline-flex; min-height: 52px; align-items: center; margin-top: 1.5rem; padding: .85rem 1.25rem; color: #17151a; background: #ef5959; border-radius: 999px; font-weight: 800; text-decoration: none; }
+  .qct-case__split { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, .7fr); gap: clamp(2.5rem, 6vw, 7rem); align-items: start; }
+  .qct-case__facts { margin: 0; border-top: 1px solid rgba(23, 21, 26, .18); }
+  .qct-case__facts div { padding: 1.2rem 0; border-bottom: 1px solid rgba(23, 21, 26, .18); }
+  .qct-case__facts dt { color: #777177; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .qct-case__facts dd { margin: .35rem 0 0; font-weight: 750; }
+  .qct-case__section--dark { color: #f8f5ef; background: #17151a; }
+  .qct-case__section--dark .qct-case__measure { color: rgba(248, 245, 239, .7); }
+  .qct-case__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 3rem; background: rgba(23, 21, 26, .16); border: 1px solid rgba(23, 21, 26, .16); }
+  .qct-case__grid article { min-height: 250px; padding: clamp(1.5rem, 3vw, 2.5rem); background: #f4f0e8; }
+  .qct-case__grid span { color: #e75757; font-weight: 800; }
+  .qct-case__grid h3 { margin: 2.5rem 0 .75rem; font-size: clamp(1.5rem, 2.4vw, 2.25rem); }
+  .qct-case__grid p { max-width: 520px; color: #656066; line-height: 1.65; }
+  .qct-case__cta { text-align: center; }
+  .qct-case__cta h2, .qct-case__cta p { margin-right: auto; margin-left: auto; }
+  @media (max-width: 760px) {
+    .qct-case__hero, .qct-case__section, .qct-case__cta { padding: 3.5rem 0; }
+    .qct-case__breadcrumb { margin-bottom: 2rem; }
+    .qct-case h1 { font-size: clamp(2.35rem, 11vw, 3.15rem); line-height: 1; }
+    .qct-case h2 { font-size: clamp(1.85rem, 8vw, 2.5rem); }
+    .qct-case__split, .qct-case__grid { grid-template-columns: 1fr; }
+    .qct-case__grid article { min-height: auto; }
+  }
+</style>

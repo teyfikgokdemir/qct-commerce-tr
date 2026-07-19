@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ServicePage from './service/ServicePage.astro';
+import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const seo = getPageSeo('seo-performance', lang);
+---
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('SEO & GEO Performance')} service={{ name: t('SEO & GEO Performance'), description: t('Your website should be easy for both people and search systems to understand. We improve technical SEO, content structure and GEO readiness so your business is easier to discover through Google and modern AI-powered search.') }}>
+  <Header slot="header" lang={lang} />
+  <ServicePage
+    lang={lang}
+    eyebrow={t('SEO & GEO Performance')}
+    title={t('SEO and GEO that help customers and search systems understand your business.')}
+    lead={t('Your website should be easy for both people and search systems to understand. We improve technical SEO, content structure and GEO readiness so your business is easier to discover through Google and modern AI-powered search.')}
+    ctaPrimary={t('Start Your Project')}
+    ctaSecondary={t('View Our Work')}
+    problem={{
+      eyebrow: t('PROBLEM'),
+      title: t('A good business can still be difficult to find online.'),
+      intro: [t('Many businesses offer excellent products and services, but weak website structure, missing content and poor technical foundations make them harder to discover.')],
+      items: [
+        { title: t('Search engines need clearer signals.'), text: t('If pages are difficult to understand, valuable content may never appear where customers are searching.') },
+        { title: t('Customers search differently today.'), text: t('People now use both Google and AI assistants to research businesses before making contact.') },
+        { title: t('Visibility requires ongoing structure.'), text: t('SEO is not only about keywords. It depends on technical quality, content organisation and long-term consistency.') },
+      ],
+    }}
+    benefits={{
+      eyebrow: t('BENEFITS'),
+      title: t('Better visibility starts with better foundations.'),
+      lead: t('Our focus is to help search engines, AI systems and customers understand your business more clearly.'),
+      items: [
+        { title: t('Technical improvements'), text: t('A clean website structure makes pages easier to crawl, load and understand.') },
+        { title: t('Content that answers questions'), text: t('Well organised content helps customers find useful information faster.') },
+        { title: t('Prepared for AI search'), text: t('Structured information improves how modern AI systems interpret your business.') },
+      ],
+    }}
+    included={{
+      eyebrow: t('WHAT YOU GET'),
+      title: t("What's included"),
+      lead: t('Every SEO & GEO project is built around visibility, technical quality and sustainable growth.'),
+      items: [
+        { title: t('Technical SEO audit'), text: t('Identify structural issues affecting visibility and performance.') },
+        { title: t('Website structure'), text: t('Improve page hierarchy, internal linking and semantic organisation.') },
+        { title: t('Content optimisation'), text: t('Strengthen important pages with clearer information and search intent.') },
+        { title: t('Local SEO'), text: t('Improve visibility for customers searching within your service area.') },
+        { title: t('AI Search Readiness'), text: t('Prepare content and structure for AI-powered search experiences.') },
+        { title: t('Performance improvements'), text: t('Support faster loading and better overall user experience.') },
+      ],
+    }}
+    process={{
+      eyebrow: t('PROCESS'),
+      title: t('A structured approach to long-term visibility.'),
+      steps: [
+        { number: '01', title: t('Audit'), text: t('We review the current website, technical health and search performance.') },
+        { number: '02', title: t('Planning'), text: t('We prioritise improvements based on business goals and customer behaviour.') },
+        { number: '03', title: t('Implementation'), text: t('We improve technical structure, content and search foundations.') },
+        { number: '04', title: t('Monitoring'), text: t('We continue measuring performance and identifying future opportunities.') },
+      ],
+    }}
+    faq={{
+      eyebrow: t('FAQ'),
+      title: t('Questions we hear most often.'),
+      items: [
+        { q: t('Do you guarantee first-page rankings?'), a: t('No. Search rankings depend on many external factors. We focus on improving the technical and strategic foundations that support long-term visibility.') },
+        { q: t('What is GEO?'), a: t('GEO, or Generative Engine Optimization, structures business information and content so AI-powered search and answer systems can understand, retrieve and reference it more accurately.') },
+        { q: t('Can you improve an existing website?'), a: `${t('Yes.')} ${t('Most SEO improvements can be applied to existing websites.')}` },
+        { q: t('Is local SEO included?'), a: `${t('Yes.')} ${t('Local visibility is included whenever it is relevant to your business.')}` },
+        { q: t('How long before results appear?'), a: t('SEO is a long-term investment. Improvements often become visible gradually over several weeks or months.') },
+      ],
+    }}
+    final={{
+      eyebrow: t('READY WHEN YOU ARE'),
+      title: t('Build a stronger online presence for the future.'),
+      text: t('Whether customers search with Google or AI, your business should be easy to find and easy to understand.'),
+      cta: t("Let's Talk"),
+    }}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

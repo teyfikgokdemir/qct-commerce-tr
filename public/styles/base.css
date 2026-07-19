@@ -1,0 +1,49 @@
+:root {
+	--qct-color-background: #f2efe8;
+	--qct-color-surface: #e7e1d8;
+	--qct-color-surface-raised: #f2efe8;
+	--qct-color-text: #17151a;
+	--qct-color-muted: #686268;
+	--qct-color-plum: #4d2e62;
+	--qct-color-accent: #e75757;
+	--qct-color-accent-soft: rgba(231, 87, 87, 0.14);
+	--qct-color-line: #cec6bc;
+	--qct-color-line-strong: color-mix(in srgb, var(--qct-color-text) 34%, var(--qct-color-line));
+	--qct-color-on-plum: #f2efe8;
+	--qct-color-on-plum-muted: #e7e1d8;
+	--qct-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: var(--qct-color-background);
+	color: var(--qct-color-text);
+	font-family: var(--qct-font-sans);
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+
+a {
+	color: inherit;
+	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.18em;
+}
+
+img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+	font: inherit;
+}

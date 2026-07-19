@@ -1,0 +1,260 @@
+---
+import { useTranslations, getHomeUrl } from '../i18n';
+import CookieConsent from '../components/CookieConsent.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const SITE_URL = 'https://qctstudio.com';
+const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS' };
+const INDEXED_LANGS = ['en', 'sq', 'mk', 'sr'];
+const ROUTE_LANGS = INDEXED_LANGS;
+const AREA_SERVED = [
+	{ '@type': 'Country', name: 'Albania' },
+	{ '@type': 'Country', name: 'North Macedonia' },
+];
+
+export interface Props {
+	title: string;
+	description?: string;
+	lang?: string;
+	image?: string;
+	type?: 'website' | 'article';
+	noindex?: boolean;
+	isHome?: boolean;
+	/** schema.org @type for this page's WebPage node, e.g. 'AboutPage', 'ContactPage', 'CollectionPage' */
+	pageType?: string;
+	/** Second breadcrumb label (e.g. "About"). Omit on the home page — no breadcrumb is emitted. */
+	breadcrumbLabel?: string;
+	/** If set, emits a Service node (for the 6 service-concept pages) linked as the page's mainEntity */
+	service?: { name: string; description: string };
+}
+
+const {
+	title,
+	description = 'QCT Studio — websites, e-commerce and AI automation for businesses across Albania and North Macedonia.',
+	lang = 'en',
+	image = '/og-default.png',
+	type = 'website',
+	noindex = false,
+	isHome = false,
+	pageType = 'WebPage',
+	breadcrumbLabel,
+	service,
+} = Astro.props;
+
+const t = useTranslations(lang);
+const isIndexable = !noindex;
+const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg';
+
+// Current path with the locale prefix stripped, e.g. /sq/about/ -> /about/
+const rawPath = Astro.url.pathname;
+const pathNoLocale = (() => {
+	const parts = rawPath.split('/').filter(Boolean);
+	if (parts[0] && ROUTE_LANGS.includes(parts[0]) && parts[0] !== 'en') {
+		return '/' + parts.slice(1).join('/') + (parts.length > 1 ? '/' : '');
+	}
+	return rawPath.endsWith('/') || rawPath === '' ? rawPath || '/' : rawPath + '/';
+})();
+
+const localizedPath = (l: string) => (l === 'en' ? pathNoLocale : `/${l}${pathNoLocale}`);
+const canonicalUrl = new URL(localizedPath(lang), SITE_URL).toString();
+const ogImageUrl = new URL(image, SITE_URL).toString();
+const homeUrl = new URL(getHomeUrl(lang), SITE_URL).toString();
+
+// Stable @id anchors so every node in the graph can reference each other instead of repeating data
+const organizationId = `${SITE_URL}/#organization`;
+const websiteId = `${SITE_URL}/#website`;
+const webpageId = `${canonicalUrl}#webpage`;
+const founderId = `${SITE_URL}/#founder`;
+
+const organizationSchema = {
+	'@type': 'Organization',
+	'@id': organizationId,
+	name: 'QCT Studio',
+	url: SITE_URL,
+	logo: {
+		'@type': 'ImageObject',
+		'@id': `${organizationId}/logo`,
+		url: new URL('/logo.png', SITE_URL).toString(),
+		contentUrl: new URL('/logo.png', SITE_URL).toString(),
+		width: 600,
+		height: 180,
+		caption: 'QCT Studio',
+	},
+	image: { '@id': `${organizationId}/logo` },
+	description: 'QCT Studio builds websites, e-commerce stores, WhatsApp Commerce and AI automation for established businesses across Albania and North Macedonia.',
+	foundingDate: '2024',
+	foundingLocation: {
+		'@type': 'Place',
+		name: 'Istanbul, Türkiye',
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'Istanbul',
+			addressCountry: 'TR',
+		},
+	},
+	founder: { '@id': founderId },
+	areaServed: AREA_SERVED,
+	email: 'info@qctstudio.com',
+	contactPoint: [
+		{ '@type': 'ContactPoint', contactType: 'general inquiries', email: 'info@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name), availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian'] },
+		{ '@type': 'ContactPoint', contactType: 'customer support', email: 'support@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name) },
+		{ '@type': 'ContactPoint', contactType: 'careers', email: 'careers@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name) },
+	],
+	sameAs: [
+		'https://www.linkedin.com/company/qctstudio',
+		'https://www.instagram.com/qctstudio_albania/',
+		'https://www.facebook.com/qctalbania/',
+		'https://www.tiktok.com/@qctstudio',
+	],
+};
+
+const founderSchema = {
+	'@type': 'Person',
+	'@id': founderId,
+	name: 'Teyfik Gökdemir',
+	jobTitle: 'Founder',
+	url: new URL('/about/', SITE_URL).toString(),
+	worksFor: { '@id': organizationId },
+	sameAs: [
+		'https://www.linkedin.com/in/teyfik-g%C3%B6kdemir-0b1a9758',
+		'https://www.instagram.com/teyfikgokdemir/',
+	],
+};
+
+const websiteSchema = {
+	'@type': 'WebSite',
+	'@id': websiteId,
+	url: SITE_URL,
+	name: 'QCT Studio',
+	description: organizationSchema.description,
+	inLanguage: INDEXED_LANGS,
+	publisher: { '@id': organizationId },
+};
+
+const webpageSchema: Record<string, unknown> = {
+	'@type': pageType,
+	'@id': webpageId,
+	url: canonicalUrl,
+	name: title,
+	description,
+	inLanguage: (LOCALES[lang] ?? 'en_US').replace('_', '-'),
+	isPartOf: { '@id': websiteId },
+	about: { '@id': organizationId },
+};
+
+// BreadcrumbList — mirrors the visible "Home / X" breadcrumb rendered by ServicePage/LegalPage.
+// Omitted on the home page (no breadcrumb shown there).
+let breadcrumbSchema: Record<string, unknown> | null = null;
+if (breadcrumbLabel) {
+	const breadcrumbId = `${canonicalUrl}#breadcrumb`;
+	breadcrumbSchema = {
+		'@type': 'BreadcrumbList',
+		'@id': breadcrumbId,
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: t('Home'), item: homeUrl },
+			{ '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl },
+		],
+	};
+	webpageSchema.breadcrumb = { '@id': breadcrumbId };
+}
+
+// Service node — only for the 6 service-concept pages (website design, e-commerce, etc.)
+let serviceSchema: Record<string, unknown> | null = null;
+if (service) {
+	const serviceId = `${canonicalUrl}#service`;
+	serviceSchema = {
+		'@type': 'Service',
+		'@id': serviceId,
+		url: canonicalUrl,
+		name: service.name,
+		description: service.description,
+		serviceType: service.name,
+		provider: { '@id': organizationId },
+		areaServed: AREA_SERVED,
+		mainEntityOfPage: { '@id': webpageId },
+	};
+	webpageSchema.mainEntity = { '@id': serviceId };
+}
+
+const graph = [organizationSchema, founderSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema].filter(Boolean);
+const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	{!isIndexable && <meta name="robots" content="noindex, follow" />}
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+	<!-- Canonical + hreflang: every language version points at every other, plus x-default -->
+	<link rel="canonical" href={canonicalUrl} />
+	{isIndexable && INDEXED_LANGS.map((l) => (
+		<link rel="alternate" hreflang={l} href={new URL(localizedPath(l), SITE_URL).toString()} />
+	))}
+	{isIndexable && <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('en'), SITE_URL).toString()} />}
+
+	<!-- Open Graph -->
+	<meta property="og:type" content={type} />
+	<meta property="og:site_name" content="QCT Studio" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonicalUrl} />
+	<meta property="og:image" content={ogImageUrl} />
+	<meta property="og:image:type" content={ogImageType} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:locale" content={LOCALES[lang] ?? 'en_US'} />
+	{INDEXED_LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALES[l]} />)}
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={ogImageUrl} />
+
+	<!-- Structured data: Organization + WebSite + WebPage (+ Breadcrumb/Service where applicable), linked via @id -->
+	<script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
+	<slot name="schema" />
+
+	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical.
+	     home.css / pages.css are mutually exclusive, matching the original WP enqueue.php,
+	     so a page only ships the stylesheet it actually uses.
+	     services.css is intentionally NOT loaded: its classes (.qct-premium-service-card,
+	     .qct-service-img) don't match any markup in this theme (real class is
+	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
+	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
+	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
+	{isHome ? (
+		<>
+			<link rel="stylesheet" href="/styles/home.css?v=20260718-3" />
+			<link rel="stylesheet" href="/styles/animations.css?v=20260718-3" />
+		</>
+	) : (
+		<link rel="stylesheet" href="/styles/pages.css?v=20260718-3" />
+	)}
+	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
+</head>
+<body>
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#primary">{t('Skip to content')}</a>
+
+		<slot name="header" />
+
+		<main id="primary" class="site-main">
+			<slot />
+		</main>
+
+		<slot name="footer" />
+	</div>
+
+	<CookieConsent lang={lang} />
+	<WhatsAppButton lang={lang} />
+
+	<!-- Ported as-is from the WordPress theme's assets/js -->
+	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
+	{isHome && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
+</body>
+</html>

@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ServicePage from './service/ServicePage.astro';
+import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const seo = getPageSeo('website-design', lang);
+---
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('Website Design')} service={{ name: t('Website Design'), description: t('Your website is often the first interaction someone has with your business.') }}>
+  <Header slot="header" lang={lang} />
+  <ServicePage
+    lang={lang}
+    eyebrow={t('Website Design')}
+    title={t('Website design for businesses that need to earn trust before the first conversation.')}
+    lead={t('Your website is often the first interaction someone has with your business.')}
+    ctaPrimary={t('Start Your Project')}
+    ctaSecondary={t('View Our Work')}
+    problem={{
+      eyebrow: t('PROBLEM'),
+      title: t('A successful business can still lose customers because of its website.'),
+      intro: [
+        t('Many businesses have spent years building a strong reputation.'),
+        `${t('Before they call.')} ${t('Before they send a message.')} ${t("Before they decide whether you're worth contacting.")}`,
+        `${t('If your website feels outdated, confusing or difficult to use, people leave with questions instead of confidence.')} ${t('We design websites that help businesses make a stronger first impression and create more opportunities to turn visitors into customers.')}`,
+      ],
+      items: [
+        { title: t('Their team has grown.'), text: `${t('Their services have improved.')} ${t('Their customers trust them.')}` },
+        { title: t('But their website still reflects who they were years ago.'), text: `${t("An outdated website doesn't just look old.")} ${t('It quietly creates doubt.')}` },
+        { title: t('Visitors hesitate. Enquiries decrease. Competitors appear more professional.'), text: t("Your website should represent the business you've become—not the one you started.") },
+      ],
+    }}
+    benefits={{
+      eyebrow: t('BENEFITS'),
+      title: t("Good design isn't about making a website look expensive."),
+      lead: t("It's about making people feel comfortable doing business with you."),
+      items: [
+        { title: t('Every page should answer questions before visitors need to ask them.'), text: `${t('Clear navigation.')} ${t('Fast loading.')} ${t('Simple messaging.')}` },
+        { title: t('Professional visuals.'), text: t('Mobile-first layouts.') },
+        { title: t('A website should remove uncertainty—not create it.'), text: t("When people understand your business quickly, they're far more likely to contact you.") },
+      ],
+    }}
+    included={{
+      eyebrow: t('WHAT YOU GET'),
+      title: t("What's included"),
+      lead: t('Every QCT Studio website is planned around usability, performance and long-term growth.'),
+      items: [
+        { title: t('Professional Custom Design'), text: t('Designed specifically around your business instead of using generic templates.') },
+        { title: t('Responsive on Every Device'), text: t('A consistent experience across desktop, tablet and mobile.') },
+        { title: t('SEO-Friendly Structure'), text: t('Built with clean architecture that search engines can understand.') },
+        { title: t('Fast Performance'), text: t('Optimised for speed without sacrificing quality.') },
+        { title: t('Easy Content Management'), text: t('Update text, images and pages without relying on developers.') },
+        { title: t('Built for Growth'), text: t('Flexible enough to grow as your business grows.') },
+      ],
+    }}
+    process={{
+      eyebrow: t('PROCESS'),
+      title: t('Our process'),
+      steps: [
+        { number: '01', title: t('Understanding your business'), text: t('We learn how your business works before designing anything.') },
+        { number: '02', title: t('Planning the experience'), text: t('We organise pages, content and user journeys around real customer behaviour.') },
+        { number: '03', title: t('Design & development'), text: t('Every page is designed and built with performance, clarity and responsiveness in mind.') },
+        { number: '04', title: t('Launch & support'), text: t('Once everything is tested, your website goes live with ongoing support whenever you need it.') },
+      ],
+    }}
+    faq={{
+      eyebrow: t('FAQ'),
+      title: t('FAQ'),
+      items: [
+        { q: t('How long does a website project take?'), a: t('Every project is different, but most business websites are completed within a few weeks depending on size and content.') },
+        { q: t('Can you redesign my existing website?'), a: `${t('Yes.')} ${t('If your current website no longer reflects your business, we can redesign it while preserving valuable content where appropriate.')}` },
+        { q: t('Will the website work on mobile devices?'), a: `${t('Absolutely.')} ${t('Every website we build is designed for desktop, tablet and mobile from the beginning.')}` },
+        { q: t('Can we edit the website ourselves?'), a: `${t('Yes.')} ${t("You'll be able to update pages, images and content without technical knowledge.")}` },
+        { q: t('Is SEO included?'), a: t('Yes. Website projects include crawlable structure, semantic headings, mobile-ready pages and clean technical foundations. Ongoing SEO strategy is a separate scope when needed.') },
+      ],
+    }}
+    final={{
+      title: t('Ready for a website that reflects the quality of your business?'),
+      text: t("Whether you're replacing an outdated website or building something entirely new, we'll help you create a website that people trust from their very first visit."),
+      cta: t("Let's Talk"),
+    }}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

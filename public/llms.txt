@@ -1,0 +1,29 @@
+# QCT Studio
+
+> QCT Studio builds websites, e-commerce stores, WhatsApp Commerce, SEO/GEO and AI automation for established businesses across Albania and North Macedonia.
+
+QCT Studio works with businesses that already have a reputation offline but whose website has not kept up. Services are designed to improve trust, speed and conversion, and can be combined into a single connected system for a business.
+
+## Services
+
+- [Website Design](https://qctstudio.com/website-design/): Premium websites with conversion-focused structure, built around a specific business rather than a template.
+- [E-commerce](https://qctstudio.com/e-commerce/): Online stores with clear product pages, mobile-friendly checkout and manageable order flows.
+- [WhatsApp Commerce](https://qctstudio.com/whatsapp-commerce/): Selling and answering customer questions directly inside WhatsApp conversations.
+- [SEO & GEO Performance](https://qctstudio.com/seo-performance/): Technical SEO, Core Web Vitals and content structure for visibility in both traditional search and AI-powered search.
+- [Meta Ads Landing Pages](https://qctstudio.com/meta-ads-landing-pages/): Focused campaign landing pages matched to ad intent.
+- [AI Automation](https://qctstudio.com/ai-automation/): Automations that reduce repetitive operational work while keeping humans in control of decisions.
+
+## Company
+
+- [About](https://qctstudio.com/about/): Why QCT Studio exists and how it works with businesses.
+- [Services overview](https://qctstudio.com/services/): Full list of services.
+- [Careers](https://qctstudio.com/careers/): Open roles at QCT Studio.
+- [Contact](https://qctstudio.com/contact/): info@qctstudio.com
+
+## Markets served
+
+Albania, North Macedonia, and the wider Balkans.
+
+## Languages
+
+This site is available in English (default), Albanian (/sq/), Macedonian (/mk/), and Serbian (/sr/).

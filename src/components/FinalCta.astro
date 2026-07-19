@@ -1,0 +1,46 @@
+---
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="qct-section qct-final-cta" aria-labelledby="qct-final-cta-title">
+	<div class="container">
+		<div class="qct-final-cta__panel" data-qct-reveal>
+			<div class="qct-final-cta__content">
+				<p class="qct-section__eyebrow">{t('READY TO TALK?')}</p>
+				<h2 id="qct-final-cta-title" class="qct-section__title">
+					{t("Let's build something your business will be proud of.")}
+				</h2>
+				<p class="qct-section__lead">
+					{t("Whether you need a new website, an online store or a complete digital presence, we're ready to talk.")}
+				</p>
+				<div class="qct-final-cta__actions">
+					<a class="qct-button qct-button--primary" href="#contact" data-magnetic>
+						<span>{t('Start Your Project')}</span>
+					</a>
+					<a class="qct-button qct-button--secondary" href="mailto:info@qctstudio.com">
+						<span>{t('Contact Us')}</span>
+					</a>
+				</div>
+			</div>
+
+			<div class="qct-final-cta__visual" aria-hidden="true">
+				<div class="qct-system-card qct-system-card--brief">
+					<span></span>
+					<strong>{t('Based in the Balkans.')}</strong>
+					<em></em>
+				</div>
+				<div class="qct-system-card qct-system-card--launch">
+					<strong>{t('Working with businesses that value quality.')}</strong>
+					<span></span>
+					<span></span>
+					<em></em>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,251 @@
+@media (prefers-reduced-motion: no-preference) {
+	.fade-in {
+		animation: qct-fade-in 0.6s ease both;
+	}
+
+	.qct-hero__eyebrow,
+	.qct-hero__title,
+	.qct-hero__rotator-line,
+	.qct-hero__subtitle,
+	.qct-hero__actions,
+	.qct-hero__visual {
+		animation: qct-hero-enter 1150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+
+	.qct-hero__title {
+		animation-delay: 90ms;
+	}
+
+	.qct-hero__rotator-line {
+		animation-delay: 180ms;
+	}
+
+	.qct-hero__subtitle {
+		animation-delay: 260ms;
+	}
+
+	.qct-hero__actions {
+		animation-delay: 360ms;
+	}
+
+	.qct-hero__visual {
+		animation-delay: 240ms;
+	}
+
+	.qct-browser:not(.qct-signal-room) {
+		animation: qct-float 6.8s ease-in-out infinite;
+	}
+
+	.qct-browser:not(.qct-signal-room)::after {
+		animation: qct-sheen 6.4s ease-in-out infinite;
+	}
+
+	.qct-card--whatsapp {
+		animation: qct-whatsapp-float 4.8s ease-in-out infinite;
+	}
+
+	.qct-hero__orb--red {
+		animation: qct-orb-red 12s ease-in-out infinite alternate;
+	}
+
+	.qct-hero__orb--lime {
+		animation: qct-orb-lime 14s ease-in-out infinite alternate;
+	}
+
+	.qct-graph span {
+		animation: qct-graph-pulse 2.8s ease-in-out infinite;
+	}
+
+	.qct-graph span:nth-child(2) {
+		animation-delay: 140ms;
+	}
+
+	.qct-graph span:nth-child(3) {
+		animation-delay: 280ms;
+	}
+
+	.qct-graph span:nth-child(4) {
+		animation-delay: 420ms;
+	}
+
+	.qct-graph span:nth-child(5) {
+		animation-delay: 560ms;
+	}
+
+	.qct-service-preview > span,
+	.qct-service-preview .qct-product-card,
+	.qct-service-preview .qct-funnel-step {
+		animation: qct-preview-drift 5.6s ease-in-out infinite;
+	}
+
+	.qct-service-preview > span:nth-child(2),
+	.qct-service-preview .qct-product-card:nth-child(2),
+	.qct-service-preview .qct-funnel-step:nth-child(2) {
+		animation-delay: 400ms;
+	}
+
+	.qct-service-preview > span:nth-child(3),
+	.qct-service-preview .qct-funnel-step:nth-child(3) {
+		animation-delay: 800ms;
+	}
+}
+
+@keyframes qct-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes qct-hero-enter {
+	from {
+		opacity: 0;
+		filter: blur(14px);
+		transform: translateY(34px) scale(0.96);
+	}
+
+	to {
+		opacity: 1;
+		filter: blur(0);
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes qct-word-switch {
+	0% {
+		opacity: 0;
+		transform: translateY(16px) rotateX(35deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) rotateX(0);
+	}
+}
+
+@keyframes qct-float {
+	0%,
+	100% {
+		transform: rotateX(7deg) rotateY(-10deg) translate3d(var(--hero-browser-x, 0), var(--hero-browser-y, 0), 0) scale(1.15);
+	}
+
+	50% {
+		transform: rotateX(5deg) rotateY(-7deg) translate3d(var(--hero-browser-x, 0), calc(-22px + var(--hero-browser-y, 0px)), 0) scale(1.15);
+	}
+}
+
+@keyframes qct-float-desktop-fit {
+	0%,
+	100% {
+		transform: rotateX(6deg) rotateY(-8deg) translate3d(var(--hero-browser-x, 0), var(--hero-browser-y, 0), 0) scale(1.03);
+	}
+
+	50% {
+		transform: rotateX(5deg) rotateY(-7deg) translate3d(var(--hero-browser-x, 0), calc(-12px + var(--hero-browser-y, 0px)), 0) scale(1.03);
+	}
+}
+
+@keyframes qct-sheen {
+	0%,
+	42% {
+		left: -70%;
+	}
+
+	100% {
+		left: 130%;
+	}
+}
+
+@keyframes qct-orb-red {
+	from {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+
+	to {
+		transform: translate3d(-90px, 80px, 0) scale(1.15);
+	}
+}
+
+@keyframes qct-orb-lime {
+	from {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+
+	to {
+		transform: translate3d(120px, -50px, 0) scale(1.1);
+	}
+}
+
+@keyframes qct-graph-pulse {
+	0%,
+	100% {
+		opacity: 0.72;
+		transform: scaleY(0.7);
+	}
+
+	50% {
+		opacity: 1;
+		transform: scaleY(1);
+	}
+}
+
+@keyframes qct-whatsapp-float {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	50% {
+		transform: translate3d(9px, -10px, 0);
+	}
+}
+
+@keyframes qct-preview-drift {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	50% {
+		transform: translate3d(0, -6px, 0);
+	}
+}
+
+@media (min-width: 920px) and (prefers-reduced-motion: no-preference) {
+	.qct-browser:not(.qct-signal-room) {
+		animation-name: qct-float-desktop-fit;
+	}
+}
+
+@media (max-width: 919px) and (prefers-reduced-motion: no-preference) {
+	.qct-browser:not(.qct-signal-room) {
+		animation-name: qct-float-compact;
+	}
+}
+
+@keyframes qct-float-compact {
+	0%,
+	100% {
+		transform: rotateX(4deg) rotateY(-4deg) translate3d(0, 0, 0) scale(1);
+	}
+
+	50% {
+		transform: rotateX(3deg) rotateY(-3deg) translate3d(0, -8px, 0) scale(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.001ms !important;
+	}
+}

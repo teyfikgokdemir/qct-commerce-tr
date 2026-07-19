@@ -1,0 +1,287 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const url = (path: string) => getLocalizedUrl(lang, path);
+const seo = getPageSeo('headwear-case-study', lang);
+
+const copy = {
+  en: {
+    breadcrumb: 'Selected Work',
+    eyebrow: 'E-commerce case study',
+    title: 'HEADWEAR: a multilingual store for performance and outdoor products.',
+    lead: 'A live e-commerce project shaped around a focused product range, multilingual browsing and a clear path from product discovery to purchase.',
+    visit: 'Visit the live store',
+    overview: 'Project overview',
+    overviewTitle: 'A specialist product catalogue needs a shopping experience that stays clear.',
+    overviewText: 'HEADWEAR sells neck gaiters, bandanas and performance accessories for sport, outdoor activity and everyday use. The digital experience needs to explain product purpose quickly, support multiple languages and remain easy to use on smaller screens.',
+    typeLabel: 'Project type',
+    typeValue: 'Multilingual e-commerce',
+    marketLabel: 'Focus',
+    marketValue: 'Performance and outdoor products',
+    statusLabel: 'Status',
+    statusValue: 'Live website',
+    challenge: 'The challenge',
+    challengeTitle: 'Make a focused range easy to understand across markets.',
+    challengeText: 'Product-led businesses need more than attractive imagery. Visitors must be able to understand what a product is for, compare options and continue toward checkout without unnecessary friction.',
+    approach: 'Our approach',
+    approachTitle: 'Build the store around how customers browse and decide.',
+    items: [
+      ['Product clarity', 'Collection and product pages create a direct route from interest to relevant product information.'],
+      ['Multilingual structure', 'Language-specific routes help customers browse the store in the version that fits them.'],
+      ['Mobile shopping', 'The interface keeps products, actions and the next step readable on phones and larger screens.'],
+      ['Search foundations', 'Crawlable product and collection pages give search systems a clear structure to understand.'],
+    ],
+    scope: 'Project scope',
+    scopeTitle: 'Connected e-commerce foundations.',
+    scopeItems: ['Store structure', 'Collection and product templates', 'Multilingual navigation', 'Mobile purchase journey', 'Technical search foundations', 'Ongoing storefront refinement'],
+    evidence: 'What this work demonstrates',
+    evidenceTitle: 'A real store is stronger evidence than a promise.',
+    evidenceText: 'HEADWEAR shows how QCT Studio approaches a live commerce system: start with the products, organise the path clearly and make the experience usable across languages and devices.',
+    cta: 'Planning an e-commerce project?',
+    ctaText: 'Tell us what you sell, which markets you serve and what needs to improve. We will help identify the most practical starting point.',
+    contact: 'Start a project',
+  },
+  sq: {
+    breadcrumb: 'Punë të përzgjedhura',
+    eyebrow: 'Studim rasti për e-commerce',
+    title: 'HEADWEAR: dyqan shumëgjuhësh për produkte performance dhe outdoor.',
+    lead: 'Një projekt aktiv e-commerce, i ndërtuar rreth një game të fokusuar produktesh, shfletimit shumëgjuhësh dhe një rruge të qartë nga zbulimi te blerja.',
+    visit: 'Vizitoni dyqanin live',
+    overview: 'Përmbledhja e projektit',
+    overviewTitle: 'Një katalog i specializuar ka nevojë për një përvojë blerjeje që mbetet e qartë.',
+    overviewText: 'HEADWEAR shet mbrojtëse qafe, bandana dhe aksesorë performance për sport, aktivitete outdoor dhe përdorim të përditshëm. Përvoja digjitale duhet të shpjegojë shpejt përdorimin e produktit, të mbështesë disa gjuhë dhe të jetë e lehtë në ekranet e vogla.',
+    typeLabel: 'Lloji i projektit',
+    typeValue: 'E-commerce shumëgjuhësh',
+    marketLabel: 'Fokusi',
+    marketValue: 'Produkte performance dhe outdoor',
+    statusLabel: 'Statusi',
+    statusValue: 'Faqe aktive',
+    challenge: 'Sfida',
+    challengeTitle: 'Ta bëjmë një gamë të fokusuar të kuptueshme në tregje të ndryshme.',
+    challengeText: 'Bizneset e bazuara te produktet kanë nevojë për më shumë se imazhe tërheqëse. Vizitorët duhet të kuptojnë përdorimin, të krahasojnë alternativat dhe të vazhdojnë drejt pagesës pa pengesa të panevojshme.',
+    approach: 'Qasja jonë',
+    approachTitle: 'Ta ndërtojmë dyqanin rreth mënyrës si klientët shfletojnë dhe vendosin.',
+    items: [
+      ['Qartësi produkti', 'Faqet e koleksioneve dhe produkteve krijojnë një rrugë të drejtpërdrejtë drejt informacionit përkatës.'],
+      ['Strukturë shumëgjuhëshe', 'Rrugët sipas gjuhës i ndihmojnë klientët ta shfletojnë dyqanin në versionin që u përshtatet.'],
+      ['Blerje në celular', 'Ndërfaqja i mban produktet, veprimet dhe hapin vijues të qarta në telefon dhe ekrane më të mëdha.'],
+      ['Baza për kërkimin', 'Faqet e indeksueshme të produkteve dhe koleksioneve u japin sistemeve të kërkimit një strukturë të qartë.'],
+    ],
+    scope: 'Fusha e projektit',
+    scopeTitle: 'Themele të lidhura për e-commerce.',
+    scopeItems: ['Struktura e dyqanit', 'Modele koleksionesh dhe produktesh', 'Navigim shumëgjuhësh', 'Rruga e blerjes në celular', 'Baza teknike për kërkimin', 'Përmirësim i vazhdueshëm i dyqanit'],
+    evidence: 'Çfarë demonstron kjo punë',
+    evidenceTitle: 'Një dyqan real është provë më e fortë se një premtim.',
+    evidenceText: 'HEADWEAR tregon si QCT Studio i qaset një sistemi aktiv commerce: nis me produktet, organizon qartë rrugën dhe e bën përvojën të përdorshme në gjuhë dhe pajisje të ndryshme.',
+    cta: 'Po planifikoni një projekt e-commerce?',
+    ctaText: 'Na tregoni çfarë shisni, cilat tregje shërbeni dhe çfarë duhet të përmirësohet. Do t’ju ndihmojmë të përcaktoni pikënisjen më praktike.',
+    contact: 'Nisni një projekt',
+  },
+  mk: {
+    breadcrumb: 'Избрани проекти',
+    eyebrow: 'Студија за е-трговија',
+    title: 'HEADWEAR: повеќејазична продавница за performance и outdoor производи.',
+    lead: 'Активен проект за е-трговија обликуван околу фокусиран асортиман, повеќејазично пребарување и јасен пат од откривање производ до купување.',
+    visit: 'Посетете ја активната продавница',
+    overview: 'Преглед на проектот',
+    overviewTitle: 'На специјализиран каталог му треба искуство за купување што останува јасно.',
+    overviewText: 'HEADWEAR продава марами за врат, бандани и performance додатоци за спорт, outdoor активности и секојдневна употреба. Дигиталното искуство треба брзо да ја објасни намената, да поддржи повеќе јазици и лесно да се користи на помали екрани.',
+    typeLabel: 'Тип на проект',
+    typeValue: 'Повеќејазична е-трговија',
+    marketLabel: 'Фокус',
+    marketValue: 'Performance и outdoor производи',
+    statusLabel: 'Статус',
+    statusValue: 'Активна веб-страница',
+    challenge: 'Предизвикот',
+    challengeTitle: 'Фокусираниот асортиман да биде лесно разбирлив на различни пазари.',
+    challengeText: 'На бизнисите со производи им треба повеќе од привлечни фотографии. Посетителите мора да ја разберат намената, да споредат опции и без непотребни пречки да продолжат кон наплата.',
+    approach: 'Нашиот пристап',
+    approachTitle: 'Продавницата ја градиме околу начинот на кој купувачите пребаруваат и одлучуваат.',
+    items: [
+      ['Јасност на производите', 'Страниците за колекции и производи создаваат директен пат до релевантните информации.'],
+      ['Повеќејазична структура', 'Рутите според јазик им помагаат на купувачите да ја користат верзијата што им одговара.'],
+      ['Мобилно купување', 'Интерфејсот ги одржува производите, акциите и следниот чекор јасни на телефон и поголеми екрани.'],
+      ['Основи за пребарување', 'Индексибилните страници им даваат на пребарувачите јасна структура што можат да ја разберат.'],
+    ],
+    scope: 'Опфат на проектот',
+    scopeTitle: 'Поврзани основи за е-трговија.',
+    scopeItems: ['Структура на продавницата', 'Шаблони за колекции и производи', 'Повеќејазична навигација', 'Мобилен пат до купување', 'Технички основи за пребарување', 'Континуирано подобрување'],
+    evidence: 'Што покажува оваа работа',
+    evidenceTitle: 'Вистинска продавница е посилен доказ од ветување.',
+    evidenceText: 'HEADWEAR покажува како QCT Studio пристапува кон активен commerce систем: почнува со производите, го организира патот јасно и го прави искуството употребливо на повеќе јазици и уреди.',
+    cta: 'Планирате проект за е-трговија?',
+    ctaText: 'Кажете ни што продавате, кои пазари ги опслужувате и што треба да се подобри. Ќе помогнеме да се одреди најпрактичната почетна точка.',
+    contact: 'Започнете проект',
+  },
+  sr: {
+    breadcrumb: 'Izabrani projekti',
+    eyebrow: 'E-commerce studija',
+    title: 'HEADWEAR: višejezična prodavnica za performance i outdoor proizvode.',
+    lead: 'Aktivan e-commerce projekat oblikovan oko fokusiranog asortimana, višejezičnog pregledanja i jasnog puta od otkrivanja proizvoda do kupovine.',
+    visit: 'Posetite aktivnu prodavnicu',
+    overview: 'Pregled projekta',
+    overviewTitle: 'Specijalizovanom katalogu je potrebno iskustvo kupovine koje ostaje jasno.',
+    overviewText: 'HEADWEAR prodaje marame za vrat, bandane i performance dodatke za sport, outdoor aktivnosti i svakodnevnu upotrebu. Digitalno iskustvo treba brzo da objasni namenu proizvoda, podrži više jezika i ostane jednostavno na manjim ekranima.',
+    typeLabel: 'Tip projekta',
+    typeValue: 'Višejezični e-commerce',
+    marketLabel: 'Fokus',
+    marketValue: 'Performance i outdoor proizvodi',
+    statusLabel: 'Status',
+    statusValue: 'Aktivan sajt',
+    challenge: 'Izazov',
+    challengeTitle: 'Fokusiran asortiman učiniti razumljivim na različitim tržištima.',
+    challengeText: 'Biznisima zasnovanim na proizvodima potrebno je više od privlačnih fotografija. Posetioci moraju da razumeju namenu, uporede opcije i nastave ka naplati bez nepotrebnih prepreka.',
+    approach: 'Naš pristup',
+    approachTitle: 'Prodavnicu gradimo oko načina na koji kupci pregledaju i odlučuju.',
+    items: [
+      ['Jasnoća proizvoda', 'Stranice kolekcija i proizvoda stvaraju direktan put do relevantnih informacija.'],
+      ['Višejezična struktura', 'Rute po jeziku pomažu kupcima da prodavnicu koriste u verziji koja im odgovara.'],
+      ['Mobilna kupovina', 'Interfejs održava proizvode, akcije i sledeći korak jasnim na telefonima i većim ekranima.'],
+      ['Osnove za pretragu', 'Indeksabilne stranice proizvoda i kolekcija daju pretraživačima jasnu strukturu.'],
+    ],
+    scope: 'Obim projekta',
+    scopeTitle: 'Povezane e-commerce osnove.',
+    scopeItems: ['Struktura prodavnice', 'Šabloni kolekcija i proizvoda', 'Višejezična navigacija', 'Mobilni put kupovine', 'Tehničke osnove pretrage', 'Kontinuirano unapređenje prodavnice'],
+    evidence: 'Šta ovaj rad pokazuje',
+    evidenceTitle: 'Prava prodavnica je snažniji dokaz od obećanja.',
+    evidenceText: 'HEADWEAR pokazuje kako QCT Studio pristupa aktivnom commerce sistemu: počinje od proizvoda, jasno organizuje put i čini iskustvo upotrebljivim na različitim jezicima i uređajima.',
+    cta: 'Planirate e-commerce projekat?',
+    ctaText: 'Recite nam šta prodajete, koja tržišta opslužujete i šta treba poboljšati. Pomoći ćemo da odredite najpraktičniju početnu tačku.',
+    contact: 'Pokrenite projekat',
+  },
+};
+
+const c = copy[lang as keyof typeof copy] ?? copy.en;
+---
+
+<BaseLayout title={seo.title} description={seo.description} lang={lang} pageType="WebPage" breadcrumbLabel="HEADWEAR">
+  <Header slot="header" lang={lang} />
+
+  <main class="qct-case">
+    <section class="qct-case__hero">
+      <div class="container">
+        <p class="qct-case__breadcrumb"><a href={url('/about/')}>{c.breadcrumb}</a> / HEADWEAR</p>
+        <p class="qct-case__eyebrow">{c.eyebrow}</p>
+        <h1>{c.title}</h1>
+        <p class="qct-case__lead">{c.lead}</p>
+        <a class="qct-case__button" href="https://www.head-wear.com/" target="_blank" rel="noopener">{c.visit}</a>
+      </div>
+    </section>
+
+    <section class="qct-case__section">
+      <div class="container qct-case__split">
+        <div>
+          <p class="qct-case__eyebrow">{c.overview}</p>
+          <h2>{c.overviewTitle}</h2>
+          <p>{c.overviewText}</p>
+        </div>
+        <dl class="qct-case__facts">
+          <div><dt>{c.typeLabel}</dt><dd>{c.typeValue}</dd></div>
+          <div><dt>{c.marketLabel}</dt><dd>{c.marketValue}</dd></div>
+          <div><dt>{c.statusLabel}</dt><dd>{c.statusValue}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="qct-case__section qct-case__section--dark">
+      <div class="container">
+        <p class="qct-case__eyebrow">{c.challenge}</p>
+        <h2>{c.challengeTitle}</h2>
+        <p class="qct-case__measure">{c.challengeText}</p>
+      </div>
+    </section>
+
+    <section class="qct-case__section">
+      <div class="container">
+        <p class="qct-case__eyebrow">{c.approach}</p>
+        <h2>{c.approachTitle}</h2>
+        <div class="qct-case__grid">
+          {c.items.map(([title, text], index) => (
+            <article>
+              <span>0{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-case__section qct-case__section--tint">
+      <div class="container qct-case__split">
+        <div>
+          <p class="qct-case__eyebrow">{c.scope}</p>
+          <h2>{c.scopeTitle}</h2>
+        </div>
+        <ul class="qct-case__scope">
+          {c.scopeItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="qct-case__section qct-case__section--dark">
+      <div class="container">
+        <p class="qct-case__eyebrow">{c.evidence}</p>
+        <h2>{c.evidenceTitle}</h2>
+        <p class="qct-case__measure">{c.evidenceText}</p>
+      </div>
+    </section>
+
+    <section class="qct-case__cta">
+      <div class="container">
+        <h2>{c.cta}</h2>
+        <p>{c.ctaText}</p>
+        <a class="qct-case__button" href={url('/contact/')}>{c.contact}</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+  .qct-case { color: #17151a; background: #f4f0e8; }
+  .qct-case__hero, .qct-case__section, .qct-case__cta { padding: clamp(3.75rem, 6.5vw, 6.5rem) 0; }
+  .qct-case__hero { border-bottom: 1px solid rgba(23, 21, 26, 0.14); }
+  .qct-case__breadcrumb { margin: 0 0 3rem; font-weight: 700; }
+  .qct-case__breadcrumb a { color: inherit; }
+  .qct-case__eyebrow { margin: 0 0 1rem; color: #e75757; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+  .qct-case h1 { max-width: 980px; margin: 0; font-size: clamp(2.75rem, 4.8vw, 5rem); line-height: .98; letter-spacing: -.045em; }
+  .qct-case h2 { max-width: 800px; margin: 0 0 1.25rem; font-size: clamp(2rem, 3.1vw, 3.25rem); line-height: 1.05; letter-spacing: -.035em; }
+  .qct-case__lead, .qct-case__measure, .qct-case__split > div > p:last-child, .qct-case__cta p { max-width: 720px; color: #656066; font-size: clamp(1rem, 1.25vw, 1.18rem); line-height: 1.65; }
+  .qct-case__button { display: inline-flex; min-height: 52px; align-items: center; margin-top: 1.5rem; padding: .85rem 1.25rem; color: #17151a; background: #ef5959; border-radius: 999px; font-weight: 800; text-decoration: none; }
+  .qct-case__split { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, .7fr); gap: clamp(2.5rem, 6vw, 7rem); align-items: start; }
+  .qct-case__facts { margin: 0; border-top: 1px solid rgba(23, 21, 26, .18); }
+  .qct-case__facts div { padding: 1.2rem 0; border-bottom: 1px solid rgba(23, 21, 26, .18); }
+  .qct-case__facts dt { color: #777177; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .qct-case__facts dd { margin: .35rem 0 0; font-weight: 750; }
+  .qct-case__section--dark { color: #f8f5ef; background: #17151a; }
+  .qct-case__section--dark .qct-case__measure { color: rgba(248, 245, 239, .7); }
+  .qct-case__section--tint { background: #e9e3da; }
+  .qct-case__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 3rem; background: rgba(23, 21, 26, .16); border: 1px solid rgba(23, 21, 26, .16); }
+  .qct-case__grid article { min-height: 260px; padding: clamp(1.5rem, 3vw, 2.5rem); background: #f4f0e8; }
+  .qct-case__grid span { color: #e75757; font-weight: 800; }
+  .qct-case__grid h3 { margin: 2.5rem 0 .75rem; font-size: clamp(1.5rem, 2.4vw, 2.25rem); }
+  .qct-case__grid p { max-width: 520px; color: #656066; line-height: 1.65; }
+  .qct-case__scope { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(23, 21, 26, .18); }
+  .qct-case__scope li { padding: 1rem 0; border-bottom: 1px solid rgba(23, 21, 26, .18); font-weight: 750; }
+  .qct-case__cta { text-align: center; }
+  .qct-case__cta h2, .qct-case__cta p { margin-right: auto; margin-left: auto; }
+  @media (max-width: 760px) {
+    .qct-case__hero, .qct-case__section, .qct-case__cta { padding: 3.5rem 0; }
+    .qct-case__breadcrumb { margin-bottom: 2rem; }
+    .qct-case h1 { font-size: clamp(2.35rem, 11vw, 3.15rem); line-height: 1; }
+    .qct-case h2 { font-size: clamp(1.85rem, 8vw, 2.5rem); }
+    .qct-case__split, .qct-case__grid { grid-template-columns: 1fr; }
+    .qct-case__grid article { min-height: auto; }
+  }
+</style>

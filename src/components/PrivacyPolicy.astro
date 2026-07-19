@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import LegalPage from './service/LegalPage.astro';
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<BaseLayout title={`${t('Privacy Policy')} — QCT Studio`} lang={lang} description={t('Plain-language information about how QCT Studio may receive and use information from website visitors, project inquiries and career messages.')} breadcrumbLabel={t('Legal')}>
+  <Header slot="header" lang={lang} />
+  <LegalPage
+    lang={lang}
+    eyebrow={t('Legal')}
+    title={t('Privacy Policy')}
+    lead={t('Plain-language information about how QCT Studio may receive and use information from website visitors, project inquiries and career messages.')}
+    lastUpdated="July 2026"
+    sections={[
+      { id: 'information-we-may-receive', title: t('Information we may receive'), text: t('We may receive information you send by email, inquiry details about a business or project, career inquiry details, website usage information if analytics are used, and basic technical information such as browser, device and pages visited.') },
+      { id: 'how-we-use-information', title: t('How we use information'), text: t('We use information to respond to inquiries, understand project requests, manage career messages, improve the website and keep records of communication that help us follow up properly.') },
+      { id: 'what-we-do-not-do', title: t('What we do not do'), text: t('We do not sell personal information. We do not ask for unnecessary sensitive information. We do not use inquiry details for unrelated marketing without permission.') },
+      { id: 'third-party-services', title: t('Third-party services'), text: t('Website hosting, email, analytics or similar providers may process limited data when needed to run the website and support communication.') },
+      { id: 'your-choices', title: t('Your choices'), text: t('You can contact QCT Studio to ask about your information or request corrections or deletion where applicable.') },
+      { id: 'contact', title: t('Contact'), text: t('Privacy questions can be sent to info@qctstudio.com. Career inquiries should be sent to careers@qctstudio.com.') },
+    ]}
+    faqTitle={t('FAQ')}
+    faqItems={[
+      { q: t('What information may be collected?'), a: t('We may collect email messages, inquiry details, career details, website usage information if analytics are used, and basic technical information such as browser, device and pages visited.') },
+      { q: t('Why is this information used?'), a: t('It is used to respond to inquiries, understand project requests, manage career messages, improve the website and keep communication records.') },
+      { q: t('What does QCT Studio not do with personal information?'), a: t('We do not sell personal information, ask for unnecessary sensitive information or use inquiry details for unrelated marketing without permission.') },
+      { q: t('Do third-party services process any data?'), a: t('Yes. Hosting, email, analytics or similar providers may process limited data when needed to support the website and communication.') },
+      { q: t('Can I ask for corrections or deletion?'), a: t('Yes. You can contact QCT Studio to ask about your information or request corrections or deletion where applicable.') },
+      { q: t('How long do you keep messages or inquiry details?'), a: t('We keep communication records only as long as they are needed for the inquiry, project follow-up or normal business records.') },
+      { q: t('Do you use inquiry details for unrelated marketing?'), a: t('No. Inquiry details are used to handle the message or project unless you give permission for something else.') },
+    ]}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
