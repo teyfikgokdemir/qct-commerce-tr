@@ -284,6 +284,58 @@ if (!fs.existsSync(sitemapFile)) {
   }
 }
 
+const llmsFile = path.join(DIST, 'llms.txt');
+if (!fs.existsSync(llmsFile)) {
+  errors.push('dist/llms.txt is missing.');
+} else {
+  const llmsBuffer = fs.readFileSync(llmsFile);
+  const llms = llmsBuffer.toString('utf8').replace(/\r\n/g, '\n');
+  const lines = llms.split('\n');
+  const h1Lines = lines.filter((line) => /^#\s+\S/.test(line));
+  const firstH1Index = lines.findIndex((line) => /^#\s+\S/.test(line));
+  const nextContentLine = lines.slice(firstH1Index + 1).find((line) => line.trim());
+  const markdownLinkPattern = /\[([^\]\n]+)\]\((https:\/\/[^)\s]+)\)/g;
+  const markdownLinks = [...llms.matchAll(markdownLinkPattern)];
+  const contentWithoutValidLinks = llms.replace(markdownLinkPattern, '');
+  const listLines = lines.filter((line) => line.startsWith('- '));
+
+  if (llmsBuffer[0] === 0xef && llmsBuffer[1] === 0xbb && llmsBuffer[2] === 0xbf) {
+    errors.push('dist/llms.txt must be UTF-8 without a BOM.');
+  }
+  if (llms.includes('\uFFFD')) errors.push('dist/llms.txt contains invalid UTF-8 replacement characters.');
+  if (h1Lines.length !== 1 || h1Lines[0] !== '# QCT Commerce') {
+    errors.push(`dist/llms.txt must contain exactly one H1 named QCT Commerce; found ${h1Lines.length}.`);
+  }
+  if (firstH1Index !== 0) errors.push('dist/llms.txt must begin with its H1.');
+  if (!nextContentLine?.startsWith('> ')) {
+    errors.push('dist/llms.txt must place a blockquote summary immediately after its H1.');
+  }
+  if (/https?:\/\//i.test(contentWithoutValidLinks)) {
+    errors.push('dist/llms.txt contains a bare or malformed HTTP URL.');
+  }
+  if (listLines.some((line) => !/^- \[[^\]]+\]\(https:\/\/[^)\s]+\): \S/.test(line))) {
+    errors.push('dist/llms.txt link lists must use "- [Başlık](https://...): kısa açıklama" format.');
+  }
+  if ((llms.match(/\]\(/g) ?? []).length !== markdownLinks.length) {
+    errors.push('dist/llms.txt contains a malformed Markdown link.');
+  }
+
+  for (const [, title, href] of markdownLinks) {
+    let url;
+    try {
+      url = new URL(href);
+    } catch {
+      errors.push(`dist/llms.txt contains an invalid URL for ${title}: ${href}.`);
+      continue;
+    }
+    if (url.origin === SITE && !indexableCanonicals.has(url.toString())) {
+      errors.push(`dist/llms.txt internal target is not a generated canonical page: ${href}.`);
+    }
+  }
+
+  console.log(`llms.txt audit: ${h1Lines.length} H1, ${markdownLinks.length} Markdown links, ${listLines.length} canonical page entries checked.`);
+}
+
 console.log(`HTML SEO audit: ${htmlFiles.length} files, ${indexable} indexable, ${noindex} noindex.`);
 console.log(`Rendered metadata audit: ${jsonLdBlocks} JSON-LD blocks, ${internalLinks} internal links checked.`);
 
