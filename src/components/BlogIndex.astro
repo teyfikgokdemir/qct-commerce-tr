@@ -6,6 +6,11 @@ import { articles } from '../data/blog';
 import { getPageSeo } from '../i18n/seo';
 const seo = getPageSeo('blog');
 const formatDate = (value: string) => new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${value}T12:00:00+03:00`));
+const articleDates: Record<string, { published: string; modified: string }> = {
+  'shopify-magaza-kurma-rehberi': { published: '2026-05-05', modified: '2026-07-19' },
+  'e-ticarette-yapilan-hatalar': { published: '2026-05-22', modified: '2026-07-11' },
+  'pazaryerinden-kendi-sitene-gecis': { published: '2026-06-12', modified: '2026-07-03' },
+};
 ---
 <BaseLayout title={seo.title} description={seo.description} lang="tr" pageType="CollectionPage" breadcrumbLabel="Blog">
   <Header slot="header" lang="tr" />
@@ -21,17 +26,20 @@ const formatDate = (value: string) => new Intl.DateTimeFormat('tr-TR', { day: 'n
     <div class="container">
       <h2 id="qct-blog-list-title" class="screen-reader-text">Makaleler</h2>
       <div class="qct-blog-list__grid">
-        {articles.map((article, index) => (
-          <article>
-            <span class="qct-blog-list__number">{String(index + 1).padStart(2, '0')}</span>
-            <div>
-              <p class="qct-blog-list__meta"><time datetime={article.modified}>Güncellendi: {formatDate(article.modified)}</time></p>
-              <h3><a href={`/blog/${article.slug}/`}>{article.title}</a></h3>
-              <p>{article.excerpt}</p>
-              <a class="qct-blog-list__link" href={`/blog/${article.slug}/`}>Rehberi okuyun <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-        ))}
+        {articles.map((article, index) => {
+          const dates = articleDates[article.slug] ?? { published: article.published, modified: article.modified };
+          return (
+            <article>
+              <span class="qct-blog-list__number">{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <p class="qct-blog-list__meta"><time datetime={dates.modified}>Güncellendi: {formatDate(dates.modified)}</time></p>
+                <h3><a href={`/blog/${article.slug}/`}>{article.title}</a></h3>
+                <p>{article.excerpt}</p>
+                <a class="qct-blog-list__link" href={`/blog/${article.slug}/`}>Rehberi okuyun <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
