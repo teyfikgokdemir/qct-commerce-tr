@@ -1,13 +1,120 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'; import Header from './Header.astro'; import Footer from './Footer.astro'; import ServicePage from './service/ServicePage.astro'; import { getPageSeo } from '../i18n/seo';
-interface Props { lang:string; } const {lang}=Astro.props; const seo=getPageSeo('website-design'); const serviceDescription='Teklifinizi açık anlatan, güven oluşturan ve ziyaretçiyi doğru eyleme yönlendiren hızlı web siteleri tasarlıyoruz.';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ServicePage from './service/ServicePage.astro';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props { lang: string; }
+
+const { lang } = Astro.props;
+const seo = getPageSeo('website-design');
+const serviceDescription = 'Üreticiler, toptancılar, ihracatçılar ve büyüyen KOBİ’ler için teklifi açık anlatan, güven oluşturan, arama sistemleri tarafından anlaşılabilen ve ticari talebi doğru kanala yönlendiren web siteleri tasarlıyoruz.';
 ---
-<BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="Web tasarım" service={{name:'Web tasarım',description:serviceDescription}}><Header slot="header" lang={lang}/><ServicePage lang={lang} eyebrow="Web tasarım" title="İşletmenizin değerini anlatan, satış sürecini destekleyen web siteleri." lead={serviceDescription} ctaPrimary="Web sitenizin kapsamını konuşalım" ctaSecondary="Tüm hizmetler"
-problem={{eyebrow:'SORUN',title:'İyi bir işletme, zayıf bir dijital ilk izlenim yüzünden fırsat kaybedebilir.',intro:['Ziyaretçi ne sunduğunuzu, kimler için çalıştığınızı ve sonraki adımı hızlıca anlayamazsa iletişim kurmadan ayrılır.'],items:[{title:'Teklif belirsiz kalır',text:'Hizmet ve fayda açık anlatılmadığında güven oluşmaz.'},{title:'Mobil deneyim yorucu olur',text:'Yavaş veya karmaşık sayfalar potansiyel müşteriyi uzaklaştırır.'},{title:'İçerik güncelliğini kaybeder',text:'Yönetilemeyen yapı işletmenin bugünkü gücünü yansıtamaz.'}]}}
-benefits={{eyebrow:'YAKLAŞIM',title:'Tasarımın görevi yalnızca iyi görünmek değildir.',lead:'Doğru web sitesi müşterinin sorularını yanıtlar, güveni güçlendirir ve eylemi kolaylaştırır.',items:[{title:'Net konumlandırma',text:'İşletmenizin sunduğu değer ilk ekranlardan itibaren anlaşılır.'},{title:'Dönüşüm odaklı yapı',text:'İçerik ve CTA’lar gerçek müşteri yolculuğuna göre düzenlenir.'},{title:'Hız ve erişilebilirlik',text:'Farklı cihazlarda hızlı, okunabilir ve kullanılabilir deneyim.'}]}}
-included={{eyebrow:'KAPSAM',title:'Web tasarım kapsamında',lead:'İhtiyaca göre şekillenen temel çalışma alanları.',items:[{title:'Bilgi mimarisi',text:'Sayfa ve içerik yapısı.'},{title:'Özgün arayüz',text:'Marka ve hedefe uygun tasarım.'},{title:'Responsive geliştirme',text:'Mobil, tablet ve masaüstü uyumu.'},{title:'Teknik SEO temeli',text:'Semantik ve taranabilir yapı.'},{title:'İçerik yönetimi',text:'Güncellenebilir sayfalar.'},{title:'Performans',text:'Hızlı yüklenen optimize yapı.'}]}}
-process={{eyebrow:'SÜREÇ',title:'İşletmeyi anlayarak başlarız.',steps:[{number:'01',title:'Keşif',text:'Teklifinizi, müşterinizi ve hedefi netleştiririz.'},{number:'02',title:'İçerik ve akış',text:'Sayfaları ve karar yolculuğunu planlarız.'},{number:'03',title:'Tasarım ve geliştirme',text:'Arayüzü tasarlar, erişilebilir biçimde geliştiririz.'},{number:'04',title:'Test ve yayın',text:'Cihaz, hız ve bağlantı kontrolleriyle yayına alırız.'}]}}
-answers={{title:'Web tasarım hakkında temel kararlar',lead:'İyi bir web sitesi, işletmenin teklifini anlaşılır kılar ve ziyaretçiyi doğru sonraki adıma taşır.',items:[{question:'Web tasarım nedir?',answer:'Web tasarım; sayfa yapısı, içerik, görsel dil, erişilebilirlik ve teknik geliştirmeyi ortak bir kullanıcı hedefi etrafında planlama işidir.'},{question:'Kimler için uygundur?',answer:'Mevcut sitesi işletmesini doğru anlatmayan veya yeni bir dijital satış ve talep toplama kanalı kurmak isteyen Türkiye’deki işletmeler için uygundur.'},{question:'Ne zaman yenileme gerekir?',answer:'Teklif değiştiğinde, mobil kullanım zorlaştığında, içerik yönetilemediğinde veya ziyaretçi sonraki adımı anlayamadığında yenileme değerlendirilmelidir.'},{question:'Nasıl ilerler?',answer:'İşletme ve müşteri ihtiyacı analiz edilir; bilgi mimarisi, içerik, tasarım, geliştirme ve gerçek cihaz testleri sırasıyla tamamlanır.'}]}}
-relatedLinks={[{title:'SEO ve içerik görünürlüğü',text:'Yeni sitenin arama motorları tarafından anlaşılmasını planlayın.',href:'/seo-geo/'},{title:'Meta reklam landing page',text:'Kampanya trafiğini tek hedefli sayfalara bağlayın.',href:'/meta-reklamlari/'},{title:'E-ticaret altyapısı',text:'Ürün ve ödeme akışını ayrı bir satış sistemi olarak değerlendirin.',href:'/e-ticaret/'}]}
-faq={{eyebrow:'SIK SORULANLAR',title:'Web tasarım hakkında',items:[{q:'Mevcut web sitemiz yenilenebilir mi?',a:'Evet. Değerli içerikleri ve teknik gereksinimleri koruyarak yapıyı yeniden planlayabiliriz.'},{q:'Siteyi kendimiz güncelleyebilir miyiz?',a:'İçerik yönetimi ihtiyacını proje başında belirleyip uygun bir yönetim yapısı kurarız.'},{q:'SEO dahil mi?',a:'Taranabilirlik, semantik başlık yapısı, hız ve mobil uyum gibi teknik temeller dahildir; sürekli SEO çalışması ayrı kapsamlanır.'}]}}
-final={{title:'Web siteniz işletmenizin bugünkü gücünü yansıtsın.',text:'Mevcut sitenizi ve hedeflerinizi birlikte değerlendirelim.',cta:'Web sitenizin kapsamını belirleyelim',ctaSecondary:'E-posta gönderin'}}/><Footer slot="footer" lang={lang}/></BaseLayout>
+
+<BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="B2B web tasarım" service={{ name: 'B2B web tasarım', description: serviceDescription }}>
+  <Header slot="header" lang={lang} />
+  <ServicePage
+    lang={lang}
+    eyebrow="B2B WEB TASARIM"
+    title="Web siteniz yalnızca işletmenizi tanıtmasın; satış sürecinizi ilerletsin."
+    lead={serviceDescription}
+    ctaPrimary="Web sitenizi birlikte değerlendirelim"
+    ctaSecondary="Tüm hizmetler"
+    problem={{
+      eyebrow: 'KİMLER İÇİN UYGUN?',
+      title: 'Dijital görünümü ile gerçek iş kapasitesi arasında fark oluşan işletmeler için.',
+      intro: [
+        'Bir üreticinin teknik yeterliliği, bir ihracatçının pazar deneyimi veya bir toptancının ürün çeşitliliği web sitesinde açık görünmüyorsa potansiyel müşteri doğru değerlendirme yapamaz. Bu hizmet; teklifini daha net anlatmak, kurumsal güveni güçlendirmek ve web sitesini aktif bir talep toplama kanalına dönüştürmek isteyen işletmeler için tasarlanmıştır.',
+      ],
+      items: [
+        { title: 'Üreticiler ve sanayi işletmeleri', text: 'Üretim kapasitesini, ürün gruplarını, teknik özellikleri, kalite belgelerini ve proje yetkinliklerini kurumsal alıcılara anlaşılır biçimde sunmak isteyen işletmeler için.' },
+        { title: 'Toptancılar ve distribütörler', text: 'Geniş ürün portföyünü, marka temsilini, bayi yapısını ve teklif süreçlerini dağınık kataloglar yerine düzenli bir dijital yapı içinde göstermek isteyen firmalar için.' },
+        { title: 'İhracatçılar ve büyüyen KOBİ’ler', text: 'Yeni pazarlarda güven vermek, farklı dillerde doğru bağlam oluşturmak ve yurt içi veya yurt dışı talepleri nitelikli biçimde toplamak isteyen işletmeler için.' },
+      ],
+    }}
+    benefits={{
+      eyebrow: 'ÇÖZDÜĞÜ İŞ PROBLEMLERİ',
+      title: 'Zayıf web sitesi yalnızca görsel bir sorun değildir; ticari güven ve fırsat kaybıdır.',
+      lead: 'Ziyaretçi ilk dakikalarda ne sunduğunuzu, neden sizi değerlendirmesi gerektiğini ve hangi adımı atacağını anlayamıyorsa pazarlama yatırımı satış görüşmesine dönüşmez.',
+      items: [
+        { title: 'Teklifin belirsiz kalması', text: 'Genel ifadeler, dağınık hizmetler ve teknik jargona dayalı içerik müşterinin işletmenizin gerçek değerini anlamasını zorlaştırır.' },
+        { title: 'Kurumsal güven eksikliği', text: 'Referanslar, süreç, ekip, belgeler ve işletme bilgileri doğru bağlamda sunulmadığında güçlü bir şirket olduğunuz halde küçük veya hazırlıksız görünebilirsiniz.' },
+        { title: 'Niteliksiz veya kaybolan talepler', text: 'Her ziyaretçiyi aynı iletişim formuna yönlendiren yapı, ürün, teklif, bayilik, ihracat ve destek taleplerinin birbirine karışmasına neden olur.' },
+        { title: 'Mobil ve performans sorunları', text: 'Yavaş açılan, telefonda zor kullanılan veya kritik bilgileri aşağıya saklayan sayfalar özellikle reklam ve mobil arama trafiğinde fırsat kaybettirir.' },
+        { title: 'Arama görünürlüğünün zayıf olması', text: 'Sayfa yapısı, başlıklar, içerik ilişkileri ve teknik temel zayıfsa Google ve yapay zekâ destekli sistemler işletmenizin uzmanlık alanını doğru anlayamaz.' },
+        { title: 'İçeriğin işletmeyle birlikte büyüyememesi', text: 'Yeni hizmet, ürün grubu, pazar veya vaka çalışması eklemek zor olduğunda site kısa sürede güncelliğini kaybeder.' },
+      ],
+    }}
+    included={{
+      eyebrow: 'QCT COMMERCE YAKLAŞIMI',
+      title: 'Tasarımı işletmenin satış modeli, müşteri soruları ve büyüme hedefleri üzerinden kurarız.',
+      lead: 'Önce işletmenin neyi, kime ve hangi kanalla sattığını anlamaya çalışırız. Ardından bilgi mimarisi, içerik, tasarım, teknik geliştirme ve ölçümü aynı ticari hedef etrafında birleştiririz.',
+      items: [
+        { title: 'Konumlandırma ve mesaj mimarisi', text: 'Ana teklif, hedef müşteri, fark yaratan yetkinlikler ve güven unsurları ilk ekranlardan itibaren açık biçimde düzenlenir.' },
+        { title: 'Müşteri yolculuğuna göre sayfa yapısı', text: 'Ziyaretçinin araştırma, karşılaştırma, güven ve iletişim aşamalarında ihtiyaç duyduğu bilgiler doğru sırada sunulur.' },
+        { title: 'B2B talep toplama akışları', text: 'Teklif, numune, bayilik, ihracat, proje ve genel iletişim talepleri uygun form veya WhatsApp akışlarına ayrılır.' },
+        { title: 'SEO, GEO, AEO ve AIO temeli', text: 'Semantik HTML, açık başlıklar, varlık ilişkileri, yapılandırılmış veri ve kaynak gösterilebilir içeriklerle arama ve yapay zekâ görünürlüğü desteklenir.' },
+        { title: 'Mobil öncelikli ve erişilebilir geliştirme', text: 'Sayfalar farklı cihazlarda hızlı, okunabilir, klavye ile kullanılabilir ve temel erişilebilirlik gereksinimlerine uygun geliştirilir.' },
+        { title: 'Ölçüm ve iyileştirme altyapısı', text: 'Form gönderimi, WhatsApp tıklaması, telefon, e-posta ve kritik CTA etkileşimleri izinli ölçüm yapısına bağlanır.' },
+      ],
+    }}
+    process={{
+      eyebrow: '8 ADIMLI SÜREÇ',
+      title: 'İşletmenin gerçeklerini anlayarak başlayan kontrollü web tasarım süreci.',
+      steps: [
+        { number: '01', title: 'İş ve hedef analizi', text: 'İş modelinizi, hedef pazarları, ürün veya hizmet yapınızı, mevcut satış kanallarınızı ve web sitesinden beklenen ticari sonucu netleştiririz.' },
+        { number: '02', title: 'Mevcut site ve rakip incelemesi', text: 'Mevcut sayfaları, içerik boşluklarını, teknik sorunları, rakip iletişim biçimlerini ve farklılaşma fırsatlarını değerlendiririz.' },
+        { number: '03', title: 'Bilgi mimarisi', text: 'Ana sayfa, hizmet, ürün, sektör, çalışma, hakkımızda ve iletişim sayfalarının ilişkisini müşteri karar sürecine göre planlarız.' },
+        { number: '04', title: 'İçerik ve mesaj planı', text: 'Her sayfanın amacı, ana mesajı, güven unsurları, CTA’sı ve arama niyeti belirlenir; ajans klişeleri yerine gerçek iş bilgisi kullanılır.' },
+        { number: '05', title: 'Arayüz tasarımı', text: 'Marka kimliğiyle uyumlu, premium fakat ölçülü, içerik hiyerarşisi güçlü ve farklı ekranlara uyarlanabilir arayüzler tasarlarız.' },
+        { number: '06', title: 'Teknik geliştirme', text: 'Sayfaları performans, erişilebilirlik, semantik yapı, güvenlik başlıkları ve güncellenebilirlik gereksinimleriyle geliştiririz.' },
+        { number: '07', title: 'İçerik, SEO ve ölçüm kurulumu', text: 'Metadata, iç bağlantılar, yapılandırılmış veriler, görsel alt metinleri ve kritik dönüşüm olayları sayfa yapısına uygulanır.' },
+        { number: '08', title: 'Test, yayın ve iyileştirme', text: 'Mobil, masaüstü, form, bağlantı, hız, indekslenebilirlik ve temel kullanım senaryoları test edilerek kontrollü yayın yapılır.' },
+      ],
+    }}
+    answers={{
+      title: 'Temel yetkinlikler ve işletmeye etkileri',
+      lead: 'İyi bir B2B web sitesi, görünümden daha fazlasını üretir: işletmenin teklifini sadeleştirir, güveni hızlandırır ve satış ekibine daha anlamlı talepler ulaştırır.',
+      items: [
+        { question: 'Stratejik bilgi mimarisi ne sağlar?', answer: 'Farklı müşteri tiplerinin ihtiyaç duyduğu ürün, hizmet, sektör ve güven bilgilerine daha kısa yoldan ulaşmasını sağlar; dağınık sayfaları ticari bir karar akışına dönüştürür.' },
+        { question: 'Dönüşüm odaklı içerik neyi değiştirir?', answer: 'Ziyaretçinin sorularını doğru sırada yanıtlayarak belirsizliği azaltır ve teklif, arama, WhatsApp veya form gibi bir sonraki adımı daha görünür hale getirir.' },
+        { question: 'Teknik SEO ve yapay zekâ görünürlüğü neden önemlidir?', answer: 'Arama motorlarının ve yapay zekâ sistemlerinin işletmenizin kim olduğunu, hangi hizmetleri sunduğunu ve hangi konularda güvenilir olduğunu daha doğru anlamasına yardımcı olur.' },
+        { question: 'Performans ve erişilebilirlik ticari sonucu etkiler mi?', answer: 'Evet. Daha hızlı ve daha kolay kullanılan sayfalar özellikle mobil ziyaretçilerin içeriğe ulaşmasını, form doldurmasını ve iletişim kurmasını kolaylaştırır.' },
+        { question: 'Ölçüm altyapısı ne sağlar?', answer: 'Hangi sayfaların, CTA’ların ve trafik kaynaklarının gerçek talep ürettiğini görmenizi; sonraki içerik ve kampanya kararlarını tahmin yerine veriye dayandırmanızı sağlar.' },
+      ],
+    }}
+    relatedLinks={[
+      { title: 'SEO, GEO, AEO ve AIO', text: 'Yeni sitenin Google ve yapay zekâ destekli sistemlerde doğru bağlamla anlaşılmasını güçlendirin.', href: '/seo-geo/' },
+      { title: 'Meta reklamları ve landing page', text: 'Kampanya trafiğini reklam vaadiyle eşleşen, tek hedefli dönüşüm sayfalarına bağlayın.', href: '/meta-reklamlari/' },
+      { title: 'WhatsApp satış sistemleri', text: 'Web sitesinden gelen talepleri bağlamlı ve takip edilebilir görüşmelere dönüştürün.', href: '/whatsapp-satis/' },
+      { title: 'E-ticaret çözümleri', text: 'Ürün, fiyat, sipariş ve ödeme süreçlerini ayrı bir dijital satış sistemi olarak planlayın.', href: '/e-ticaret/' },
+    ]}
+    faq={{
+      eyebrow: 'SIK SORULANLAR',
+      title: 'B2B web tasarım hakkında',
+      items: [
+        { q: 'B2B web tasarım ile standart kurumsal site arasındaki fark nedir?', a: 'B2B web tasarım; yalnızca şirket tanıtımına değil, teknik bilgi, güven unsurları, farklı karar vericiler, uzun satış döngüsü ve teklif toplama süreçlerine göre planlanır.' },
+        { q: 'Mevcut web sitemizi tamamen yenilemek zorunda mıyız?', a: 'Hayır. Mevcut içerik, teknik altyapı ve performans incelenir; iyileştirme, kademeli yenileme veya yeniden kurulum seçeneklerinden uygun olanı belirlenir.' },
+        { q: 'Web sitesi metinlerini siz hazırlıyor musunuz?', a: 'Kapsama göre mevcut metinleri yeniden yapılandırabilir, sayfa mesajlarını yazabilir ve işletmeden alınması gereken teknik veya doğrulayıcı bilgileri belirleyebiliriz.' },
+        { q: 'SEO hizmeti web tasarım projesine dahil mi?', a: 'Taranabilirlik, semantik yapı, sayfa başlıkları, metadata, performans ve temel yapılandırılmış veri dahildir. Sürekli içerik üretimi ve rekabet odaklı SEO ayrı kapsamlanır.' },
+        { q: 'GEO, AEO ve AIO için özel bir yapı kuruyor musunuz?', a: 'Evet. Açık soru-cevap içerikleri, tutarlı marka ve hizmet bilgileri, varlık ilişkileri, schema işaretlemeleri ve kaynak gösterilebilir içerik yapısı planlanabilir.' },
+        { q: 'Çok dilli web sitesi hazırlayabilir misiniz?', a: 'Evet. Dil yapısı, URL düzeni, hreflang, içerik eşleştirmesi ve çeviri yönetimi hedef pazarlara göre planlanabilir.' },
+        { q: 'Siteyi daha sonra kendimiz güncelleyebilir miyiz?', a: 'İçerik yönetimi ihtiyacı proje başında belirlenir. Ekip kapasitenize uygun, güncellenebilir ve gereksiz karmaşıklık oluşturmayan bir yapı kurulur.' },
+        { q: 'Web sitesi ne kadar sürede hazırlanır?', a: 'Süre; sayfa sayısı, içerik hazırlığı, çok dillilik, özel geliştirme ve onay döngüsüne bağlıdır. Takvim analiz sonrası aşamalı biçimde netleştirilir.' },
+        { q: 'Mobil uyumluluk projeye dahil mi?', a: 'Evet. Tasarım ve geliştirme mobil, tablet ve masaüstü kullanım birlikte düşünülerek yapılır; yalnızca masaüstü tasarımın küçültülmesiyle yetinilmez.' },
+        { q: 'Form ve WhatsApp taleplerini ölçebilir miyiz?', a: 'Evet. Kullanıcı izni ve teknik koşullar dahilinde form gönderimleri, WhatsApp, telefon, e-posta ve temel CTA etkileşimleri ölçülebilir.' },
+        { q: 'Web sitesi yayına alındıktan sonra destek veriyor musunuz?', a: 'Bakım, içerik güncelleme, teknik izleme ve gelişim ihtiyaçları proje kapsamına veya ayrı bir destek planına göre belirlenebilir.' },
+        { q: 'Hazır tema mı kullanıyorsunuz?', a: 'Teknoloji ve tasarım yaklaşımı bütçe, süre, yönetim ihtiyacı ve performans hedeflerine göre seçilir. İşletmeyi sınırlayan ağır ve gereksiz yapılar tercih edilmez.' },
+        { q: 'Satış veya müşteri garantisi veriyor musunuz?', a: 'Hayır. Web sitesi tek başına satış garantisi vermez. Teklif, fiyat, pazar, trafik ve satış operasyonuyla birlikte çalışan ölçülebilir bir dijital temel kurarız.' },
+      ],
+    }}
+    final={{
+      title: 'Web sitenizin işletmenizi yalnızca göstermesini değil, doğru müşteriyi doğru adıma taşımasını sağlayın.',
+      text: 'Mevcut yapınızı, hedef pazarınızı ve öncelikli ticari sorunu paylaşın; uygun başlangıç kapsamını birlikte belirleyelim.',
+      cta: 'Web sitenizi değerlendirelim',
+      ctaSecondary: 'E-posta gönderin',
+    }}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
