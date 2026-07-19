@@ -1,11 +1,81 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'; import Header from './Header.astro'; import Footer from './Footer.astro'; import ServicePage from './service/ServicePage.astro'; import {getPageSeo} from '../i18n/seo'; interface Props{lang:string} const{lang}=Astro.props; const seo=getPageSeo('about');
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import FounderSection from './FounderSection.astro';
+import ServicePage from './service/ServicePage.astro';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props { lang: string; }
+const { lang } = Astro.props;
+const seo = getPageSeo('about');
 ---
-<BaseLayout title={seo.title} description={seo.description} lang={lang} pageType="AboutPage" breadcrumbLabel="Hakkımızda"><Header slot="header" lang={lang}/><ServicePage lang={lang} eyebrow="Hakkımızda" title="QCT Commerce — Türkiye’de e-ticaret ve dijital büyüme ortağı." lead="İşletmelerin birbirinden kopuk web, mağaza, reklam, arama ve mesajlaşma altyapılarını satış hedefi etrafında çalışan bütünleşik sistemlere dönüştürüyoruz." ctaPrimary="Projenizi konuşalım"
-brandRelationship={{title:'QCT Commerce, QCT Studio’nun Türkiye pazarına odaklanan e-ticaret ve dijital büyüme markasıdır.',text:'Bu yapı, QCT Studio’nun Türkiye ve Balkanlar’daki dijital deneyiminden güç alırken çalışmalarını Türkiye’deki işletmelerin e-ticaret, satış ve ölçülebilir büyüme ihtiyaçlarına göre şekillendirir.',linkLabel:'Bölgesel çalışmalarımız',linkHref:'https://qctstudio.com'}}
-benefits={{eyebrow:'YAKLAŞIMIMIZ',title:'Önce ticari problemi, sonra teknolojiyi ele alıyoruz.',lead:'Yeni bir araç veya kanal önermeden önce müşterinin nerede zorlandığını, ekibin neyi yönetebildiğini ve hangi sonucun ölçüleceğini netleştiriyoruz.',items:[{title:'İşletmeye göre çözüm',text:'Hazır reçete yerine ürün, müşteri ve operasyon yapısına uygun kapsam.'},{title:'Açık kararlar',text:'Her tasarım ve teknoloji kararının iş hedefiyle bağlantısı.'},{title:'Sürdürülebilir sistem',text:'Yayın sonrasında ekip tarafından yönetilebilen altyapı.'}]}}
-included={{eyebrow:'KİMLER İÇİN',title:'Türkiye’de büyümek isteyen işletmeler için',lead:'Özellikle dijital satışını kurmak veya mevcut yapısını daha verimli hale getirmek isteyen işletmelere odaklanıyoruz.',items:[{title:'KOBİ’ler',text:'Dağınık dijital kanallarını düzenlemek isteyen işletmeler.'},{title:'Üreticiler',text:'Ürünlerini dijitalde daha açık sunmak ve talep toplamak isteyen markalar.'},{title:'Perakendeciler',text:'Fiziksel satış deneyimini e-ticaretle tamamlamak isteyen işletmeler.'},{title:'E-ticaret markaları',text:'Mağaza, reklam ve operasyon akışını geliştirmek isteyen ekipler.'}]}}
-process={{eyebrow:'ÇALIŞMA BİÇİMİ',title:'Net kapsam, görünür süreç, ölçülebilir öncelikler.',steps:[{number:'01',title:'Dinleriz',text:'İşletmeyi ve mevcut sorunları anlarız.'},{number:'02',title:'Önceliklendiririz',text:'En kritik kaybı ve uygulanabilir ilk adımı seçeriz.'},{number:'03',title:'Üretiriz',text:'Tasarım, geliştirme ve içerik çalışmalarını yürütürüz.'},{number:'04',title:'Ölçeriz',text:'Yayına alınan sistemin kritik sinyallerini izleriz.'}]}}
-relatedLinks={[{title:'Hizmetler',text:'E-ticaret ve dijital büyüme çalışma alanlarını inceleyin.',href:'/hizmetler/'},{title:'İletişim',text:'İşletmenizin öncelikli dijital sorununu paylaşın.',href:'/iletisim/'}]}
-faq={{eyebrow:'SIK SORULANLAR',title:'QCT Commerce hakkında',items:[{q:'Ana uzmanlık alanınız nedir?',a:'Ana odağımız e-ticaret altyapıları ve ölçülebilir dijital büyümedir.'},{q:'Türkiye genelinde çalışıyor musunuz?',a:'Evet. Pazar odağımız Türkiye’dir ve iletişim uzaktan yürütülebilir.'},{q:'Yalnızca yeni projeler mi yapıyorsunuz?',a:'Hayır. Mevcut web sitesi, mağaza veya satış akışlarının iyileştirilmesi de kapsamlanabilir.'}]}}
-final={{title:'Dijital altyapınızı satış hedefinizle birlikte ele alalım.',text:'İşletmenizi ve çözmek istediğiniz sorunu paylaşın.',cta:'İletişime geçin'}}/><Footer slot="footer" lang={lang}/></BaseLayout>
+
+<BaseLayout title={seo.title} description={seo.description} lang={lang} pageType="AboutPage" breadcrumbLabel="Hakkımızda" includeFounder>
+  <Header slot="header" lang={lang} />
+  <ServicePage
+    lang={lang}
+    eyebrow="Hakkımızda"
+    title="QCT Commerce — Türkiye’de e-ticaret ve dijital büyüme ortağı."
+    lead="İşletmelerin birbirinden kopuk web, mağaza, reklam, arama ve mesajlaşma altyapılarını satış hedefi etrafında çalışan bütünleşik sistemlere dönüştürüyoruz."
+    ctaPrimary="Projenizi konuşalım"
+    brandRelationship={{
+      title: 'QCT Commerce, QCT Studio’nun Türkiye pazarına odaklanan e-ticaret ve dijital büyüme markasıdır.',
+      text: 'Bu yapı, QCT Studio’nun Türkiye ve Balkanlar’daki dijital deneyiminden güç alırken çalışmalarını Türkiye’deki işletmelerin e-ticaret, satış ve ölçülebilir büyüme ihtiyaçlarına göre şekillendirir.',
+      linkLabel: 'QCT Studio’nun bölgesel çalışmalarını inceleyin',
+      linkHref: 'https://qctstudio.com',
+    }}
+    benefits={{
+      eyebrow: 'YAKLAŞIMIMIZ',
+      title: 'Teknoloji, ticari hedefe hizmet etmeli.',
+      lead: 'Her projeye hazır bir platform veya araç önerisiyle değil, işletmenin mevcut yapısını ve öncelikli darboğazını anlayarak başlarız. Teknik kararları müşteri yolculuğu, satış hedefi, ekip kapasitesi, ölçülebilirlik ve sürdürülebilir işletme maliyetiyle birlikte değerlendiririz. Gereksiz karmaşa üretmeyen, ekip tarafından yönetilebilen ve gerçek kullanıcı davranışıyla geliştirilebilen sistemler kurmayı hedefleriz.',
+      items: [
+        { title: 'İşletmeye göre çözüm', text: 'Hazır reçete yerine ürün, müşteri ve operasyon yapısına uygun kapsam.' },
+        { title: 'Açık kararlar', text: 'Her tasarım ve teknoloji kararının iş hedefiyle bağlantısı.' },
+        { title: 'Sürdürülebilir sistem', text: 'Yayın sonrasında ekip tarafından yönetilebilen altyapı.' },
+      ],
+    }}
+    included={{
+      eyebrow: 'KİMLER İÇİN',
+      title: 'Türkiye’de büyümek isteyen işletmeler için',
+      lead: 'Özellikle dijital satışını kurmak veya mevcut yapısını daha verimli hale getirmek isteyen işletmelere odaklanıyoruz.',
+      items: [
+        { title: 'KOBİ’ler', text: 'Dağınık dijital kanallarını düzenlemek isteyen işletmeler.' },
+        { title: 'Üreticiler', text: 'Ürünlerini dijitalde daha açık sunmak ve talep toplamak isteyen markalar.' },
+        { title: 'Perakendeciler', text: 'Fiziksel satış deneyimini e-ticaretle tamamlamak isteyen işletmeler.' },
+        { title: 'E-ticaret markaları', text: 'Mağaza, reklam ve operasyon akışını geliştirmek isteyen ekipler.' },
+      ],
+    }}
+    process={{
+      eyebrow: 'ÇALIŞMA BİÇİMİ',
+      title: 'Net kapsam, görünür süreç, ölçülebilir öncelikler.',
+      steps: [
+        { number: '01', title: 'Dinleriz', text: 'İşletmeyi ve mevcut sorunları anlarız.' },
+        { number: '02', title: 'Önceliklendiririz', text: 'En kritik kaybı ve uygulanabilir ilk adımı seçeriz.' },
+        { number: '03', title: 'Üretiriz', text: 'Tasarım, geliştirme ve içerik çalışmalarını yürütürüz.' },
+        { number: '04', title: 'Ölçeriz', text: 'Yayına alınan sistemin kritik sinyallerini izleriz.' },
+      ],
+    }}
+    relatedLinks={[
+      { title: 'Hizmetler', text: 'E-ticaret ve dijital büyüme çalışma alanlarını inceleyin.', href: '/hizmetler/' },
+      { title: 'İletişim', text: 'İşletmenizin öncelikli dijital sorununu paylaşın.', href: '/iletisim/' },
+    ]}
+    faq={{
+      eyebrow: 'SIK SORULANLAR',
+      title: 'QCT Commerce hakkında',
+      items: [
+        { q: 'Ana uzmanlık alanınız nedir?', a: 'Ana odağımız e-ticaret altyapıları ve ölçülebilir dijital büyümedir.' },
+        { q: 'Türkiye genelinde çalışıyor musunuz?', a: 'Evet. Pazar odağımız Türkiye’dir ve iletişim uzaktan yürütülebilir.' },
+        { q: 'Yalnızca yeni projeler mi yapıyorsunuz?', a: 'Hayır. Mevcut web sitesi, mağaza veya satış akışlarının iyileştirilmesi de kapsamlanabilir.' },
+      ],
+    }}
+    final={{
+      title: 'Dijital altyapınızı satış hedefinizle birlikte ele alalım.',
+      text: 'İşletmenizi ve çözmek istediğiniz sorunu paylaşın.',
+      cta: 'İletişime geçin',
+    }}
+  >
+    <FounderSection slot="after-brand" />
+  </ServicePage>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

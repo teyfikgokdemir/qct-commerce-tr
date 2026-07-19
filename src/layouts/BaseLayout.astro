@@ -22,6 +22,8 @@ export interface Props {
 	breadcrumbLabel?: string;
 	/** If set, emits a Service node (for the 6 service-concept pages) linked as the page's mainEntity */
 	service?: { name: string; description: string };
+	/** Adds the verified founder Person node and links it from Organization on the About page. */
+	includeFounder?: boolean;
 }
 
 const {
@@ -35,6 +37,7 @@ const {
 	pageType = 'WebPage',
 	breadcrumbLabel,
 	service,
+	includeFounder = false,
 } = Astro.props;
 
 const isIndexable = !noindex;
@@ -46,6 +49,7 @@ const homeUrl = new URL('/', SITE_URL).toString();
 
 // Stable @id anchors so every node in the graph can reference each other instead of repeating data
 const organizationId = `${SITE_URL}/#organization`;
+const founderId = `${SITE_URL}/hakkimizda/#teyfik-gokdemir`;
 const websiteId = `${SITE_URL}/#website`;
 const webpageId = `${canonicalUrl}#webpage`;
 
@@ -76,7 +80,30 @@ const organizationSchema = {
 	contactPoint: [
 		{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: 'TR', availableLanguage: ['Turkish'] },
 	],
+	...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };
+
+const founderSchema = includeFounder ? {
+	'@type': 'Person',
+	'@id': founderId,
+	name: 'Teyfik Gökdemir',
+	jobTitle: 'QCT Commerce Kurucusu',
+	worksFor: { '@id': organizationId },
+	image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(),
+	knowsLanguage: ['Türkçe', 'İngilizce'],
+	knowsAbout: [
+		'E-ticaret altyapısı ve mağaza mimarisi',
+		'Kurumsal web tasarımı ve geliştirme',
+		'Kullanıcı deneyimi ve dönüşüm optimizasyonu',
+		'Teknik SEO ve arama görünürlüğü',
+		'GEO, AEO ve AIO altyapısı',
+		'Meta reklam açılış sayfaları',
+		'WhatsApp satış sistemleri',
+		'Yapay zekâ destekli iş otomasyonları',
+		'Dijital ölçüm ve analitik',
+		'Pazaryeri ve bağımsız mağaza stratejisi',
+	],
+} : null;
 
 const websiteSchema = {
 	'@type': 'WebSite',
@@ -133,7 +160,7 @@ if (service) {
 	webpageSchema.mainEntity = { '@id': serviceId };
 }
 
-const graph = [organizationSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema].filter(Boolean);
+const graph = [organizationSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema, founderSchema].filter(Boolean);
 const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 ---
 <!doctype html>
@@ -171,12 +198,6 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
 	<slot name="schema" />
 
-	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical.
-	     home.css / pages.css are mutually exclusive, matching the original WP enqueue.php,
-	     so a page only ships the stylesheet it actually uses.
-	     services.css is intentionally NOT loaded: its classes (.qct-premium-service-card,
-	     .qct-service-img) don't match any markup in this theme (real class is
-	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
 	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
 	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
 	{isHome ? (
@@ -206,7 +227,6 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<CookieConsent lang={lang} />
 	<WhatsAppButton lang={lang} />
 
-	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
 	{isHome && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
 </body>

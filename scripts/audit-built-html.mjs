@@ -238,6 +238,63 @@ for (const file of htmlFiles) {
         }
       }
     }
+
+    const founderId = `${SITE}/hakkimizda/#teyfik-gokdemir`;
+    const personNodes = nodes.filter((node) => node['@type'] === 'Person');
+    if (expectedPath === '/hakkimizda/') {
+      const founder = personNodes.find((node) => node['@id'] === founderId);
+      const organization = nodes.find((node) => node['@id'] === `${SITE}/#organization`);
+      if (personNodes.length !== 1 || !founder) {
+        errors.push(`${file}: AboutPage must emit exactly one verified founder Person node.`);
+      } else {
+        if (founder.name !== 'Teyfik Gökdemir' || founder.jobTitle !== 'QCT Commerce Kurucusu') {
+          errors.push(`${file}: founder Person name or jobTitle is incorrect.`);
+        }
+        if (founder.worksFor?.['@id'] !== `${SITE}/#organization`) {
+          errors.push(`${file}: founder worksFor must reference the QCT Commerce Organization.`);
+        }
+        if (founder.image !== `${SITE}/images/teyfik-gokdemir-qct-commerce.webp`) {
+          errors.push(`${file}: founder image URL is incorrect.`);
+        }
+        if (!Array.isArray(founder.knowsLanguage) || !founder.knowsLanguage.includes('Türkçe') || !founder.knowsLanguage.includes('İngilizce')) {
+          errors.push(`${file}: founder knowsLanguage must contain Türkçe and İngilizce.`);
+        }
+        if (!Array.isArray(founder.knowsAbout) || founder.knowsAbout.length !== 10) {
+          errors.push(`${file}: founder knowsAbout must contain only the 10 verified expertise areas.`);
+        }
+        for (const forbidden of ['sameAs', 'birthDate', 'address', 'alumniOf', 'award', 'hasCredential']) {
+          if (forbidden in founder) errors.push(`${file}: founder Person must not include ${forbidden}.`);
+        }
+      }
+      if (organization?.founder?.['@id'] !== founderId) {
+        errors.push(`${file}: Organization founder reference does not match the Person @id.`);
+      }
+
+      const portrait = tags(html, 'img').find(
+        (tag) => attribute(tag, 'src') === '/images/teyfik-gokdemir-qct-commerce.webp',
+      );
+      if (!portrait) {
+        errors.push(`${file}: founder portrait is missing from visible HTML.`);
+      } else {
+        const portraitAttributes = {
+          alt: 'QCT Commerce Kurucusu Teyfik Gökdemir',
+          width: '900',
+          height: '1213',
+          loading: 'lazy',
+          decoding: 'async',
+        };
+        for (const [name, value] of Object.entries(portraitAttributes)) {
+          if (attribute(portrait, name) !== value) {
+            errors.push(`${file}: founder portrait ${name} must be ${value}.`);
+          }
+        }
+      }
+      if (!fs.existsSync(path.join(DIST, 'images', 'teyfik-gokdemir-qct-commerce.webp'))) {
+        errors.push(`${file}: optimized founder portrait is missing from the build output.`);
+      }
+    } else if (personNodes.length) {
+      errors.push(`${file}: founder Person schema is only allowed on the AboutPage.`);
+    }
   }
 
   const anchorTags = tags(html, 'a');
