@@ -9,7 +9,7 @@
 	.qct-hero__subtitle,
 	.qct-hero__actions,
 	.qct-hero__visual {
-		animation: qct-hero-enter 1150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+		animation: qct-hero-enter 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
 	}
 
 	.qct-hero__title {
@@ -92,39 +92,37 @@
 
 @keyframes qct-fade-in {
 	from {
-		opacity: 0;
 		transform: translateY(12px);
 	}
 
 	to {
-		opacity: 1;
 		transform: translateY(0);
 	}
 }
 
 @keyframes qct-hero-enter {
 	from {
-		opacity: 0;
-		filter: blur(14px);
-		transform: translateY(34px) scale(0.96);
+		opacity: 1;
+		filter: none;
+		transform: translateY(12px);
 	}
 
 	to {
 		opacity: 1;
-		filter: blur(0);
-		transform: translateY(0) scale(1);
+		filter: none;
+		transform: translateY(0);
 	}
 }
 
 @keyframes qct-word-switch {
 	0% {
-		opacity: 0;
-		transform: translateY(16px) rotateX(35deg);
+		opacity: 1;
+		transform: translateY(8px);
 	}
 
 	100% {
 		opacity: 1;
-		transform: translateY(0) rotateX(0);
+		transform: translateY(0);
 	}
 }
 

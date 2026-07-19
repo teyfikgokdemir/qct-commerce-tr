@@ -1,41 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from './Header.astro';
-import Footer from './Footer.astro';
-import LegalPage from './service/LegalPage.astro';
-import { useTranslations } from '../i18n';
-
-interface Props {
-  lang: string;
-}
-const { lang } = Astro.props;
-const t = useTranslations(lang);
+import BaseLayout from '../layouts/BaseLayout.astro'; import Header from './Header.astro'; import Footer from './Footer.astro'; import LegalPage from './service/LegalPage.astro'; interface Props{lang:string} const{lang}=Astro.props;
+const title='Çerez Politikası — QCT Commerce'; const description='QCT Commerce web sitesinde kullanılan zorunlu ve isteğe bağlı çerezlere ilişkin açıklamalar ve tercih seçenekleri.';
 ---
-<BaseLayout title={`${t('Cookie Policy')} — QCT Studio`} lang={lang} description={t('Plain-English information about how QCT Studio may use cookies and similar browser storage on this website.')} breadcrumbLabel={t('Legal')}>
-  <Header slot="header" lang={lang} />
-  <LegalPage
-    lang={lang}
-    eyebrow={t('Legal')}
-    title={t('Cookie Policy')}
-    lead={t('Plain-English information about how QCT Studio may use cookies and similar browser storage on this website.')}
-    lastUpdated="July 2026"
-    sections={[
-      { id: 'what-cookies-are', title: t('What cookies are'), text: t('Cookies are small files or browser storage items that help a website remember basic information. They can support essential functions, measure performance or keep simple preferences in place.') },
-      { id: 'how-this-website-may-use-cookies', title: t('How this website may use cookies'), text: t('This website may use cookies to keep the site working, understand how visitors use it and support communication where forms or similar features are used.') },
-      { id: 'essential-cookies', title: t('Essential cookies'), text: t('Essential cookies help the site function properly. They may support security, page loading, form handling and other basic features that are needed for the website to work.') },
-      { id: 'analytics-and-performance-cookies', title: t('Analytics and performance cookies'), text: t('If analytics are enabled, the website may use cookies to understand visits, pages viewed, device information and overall site performance. This helps QCT Studio see what is working and where improvements are needed.') },
-      { id: 'third-party-cookies', title: t('Third-party cookies'), text: t('Some third-party services may set cookies when the website uses hosting, analytics, embedded tools or similar providers. Those services may process limited data needed to provide their functions.') },
-      { id: 'your-choices', title: t('Your choices'), text: t('You can manage cookies through your browser settings and, where applicable, any consent controls available on the website. You can also contact QCT Studio with questions about cookies or data use.') },
-      { id: 'contact', title: t('Contact'), text: t('Cookie questions can be sent to info@qctstudio.com. Career-related messages should be sent to careers@qctstudio.com.') },
-    ]}
-    faqTitle={t('FAQ')}
-    faqItems={[
-      { q: t('Why does this website use cookies?'), a: t('Cookies may be used to keep the site working, support forms, understand usage and improve the website where analytics are enabled.') },
-      { q: t('What are essential cookies?'), a: t('They are the cookies that help the website function properly, such as security and basic page or form handling.') },
-      { q: t('Are analytics or performance cookies always active?'), a: t('Only if they are enabled on the website. When used, they help QCT Studio understand site usage and performance.') },
-      { q: t('Can third-party services set cookies?'), a: t('Yes. Hosting, analytics, embedded tools or similar providers may set cookies when needed for their service.') },
-      { q: t('How can I manage cookies?'), a: t('You can change your browser settings or use any available consent controls on the website where applicable.') },
-    ]}
-  />
-  <Footer slot="footer" lang={lang} />
-</BaseLayout>
+<BaseLayout title={title} description={description} lang={lang} breadcrumbLabel="Çerez politikası"><Header slot="header" lang={lang}/><LegalPage lang={lang} eyebrow="YASAL" title="Çerez politikası" lead="Sitenin çalışması ve isteğe bağlı kullanım analizi için çerezlerin nasıl kullanılabileceğini açıklar." lastUpdated="19 Temmuz 2026"
+sections={[{id:'cerez-nedir',title:'Çerez nedir?',text:'Çerezler ve benzer tarayıcı depolama yöntemleri sitenin temel işlevlerini yürütmesine veya izin verdiğiniz tercihleri hatırlamasına yardımcı olan küçük veri parçalarıdır.'},{id:'zorunlu',title:'Zorunlu çerezler',text:'Güvenlik, temel sayfa işlevleri ve çerez tercihinizin saklanması gibi siteyi çalıştırmak için gerekli işlevlerde kullanılabilir.'},{id:'analiz',title:'Analiz çerezleri',text:'Site kullanımını ve performansını anlamaya yardımcı olan analiz araçları yalnızca açık onayınızdan sonra yüklenir.'},{id:'ucuncu-taraf',title:'Üçüncü taraf hizmetleri',text:'Barındırma veya analiz sağlayıcıları ilgili hizmet için gerekli sınırlı verileri kendi koşulları kapsamında işleyebilir.'},{id:'tercihler',title:'Tercihlerinizi yönetme',text:'Çerez banner’ındaki seçenekleri veya tarayıcı ayarlarınızı kullanabilirsiniz. Çerez ayarları düğmesiyle tercihinizi yeniden açabilirsiniz.'},{id:'iletisim',title:'İletişim',text:'Çerezlerle ilgili sorularınızı info@qctcommerce.com adresine gönderebilirsiniz.'}]}
+faqTitle="Sık sorulan sorular" faqItems={[{q:'Analiz çerezleri otomatik olarak etkinleşir mi?',a:'Hayır. Analiz yalnızca izin vermeniz halinde başlar.'},{q:'İznimi reddedersem siteyi kullanabilir miyim?',a:'Evet. İsteğe bağlı analizi reddetmeniz temel site içeriğine erişimi engellemez.'},{q:'Tercihimi değiştirebilir miyim?',a:'Evet. Sayfadaki çerez ayarları düğmesiyle seçim ekranını yeniden açabilirsiniz.'}]}/><Footer slot="footer" lang={lang}/></BaseLayout>

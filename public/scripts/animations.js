@@ -129,66 +129,6 @@
 	activateState(0, false);
 	startRotation();
 
-	var showcase = document.querySelector('[data-work-showcase]');
-	if (showcase) {
-		var workPanels = Array.prototype.slice.call(showcase.querySelectorAll('[data-work-panel]'));
-		var workControls = Array.prototype.slice.call(showcase.querySelectorAll('[data-work-control]'));
-		var workPrevious = showcase.querySelector('[data-work-previous]');
-		var workNext = showcase.querySelector('[data-work-next]');
-		var workIndex = 0;
-		var workTimer = null;
-		var workVisible = true;
-		var workPaused = false;
-
-		showcase.classList.add('is-enhanced');
-		var activateWork = function (index) {
-			workIndex = (index + workPanels.length) % workPanels.length;
-			workPanels.forEach(function (panel, panelIndex) {
-				var active = panelIndex === workIndex;
-				panel.hidden = !active;
-				panel.classList.toggle('is-active', active);
-			});
-			workControls.forEach(function (control, controlIndex) {
-				control.setAttribute('aria-pressed', controlIndex === workIndex ? 'true' : 'false');
-			});
-			workPrevious.setAttribute('aria-label', workControls[(workIndex - 1 + workControls.length) % workControls.length].getAttribute('aria-label'));
-			workNext.setAttribute('aria-label', workControls[(workIndex + 1) % workControls.length].getAttribute('aria-label'));
-		};
-
-		var stopWork = function () {
-			if (workTimer) {
-				window.clearInterval(workTimer);
-				workTimer = null;
-			}
-		};
-		var startWork = function () {
-			stopWork();
-			if (!reduceMotion && workVisible && !workPaused && !document.hidden) {
-				workTimer = window.setInterval(function () { activateWork(workIndex + 1); }, 6200);
-			}
-		};
-
-		workControls.forEach(function (control, index) {
-			control.addEventListener('click', function () { activateWork(index); startWork(); });
-		});
-		workPrevious.addEventListener('click', function () { activateWork(workIndex - 1); startWork(); });
-		workNext.addEventListener('click', function () { activateWork(workIndex + 1); startWork(); });
-		showcase.addEventListener('mouseenter', function () { workPaused = true; stopWork(); });
-		showcase.addEventListener('mouseleave', function () { workPaused = false; startWork(); });
-		showcase.addEventListener('focusin', function () { workPaused = true; stopWork(); });
-		showcase.addEventListener('focusout', function (event) {
-			if (!showcase.contains(event.relatedTarget)) { workPaused = false; startWork(); }
-		});
-		if ('IntersectionObserver' in window) {
-			new IntersectionObserver(function (entries) {
-				workVisible = entries[0].isIntersecting;
-				startWork();
-			}, { threshold: 0.18 }).observe(showcase);
-		}
-		activateWork(0);
-		startWork();
-	}
-
 	var processTimeline = document.querySelector('[data-process-timeline]');
 	if (processTimeline) {
 		var processSteps = Array.prototype.slice.call(processTimeline.querySelectorAll('[data-process-step]'));

@@ -1,57 +1,14 @@
 ---
-import { useTranslations } from '../i18n';
-
-interface Props {
-  lang: string;
-}
-const { lang } = Astro.props;
-const t = useTranslations(lang);
+interface Props { lang: string; }
 ---
-<section id="balkan-launch" class="qct-section qct-problem" aria-labelledby="qct-problem-title">
+<section id="digital-system" class="qct-section qct-problem" aria-labelledby="qct-problem-title">
 	<div class="container">
-		<div class="qct-section__header">
-			<p class="qct-section__eyebrow">{t('WHY QCT STUDIO')}</p>
-			<h2 id="qct-problem-title" class="qct-section__title">
-				{t("We don't sell websites.")}<br />
-				{t('We build confidence.')}
-			</h2>
-			<p class="qct-section__lead">
-				{t('A website is often the first impression people have of your business.')}<br />
-				{t('If it feels outdated, people notice.')}<br />
-				{t('If it feels trustworthy, they notice that too.')}<br />
-				{t("That's why every decision we make has one goal:")}<br />
-				{t('to help your business look as professional online as it already is offline.')}
-			</p>
-		</div>
-
+		<div class="qct-section__header"><p class="qct-section__eyebrow">NEDEN BÜTÜNLEŞİK SİSTEM?</p><h2 id="qct-problem-title" class="qct-section__title">Daha fazla araç değil.<br />Daha net bir satış akışı.</h2><p class="qct-section__lead">Web sitesi, mağaza, reklam ve mesajlaşma birbirinden kopuk çalıştığında müşteri yolculuğu kesilir. Önceliğimiz bu parçaları ölçülebilir, yönetilebilir ve satışa hizmet eden tek bir yapı içinde toplamaktır.</p></div>
 		<div class="qct-problem__grid">
-			<article class="qct-problem-card">
-				<span class="qct-problem-card__mark" aria-hidden="true"></span>
-				<h3>{t('Clear Communication')}</h3>
-				<p>{t('No confusing process.')}<br />{t('No unnecessary meetings.')}<br />{t('No technical jargon.')}</p>
-			</article>
-
-			<article class="qct-problem-card">
-				<span class="qct-problem-card__mark" aria-hidden="true"></span>
-				<h3>{t('Built Around Your Business')}</h3>
-				<p>{t('Every business is different.')}<br />{t('Your website should be too.')}</p>
-			</article>
-
-			<article class="qct-problem-card">
-				<span class="qct-problem-card__mark" aria-hidden="true"></span>
-				<h3>{t('Designed to Last')}</h3>
-				<p>{t('We build websites that still feel modern years from now.')}</p>
-			</article>
-
-			<article class="qct-problem-card">
-				<span class="qct-problem-card__mark" aria-hidden="true"></span>
-				<h3>{t('Long-Term Support')}</h3>
-				<p>{t('Launching your website is the beginning, not the end.')}</p>
-			</article>
+			<article class="qct-problem-card"><span class="qct-problem-card__mark" aria-hidden="true"></span><h3>Teklif netliği</h3><p>Müşterinin ne sunduğunuzu ve neden sizi seçmesi gerektiğini hızla anlaması.</p></article>
+			<article class="qct-problem-card"><span class="qct-problem-card__mark" aria-hidden="true"></span><h3>Kesintisiz yolculuk</h3><p>Reklamdan ürüne, üründen sepete veya WhatsApp görüşmesine tutarlı geçiş.</p></article>
+			<article class="qct-problem-card"><span class="qct-problem-card__mark" aria-hidden="true"></span><h3>Ölçülebilir yapı</h3><p>Kararları varsayımla değil, doğru kurulan ölçüm ve gerçek kullanıcı davranışıyla geliştirme.</p></article>
+			<article class="qct-problem-card"><span class="qct-problem-card__mark" aria-hidden="true"></span><h3>Sürdürülebilir operasyon</h3><p>Ekibinizin yönetebileceği içerik, ürün ve talep akışları.</p></article>
 		</div>
-
-		<p class="qct-section__lead">
-			{t('We work with businesses across the Balkans that care about how they are seen online.')}
-		</p>
 	</div>
 </section>

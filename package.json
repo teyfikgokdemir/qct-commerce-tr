@@ -1,5 +1,5 @@
 {
-  "name": "qct-studio",
+  "name": "qct-commerce-tr",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -7,10 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run audit:i18n && npm run audit:metadata && astro build && npm run audit:html",
+    "build": "npm run audit:content && npm run audit:metadata && astro build && npm run audit:html",
     "preview": "astro preview",
     "astro": "astro",
-    "audit:i18n": "node scripts/audit-translations.mjs",
+    "audit:content": "node scripts/audit-content.mjs",
     "audit:metadata": "node scripts/audit-metadata.mjs",
     "audit:html": "node scripts/audit-built-html.mjs"
   },

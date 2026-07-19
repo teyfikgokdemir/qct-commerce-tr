@@ -1,15 +1,11 @@
 ---
-import { useTranslations, getHomeUrl } from '../i18n';
 import CookieConsent from '../components/CookieConsent.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 
-const SITE_URL = 'https://qctstudio.com';
-const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS' };
-const INDEXED_LANGS = ['en', 'sq', 'mk', 'sr'];
-const ROUTE_LANGS = INDEXED_LANGS;
+const SITE_URL = 'https://qctcommerce.com';
+const LOCALE = 'tr_TR';
 const AREA_SERVED = [
-	{ '@type': 'Country', name: 'Albania' },
-	{ '@type': 'Country', name: 'North Macedonia' },
+	{ '@type': 'Country', name: 'Türkiye' },
 ];
 
 export interface Props {
@@ -30,8 +26,8 @@ export interface Props {
 
 const {
 	title,
-	description = 'QCT Studio — websites, e-commerce and AI automation for businesses across Albania and North Macedonia.',
-	lang = 'en',
+	description = 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.',
+	lang = 'tr',
 	image = '/og-default.png',
 	type = 'website',
 	noindex = false,
@@ -41,35 +37,22 @@ const {
 	service,
 } = Astro.props;
 
-const t = useTranslations(lang);
 const isIndexable = !noindex;
 const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg';
 
-// Current path with the locale prefix stripped, e.g. /sq/about/ -> /about/
-const rawPath = Astro.url.pathname;
-const pathNoLocale = (() => {
-	const parts = rawPath.split('/').filter(Boolean);
-	if (parts[0] && ROUTE_LANGS.includes(parts[0]) && parts[0] !== 'en') {
-		return '/' + parts.slice(1).join('/') + (parts.length > 1 ? '/' : '');
-	}
-	return rawPath.endsWith('/') || rawPath === '' ? rawPath || '/' : rawPath + '/';
-})();
-
-const localizedPath = (l: string) => (l === 'en' ? pathNoLocale : `/${l}${pathNoLocale}`);
-const canonicalUrl = new URL(localizedPath(lang), SITE_URL).toString();
+const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
-const homeUrl = new URL(getHomeUrl(lang), SITE_URL).toString();
+const homeUrl = new URL('/', SITE_URL).toString();
 
 // Stable @id anchors so every node in the graph can reference each other instead of repeating data
 const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
 const webpageId = `${canonicalUrl}#webpage`;
-const founderId = `${SITE_URL}/#founder`;
 
 const organizationSchema = {
 	'@type': 'Organization',
 	'@id': organizationId,
-	name: 'QCT Studio',
+	name: 'QCT Commerce',
 	url: SITE_URL,
 	logo: {
 		'@type': 'ImageObject',
@@ -78,46 +61,20 @@ const organizationSchema = {
 		contentUrl: new URL('/logo.png', SITE_URL).toString(),
 		width: 600,
 		height: 180,
-		caption: 'QCT Studio',
+		caption: 'QCT Commerce',
 	},
 	image: { '@id': `${organizationId}/logo` },
-	description: 'QCT Studio builds websites, e-commerce stores, WhatsApp Commerce and AI automation for established businesses across Albania and North Macedonia.',
-	foundingDate: '2024',
-	foundingLocation: {
-		'@type': 'Place',
-		name: 'Istanbul, Türkiye',
-		address: {
-			'@type': 'PostalAddress',
-			addressLocality: 'Istanbul',
-			addressCountry: 'TR',
-		},
+	description: 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
+	parentOrganization: {
+		'@type': 'Organization',
+		name: 'QCT Studio',
+		url: 'https://qctstudio.com',
 	},
-	founder: { '@id': founderId },
 	areaServed: AREA_SERVED,
-	email: 'info@qctstudio.com',
+	email: 'info@qctcommerce.com',
+	telephone: '+90 543 385 66 56',
 	contactPoint: [
-		{ '@type': 'ContactPoint', contactType: 'general inquiries', email: 'info@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name), availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian'] },
-		{ '@type': 'ContactPoint', contactType: 'customer support', email: 'support@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name) },
-		{ '@type': 'ContactPoint', contactType: 'careers', email: 'careers@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name) },
-	],
-	sameAs: [
-		'https://www.linkedin.com/company/qctstudio',
-		'https://www.instagram.com/qctstudio_albania/',
-		'https://www.facebook.com/qctalbania/',
-		'https://www.tiktok.com/@qctstudio',
-	],
-};
-
-const founderSchema = {
-	'@type': 'Person',
-	'@id': founderId,
-	name: 'Teyfik Gökdemir',
-	jobTitle: 'Founder',
-	url: new URL('/about/', SITE_URL).toString(),
-	worksFor: { '@id': organizationId },
-	sameAs: [
-		'https://www.linkedin.com/in/teyfik-g%C3%B6kdemir-0b1a9758',
-		'https://www.instagram.com/teyfikgokdemir/',
+		{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: 'TR', availableLanguage: ['Turkish'] },
 	],
 };
 
@@ -125,9 +82,9 @@ const websiteSchema = {
 	'@type': 'WebSite',
 	'@id': websiteId,
 	url: SITE_URL,
-	name: 'QCT Studio',
+	name: 'QCT Commerce',
 	description: organizationSchema.description,
-	inLanguage: INDEXED_LANGS,
+	inLanguage: 'tr-TR',
 	publisher: { '@id': organizationId },
 };
 
@@ -137,7 +94,7 @@ const webpageSchema: Record<string, unknown> = {
 	url: canonicalUrl,
 	name: title,
 	description,
-	inLanguage: (LOCALES[lang] ?? 'en_US').replace('_', '-'),
+	inLanguage: 'tr-TR',
 	isPartOf: { '@id': websiteId },
 	about: { '@id': organizationId },
 };
@@ -151,7 +108,7 @@ if (breadcrumbLabel) {
 		'@type': 'BreadcrumbList',
 		'@id': breadcrumbId,
 		itemListElement: [
-			{ '@type': 'ListItem', position: 1, name: t('Home'), item: homeUrl },
+			{ '@type': 'ListItem', position: 1, name: 'Ana sayfa', item: homeUrl },
 			{ '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl },
 		],
 	};
@@ -176,7 +133,7 @@ if (service) {
 	webpageSchema.mainEntity = { '@id': serviceId };
 }
 
-const graph = [organizationSchema, founderSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema].filter(Boolean);
+const graph = [organizationSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema].filter(Boolean);
 const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 ---
 <!doctype html>
@@ -189,16 +146,12 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	{!isIndexable && <meta name="robots" content="noindex, follow" />}
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-	<!-- Canonical + hreflang: every language version points at every other, plus x-default -->
+	<!-- Canonical -->
 	<link rel="canonical" href={canonicalUrl} />
-	{isIndexable && INDEXED_LANGS.map((l) => (
-		<link rel="alternate" hreflang={l} href={new URL(localizedPath(l), SITE_URL).toString()} />
-	))}
-	{isIndexable && <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('en'), SITE_URL).toString()} />}
 
 	<!-- Open Graph -->
 	<meta property="og:type" content={type} />
-	<meta property="og:site_name" content="QCT Studio" />
+	<meta property="og:site_name" content="QCT Commerce" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={canonicalUrl} />
@@ -206,8 +159,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<meta property="og:image:type" content={ogImageType} />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
-	<meta property="og:locale" content={LOCALES[lang] ?? 'en_US'} />
-	{INDEXED_LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALES[l]} />)}
+	<meta property="og:locale" content={LOCALE} />
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image" />
@@ -236,10 +188,11 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 		<link rel="stylesheet" href="/styles/pages.css?v=20260718-3" />
 	)}
 	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
+	<link rel="stylesheet" href="/styles/brand.css?v=20260719-1" />
 </head>
 <body>
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary">{t('Skip to content')}</a>
+		<a class="skip-link screen-reader-text" href="#primary">İçeriğe geç</a>
 
 		<slot name="header" />
 

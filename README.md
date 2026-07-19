@@ -1,23 +1,47 @@
-# QCT Studio — Astro site
+# QCT Commerce Türkiye
 
-## Durum (bu paketle birlikte)
+QCT Commerce Türkiye için Astro tabanlı, tek dilli (`tr`) statik site projesi.
 
-**Ana sayfa (Header, Hero, Problem, Services, Process, Work, FinalCta, Contact, Footer): gerçek WP temasından birebir taşındı.**
-- Tüm metinler, sınıf isimleri (`.qct-hero`, `.qct-signal-room`, `.qct-service-card` vb.) orijinal `qct-balkan-premium` temasıyla birebir aynı.
-- CSS (`base.css`, `components.css`, `home.css`, `pages.css`, `services.css`, `animations.css`, `utilities.css`) ve JS (`main.js`, `animations.js`) dosyaları olduğu gibi `public/styles/` ve `public/scripts/` altına kopyalandı.
-- Çoklu dil (EN/SQ/MK/SR) mevcut `src/i18n/` sözlük sistemi üzerinden çalışıyor — gerçek WP içeriğiyle eşleşen çeviriler zaten mevcuttu, üzerine dokunulmadı.
-- `npm run build` ile 56 sayfa hatasız derleniyor, test edildi.
+Site; Türkiye’deki KOBİ, üretici, perakendeci ve e-ticaret markalarına yönelik e-ticaret ve dijital büyüme hizmetlerini Türkçe sunar. Tasarım sistemi, responsive davranışlar, erişilebilirlik ve animasyonlar Astro bileşenleri içinde korunur.
 
-**İç sayfalar (About, Services detay, Contact, Careers, Legal sayfaları — `AboutPage.astro`, `ServicePage.astro`, `LegalPage.astro` vb.): henüz gerçek temaya taşınmadı.**
-- Bu sayfalar `.qct-svc-*`, `.qct-btn` gibi WP temasında **var olmayan** sınıf isimleri kullanıyor — yani gerçek CSS'te bu sınıflar için stil tanımı yok, sayfalar büyük ölçüde stilsiz görünecek.
-- Metin içerikleri makul/marka diline uygun görünüyor ama gerçek WP kaynağıyla birebir karşılaştırılmadı.
-- Bu sayfaları ana sayfayla aynı yöntemle (gerçek `page-*.php` şablonlarından birebir taşıma) sıradaki adımda düzeltmemiz lazım.
+## Gereksinimler
 
-## Nasıl kurulur
-1. Bu klasörün tüm içeriğini mevcut `qct-studio` proje klasörünün üzerine kopyala (üzerine yazma / birleştirme).
-2. `npm install`
-3. `npm run dev` → `localhost:4321` üzerinde ana sayfayı kontrol et.
-4. Sorunsuzsa `git add . && git commit -m "ana sayfa gerçek temaya taşındı" && git push`, Cloudflare otomatik deploy edecek.
+- Node.js 22.12 veya üzeri
+- npm
 
-## Sıradaki adım
-İç sayfaları (`/about/`, `/services/`, `/contact/`, `/website-design/` vb.) aynı "gerçek PHP şablonundan birebir taşı" yöntemiyle sırayla düzeltmek — ana sayfada izlediğimiz yöntemin devamı.
+## Yerel geliştirme
+
+```bash
+npm install
+npm run dev
+```
+
+Üretim derlemesi ve proje denetimleri:
+
+```bash
+npm run build
+```
+
+Derleme çıktısı `dist/` klasörüne yazılır.
+
+## Cloudflare Pages
+
+Cloudflare Pages projesini bu repo ile bağlarken şu ayarları kullanın:
+
+- Framework preset: `Astro`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Root directory: `/`
+- Node.js: `22.12` veya üzeri
+
+Üretim alan adı `https://qctcommerce.com` olarak yapılandırılmıştır. Alan adını Cloudflare Pages projesine doğrulayıp bağladıktan sonra canonical URL’ler ve sitemap bu adresi kullanır.
+
+## Mimari notlar
+
+- Tek site dili ve belge dili: `tr`
+- Dil önekli rota yoktur; sayfalar kök rotalarda üretilir.
+- Sitemap, `@astrojs/sitemap` ile derleme sırasında oluşturulur.
+- Sayfa rotaları Türkçe ve kök seviyesindedir.
+- Canonical, Open Graph ve sitemap tabanı `https://qctcommerce.com` adresidir.
+- Yapılandırılmış veriler Türkiye pazarı ile doğrulanmış e-posta ve telefon bilgilerini kullanır.
+- `npm run build`; içerik kalıntısı, metadata, HTML, JSON-LD ve iç bağlantı denetimlerini birlikte çalıştırır.

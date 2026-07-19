@@ -26,4 +26,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://qctstudio.com/sitemap-index.xml
+Sitemap: https://qctcommerce.com/sitemap-index.xml

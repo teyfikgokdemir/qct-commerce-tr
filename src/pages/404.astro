@@ -5,29 +5,29 @@ import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout
-  title="Page Not Found — QCT Studio"
-  description="The page you requested could not be found."
-  lang="en"
+  title="Sayfa Bulunamadı — QCT Commerce"
+  description="Aradığınız sayfa bulunamadı; ana sayfaya, hizmetlere veya iletişim sayfasına geçebilirsiniz."
+  lang="tr"
   noindex={true}
   pageType="WebPage"
 >
-  <Header slot="header" lang="en" languagePath="/" />
+  <Header slot="header" lang="tr" />
 
   <section class="qct-error-page">
     <div class="container">
       <p class="qct-error-page__code">404</p>
-      <h1>This page could not be found.</h1>
-      <p>The address may have changed, or the page may no longer exist.</p>
+      <h1>Aradığınız sayfa bulunamadı.</h1>
+      <p>Adres değişmiş veya sayfa kaldırılmış olabilir.</p>
 
       <div class="qct-error-page__actions">
-        <a class="qct-button qct-button--primary" href="/">Return home</a>
-        <a class="qct-button qct-button--secondary" href="/services/">View services</a>
-        <a class="qct-button qct-button--secondary" href="/contact/">Contact QCT Studio</a>
+        <a class="qct-button qct-button--primary" href="/">Ana sayfaya dön</a>
+        <a class="qct-button qct-button--secondary" href="/hizmetler/">Hizmetleri incele</a>
+        <a class="qct-button qct-button--secondary" href="/iletisim/">İletişime geç</a>
       </div>
     </div>
   </section>
 
-  <Footer slot="footer" lang="en" />
+  <Footer slot="footer" lang="tr" />
 </BaseLayout>
 
 <style>
@@ -38,13 +38,13 @@ import Footer from '../components/Footer.astro';
     padding: 10rem 0 6rem;
     text-align: center;
     background:
-      radial-gradient(circle at 50% 30%, rgba(77, 46, 98, 0.12), transparent 42%),
+      radial-gradient(circle at 50% 30%, rgba(230, 107, 95, 0.12), transparent 42%),
       #f2efe8;
   }
 
   .qct-error-page__code {
     margin: 0 0 1rem;
-    color: #e75757;
+    color: #e66b5f;
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.22em;

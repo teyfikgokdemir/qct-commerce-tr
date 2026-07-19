@@ -1,6 +1,4 @@
 ---
-import { useTranslations, getHomeUrl, getLocalizedUrl } from '../../i18n';
-
 interface Item {
   title: string;
   text: string;
@@ -14,6 +12,12 @@ interface Faq {
   q: string;
   a: string;
 }
+interface BrandRelationship {
+  title: string;
+  text: string;
+  linkLabel: string;
+  linkHref: string;
+}
 interface Props {
   lang: string;
   eyebrow: string;
@@ -21,6 +25,7 @@ interface Props {
   lead: string;
   ctaPrimary: string;
   ctaSecondary?: string;
+  brandRelationship?: BrandRelationship;
   problem?: {
     eyebrow: string;
     title: string;
@@ -65,6 +70,7 @@ const {
   lead,
   ctaPrimary,
   ctaSecondary,
+  brandRelationship,
   problem,
   benefits,
   included,
@@ -73,15 +79,13 @@ const {
   final,
 } = Astro.props;
 
-const t = useTranslations(lang);
-const homeUrl = getHomeUrl(lang);
-const contactUrl = `${homeUrl}#contact`;
-const workUrl = `${homeUrl}#work`;
+const homeUrl = '/';
+const contactUrl = '/iletisim/';
 ---
 <section class="qct-svc-hero">
   <div class="container">
-    <nav class="qct-breadcrumb" aria-label="Breadcrumb">
-      <a href={homeUrl}>{t('Home')}</a>
+    <nav class="qct-breadcrumb" aria-label="Sayfa yolu">
+      <a href={homeUrl}>Ana sayfa</a>
       <span aria-hidden="true">/</span>
       <span>{eyebrow}</span>
     </nav>
@@ -90,10 +94,29 @@ const workUrl = `${homeUrl}#work`;
     <p class="qct-svc-hero__lead">{lead}</p>
     <div class="qct-svc-hero__actions">
       <a class="qct-btn qct-btn--primary" href={contactUrl}>{ctaPrimary}</a>
-      {ctaSecondary && <a class="qct-btn qct-btn--secondary" href={workUrl}>{ctaSecondary}</a>}
+      {ctaSecondary && <a class="qct-btn qct-btn--secondary" href="/hizmetler/">{ctaSecondary}</a>}
     </div>
   </div>
 </section>
+
+{brandRelationship && (
+  <section class="qct-svc-brand" aria-labelledby="qct-brand-relationship-title">
+    <div class="container qct-svc-brand__inner">
+      <p class="qct-section__eyebrow">MARKA İLİŞKİSİ</p>
+      <div class="qct-svc-brand__content">
+        <h2 id="qct-brand-relationship-title">{brandRelationship.title}</h2>
+        <div>
+          <p>{brandRelationship.text}</p>
+          <a href={brandRelationship.linkHref} rel="external noopener noreferrer">
+            <span>{brandRelationship.linkLabel}</span>
+            <span aria-hidden="true">↗</span>
+            <span class="screen-reader-text"> (harici bağlantı)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
 
 {problem && (
   <section class="qct-section qct-svc-section">
@@ -164,8 +187,10 @@ const workUrl = `${homeUrl}#work`;
     <div class="qct-svc-timeline">
       {process.steps.map((step) => (
         <article class="qct-svc-step">
-          <span class="qct-svc-step__number">{step.number}</span>
-          <h3>{step.title}</h3>
+          <div class="qct-svc-step__heading">
+            <span class="qct-svc-step__number">{step.number}</span>
+            <h3>{step.title}</h3>
+          </div>
           <p>{step.text}</p>
         </article>
       ))}
@@ -207,7 +232,7 @@ const workUrl = `${homeUrl}#work`;
     <p class="qct-section__lead">{final.text}</p>
     <div class="qct-svc-hero__actions">
       <a class="qct-btn qct-btn--primary" href={contactUrl}>{final.cta}</a>
-      {final.ctaSecondary && <a class="qct-btn qct-btn--secondary" href={`mailto:info@qctstudio.com`}>{final.ctaSecondary}</a>}
+      {final.ctaSecondary && <a class="qct-btn qct-btn--secondary" href="mailto:info@qctcommerce.com">{final.ctaSecondary}</a>}
     </div>
   </div>
 </section>
@@ -228,13 +253,12 @@ const workUrl = `${homeUrl}#work`;
 }
 .qct-svc-hero .qct-section__eyebrow,
 .qct-svc-section .qct-section__eyebrow {
-  color: var(--qct-color-accent, #e75757) !important;
+  color: var(--qct-color-accent-strong, #b9473e) !important;
 }
 .qct-breadcrumb {
   display: flex;
   gap: 0.5rem;
   font-size: 0.85rem;
-  opacity: 0.85;
   margin-bottom: 1.5rem;
 }
 .qct-breadcrumb a {
@@ -242,7 +266,7 @@ const workUrl = `${homeUrl}#work`;
   text-decoration: none;
 }
 .qct-breadcrumb a:hover {
-  color: var(--qct-color-accent, #e75757);
+  color: var(--qct-color-accent-strong, #b9473e);
 }
 .qct-svc-hero {
   padding-block: var(--qct-hero-clearance, 6rem) 3rem;
@@ -257,7 +281,6 @@ const workUrl = `${homeUrl}#work`;
 .qct-svc-hero__lead {
   color: var(--qct-color-muted, #686268);
   font-size: 1.1rem;
-  opacity: 0.95;
   line-height: 1.6;
   max-width: 680px;
   margin-bottom: 2rem;
@@ -268,7 +291,7 @@ const workUrl = `${homeUrl}#work`;
   flex-wrap: wrap;
 }
 .qct-section__eyebrow {
-  color: var(--qct-color-accent, #e75757);
+  color: var(--qct-color-accent-strong, #b9473e);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -281,12 +304,52 @@ const workUrl = `${homeUrl}#work`;
   margin-bottom: 1rem;
 }
 .qct-section__lead {
-  opacity: 0.85;
   line-height: 1.6;
   max-width: 720px;
 }
 .qct-svc-section {
   padding-block: var(--qct-home-section-space, 5rem);
+}
+.qct-svc-brand {
+  background: var(--qct-color-surface, #efe6e1);
+  border-bottom: 1px solid var(--qct-color-line, #d9cbc5);
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+.qct-svc-brand__content {
+  border-top: 1px solid var(--qct-color-line-strong, #bfaea7);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+.qct-svc-brand__content h2 {
+  color: var(--qct-color-ink, #211c1d);
+  font-family: var(--qct-font-sans, sans-serif);
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
+  line-height: 1.2;
+  margin: 0;
+  max-width: 21ch;
+}
+.qct-svc-brand__content p {
+  color: var(--qct-color-muted, #625457);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+}
+.qct-svc-brand__content a {
+  align-items: center;
+  color: var(--qct-color-accent-strong, #b9473e);
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.5rem;
+  text-underline-offset: 0.25em;
+}
+.qct-svc-brand__content a:hover {
+  text-decoration-thickness: 2px;
+}
+.qct-svc-brand__content a:focus-visible {
+  outline: 2px solid var(--qct-color-accent-strong, #b9473e);
+  outline-offset: 4px;
 }
 .qct-svc-section--alt {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -312,36 +375,55 @@ const workUrl = `${homeUrl}#work`;
   margin-bottom: 0.5rem;
 }
 .qct-svc-card p {
-  opacity: 0.85;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 .qct-svc-timeline {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
 }
 .qct-svc-step {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   padding: 1.75rem 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.02);
 }
+.qct-svc-step__heading {
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+}
 .qct-svc-step__number {
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--qct-color-accent, #e75757);
+  color: var(--qct-color-accent-strong, #b9473e);
   margin-bottom: 0.75rem;
 }
 .qct-svc-step h3 {
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  margin: 0;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .qct-svc-step p {
-  opacity: 0.85;
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-top: 0.85rem;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+@media (max-width: 900px) {
+  .qct-svc-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .qct-svc-timeline { grid-template-columns: minmax(0, 1fr); }
+  .qct-svc-brand__content { grid-template-columns: minmax(0, 1fr); }
 }
 .qct-svc-faq {
   max-width: 780px;
@@ -355,10 +437,9 @@ const workUrl = `${homeUrl}#work`;
   font-weight: 600;
 }
 .qct-svc-faq p {
-  opacity: 0.85;
   margin-top: 0.5rem;
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 .qct-svc-final {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -386,7 +467,7 @@ const workUrl = `${homeUrl}#work`;
   font-size: 0.95rem;
 }
 .qct-btn--primary {
-  background: var(--qct-color-accent, #e75757);
+  background: var(--qct-color-accent, #e66b5f);
   color: #0d0d0d;
 }
 .qct-btn--secondary {

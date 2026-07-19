@@ -1,74 +1,44 @@
 ---
-import { useTranslations, getLocalizedUrl } from '../i18n';
-
-interface Props {
-  lang: string;
-}
-const { lang } = Astro.props;
-const t = useTranslations(lang);
-const url = (path: string) => getLocalizedUrl(lang, path);
+interface Props { lang: string; }
 ---
 <footer id="colophon" class="site-footer">
 	<div class="site-footer__inner container">
 		<div class="site-footer__columns">
 			<div class="site-footer__group site-footer__brand">
-				<h2>{t('QCT Studio')}</h2>
-				<p>{t('Websites, e-commerce and digital systems for businesses across the Balkans.')}</p>
-
-				<div class="site-footer__social" aria-label={t('Social links')}>
-					<p class="site-footer__group-title">{t('Social')}</p>
-					<a href="https://www.linkedin.com/company/qctstudio" target="_blank" rel="noopener noreferrer" aria-label={t('LinkedIn')}>
-						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/></svg>
-						<span class="screen-reader-text">{t('LinkedIn')}</span>
-					</a>
-					<a href="https://www.instagram.com/qctstudio_albania/" target="_blank" rel="noopener noreferrer" aria-label={t('Instagram')}>
-						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM17 5.5A1.25 1.25 0 1 1 17 8a1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
-						<span class="screen-reader-text">{t('Instagram')}</span>
-					</a>
-					<a href="https://www.facebook.com/qctalbania/" target="_blank" rel="noopener noreferrer" aria-label={t('Facebook')}>
-						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-9h3l.5-3.5h-3.5V7.25c0-1.01.28-1.7 1.75-1.7H17V2.42A23.7 23.7 0 0 0 14.44 2C11.9 2 10 3.55 10 6.4v3.1H7V13h3v9h3.5Z"/></svg>
-						<span class="screen-reader-text">{t('Facebook')}</span>
-					</a>
-					<a href="https://www.tiktok.com/@qctstudio" target="_blank" rel="noopener noreferrer" aria-label={t('TikTok')}>
-						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2c.32 2.72 1.84 4.34 4.4 4.51v3.06a8.15 8.15 0 0 1-4.36-1.03v6.2c0 7.88-8.59 10.34-12.05 4.7-2.23-3.64-.87-10.03 5.43-10.28v3.23c-.5.08-1 .21-1.48.37-1.42.48-2.23 1.39-2 2.99.45 3.06 6.05 3.97 5.58-2.01V2h4.48Z"/></svg>
-						<span class="screen-reader-text">{t('TikTok')}</span>
-					</a>
-				</div>
+				<h2>QCT Commerce</h2>
+				<p>Türkiye’de e-ticaret ve dijital büyüme ortağınız.</p>
+				<p class="site-footer__brand-relationship">QCT Studio ağı içinde Türkiye’ye odaklanır.</p>
 			</div>
 
-			<nav class="site-footer__group site-footer__nav" aria-label={t('Services')}>
-				<h2>{t('Services')}</h2>
-				<a href={url('/website-design/')}>{t('Website Design')}</a>
-				<a href={url('/e-commerce/')}>{t('E-commerce')}</a>
-				<a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a>
-				<a href={url('/seo-performance/')}>{t('SEO')}</a>
-				<a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads')}</a>
-				<a href={url('/ai-automation/')}>{t('AI Automation')}</a>
+			<nav class="site-footer__group site-footer__nav" aria-label="Hizmetler">
+				<h2>Hizmetler</h2>
+				<a href="/e-ticaret/">E-ticaret altyapısı</a>
+				<a href="/web-tasarim/">Web tasarım</a>
+				<a href="/whatsapp-satis/">WhatsApp satış sistemleri</a>
+				<a href="/seo-geo/">SEO, GEO, AEO ve AIO</a>
+				<a href="/meta-reklamlari/">Meta reklamları</a>
+				<a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a>
 			</nav>
 
-			<nav class="site-footer__group site-footer__company" aria-label={t('Company')}>
-				<h2>{t('Company')}</h2>
-				<a href={url('/about/')}>{t('About')}</a>
-				<a href={url('/work/')}>{t('Work')}</a>
-				<a href={url('/careers/')}>{t('Careers')}</a>
-				<a href={url('/contact/')}>{t('Contact')}</a>
-				<a href={url('/privacy-policy/')}>{t('Privacy Policy')}</a>
-				<a href={url('/terms-conditions/')}>{t('Terms & Conditions')}</a>
-				<a href={url('/cookie-policy/')}>{t('Cookie Policy')}</a>
+			<nav class="site-footer__group site-footer__company" aria-label="Kurumsal">
+				<h2>Kurumsal</h2>
+				<a href="/hakkimizda/">Hakkımızda</a>
+				<a href="/hizmetler/">Hizmetler</a>
+				<a href="/kariyer/">Kariyer</a>
+				<a href="/iletisim/">İletişim</a>
+				<a href="/gizlilik-politikasi/">Gizlilik politikası</a>
+				<a href="/kullanim-kosullari/">Kullanım koşulları</a>
+				<a href="/cerez-politikasi/">Çerez politikası</a>
 			</nav>
 
 			<div class="site-footer__group site-footer__markets">
-				<h2>{t('Contact')}</h2>
-				<p><span aria-hidden="true"></span><a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a></p>
-				<p><span aria-hidden="true"></span><a href="mailto:support@qctstudio.com">support@qctstudio.com</a></p>
-				<p><span aria-hidden="true"></span><a href="mailto:careers@qctstudio.com">{t('careers@qctstudio.com')}</a></p>
+				<h2>İletişim</h2>
+				<p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p>
+				<p><a href="tel:+905433856656">+90 543 385 66 56</a></p>
+				<p>Türkiye</p>
 			</div>
 		</div>
 
-		<div class="site-footer__bottom">
-			<div class="site-footer__copyright">
-				<p set:html={t('&copy; 2026 QCT Studio')} />
-			</div>
-		</div>
+		<div class="site-footer__bottom"><div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div></div>
 	</div>
 </footer>

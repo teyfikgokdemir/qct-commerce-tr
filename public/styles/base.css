@@ -1,16 +1,28 @@
 :root {
-	--qct-color-background: #f2efe8;
-	--qct-color-surface: #e7e1d8;
-	--qct-color-surface-raised: #f2efe8;
-	--qct-color-text: #17151a;
-	--qct-color-muted: #686268;
-	--qct-color-plum: #4d2e62;
-	--qct-color-accent: #e75757;
-	--qct-color-accent-soft: rgba(231, 87, 87, 0.14);
-	--qct-color-line: #cec6bc;
+	--coral: #e66b5f;
+	--coral-dark: #b9473e;
+	--coral-light: #f4a097;
+	--ink: #211c1d;
+	--paper: #f8f3ef;
+	--warm-surface: #efe6e1;
+	--text: #251f20;
+	--muted-text: #625457;
+	--qct-color-background: var(--paper);
+	--qct-color-surface: var(--warm-surface);
+	--qct-color-surface-raised: #fffaf7;
+	--qct-color-text: var(--text);
+	--qct-color-muted: var(--muted-text);
+	--qct-color-coral: var(--coral);
+	--qct-color-coral-dark: var(--coral-dark);
+	--qct-color-coral-light: var(--coral-light);
+	--qct-color-ink: var(--ink);
+	--qct-color-accent: var(--coral);
+	--qct-color-accent-strong: var(--coral-dark);
+	--qct-color-accent-soft: rgba(230, 107, 95, 0.14);
+	--qct-color-line: rgba(185, 71, 62, 0.22);
 	--qct-color-line-strong: color-mix(in srgb, var(--qct-color-text) 34%, var(--qct-color-line));
-	--qct-color-on-plum: #f2efe8;
-	--qct-color-on-plum-muted: #e7e1d8;
+	--qct-color-on-dark: var(--paper);
+	--qct-color-on-dark-muted: #d8c7cf;
 	--qct-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 

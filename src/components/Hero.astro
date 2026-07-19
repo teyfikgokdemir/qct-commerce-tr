@@ -1,113 +1,27 @@
 ---
-import { useTranslations, getLocalizedUrl } from '../i18n';
-
-interface Props {
-  lang: string;
-}
-const { lang } = Astro.props;
-const t = useTranslations(lang);
-const url = (path: string) => getLocalizedUrl(lang, path);
+interface Props { lang: string; }
 ---
 <section class="qct-hero" aria-labelledby="qct-hero-title" data-qct-hero>
-	<div class="qct-hero__noise" aria-hidden="true"></div>
-	<div class="qct-hero__grid" aria-hidden="true"></div>
-	<div class="qct-hero__orb qct-hero__orb--red" aria-hidden="true"></div>
-	<div class="qct-hero__orb qct-hero__orb--lime" aria-hidden="true"></div>
-
 	<div class="qct-hero__inner container">
 		<div class="qct-hero__content">
-			<p class="qct-hero__eyebrow">{t('Serving businesses across Albania and North Macedonia.')}</p>
-
-			<h1 id="qct-hero-title" class="qct-hero__title">
-				{t('Your business has changed.')}<br />
-				{t('Has your website?')}
-			</h1>
-
-			<p class="qct-hero__subtitle">
-				{t('Businesses evolve. Teams grow. Services improve. Reputations are built over years.')}<br />
-				{t('But many websites are left behind.')}<br />
-				{t("When someone visits your website for the first time, they're not just looking at your business. They're deciding whether they trust it.")}
-			</p>
-
-			<div class="qct-hero__actions" aria-label={t('Hero actions')}>
-				<a class="qct-button qct-button--primary" href="#contact" data-magnetic>
-					<span>{t('Talk to Our Team')}</span>
-				</a>
-				<a class="qct-button qct-button--secondary" href="#services" data-magnetic>
-					<span>{t('View Our Work')}</span>
-				</a>
+			<p class="qct-hero__eyebrow">Türkiye’de e-ticaret ve dijital büyüme ortağı</p>
+			<h1 id="qct-hero-title" class="qct-hero__title">Dağınık dijital altyapınızı satış üreten bir sisteme dönüştürün.</h1>
+			<p class="qct-hero__subtitle">E-ticaret mağazanızı, web sitenizi, WhatsApp satış akışınızı, arama görünürlüğünüzü ve reklam sayfalarınızı aynı büyüme hedefi etrafında birleştiriyoruz.</p>
+			<div class="qct-hero__actions" aria-label="Ana sayfa eylemleri">
+				<a class="qct-button qct-button--primary" href="/iletisim/" data-magnetic><span>Projenizi konuşalım</span></a>
+				<a class="qct-button qct-button--secondary" href="#services" data-magnetic><span>Hizmetleri inceleyin</span></a>
 			</div>
-
-			<p class="qct-hero__rotator-line">
-				{t('Websites for businesses that are ready to be taken seriously online.')}
-			</p>
+			<p class="qct-hero__rotator-line">KOBİ’ler, üreticiler, perakendeciler ve e-ticaret markaları için.</p>
 		</div>
-
-		<div class="qct-hero__visual" role="region" aria-label={t('Animated preview of a website for businesses across the Balkans')}>
-			<div class="qct-signal-route" aria-hidden="true"><span>{t('Albania')}</span><i></i><span>{t('North Macedonia')}</span></div>
-			<div class="qct-browser qct-signal-room" data-signal-room>
-				<div class="qct-browser__top" aria-hidden="true">
-					<span></span><span></span><span></span>
-					<div class="qct-browser__url">{t('qctstudio.com/balkans')}</div>
-				</div>
-
-				<div class="qct-browser__body">
-					<div class="qct-signal-room__header">
-						<div>
-							<span class="qct-signal-room__kicker">{t('Balkan markets')}</span>
-							<strong data-signal-label>{t('Website Design')}</strong>
-						</div>
-						<div class="qct-signal-room__status"><i aria-hidden="true"></i>{t('Available')}</div>
-					</div>
-
-					<div class="qct-signal-room__controls" role="group" aria-label={t('Services')}>
-						<button type="button" aria-pressed="true" data-signal-control="website">{t('Website Design')}</button>
-						<button type="button" aria-pressed="false" data-signal-control="commerce">{t('E-commerce')}</button>
-						<button type="button" aria-pressed="false" data-signal-control="automation">{t('AI Automation')}</button>
-					</div>
-
-					<div class="qct-signal-room__stage">
-						<div class="qct-signal-panel is-active" data-signal-panel="website">
-							<div class="qct-signal-panel__copy">
-								<span>{t('Website Design')}</span>
-								<strong>{t('Premium websites')}</strong>
-								<p>{t('Clear positioning, sharp visuals and conversion-focused structure from the first screen.')}</p>
-							</div>
-							<div class="qct-signal-panel__interface" aria-hidden="true">
-								<i class="qct-signal-panel__feature"></i><i></i><i></i><i></i>
-							</div>
-						</div>
-
-						<div class="qct-signal-panel" data-signal-panel="commerce" hidden>
-							<div class="qct-signal-panel__copy">
-								<span>{t('E-commerce')}</span>
-								<strong>{t('E-commerce stores')}</strong>
-								<p>{t('Product pages, mobile checkout and order flows built for serious online selling.')}</p>
-							</div>
-							<div class="qct-signal-panel__interface qct-signal-panel__interface--commerce" aria-hidden="true">
-								<i></i><i></i><i></i><i class="qct-signal-panel__feature"></i>
-							</div>
-						</div>
-
-						<div class="qct-signal-panel" data-signal-panel="automation" hidden>
-							<div class="qct-signal-panel__copy">
-								<span>{t('AI Automation')}</span>
-								<strong>{t('AI automation')}</strong>
-								<p>{t('Automations that save time, reduce repetitive work and improve everyday operations.')}</p>
-								<a href={url('/ai-automation/')} aria-label={t('Learn more about AI Automation')}>{t('Learn more')}</a>
-							</div>
-							<div class="qct-signal-panel__interface qct-signal-panel__interface--automation" aria-hidden="true">
-								<i></i><i></i><i></i><i></i>
-							</div>
-						</div>
-					</div>
-
-					<div class="qct-signal-room__markets" aria-label={t('Balkan markets')}>
-						<span>{t('Albania')}</span>
-						<span>{t('North Macedonia')}</span>
-						<span>{t('Balkans')}</span>
-					</div>
-				</div>
+		<div class="qct-hero__visual" aria-hidden="true">
+			<div class="qct-hero-editorial">
+				<p>Dijital büyüme sistemi</p>
+				<ol>
+					<li><span>01</span><strong>E-ticaret</strong><small>Kolay satın alma</small></li>
+					<li><span>02</span><strong>Web tasarım</strong><small>Güven veren deneyim</small></li>
+					<li><span>03</span><strong>Yapay zekâ</strong><small>Daha düzenli operasyon</small></li>
+				</ol>
+				<div><span>Keşif</span><i></i><span>Satış</span></div>
 			</div>
 		</div>
 	</div>

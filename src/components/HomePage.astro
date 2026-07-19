@@ -6,7 +6,6 @@ import Hero from '../components/Hero.astro';
 import Problem from '../components/Problem.astro';
 import Services from '../components/Services.astro';
 import Process from '../components/Process.astro';
-import Work from '../components/Work.astro';
 import FinalCta from '../components/FinalCta.astro';
 import Contact from '../components/Contact.astro';
 import { getPageSeo } from '../i18n/seo';
@@ -16,12 +15,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 
-const seo = lang === 'sr'
-  ? {
-      title: 'QCT Studio — Sajtovi, e-commerce i AI automatizacija za Balkan',
-      description: 'QCT Studio izrađuje sajtove, online prodavnice i AI automatizacije za kompanije u Albaniji i Severnoj Makedoniji.',
-    }
-  : getPageSeo('home', lang);
+const seo = getPageSeo('home');
 ---
 <BaseLayout title={seo.title} description={seo.description} lang={lang} isHome={true}>
 <Header slot="header" lang={lang} />
@@ -29,7 +23,6 @@ const seo = lang === 'sr'
 <Problem lang={lang} />
 <Services lang={lang} />
 <Process lang={lang} />
-<Work lang={lang} />
 <FinalCta lang={lang} />
 <Contact lang={lang} />
 <Footer slot="footer" lang={lang} />

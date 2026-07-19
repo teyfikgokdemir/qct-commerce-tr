@@ -5,43 +5,15 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const copy = {
-  en: {
-    label: 'Cookie preferences',
-    text: 'We use optional analytics cookies to understand how the website is used. Analytics only starts if you accept.',
-    accept: 'Accept analytics',
-    reject: 'Reject',
-    settings: 'Cookie settings',
-    policy: 'Cookie Policy',
-  },
-  sq: {
-    label: 'Preferencat e cookies',
-    text: 'Përdorim cookies opsionale analitike për të kuptuar si përdoret faqja. Analitika aktivizohet vetëm nëse pranoni.',
-    accept: 'Prano analitikën',
-    reject: 'Refuzo',
-    settings: 'Cilësimet e cookies',
-    policy: 'Politika e Cookies',
-  },
-  mk: {
-    label: 'Поставки за колачиња',
-    text: 'Користиме изборни аналитички колачиња за да разбереме како се користи веб-страницата. Аналитиката се активира само со ваша согласност.',
-    accept: 'Прифати аналитика',
-    reject: 'Одбиј',
-    settings: 'Поставки за колачиња',
-    policy: 'Политика за колачиња',
-  },
-  sr: {
-    label: 'Podešavanja kolačića',
-    text: 'Koristimo opcione analitičke kolačiće da bismo razumeli kako se sajt koristi. Analitika se pokreće samo ako prihvatite.',
-    accept: 'Prihvati analitiku',
-    reject: 'Odbij',
-    settings: 'Podešavanja kolačića',
-    policy: 'Politika kolačića',
-  },
+const c = {
+  label: 'Çerez tercihleri',
+  text: 'Site kullanımını anlamak için isteğe bağlı analiz çerezleri kullanıyoruz. Analiz yalnızca onay verirseniz başlar.',
+  accept: 'Analize izin ver',
+  reject: 'Reddet',
+  settings: 'Çerez ayarları',
+  policy: 'Çerez politikası',
 };
-
-const c = copy[lang as keyof typeof copy] ?? copy.en;
-const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
+const policyUrl = '/cerez-politikasi/';
 ---
 
 <div
@@ -151,10 +123,10 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
     padding: 1rem 1rem 1rem 1.15rem;
     color: #f8f5ef;
     background:
-      linear-gradient(135deg, rgba(77, 46, 98, 0.3), transparent 48%),
+      linear-gradient(135deg, rgba(230, 107, 95, 0.3), transparent 48%),
       #1c181f;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-top: 2px solid #e75757;
+    border-top: 2px solid #e66b5f;
     border-radius: 1rem;
     box-shadow:
       0 24px 70px rgba(23, 21, 26, 0.3),
@@ -222,14 +194,14 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
 
   .qct-cookie-consent button.is-primary {
     color: #17151a;
-    background: #e75757;
-    border-color: #e75757;
+    background: #e66b5f;
+    border-color: #e66b5f;
     box-shadow: 0 8px 24px rgba(231, 87, 87, 0.22);
   }
 
   .qct-cookie-consent button.is-primary:hover {
-    background: #ef6666;
-    border-color: #ef6666;
+    background: #f4a097;
+    border-color: #f4a097;
   }
 
   .qct-cookie-settings {

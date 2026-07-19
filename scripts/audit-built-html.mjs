@@ -2,8 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DIST = 'dist';
-const SITE = 'https://qctstudio.com';
-const expectedHreflangs = ['en', 'sq', 'mk', 'sr', 'x-default'];
+const SITE = 'https://qctcommerce.com';
 const pageSchemaTypes = new Set([
   'WebPage',
   'AboutPage',
@@ -48,11 +47,6 @@ function expectedUrl(file) {
   return `${SITE}/${relative}`;
 }
 
-function expectedLanguage(file) {
-  const relative = path.relative(DIST, file).split(path.sep).join('/');
-  return relative.match(/^(sq|mk|sr)\//)?.[1] ?? 'en';
-}
-
 function localPageExists(pathname) {
   const clean = decodeURIComponent(pathname).replace(/^\/+/, '');
   if (!clean) return fs.existsSync(path.join(DIST, 'index.html'));
@@ -80,6 +74,14 @@ let indexable = 0;
 let noindex = 0;
 let internalLinks = 0;
 let jsonLdBlocks = 0;
+const renderedTitles = new Map();
+const renderedDescriptions = new Map();
+
+function registerUnique(map, value, file, label) {
+  if (!value) return;
+  if (map.has(value)) errors.push(`${file}: duplicate ${label} also used by ${map.get(value)}.`);
+  else map.set(value, file);
+}
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
@@ -95,7 +97,7 @@ for (const file of htmlFiles) {
   const robots = robotsTags.map((tag) => attribute(tag, 'content') ?? '').join(',').toLowerCase();
   const isNoindex = robots.includes('noindex');
   const expectedCanonical = expectedUrl(file);
-  const expectedLang = expectedLanguage(file);
+  const expectedLang = 'tr';
 
   const htmlLang = html.match(/<html\s+[^>]*lang=["']([^"']+)["']/i)?.[1] ?? null;
   if (htmlLang !== expectedLang) {
@@ -105,11 +107,15 @@ for (const file of htmlFiles) {
   const titleTags = html.match(/<title>([\s\S]*?)<\/title>/gi) ?? [];
   if (titleTags.length !== 1 || !titleTags[0].replace(/<\/?title>/gi, '').trim()) {
     errors.push(`${file}: expected one non-empty title, found ${titleTags.length}.`);
+  } else {
+    registerUnique(renderedTitles, titleTags[0].replace(/<\/?title>/gi, '').trim(), file, 'title');
   }
 
   const description = metaContent(html, 'name', 'description');
   if (description.count !== 1 || !description.content?.trim()) {
     errors.push(`${file}: expected one non-empty meta description, found ${description.count}.`);
+  } else {
+    registerUnique(renderedDescriptions, description.content.trim(), file, 'meta description');
   }
 
   if (canonicalTags.length !== 1) {
@@ -118,9 +124,6 @@ for (const file of htmlFiles) {
     const canonical = attribute(canonicalTags[0], 'href');
     if (canonical !== expectedCanonical) {
       errors.push(`${file}: canonical ${canonical} does not match ${expectedCanonical}.`);
-    }
-    if (/\/(sq|mk|sr)\/\1(?:\/|$)/.test(canonical ?? '')) {
-      errors.push(`${file}: canonical contains a repeated locale segment: ${canonical}.`);
     }
   }
 
@@ -166,15 +169,8 @@ for (const file of htmlFiles) {
     }
   } else {
     indexable += 1;
-    if (JSON.stringify(hreflangs) !== JSON.stringify([...expectedHreflangs].sort())) {
-      errors.push(`${file}: expected hreflang set ${expectedHreflangs.join(', ')}, found ${hreflangs.join(', ')}.`);
-    }
-
-    for (const tag of alternateTags) {
-      const href = attribute(tag, 'href') ?? '';
-      if (/\/(sq|mk|sr)\/\1(?:\/|$)/.test(href)) {
-        errors.push(`${file}: hreflang contains a repeated locale segment: ${href}.`);
-      }
+    if (alternateTags.length !== 0) {
+      errors.push(`${file}: single-language pages must not emit hreflang alternates.`);
     }
   }
 
@@ -230,5 +226,5 @@ if (errors.length) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log('Canonical, hreflang, metadata, structured data and internal-link audit passed.');
+  console.log('Canonical, metadata, structured data and internal-link audit passed.');
 }

@@ -1,6 +1,4 @@
 ---
-import { useTranslations, getHomeUrl } from '../../i18n';
-
 interface Section {
   id: string;
   title: string;
@@ -22,13 +20,12 @@ interface Props {
 }
 
 const { lang, eyebrow, title, lead, lastUpdated, sections, faqTitle, faqItems } = Astro.props;
-const t = useTranslations(lang);
-const homeUrl = getHomeUrl(lang);
+const homeUrl = '/';
 ---
 <section class="qct-legal-hero">
   <div class="container">
-    <nav class="qct-breadcrumb" aria-label="Breadcrumb">
-      <a href={homeUrl}>{t('Home')}</a>
+    <nav class="qct-breadcrumb" aria-label="Sayfa yolu">
+      <a href={homeUrl}>Ana sayfa</a>
       <span aria-hidden="true">/</span>
       <span>{title}</span>
     </nav>
@@ -36,7 +33,7 @@ const homeUrl = getHomeUrl(lang);
     <h1 class="qct-legal-hero__title">{title}</h1>
     <p class="qct-section__lead">{lead}</p>
     <div class="qct-legal-meta">
-      <span>{t('Last updated:')} {lastUpdated}</span>
+      <span>Son güncelleme: {lastUpdated}</span>
     </div>
   </div>
 </section>
@@ -44,7 +41,7 @@ const homeUrl = getHomeUrl(lang);
 <section class="qct-legal-body">
   <div class="container qct-legal-layout">
     <aside class="qct-legal-toc" aria-labelledby="qct-legal-toc-title">
-      <h2 id="qct-legal-toc-title">{t('On this page')}</h2>
+      <h2 id="qct-legal-toc-title">Bu sayfada</h2>
       <nav>
         {sections.map((s) => <a href={`#${s.id}`}>{s.title}</a>)}
         <a href="#faq">{faqTitle}</a>
@@ -99,13 +96,12 @@ const homeUrl = getHomeUrl(lang);
 .qct-legal-hero .qct-section__eyebrow,
 .qct-breadcrumb a:hover,
 .qct-legal-toc a:hover {
-  color: var(--qct-color-accent, #e75757) !important;
+  color: var(--qct-color-accent-strong, #b9473e) !important;
 }
 .qct-breadcrumb {
   display: flex;
   gap: 0.5rem;
   font-size: 0.85rem;
-  opacity: 0.85;
   margin-bottom: 1.5rem;
 }
 .qct-breadcrumb a {
@@ -113,7 +109,7 @@ const homeUrl = getHomeUrl(lang);
   text-decoration: none;
 }
 .qct-breadcrumb a:hover {
-  color: var(--qct-color-accent, #e75757);
+  color: var(--qct-color-accent-strong, #b9473e);
 }
 .qct-legal-hero {
   padding-block: var(--qct-hero-clearance, 6rem) 3rem;
@@ -125,7 +121,7 @@ const homeUrl = getHomeUrl(lang);
   margin: 0.75rem 0 1.25rem;
 }
 .qct-section__eyebrow {
-  color: var(--qct-color-accent, #e75757);
+  color: var(--qct-color-accent-strong, #b9473e);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -133,14 +129,12 @@ const homeUrl = getHomeUrl(lang);
   margin-bottom: 0.75rem;
 }
 .qct-section__lead {
-  opacity: 0.85;
   line-height: 1.6;
   max-width: 680px;
 }
 .qct-legal-meta {
   margin-top: 1.5rem;
-  font-size: 0.85rem;
-  opacity: 0.85;
+  font-size: 1rem;
 }
 .qct-legal-body {
   padding-block: 4rem;
@@ -159,7 +153,6 @@ const homeUrl = getHomeUrl(lang);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.85;
   margin-bottom: 1rem;
 }
 .qct-legal-toc nav {
@@ -169,13 +162,11 @@ const homeUrl = getHomeUrl(lang);
 }
 .qct-legal-toc a {
   color: var(--qct-color-text, #17151a);
-  opacity: 0.85;
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 1rem;
 }
 .qct-legal-toc a:hover {
-  color: var(--qct-color-accent, #e75757);
-  opacity: 1;
+  color: var(--qct-color-accent-strong, #b9473e);
 }
 .qct-legal-content {
   max-width: 760px;
@@ -192,7 +183,6 @@ const homeUrl = getHomeUrl(lang);
   margin-bottom: 0.75rem;
 }
 .qct-legal-card p {
-  opacity: 0.9;
   line-height: 1.65;
 }
 .qct-legal-faq {
@@ -207,10 +197,9 @@ const homeUrl = getHomeUrl(lang);
   font-weight: 600;
 }
 .qct-legal-faq p {
-  opacity: 0.85;
   margin-top: 0.5rem;
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 @media (max-width: 820px) {
   .qct-legal-layout {

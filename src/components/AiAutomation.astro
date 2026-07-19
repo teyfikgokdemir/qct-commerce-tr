@@ -1,68 +1,10 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from './Header.astro';
-import Footer from './Footer.astro';
-import ServicePage from './service/ServicePage.astro';
-import { useTranslations } from '../i18n';
-import { getPageSeo } from '../i18n/seo';
-
-interface Props {
-  lang: string;
-}
-const { lang } = Astro.props;
-const t = useTranslations(lang);
-const seo = getPageSeo('ai-automation', lang);
+import BaseLayout from '../layouts/BaseLayout.astro'; import Header from './Header.astro'; import Footer from './Footer.astro'; import ServicePage from './service/ServicePage.astro'; import {getPageSeo} from '../i18n/seo'; interface Props{lang:string} const{lang}=Astro.props; const seo=getPageSeo('ai-automation'); const d='Tekrarlayan işleri azaltan, veri ve müşteri taleplerini düzenleyen, kritik kararları ekip kontrolünde bırakan yapay zekâ otomasyonları kuruyoruz.';
 ---
-<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('AI Automation')} service={{ name: t('AI Automation'), description: t('QCT Studio helps established businesses in Albania and North Macedonia reduce repetitive operational work through carefully planned automation, with people retaining control of important decisions.') }}>
-  <Header slot="header" lang={lang} />
-  <ServicePage
-    lang={lang}
-    eyebrow={t('AI Automation')}
-    title={t('Practical AI automation for clearer, faster business workflows.')}
-    lead={t('QCT Studio helps established businesses in Albania and North Macedonia reduce repetitive operational work through carefully planned automation, with people retaining control of important decisions.')}
-    ctaPrimary={t('Discuss Your Workflow')}
-    benefits={{
-      eyebrow: '',
-      title: t('What does AI automation mean for a business?'),
-      lead: t('AI automation connects information, rules and existing tools so routine work moves forward consistently. It can classify an enquiry, send it to the right person, prepare a task or update a CRM—while your team reviews exceptions and decisions that need judgement.'),
-      items: [],
-    }}
-    included={{
-      eyebrow: '',
-      title: t('Where practical automation can help'),
-      lead: '',
-      items: [
-        { title: t('Lead intake and routing'), text: t('Collect enquiries, structure the details and direct each lead to the right person or pipeline.') },
-        { title: t('Enquiry handling workflows'), text: t('Prepare consistent first responses, follow-up tasks and internal notifications without hiding the human contact.') },
-        { title: t('Internal task handoffs'), text: t('Turn approved requests into clear assignments so responsibilities and next steps are easier to track.') },
-        { title: t('Admin and CRM workflows'), text: t('Reduce repeated data entry and keep agreed customer information aligned across suitable business tools.') },
-      ],
-    }}
-    process={{
-      eyebrow: '',
-      title: t('Automation starts with the workflow, not the tool.'),
-      steps: [
-        { number: '01', title: t('Map the work'), text: t('We identify the repetitive steps, owners, inputs and exceptions in the current process.') },
-        { number: '02', title: t('Define safeguards'), text: t('We agree what can be automated, what needs approval and where a person must remain involved.') },
-        { number: '03', title: t('Build and connect'), text: t('We configure the workflow around the systems and information your team actually uses.') },
-        { number: '04', title: t('Test in practice'), text: t('We test realistic cases, document the flow and refine it before wider use.') },
-      ],
-    }}
-    faq={{
-      eyebrow: '',
-      title: t('AI automation questions'),
-      items: [
-        { q: t('Does AI automation replace employees?'), a: t('No. Our approach supports teams by reducing repetitive steps. People remain responsible for judgement, approvals and customer relationships.') },
-        { q: t('Do we need to replace our current software?'), a: t('Not necessarily. We first assess whether suitable existing tools, forms and CRM processes can be connected or improved.') },
-        { q: t('Which process should we automate first?'), a: t('Start with a frequent, clearly defined process that consumes time and has predictable inputs, rules and ownership.') },
-        { q: t('Can you automate every business process?'), a: t('No. Processes involving unclear decisions, sensitive judgement or unreliable data may need redesign or should remain primarily human-led.') },
-      ],
-    }}
-    final={{
-      title: t('Start with one useful workflow.'),
-      text: t('We can examine a repetitive process and define where structured automation would genuinely help your team.'),
-      cta: t('Discuss Your Workflow'),
-    }}
-  />
-  <Footer slot="footer" lang={lang} />
-</BaseLayout>
+<BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="Yapay zekâ otomasyonları" service={{name:'Yapay zekâ otomasyonları',description:d}}><Header slot="header" lang={lang}/><ServicePage lang={lang} eyebrow="Yapay zekâ otomasyonları" title="Ekibinizin zamanını tekrarlayan işlerden değer üreten işlere taşıyın." lead={d} ctaPrimary="Sürecinizi konuşalım" ctaSecondary="Tüm hizmetler"
+problem={{eyebrow:'SORUN',title:'Dağınık veri ve manuel aktarım büyüdükçe operasyon yavaşlar.',intro:['Talep toplama, sınıflandırma, veri girişi ve ekip devri gibi işler tekrarlandığında hata riski ve yanıt süresi artar.'],items:[{title:'Bilgi farklı yerlerde kalır',text:'Formlar, e-postalar ve mesajlar ortak bir akışta birleşmez.'},{title:'Ekip aynı işi tekrarlar',text:'Kopyalama, özetleme ve yönlendirme zaman kaybettirir.'},{title:'Kontrolsüz otomasyon risk yaratır',text:'Kritik kararların bağlamsız biçimde otomatikleştirilmesi güveni zedeler.'}]}}
+benefits={{eyebrow:'YAKLAŞIM',title:'Önce süreç, sonra otomasyon.',lead:'Her işi otomatikleştirmek yerine, tekrarlanan ve kuralları açık adımları seçeriz.',items:[{title:'İnsan kontrollü yapı',text:'Onay ve önemli karar noktaları ekipte kalır.'},{title:'Düzenli veri akışı',text:'Bilgi doğru biçimde toplanır, sınıflandırılır ve aktarılır.'},{title:'İzlenebilir süreç',text:'Otomasyonun ne yaptığı ve nerede durduğu açık olur.'}]}}
+included={{eyebrow:'KAPSAM',title:'Otomasyon çalışma alanları',lead:'Yalnızca işletmenizin gerçek sürecine uyan parçalar uygulanır.',items:[{title:'Talep sınıflandırma',text:'Gelen talepleri konu ve önceliğe göre ayırma.'},{title:'Ekip yönlendirme',text:'Doğru kişiye veya sisteme devir.'},{title:'Veri işleme',text:'Tekrarlayan veri düzenleme adımları.'},{title:'Özetleme',text:'Uzun içerik ve görüşmelerden eylem çıkarma.'},{title:'Bildirim',text:'Kritik durumlarda ekip uyarıları.'},{title:'Kayıt ve izleme',text:'Akışların görünür tutulması.'}]}}
+process={{eyebrow:'SÜREÇ',title:'Kontrollü ve aşamalı kurulum.',steps:[{number:'01',title:'Süreç haritası',text:'Manuel adımları ve karar noktalarını çıkarırız.'},{number:'02',title:'Risk ve değer analizi',text:'Otomasyona uygun adımları seçeriz.'},{number:'03',title:'Pilot kurulum',text:'Küçük kapsamda geliştirip gerçek veriyle test ederiz.'},{number:'04',title:'Devreye alma',text:'İzleme ve hata senaryolarıyla kontrollü kullanıma açarız.'}]}}
+faq={{eyebrow:'SIK SORULANLAR',title:'Yapay zekâ otomasyonu hakkında',items:[{q:'Her süreç otomasyona uygun mu?',a:'Hayır. Karar kuralları belirsiz, riskli veya insan değerlendirmesi gerektiren süreçlerde otomasyon sınırlı tutulmalıdır.'},{q:'Mevcut araçlarımızla çalışabilir mi?',a:'Entegrasyon olanağı mevcut sistemlerin API ve güvenlik koşullarına göre değerlendirilir.'},{q:'Yapay zekâ kendi başına karar verir mi?',a:'Kritik iş kararlarında insan kontrolünü koruyan onay ve sınır mekanizmaları tasarlarız.'}]}}
+final={{title:'Tekrarlayan işlerinizi kontrollü bir otomasyon akışına dönüştürün.',text:'En çok zaman alan süreci birlikte değerlendirelim.',cta:'İletişime geçin',ctaSecondary:'E-posta gönderin'}}/><Footer slot="footer" lang={lang}/></BaseLayout>

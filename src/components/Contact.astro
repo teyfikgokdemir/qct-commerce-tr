@@ -1,65 +1,20 @@
 ---
-import { useTranslations } from '../i18n';
-
-interface Props {
-  lang: string;
-}
-const { lang } = Astro.props;
-const t = useTranslations(lang);
+interface Props { lang: string; }
 ---
 <section id="contact" class="qct-section qct-contact" aria-labelledby="qct-contact-title">
-	<div class="container">
-		<div class="qct-contact__grid">
-			<div class="qct-contact__content">
-				<p class="qct-section__eyebrow">{t('Contact')}</p>
-				<h2 id="qct-contact-title" class="qct-section__title">
-					{t('Let us map the best digital path for your business.')}
-				</h2>
-				<p class="qct-section__lead">
-					{t('Send the essentials and we will review the project direction. You can also email us directly at info@qctstudio.com.')}
-				</p>
-
-				<div class="qct-contact__links">
-					<a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a>
-					<a href="https://qctstudio.com">{t('qctstudio.com')}</a>
-				</div>
-
-				<div class="qct-faq-ready" aria-labelledby="qct-faq-title">
-					<h3 id="qct-faq-title">{t('FAQ')}</h3>
-					<p>{t('Questions we hear most often.')}</p>
-					<details>
-						<summary>{t('How long does a website project take?')}</summary>
-						<p>{t('Every project is different, but most business websites are completed within a few weeks.')}</p>
-					</details>
-					<details>
-						<summary>{t('Can you redesign our existing website?')}</summary>
-						<p>{t('Yes. We can improve an existing website or build a completely new one.')}</p>
-					</details>
-					<details>
-						<summary>{t('Will our website work on mobile devices?')}</summary>
-						<p>{t('Every website we build is fully responsive and designed for phones, tablets and desktops.')}</p>
-					</details>
-					<details>
-						<summary>{t('Do you provide support after launch?')}</summary>
-						<p>{t('Yes. We continue supporting our clients after launch whenever they need us.')}</p>
-					</details>
-					<details>
-						<summary>{t('Can you help with SEO and digital marketing?')}</summary>
-						<p>{t('Yes. We can also help improve visibility, traffic and online enquiries after launch.')}</p>
-					</details>
-				</div>
-			</div>
-
-			<div class="qct-contact-form">
-				<div class="qct-form-field qct-form-field--full">
-					<p>{t('Use the address that matches your inquiry.')}</p>
-					<p><a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a></p>
-				</div>
-
-				<a class="qct-button qct-button--primary qct-contact-form__submit" href="mailto:info@qctstudio.com">
-					<span>{t('Contact Us')}</span>
-				</a>
+	<div class="container"><div class="qct-contact__grid">
+		<div class="qct-contact__content">
+			<p class="qct-section__eyebrow">İLETİŞİM</p>
+			<h2 id="qct-contact-title" class="qct-section__title">İşletmeniz için doğru dijital büyüme önceliğini belirleyelim.</h2>
+			<p class="qct-section__lead">İş modelinizi, mevcut web veya mağaza adresinizi ve çözmek istediğiniz sorunu paylaşın. Uygun ilk adımı netleştirmek için sizinle iletişime geçelim.</p>
+			<div class="qct-contact__links"><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a><a href="tel:+905433856656">+90 543 385 66 56</a></div>
+			<div class="qct-faq-ready" aria-labelledby="qct-faq-title">
+				<h3 id="qct-faq-title">Sık sorulan sorular</h3><p>İlk görüşme öncesinde merak edilenler.</p>
+				<details><summary>Yalnızca e-ticaret projeleriyle mi çalışıyorsunuz?</summary><p>Ana odağımız e-ticaret ve ölçülebilir dijital büyümedir. Web tasarım, arama görünürlüğü, WhatsApp satış ve otomasyon hizmetlerini bu hedefi destekleyecek şekilde ele alırız.</p></details>
+				<details><summary>Mevcut mağazamızı geliştirebilir misiniz?</summary><p>Evet. Yeni yapı kurmanın yanı sıra mevcut mağazadaki ürün keşfi, mobil deneyim, ödeme akışı ve teknik altyapı sorunlarını da değerlendirebiliriz.</p></details>
+				<details><summary>İlk mesajda hangi bilgileri paylaşmalıyız?</summary><p>İşletmenizi, mevcut site veya mağaza adresinizi, öncelikli sorunu ve hedeflediğiniz zamanı kısaca yazmanız yeterlidir.</p></details>
 			</div>
 		</div>
-	</div>
+		<div class="qct-contact-form"><div class="qct-form-field qct-form-field--full"><p>Doğrudan e-posta veya WhatsApp üzerinden ulaşın.</p><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905433856656">WhatsApp: +90 543 385 66 56</a></p></div><a class="qct-button qct-button--primary qct-contact-form__submit" href="/iletisim/"><span>İletişim sayfasına gidin</span></a></div>
+	</div></div>
 </section>
