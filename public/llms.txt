@@ -1,33 +1,45 @@
-# QCT Commerce
+﻿# QCT Commerce
 
-> QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kuran dijital büyüme markasıdır.
+> QCT Commerce, Türkiye'de e-ticaret ve ölçülebilir dijital büyüme sistemleri kuran dijital büyüme markasıdır.
 
-QCT Commerce; e-ticaret altyapısı, web tasarım, WhatsApp satış sistemleri, arama görünürlüğü, Meta reklamları, dönüşüm odaklı landing page ve yapay zekâ otomasyonları alanlarında hizmet verir. Hizmet alanı Türkiye, site dili Türkçedir.
+QCT Commerce; e-ticaret altyapısı, web tasarımı, WhatsApp satış sistemleri, arama görünürlüğü, Meta reklamları, dönüşüm odaklı landing page'ler ve yapay zekâ otomasyonları alanlarında hizmet verir.
+
+Hizmet pazarı Türkiye, sitenin ana dili Türkçedir.
 
 QCT Commerce, [QCT Studio](https://qctstudio.com/) ağının Türkiye pazarına odaklanan e-ticaret ve dijital büyüme markasıdır.
 
-Doğrulanmış iletişim bilgileri: info@qctcommerce.com ve +90 543 385 66 56.
+Doğrulanmış iletişim bilgileri:
+
+- E-posta: info@qctcommerce.com
+- Telefon ve WhatsApp: +90 543 385 66 56
 
 ## Temel sayfalar
 
-- [Ana sayfa](https://qctcommerce.com/): QCT Commerce’ın Türkiye odaklı e-ticaret ve dijital büyüme yaklaşımı.
+- [Ana sayfa](https://qctcommerce.com/): QCT Commerce'ın Türkiye odaklı e-ticaret ve dijital büyüme yaklaşımı.
 - [Hakkımızda](https://qctcommerce.com/hakkimizda/): Marka konumu, çalışma yaklaşımı ve QCT Studio ilişkisi.
-- [Hizmetler](https://qctcommerce.com/hizmetler/): Doğrulanmış hizmetlerin genel görünümü ve hizmet seçimi.
-- [İletişim](https://qctcommerce.com/iletisim/): Doğrulanmış e-posta, telefon ve WhatsApp bilgileri.
+- [Hizmetler](https://qctcommerce.com/hizmetler/): Sunulan dijital büyüme hizmetlerinin genel görünümü.
+- [Çalışmalar](https://qctcommerce.com/calismalar/): Seçilmiş proje ve uygulama örnekleri.
+- [İletişim](https://qctcommerce.com/iletisim/): E-posta, telefon ve WhatsApp iletişim bilgileri.
 
 ## Hizmetler
 
 - [E-ticaret altyapısı](https://qctcommerce.com/e-ticaret/): Ürün keşfi, sepet, ödeme ve mağaza operasyonunun birlikte planlanması.
-- [Web tasarım](https://qctcommerce.com/web-tasarim/): İş hedefleri ve kullanıcı ihtiyaçlarıyla uyumlu kurumsal web deneyimleri.
-- [WhatsApp satış sistemleri](https://qctcommerce.com/whatsapp-satis/): Mesajlaşmadan satış ve takip akışına uzanan WhatsApp sistemleri.
+- [Web tasarımı](https://qctcommerce.com/web-tasarim/): İş hedefleri ve kullanıcı ihtiyaçlarıyla uyumlu kurumsal web deneyimleri.
+- [WhatsApp satış sistemleri](https://qctcommerce.com/whatsapp-satis/): Mesajlaşmadan satış ve müşteri takibine uzanan WhatsApp sistemleri.
 - [SEO, GEO, AEO ve AIO](https://qctcommerce.com/seo-geo/): Arama motorları ve yapay zekâ sistemleri için anlaşılır dijital görünürlük.
 - [Meta reklamları](https://qctcommerce.com/meta-reklamlari/): Meta kampanyaları ve dönüşüm odaklı landing page çalışmaları.
 - [Yapay zekâ otomasyonları](https://qctcommerce.com/yapay-zeka-otomasyonlari/): Tekrarlanan operasyonları düzenleyen iş akışı otomasyonları.
 
+## Seçilmiş çalışmalar
+
+- [Headwear](https://qctcommerce.com/calismalar/headwear/): Proje çalışması ve dijital çözüm özeti.
+- [Misima](https://qctcommerce.com/calismalar/misima/): Proje çalışması ve dijital çözüm özeti.
+- [Artman](https://qctcommerce.com/calismalar/artman/): Proje çalışması ve dijital çözüm özeti.
+
 ## E-ticaret rehberleri
 
 - [Blog](https://qctcommerce.com/blog/): E-ticaret, dijital satış ve operasyon kararları için rehber merkezi.
-- [Shopify mağaza kurma rehberi](https://qctcommerce.com/blog/shopify-magaza-kurma-rehberi/): Türkiye’de mağaza kurmadan önce planlanması gereken temel kararlar.
+- [Shopify mağaza kurma rehberi](https://qctcommerce.com/blog/shopify-magaza-kurma-rehberi/): Türkiye'de mağaza kurmadan önce planlanması gereken temel kararlar.
 - [E-ticarette yapılan hatalar](https://qctcommerce.com/blog/e-ticarette-yapilan-hatalar/): Satış deneyimini ve operasyonu zorlaştıran yaygın hatalar.
 - [Pazaryerinden kendi sitenize geçiş](https://qctcommerce.com/blog/pazaryerinden-kendi-sitene-gecis/): Kanal geçişinin kapsamı, koşulları ve planlama adımları.
 
@@ -37,3 +49,8 @@ Doğrulanmış iletişim bilgileri: info@qctcommerce.com ve +90 543 385 66 56.
 - [Gizlilik politikası](https://qctcommerce.com/gizlilik-politikasi/): Kişisel verilerin işlenmesine ilişkin açıklamalar.
 - [Kullanım koşulları](https://qctcommerce.com/kullanim-kosullari/): Site kullanımına ilişkin koşullar.
 - [Çerez politikası](https://qctcommerce.com/cerez-politikasi/): Çerez tercihleri ve kullanım amaçları.
+
+## Teknik keşif
+
+- [XML sitemap](https://qctcommerce.com/sitemap-index.xml): Sitedeki dizine eklenebilir sayfaların listesi.
+- [Robots.txt](https://qctcommerce.com/robots.txt): Arama ve yapay zekâ tarayıcılarına yönelik erişim kuralları.
