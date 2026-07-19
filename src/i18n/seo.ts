@@ -39,8 +39,8 @@ const seo: Record<SeoPage, SeoEntry> = {
     description: 'Türkiye’deki işletmeler için teklifinizi açık anlatan, mobil öncelikli, hızlı ve müşteri iletişimini destekleyen web siteleri tasarlıyoruz.',
   },
   'e-commerce': {
-    title: 'E-ticaret Altyapısı ve Mağaza Geliştirme',
-    description: 'Ürün keşfi, mobil alışveriş, sepet, ödeme ve mağaza yönetimini birlikte planlayan satış odaklı e-ticaret altyapıları kuruyoruz.',
+    title: 'B2B E-Ticaret Çözümleri — QCT Commerce',
+    description: 'Üretici, toptancı, ihracatçı ve büyüyen markalar için SEO, GEO, AEO, AIO ve dönüşüm odaklı B2B e-ticaret altyapıları kuruyoruz.',
   },
   'ai-automation': {
     title: 'Yapay Zekâ Otomasyonları — QCT Commerce',
