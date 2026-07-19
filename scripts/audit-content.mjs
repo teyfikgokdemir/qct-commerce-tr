@@ -10,6 +10,8 @@ const checks = [
   ['yayınlanmayan vaka çalışması', /\bPhiaderm\b/i],
   ['fiziksel reklam hizmeti', /tabela|dijital baskı|araç kaplama|promosyon ürün|fiziksel reklam|\bsignage\b|vehicle wrap|promotional product|digital print/i],
   ['eski rota', /['"`]\/(?:about|services|website-design|e-commerce|whatsapp-commerce|seo-performance|meta-ads-landing-pages|ai-automation|careers|contact|privacy-policy|terms-conditions|cookie-policy|work)(?:\/|['"`])/i],
+  ['kaldırılan öne çıkan rozeti', /sub-menu__badge|>\s*Öne çıkan\s*</i],
+  ['bağlamsız genel CTA', /Projenizi konuşalım|İletişime geçin|Projenizi anlatın/i],
 ];
 const errors = [];
 let analyticsIdCount = 0;

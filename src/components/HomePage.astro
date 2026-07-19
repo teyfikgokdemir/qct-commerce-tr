@@ -17,8 +17,29 @@ interface Props {
 const { lang } = Astro.props;
 
 const seo = getPageSeo('home');
+const faqItems = [
+  { q: 'Hangi hizmetle başlamalıyız?', a: 'İlk adım, mevcut dijital yapınızda satış sürecini en çok zorlayan noktayı belirlemektir. İhtiyaç tek bir hizmetle çözülebiliyorsa kapsamı o alanda tutar; birden fazla katman birbirini etkiliyorsa öncelikli sırayı birlikte çıkarırız.' },
+  { q: 'Mevcut web sitemiz veya mağazamız geliştirilebilir mi?', a: 'Evet. Yeni bir yapı kurmadan önce mevcut sitenin veya mağazanın teknik altyapısını, kullanıcı akışını, içeriklerini ve ölçüm düzenini değerlendirir; korunabilecek ve geliştirilmesi gereken alanları ayırırız.' },
+  { q: 'Yalnızca tek bir hizmet için çalışabilir miyiz?', a: 'Evet. İhtiyaç netse e-ticaret altyapısı, web tasarım, WhatsApp satış sistemi, arama görünürlüğü, Meta reklamları veya otomasyon gibi tek bir çalışma alanıyla ilerlenebilir.' },
+  { q: 'İlk görüşmede neleri değerlendiriyorsunuz?', a: 'İş modelinizi, mevcut web sitesi veya mağazanızı, satış kanallarınızı, öncelikli sorunu ve ekip kapasitenizi konuşuruz. Amaç, çözüm önermeden önce mevcut durumu ve hedefi aynı çerçevede görmektir.' },
+  { q: 'Çalışma kapsamı nasıl belirleniyor?', a: 'Kapsam; çözülmesi gereken problem, mevcut altyapı, gerekli içerik ve entegrasyonlar ile işletmenin uygulama önceliklerine göre belirlenir. Başlangıç adımı ve sonraki geliştirmeler birbirinden ayrılarak netleştirilir.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://qctcommerce.com/#faq',
+  url: 'https://qctcommerce.com/',
+  inLanguage: 'tr-TR',
+  isPartOf: { '@id': 'https://qctcommerce.com/#webpage' },
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
 ---
 <BaseLayout title={seo.title} description={seo.description} lang={lang} isHome={true} includeWorkStyles={true}>
+<script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <Header slot="header" lang={lang} />
 <Hero lang={lang} />
 <Problem lang={lang} />
@@ -26,6 +47,6 @@ const seo = getPageSeo('home');
 <SelectedWork />
 <Process lang={lang} />
 <FinalCta lang={lang} />
-<Contact lang={lang} />
+<Contact lang={lang} faqItems={faqItems} />
 <Footer slot="footer" lang={lang} />
 </BaseLayout>

@@ -172,26 +172,6 @@ body {
 	box-shadow: 0 16px 36px rgba(33, 23, 29, 0.12);
 }
 
-.sub-menu a:has(.sub-menu__badge) {
-	align-items: center;
-	display: flex;
-	gap: 10px;
-	justify-content: space-between;
-}
-
-.sub-menu__badge {
-	background: var(--qct-color-coral-dark);
-	border-radius: var(--qct-radius-sm);
-	color: var(--qct-color-on-dark);
-	flex: 0 0 auto;
-	font-size: 0.62rem;
-	font-weight: 750;
-	letter-spacing: 0.035em;
-	line-height: 1;
-	padding: 5px 6px;
-	white-space: nowrap;
-}
-
 /* Controls */
 .qct-button,
 .qct-btn,

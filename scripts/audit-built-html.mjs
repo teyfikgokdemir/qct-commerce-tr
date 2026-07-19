@@ -67,6 +67,21 @@ function schemaNodes(value) {
   return [...current, ...graph];
 }
 
+function visibleText(fragment) {
+  const entities = { amp: '&', apos: "'", gt: '>', lt: '<', nbsp: ' ', quot: '"' };
+  return fragment
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (_, entity) => {
+      if (entity[0] === '#') {
+        const hex = entity[1]?.toLowerCase() === 'x';
+        return String.fromCodePoint(Number.parseInt(entity.slice(hex ? 2 : 1), hex ? 16 : 10));
+      }
+      return entities[entity.toLowerCase()] ?? `&${entity};`;
+    })
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 walk(DIST);
 
 const errors = [];
@@ -78,6 +93,7 @@ const renderedTitles = new Map();
 const renderedDescriptions = new Map();
 const indexableCanonicals = new Set();
 const incomingLinks = new Map();
+const faqQuestions = new Map();
 const servicePaths = new Set([
   '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/',
   '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/',
@@ -221,6 +237,18 @@ for (const file of htmlFiles) {
     if (!isArticlePage && articleNodes.length) {
       errors.push(`${file}: Article schema is only allowed on real blog article pages.`);
     }
+    if (isArticlePage && articleNodes.length === 1) {
+      const article = articleNodes[0];
+      const publishedVisible = new RegExp(`<time\\s+[^>]*datetime=["']${article.datePublished}["'][^>]*>`, 'i').test(html);
+      const modifiedVisible = article.dateModified
+        ? new RegExp(`<time\\s+[^>]*datetime=["']${article.dateModified}["'][^>]*>`, 'i').test(html)
+        : !/Güncellendi:/i.test(html);
+      if (!publishedVisible) errors.push(`${file}: Article datePublished is not mirrored by a visible time element.`);
+      if (!modifiedVisible) errors.push(`${file}: Article dateModified does not match the visible update date.`);
+      if (article.dateModified && article.dateModified < article.datePublished) {
+        errors.push(`${file}: Article dateModified predates datePublished.`);
+      }
+    }
 
     const serviceNodes = nodes.filter((node) => node['@type'] === 'Service');
     if (servicePaths.has(expectedPath) && serviceNodes.length !== 1) {
@@ -280,12 +308,28 @@ for (const file of htmlFiles) {
 
     const faqNodes = nodes.filter((node) => node['@type'] === 'FAQPage');
     for (const faqNode of faqNodes) {
-      if (!html.includes('<details')) {
+      const visibleFaq = [...html.matchAll(/<details\b[^>]*>[\s\S]*?<summary\b[^>]*>([\s\S]*?)<\/summary>[\s\S]*?<p\b[^>]*>([\s\S]*?)<\/p>[\s\S]*?<\/details>/gi)]
+        .map((match) => ({ question: visibleText(match[1]), answer: visibleText(match[2]) }));
+      if (!visibleFaq.length) {
         errors.push(`${file}: FAQPage schema requires visible FAQ details.`);
       }
-      for (const question of faqNode.mainEntity ?? []) {
-        if (question.name && !html.includes(question.name)) {
-          errors.push(`${file}: FAQ schema question is not visible: ${question.name}`);
+      const schemaFaq = faqNode.mainEntity ?? [];
+      if (schemaFaq.length !== visibleFaq.length) {
+        errors.push(`${file}: FAQ schema has ${schemaFaq.length} questions but ${visibleFaq.length} visible FAQ details.`);
+      }
+      for (const question of schemaFaq) {
+        const visible = visibleFaq.find((item) => item.question === question.name);
+        if (!visible) {
+          errors.push(`${file}: FAQ schema question is not visible exactly: ${question.name}`);
+          continue;
+        }
+        if (visible.answer !== question.acceptedAnswer?.text) {
+          errors.push(`${file}: FAQ schema answer differs from visible answer for: ${question.name}`);
+        }
+        if (faqQuestions.has(question.name)) {
+          errors.push(`${file}: duplicate FAQ question also appears in ${faqQuestions.get(question.name)}: ${question.name}`);
+        } else {
+          faqQuestions.set(question.name, file);
         }
       }
     }
