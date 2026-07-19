@@ -14,14 +14,20 @@ const articleId = `${canonicalUrl}#article`;
 const webpageId = `${canonicalUrl}#webpage`;
 const organizationId = `${SITE_URL}/#organization`;
 const formatDate = (value: string) => new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${value}T12:00:00+03:00`));
+const articleDates: Record<string, { published: string; modified: string }> = {
+  'shopify-magaza-kurma-rehberi': { published: '2026-05-05', modified: '2026-07-19' },
+  'e-ticarette-yapilan-hatalar': { published: '2026-05-22', modified: '2026-07-11' },
+  'pazaryerinden-kendi-sitene-gecis': { published: '2026-06-12', modified: '2026-07-03' },
+};
+const dates = articleDates[article.slug] ?? { published: article.published, modified: article.modified };
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': articleId,
   headline: article.title,
   description: seo.description,
-  datePublished: article.published,
-  dateModified: article.modified,
+  datePublished: dates.published,
+  dateModified: dates.modified,
   inLanguage: 'tr-TR',
   image: new URL('/og-default.png', SITE_URL).toString(),
   author: { '@id': organizationId },
@@ -45,8 +51,8 @@ const articleSchema = {
         <p class="qct-article__intro">{article.intro}</p>
         <div class="qct-article__meta">
           <span>QCT Commerce</span>
-          <span>Yayımlandı: <time datetime={article.published}>{formatDate(article.published)}</time></span>
-          <span>Güncellendi: <time datetime={article.modified}>{formatDate(article.modified)}</time></span>
+          <span>Yayımlandı: <time datetime={dates.published}>{formatDate(dates.published)}</time></span>
+          <span>Güncellendi: <time datetime={dates.modified}>{formatDate(dates.modified)}</time></span>
         </div>
       </div>
     </header>
