@@ -4055,7 +4055,7 @@
 .qct-work-showcase__controls button:focus-visible,
 .qct-contact a:focus-visible,
 .qct-faq-ready summary:focus-visible {
-	outline: 2px solid var(--qct-color-accent);
+	outline: 2px solid var(--qct-color-accent-strong);
 	outline-offset: 4px;
 }
 
@@ -4594,7 +4594,7 @@
 .qct-service-card:focus-visible,
 .qct-contact a:focus-visible,
 .qct-faq-ready summary:focus-visible {
-	outline-color: var(--qct-color-coral);
+	outline-color: var(--qct-color-coral-dark);
 }
 
 @media (min-width: 920px) {
@@ -4868,7 +4868,7 @@
 	background: transparent;
 	border: 0;
 	border-bottom: 1px solid color-mix(in srgb, var(--qct-color-coral) 44%, var(--qct-color-line));
-	color: var(--qct-color-coral);
+	color: var(--qct-color-coral-dark);
 	font-weight: 580;
 	min-height: 44px;
 	padding: 10px 0 8px;
@@ -4929,8 +4929,25 @@
 }
 
 .qct-contact-form .qct-form-field a {
-	color: var(--qct-color-coral);
+	color: var(--qct-color-coral-dark);
 	font-weight: 620;
+}
+
+.qct-contact__links a:visited,
+.qct-contact-form .qct-form-field a:visited {
+	color: var(--qct-color-coral-dark);
+}
+
+.qct-contact__links a:hover,
+.qct-contact-form .qct-form-field a:hover {
+	color: var(--qct-color-ink);
+	text-decoration-thickness: 2px;
+}
+
+.qct-contact__links a:focus-visible,
+.qct-contact-form .qct-form-field a:focus-visible {
+	color: var(--qct-color-coral-dark);
+	outline-color: var(--qct-color-coral-dark);
 }
 
 .qct-contact-form__submit {
