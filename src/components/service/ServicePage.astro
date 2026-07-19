@@ -2,6 +2,7 @@
 interface Item {
   title: string;
   text: string;
+  href?: string;
 }
 interface Step {
   number: string;
@@ -24,6 +25,7 @@ interface Props {
   title: string;
   lead: string;
   ctaPrimary: string;
+  ctaPrimaryHref?: string;
   ctaSecondary?: string;
   brandRelationship?: BrandRelationship;
   problem?: {
@@ -49,6 +51,12 @@ interface Props {
     title: string;
     steps: Step[];
   };
+  answers?: {
+    title: string;
+    lead: string;
+    items: { question: string; answer: string }[];
+  };
+  relatedLinks?: { title: string; text: string; href: string }[];
   faq: {
     eyebrow: string;
     title: string;
@@ -59,6 +67,7 @@ interface Props {
     title: string;
     text: string;
     cta: string;
+    ctaHref?: string;
     ctaSecondary?: string;
   };
 }
@@ -69,18 +78,24 @@ const {
   title,
   lead,
   ctaPrimary,
+  ctaPrimaryHref,
   ctaSecondary,
   brandRelationship,
   problem,
   benefits,
   included,
   process,
+  answers,
+  relatedLinks,
   faq,
   final,
 } = Astro.props;
 
 const homeUrl = '/';
 const contactUrl = '/iletisim/';
+const canonicalUrl = new URL(Astro.url.pathname, 'https://qctcommerce.com').toString();
+const webpageId = `${canonicalUrl}#webpage`;
+const faqId = `${canonicalUrl}#faq`;
 ---
 <section class="qct-svc-hero">
   <div class="container">
@@ -93,7 +108,7 @@ const contactUrl = '/iletisim/';
     <h1 class="qct-svc-hero__title">{title}</h1>
     <p class="qct-svc-hero__lead">{lead}</p>
     <div class="qct-svc-hero__actions">
-      <a class="qct-btn qct-btn--primary" href={contactUrl}>{ctaPrimary}</a>
+      <a class="qct-btn qct-btn--primary" href={ctaPrimaryHref ?? contactUrl}>{ctaPrimary}</a>
       {ctaSecondary && <a class="qct-btn qct-btn--secondary" href="/hizmetler/">{ctaSecondary}</a>}
     </div>
   </div>
@@ -129,7 +144,7 @@ const contactUrl = '/iletisim/';
       <div class="qct-svc-grid">
         {problem.items.map((item) => (
           <article class="qct-svc-card">
-            <h3>{item.title}</h3>
+            <h3>{item.href ? <a href={item.href}>{item.title}</a> : item.title}</h3>
             <p>{item.text}</p>
           </article>
         ))}
@@ -149,7 +164,7 @@ const contactUrl = '/iletisim/';
       <div class="qct-svc-grid">
         {benefits.items.map((item) => (
           <article class="qct-svc-card">
-            <h3>{item.title}</h3>
+            <h3>{item.href ? <a href={item.href}>{item.title}</a> : item.title}</h3>
             <p>{item.text}</p>
           </article>
         ))}
@@ -169,7 +184,7 @@ const contactUrl = '/iletisim/';
       <div class="qct-svc-grid">
         {included.items.map((item) => (
           <article class="qct-svc-card">
-            <h3>{item.title}</h3>
+            <h3>{item.href ? <a href={item.href}>{item.title}</a> : item.title}</h3>
             <p>{item.text}</p>
           </article>
         ))}
@@ -198,9 +213,46 @@ const contactUrl = '/iletisim/';
   </div>
 </section>
 
+{answers && (
+  <section class="qct-section qct-svc-answers" aria-labelledby="qct-service-answers-title">
+    <div class="container">
+      <div class="qct-section__header">
+        <p class="qct-section__eyebrow">KISA CEVAPLAR</p>
+        <h2 id="qct-service-answers-title" class="qct-section__title">{answers.title}</h2>
+        <p class="qct-section__lead">{answers.lead}</p>
+      </div>
+      <dl>
+        {answers.items.map((item) => (
+          <div><dt>{item.question}</dt><dd>{item.answer}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+)}
+
+{relatedLinks && relatedLinks.length > 0 && (
+  <section class="qct-section qct-svc-related" aria-labelledby="qct-related-title">
+    <div class="container">
+      <div class="qct-section__header">
+        <p class="qct-section__eyebrow">İLGİLİ KONULAR</p>
+        <h2 id="qct-related-title" class="qct-section__title">Bir sonraki adımı bağlamıyla inceleyin.</h2>
+      </div>
+      <div class="qct-svc-related__grid">
+        {relatedLinks.map((item) => (
+          <article><h3><a href={item.href}>{item.title}</a></h3><p>{item.text}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
 <script type="application/ld+json" set:html={JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
+  '@id': faqId,
+  url: canonicalUrl,
+  inLanguage: 'tr-TR',
+  isPartOf: { '@id': webpageId },
   mainEntity: faq.items.map((item) => ({
     '@type': 'Question',
     name: item.q,
@@ -215,8 +267,8 @@ const contactUrl = '/iletisim/';
       <h2 class="qct-section__title">{faq.title}</h2>
     </div>
     <div class="qct-svc-faq">
-      {faq.items.map((item) => (
-        <details>
+      {faq.items.map((item, index) => (
+        <details open={index === 0}>
           <summary>{item.q}</summary>
           <p>{item.a}</p>
         </details>
@@ -231,7 +283,7 @@ const contactUrl = '/iletisim/';
     <h2 class="qct-section__title">{final.title}</h2>
     <p class="qct-section__lead">{final.text}</p>
     <div class="qct-svc-hero__actions">
-      <a class="qct-btn qct-btn--primary" href={contactUrl}>{final.cta}</a>
+      <a class="qct-btn qct-btn--primary" href={final.ctaHref ?? contactUrl}>{final.cta}</a>
       {final.ctaSecondary && <a class="qct-btn qct-btn--secondary" href="mailto:info@qctcommerce.com">{final.ctaSecondary}</a>}
     </div>
   </div>
@@ -310,6 +362,34 @@ const contactUrl = '/iletisim/';
 .qct-svc-section {
   padding-block: var(--qct-home-section-space, 5rem);
 }
+.qct-svc-answers,
+.qct-svc-related {
+  background: var(--qct-color-background, #f8f3ef);
+  border-bottom: 1px solid var(--qct-color-line, #ded2cc);
+}
+.qct-svc-answers dl {
+  border-top: 1px solid var(--qct-color-line-strong, #bfaea7);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+.qct-svc-answers dl > div {
+  border-bottom: 1px solid var(--qct-color-line, #ded2cc);
+  min-width: 0;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1rem, 3vw, 2rem) clamp(1.5rem, 3.5vw, 2.5rem) 0;
+}
+.qct-svc-answers dl > div:nth-child(odd) { border-right: 1px solid var(--qct-color-line, #ded2cc); }
+.qct-svc-answers dl > div:nth-child(even) { padding-left: clamp(1rem, 3vw, 2rem); }
+.qct-svc-answers dt { color: var(--qct-color-ink, #211c1d); font-size: 1.08rem; font-weight: 750; line-height: 1.35; }
+.qct-svc-answers dd { color: var(--qct-color-muted, #625457); font-size: 1rem; line-height: 1.7; margin: 0.75rem 0 0; }
+.qct-svc-related { background: var(--qct-color-surface, #efe6e1); }
+.qct-svc-related__grid { border-top: 1px solid var(--qct-color-line-strong, #bfaea7); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.qct-svc-related__grid article { border-bottom: 1px solid var(--qct-color-line, #ded2cc); min-width: 0; padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2.25rem) 0; }
+.qct-svc-related__grid article:not(:last-child) { border-right: 1px solid var(--qct-color-line, #ded2cc); }
+.qct-svc-related__grid h3 { font-size: 1.1rem; line-height: 1.35; margin: 0 0 0.65rem; }
+.qct-svc-related__grid a,
+.qct-svc-card h3 a { color: var(--qct-color-accent-strong, #b9473e); text-underline-offset: 0.2em; }
+.qct-svc-related__grid p { color: var(--qct-color-muted, #625457); font-size: 1rem; line-height: 1.65; }
 .qct-svc-brand {
   background: var(--qct-color-surface, #efe6e1);
   border-bottom: 1px solid var(--qct-color-line, #d9cbc5);
@@ -424,22 +504,73 @@ const contactUrl = '/iletisim/';
 @media (max-width: 560px) {
   .qct-svc-timeline { grid-template-columns: minmax(0, 1fr); }
   .qct-svc-brand__content { grid-template-columns: minmax(0, 1fr); }
+  .qct-svc-answers dl,
+  .qct-svc-related__grid { grid-template-columns: minmax(0, 1fr); }
+  .qct-svc-answers dl > div,
+  .qct-svc-answers dl > div:nth-child(even),
+  .qct-svc-related__grid article { border-right: 0; padding-inline: 0; }
 }
 .qct-svc-faq {
+  border-top: 1px solid var(--qct-color-line-strong, #bfaea7);
   max-width: 780px;
 }
 .qct-svc-faq details {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--qct-color-line, #ded2cc);
+  padding: 0;
 }
-.qct-svc-faq summary {
+.qct-svc-faq details summary {
+  align-items: center;
+  color: var(--qct-color-ink, #211c1d) !important;
   cursor: pointer;
-  font-weight: 600;
+  display: flex;
+  font-size: 1.05rem;
+  font-weight: 700;
+  gap: 1rem;
+  justify-content: space-between;
+  line-height: 1.4;
+  list-style: none;
+  min-height: 64px;
+  padding: 1rem 0;
+}
+.qct-svc-faq details summary::-webkit-details-marker {
+  display: none;
+}
+.qct-svc-faq details summary::after {
+  align-items: center;
+  border: 1px solid var(--qct-color-line-strong, #bfaea7);
+  color: var(--qct-color-accent-strong, #b9473e);
+  content: '+';
+  display: inline-flex;
+  flex: 0 0 28px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  height: 28px;
+  justify-content: center;
+  line-height: 1;
+  width: 28px;
+}
+.qct-svc-faq details[open] summary::after {
+  content: '−';
+}
+.qct-svc-faq details summary:focus-visible {
+  outline: 2px solid var(--qct-color-accent-strong, #b9473e);
+  outline-offset: 4px;
 }
 .qct-svc-faq p {
-  margin-top: 0.5rem;
   font-size: 1rem;
   line-height: 1.65;
+  margin: 0;
+  max-width: 68ch;
+  padding: 0 3.5rem 1.25rem 0;
+}
+@media (max-width: 560px) {
+  .qct-svc-faq details summary { font-size: 1rem; gap: 0.75rem; min-height: 60px; }
+  .qct-svc-faq p { padding-right: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qct-svc-faq details,
+  .qct-svc-faq details summary,
+  .qct-svc-faq details summary::after { transition: none; }
 }
 .qct-svc-final {
   border-top: 1px solid rgba(255, 255, 255, 0.08);

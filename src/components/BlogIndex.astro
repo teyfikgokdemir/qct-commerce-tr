@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { articles } from '../data/blog';
+import { getPageSeo } from '../i18n/seo';
+const seo = getPageSeo('blog');
+const formatDate = (value: string) => new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${value}T12:00:00+03:00`));
+---
+<BaseLayout title={seo.title} description={seo.description} lang="tr" pageType="CollectionPage" breadcrumbLabel="Blog">
+  <Header slot="header" lang="tr" />
+  <section class="qct-blog-hero">
+    <div class="container">
+      <nav class="qct-breadcrumb" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a><span aria-hidden="true">/</span><span>Blog</span></nav>
+      <p class="qct-section__eyebrow">BİLGİ MERKEZİ</p>
+      <h1>E-ticaret ve dijital büyüme rehberleri</h1>
+      <p>Türkiye’de dijital satış altyapısını planlayan işletmeler için platform, müşteri yolculuğu, ölçüm ve operasyon kararlarını açık biçimde ele alan içerikler.</p>
+    </div>
+  </section>
+  <section class="qct-blog-list" aria-labelledby="qct-blog-list-title">
+    <div class="container">
+      <h2 id="qct-blog-list-title" class="screen-reader-text">Makaleler</h2>
+      <div class="qct-blog-list__grid">
+        {articles.map((article, index) => (
+          <article>
+            <span class="qct-blog-list__number">{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <p class="qct-blog-list__meta"><time datetime={article.modified}>Güncellendi: {formatDate(article.modified)}</time></p>
+              <h3><a href={`/blog/${article.slug}/`}>{article.title}</a></h3>
+              <p>{article.excerpt}</p>
+              <a class="qct-blog-list__link" href={`/blog/${article.slug}/`}>Rehberi okuyun <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <Footer slot="footer" lang="tr" />
+</BaseLayout>
+
+<style>
+  .qct-blog-hero { background: var(--qct-color-background); border-bottom: 1px solid var(--qct-color-line); min-height: 0; padding: calc(var(--qct-hero-clearance) + clamp(28px, 3.5vw, 48px)) 0 clamp(42px, 5vw, 64px); }
+  .qct-blog-hero h1 { color: var(--qct-color-ink); font-family: var(--qct-font-sans); font-size: clamp(2.75rem, 5vw, 4.75rem); line-height: 1.04; letter-spacing: -0.05em; margin: 0 0 1.4rem; max-width: 16ch; text-wrap: balance; }
+  .qct-blog-hero > .container > p:last-child { color: var(--qct-color-muted); font-size: clamp(1.05rem, 1.5vw, 1.22rem); line-height: 1.7; max-width: 760px; }
+  .qct-blog-list { background: var(--qct-color-background); padding: clamp(38px, 5vw, 64px) 0 var(--qct-section-space); }
+  .qct-blog-list__grid { border-top: 1px solid var(--qct-color-line-strong); }
+  .qct-blog-list article { border-bottom: 1px solid var(--qct-color-line); display: grid; gap: clamp(20px, 4vw, 56px); grid-template-columns: 54px minmax(0, 1fr); padding-block: clamp(30px, 5vw, 52px); }
+  .qct-blog-list__number { color: var(--qct-color-accent-strong); font-size: 0.8rem; font-weight: 800; padding-top: 0.35rem; }
+  .qct-blog-list__meta { color: var(--qct-color-muted); font-size: 0.88rem; margin: 0 0 0.75rem; }
+  .qct-blog-list h3 { font-family: var(--qct-font-sans); font-size: clamp(1.45rem, 3vw, 2.35rem); line-height: 1.2; margin: 0 0 1rem; max-width: 28ch; }
+  .qct-blog-list h3 a { color: var(--qct-color-ink); text-decoration: none; }
+  .qct-blog-list article > div > p:not(.qct-blog-list__meta) { color: var(--qct-color-muted); line-height: 1.7; max-width: 720px; }
+  .qct-blog-list__link { color: var(--qct-color-accent-strong); display: inline-block; font-weight: 700; margin-top: 1rem; text-underline-offset: 0.25em; }
+  .qct-blog-list a:focus-visible { outline: 2px solid var(--qct-color-accent-strong); outline-offset: 4px; }
+  @media (max-width: 560px) {
+    .qct-blog-hero { padding-top: calc(var(--qct-hero-clearance) + 18px); }
+    .qct-blog-list { padding-top: 32px; }
+    .qct-blog-list article { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

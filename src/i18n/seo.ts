@@ -9,7 +9,11 @@ export type SeoPage =
   | 'whatsapp-commerce'
   | 'meta-ads'
   | 'careers'
-  | 'contact';
+  | 'contact'
+  | 'blog'
+  | 'blog-shopify'
+  | 'blog-mistakes'
+  | 'blog-marketplace';
 
 interface SeoEntry { title: string; description: string; }
 
@@ -57,6 +61,22 @@ const seo: Record<SeoPage, SeoEntry> = {
   contact: {
     title: 'İletişim — QCT Commerce Türkiye',
     description: 'E-ticaret veya dijital büyüme projenizi anlatmak için QCT Commerce’a e-posta, telefon ya da WhatsApp üzerinden ulaşın.',
+  },
+  blog: {
+    title: 'E-ticaret ve Dijital Büyüme Blogu',
+    description: 'Türkiye’de e-ticaret altyapısı, Shopify, pazaryeri stratejisi, dönüşüm ve dijital satış sistemleri için uygulamaya dönük rehberler.',
+  },
+  'blog-shopify': {
+    title: 'Shopify Mağaza Kurma Rehberi — Türkiye',
+    description: 'Türkiye’de Shopify mağazası kurmadan önce ürün yapısı, ödeme, kargo, mobil deneyim, ölçüm ve operasyon için planlanması gereken adımlar.',
+  },
+  'blog-mistakes': {
+    title: 'E-ticaret Sitesinde Sık Yapılan Hatalar',
+    description: 'Ürün sayfası, mobil deneyim, ödeme akışı, ölçüm ve içerik yapısında e-ticaret satışını zorlaştıran temel hataları ve çözüm yollarını inceleyin.',
+  },
+  'blog-marketplace': {
+    title: 'Pazaryerinden Kendi E-ticaret Sitenize Geçiş',
+    description: 'Pazaryeri satışlarını kesmeden kendi e-ticaret kanalınızı kurmak için veri, operasyon, maliyet, marka deneyimi ve geçiş planını değerlendirin.',
   },
 };
 

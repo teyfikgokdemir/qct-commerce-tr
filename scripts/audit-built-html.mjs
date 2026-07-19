@@ -76,6 +76,12 @@ let internalLinks = 0;
 let jsonLdBlocks = 0;
 const renderedTitles = new Map();
 const renderedDescriptions = new Map();
+const indexableCanonicals = new Set();
+const incomingLinks = new Map();
+const servicePaths = new Set([
+  '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/',
+  '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/',
+]);
 
 function registerUnique(map, value, file, label) {
   if (!value) return;
@@ -97,6 +103,7 @@ for (const file of htmlFiles) {
   const robots = robotsTags.map((tag) => attribute(tag, 'content') ?? '').join(',').toLowerCase();
   const isNoindex = robots.includes('noindex');
   const expectedCanonical = expectedUrl(file);
+  const expectedPath = new URL(expectedCanonical).pathname;
   const expectedLang = 'tr';
 
   const htmlLang = html.match(/<html\s+[^>]*lang=["']([^"']+)["']/i)?.[1] ?? null;
@@ -109,6 +116,11 @@ for (const file of htmlFiles) {
     errors.push(`${file}: expected one non-empty title, found ${titleTags.length}.`);
   } else {
     registerUnique(renderedTitles, titleTags[0].replace(/<\/?title>/gi, '').trim(), file, 'title');
+  }
+
+  const h1Tags = html.match(/<h1\b[^>]*>/gi) ?? [];
+  if (h1Tags.length !== 1) {
+    errors.push(`${file}: expected exactly one H1, found ${h1Tags.length}.`);
   }
 
   const description = metaContent(html, 'name', 'description');
@@ -169,6 +181,7 @@ for (const file of htmlFiles) {
     }
   } else {
     indexable += 1;
+    indexableCanonicals.add(expectedCanonical);
     if (alternateTags.length !== 0) {
       errors.push(`${file}: single-language pages must not emit hreflang alternates.`);
     }
@@ -196,6 +209,35 @@ for (const file of htmlFiles) {
     if (!nodes.some((node) => pageSchemaTypes.has(node['@type']))) {
       errors.push(`${file}: JSON-LD is missing a WebPage-compatible node.`);
     }
+
+    const articleNodes = nodes.filter((node) => node['@type'] === 'Article');
+    const isArticlePage = expectedPath.startsWith('/blog/') && expectedPath !== '/blog/';
+    if (isArticlePage && articleNodes.length !== 1) {
+      errors.push(`${file}: blog article must emit exactly one Article node.`);
+    }
+    if (!isArticlePage && articleNodes.length) {
+      errors.push(`${file}: Article schema is only allowed on real blog article pages.`);
+    }
+
+    const serviceNodes = nodes.filter((node) => node['@type'] === 'Service');
+    if (servicePaths.has(expectedPath) && serviceNodes.length !== 1) {
+      errors.push(`${file}: service page must emit exactly one Service node.`);
+    }
+    if (!servicePaths.has(expectedPath) && serviceNodes.length) {
+      errors.push(`${file}: Service schema is only allowed on service detail pages.`);
+    }
+
+    const faqNodes = nodes.filter((node) => node['@type'] === 'FAQPage');
+    for (const faqNode of faqNodes) {
+      if (!html.includes('<details')) {
+        errors.push(`${file}: FAQPage schema requires visible FAQ details.`);
+      }
+      for (const question of faqNode.mainEntity ?? []) {
+        if (question.name && !html.includes(question.name)) {
+          errors.push(`${file}: FAQ schema question is not visible: ${question.name}`);
+        }
+      }
+    }
   }
 
   const anchorTags = tags(html, 'a');
@@ -215,7 +257,30 @@ for (const file of htmlFiles) {
     internalLinks += 1;
     if (!localPageExists(url.pathname)) {
       errors.push(`${file}: internal link does not resolve to a generated page: ${href}.`);
+    } else {
+      incomingLinks.set(url.pathname, (incomingLinks.get(url.pathname) ?? 0) + 1);
     }
+  }
+}
+
+for (const canonical of indexableCanonicals) {
+  const pathname = new URL(canonical).pathname;
+  if (pathname !== '/' && !incomingLinks.get(pathname)) {
+    errors.push(`${pathname}: indexable page has no incoming internal link.`);
+  }
+}
+
+const sitemapFile = path.join(DIST, 'sitemap-0.xml');
+if (!fs.existsSync(sitemapFile)) {
+  errors.push('dist/sitemap-0.xml is missing.');
+} else {
+  const sitemap = fs.readFileSync(sitemapFile, 'utf8');
+  const sitemapUrls = new Set([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]));
+  for (const canonical of indexableCanonicals) {
+    if (!sitemapUrls.has(canonical)) errors.push(`Sitemap is missing ${canonical}.`);
+  }
+  for (const url of sitemapUrls) {
+    if (!indexableCanonicals.has(url)) errors.push(`Sitemap contains a non-indexable or non-canonical URL: ${url}.`);
   }
 }
 

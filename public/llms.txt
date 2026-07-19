@@ -1,29 +1,45 @@
 # QCT Commerce
 
-> QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme ortağıdır.
+## Marka özeti
 
-QCT Commerce; KOBİ, üretici, perakendeci ve e-ticaret markalarının web sitesi, mağaza, reklam, arama görünürlüğü, WhatsApp satış ve otomasyon altyapılarını ortak bir satış hedefi etrafında düzenler.
+QCT Commerce, Türkiye’de e-ticaret ve dijital büyüme ortağıdır. İşletmelerin web sitesi, e-ticaret mağazası, arama görünürlüğü, reklam, WhatsApp satış ve operasyon otomasyonu katmanlarını ortak bir satış hedefi etrafında düzenler.
 
-## Hizmetler
+QCT Commerce, QCT Studio’nun Türkiye pazarına odaklanan e-ticaret ve dijital büyüme markasıdır. QCT Studio: https://qctstudio.com
 
-- [E-ticaret altyapısı](https://qctcommerce.com/e-ticaret/): Ürün keşfi, mobil alışveriş, ödeme ve mağaza yönetimi.
-- [Web tasarım](https://qctcommerce.com/web-tasarim/): Hızlı, erişilebilir ve dönüşüm odaklı web siteleri.
-- [WhatsApp satış sistemleri](https://qctcommerce.com/whatsapp-satis/): Reklam ve ürün ilgisini bağlamlı satış görüşmelerine taşıyan akışlar.
-- [SEO, GEO, AEO ve AIO](https://qctcommerce.com/seo-geo/): Google ve yapay zekâ destekli sistemler için teknik ve içerik altyapısı.
-- [Meta reklamları](https://qctcommerce.com/meta-reklamlari/): Reklam, landing page, CTA ve dönüşüm ölçümünün birlikte planlanması.
-- [Yapay zekâ otomasyonları](https://qctcommerce.com/yapay-zeka-otomasyonlari/): Tekrarlayan operasyon adımlarını azaltan insan kontrollü otomasyonlar.
+## Doğrulanmış hizmetler
 
-## Kurumsal
+- E-ticaret altyapısı: https://qctcommerce.com/e-ticaret/
+- Web tasarım: https://qctcommerce.com/web-tasarim/
+- WhatsApp satış sistemleri: https://qctcommerce.com/whatsapp-satis/
+- SEO, GEO, AEO ve AIO: https://qctcommerce.com/seo-geo/
+- Meta reklamları ve dönüşüm odaklı landing page: https://qctcommerce.com/meta-reklamlari/
+- Yapay zekâ otomasyonları: https://qctcommerce.com/yapay-zeka-otomasyonlari/
 
-- [Hakkımızda](https://qctcommerce.com/hakkimizda/)
-- [Hizmetler](https://qctcommerce.com/hizmetler/)
-- [Kariyer](https://qctcommerce.com/kariyer/)
-- [İletişim](https://qctcommerce.com/iletisim/)
+## Pazar ve dil
+
+- Hizmet alanı: Türkiye
+- Site dili: Türkçe
+- Canonical alan adı: https://qctcommerce.com
+
+## Önemli canonical sayfalar
+
+- Ana sayfa: https://qctcommerce.com/
+- Hakkımızda: https://qctcommerce.com/hakkimizda/
+- Hizmetler: https://qctcommerce.com/hizmetler/
+- Blog: https://qctcommerce.com/blog/
+- İletişim: https://qctcommerce.com/iletisim/
+- Gizlilik politikası: https://qctcommerce.com/gizlilik-politikasi/
+- Kullanım koşulları: https://qctcommerce.com/kullanim-kosullari/
+- Çerez politikası: https://qctcommerce.com/cerez-politikasi/
+
+## E-ticaret rehberleri
+
+- Shopify mağaza kurma rehberi: https://qctcommerce.com/blog/shopify-magaza-kurma-rehberi/
+- E-ticarette yapılan hatalar: https://qctcommerce.com/blog/e-ticarette-yapilan-hatalar/
+- Pazaryerinden kendi sitenize geçiş: https://qctcommerce.com/blog/pazaryerinden-kendi-sitene-gecis/
 
 ## Doğrulanmış iletişim
 
 - E-posta: info@qctcommerce.com
 - Telefon ve WhatsApp: +90 543 385 66 56
 - Pazar: Türkiye
-
-Site dili Türkçedir.

@@ -1,0 +1,73 @@
+# Eski Shopify dijital hizmet ürünleri
+/products/baslangic-paketi /e-ticaret/ 301
+/products/lansman-paketi /e-ticaret/ 301
+/products/shopify-magaza-kurulumu /e-ticaret/ 301
+/products/shopify-magaza-tasima /e-ticaret/ 301
+/products/pazaryeri-entegrasyonu /e-ticaret/ 301
+
+# Eski Shopify kurumsal, iletişim ve dijital hizmet sayfaları
+/pages/iletisim /iletisim/ 301
+/pages/hakkimizda /hakkimizda/ 301
+/pages/about /hakkimizda/ 301
+/pages/kurumsal /hakkimizda/ 301
+/pages/teklif /iletisim/ 301
+/pages/teklif-al /iletisim/ 301
+/pages/kvkk /gizlilik-politikasi/ 301
+/pages/cerez-politikasi /cerez-politikasi/ 301
+/pages/data-sharing-opt-out /gizlilik-politikasi/ 301
+/pages/e-ticaret /e-ticaret/ 301
+/pages/wordpress-woocommerce-servisleri /e-ticaret/ 301
+/pages/aylik-e-ticaret-buyume-yonetimi /e-ticaret/ 301
+/pages/llms-txt /llms.txt 301
+
+# Eski Shopify koleksiyonları
+/collections/frontpage /hizmetler/ 301
+/collections/hizmetler /hizmetler/ 301
+/collections/all /hizmetler/ 301
+
+# Shopify politika sayfalarındaki güvenli eşleşmeler
+/policies/privacy-policy /gizlilik-politikasi/ 301
+/policies/terms-of-service /kullanim-kosullari/ 301
+/policies/contact-information /iletisim/ 301
+/policies/legal-notice /kullanim-kosullari/ 301
+
+# Eski agentic keşif adresleri
+/agents.md /llms.txt 301
+/pages/agents-md /llms.txt 301
+
+# Korunan Shopify blog içerikleri
+/blogs/blog /blog/ 301
+/blogs/blog/shopify-ile-magaza-kurma-2026-qct-commerce /blog/shopify-magaza-kurma-rehberi/ 301
+/blogs/blog/e-ticarette-en-cok-yapilan-hatalar /blog/e-ticarette-yapilan-hatalar/ 301
+/blogs/blog/trendyoldan-kendi-sitene-gecmenin-5-nedeni /blog/pazaryerinden-kendi-sitene-gecis/ 301
+
+# Kaldırılan İngilizce yapının güvenli Türkçe karşılıkları
+/en / 301
+/en/products/baslangic-paketi /e-ticaret/ 301
+/en/products/lansman-paketi /e-ticaret/ 301
+/en/products/shopify-magaza-kurulumu /e-ticaret/ 301
+/en/products/shopify-magaza-tasima /e-ticaret/ 301
+/en/products/pazaryeri-entegrasyonu /e-ticaret/ 301
+/en/pages/contact /iletisim/ 301
+/en/pages/hakkimizda /hakkimizda/ 301
+/en/pages/about /hakkimizda/ 301
+/en/pages/kurumsal /hakkimizda/ 301
+/en/pages/get-a-quote /iletisim/ 301
+/en/pages/gdpr /gizlilik-politikasi/ 301
+/en/pages/cookie-policy /cerez-politikasi/ 301
+/en/pages/data-sharing-opt-out /gizlilik-politikasi/ 301
+/en/pages/e-ticaret /e-ticaret/ 301
+/en/pages/wordpress-woocommerce-servisleri /e-ticaret/ 301
+/en/pages/aylik-e-ticaret-buyume-yonetimi /e-ticaret/ 301
+/en/pages/llms-txt /llms.txt 301
+/en/collections/frontpage /hizmetler/ 301
+/en/collections/services /hizmetler/ 301
+/en/policies/privacy-policy /gizlilik-politikasi/ 301
+/en/policies/terms-of-service /kullanim-kosullari/ 301
+/en/policies/contact-information /iletisim/ 301
+/en/policies/legal-notice /kullanim-kosullari/ 301
+/en/pages/agents-md /llms.txt 301
+/en/blogs/blog /blog/ 301
+/en/blogs/blog/how-to-launch-shopify-store-14-days-2026 /blog/shopify-magaza-kurma-rehberi/ 301
+/en/blogs/blog/ecommerce-mistakes-shopify-stores /blog/e-ticarette-yapilan-hatalar/ 301
+/en/blogs/blog/5-reasons-to-leave-amazon-build-your-own-store /blog/pazaryerinden-kendi-sitene-gecis/ 301

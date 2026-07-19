@@ -1,0 +1,6 @@
+---
+import BlogArticle from '../../../components/BlogArticle.astro';
+import { getArticle } from '../../../data/blog';
+const article = getArticle('e-ticarette-yapilan-hatalar');
+---
+<BlogArticle article={article} />
