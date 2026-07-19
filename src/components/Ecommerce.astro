@@ -1,15 +1,304 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'; import Header from './Header.astro'; import Footer from './Footer.astro'; import ServicePage from './service/ServicePage.astro'; import { getPageSeo } from '../i18n/seo';
-interface Props { lang: string; } const { lang } = Astro.props; const seo = getPageSeo('e-commerce');
-const serviceDescription = 'Ürün keşfinden ödeme ve sipariş yönetimine kadar müşterinin satın almasını kolaylaştıran e-ticaret altyapıları kuruyoruz.';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ServicePage from './service/ServicePage.astro';
+import { getPageSeo } from '../i18n/seo';
+
+interface Props { lang: string; }
+
+const { lang } = Astro.props;
+const seo = getPageSeo('e-commerce');
+const serviceDescription = 'Üreticiler, toptancılar, ihracatçılar, perakende markaları ve büyüyen KOBİ’ler için ürün keşfinden sipariş yönetimine kadar çalışan, arama görünürlüğü ve dönüşüm performansı birlikte planlanmış e-ticaret sistemleri kuruyoruz.';
 ---
-<BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="E-ticaret altyapısı" service={{name:'E-ticaret altyapısı',description:serviceDescription}}>
-<Header slot="header" lang={lang}/><ServicePage lang={lang} eyebrow="E-ticaret altyapısı" title="Ziyaretçiyi müşteriye dönüştüren e-ticaret deneyimleri." lead={serviceDescription} ctaPrimary="Mağazanızın önceliğini konuşalım" ctaSecondary="Tüm hizmetler"
-problem={{eyebrow:'SATIŞTAKİ SORUN',title:'Satış kaybı çoğu zaman ödeme sayfasından önce başlar.',intro:['Belirsiz ürün bilgisi, zor kullanılan mobil ekranlar ve güven vermeyen adımlar müşterinin kararını geciktirir.'],items:[{title:'Ürün keşfi zorlaşır',text:'Kategori, filtre ve ürün bilgileri müşterinin karşılaştırma yapmasını desteklemiyorsa ilgi siparişe dönüşmez.'},{title:'Mobil alışveriş kesilir',text:'Küçük ekranda uzun ve belirsiz akışlar sepet terkini artırır.'},{title:'Operasyon yavaşlar',text:'Ürün, stok ve içerik güncellemesi zor olduğunda mağaza ekibin işini büyütür.'}]}}
-benefits={{eyebrow:'YAKLAŞIM',title:'Müşterinin kararını kolaylaştıran, ekibin yönetebildiği mağaza.',lead:'Teknoloji seçimini ürün yapınız, satış modeliniz ve operasyon ihtiyacınız belirler.',items:[{title:'Açık ürün mimarisi',text:'Kategori, filtre, ürün sayfası ve iç bağlantılar satın alma niyetine göre düzenlenir.'},{title:'Mobil öncelikli deneyim',text:'Ürün inceleme, sepete ekleme ve ödeme adımları telefonda rahat kullanılır.'},{title:'Güvenli satın alma akışı',text:'Teslimat, ödeme ve sonraki adımlar müşteriye açık biçimde gösterilir.'}]}}
-included={{eyebrow:'KAPSAM',title:'E-ticaret projesinde neler var?',lead:'Kapsam iş modeline göre netleştirilir.',items:[{title:'Mağaza mimarisi',text:'Kategori ve koleksiyon yapısı.'},{title:'Ürün sayfaları',text:'Karar vermeyi destekleyen içerik ve arayüz.'},{title:'Sepet ve ödeme',text:'Açık, güvenilir satın alma akışı.'},{title:'Mobil deneyim',text:'Farklı ekranlarda tutarlı kullanım.'},{title:'Yönetim altyapısı',text:'Ürün ve içerik güncelleme düzeni.'},{title:'Ölçüm temeli',text:'Kritik e-ticaret eylemlerinin izlenmesi.'}]}}
-process={{eyebrow:'SÜREÇ',title:'İş modelinden yayına.',steps:[{number:'01',title:'Analiz',text:'Ürünleri, satış modelini ve mevcut sorunları inceleriz.'},{number:'02',title:'Müşteri yolculuğu',text:'Keşif, ürün, sepet ve ödeme adımlarını planlarız.'},{number:'03',title:'Tasarım ve geliştirme',text:'Hızlı ve erişilebilir mağazayı kurarız.'},{number:'04',title:'Test ve yayın',text:'Kritik senaryoları test edip kontrollü geçiş yaparız.'}]}}
-answers={{title:'E-ticaret altyapısı hakkında kısa cevaplar',lead:'E-ticaret altyapısı, müşterinin ürün keşfinden ödemeye ve işletmenin sipariş yönetimine kadar bütün satış akışını kapsar.',items:[{question:'E-ticaret altyapısı nedir?',answer:'Ürün, kategori, sepet, ödeme, teslimat, sipariş ve içerik yönetimini bir araya getiren teknik ve operasyonel satış sistemidir.'},{question:'Kimler için uygundur?',answer:'Doğrudan online satış yapmak veya pazaryeri satışlarını kendi mağazasıyla tamamlamak isteyen üretici, perakendeci ve markalar için uygundur.'},{question:'Ne zaman yeniden kurulmalıdır?',answer:'Mobil alışveriş zorlaştığında, ürün yönetimi yavaşladığında, entegrasyonlar çalışmadığında veya mevcut yapı büyümeyi sınırladığında yeniden kurulum değerlendirilebilir.'},{question:'Nasıl ilerler?',answer:'İş modeli ve ürün verisi incelenir; müşteri yolculuğu, platform, entegrasyon, içerik, test ve yayın kapsamı birlikte belirlenir.'}]}}
-relatedLinks={[{title:'Shopify mağaza kurma rehberi',text:'Platform, ödeme, kargo ve yayın hazırlığını adım adım inceleyin.',href:'/blog/shopify-magaza-kurma-rehberi/'},{title:'E-ticarette yapılan hatalar',text:'Ürün, mobil ve ödeme akışındaki temel riskleri görün.',href:'/blog/e-ticarette-yapilan-hatalar/'},{title:'Pazaryerinden kendi sitenize geçiş',text:'İkinci satış kanalını kontrollü biçimde planlayın.',href:'/blog/pazaryerinden-kendi-sitene-gecis/'}]}
-faq={{eyebrow:'SIK SORULANLAR',title:'E-ticaret altyapısı hakkında',items:[{q:'Mevcut mağazamızı geliştirebilir misiniz?',a:'Evet. Mevcut altyapıyı, müşteri yolculuğunu ve yönetim ihtiyaçlarını inceleyerek iyileştirme veya yeniden kurulum seçeneklerini belirleriz.'},{q:'Hangi e-ticaret altyapısını kullanıyorsunuz?',a:'Platform kararını ürün sayısı, entegrasyonlar, ekip kapasitesi ve büyüme planına göre veririz.'},{q:'Mobil deneyim projeye dahil mi?',a:'Evet. Mağaza akışı baştan itibaren mobil kullanım önceliğiyle tasarlanır.'}]}}
-final={{title:'E-ticaret altyapınızı satış hedefinizle aynı hizaya getirin.',text:'Mevcut mağazanızı veya yeni projenizi birlikte değerlendirelim.',cta:'Mağazanızın önceliğini belirleyelim',ctaSecondary:'E-posta gönderin'}} /> <Footer slot="footer" lang={lang}/></BaseLayout>
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  lang={lang}
+  breadcrumbLabel="B2B e-ticaret çözümleri"
+  service={{ name: 'B2B e-ticaret çözümleri', description: serviceDescription }}
+>
+  <Header slot="header" lang={lang} />
+  <ServicePage
+    lang={lang}
+    eyebrow="B2B E-TİCARET ÇÖZÜMLERİ"
+    title="E-ticaret altyapınızı gerçek satış modelinize göre kurun."
+    lead={serviceDescription}
+    ctaPrimary="E-ticaret yapımızı değerlendirelim"
+    ctaSecondary="Tüm hizmetler"
+    problem={{
+      eyebrow: 'KİMLER İÇİN UYGUN?',
+      title: 'Standart bir online mağazadan daha fazlasına ihtiyaç duyan işletmeler için.',
+      intro: [
+        'E-ticaret her işletmede aynı şekilde çalışmaz. Bir üreticinin teknik ürün bilgisi, bir toptancının koli ve minimum sipariş kuralları, bir ihracatçının çok dilli talep akışı veya bir perakende markasının kampanya temposu farklıdır. Bu nedenle sistemi hazır bir şablona değil, işletmenin satış ve operasyon gerçeklerine göre planlarız.',
+      ],
+      items: [
+        {
+          title: 'Üreticiler',
+          text: 'Ürünlerini son kullanıcıya, bayilere veya kurumsal alıcılara doğrudan sunmak; teknik özellikleri, varyasyonları, sertifikaları ve teklif seçeneklerini düzenli bir yapıda göstermek isteyen üreticiler için.',
+        },
+        {
+          title: 'Toptancılar ve distribütörler',
+          text: 'Telefon, WhatsApp, e-posta ve Excel üzerinden ilerleyen siparişleri daha düzenli hale getirmek; koli bazlı satış, minimum sipariş, müşteri grubu ve özel fiyatlandırma senaryolarını yönetmek isteyen işletmeler için.',
+        },
+        {
+          title: 'İhracatçılar',
+          text: 'Farklı ülkelerden gelen talepleri çok dilli ürün sayfaları, ülkeye uygun içerik, teklif formları ve güven unsurlarıyla daha profesyonel karşılamak isteyen ihracatçılar için.',
+        },
+        {
+          title: 'Perakende markaları',
+          text: 'Pazaryeri bağımlılığını azaltmak, müşteri verisini kendi kanalında toplamak, kampanya ve ürün deneyimini marka kontrolünde yönetmek isteyen perakende markaları için.',
+        },
+        {
+          title: 'Büyüyen KOBİ’ler',
+          text: 'Mevcut mağazası operasyonu yavaşlatan, mobil dönüşümü zayıf kalan veya yeni ürün ve pazarlara uyum sağlayamayan büyüyen işletmeler için.',
+        },
+      ],
+    }}
+    benefits={{
+      eyebrow: 'ÇÖZDÜĞÜ İŞ PROBLEMLERİ',
+      title: 'Satış kaybı çoğu zaman ödeme ekranından çok önce başlar.',
+      lead: 'Ziyaretçi ürünü bulamıyor, farkı anlayamıyor veya sonraki adımı güvenli görmüyorsa teknik olarak çalışan bir mağaza ticari olarak çalışmıyor demektir.',
+      items: [
+        {
+          title: 'Ürün yapısı müşterinin arama biçimiyle uyuşmaz',
+          text: 'İç ekip ürünleri stok kodu veya üretim mantığıyla sınıflandırırken müşteri kullanım alanı, ölçü, malzeme, sektör veya ihtiyaca göre arar. Kategori, filtre ve iç bağlantılar bu farkı kapatmadığında nitelikli trafik ürüne ulaşamaz.',
+        },
+        {
+          title: 'Ürün sayfaları karar vermek için yetersiz kalır',
+          text: 'Eksik teknik bilgi, belirsiz teslimat, zayıf görseller ve birbirinden ayrışmayan açıklamalar müşteriyi satış ekibine gereksiz soru sormaya veya rakibe gitmeye iter.',
+        },
+        {
+          title: 'B2B sipariş kuralları sisteme yansımaz',
+          text: 'Minimum adet, koli çarpanı, müşteri grubuna özel fiyat, teklif talebi, vadeli çalışma veya bayi girişi gibi gerçek ticaret koşulları standart perakende akışına sıkıştırıldığında ekip tekrar manuel sürece döner.',
+        },
+        {
+          title: 'Mobil alışveriş ve ödeme akışı kesilir',
+          text: 'Küçük ekranda zor kullanılan filtreler, uzun formlar, sürpriz maliyetler ve belirsiz teslimat bilgileri satın alma niyetini sepet terkine dönüştürür.',
+        },
+        {
+          title: 'Mağaza büyüdükçe operasyon ağırlaşır',
+          text: 'Ürün, stok, fiyat, içerik ve sipariş bilgileri farklı sistemlerde elle güncelleniyorsa yeni kanal veya pazar eklemek büyüme değil yeni hata ve iş yükü üretir.',
+        },
+        {
+          title: 'Trafik var, fakat neyin satış getirdiği bilinmez',
+          text: 'Doğru e-ticaret ölçümü kurulmadığında ekip yalnızca ziyaret ve sipariş toplamını görür; ürün görüntüleme, filtre kullanımı, sepete ekleme, ödeme kaybı ve kanal kalitesi arasındaki ilişkiyi göremez.',
+        },
+      ],
+    }}
+    included={{
+      eyebrow: 'QCT COMMERCE YAKLAŞIMI',
+      title: 'Mağazayı tasarım projesi değil, satış ve operasyon sistemi olarak ele alırız.',
+      lead: 'Platform seçimini moda veya alışkanlık değil; ürün yapısı, müşteri tipi, ekip kapasitesi, entegrasyon ihtiyacı ve büyüme hedefi belirler. SEO, GEO, AEO, AIO ve dönüşüm gereksinimleri sonradan eklenen ayrı işler değil, bilgi mimarisinin başlangıç koşullarıdır.',
+      items: [
+        {
+          title: 'Ticari model ve kanal mimarisi',
+          text: 'B2B, B2C, bayi, ihracat, pazaryeri ve doğrudan satış kanallarının hangi rolü üstleneceğini; mağazanın teklif, sipariş veya tekrar satın alma sürecindeki yerini netleştiririz.',
+        },
+        {
+          title: 'Ürün ve kategori bilgi mimarisi',
+          text: 'Kategorileri, koleksiyonları, filtreleri, varyasyonları ve karşılaştırma yollarını müşterinin arama niyeti ile işletmenin ürün yönetimi arasında denge kuracak biçimde tasarlarız.',
+        },
+        {
+          title: 'Dönüşüm odaklı ürün sayfaları',
+          text: 'Teknik özellik, kullanım alanı, teslimat, güven, sosyal kanıt, ilgili ürün, teklif veya satın alma aksiyonlarını karar sırasına göre düzenleriz.',
+        },
+        {
+          title: 'B2B sipariş ve teklif akışları',
+          text: 'Toplu sipariş, minimum miktar, paket veya koli kuralı, müşteri grubu, teklif talebi ve satış ekibine devir gibi ihtiyaçları kapsam içinde değerlendiririz.',
+        },
+        {
+          title: 'Mobil öncelikli alışveriş',
+          text: 'Ürün keşfi, filtreleme, varyasyon seçimi, sepete ekleme ve ödeme adımlarını telefonda hızlı, anlaşılır ve erişilebilir bir deneyim olarak kurarız.',
+        },
+        {
+          title: 'SEO, GEO, AEO ve AIO temeli',
+          text: 'Tarama ve indeksleme, yapılandırılmış veri, ürün varlıkları, kategori bağlamı, soru-cevap içeriği ve marka güven sinyallerini arama motorları ile yapay zekâ destekli yanıt sistemlerinin anlayabileceği şekilde düzenleriz.',
+          href: '/seo-geo/',
+        },
+        {
+          title: 'Ölçüm ve dönüşüm görünürlüğü',
+          text: 'Ürün görüntüleme, arama, filtre, sepete ekleme, ödeme başlangıcı, satın alma ve teklif talebi gibi kritik eylemlerin ölçüm temelini kurarız.',
+        },
+        {
+          title: 'Yönetilebilir ve geliştirilebilir yapı',
+          text: 'Ekibin ürün ve içerik güncelleyebildiği, yeni kategori ve pazar ekleyebildiği, teknik borcu kontrol altında tutulan bir sistem hedefleriz.',
+        },
+      ],
+    }}
+    process={{
+      eyebrow: '8 ADIMLI SÜREÇ',
+      title: 'İş modelinden kontrollü yayına kadar.',
+      steps: [
+        {
+          number: '01',
+          title: 'İş ve hedef analizi',
+          text: 'Gelir modelini, müşteri tiplerini, ürün gruplarını, satış kanallarını, operasyon darboğazlarını ve projenin ticari başarı ölçütlerini birlikte netleştiririz.',
+        },
+        {
+          number: '02',
+          title: 'Mevcut yapı ve veri incelemesi',
+          text: 'Varsa mağazayı, analitik verileri, ürün kataloğunu, içerik kalitesini, teknik yapıyı, arama görünürlüğünü ve entegrasyonları inceler; korunacak ve değişecek alanları ayırırız.',
+        },
+        {
+          number: '03',
+          title: 'Platform ve çözüm mimarisi',
+          text: 'Shopify veya uygun başka bir altyapıyı; ürün hacmi, B2B kuralları, ödeme, kargo, ERP, muhasebe, ekip kapasitesi ve toplam sahip olma maliyetine göre değerlendiririz.',
+        },
+        {
+          number: '04',
+          title: 'Müşteri yolculuğu ve bilgi mimarisi',
+          text: 'Arama ve reklamdan kategoriye, ürün sayfasından teklif veya ödemeye, sipariş sonrasından tekrar satın almaya kadar temel yolculukları planlarız.',
+        },
+        {
+          number: '05',
+          title: 'İçerik ve ürün sayfası sistemi',
+          text: 'Ürün başlığı, açıklama, teknik veri, görsel, SSS, teslimat ve güven içeriği için tekrar kullanılabilir bir yapı kurar; kritik sayfaların metin yönünü belirleriz.',
+        },
+        {
+          number: '06',
+          title: 'Tasarım ve geliştirme',
+          text: 'Marka kimliğine uygun, hızlı, erişilebilir ve mobil öncelikli arayüzü geliştirir; gerekli satış, teklif, iletişim ve yönetim akışlarını uygularız.',
+        },
+        {
+          number: '07',
+          title: 'Entegrasyon, ölçüm ve kalite testleri',
+          text: 'Ödeme, kargo ve kapsam dahilindeki sistem bağlantılarını; ürün senaryolarını, formları, yönlendirmeleri, yapılandırılmış veriyi, hız ve temel dönüşüm ölçümünü test ederiz.',
+        },
+        {
+          number: '08',
+          title: 'Yayın, devir ve iyileştirme planı',
+          text: 'Kontrollü yayına geçer, ekip kullanımını açıklarız ve ilk dönem verilerine göre ürün keşfi, içerik, dönüşüm ve operasyon tarafındaki öncelikli iyileştirmeleri belirleriz.',
+        },
+      ],
+    }}
+    answers={{
+      title: 'Temel yetkinlikler ve doğrudan iş etkileri',
+      lead: 'Her teknik kararın satışa, operasyon maliyetine veya yönetilebilirliğe karşılığı olmalıdır. Bu nedenle yalnızca hangi özelliğin kurulacağını değil, işletmede hangi sonucu destekleyeceğini de tanımlarız.',
+      items: [
+        {
+          question: 'Ürün keşfi ve filtreleme ne sağlar?',
+          answer: 'Müşterinin geniş katalog içinde doğru ürüne daha kısa sürede ulaşmasını, satış ekibinin temel yönlendirme yükünün azalmasını ve kategori sayfalarının organik görünürlük kazanmasını destekler.',
+        },
+        {
+          question: 'B2B fiyat ve sipariş kuralları ne sağlar?',
+          answer: 'Manuel fiyat gönderme, yanlış adet veya paket siparişi ve tekrar veri girişi gibi sorunları azaltır; uygun müşterinin daha az temasla sipariş oluşturmasına yardım eder.',
+        },
+        {
+          question: 'Çok dilli yapı ne sağlar?',
+          answer: 'İhracat pazarlarında ürünlerin yalnızca çevrilmesini değil, doğru terim, bağlam, teslimat ve talep aksiyonuyla sunulmasını sağlayarak güveni ve nitelikli talep ihtimalini artırır.',
+        },
+        {
+          question: 'Yapılandırılmış veri ve içerik sistemi ne sağlar?',
+          answer: 'Arama motorlarının ve yapay zekâ destekli sistemlerin ürün, marka, fiyat, stok, kategori ve soru-cevap ilişkilerini daha doğru anlamasına yardımcı olur.',
+        },
+        {
+          question: 'Dönüşüm ölçümü ne sağlar?',
+          answer: 'Hangi kanalın yalnızca trafik değil ürün ilgisi, sepete ekleme, teklif ve satış ürettiğini göstererek reklam ve içerik yatırımının daha bilinçli yönetilmesini sağlar.',
+        },
+        {
+          question: 'Operasyon entegrasyonu ne sağlar?',
+          answer: 'Kapsama ve sistem uygunluğuna bağlı olarak ürün, stok, sipariş veya müşteri bilgisinin tekrar tekrar elle işlenmesini azaltır; ekibin hata düzeltmek yerine satışa odaklanmasına yardımcı olur.',
+        },
+      ],
+    }}
+    relatedLinks={[
+      {
+        title: 'SEO, GEO, AEO ve AIO',
+        text: 'Ürün ve kategori içeriğinin Google ile yapay zekâ destekli yanıt sistemlerinde anlaşılmasını güçlendirin.',
+        href: '/seo-geo/',
+      },
+      {
+        title: 'WhatsApp satış sistemleri',
+        text: 'Ürün sayfalarından başlayan konuşmaları bağlamlı ve takip edilebilir satış akışlarına dönüştürün.',
+        href: '/whatsapp-satis/',
+      },
+      {
+        title: 'Meta reklamları ve landing page',
+        text: 'Reklam vaadini doğru ürün, kategori veya kampanya deneyimiyle eşleştirin.',
+        href: '/meta-reklamlari/',
+      },
+      {
+        title: 'Yapay zekâ otomasyonları',
+        text: 'Tekrarlanan ürün, talep ve sipariş süreçlerinde kontrollü otomasyon fırsatlarını değerlendirin.',
+        href: '/yapay-zeka-otomasyonlari/',
+      },
+      {
+        title: 'Shopify mağaza kurma rehberi',
+        text: 'Platform, ödeme, kargo, içerik ve yayın hazırlığını adım adım inceleyin.',
+        href: '/blog/shopify-magaza-kurma-rehberi/',
+      },
+      {
+        title: 'Pazaryerinden kendi sitenize geçiş',
+        text: 'Pazaryeri satışlarını kesmeden bağımsız e-ticaret kanalınızı nasıl planlayacağınızı görün.',
+        href: '/blog/pazaryerinden-kendi-sitene-gecis/',
+      },
+    ]}
+    faq={{
+      eyebrow: 'SIK SORULANLAR',
+      title: 'B2B e-ticaret projeleri hakkında',
+      items: [
+        {
+          q: 'QCT Commerce hangi tür e-ticaret projelerini üstleniyor?',
+          a: 'Üretici, toptancı, ihracatçı, perakende markası ve büyüyen KOBİ’lerin yeni mağaza kurulumu, mevcut mağaza iyileştirmesi, yeniden platformlama ve B2B satış akışı projelerini değerlendiriyoruz. Kapsamı işletmenin ürün, müşteri, operasyon ve büyüme hedeflerine göre belirliyoruz.',
+        },
+        {
+          q: 'Yalnızca B2B e-ticaret sitesi mi yapıyorsunuz?',
+          a: 'Hayır. B2B, B2C veya ikisini birlikte kullanan hibrit satış modelleri üzerinde çalışabiliriz. Önemli olan müşteri grupları, fiyatlandırma, sipariş ve iletişim kurallarının baştan açık biçimde tanımlanmasıdır.',
+        },
+        {
+          q: 'Mevcut e-ticaret sitemizi tamamen değiştirmek gerekir mi?',
+          a: 'Her zaman değil. Teknik yapı, ürün yönetimi ve müşteri yolculuğu incelendikten sonra hedefe mevcut altyapıyı iyileştirerek mi yoksa yeniden kurarak mı daha güvenli ulaşılacağını belirleriz. Gereksiz platform değişikliğini önermeyiz.',
+        },
+        {
+          q: 'Hangi e-ticaret altyapısını kullanıyorsunuz?',
+          a: 'Shopify dahil farklı çözümleri değerlendirebiliriz. Platform kararını marka popülerliği değil; ürün sayısı, B2B kuralları, entegrasyonlar, ödeme ve kargo seçenekleri, ekip kapasitesi, büyüme planı ve toplam sahip olma maliyeti belirler.',
+        },
+        {
+          q: 'Bayiye veya müşteriye özel fiyat gösterilebilir mi?',
+          a: 'Bu ihtiyaç teknik ve ticari kapsamda değerlendirilir. Müşteri grubu, giriş yapan kullanıcı, minimum sipariş, koli veya adet kuralı ve teklif talebi gibi senaryolar seçilen platformun olanaklarına göre planlanabilir.',
+        },
+        {
+          q: 'ERP, muhasebe, stok veya kargo sistemleri entegre edilebilir mi?',
+          a: 'Entegrasyon, ilgili sistemlerin API, veri kalitesi, güvenlik ve erişim koşullarına bağlıdır. Proje başında hangi verinin hangi yönde ve ne sıklıkla aktarılacağı netleştirilir; uygun olmayan bağlantılar için gereksiz garanti verilmez.',
+        },
+        {
+          q: 'Çok dilli ve ihracata uygun mağaza kurulabilir mi?',
+          a: 'Evet. Dil ve ülke yapısı; ürün terminolojisi, para birimi, teslimat bilgisi, yasal gereklilik, alan adı ve yerel arama davranışıyla birlikte planlanabilir. Sadece otomatik çeviri eklemek ihracata hazır bir mağaza oluşturmaz.',
+        },
+        {
+          q: 'SEO, GEO, AEO ve AIO çalışmaları projeye dahil mi?',
+          a: 'Teknik taranabilirlik, bilgi mimarisi, temel yapılandırılmış veri, ürün ve kategori bağlamı proje temelinde ele alınır. Geniş kapsamlı sürekli içerik üretimi, otorite geliştirme ve performans takibi ise ayrı bir SEO, GEO, AEO ve AIO çalışma planı gerektirebilir.',
+        },
+        {
+          q: 'Ürün açıklamalarını ve içerikleri siz mi hazırlıyorsunuz?',
+          a: 'İçerik yapısını, şablonları ve kritik sayfaların metin yönünü hazırlayabiliriz. Katalog büyüklüğüne göre tüm ürünlerin tek tek içerik üretimi ayrı kapsamlanır. Teknik doğruluk gerektiren bilgiler işletme tarafından doğrulanmalıdır.',
+        },
+        {
+          q: 'E-ticaret sitesi satış garantisi verir mi?',
+          a: 'Hayır. Hiçbir altyapı tek başına satış garantisi vermez. Sonuç; ürün-pazar uyumu, fiyat, stok, teslimat, marka güveni, trafik kalitesi ve operasyonla birlikte oluşur. Biz mağazanın bu unsurları destekleyen, ölçülebilir ve geliştirilebilir bir satış sistemi olmasını hedefleriz.',
+        },
+        {
+          q: 'Proje ne kadar sürede tamamlanır?',
+          a: 'Süre; ürün sayısı, veri hazırlığı, tasarım ihtiyacı, entegrasyonlar, içerik, çok dillilik ve karar hızına göre değişir. Takvim, analiz sonrasında aşamalar ve sorumluluklarla birlikte netleştirilir; yalnızca hızlı görünmek için gerçekçi olmayan teslim tarihi verilmez.',
+        },
+        {
+          q: 'Yayından sonra destek ve geliştirme sağlıyor musunuz?',
+          a: 'Proje devrinde yönetim ve kritik kullanım adımları açıklanır. Teknik destek, bakım, dönüşüm iyileştirmesi, SEO ve yeni özellik geliştirme ihtiyacı projenin yapısına göre süreli veya ayrı kapsamlı olarak planlanabilir.',
+        },
+        {
+          q: 'Projeye başlamak için hangi bilgiler gerekir?',
+          a: 'Mevcut site veya satış kanalları, ürün grupları, hedef müşteri, sipariş yöntemi, ödeme ve teslimat yapısı, kullanılan sistemler, temel sorunlar ve büyüme hedefi başlangıç için yeterlidir. Eksik bilgiler analiz sürecinde birlikte netleştirilir.',
+        },
+      ],
+    }}
+    final={{
+      eyebrow: 'SONRAKİ ADIM',
+      title: 'E-ticaret sisteminizin nerede satış veya zaman kaybettiğini birlikte belirleyelim.',
+      text: 'Mevcut mağazanızı, ürün yapınızı veya yeni kanal hedefinizi paylaşın. İlk görüşmede size hazır bir paket satmak yerine, öncelikli darboğazı ve mantıklı başlangıç kapsamını netleştirelim.',
+      cta: 'E-ticaret yapımızı konuşalım',
+      ctaSecondary: 'E-posta gönderin',
+    }}
+  />
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
