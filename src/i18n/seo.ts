@@ -35,28 +35,28 @@ const seo: Record<SeoPage, SeoEntry> = {
     description: 'E-ticaret altyapısı, web tasarım, WhatsApp satış, SEO, GEO, AEO, AIO, Meta reklamları ve yapay zekâ otomasyonu hizmetlerini inceleyin.',
   },
   'website-design': {
-    title: 'Satış Odaklı Web Tasarım — QCT Commerce',
-    description: 'Türkiye’deki işletmeler için teklifinizi açık anlatan, mobil öncelikli, hızlı ve müşteri iletişimini destekleyen web siteleri tasarlıyoruz.',
+    title: 'B2B Web Tasarım Hizmeti — QCT Commerce',
+    description: 'Üretici, toptancı, ihracatçı ve büyüyen KOBİ’ler için SEO, GEO, AEO, AIO ve dönüşüm odaklı B2B web siteleri tasarlıyoruz.',
   },
   'e-commerce': {
     title: 'B2B E-Ticaret Çözümleri — QCT Commerce',
     description: 'Üretici, toptancı, ihracatçı ve büyüyen markalar için SEO, GEO, AEO, AIO ve dönüşüm odaklı B2B e-ticaret altyapıları kuruyoruz.',
   },
   'ai-automation': {
-    title: 'Yapay Zekâ Otomasyonları — QCT Commerce',
-    description: 'Talep yönlendirme, veri işleme ve ekip devri gibi tekrarlayan süreçleri azaltan, insan kontrollü yapay zekâ otomasyonları kuruyoruz.',
+    title: 'B2B Yapay Zekâ Otomasyonları — QCT Commerce',
+    description: 'Talep yönlendirme, veri işleme, özetleme ve ekip devri gibi tekrarlayan işleri azaltan insan kontrollü yapay zekâ otomasyonları kuruyoruz.',
   },
   'seo-performance': {
-    title: 'SEO, GEO, AEO ve AIO Hizmetleri',
-    description: 'İşletmenizin Google ve yapay zekâ destekli yanıt sistemlerinde doğru bağlamla bulunması için teknik ve içerik altyapısını geliştiriyoruz.',
+    title: 'SEO, GEO, AEO ve AIO Hizmetleri — QCT Commerce',
+    description: 'Üretici, ihracatçı, e-ticaret markası ve KOBİ’lerin Google ve yapay zekâ sistemlerinde doğru bağlamla bulunmasını sağlayan görünürlük altyapısı.',
   },
   'whatsapp-commerce': {
-    title: 'WhatsApp Satış Sistemleri — QCT Commerce',
-    description: 'Web sitesi, ürün sayfaları ve reklamları bağlamlı, takip edilebilir ve ekip kontrolündeki WhatsApp satış görüşmelerine bağlıyoruz.',
+    title: 'B2B WhatsApp Satış Sistemleri — QCT Commerce',
+    description: 'Web, ürün sayfası ve reklamlardan gelen talepleri bağlamlı, ölçülebilir ve ekip kontrolündeki WhatsApp satış akışlarına dönüştürüyoruz.',
   },
   'meta-ads': {
-    title: 'Meta Reklamları ve Dönüşüm Landing Page',
-    description: 'Meta reklamlarını, reklam vaadiyle eşleşen mobil landing page, net CTA ve doğru dönüşüm ölçümüyle birlikte planlıyor ve kuruyoruz.',
+    title: 'Meta Reklamları ve Landing Page — QCT Commerce',
+    description: 'Meta reklamlarını teklif ile eşleşen mobil landing page, net CTA, WhatsApp veya form akışı ve doğru dönüşüm ölçümüyle birlikte kuruyoruz.',
   },
   careers: {
     title: 'Kariyer ve İş Birliği — QCT Commerce',
