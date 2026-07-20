@@ -4,20 +4,30 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 
 const title = 'Digital Sales Systems for Georgian Companies | QCT Commerce';
-const description = 'QCT Commerce helps Georgian manufacturers, distributors and growing brands enter Türkiye, Europe and Gulf markets with multilingual B2B websites, commerce and sales automation.';
+const description = 'Multilingual B2B websites, export catalogues, SEO, GEO and sales automation for Georgian manufacturers, distributors and growing brands entering Türkiye, Europe and Gulf markets.';
 const alternates = [
   { lang: 'en', href: '/en/georgia/' },
   { lang: 'ka-GE', href: '/ka/georgia/' },
 ];
+const faqItems = [
+  { q: 'Does QCT Commerce work with companies across Georgia?', a: 'Yes. We work remotely with companies in Tbilisi, Batumi, Kutaisi, Rustavi and other Georgian business centres. The project structure is based on the company’s sector, target market and internal sales process.' },
+  { q: 'Can you build a Georgian and English B2B website?', a: 'Yes. We can plan Georgian and English content together, then add Turkish or another target-market language when commercial expansion requires it.' },
+  { q: 'Which Georgian companies are the best fit?', a: 'The strongest fit is usually export manufacturers, distributors, wholesalers, logistics companies, construction suppliers and retail brands with a clear expansion or digital-sales objective.' },
+  { q: 'Can the website collect quotation and distributor requests?', a: 'Yes. The system can include product catalogues, technical documents, quotation forms, sample requests, dealer applications and CRM-connected lead routing.' },
+  { q: 'Do you provide SEO, GEO, AEO and AI visibility?', a: 'Yes. We structure technical SEO, market-specific content, entity signals, answer-focused sections and machine-readable data so search engines and AI-assisted research systems can understand the company and its offer.' },
+  { q: 'Can you connect CRM and sales automation?', a: 'Yes. We can connect enquiry capture, qualification, assignment, automated acknowledgement and follow-up while keeping the human sales relationship in control.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://qctcommerce.com/en/georgia/#faq',
+  url: 'https://qctcommerce.com/en/georgia/',
+  inLanguage: 'en-US',
+  mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
+};
 ---
-<BaseLayout
-  title={title}
-  description={description}
-  lang="en"
-  breadcrumbLabel="Georgia"
-  alternates={alternates}
-  areaServed={['Georgia', 'Türkiye', 'European markets', 'Gulf countries']}
->
+<BaseLayout title={title} description={description} lang="en" breadcrumbLabel="Georgia" alternates={alternates} areaServed={['Georgia', 'Türkiye', 'European markets', 'Gulf countries']}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Header slot="header" lang="en" />
 
   <section class="page-hero section">
@@ -34,10 +44,7 @@ const alternates = [
 
   <section id="fit" class="section">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">Built for commercial expansion</p>
-        <h2>A strong fit for companies with a real growth trigger.</h2>
-      </div>
+      <div class="section-heading"><p class="eyebrow">Built for commercial expansion</p><h2>A strong fit for companies with a real growth trigger.</h2></div>
       <div class="service-grid">
         <article class="service-card"><h3>Export manufacturers</h3><p>Technical product catalogues, certification proof, sample requests and distributor enquiries built around international buyers.</p></article>
         <article class="service-card"><h3>Distributors and wholesalers</h3><p>Structured product discovery, brand portfolios, dealer applications and CRM-connected quotation flows.</p></article>
@@ -49,11 +56,19 @@ const alternates = [
 
   <section class="section">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">The commercial problem</p>
-        <h2>International growth often fails before the first conversation.</h2>
-        <p>Potential buyers cannot quickly understand the offer, compare products, verify credibility or reach the right person. Valuable enquiries arrive through disconnected channels and follow-up depends on manual effort.</p>
+      <div class="section-heading"><p class="eyebrow">Georgia-specific delivery</p><h2>Built around the commercial reality of Georgian companies.</h2><p>We support companies in Tbilisi, Batumi, Kutaisi, Rustavi and other Georgian business centres. The system is adapted to export sales, distributor development, multilingual product presentation and cross-border enquiry handling.</p></div>
+      <div class="service-grid">
+        <article class="service-card"><h3>Industrial and construction suppliers</h3><p>Technical specifications, certifications, downloadable documents and buyer-ready quotation paths.</p></article>
+        <article class="service-card"><h3>Food, beverage and consumer products</h3><p>Clear product ranges, export-market positioning, distributor discovery and multilingual trust content.</p></article>
+        <article class="service-card"><h3>Logistics and trade services</h3><p>Service-area clarity, lead qualification and routing for international commercial requests.</p></article>
+        <article class="service-card"><h3>Retail groups and growing brands</h3><p>Conversion-focused commerce journeys, campaign landing pages and measurable customer acquisition.</p></article>
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><p class="eyebrow">The commercial problem</p><h2>International growth often fails before the first conversation.</h2><p>Potential buyers cannot quickly understand the offer, compare products, verify credibility or reach the right person. Valuable enquiries arrive through disconnected channels and follow-up depends on manual effort.</p></div>
       <div class="process-grid">
         <article><span>01</span><h3>Position the offer</h3><p>Market-specific messaging for buyers in Türkiye, Europe or Gulf markets.</p></article>
         <article><span>02</span><h3>Build trust</h3><p>Products, capabilities, certifications, case evidence and clear commercial next steps.</p></article>
@@ -64,28 +79,27 @@ const alternates = [
 
   <section id="system" class="section">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">What the system can include</p>
-        <h2>A focused scope built around your route to market.</h2>
-      </div>
+      <div class="section-heading"><p class="eyebrow">What the system can include</p><h2>A focused scope built around your route to market.</h2></div>
       <div class="service-grid">
         <article class="service-card"><h3>English and market-language website</h3><p>International information architecture, buyer-focused content and scalable localisation.</p></article>
         <article class="service-card"><h3>B2B catalogue and enquiry flows</h3><p>Product grouping, technical documents, quotation requests and distributor applications.</p></article>
-        <article class="service-card"><h3>SEO, GEO, AEO and AIO</h3><p>Technical and content foundations for search engines and AI-assisted buyer research.</p></article>
+        <article class="service-card"><h3>SEO, GEO, AEO and AIO</h3><p>Technical SEO, geographic relevance, answer-focused content and entity signals for search engines and AI-assisted buyer research.</p></article>
         <article class="service-card"><h3>CRM and AI automation</h3><p>Lead capture, qualification, assignment and follow-up without losing the human sales relationship.</p></article>
       </div>
     </div>
   </section>
 
-  <section id="audit" class="section">
+  <section id="faq" class="section international-faq">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">A practical first step</p>
-        <h2>Start with a commercial digital audit.</h2>
-        <p>We review your current website, international offer, enquiry paths and expansion target. You receive a focused opportunity map before any build is proposed.</p>
-        <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Georgia%20commercial%20digital%20audit">Request the audit</a>
+      <div class="section-heading"><p class="eyebrow">Frequently asked questions</p><h2>What Georgian companies usually ask before starting.</h2></div>
+      <div class="faq-list">
+        {faqItems.map((item) => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}
       </div>
     </div>
+  </section>
+
+  <section id="audit" class="section">
+    <div class="container"><div class="section-heading"><p class="eyebrow">A practical first step</p><h2>Start with a commercial digital audit.</h2><p>We review your current website, international offer, enquiry paths and expansion target. You receive a focused opportunity map before any build is proposed.</p><a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Georgia%20commercial%20digital%20audit">Request the audit</a></div></div>
   </section>
 
   <Footer slot="footer" lang="en" />
