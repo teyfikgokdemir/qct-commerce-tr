@@ -15,83 +15,36 @@ const isGeorgian = lang === 'ka';
 
       {isGeorgian ? (
         <>
-          <nav class="site-footer__group site-footer__nav" aria-label="გადაწყვეტილებები">
-            <h2>გადაწყვეტილებები</h2>
-            <a href="/ka/georgia/#system">ციფრული კომერცია</a>
-            <a href="/ka/georgia/#system">B2B გაყიდვების სისტემები</a>
-            <a href="/ka/georgia/#system">მრავალენოვანი ვებსაიტები</a>
-            <a href="/ka/georgia/#system">SEO, GEO, AEO და AIO</a>
-            <a href="/ka/georgia/#system">AI და გაყიდვების ავტომატიზაცია</a>
-          </nav>
-          <nav class="site-footer__group site-footer__company" aria-label="ბაზრები">
-            <h2>ბაზრები</h2>
-            <a href="/ka/georgia/">საქართველო</a>
-            <a href="/en/">საერთაშორისო</a>
-            <a href="/">თურქეთი</a>
-          </nav>
-          <div class="site-footer__group site-footer__markets">
-            <h2>კონტაქტი</h2>
-            <p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p>
-            <p><a href="tel:+905433856656">+90 543 385 66 56</a></p>
-            <p>თურქეთი · საერთაშორისო</p>
-          </div>
+          <nav class="site-footer__group site-footer__nav" aria-label="გადაწყვეტილებები"><h2>გადაწყვეტილებები</h2><a href="/ka/georgia/#system">ციფრული კომერცია</a><a href="/ka/georgia/#system">B2B გაყიდვების სისტემები</a><a href="/ka/georgia/#system">მრავალენოვანი ვებსაიტები</a><a href="/ka/georgia/#system">SEO, GEO, AEO და AIO</a><a href="/ka/georgia/#system">AI და გაყიდვების ავტომატიზაცია</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="ბაზრები"><h2>ბაზრები</h2><a href="/ka/georgia/">საქართველო</a><a href="/en/">საერთაშორისო</a><a href="/">თურქეთი</a></nav>
+          <div class="site-footer__group site-footer__markets"><h2>კონტაქტი</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="tel:+905433856656">+90 543 385 66 56</a></p><p>თურქეთი · საერთაშორისო</p></div>
         </>
       ) : isEnglish ? (
         <>
           <nav class="site-footer__group site-footer__nav" aria-label="Solutions">
             <h2>Solutions</h2>
-            <a href="/en/#services">Digital commerce</a>
-            <a href="/en/#services">B2B sales systems</a>
-            <a href="/en/#services">Multilingual websites</a>
-            <a href="/en/#services">SEO, GEO, AEO and AIO</a>
-            <a href="/en/#services">AI and sales automation</a>
+            <a href="/en/ecommerce/">E-commerce systems</a>
+            <a href="/en/web-design/">B2B web design</a>
+            <a href="/en/search-visibility/">SEO, GEO, AEO and AIO</a>
+            <a href="/en/ai-automation/">AI and sales automation</a>
           </nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Markets">
-            <h2>Markets</h2>
+          <nav class="site-footer__group site-footer__company" aria-label="Company and markets">
+            <h2>Explore</h2>
+            <a href="/en/work/">Selected work</a>
             <a href="/en/georgia/">Georgia</a>
             <a href="/en/">International</a>
             <a href="/">Türkiye</a>
           </nav>
-          <div class="site-footer__group site-footer__markets">
-            <h2>Contact</h2>
-            <p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p>
-            <p><a href="tel:+905433856656">+90 543 385 66 56</a></p>
-            <p>Türkiye · International</p>
-          </div>
+          <div class="site-footer__group site-footer__markets"><h2>Contact</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="tel:+905433856656">+90 543 385 66 56</a></p><p>Türkiye · International</p></div>
         </>
       ) : (
         <>
-          <nav class="site-footer__group site-footer__nav" aria-label="Hizmetler">
-            <h2>Hizmetler</h2>
-            <a href="/e-ticaret/">E-ticaret altyapısı</a>
-            <a href="/web-tasarim/">Web tasarım</a>
-            <a href="/whatsapp-satis/">WhatsApp satış sistemleri</a>
-            <a href="/seo-geo/">SEO, GEO, AEO ve AIO</a>
-            <a href="/meta-reklamlari/">Meta reklamları</a>
-            <a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a>
-          </nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal">
-            <h2>Kurumsal</h2>
-            <a href="/hakkimizda/">Hakkımızda</a>
-            <a href="/hizmetler/">Hizmetler</a>
-            <a href="/calismalar/">Çalışmalar</a>
-            <a href="/blog/">Blog</a>
-            <a href="/kariyer/">Kariyer</a>
-            <a href="/iletisim/">İletişim</a>
-            <a href="/gizlilik-politikasi/">Gizlilik politikası</a>
-            <a href="/kullanim-kosullari/">Kullanım koşulları</a>
-            <a href="/cerez-politikasi/">Çerez politikası</a>
-          </nav>
-          <div class="site-footer__group site-footer__markets">
-            <h2>İletişim</h2>
-            <p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p>
-            <p><a href="tel:+905433856656">+90 543 385 66 56</a></p>
-            <p>Türkiye</p>
-          </div>
+          <nav class="site-footer__group site-footer__nav" aria-label="Hizmetler"><h2>Hizmetler</h2><a href="/e-ticaret/">E-ticaret altyapısı</a><a href="/web-tasarim/">Web tasarım</a><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a><a href="/meta-reklamlari/">Meta reklamları</a><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/hizmetler/">Hizmetler</a><a href="/calismalar/">Çalışmalar</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a><a href="/gizlilik-politikasi/">Gizlilik politikası</a><a href="/kullanim-kosullari/">Kullanım koşulları</a><a href="/cerez-politikasi/">Çerez politikası</a></nav>
+          <div class="site-footer__group site-footer__markets"><h2>İletişim</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="tel:+905433856656">+90 543 385 66 56</a></p><p>Türkiye</p></div>
         </>
       )}
     </div>
-
     <div class="site-footer__bottom"><div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div></div>
   </div>
 </footer>
