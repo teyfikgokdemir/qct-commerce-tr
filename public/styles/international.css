@@ -98,16 +98,17 @@
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-main .section-heading {
-  max-width: 820px;
+  max-width: 900px;
   margin-bottom: 38px;
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-main .section-heading h2 {
   color: #171514;
-  font-size: clamp(2.25rem, 4.7vw, 4.6rem);
-  letter-spacing: -0.045em;
-  line-height: 1.02;
+  font-size: clamp(2.15rem, 3.6vw, 3.55rem);
+  letter-spacing: -0.04em;
+  line-height: 1.04;
   margin: 0;
+  max-width: 900px;
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-main .section-heading > p:not(.eyebrow) {
@@ -117,10 +118,15 @@
   margin-top: 20px;
 }
 
-:is(html[lang="en"], html[lang="ka"]) .site-main .service-grid,
-:is(html[lang="en"], html[lang="ka"]) .site-main .process-grid {
+:is(html[lang="en"], html[lang="ka"]) .site-main .service-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+:is(html[lang="en"], html[lang="ka"]) .site-main .process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -129,14 +135,15 @@
   background: #fffaf5;
   border: 1px solid rgba(23, 21, 20, 0.1);
   border-radius: 24px;
-  padding: clamp(26px, 4vw, 42px);
+  padding: clamp(26px, 3vw, 38px);
   box-shadow: 0 18px 50px rgba(23, 21, 20, 0.06);
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-main .service-card h3,
 :is(html[lang="en"], html[lang="ka"]) .site-main .process-grid h3 {
   color: #171514;
-  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-size: clamp(1.25rem, 1.65vw, 1.6rem);
+  line-height: 1.2;
   margin: 0 0 14px;
 }
 
@@ -246,8 +253,8 @@ html[lang="ka"] .site-main .page-hero h1 {
 }
 
 html[lang="ka"] .site-main .section-heading h2 {
-  font-size: clamp(2.15rem, 3.8vw, 3.7rem);
-  max-width: 760px;
+  font-size: clamp(2rem, 3.2vw, 3.15rem);
+  max-width: 860px;
 }
 
 html[lang="ka"] .site-main .service-card h3,
@@ -267,6 +274,12 @@ html[lang="ka"] .main-navigation button {
   font-size: 0.82rem;
 }
 
+@media (max-width: 1050px) {
+  :is(html[lang="en"], html[lang="ka"]) .site-main .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 760px) {
   :is(html[lang="en"], html[lang="ka"]) .site-main .service-grid,
   :is(html[lang="en"], html[lang="ka"]) .site-main .process-grid {
@@ -284,6 +297,10 @@ html[lang="ka"] .main-navigation button {
     line-height: 1.08;
   }
 
+  :is(html[lang="en"], html[lang="ka"]) .site-main .section-heading h2 {
+    font-size: clamp(1.95rem, 8vw, 2.65rem);
+  }
+
   :is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) details {
     padding: 0 18px;
   }
@@ -299,6 +316,6 @@ html[lang="ka"] .main-navigation button {
   }
 
   html[lang="ka"] .site-main .section-heading h2 {
-    font-size: clamp(1.9rem, 8vw, 2.8rem);
+    font-size: clamp(1.85rem, 7.5vw, 2.55rem);
   }
 }
