@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const title = 'ციფრული გაყიდვების სისტემები ქართული კომპანიებისთვის | QCT Commerce';
+const description = 'QCT Commerce ეხმარება ქართველ მწარმოებლებს, დისტრიბუტორებსა და მზარდ ბრენდებს თურქეთის, ევროპის და ყურის ბაზრებზე გასვლაში მრავალენოვანი B2B ვებსაიტებითა და გაყიდვების ავტომატიზაციით.';
+const alternates = [
+  { lang: 'en', href: '/en/georgia/' },
+  { lang: 'ka-GE', href: '/ka/georgia/' },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  lang="ka"
+  breadcrumbLabel="საქართველო"
+  alternates={alternates}
+  areaServed={['Georgia', 'Türkiye', 'European markets', 'Gulf countries']}
+>
+  <Header slot="header" lang="ka" />
+
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">საქართველო → თურქეთი, ევროპა და ყურის ქვეყნები</p>
+      <h1>გადააქციეთ საერთაშორისო ინტერესი სტრუქტურირებულ გაყიდვებად.</h1>
+      <p class="page-hero__lead">ჩვენ ვქმნით მრავალენოვან ციფრულ გაყიდვების სისტემებს ქართველი მწარმოებლებისთვის, დისტრიბუტორებისა და მზარდი კომპანიებისთვის, რომლებსაც სურთ პროდუქტების მკაფიოდ წარდგენა, ხარისხიანი მოთხოვნების მიღება და ახალ ბაზრებზე უფრო თავდაჯერებულად შესვლა.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Georgia%20market%20project">მოითხოვეთ ბაზრის შეფასება</a>
+        <a class="button button--secondary" href="#fit">ნახეთ, ვისთვისაა</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="fit" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">კომერციული ზრდისთვის</p>
+        <h2>სწორი არჩევანია კომპანიებისთვის, რომლებსაც რეალური ზრდის მიზანი აქვთ.</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service-card"><h3>ექსპორტიორი მწარმოებლები</h3><p>ტექნიკური კატალოგები, სერტიფიკატები, ნიმუშის მოთხოვნები და დისტრიბუტორის განაცხადები საერთაშორისო მყიდველებისთვის.</p></article>
+        <article class="service-card"><h3>დისტრიბუტორები და საბითუმო კომპანიები</h3><p>სტრუქტურირებული პროდუქტის მოძიება, ბრენდების პორტფელი, პარტნიორის განაცხადები და CRM-თან დაკავშირებული შეთავაზების ფორმები.</p></article>
+        <article class="service-card"><h3>საცალო და e-commerce ბრენდები</h3><p>უკეთესი პროდუქტის გზა, კონვერსიაზე ორიენტირებული landing page-ები და მრავალარხიანი მომხმარებლის გამოცდილება.</p></article>
+        <article class="service-card"><h3>ლოგისტიკა და B2B სერვისები</h3><p>ლიდების კვალიფიკაცია, თვითმომსახურების ინფორმაცია და კომერციული მოთხოვნების ავტომატური გადანაწილება.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">კომერციული პრობლემა</p>
+        <h2>საერთაშორისო ზრდა ხშირად პირველ საუბრამდეც კი ფერხდება.</h2>
+        <p>პოტენციურ მყიდველს უჭირს შეთავაზების სწრაფად გაგება, პროდუქტების შედარება, სანდოობის შემოწმება ან სწორ ადამიანთან დაკავშირება. მნიშვნელოვანი მოთხოვნები სხვადასხვა არხში იკარგება და follow-up ხელით კეთდება.</p>
+      </div>
+      <div class="process-grid">
+        <article><span>01</span><h3>შეთავაზების პოზიციონირება</h3><p>ბაზარზე მორგებული მესიჯები თურქეთის, ევროპის ან ყურის ქვეყნების მყიდველებისთვის.</p></article>
+        <article><span>02</span><h3>ნდობის შექმნა</h3><p>პროდუქტები, შესაძლებლობები, სერტიფიკატები, პროექტების მტკიცებულება და მკაფიო შემდეგი ნაბიჯები.</p></article>
+        <article><span>03</span><h3>არც ერთი ლიდი არ დაიკარგოს</h3><p>CRM გადანაწილება, ავტომატური პასუხები და გაზომვადი follow-up პირველი მოთხოვნიდან გაყიდვების საუბრამდე.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="system" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">რას შეიძლება მოიცავდეს სისტემა</p>
+        <h2>ფოკუსირებული გადაწყვეტა თქვენი ბაზარზე გასვლის გზის მიხედვით.</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service-card"><h3>ინგლისური და სამიზნე ბაზრის ენის ვებსაიტი</h3><p>საერთაშორისო ინფორმაციული არქიტექტურა, მყიდველზე ორიენტირებული კონტენტი და მასშტაბირებადი ლოკალიზაცია.</p></article>
+        <article class="service-card"><h3>B2B კატალოგი და მოთხოვნის ფორმები</h3><p>პროდუქტების დაჯგუფება, ტექნიკური დოკუმენტები, ფასის მოთხოვნა და დისტრიბუტორის განაცხადები.</p></article>
+        <article class="service-card"><h3>SEO, GEO, AEO და AIO</h3><p>ტექნიკური და კონტენტური საფუძველი საძიებო სისტემებისა და AI-ზე დაფუძნებული კვლევისთვის.</p></article>
+        <article class="service-card"><h3>CRM და AI ავტომატიზაცია</h3><p>ლიდების მიღება, კვალიფიკაცია, გადანაწილება და follow-up ადამიანური გაყიდვების პროცესის დაკარგვის გარეშე.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="audit" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">პრაქტიკული პირველი ნაბიჯი</p>
+        <h2>დაიწყეთ კომერციული ციფრული აუდიტით.</h2>
+        <p>ჩვენ ვაფასებთ თქვენს არსებულ ვებსაიტს, საერთაშორისო შეთავაზებას, მოთხოვნის გზებს და სამიზნე ბაზარს. ნებისმიერი ახალი პროექტის შეთავაზებამდე მიიღებთ ფოკუსირებულ შესაძლებლობების რუკას.</p>
+        <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Georgia%20commercial%20digital%20audit">მოითხოვეთ აუდიტი</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang="ka" />
+</BaseLayout>
