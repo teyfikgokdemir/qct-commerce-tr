@@ -67,6 +67,7 @@ const organizationId = `${SITE_URL}/#organization`;
 const founderId = `${SITE_URL}/hakkimizda/#teyfik-gokdemir`;
 const websiteId = `${SITE_URL}/${isGeorgian ? 'ka/' : isEnglish ? 'en/' : ''}#website`;
 const webpageId = `${canonicalUrl}#webpage`;
+const knowsAbout = ['E-commerce architecture','B2B digital sales systems','Multilingual websites','Conversion optimization','Technical SEO','Geographic search optimization','Answer engine optimization','AI visibility optimization','CRM integration','AI sales automation'];
 
 const organizationSchema = {
   '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
@@ -75,15 +76,17 @@ const organizationSchema = {
   description: isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
   parentOrganization: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' },
   areaServed: areaServedSchema,
+  knowsAbout,
   email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56',
   contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
+  hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Digital commerce and international sales solutions', itemListElement: knowsAbout.map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })) },
   ...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };
 
 const founderSchema = includeFounder ? {
   '@type': 'Person', '@id': founderId, name: 'Teyfik Gökdemir', jobTitle: isEnglish ? 'Founder of QCT Commerce' : 'QCT Commerce Kurucusu', worksFor: { '@id': organizationId },
   image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(), knowsLanguage: ['Türkçe', 'İngilizce'],
-  knowsAbout: ['E-commerce architecture','Corporate website design and development','Conversion optimization','Technical SEO and search visibility','GEO, AEO and AIO','Sales landing pages','WhatsApp sales systems','AI business automation','Analytics','International digital growth'],
+  knowsAbout,
 } : null;
 
 const websiteSchema = { '@type': 'WebSite', '@id': websiteId, url: homeUrl, name: 'QCT Commerce', description: organizationSchema.description, inLanguage: languageTag, publisher: { '@id': organizationId } };
@@ -129,6 +132,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <meta property="og:image:width" content={String(imageWidth)} />
   <meta property="og:image:height" content={String(imageHeight)} />
   <meta property="og:locale" content={locale} />
+  {alternates.filter((alternate) => alternate.lang !== languageTag && alternate.lang !== lang).map((alternate) => <meta property="og:locale:alternate" content={alternate.lang.replace('-', '_')} />)}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={pageDescription} />
@@ -141,7 +145,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
   <link rel="stylesheet" href="/styles/brand.css?v=20260719-1" />
   <link rel="stylesheet" href="/styles/service-cards-isolated.css?v=20260720-1" />
-  {isInternational && <link rel="stylesheet" href="/styles/international.css?v=20260720-2" />}
+  {isInternational && <link rel="stylesheet" href="/styles/international.css?v=20260720-3" />}
   {includeWorkStyles && <link rel="stylesheet" href="/styles/work.css?v=20260719-1" />}
 </head>
 <body>
