@@ -45,34 +45,38 @@ const {
 } = Astro.props;
 
 const isEnglish = lang === 'en';
-const locale = isEnglish ? 'en_US' : 'tr_TR';
-const languageTag = isEnglish ? 'en-US' : 'tr-TR';
-const defaultDescription = isEnglish
-  ? 'QCT Commerce builds digital commerce, B2B sales and automation systems for ambitious companies entering new markets.'
-  : 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.';
+const isGeorgian = lang === 'ka';
+const isInternational = isEnglish || isGeorgian;
+const locale = isGeorgian ? 'ka_GE' : isEnglish ? 'en_US' : 'tr_TR';
+const languageTag = isGeorgian ? 'ka-GE' : isEnglish ? 'en-US' : 'tr-TR';
+const defaultDescription = isGeorgian
+  ? 'QCT Commerce ქმნის მრავალენოვან B2B ვებსაიტებს, ციფრული გაყიდვებისა და ავტომატიზაციის სისტემებს საერთაშორისო ზრდისთვის.'
+  : isEnglish
+    ? 'QCT Commerce builds digital commerce, B2B sales and automation systems for ambitious companies entering new markets.'
+    : 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.';
 const pageDescription = description ?? defaultDescription;
-const servedMarkets = areaServed ?? (isEnglish ? ['Georgia', 'Türkiye', 'Europe', 'Gulf countries'] : ['Türkiye']);
+const servedMarkets = areaServed ?? (isInternational ? ['Georgia', 'Türkiye', 'Europe', 'Gulf countries'] : ['Türkiye']);
 const areaServedSchema = servedMarkets.map((name) => ({ '@type': 'Country', name }));
 const isIndexable = !noindex;
 const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : image.toLowerCase().endsWith('.webp') ? 'image/webp' : 'image/jpeg';
 const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
-const homePath = isEnglish ? '/en/' : '/';
+const homePath = isGeorgian ? '/ka/georgia/' : isEnglish ? '/en/' : '/';
 const homeUrl = new URL(homePath, SITE_URL).toString();
 const organizationId = `${SITE_URL}/#organization`;
 const founderId = `${SITE_URL}/hakkimizda/#teyfik-gokdemir`;
-const websiteId = `${SITE_URL}/${isEnglish ? 'en/' : ''}#website`;
+const websiteId = `${SITE_URL}/${isGeorgian ? 'ka/' : isEnglish ? 'en/' : ''}#website`;
 const webpageId = `${canonicalUrl}#webpage`;
 
 const organizationSchema = {
   '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
   logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/logo.png', SITE_URL).toString(), contentUrl: new URL('/logo.png', SITE_URL).toString(), width: 600, height: 180, caption: 'QCT Commerce' },
   image: { '@id': `${organizationId}/logo` },
-  description: isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
+  description: isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
   parentOrganization: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' },
   areaServed: areaServedSchema,
   email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56',
-  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English'] }],
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
   ...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };
 
@@ -91,7 +95,8 @@ if (breadcrumbs?.length) {
   webpageSchema.breadcrumb = { '@id': breadcrumbId };
 } else if (breadcrumbLabel) {
   const breadcrumbId = `${canonicalUrl}#breadcrumb`;
-  breadcrumbSchema = { '@type': 'BreadcrumbList', '@id': breadcrumbId, itemListElement: [{ '@type': 'ListItem', position: 1, name: isEnglish ? 'Home' : 'Ana sayfa', item: homeUrl }, { '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl }] };
+  const homeLabel = isGeorgian ? 'მთავარი' : isEnglish ? 'Home' : 'Ana sayfa';
+  breadcrumbSchema = { '@type': 'BreadcrumbList', '@id': breadcrumbId, itemListElement: [{ '@type': 'ListItem', position: 1, name: homeLabel, item: homeUrl }, { '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl }] };
   webpageSchema.breadcrumb = { '@id': breadcrumbId };
 }
 let serviceSchema: Record<string, unknown> | null = null;
@@ -113,7 +118,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260720-1" />
   <link rel="canonical" href={canonicalUrl} />
   {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={new URL(alternate.href, SITE_URL).toString()} />)}
-  {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={new URL('/', SITE_URL).toString()} />}
+  {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={new URL('/en/georgia/', SITE_URL).toString()} />}
   <meta property="og:type" content={type} />
   <meta property="og:site_name" content="QCT Commerce" />
   <meta property="og:title" content={title} />
@@ -136,12 +141,12 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
   <link rel="stylesheet" href="/styles/brand.css?v=20260719-1" />
   <link rel="stylesheet" href="/styles/service-cards-isolated.css?v=20260720-1" />
-  {isEnglish && <link rel="stylesheet" href="/styles/international.css?v=20260720-1" />}
+  {isInternational && <link rel="stylesheet" href="/styles/international.css?v=20260720-2" />}
   {includeWorkStyles && <link rel="stylesheet" href="/styles/work.css?v=20260719-1" />}
 </head>
 <body>
   <div id="page" class="site">
-    <a class="skip-link screen-reader-text" href="#primary">{isEnglish ? 'Skip to content' : 'İçeriğe geç'}</a>
+    <a class="skip-link screen-reader-text" href="#primary">{isGeorgian ? 'შინაარსზე გადასვლა' : isEnglish ? 'Skip to content' : 'İçeriğe geç'}</a>
     <slot name="header" />
     <main id="primary" class="site-main"><slot /></main>
     <slot name="footer" />
