@@ -1,14 +1,14 @@
-html[lang="en"] .site-main {
+:is(html[lang="en"], html[lang="ka"]) .site-main {
   background: #f3eee7;
   color: #171514;
 }
 
-html[lang="en"] .site-main .section {
+:is(html[lang="en"], html[lang="ka"]) .site-main .section {
   padding: clamp(72px, 9vw, 124px) 0;
 }
 
-html[lang="en"] .site-main .hero,
-html[lang="en"] .site-main .page-hero {
+:is(html[lang="en"], html[lang="ka"]) .site-main .hero,
+:is(html[lang="en"], html[lang="ka"]) .site-main .page-hero {
   background:
     radial-gradient(circle at 78% 20%, rgba(230, 107, 95, 0.22), transparent 34%),
     linear-gradient(145deg, #171514 0%, #26211f 100%);
@@ -17,17 +17,17 @@ html[lang="en"] .site-main .page-hero {
   align-items: center;
 }
 
-html[lang="en"] .site-main .hero {
+:is(html[lang="en"], html[lang="ka"]) .site-main .hero {
   min-height: min(760px, calc(100svh - 68px));
 }
 
-html[lang="en"] .site-main .page-hero {
+:is(html[lang="en"], html[lang="ka"]) .site-main .page-hero {
   min-height: clamp(560px, 72svh, 740px);
   overflow: hidden;
   position: relative;
 }
 
-html[lang="en"] .site-main .page-hero::after {
+:is(html[lang="en"], html[lang="ka"]) .site-main .page-hero::after {
   background: linear-gradient(120deg, transparent 10%, rgba(255,255,255,.06), transparent 56%);
   content: "";
   inset: 0;
@@ -36,21 +36,21 @@ html[lang="en"] .site-main .page-hero::after {
   transform: translateX(38%);
 }
 
-html[lang="en"] .site-main .hero__inner {
+:is(html[lang="en"], html[lang="ka"]) .site-main .hero__inner {
   display: grid;
   align-items: center;
 }
 
-html[lang="en"] .site-main .hero__content {
+:is(html[lang="en"], html[lang="ka"]) .site-main .hero__content {
   max-width: 860px;
 }
 
-html[lang="en"] .site-main .page-hero .container {
+:is(html[lang="en"], html[lang="ka"]) .site-main .page-hero .container {
   position: relative;
   z-index: 1;
 }
 
-html[lang="en"] .site-main .eyebrow {
+:is(html[lang="en"], html[lang="ka"]) .site-main .eyebrow {
   color: #e66b5f;
   font-size: 0.78rem;
   font-weight: 800;
@@ -59,15 +59,15 @@ html[lang="en"] .site-main .eyebrow {
   text-transform: uppercase;
 }
 
-html[lang="en"] .site-main h1,
-html[lang="en"] .site-main h2,
-html[lang="en"] .site-main h3,
-html[lang="en"] .site-main p {
+:is(html[lang="en"], html[lang="ka"]) .site-main h1,
+:is(html[lang="en"], html[lang="ka"]) .site-main h2,
+:is(html[lang="en"], html[lang="ka"]) .site-main h3,
+:is(html[lang="en"], html[lang="ka"]) .site-main p {
   opacity: 1;
   visibility: visible;
 }
 
-html[lang="en"] .site-main h1 {
+:is(html[lang="en"], html[lang="ka"]) .site-main h1 {
   color: #fffaf5;
   font-size: clamp(3rem, 7vw, 6.4rem);
   line-height: 0.96;
@@ -76,12 +76,12 @@ html[lang="en"] .site-main h1 {
   margin: 0;
 }
 
-html[lang="en"] .site-main .page-hero h1 {
+:is(html[lang="en"], html[lang="ka"]) .site-main .page-hero h1 {
   max-width: 860px;
 }
 
-html[lang="en"] .site-main .hero__lead,
-html[lang="en"] .site-main .page-hero__lead {
+:is(html[lang="en"], html[lang="ka"]) .site-main .hero__lead,
+:is(html[lang="en"], html[lang="ka"]) .site-main .page-hero__lead {
   color: rgba(255, 250, 245, 0.74);
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   line-height: 1.65;
@@ -89,19 +89,19 @@ html[lang="en"] .site-main .page-hero__lead {
   max-width: 760px;
 }
 
-html[lang="en"] .site-main .hero__actions {
+:is(html[lang="en"], html[lang="ka"]) .site-main .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 34px;
 }
 
-html[lang="en"] .site-main .section-heading {
+:is(html[lang="en"], html[lang="ka"]) .site-main .section-heading {
   max-width: 820px;
   margin-bottom: 38px;
 }
 
-html[lang="en"] .site-main .section-heading h2 {
+:is(html[lang="en"], html[lang="ka"]) .site-main .section-heading h2 {
   color: #171514;
   font-size: clamp(2.25rem, 4.7vw, 4.6rem);
   letter-spacing: -0.045em;
@@ -109,22 +109,22 @@ html[lang="en"] .site-main .section-heading h2 {
   margin: 0;
 }
 
-html[lang="en"] .site-main .section-heading > p:not(.eyebrow) {
+:is(html[lang="en"], html[lang="ka"]) .site-main .section-heading > p:not(.eyebrow) {
   color: #655d58;
   font-size: 1.08rem;
   line-height: 1.75;
   margin-top: 20px;
 }
 
-html[lang="en"] .site-main .service-grid,
-html[lang="en"] .site-main .process-grid {
+:is(html[lang="en"], html[lang="ka"]) .site-main .service-grid,
+:is(html[lang="en"], html[lang="ka"]) .site-main .process-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-html[lang="en"] .site-main .service-card,
-html[lang="en"] .site-main .process-grid article {
+:is(html[lang="en"], html[lang="ka"]) .site-main .service-card,
+:is(html[lang="en"], html[lang="ka"]) .site-main .process-grid article {
   background: #fffaf5;
   border: 1px solid rgba(23, 21, 20, 0.1);
   border-radius: 24px;
@@ -132,21 +132,21 @@ html[lang="en"] .site-main .process-grid article {
   box-shadow: 0 18px 50px rgba(23, 21, 20, 0.06);
 }
 
-html[lang="en"] .site-main .service-card h3,
-html[lang="en"] .site-main .process-grid h3 {
+:is(html[lang="en"], html[lang="ka"]) .site-main .service-card h3,
+:is(html[lang="en"], html[lang="ka"]) .site-main .process-grid h3 {
   color: #171514;
   font-size: clamp(1.35rem, 2vw, 1.8rem);
   margin: 0 0 14px;
 }
 
-html[lang="en"] .site-main .service-card p,
-html[lang="en"] .site-main .process-grid p {
+:is(html[lang="en"], html[lang="ka"]) .site-main .service-card p,
+:is(html[lang="en"], html[lang="ka"]) .site-main .process-grid p {
   color: #655d58;
   line-height: 1.7;
   margin: 0;
 }
 
-html[lang="en"] .site-main .process-grid span {
+:is(html[lang="en"], html[lang="ka"]) .site-main .process-grid span {
   color: #e66b5f;
   display: block;
   font-size: 0.8rem;
@@ -155,19 +155,36 @@ html[lang="en"] .site-main .process-grid span {
   margin-bottom: 22px;
 }
 
-html[lang="en"] .site-main .section:nth-of-type(even) {
+:is(html[lang="en"], html[lang="ka"]) .site-main .section:nth-of-type(even) {
   background: #ebe4dc;
 }
 
+html[lang="ka"] .site-main h1,
+html[lang="ka"] .site-main h2,
+html[lang="ka"] .site-main h3 {
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+html[lang="ka"] .site-main .eyebrow,
+html[lang="ka"] .site-main .process-grid span {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
 @media (max-width: 760px) {
-  html[lang="en"] .site-main .service-grid,
-  html[lang="en"] .site-main .process-grid {
+  :is(html[lang="en"], html[lang="ka"]) .site-main .service-grid,
+  :is(html[lang="en"], html[lang="ka"]) .site-main .process-grid {
     grid-template-columns: 1fr;
   }
 
-  html[lang="en"] .site-main .hero,
-  html[lang="en"] .site-main .page-hero {
+  :is(html[lang="en"], html[lang="ka"]) .site-main .hero,
+  :is(html[lang="en"], html[lang="ka"]) .site-main .page-hero {
     min-height: auto;
     padding: 110px 0 84px;
+  }
+
+  html[lang="ka"] .site-main h1 {
+    font-size: clamp(2.45rem, 11vw, 4.4rem);
   }
 }
