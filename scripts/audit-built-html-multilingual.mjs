@@ -43,7 +43,10 @@ const servicePaths = new Set([
   '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/',
   '/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/',
 ]);
-const caseStudyPaths = new Set(['/en/work/headwear/', '/en/work/misima/', '/en/work/artman/']);
+const caseStudyPaths = new Set([
+  '/calismalar/headwear/', '/calismalar/misima/', '/calismalar/artman/',
+  '/en/work/headwear/', '/en/work/misima/', '/en/work/artman/',
+]);
 const requiredPaths = new Set(['/en/audit/', ...caseStudyPaths]);
 
 for (const requiredPath of requiredPaths) {
