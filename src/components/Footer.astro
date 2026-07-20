@@ -2,17 +2,41 @@
 interface Props { lang: string; }
 const { lang } = Astro.props;
 const isEnglish = lang === 'en';
+const isGeorgian = lang === 'ka';
 ---
 <footer id="colophon" class="site-footer">
   <div class="site-footer__inner container">
     <div class="site-footer__columns">
       <div class="site-footer__group site-footer__brand">
         <h2>QCT Commerce</h2>
-        <p>{isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'Türkiye’de e-ticaret ve dijital büyüme ortağınız.'}</p>
-        <p class="site-footer__brand-relationship">{isEnglish ? 'Part of the QCT Studio network.' : 'QCT Studio ağı içinde Türkiye’ye odaklanır.'}</p>
+        <p>{isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'Türkiye’de e-ticaret ve dijital büyüme ortağınız.'}</p>
+        <p class="site-footer__brand-relationship">{isGeorgian ? 'QCT Studio-ს ქსელის ნაწილი.' : isEnglish ? 'Part of the QCT Studio network.' : 'QCT Studio ağı içinde Türkiye’ye odaklanır.'}</p>
       </div>
 
-      {isEnglish ? (
+      {isGeorgian ? (
+        <>
+          <nav class="site-footer__group site-footer__nav" aria-label="გადაწყვეტილებები">
+            <h2>გადაწყვეტილებები</h2>
+            <a href="/ka/georgia/#system">ციფრული კომერცია</a>
+            <a href="/ka/georgia/#system">B2B გაყიდვების სისტემები</a>
+            <a href="/ka/georgia/#system">მრავალენოვანი ვებსაიტები</a>
+            <a href="/ka/georgia/#system">SEO, GEO, AEO და AIO</a>
+            <a href="/ka/georgia/#system">AI და გაყიდვების ავტომატიზაცია</a>
+          </nav>
+          <nav class="site-footer__group site-footer__company" aria-label="ბაზრები">
+            <h2>ბაზრები</h2>
+            <a href="/ka/georgia/">საქართველო</a>
+            <a href="/en/">საერთაშორისო</a>
+            <a href="/">თურქეთი</a>
+          </nav>
+          <div class="site-footer__group site-footer__markets">
+            <h2>კონტაქტი</h2>
+            <p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p>
+            <p><a href="tel:+905433856656">+90 543 385 66 56</a></p>
+            <p>თურქეთი · საერთაშორისო</p>
+          </div>
+        </>
+      ) : isEnglish ? (
         <>
           <nav class="site-footer__group site-footer__nav" aria-label="Solutions">
             <h2>Solutions</h2>
