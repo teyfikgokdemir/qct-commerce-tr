@@ -54,11 +54,11 @@
 /en/products/shopify-magaza-tasima /en/ecommerce/ 301
 /en/products/pazaryeri-entegrasyonu /en/ecommerce/ 301
 /en/products/* /en/ecommerce/ 301
-/en/pages/contact /en/#contact 301
+/en/pages/contact /en/contact/ 301
 /en/pages/hakkimizda /en/ 301
 /en/pages/about /en/ 301
 /en/pages/kurumsal /en/ 301
-/en/pages/get-a-quote /en/#contact 301
+/en/pages/get-a-quote /en/contact/ 301
 /en/pages/gdpr /gizlilik-politikasi/ 301
 /en/pages/cookie-policy /cerez-politikasi/ 301
 /en/pages/data-sharing-opt-out /gizlilik-politikasi/ 301
@@ -72,7 +72,7 @@
 /en/collections/* /en/ 301
 /en/policies/privacy-policy /gizlilik-politikasi/ 301
 /en/policies/terms-of-service /kullanim-kosullari/ 301
-/en/policies/contact-information /en/#contact 301
+/en/policies/contact-information /en/contact/ 301
 /en/policies/legal-notice /kullanim-kosullari/ 301
 /en/policies/* /kullanim-kosullari/ 301
 /en/pages/agents-md /llms.txt 301
