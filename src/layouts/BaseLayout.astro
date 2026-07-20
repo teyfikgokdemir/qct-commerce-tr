@@ -78,7 +78,7 @@ const organizationSchema = {
 
 const founderSchema = includeFounder ? {
   '@type': 'Person', '@id': founderId, name: 'Teyfik Gökdemir', jobTitle: isEnglish ? 'Founder of QCT Commerce' : 'QCT Commerce Kurucusu', worksFor: { '@id': organizationId },
-  image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(), knowsLanguage: ['Türkçe', 'English'],
+  image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(), knowsLanguage: ['Türkçe', 'İngilizce'],
   knowsAbout: ['E-commerce architecture','Corporate website design and development','Conversion optimization','Technical SEO and search visibility','GEO, AEO and AIO','Sales landing pages','WhatsApp sales systems','AI business automation','Analytics','International digital growth'],
 } : null;
 
@@ -136,6 +136,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
   <link rel="stylesheet" href="/styles/brand.css?v=20260719-1" />
   <link rel="stylesheet" href="/styles/service-cards-isolated.css?v=20260720-1" />
+  {isEnglish && <link rel="stylesheet" href="/styles/international.css?v=20260720-1" />}
   {includeWorkStyles && <link rel="stylesheet" href="/styles/work.css?v=20260719-1" />}
 </head>
 <body>
