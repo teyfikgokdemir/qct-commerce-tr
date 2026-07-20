@@ -2,6 +2,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+
+const whatsappUrl = 'https://wa.me/905433856656?text=Hello%20QCT%20Commerce.%20I%20would%20like%20to%20discuss%20an%20international%20digital%20project.';
 ---
 <BaseLayout
   title="Contact QCT Commerce | International Digital Projects"
@@ -20,7 +22,7 @@ import Footer from '../../../components/Footer.astro';
       <p class="page-hero__lead">Share the current commercial challenge, target market and the system you already use. We will identify the most practical first step.</p>
       <div class="hero__actions">
         <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=International%20project%20enquiry">Email the project brief</a>
-        <a class="button button--secondary" href="tel:+905433856656">Call QCT Commerce</a>
+        <a class="button button--secondary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Start on WhatsApp</a>
       </div>
     </div>
   </section>
@@ -37,6 +39,7 @@ import Footer from '../../../components/Footer.astro';
           <article><span>01</span><h3>Current situation</h3><p>What are you selling, to whom, and through which website or sales channels today?</p></article>
           <article><span>02</span><h3>Target market</h3><p>Which country, buyer group or commercial route are you trying to reach?</p></article>
           <article><span>03</span><h3>Main constraint</h3><p>Where are enquiries, product discovery, follow-up or conversion currently breaking down?</p></article>
+          <article><span>04</span><h3>Useful evidence</h3><p>Include the current website, catalogue, sales channel or workflow so the first review is grounded in the real system.</p></article>
         </div>
       </div>
 
@@ -44,9 +47,13 @@ import Footer from '../../../components/Footer.astro';
         <p class="eyebrow">Direct contact</p>
         <h2>Speak to the team.</h2>
         <div class="qct-contact-card__item"><span>Email</span><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></div>
-        <div class="qct-contact-card__item"><span>Telephone and WhatsApp</span><a href="tel:+905433856656">+90 543 385 66 56</a></div>
+        <div class="qct-contact-card__item"><span>Telephone</span><a href="tel:+905433856656">+90 543 385 66 56</a></div>
+        <div class="qct-contact-card__item"><span>WhatsApp</span><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Open a project conversation</a></div>
         <div class="qct-contact-card__item"><span>Markets</span><p>Türkiye · Georgia · International</p></div>
-        <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Commercial%20digital%20review">Request a commercial review</a>
+        <div class="qct-contact-card__actions">
+          <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Commercial%20digital%20review">Request a commercial review</a>
+          <a class="button button--secondary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+        </div>
       </aside>
     </div>
   </section>
@@ -77,6 +84,8 @@ import Footer from '../../../components/Footer.astro';
   .qct-contact-card__item { border-top: 1px solid rgba(255,255,255,.14); padding: 20px 0; }
   .qct-contact-card__item span { color: rgba(255,250,245,.55); display: block; font-size: .75rem; font-weight: 900; letter-spacing: .1em; margin-bottom: 8px; text-transform: uppercase; }
   .qct-contact-card__item a, .qct-contact-card__item p { color: #fffaf5; font-size: 1.05rem; margin: 0; text-decoration-color: rgba(230,107,95,.75); }
-  .qct-contact-card > .button { margin-top: 28px; }
+  .qct-contact-card__actions { display: grid; gap: 10px; margin-top: 28px; }
+  .qct-contact-card__actions .button { justify-content: center; width: 100%; }
+  .qct-contact-card__actions .button--secondary { border-color: rgba(255,255,255,.32); color: #fffaf5; }
   @media (max-width: 900px) { .qct-contact-page__grid { grid-template-columns: 1fr; } .qct-contact-card { position: static; } }
 </style>
