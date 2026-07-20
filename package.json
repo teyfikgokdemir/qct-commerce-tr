@@ -12,7 +12,7 @@
     "astro": "astro",
     "audit:content": "node scripts/audit-content.mjs",
     "audit:metadata": "node scripts/audit-metadata.mjs",
-    "audit:html": "node scripts/audit-built-html.mjs",
+    "audit:html": "node scripts/audit-built-html-multilingual.mjs",
     "audit:redirects": "node scripts/audit-redirects.mjs"
   },
   "dependencies": {
