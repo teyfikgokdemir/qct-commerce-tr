@@ -162,14 +162,35 @@
 html[lang="ka"] .site-main h1,
 html[lang="ka"] .site-main h2,
 html[lang="ka"] .site-main h3 {
-  letter-spacing: -0.02em;
-  line-height: 1.12;
+  letter-spacing: -0.01em;
+  line-height: 1.16;
+}
+
+html[lang="ka"] .site-main .page-hero h1 {
+  font-size: clamp(3rem, 5.4vw, 5rem);
+  max-width: 820px;
+}
+
+html[lang="ka"] .site-main .section-heading h2 {
+  font-size: clamp(2.15rem, 3.8vw, 3.7rem);
+  max-width: 760px;
+}
+
+html[lang="ka"] .site-main .service-card h3,
+html[lang="ka"] .site-main .process-grid h3 {
+  font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+  line-height: 1.28;
 }
 
 html[lang="ka"] .site-main .eyebrow,
 html[lang="ka"] .site-main .process-grid span {
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: none;
+}
+
+html[lang="ka"] .main-navigation a,
+html[lang="ka"] .main-navigation button {
+  font-size: 0.82rem;
 }
 
 @media (max-width: 760px) {
@@ -184,7 +205,12 @@ html[lang="ka"] .site-main .process-grid span {
     padding: 110px 0 84px;
   }
 
-  html[lang="ka"] .site-main h1 {
-    font-size: clamp(2.45rem, 11vw, 4.4rem);
+  html[lang="ka"] .site-main .page-hero h1 {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+    line-height: 1.18;
+  }
+
+  html[lang="ka"] .site-main .section-heading h2 {
+    font-size: clamp(1.9rem, 8vw, 2.8rem);
   }
 }
