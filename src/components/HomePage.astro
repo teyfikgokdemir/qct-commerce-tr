@@ -17,6 +17,10 @@ interface Props {
 const { lang } = Astro.props;
 
 const seo = getPageSeo('home');
+const alternates = [
+  { lang: 'tr-TR', href: '/' },
+  { lang: 'en', href: '/en/' },
+];
 const faqItems = [
   { q: 'Hangi hizmetle başlamalıyız?', a: 'İlk adım, mevcut dijital yapınızda satış sürecini en çok zorlayan noktayı belirlemektir. İhtiyaç tek bir hizmetle çözülebiliyorsa kapsamı o alanda tutar; birden fazla katman birbirini etkiliyorsa öncelikli sırayı birlikte çıkarırız.' },
   { q: 'Mevcut web sitemiz veya mağazamız geliştirilebilir mi?', a: 'Evet. Yeni bir yapı kurmadan önce mevcut sitenin veya mağazanın teknik altyapısını, kullanıcı akışını, içeriklerini ve ölçüm düzenini değerlendirir; korunabilecek ve geliştirilmesi gereken alanları ayırırız.' },
@@ -38,7 +42,7 @@ const faqSchema = {
   })),
 };
 ---
-<BaseLayout title={seo.title} description={seo.description} lang={lang} isHome={true} includeWorkStyles={true}>
+<BaseLayout title={seo.title} description={seo.description} lang={lang} isHome={true} includeWorkStyles={true} alternates={alternates}>
 <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <Header slot="header" lang={lang} />
 <Hero lang={lang} />
