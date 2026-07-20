@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const title = 'Digital Sales Systems for Georgian Companies | QCT Commerce';
+const description = 'QCT Commerce helps Georgian manufacturers, distributors and growing brands enter Türkiye, Europe and Gulf markets with multilingual B2B websites, commerce and sales automation.';
+---
+<BaseLayout
+  title={title}
+  description={description}
+  lang="en"
+  breadcrumbLabel="Georgia"
+  service={{ name: 'International Digital Sales Systems for Georgian Companies', description }}
+  areaServed={['Georgia', 'Türkiye', 'European markets', 'Gulf countries']}
+>
+  <Header slot="header" lang="en" />
+
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">Georgia → Türkiye, Europe and the Gulf</p>
+      <h1>Turn international interest into a structured sales pipeline.</h1>
+      <p class="page-hero__lead">We build multilingual digital sales systems for Georgian manufacturers, distributors and growth-focused companies that need to present products clearly, capture qualified enquiries and enter new markets with confidence.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Georgia%20market%20project">Request a market review</a>
+        <a class="button button--secondary" href="#fit">See who this is for</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="fit" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Built for commercial expansion</p>
+        <h2>A strong fit for companies with a real growth trigger.</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service-card"><h3>Export manufacturers</h3><p>Technical product catalogues, certification proof, sample requests and distributor enquiries built around international buyers.</p></article>
+        <article class="service-card"><h3>Distributors and wholesalers</h3><p>Structured product discovery, brand portfolios, dealer applications and CRM-connected quotation flows.</p></article>
+        <article class="service-card"><h3>Retail and e-commerce brands</h3><p>Better product journeys, conversion-focused landing pages and cross-channel customer experiences.</p></article>
+        <article class="service-card"><h3>Logistics and B2B services</h3><p>Lead qualification, self-service information and automated routing for commercial enquiries.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">The commercial problem</p>
+        <h2>International growth often fails before the first conversation.</h2>
+        <p>Potential buyers cannot quickly understand the offer, compare products, verify credibility or reach the right person. Valuable enquiries arrive through disconnected channels and follow-up depends on manual effort.</p>
+      </div>
+      <div class="process-grid">
+        <article><span>01</span><h3>Position the offer</h3><p>Market-specific messaging for buyers in Türkiye, Europe or Gulf markets.</p></article>
+        <article><span>02</span><h3>Build trust</h3><p>Products, capabilities, certifications, case evidence and clear commercial next steps.</p></article>
+        <article><span>03</span><h3>Protect every lead</h3><p>CRM routing, automated responses and measurable follow-up from first enquiry to sales conversation.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">What the system can include</p>
+        <h2>A focused scope built around your route to market.</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service-card"><h3>English and market-language website</h3><p>International information architecture, buyer-focused content and scalable localisation.</p></article>
+        <article class="service-card"><h3>B2B catalogue and enquiry flows</h3><p>Product grouping, technical documents, quotation requests and distributor applications.</p></article>
+        <article class="service-card"><h3>SEO, GEO, AEO and AIO</h3><p>Technical and content foundations for search engines and AI-assisted buyer research.</p></article>
+        <article class="service-card"><h3>CRM and AI automation</h3><p>Lead capture, qualification, assignment and follow-up without losing the human sales relationship.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">A practical first step</p>
+        <h2>Start with a commercial digital audit.</h2>
+        <p>We review your current website, international offer, enquiry paths and expansion target. You receive a focused opportunity map before any build is proposed.</p>
+        <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Georgia%20commercial%20digital%20audit">Request the audit</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
