@@ -3,8 +3,6 @@ import CookieConsent from '../components/CookieConsent.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const SITE_URL = 'https://qctcommerce.com';
-const LOCALE = 'tr_TR';
-const AREA_SERVED = [{ '@type': 'Country', name: 'Türkiye' }];
 
 export interface Props {
   title: string;
@@ -22,11 +20,13 @@ export interface Props {
   includeFounder?: boolean;
   breadcrumbs?: Array<{ name: string; url: string }>;
   includeWorkStyles?: boolean;
+  alternates?: Array<{ lang: string; href: string }>;
+  areaServed?: string[];
 }
 
 const {
   title,
-  description = 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.',
+  description,
   lang = 'tr',
   image = '/og-default.png',
   imageWidth = 1200,
@@ -40,38 +40,50 @@ const {
   includeFounder = false,
   breadcrumbs,
   includeWorkStyles = false,
+  alternates = [],
+  areaServed,
 } = Astro.props;
 
+const isEnglish = lang === 'en';
+const locale = isEnglish ? 'en_US' : 'tr_TR';
+const languageTag = isEnglish ? 'en-US' : 'tr-TR';
+const defaultDescription = isEnglish
+  ? 'QCT Commerce builds digital commerce, B2B sales and automation systems for ambitious companies entering new markets.'
+  : 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.';
+const pageDescription = description ?? defaultDescription;
+const servedMarkets = areaServed ?? (isEnglish ? ['Georgia', 'Türkiye', 'Europe', 'Gulf countries'] : ['Türkiye']);
+const areaServedSchema = servedMarkets.map((name) => ({ '@type': 'Country', name }));
 const isIndexable = !noindex;
 const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : image.toLowerCase().endsWith('.webp') ? 'image/webp' : 'image/jpeg';
 const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
-const homeUrl = new URL('/', SITE_URL).toString();
+const homePath = isEnglish ? '/en/' : '/';
+const homeUrl = new URL(homePath, SITE_URL).toString();
 const organizationId = `${SITE_URL}/#organization`;
 const founderId = `${SITE_URL}/hakkimizda/#teyfik-gokdemir`;
-const websiteId = `${SITE_URL}/#website`;
+const websiteId = `${SITE_URL}/${isEnglish ? 'en/' : ''}#website`;
 const webpageId = `${canonicalUrl}#webpage`;
 
 const organizationSchema = {
   '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
   logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/logo.png', SITE_URL).toString(), contentUrl: new URL('/logo.png', SITE_URL).toString(), width: 600, height: 180, caption: 'QCT Commerce' },
   image: { '@id': `${organizationId}/logo` },
-  description: 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
+  description: isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
   parentOrganization: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' },
-  areaServed: AREA_SERVED,
+  areaServed: areaServedSchema,
   email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56',
-  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: 'TR', availableLanguage: ['Turkish'] }],
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English'] }],
   ...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };
 
 const founderSchema = includeFounder ? {
-  '@type': 'Person', '@id': founderId, name: 'Teyfik Gökdemir', jobTitle: 'QCT Commerce Kurucusu', worksFor: { '@id': organizationId },
-  image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(), knowsLanguage: ['Türkçe', 'İngilizce'],
-  knowsAbout: ['E-ticaret altyapısı ve mağaza mimarisi','Kurumsal web tasarımı ve geliştirme','Kullanıcı deneyimi ve dönüşüm optimizasyonu','Teknik SEO ve arama görünürlüğü','GEO, AEO ve AIO altyapısı','Meta reklam açılış sayfaları','WhatsApp satış sistemleri','Yapay zekâ destekli iş otomasyonları','Dijital ölçüm ve analitik','Pazaryeri ve bağımsız mağaza stratejisi'],
+  '@type': 'Person', '@id': founderId, name: 'Teyfik Gökdemir', jobTitle: isEnglish ? 'Founder of QCT Commerce' : 'QCT Commerce Kurucusu', worksFor: { '@id': organizationId },
+  image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(), knowsLanguage: ['Türkçe', 'English'],
+  knowsAbout: ['E-commerce architecture','Corporate website design and development','Conversion optimization','Technical SEO and search visibility','GEO, AEO and AIO','Sales landing pages','WhatsApp sales systems','AI business automation','Analytics','International digital growth'],
 } : null;
 
-const websiteSchema = { '@type': 'WebSite', '@id': websiteId, url: SITE_URL, name: 'QCT Commerce', description: organizationSchema.description, inLanguage: 'tr-TR', publisher: { '@id': organizationId } };
-const webpageSchema: Record<string, unknown> = { '@type': pageType, '@id': webpageId, url: canonicalUrl, name: title, description, inLanguage: 'tr-TR', isPartOf: { '@id': websiteId }, about: { '@id': organizationId } };
+const websiteSchema = { '@type': 'WebSite', '@id': websiteId, url: homeUrl, name: 'QCT Commerce', description: organizationSchema.description, inLanguage: languageTag, publisher: { '@id': organizationId } };
+const webpageSchema: Record<string, unknown> = { '@type': pageType, '@id': webpageId, url: canonicalUrl, name: title, description: pageDescription, inLanguage: languageTag, isPartOf: { '@id': websiteId }, about: { '@id': organizationId } };
 let breadcrumbSchema: Record<string, unknown> | null = null;
 if (breadcrumbs?.length) {
   const breadcrumbId = `${canonicalUrl}#breadcrumb`;
@@ -79,13 +91,13 @@ if (breadcrumbs?.length) {
   webpageSchema.breadcrumb = { '@id': breadcrumbId };
 } else if (breadcrumbLabel) {
   const breadcrumbId = `${canonicalUrl}#breadcrumb`;
-  breadcrumbSchema = { '@type': 'BreadcrumbList', '@id': breadcrumbId, itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Ana sayfa', item: homeUrl }, { '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl }] };
+  breadcrumbSchema = { '@type': 'BreadcrumbList', '@id': breadcrumbId, itemListElement: [{ '@type': 'ListItem', position: 1, name: isEnglish ? 'Home' : 'Ana sayfa', item: homeUrl }, { '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl }] };
   webpageSchema.breadcrumb = { '@id': breadcrumbId };
 }
 let serviceSchema: Record<string, unknown> | null = null;
 if (service) {
   const serviceId = `${canonicalUrl}#service`;
-  serviceSchema = { '@type': 'Service', '@id': serviceId, url: canonicalUrl, name: service.name, description: service.description, serviceType: service.name, provider: { '@id': organizationId }, areaServed: AREA_SERVED, mainEntityOfPage: { '@id': webpageId } };
+  serviceSchema = { '@type': 'Service', '@id': serviceId, url: canonicalUrl, name: service.name, description: service.description, serviceType: service.name, provider: { '@id': organizationId }, areaServed: areaServedSchema, mainEntityOfPage: { '@id': webpageId } };
   webpageSchema.mainEntity = { '@id': serviceId };
 }
 const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema, founderSchema].filter(Boolean) };
@@ -96,23 +108,25 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
-  <meta name="description" content={description} />
+  <meta name="description" content={pageDescription} />
   {!isIndexable && <meta name="robots" content="noindex, follow" />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260720-1" />
   <link rel="canonical" href={canonicalUrl} />
+  {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={new URL(alternate.href, SITE_URL).toString()} />)}
+  {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={new URL('/', SITE_URL).toString()} />}
   <meta property="og:type" content={type} />
   <meta property="og:site_name" content="QCT Commerce" />
   <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
+  <meta property="og:description" content={pageDescription} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:image:type" content={ogImageType} />
   <meta property="og:image:width" content={String(imageWidth)} />
   <meta property="og:image:height" content={String(imageHeight)} />
-  <meta property="og:locale" content={LOCALE} />
+  <meta property="og:locale" content={locale} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
+  <meta name="twitter:description" content={pageDescription} />
   <meta name="twitter:image" content={ogImageUrl} />
   <script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
   <slot name="schema" />
@@ -126,7 +140,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
 </head>
 <body>
   <div id="page" class="site">
-    <a class="skip-link screen-reader-text" href="#primary">İçeriğe geç</a>
+    <a class="skip-link screen-reader-text" href="#primary">{isEnglish ? 'Skip to content' : 'İçeriğe geç'}</a>
     <slot name="header" />
     <main id="primary" class="site-main"><slot /></main>
     <slot name="footer" />
