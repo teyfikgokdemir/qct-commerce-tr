@@ -22,3 +22,26 @@ html[lang="en"] .site-main .qct-int-case section.qct-int-case__outcome h2,
 html[lang="en"] .site-main .qct-int-case section.qct-int-case__outcome p {
   color: #fffaf5 !important;
 }
+
+html[lang="en"] .site-main .qct-int-case .qct-int-case__cover {
+  width: min(1080px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+html[lang="en"] .site-main .qct-int-case .qct-int-case__cover img {
+  aspect-ratio: 16 / 9;
+  max-height: 610px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+@media (max-width: 720px) {
+  html[lang="en"] .site-main .qct-int-case .qct-int-case__cover {
+    width: min(100% - 28px, 1080px);
+  }
+
+  html[lang="en"] .site-main .qct-int-case .qct-int-case__cover img {
+    aspect-ratio: 16 / 10;
+    max-height: none;
+  }
+}
