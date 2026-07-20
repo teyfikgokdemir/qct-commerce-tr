@@ -1,0 +1,17 @@
+---
+import InternationalServicePage from '../../../components/InternationalServicePage.astro';
+const capabilities=[
+{title:'Lead capture and routing',text:'Enquiries collected, qualified and assigned without losing context between channels.'},
+{title:'Customer response workflows',text:'AI-assisted replies, knowledge access and escalation rules that keep human control where it matters.'},
+{title:'CRM and operational automation',text:'Connected forms, pipelines, notifications and follow-up tasks that reduce repetitive manual work.'},
+{title:'Measurement and governance',text:'Clear ownership, logs, approval points and performance signals for reliable automation.'}
+];
+const process=[{title:'Find the operational leak',text:'We map repeated work, delays, handoff failures and lost enquiries.'},{title:'Design the controlled workflow',text:'We define triggers, data, decisions, human approvals and exception handling.'},{title:'Implement and improve',text:'We release a focused automation, observe real use and refine it safely.'}];
+const faqItems=[
+{q:'Does AI replace the sales or support team?',a:'No. The system handles repeatable tasks and information retrieval while preserving human ownership of important decisions and relationships.'},
+{q:'Can automation connect to our existing tools?',a:'Often yes. The scope depends on the APIs, permissions and data quality available in the current systems.'},
+{q:'What should be automated first?',a:'The best first workflow is frequent, rule-based, measurable and currently causing delay, lost leads or unnecessary manual effort.'},
+{q:'How do you reduce automation risk?',a:'We define approval points, fallbacks, access rules, logging and human escalation before launch.'}
+];
+---
+<InternationalServicePage title="AI & Sales Automation Systems | QCT Commerce" description="QCT Commerce builds controlled AI, CRM and sales automation workflows that protect leads, reduce delays and support growing commercial teams." eyebrow="AI and sales automation" heading="Automate the repeated work without losing control of the customer relationship." lead="We connect enquiries, CRM, messaging and internal workflows so teams respond faster and focus on decisions that require people." serviceName="AI and sales automation" problem="Growth creates more messages, handoffs and follow-up tasks. Without a controlled workflow, qualified enquiries wait, context disappears and teams spend time repeating the same operational work." capabilities={capabilities} process={process} faqItems={faqItems}/>
