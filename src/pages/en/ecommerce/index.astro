@@ -1,0 +1,17 @@
+---
+import InternationalServicePage from '../../../components/InternationalServicePage.astro';
+const capabilities=[
+{title:'Commerce architecture',text:'Product structure, customer journeys, checkout logic and operational requirements planned as one system.'},
+{title:'Conversion-focused experience',text:'Clear discovery, product comparison, trust signals and buying actions across desktop and mobile.'},
+{title:'Platform and integration planning',text:'A platform-neutral review of catalogue, payment, logistics, CRM, analytics and automation needs.'},
+{title:'International readiness',text:'Scalable language, market and content structures for companies selling across borders.'}
+];
+const process=[{title:'Audit the current journey',text:'We identify friction, lost demand and operational constraints.'},{title:'Design the commerce system',text:'We define architecture, content, integrations and measurement.'},{title:'Build, launch and improve',text:'We release a focused system and improve it using commercial evidence.'}];
+const faqItems=[
+{q:'Do you only build Shopify stores?',a:'No. We select or improve the platform according to the business model, catalogue, integrations, team and growth plan.'},
+{q:'Can you improve an existing store?',a:'Yes. We can review and improve product discovery, mobile experience, checkout, content, analytics and operational workflows.'},
+{q:'Do you support B2B commerce?',a:'Yes. We build catalogue, quotation, dealer, distributor and account-based buying flows for B2B companies.'},
+{q:'Can the store support multiple countries and languages?',a:'Yes. International information architecture, language routes and market-specific journeys can be included.'}
+];
+---
+<InternationalServicePage title="E-commerce Systems for Growth | QCT Commerce" description="QCT Commerce designs e-commerce architecture, customer journeys, integrations and conversion systems for growing B2B and retail companies." eyebrow="E-commerce systems" heading="Build a commerce system that works beyond the storefront." lead="We connect product discovery, buying journeys, integrations, operations and measurement in one practical commerce structure." serviceName="E-commerce systems" problem="A store can look polished and still lose revenue through unclear product structure, weak mobile journeys, disconnected operations or unreliable measurement." capabilities={capabilities} process={process} faqItems={faqItems}/>
