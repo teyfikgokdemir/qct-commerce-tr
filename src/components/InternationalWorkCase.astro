@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+type Slug = 'headwear' | 'misima' | 'artman';
+interface Props { slug: Slug; }
+const { slug } = Astro.props;
+
+const cases = {
+  headwear: {
+    name: 'HEADWEAR',
+    eyebrow: 'Multilingual e-commerce',
+    title: 'A multilingual Shopify store structured around product discovery and mobile purchase actions.',
+    summary: 'A live commerce system that brings collections, product information, language routes, account access, cart and purchase actions into one responsive customer journey.',
+    sector: 'Performance and outdoor products',
+    image: '/images/work/headwear/headwear-web-deneyimi.webp',
+    alt: 'HEADWEAR multilingual Shopify store on desktop',
+    liveUrl: 'https://www.head-wear.com/',
+    needTitle: 'Make a focused product range understandable and purchasable across languages and devices.',
+    needText: 'The store needed to help visitors understand product use, compare relevant options and move towards purchase without losing clarity on smaller screens or across language routes.',
+    constraints: ['Focused product catalogue', 'Multilingual storefront routes', 'Mobile-first purchase journey', 'Live Shopify environment'],
+    approachTitle: 'Organise the store around how customers discover, evaluate and buy.',
+    approachText: 'Collections, product templates, language navigation, account access and cart actions were treated as connected parts of one commerce journey rather than separate page features.',
+    work: [
+      ['Store and collection architecture', 'Collection and product templates were structured to create a direct route from discovery to product detail and purchase action.'],
+      ['Multilingual navigation', 'Language routes and navigation patterns help customers reach the appropriate storefront and continue through a consistent experience.'],
+      ['Mobile purchase flow', 'Product information, actions and next steps remain visible and usable on phone screens.'],
+      ['Search-ready structure', 'Crawlable collection and product routes support clearer interpretation by search systems.']
+    ],
+    outputs: ['Live Shopify commerce store', 'Collection and product templates', 'Multilingual storefront routes', 'Responsive account, cart and purchase flow'],
+    outcomeTitle: 'A live store connecting product, language and device layers in one commerce experience.',
+    outcomeText: 'The published system provides observable routes for collection discovery, product information, account access, cart actions and purchase progression across desktop and mobile layouts.',
+    facts: [['Platform', 'Shopify'], ['Project type', 'Multilingual e-commerce'], ['Status', 'Live store']],
+    services: [['E-commerce systems', '/en/ecommerce/'], ['B2B web design', '/en/web-design/'], ['Search visibility', '/en/search-visibility/']]
+  },
+  misima: {
+    name: 'Misima Group',
+    eyebrow: 'Corporate and B2B web system',
+    title: 'A corporate website that brings services, brands and product discovery into one clear group structure.',
+    summary: 'A 2025 strategy, design and development project for a cosmetics group serving brand owners, distribution partners and product buyers.',
+    sector: 'Cosmetics and brand management',
+    image: '/images/work/misima/misima-web-deneyimi.webp',
+    alt: 'Misima Group corporate B2B website on desktop',
+    liveUrl: 'https://www.misima.com.tr/',
+    needTitle: 'Explain several business models without making the group appear fragmented.',
+    needText: 'Brand owners, distribution partners and product buyers arrive with different questions. Corporate information, services, brands and products needed distinct routes while remaining part of one coherent group story.',
+    constraints: ['Multiple buyer groups', 'Private-label and white-label services', 'Brand and product content', 'Corporate trust requirements'],
+    approachTitle: 'Build the information architecture around the questions different visitors need answered.',
+    approachText: 'Corporate narrative, service architecture, brand presentation and product discovery were planned as clear routes that support different commercial interests without separating the group identity.',
+    work: [
+      ['Web strategy', 'The business model and audiences were reviewed to define the role and content priority of each page group.'],
+      ['Information architecture', 'Private label, white label, production and distribution services were separated into understandable routes.'],
+      ['Interface design', 'Corporate credibility, brand presentation and product discovery were organised into one consistent visual system.'],
+      ['Web development', 'Responsive corporate, service, brand, product and policy pages were implemented and published.']
+    ],
+    outputs: ['Live corporate website', 'Service and content architecture', 'Brand and product presentation routes', 'Responsive page system'],
+    outcomeTitle: 'A live B2B website that makes a complex group offer easier to inspect.',
+    outcomeText: 'The published website presents corporate information, services, brands and selected products through separate content paths while keeping the group offer within one digital structure.',
+    facts: [['Project year', '2025'], ['Project type', 'Corporate and B2B website'], ['Scope', 'Strategy, design and development']],
+    services: [['B2B web design', '/en/web-design/'], ['Search visibility', '/en/search-visibility/'], ['Commercial digital audit', '/en/audit/']]
+  },
+  artman: {
+    name: 'Artman Group',
+    eyebrow: 'Corporate supply and operations',
+    title: 'A corporate web structure that organises a broad service portfolio into clear commercial routes.',
+    summary: 'A live website that presents an Istanbul-based corporate supplier through structured service categories, trust content and enquiry paths.',
+    sector: 'Corporate supply and operational solutions',
+    image: '/images/work/artman/artman-web-deneyimi.webp',
+    alt: 'Artman Group corporate supply website on desktop',
+    liveUrl: 'https://artmangroup.com.tr/',
+    needTitle: 'Present a broad portfolio as one coherent corporate offer.',
+    needText: 'Services supporting different procurement needs had to remain discoverable without turning the website into a fragmented catalogue. Artman Group needed to remain visible as the central commercial partner.',
+    constraints: ['Broad service portfolio', 'Procurement-oriented visitors', 'Corporate credibility', 'Clear enquiry routes'],
+    approachTitle: 'Translate operational breadth into a simpler information structure.',
+    approachText: 'Related services were grouped into findable categories, while company information, service context and contact paths were ordered to support understanding and commercial trust.',
+    work: [
+      ['Service architecture', 'Different solutions were organised into categories that give procurement teams a clear starting point.'],
+      ['Corporate narrative', 'Company context and service areas were presented as one supply approach rather than a disconnected catalogue.'],
+      ['Action paths', 'Links from service discovery to contact were positioned so the next commercial step remains visible.'],
+      ['Search-oriented content structure', 'Core service areas received crawlable page context and internal routes.']
+    ],
+    outputs: ['Live corporate website', 'Categorised service structure', 'Corporate information and trust pages', 'Service-led enquiry paths'],
+    outcomeTitle: 'A live digital centre that presents a broad portfolio under one corporate identity.',
+    outcomeText: 'The published website lets visitors inspect relevant service areas and move towards an appropriate contact route within one structured corporate experience.',
+    facts: [['Market', 'Türkiye'], ['Project type', 'Corporate B2B website'], ['Scope', 'Information architecture and web experience']],
+    services: [['B2B web design', '/en/web-design/'], ['AI and sales automation', '/en/ai-automation/'], ['Commercial digital audit', '/en/audit/']]
+  }
+} as const;
+
+const work = cases[slug];
+const canonical = `https://qctcommerce.com/en/work/${slug}/`;
+const schema = {
+  '@context': 'https://schema.org', '@type': 'CreativeWork', '@id': `${canonical}#project`, url: canonical,
+  name: work.title, description: work.summary, inLanguage: 'en-US', image: `https://qctcommerce.com${work.image}`,
+  about: work.sector, creator: { '@id': 'https://qctcommerce.com/#organization' }, mainEntityOfPage: { '@id': `${canonical}#webpage` }
+};
+---
+<BaseLayout title={`${work.name} Case Study | QCT Commerce`} description={work.summary} lang="en" image={work.image} imageWidth={1600} imageHeight={1000} pageType="WebPage" breadcrumbLabel={work.name} includeWorkStyles={true} areaServed={['Türkiye','Georgia','Europe','Gulf countries']}>
+  <Header slot="header" lang="en" />
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <article class="qct-int-case">
+    <header class="page-hero section qct-int-case__hero">
+      <div class="container">
+        <p class="qct-int-case__crumb"><a href="/en/">Home</a> / <a href="/en/work/">Work</a> / {work.name}</p>
+        <p class="eyebrow">{work.eyebrow}</p>
+        <h1>{work.title}</h1>
+        <p class="page-hero__lead">{work.summary}</p>
+        <div class="hero__actions"><a class="button button--primary" href={work.liveUrl} target="_blank" rel="noopener noreferrer">Visit live project ↗</a><a class="button button--secondary" href="#scope">Review the scope</a></div>
+      </div>
+    </header>
+
+    <figure class="container qct-int-case__cover"><img src={work.image} alt={work.alt} width="1600" height="1000" loading="eager" decoding="async" /><figcaption>{work.name} — current view from the live digital experience.</figcaption></figure>
+
+    <section id="scope" class="section qct-int-case__section"><div class="container qct-int-case__split"><div><p class="eyebrow">Commercial need</p><h2>{work.needTitle}</h2><p>{work.needText}</p></div><dl class="qct-int-case__facts">{work.facts.map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div></section>
+
+    <section class="section qct-int-case__dark"><div class="container qct-int-case__split"><div><p class="eyebrow">Constraints</p><h2>The system had to work within real commercial conditions.</h2></div><ul class="qct-int-case__constraints">{work.constraints.map((item) => <li>{item}</li>)}</ul></div></section>
+
+    <section class="section qct-int-case__section"><div class="container qct-int-case__split"><div><p class="eyebrow">System approach</p><h2>{work.approachTitle}</h2><p>{work.approachText}</p></div><p class="qct-int-case__note">This project was delivered within the QCT Studio network. Only observable digital scope and live outputs are described here.</p></div></section>
+
+    <section class="section qct-int-case__work"><div class="container"><p class="eyebrow">Work delivered</p><h2>Core parts of the digital scope</h2><div class="qct-int-case__grid">{work.work.map(([title,text], index) => <article><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+
+    <section class="section qct-int-case__section"><div class="container qct-int-case__split"><div><p class="eyebrow">Verified outputs</p><h2>Published elements that can be inspected directly</h2></div><ul class="qct-int-case__outputs">{work.outputs.map((item) => <li>{item}</li>)}</ul></div></section>
+
+    <section class="section qct-int-case__outcome"><div class="container qct-int-case__split"><div><p class="eyebrow">Observable outcome</p><h2>{work.outcomeTitle}</h2></div><p>{work.outcomeText}</p></div></section>
+
+    <section class="section qct-int-case__related"><div class="container"><p class="eyebrow">Related capabilities</p><h2>Start from the commercial constraint, not the platform.</h2><div class="qct-int-case__links">{work.services.map(([label,href]) => <a href={href}>{label} →</a>)}</div></div></section>
+
+    <section class="section qct-international-cta"><div class="container"><div class="section-heading"><p class="eyebrow">Your project</p><h2>Review the current system before deciding what to build next.</h2><p>A commercial digital audit identifies the buyer journey, market and operational constraints that should shape the scope.</p><a class="button button--primary" href="/en/audit/">Start with an audit</a></div></div></section>
+  </article>
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .qct-int-case { background:#f3ede6; color:#171514; }
+  .qct-int-case__hero h1 { max-width:980px; }
+  .qct-int-case__crumb { color:rgba(255,250,245,.68); font-size:.9rem; margin:0 0 36px; }
+  .qct-int-case__crumb a { color:inherit; }
+  .qct-int-case__cover { margin-top:clamp(-28px,-3vw,-54px); position:relative; z-index:2; }
+  .qct-int-case__cover img { border-radius:28px; box-shadow:0 28px 80px rgba(23,21,20,.18); display:block; height:auto; width:100%; }
+  .qct-int-case__cover figcaption { color:#6a615b; font-size:.84rem; margin-top:12px; }
+  .qct-int-case__split { align-items:start; display:grid; gap:clamp(36px,7vw,96px); grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr); }
+  .qct-int-case h2 { font-size:clamp(2.2rem,4vw,4rem); letter-spacing:-.045em; line-height:1; margin:.7rem 0 1.2rem; }
+  .qct-int-case__section p, .qct-int-case__outcome p { color:#655d58; line-height:1.75; }
+  .qct-int-case__facts { border-top:1px solid rgba(23,21,20,.16); margin:0; }
+  .qct-int-case__facts div { border-bottom:1px solid rgba(23,21,20,.16); padding:18px 0; }
+  .qct-int-case__facts dt { color:#786f69; font-size:.74rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }
+  .qct-int-case__facts dd { font-weight:800; margin:7px 0 0; }
+  .qct-int-case__dark { background:#171514; color:#fffaf5; }
+  .qct-int-case__dark h2 { color:#fffaf5; }
+  .qct-int-case__constraints, .qct-int-case__outputs { display:grid; gap:10px; list-style:none; margin:0; padding:0; }
+  .qct-int-case__constraints li { border-bottom:1px solid rgba(255,255,255,.15); font-size:1.05rem; font-weight:750; padding:18px 0; }
+  .qct-int-case__note { border-left:3px solid #e66b5f; padding-left:20px; }
+  .qct-int-case__work { background:#ebe4dc; }
+  .qct-int-case__grid { display:grid; gap:1px; grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:36px; background:rgba(23,21,20,.14); }
+  .qct-int-case__grid article { background:#fffaf5; min-height:260px; padding:clamp(24px,4vw,42px); }
+  .qct-int-case__grid span { color:#e66b5f; font-size:.78rem; font-weight:900; letter-spacing:.12em; }
+  .qct-int-case__grid h3 { font-size:1.45rem; margin:34px 0 12px; }
+  .qct-int-case__grid p { color:#655d58; line-height:1.7; }
+  .qct-int-case__outputs li { background:#fffaf5; border:1px solid rgba(23,21,20,.1); border-radius:16px; font-weight:750; padding:17px 19px; }
+  .qct-int-case__outcome { background:#2b2029; color:#fffaf5; }
+  .qct-int-case__outcome h2, .qct-int-case__outcome p { color:#fffaf5; }
+  .qct-int-case__related { background:#fffaf5; }
+  .qct-int-case__links { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+  .qct-int-case__links a { border:1px solid rgba(182,65,55,.25); border-radius:999px; color:#b64137; font-weight:850; padding:12px 16px; text-decoration:none; }
+  @media(max-width:820px){ .qct-int-case__split,.qct-int-case__grid{grid-template-columns:1fr;} .qct-int-case__cover{margin-top:-18px;} }
+</style>
