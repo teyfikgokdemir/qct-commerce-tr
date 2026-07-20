@@ -29,7 +29,7 @@ export const articles: BlogArticle[] = [
     summary: ['Teklif belirli bir müşteri ihtiyacına açıkça hitap etmelidir.','Ürün sayfası karar sorularını yanıtlamalıdır.','Mobil akış gerçek cihazlarda test edilmelidir.','Dönüşüm adımları doğru ölçülmelidir.'],
     sections: [
       { heading: 'Belirsiz hedef kitle ve zayıf ürün anlatımı', paragraphs: ['Ana sayfa, kategori ve reklam mesajları aynı müşteri problemi etrafında tutarlı değilse ilgi dağılır. Sadece ürün adı, fiyat ve birkaç görsel de çoğu kategoride karar vermek için yeterli değildir.'] },
-      { heading: 'Mobil ve ödeme sürtünmesi', paragraphs: ['Responsive görünmek, mobilde kolay kullanılmakla aynı değildir. Filtre, varyant, sepet ve ödeme görevleri gerçek cihazlarda denenmeli; teslimat ve toplam maliyet bilgisi son adıma saklanmamalıdır.'] },
+      { heading: 'Mobil ve ödeme sürtünmesi', paragraphs: ['Responsive görünmek, mobilde kolay kullanılmakla aynı şey değildir. Filtre, varyant, sepet ve ödeme görevleri gerçek cihazlarda denenmeli; teslimat ve toplam maliyet bilgisi son adıma saklanmamalıdır.'] },
       { heading: 'Ölçüm olmadan değişiklik yapmak', paragraphs: ['Satış düşüklüğünün kaynağı trafik, ürün bilgisi, stok, teknik hata veya ödeme sürtünmesi olabilir. Ürün görüntüleme, sepete ekleme, ödeme başlangıcı ve satın alma ölçülmeden yapılan değişiklikler yeni belirsizlik üretir.'] },
     ], relatedService: { label: 'E-ticaret yaklaşımımızı inceleyin', href: '/e-ticaret/' },
   },
@@ -86,7 +86,7 @@ export const articles: BlogArticle[] = [
       { heading: 'Temel akış nasıl tasarlanır?', paragraphs: ['Kaynak, ürün veya hizmet ilgisi, şirket bilgisi, şehir, miktar ve zamanlama gibi gerçekten gerekli alanlar kısa adımlarla toplanmalıdır. Kullanıcı her aşamada temsilciye geçebilmelidir.'], items: ['Karşılama ve açık amaç bildirimi','Talep kategorisi seçimi','Gerekli minimum bilgilerin toplanması','Öncelik ve ekip yönlendirmesi','İnsan devri ve takip kaydı'] },
       { heading: 'Web sitesi ve reklamlarla nasıl bağlanır?', paragraphs: ['Her kampanya ve hizmet sayfası farklı başlangıç mesajı veya kaynak etiketi taşıyabilir. Böylece ekip müşterinin hangi tekliften geldiğini konuşma başlamadan görür ve aynı soruları tekrar sormaz.'] },
       { heading: 'Hangi metrikler izlenmeli?', paragraphs: ['İlk yanıt süresi, insan devrine kadar geçen süre, nitelikli talep oranı, teklif oluşturma, satışa dönüşüm ve yanıtsız kalan konuşmalar düzenli izlenmelidir. Mesaj sayısı tek başına başarı ölçütü değildir.'] },
-    ], relatedService: { label: 'WhatsApp satış sistemleri hizmetini inceleyin', href: '/whatsapp-ticaret/' },
+    ], relatedService: { label: 'WhatsApp satış sistemleri hizmetini inceleyin', href: '/whatsapp-satis/' },
   },
 ];
 
