@@ -24,20 +24,26 @@ html[lang="en"] .site-main .qct-int-case section.qct-int-case__outcome p {
 }
 
 html[lang="en"] .site-main .qct-int-case .qct-int-case__cover {
-  width: min(960px, calc(100% - 64px));
+  width: min(820px, calc(100% - 96px));
   margin-inline: auto;
 }
 
 html[lang="en"] .site-main .qct-int-case .qct-int-case__cover img {
   aspect-ratio: 16 / 9;
-  max-height: 520px;
+  max-height: 440px;
   object-fit: cover;
   object-position: top center;
 }
 
+@media (max-width: 960px) {
+  html[lang="en"] .site-main .qct-int-case .qct-int-case__cover {
+    width: min(760px, calc(100% - 48px));
+  }
+}
+
 @media (max-width: 720px) {
   html[lang="en"] .site-main .qct-int-case .qct-int-case__cover {
-    width: min(100% - 28px, 960px);
+    width: min(100% - 28px, 820px);
   }
 
   html[lang="en"] .site-main .qct-int-case .qct-int-case__cover img {
