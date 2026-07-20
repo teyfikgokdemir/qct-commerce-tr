@@ -159,40 +159,77 @@
   background: #ebe4dc;
 }
 
-:is(html[lang="en"], html[lang="ka"]) .faq-list {
+:is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) {
   display: grid;
   gap: 14px;
   max-width: 920px;
 }
 
-:is(html[lang="en"], html[lang="ka"]) .faq-list details {
+:is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) details {
   background: #fffaf5;
   border: 1px solid rgba(23, 21, 20, 0.1);
   border-radius: 18px;
   box-shadow: 0 14px 36px rgba(23, 21, 20, 0.05);
+  overflow: hidden;
   padding: 0 24px;
 }
 
-:is(html[lang="en"], html[lang="ka"]) .faq-list summary {
+:is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) summary {
+  align-items: center;
   color: #171514;
   cursor: pointer;
+  display: flex;
   font-size: clamp(1.05rem, 1.8vw, 1.3rem);
   font-weight: 800;
+  justify-content: space-between;
   line-height: 1.35;
-  padding: 22px 38px 22px 0;
-  position: relative;
+  list-style: none;
+  min-height: 74px;
+  padding: 18px 0;
 }
 
-:is(html[lang="en"], html[lang="ka"]) .faq-list summary::marker {
+:is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) summary::-webkit-details-marker {
+  display: none;
+}
+
+:is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) summary::after {
   color: #e66b5f;
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-left: 24px;
 }
 
-:is(html[lang="en"], html[lang="ka"]) .faq-list details p {
+:is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) details[open] summary::after {
+  content: "−";
+}
+
+:is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) details p {
+  border-top: 1px solid rgba(23, 21, 20, 0.08);
   color: #655d58;
-  line-height: 1.7;
+  line-height: 1.75;
   margin: 0;
-  padding: 0 0 24px;
   max-width: 780px;
+  padding: 22px 0 26px;
+}
+
+:is(html[lang="en"], html[lang="ka"]) .site-main > .section:last-of-type .container {
+  background: #fffaf5;
+  border: 1px solid rgba(23, 21, 20, 0.1);
+  border-radius: 28px;
+  box-shadow: 0 22px 60px rgba(23, 21, 20, 0.07);
+  padding: clamp(34px, 6vw, 70px);
+}
+
+:is(html[lang="en"], html[lang="ka"]) .site-main > .section:last-of-type .section-heading {
+  margin-bottom: 0;
+}
+
+:is(html[lang="en"], html[lang="ka"]) .site-footer :is(p, a) {
+  font-size: 0.94rem;
+  line-height: 1.65;
 }
 
 html[lang="ka"] .site-main h1,
@@ -241,8 +278,13 @@ html[lang="ka"] .main-navigation button {
     padding: 110px 0 84px;
   }
 
-  :is(html[lang="en"], html[lang="ka"]) .faq-list details {
+  :is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) details {
     padding: 0 18px;
+  }
+
+  :is(html[lang="en"], html[lang="ka"]) .site-main > .section:last-of-type .container {
+    border-radius: 22px;
+    padding: 28px 22px;
   }
 
   html[lang="ka"] .site-main .page-hero h1 {
