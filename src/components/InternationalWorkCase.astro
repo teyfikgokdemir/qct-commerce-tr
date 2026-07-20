@@ -32,7 +32,11 @@ const cases = {
     outcomeTitle: 'A live store connecting product, language and device layers in one commerce experience.',
     outcomeText: 'The published system provides observable routes for collection discovery, product information, account access, cart actions and purchase progression across desktop and mobile layouts.',
     facts: [['Platform', 'Shopify'], ['Project type', 'Multilingual e-commerce'], ['Status', 'Live store']],
-    services: [['E-commerce systems', '/en/ecommerce/'], ['B2B web design', '/en/web-design/'], ['Search visibility', '/en/search-visibility/']]
+    services: [['E-commerce systems', '/en/ecommerce/'], ['B2B web design', '/en/web-design/'], ['Search visibility', '/en/search-visibility/']],
+    mobile: [
+      ['/images/work/mobile/headwear-mobile-home.webp', 'HEADWEAR mobile homepage with navigation, brand introduction and collection discovery', 'Homepage and collection discovery'],
+      ['/images/work/mobile/headwear-mobile-collection.webp', 'HEADWEAR mobile collection page showing product categories and filters', 'Collection and product routes']
+    ]
   },
   misima: {
     name: 'Misima Group',
@@ -58,7 +62,11 @@ const cases = {
     outcomeTitle: 'A live B2B website that makes a complex group offer easier to inspect.',
     outcomeText: 'The published website presents corporate information, services, brands and selected products through separate content paths while keeping the group offer within one digital structure.',
     facts: [['Project year', '2025'], ['Project type', 'Corporate and B2B website'], ['Scope', 'Strategy, design and development']],
-    services: [['B2B web design', '/en/web-design/'], ['Search visibility', '/en/search-visibility/'], ['Commercial digital audit', '/en/audit/']]
+    services: [['B2B web design', '/en/web-design/'], ['Search visibility', '/en/search-visibility/'], ['Commercial digital audit', '/en/audit/']],
+    mobile: [
+      ['/images/work/mobile/misima-mobile-home.webp', 'Misima Group mobile homepage showing the brand proposition and primary commercial actions', 'Homepage and offer clarity'],
+      ['/images/work/mobile/misima-mobile-brands.webp', 'Misima Group mobile brand and distribution content with product brand cards and B2B action', 'Brands and distributor journey']
+    ]
   },
   artman: {
     name: 'Artman Group',
@@ -84,7 +92,11 @@ const cases = {
     outcomeTitle: 'A live digital centre that presents a broad portfolio under one corporate identity.',
     outcomeText: 'The published website lets visitors inspect relevant service areas and move towards an appropriate contact route within one structured corporate experience.',
     facts: [['Market', 'Türkiye'], ['Project type', 'Corporate B2B website'], ['Scope', 'Information architecture and web experience']],
-    services: [['B2B web design', '/en/web-design/'], ['AI and sales automation', '/en/ai-automation/'], ['Commercial digital audit', '/en/audit/']]
+    services: [['B2B web design', '/en/web-design/'], ['AI and sales automation', '/en/ai-automation/'], ['Commercial digital audit', '/en/audit/']],
+    mobile: [
+      ['/images/work/mobile/artman-mobile-home.webp', 'Artman Group mobile homepage presenting the corporate offer, primary actions and proof points', 'Homepage and enquiry actions'],
+      ['/images/work/mobile/artman-mobile-services.webp', 'Artman Group mobile service page showing searchable service categories and detailed scope', 'Service discovery structure']
+    ]
   }
 } as const;
 
@@ -92,7 +104,7 @@ const work = cases[slug];
 const canonical = `https://qctcommerce.com/en/work/${slug}/`;
 const schema = {
   '@context': 'https://schema.org', '@type': 'CreativeWork', '@id': `${canonical}#project`, url: canonical,
-  name: work.title, description: work.summary, inLanguage: 'en-US', image: `https://qctcommerce.com${work.image}`,
+  name: work.title, description: work.summary, inLanguage: 'en-US', image: [`https://qctcommerce.com${work.image}`, ...work.mobile.map(([src]) => `https://qctcommerce.com${src}`)],
   about: work.sector, creator: { '@id': 'https://qctcommerce.com/#organization' }, mainEntityOfPage: { '@id': `${canonical}#webpage` }
 };
 ---
@@ -119,6 +131,8 @@ const schema = {
     <section class="section qct-int-case__section"><div class="container qct-int-case__split"><div><p class="eyebrow">System approach</p><h2>{work.approachTitle}</h2><p>{work.approachText}</p></div><p class="qct-int-case__note">This project was delivered within the QCT Studio network. Only observable digital scope and live outputs are described here.</p></div></section>
 
     <section class="section qct-int-case__work"><div class="container"><p class="eyebrow">Work delivered</p><h2>Core parts of the digital scope</h2><div class="qct-int-case__grid">{work.work.map(([title,text], index) => <article><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+
+    <section class="section qct-int-case__mobile"><div class="container"><div class="section-heading"><p class="eyebrow">Mobile proof</p><h2>Real screens from the published mobile experience.</h2><p>These captures show how the live system behaves on a phone without using speculative device mock-ups.</p></div><div class="qct-int-case__mobile-grid">{work.mobile.map(([src, alt, caption]) => <figure><div class="qct-int-case__phone"><img src={src} alt={alt} width="946" height="2048" loading="lazy" decoding="async" /></div><figcaption>{caption}</figcaption></figure>)}</div></div></section>
 
     <section class="section qct-int-case__section"><div class="container qct-int-case__split"><div><p class="eyebrow">Verified outputs</p><h2>Published elements that can be inspected directly</h2></div><ul class="qct-int-case__outputs">{work.outputs.map((item) => <li>{item}</li>)}</ul></div></section>
 
@@ -157,6 +171,15 @@ const schema = {
   .qct-int-case__grid span { color:#e66b5f; font-size:.78rem; font-weight:900; letter-spacing:.12em; }
   .qct-int-case__grid h3 { font-size:1.45rem; margin:34px 0 12px; }
   .qct-int-case__grid p { color:#655d58; line-height:1.7; }
+  .qct-int-case__mobile { background:#171514; color:#fffaf5; }
+  .qct-int-case__mobile .section-heading { margin-bottom:40px; }
+  .qct-int-case__mobile .section-heading h2 { color:#fffaf5; max-width:780px; }
+  .qct-int-case__mobile .section-heading > p:not(.eyebrow) { color:rgba(255,250,245,.68); max-width:720px; }
+  .qct-int-case__mobile-grid { align-items:start; display:grid; gap:clamp(28px,6vw,72px); grid-template-columns:repeat(2,minmax(0,1fr)); justify-items:center; }
+  .qct-int-case__mobile-grid figure { margin:0; width:min(100%,420px); }
+  .qct-int-case__phone { background:#0d0c0c; border:10px solid #2d2a29; border-radius:38px; box-shadow:0 28px 72px rgba(0,0,0,.32); max-height:720px; overflow:hidden; }
+  .qct-int-case__phone img { display:block; height:auto; width:100%; }
+  .qct-int-case__mobile-grid figcaption { color:rgba(255,250,245,.7); font-size:.9rem; font-weight:700; margin-top:16px; text-align:center; }
   .qct-int-case__outputs li { background:#fffaf5; border:1px solid rgba(23,21,20,.1); border-radius:16px; font-weight:750; padding:17px 19px; }
   :global(html[lang="en"]) .site-main .qct-int-case__outcome { background:#2b2029 !important; color:#fffaf5; }
   .qct-int-case__outcome h2, .qct-int-case__outcome p { color:#fffaf5; }
@@ -165,4 +188,5 @@ const schema = {
   .qct-int-case__links a { align-items:center; border:1px solid rgba(182,65,55,.25); border-radius:999px; color:#b64137; display:inline-flex; font-weight:850; min-height:48px; padding:12px 17px; text-decoration:none; transition:background-color .18s ease,border-color .18s ease,transform .18s ease; }
   .qct-int-case__links a:hover, .qct-int-case__links a:focus-visible { background:rgba(230,107,95,.1); border-color:rgba(182,65,55,.5); transform:translateY(-2px); }
   @media(max-width:820px){ .qct-int-case__split,.qct-int-case__grid{grid-template-columns:1fr;} .qct-int-case__cover{margin-top:-18px;} }
+  @media(max-width:700px){ .qct-int-case__mobile-grid{display:flex; gap:18px; justify-content:flex-start; margin-inline:-20px; overflow-x:auto; padding:0 20px 16px; scroll-snap-type:x mandatory;} .qct-int-case__mobile-grid figure{flex:0 0 min(84vw,360px); scroll-snap-align:center;} .qct-int-case__phone{border-radius:30px; max-height:620px;} }
 </style>
