@@ -24,20 +24,20 @@ html[lang="en"] .site-main .qct-int-case section.qct-int-case__outcome p {
 }
 
 html[lang="en"] .site-main .qct-int-case .qct-int-case__cover {
-  width: min(1080px, calc(100% - 48px));
+  width: min(960px, calc(100% - 64px));
   margin-inline: auto;
 }
 
 html[lang="en"] .site-main .qct-int-case .qct-int-case__cover img {
   aspect-ratio: 16 / 9;
-  max-height: 610px;
+  max-height: 520px;
   object-fit: cover;
   object-position: top center;
 }
 
 @media (max-width: 720px) {
   html[lang="en"] .site-main .qct-int-case .qct-int-case__cover {
-    width: min(100% - 28px, 1080px);
+    width: min(100% - 28px, 960px);
   }
 
   html[lang="en"] .site-main .qct-int-case .qct-int-case__cover img {
