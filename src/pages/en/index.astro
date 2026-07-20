@@ -107,7 +107,7 @@ const selectedWork = [
           <p class="eyebrow">Start with the market</p>
           <h2>Tell us where your company wants to grow.</h2>
           <p>We will review your current digital sales structure and identify the most practical first step.</p>
-          <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=International%20market%20review">Start the conversation</a>
+          <a class="button button--primary qct-home-contact__button" href="mailto:info@qctcommerce.com?subject=International%20market%20review">Start the conversation</a>
         </div>
       </div>
     </section>
@@ -130,3 +130,56 @@ const selectedWork = [
   .qct-home-work__all { margin-top: 30px; }
   @media (max-width: 960px) { .qct-home-work__grid { grid-template-columns: 1fr; } .qct-home-work__meta { min-height: 0; } }
 </style>
+
+<style is:global>
+  html[lang="en"] :is(#approach, #contact) { scroll-margin-top: 84px; }
+  html[lang="en"] .qct-home-contact__button {
+    align-items: center;
+    background: #e66b5f;
+    border: 1px solid #e66b5f;
+    border-radius: 999px;
+    color: #fffaf5;
+    display: inline-flex;
+    font-weight: 850;
+    justify-content: center;
+    line-height: 1.2;
+    margin-top: 24px;
+    min-height: 48px;
+    padding: 13px 22px;
+    text-decoration: none;
+    width: fit-content;
+  }
+  html[lang="en"] .qct-home-contact__button:hover,
+  html[lang="en"] .qct-home-contact__button:focus-visible { background: #c9554b; border-color: #c9554b; transform: translateY(-2px); }
+</style>
+
+<script is:inline>
+  (function () {
+    var homeLink = document.querySelector('[data-en-home-link]');
+    var sectionLinks = Array.prototype.slice.call(document.querySelectorAll('[data-en-section-link]'));
+    if (!homeLink || !sectionLinks.length || window.location.pathname !== '/en/') return;
+
+    var syncNavigationState = function () {
+      var activeSection = window.location.hash.replace('#', '');
+      homeLink.removeAttribute('aria-current');
+      sectionLinks.forEach(function (link) {
+        if (link.getAttribute('data-en-section-link') === activeSection) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+      if (activeSection !== 'approach' && activeSection !== 'contact') homeLink.setAttribute('aria-current', 'page');
+    };
+
+    sectionLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        window.setTimeout(syncNavigationState, 0);
+      });
+    });
+    homeLink.addEventListener('click', function () {
+      homeLink.setAttribute('aria-current', 'page');
+      sectionLinks.forEach(function (link) { link.removeAttribute('aria-current'); });
+    });
+    window.addEventListener('hashchange', syncNavigationState);
+    window.addEventListener('popstate', syncNavigationState);
+    syncNavigationState();
+  })();
+</script>
