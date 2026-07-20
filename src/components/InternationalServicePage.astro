@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Item { title: string; text: string; }
+interface Faq { q: string; a: string; }
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  serviceName: string;
+  problem: string;
+  capabilities: Item[];
+  process: Item[];
+  faqItems: Faq[];
+}
+
+const { title, description, eyebrow, heading, lead, serviceName, problem, capabilities, process, faqItems } = Astro.props;
+const canonicalPath = Astro.url.pathname;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `https://qctcommerce.com${canonicalPath}#faq`,
+  url: `https://qctcommerce.com${canonicalPath}`,
+  inLanguage: 'en-US',
+  mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
+};
+---
+<BaseLayout title={title} description={description} lang="en" breadcrumbLabel={serviceName} service={{ name: serviceName, description }} areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Header slot="header" lang="en" />
+
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{heading}</h1>
+      <p class="page-hero__lead">{lead}</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href={`mailto:info@qctcommerce.com?subject=${encodeURIComponent(serviceName)}`}>Discuss your project</a>
+        <a class="button button--secondary" href="#scope">Explore the scope</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="scope">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Commercial context</p>
+        <h2>The technology matters only when it solves the right business problem.</h2>
+        <p>{problem}</p>
+      </div>
+      <div class="service-grid">
+        {capabilities.map((item) => <article class="service-card"><h3>{item.title}</h3><p>{item.text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><p class="eyebrow">How we work</p><h2>A focused route from commercial need to measurable system.</h2></div>
+      <div class="process-grid">
+        {process.map((item, index) => <article><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-international-faq">
+    <div class="container">
+      <div class="section-heading"><p class="eyebrow">Questions</p><h2>What companies usually need to know before starting.</h2></div>
+      <div class="qct-international-faq__grid">
+        {faqItems.map((item) => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container"><div class="section-heading"><p class="eyebrow">Next step</p><h2>Start with a commercial and technical review.</h2><p>We review the current structure, identify the highest-impact gap and define a practical first scope before proposing a build.</p><a class="button button--primary" href={`mailto:info@qctcommerce.com?subject=${encodeURIComponent(`${serviceName} review`)}`}>Request a review</a></div></div>
+  </section>
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
