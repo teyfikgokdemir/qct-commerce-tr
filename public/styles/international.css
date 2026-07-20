@@ -22,7 +22,7 @@
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-main .page-hero {
-  min-height: clamp(500px, 62svh, 640px);
+  min-height: clamp(480px, 56svh, 570px);
   overflow: hidden;
   position: relative;
 }
@@ -69,15 +69,15 @@
 
 :is(html[lang="en"], html[lang="ka"]) .site-main h1 {
   color: #fffaf5;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 1.01;
-  letter-spacing: -0.048em;
-  max-width: 940px;
+  font-size: clamp(3rem, 5vw, 4.7rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  max-width: 980px;
   margin: 0;
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-main .page-hero h1 {
-  max-width: 760px;
+  max-width: 900px;
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-main .hero__lead,
@@ -85,7 +85,7 @@
   color: rgba(255, 250, 245, 0.74);
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   line-height: 1.65;
-  margin: 28px 0 0;
+  margin: 24px 0 0;
   max-width: 760px;
 }
 
@@ -93,7 +93,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 34px;
+  margin-top: 28px;
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-main .section-heading {
@@ -240,8 +240,8 @@ html[lang="ka"] .site-main h3 {
 }
 
 html[lang="ka"] .site-main .page-hero h1 {
-  font-size: clamp(2.8rem, 4.8vw, 4.5rem);
-  max-width: 780px;
+  font-size: clamp(2.6rem, 4.2vw, 4rem);
+  max-width: 860px;
 }
 
 html[lang="ka"] .site-main .section-heading h2 {
@@ -275,7 +275,7 @@ html[lang="ka"] .main-navigation button {
   :is(html[lang="en"], html[lang="ka"]) .site-main .hero,
   :is(html[lang="en"], html[lang="ka"]) .site-main .page-hero {
     min-height: auto;
-    padding: 96px 0 76px;
+    padding: 88px 0 68px;
   }
 
   :is(html[lang="en"], html[lang="ka"]) :is(.faq-list, .qct-international-faq__grid) details {
@@ -288,7 +288,7 @@ html[lang="ka"] .main-navigation button {
   }
 
   html[lang="ka"] .site-main .page-hero h1 {
-    font-size: clamp(2.2rem, 10vw, 3.35rem);
+    font-size: clamp(2.1rem, 9vw, 3.1rem);
     line-height: 1.18;
   }
 
