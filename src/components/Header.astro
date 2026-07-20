@@ -23,14 +23,14 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
         </ul>
       ) : isEnglish ? (
         <ul class="primary-menu">
-          <li><a href="/en/" aria-current={isCurrent('/en/') ? 'page' : undefined}>Home</a></li>
+          <li><a href="/en/" aria-current={isCurrent('/en/') ? 'page' : undefined} data-en-home-link>Home</a></li>
           <li class:list={['menu-item-has-children', { 'is-current': isEnglishServiceCurrent }]}>
             <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Solutions</span></button>
             <ul class="sub-menu">
               <li><a href="/en/ecommerce/">E-commerce systems</a></li><li><a href="/en/web-design/">B2B web design</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/ai-automation/">AI & sales automation</a></li>
             </ul>
           </li>
-          <li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>Work</a></li><li><a href="/en/georgia/" aria-current={isCurrent('/en/georgia/') ? 'page' : undefined}>Georgia</a></li><li><a href="/en/#approach">How we work</a></li><li><a href="/en/#contact">Contact</a></li>
+          <li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>Work</a></li><li><a href="/en/georgia/" aria-current={isCurrent('/en/georgia/') ? 'page' : undefined}>Georgia</a></li><li><a href="/en/#approach" data-en-section-link="approach">How we work</a></li><li><a href="/en/#contact" data-en-section-link="contact">Contact</a></li>
           {currentPath === '/en/georgia/' && <li><a href="/ka/georgia/" hreflang="ka">KA</a></li>}<li><a href="/" hreflang="tr">TR</a></li>
         </ul>
       ) : (
