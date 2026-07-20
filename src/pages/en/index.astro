@@ -9,6 +9,11 @@ const alternates = [
   { lang: 'tr-TR', href: '/' },
   { lang: 'en', href: '/en/' },
 ];
+const selectedWork = [
+  { name: 'HEADWEAR', type: 'Multilingual e-commerce', image: '/images/work/headwear/headwear-web-deneyimi.webp', alt: 'HEADWEAR multilingual e-commerce website' },
+  { name: 'Misima Group', type: 'Corporate and B2B web system', image: '/images/work/misima/misima-web-deneyimi.webp', alt: 'Misima Group corporate website' },
+  { name: 'Artman Group', type: 'Corporate service architecture', image: '/images/work/artman/artman-web-deneyimi.webp', alt: 'Artman Group corporate website' },
+];
 ---
 <BaseLayout title={title} description={description} lang="en" isHome={true} alternates={alternates} areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}>
   <Header slot="header" lang="en" />
@@ -22,7 +27,7 @@ const alternates = [
           <p class="hero__lead">We help manufacturers, distributors and growing brands turn multilingual websites, e-commerce and automation into a practical international sales channel.</p>
           <div class="hero__actions">
             <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=International%20growth%20project">Discuss your market</a>
-            <a class="button button--secondary" href="/en/georgia/">Explore Georgia</a>
+            <a class="button button--secondary" href="/en/work/">View selected work</a>
           </div>
         </div>
       </div>
@@ -59,6 +64,25 @@ const alternates = [
       </div>
     </section>
 
+    <section class="section qct-home-work">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Selected work</p>
+          <h2>Live systems, not speculative mock-ups.</h2>
+          <p>Selected projects from the QCT Studio network across multilingual commerce, corporate B2B websites and service architecture.</p>
+        </div>
+        <div class="qct-home-work__grid">
+          {selectedWork.map((item) => (
+            <a class="qct-home-work__card" href="/en/work/">
+              <span class="qct-home-work__image"><img src={item.image} alt={item.alt} width="1600" height="1000" loading="lazy" decoding="async" /></span>
+              <span class="qct-home-work__meta"><small>{item.type}</small><strong>{item.name}</strong><em>View project evidence →</em></span>
+            </a>
+          ))}
+        </div>
+        <a class="button button--primary qct-home-work__all" href="/en/work/">Explore selected work</a>
+      </div>
+    </section>
+
     <section class="section qct-market-entry">
       <div class="container">
         <div class="qct-market-entry__card">
@@ -91,3 +115,18 @@ const alternates = [
 
   <Footer slot="footer" lang="en" />
 </BaseLayout>
+
+<style>
+  .qct-home-work__grid { display: grid; gap: 18px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .qct-home-work__card { background: #fffaf5; border: 1px solid rgba(23,21,20,.1); border-radius: 24px; color: inherit; overflow: hidden; text-decoration: none; transition: transform .22s ease, box-shadow .22s ease; }
+  .qct-home-work__card:hover, .qct-home-work__card:focus-visible { box-shadow: 0 24px 64px rgba(23,21,20,.11); transform: translateY(-4px); }
+  .qct-home-work__image { aspect-ratio: 16 / 10; background: #171514; display: block; overflow: hidden; }
+  .qct-home-work__image img { display: block; height: 100%; object-fit: cover; transition: transform .3s ease; width: 100%; }
+  .qct-home-work__card:hover img, .qct-home-work__card:focus-visible img { transform: scale(1.025); }
+  .qct-home-work__meta { display: flex; flex-direction: column; min-height: 190px; padding: 26px; }
+  .qct-home-work__meta small { color: #b64137; font-size: .76rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+  .qct-home-work__meta strong { color: #171514; font-size: clamp(1.45rem, 2vw, 2rem); margin-top: 18px; }
+  .qct-home-work__meta em { color: #655d58; font-size: .92rem; font-style: normal; font-weight: 750; margin-top: auto; padding-top: 24px; }
+  .qct-home-work__all { margin-top: 30px; }
+  @media (max-width: 960px) { .qct-home-work__grid { grid-template-columns: 1fr; } .qct-home-work__meta { min-height: 0; } }
+</style>
