@@ -15,12 +15,12 @@ const whatsappUrl = 'https://wa.me/905433856656?text=Hello%20QCT%20Commerce.%20I
 >
   <Header slot="header" lang="en" />
 
-  <section class="page-hero section">
+  <section class="page-hero section qct-contact-hero">
     <div class="container">
       <p class="eyebrow">Contact QCT Commerce</p>
       <h1>Tell us where your company wants to grow.</h1>
       <p class="page-hero__lead">Share the current commercial challenge, target market and the system you already use. We will identify the most practical first step.</p>
-      <div class="hero__actions">
+      <div class="hero__actions qct-contact-hero__actions">
         <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=International%20project%20enquiry">Email the project brief</a>
         <a class="button button--secondary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Start on WhatsApp</a>
       </div>
@@ -73,6 +73,13 @@ const whatsappUrl = 'https://wa.me/905433856656?text=Hello%20QCT%20Commerce.%20I
 </BaseLayout>
 
 <style>
+  .qct-contact-hero__actions { align-items: center; display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+  .qct-contact-hero__actions .button { align-items: center; border-radius: 999px; display: inline-flex; font-weight: 900; justify-content: center; min-height: 50px; padding: 13px 20px; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease; }
+  .qct-contact-hero__actions .button--primary { background: #e66b5f; border: 1px solid #e66b5f; color: #171514; box-shadow: 0 12px 30px rgba(230,107,95,.22); }
+  .qct-contact-hero__actions .button--secondary { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.28); color: #fffaf5; }
+  .qct-contact-hero__actions .button:hover, .qct-contact-hero__actions .button:focus-visible { transform: translateY(-2px); }
+  .qct-contact-hero__actions .button--primary:hover, .qct-contact-hero__actions .button--primary:focus-visible { background: #f08a7f; border-color: #f08a7f; box-shadow: 0 16px 36px rgba(230,107,95,.28); }
+  .qct-contact-hero__actions .button--secondary:hover, .qct-contact-hero__actions .button--secondary:focus-visible { background: rgba(255,255,255,.11); border-color: rgba(255,255,255,.48); }
   .qct-contact-page__grid { align-items: start; display: grid; gap: clamp(42px,7vw,96px); grid-template-columns: minmax(0,1.2fr) minmax(320px,.8fr); }
   .qct-contact-prompts { display: grid; gap: 14px; }
   .qct-contact-prompts article { background: #fffaf5; border: 1px solid rgba(23,21,20,.1); border-radius: 22px; padding: 28px; }
@@ -88,4 +95,5 @@ const whatsappUrl = 'https://wa.me/905433856656?text=Hello%20QCT%20Commerce.%20I
   .qct-contact-card__actions .button { justify-content: center; width: 100%; }
   .qct-contact-card__actions .button--secondary { border-color: rgba(255,255,255,.32); color: #fffaf5; }
   @media (max-width: 900px) { .qct-contact-page__grid { grid-template-columns: 1fr; } .qct-contact-card { position: static; } }
+  @media (max-width: 560px) { .qct-contact-hero__actions { align-items: stretch; flex-direction: column; } .qct-contact-hero__actions .button { width: 100%; } }
 </style>
