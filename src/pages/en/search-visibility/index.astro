@@ -1,0 +1,17 @@
+---
+import InternationalServicePage from '../../../components/InternationalServicePage.astro';
+const capabilities=[
+{title:'Technical SEO',text:'Crawlable architecture, canonical control, metadata, performance and structured data built into the site.'},
+{title:'GEO and market relevance',text:'Country, city, sector and buyer context that makes the offer understandable for each target market.'},
+{title:'AEO and answer structure',text:'Direct, evidence-based answers and visible FAQs aligned with real commercial questions.'},
+{title:'AIO and entity clarity',text:'Consistent organisation, service and market signals for AI-assisted research and recommendation systems.'}
+];
+const process=[{title:'Map demand and entities',text:'We identify search intent, buyer questions, markets and the entities that must be understood.'},{title:'Build the information layer',text:'We improve architecture, content, schema, internal links and answer formats.'},{title:'Measure and expand',text:'We track discoverability and develop content around verified commercial demand.'}];
+const faqItems=[
+{q:'What is the difference between SEO, GEO, AEO and AIO?',a:'SEO improves search visibility, GEO strengthens geographic relevance, AEO structures direct answers and AIO improves clarity for AI-assisted discovery systems.'},
+{q:'Can you optimise an existing website?',a:'Yes. We can audit technical structure, content, schema, internal linking and market relevance without rebuilding everything.'},
+{q:'Does structured data guarantee AI citations?',a:'No. It improves machine understanding, but citations also depend on authority, evidence, relevance and the systems selecting sources.'},
+{q:'Do you create multilingual search strategies?',a:'Yes. We plan language and country routes around the actual market, audience and commercial objective.'}
+];
+---
+<InternationalServicePage title="SEO, GEO, AEO & AIO Systems | QCT Commerce" description="QCT Commerce builds technical SEO, geographic relevance, answer structures and AI-ready entity signals for multilingual business websites." eyebrow="Search and AI visibility" heading="Become easier to find, understand and recommend." lead="We combine technical SEO, market relevance, answer-first content and entity clarity for search engines and AI-assisted buyer research." serviceName="SEO, GEO, AEO and AIO" problem="Publishing more content is not enough when the website is technically unclear, geographically vague, unable to answer buyer questions or inconsistent about the company and its services." capabilities={capabilities} process={process} faqItems={faqItems}/>
