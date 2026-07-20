@@ -4,15 +4,24 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const isEnglish = lang === 'en';
 
-const c = {
-  label: 'Çerez tercihleri',
-  text: 'Site kullanımını anlamak için isteğe bağlı analiz çerezleri kullanıyoruz. Analiz yalnızca onay verirseniz başlar.',
-  accept: 'Analize izin ver',
-  reject: 'Reddet',
-  policy: 'Çerez politikası',
-};
-const policyUrl = '/cerez-politikasi/';
+const c = isEnglish
+  ? {
+      label: 'Cookie preferences',
+      text: 'We use optional analytics cookies to understand site usage. Analytics starts only after your consent.',
+      accept: 'Allow analytics',
+      reject: 'Reject',
+      policy: 'Cookie policy',
+    }
+  : {
+      label: 'Çerez tercihleri',
+      text: 'Site kullanımını anlamak için isteğe bağlı analiz çerezleri kullanıyoruz. Analiz yalnızca onay verirseniz başlar.',
+      accept: 'Analize izin ver',
+      reject: 'Reddet',
+      policy: 'Çerez politikası',
+    };
+const policyUrl = isEnglish ? '/cerez-politikasi/' : '/cerez-politikasi/';
 ---
 
 <div
