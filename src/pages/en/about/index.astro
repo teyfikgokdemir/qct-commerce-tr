@@ -4,11 +4,12 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 ---
 <BaseLayout
-  title="About QCT Commerce | Digital Commerce Across Markets"
-  description="Learn how QCT Commerce approaches multilingual websites, digital commerce and sales automation for companies growing across markets."
+  title="About QCT Commerce | Digital Sales Systems Across Markets"
+  description="Learn how QCT Commerce approaches digital sales systems, multilingual websites, e-commerce and automation for companies in Türkiye and across markets."
   lang="en"
   pageType="AboutPage"
   breadcrumbLabel="About"
+  includeFounder={true}
   areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}
 >
   <Header slot="header" lang="en" />
@@ -17,10 +18,10 @@ import Footer from '../../../components/Footer.astro';
     <div class="container">
       <p class="eyebrow">About QCT Commerce</p>
       <h1>Commercial clarity before platforms, features or automation.</h1>
-      <p class="page-hero__lead">QCT Commerce helps manufacturers, distributors and growing brands organise multilingual websites, digital commerce and sales operations around a real market opportunity.</p>
+      <p class="page-hero__lead">QCT Commerce helps manufacturers, distributors and growing brands organise digital sales systems around a real business need in Türkiye and across markets.</p>
       <div class="hero__actions">
         <a class="button button--primary" href="/en/work/">View selected work</a>
-        <a class="button button--secondary" href="/en/contact/">Discuss a project</a>
+        <a class="button button--secondary" href="/en/audit/">Start with an audit</a>
       </div>
     </div>
   </section>
@@ -32,8 +33,32 @@ import Footer from '../../../components/Footer.astro';
         <h2>A focused digital commerce practice within the QCT Studio network.</h2>
       </div>
       <div class="qct-about-intro__copy">
-        <p>QCT Commerce is the Türkiye-focused commerce and international sales practice within the QCT Studio network. The work combines commercial strategy, information architecture, web design, e-commerce and controlled automation.</p>
+        <p>QCT Commerce is the Türkiye-focused digital commerce and sales systems practice within the QCT Studio network. The work combines commercial strategy, information architecture, web design, e-commerce, search visibility and controlled automation.</p>
         <p>We do not begin with a predetermined platform. We begin with the buyer, the target market, the current sales constraint and the operational reality behind the project.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-about-founder" id="teyfik-gokdemir">
+    <div class="container qct-about-founder__grid">
+      <figure class="qct-about-founder__portrait">
+        <img src="/images/teyfik-gokdemir-qct-commerce.webp" alt="Teyfik Gökdemir, founder of QCT Commerce" width="900" height="1100" loading="lazy" decoding="async" />
+      </figure>
+      <div class="qct-about-founder__content">
+        <p class="eyebrow">Founder and project lead</p>
+        <h2>Teyfik Gökdemir</h2>
+        <p class="qct-about-founder__role">Founder of QCT Commerce · QCT Studio network</p>
+        <p>He leads the commercial and digital structure of QCT Commerce projects, connecting web design, e-commerce architecture, search visibility and automation with the way a company actually sells.</p>
+        <p>His work covers e-commerce, corporate and B2B websites, user experience, technical SEO, AI search visibility, campaign landing pages, WhatsApp sales journeys and AI-supported business automation.</p>
+        <div class="qct-about-founder__facts">
+          <div><span>Experience</span><strong>More than 10 years</strong></div>
+          <div><span>Working languages</span><strong>Turkish and English</strong></div>
+          <div><span>Project model</span><strong>Direct strategic and delivery oversight</strong></div>
+        </div>
+        <div class="qct-about-founder__actions">
+          <a class="button button--primary" href="/en/audit/">Request a commercial audit</a>
+          <a class="button button--secondary" href="https://qctstudio.com/about/">View QCT Studio founder profile ↗</a>
+        </div>
       </div>
     </div>
   </section>
@@ -46,7 +71,7 @@ import Footer from '../../../components/Footer.astro';
         <p>Our public site describes observable scope, live outputs and verified capabilities. It does not use invented performance figures, unverified certifications or unsupported partner badges.</p>
       </div>
       <div class="qct-about-principles__grid">
-        <article><span>01</span><h3>Market first</h3><p>Positioning, buyer questions and commercial routes are defined before the technology stack.</p></article>
+        <article><span>01</span><h3>Commercial need first</h3><p>Buyer questions, positioning and sales routes are defined before the technology stack.</p></article>
         <article><span>02</span><h3>Connected systems</h3><p>Website, commerce, search visibility and lead handling are planned as one operating structure.</p></article>
         <article><span>03</span><h3>Measured scope</h3><p>Recommendations are tied to a visible constraint rather than a generic list of agency deliverables.</p></article>
         <article><span>04</span><h3>Transparent proof</h3><p>Live project links and verifiable project facts are preferred over speculative mock-ups or unsupported growth claims.</p></article>
@@ -59,7 +84,7 @@ import Footer from '../../../components/Footer.astro';
       <div class="section-heading">
         <p class="eyebrow">Markets and delivery</p>
         <h2>Built for companies working across language and market boundaries.</h2>
-        <p>The current focus is Türkiye and Georgia, with international delivery for suitable projects across Europe and Gulf markets.</p>
+        <p>The core practice is based in Türkiye, with a current international focus on Georgia and suitable projects across Europe and Gulf markets.</p>
       </div>
       <div class="qct-about-markets__facts">
         <div><span>Core practice</span><strong>Digital commerce and B2B sales systems</strong></div>
@@ -73,9 +98,9 @@ import Footer from '../../../components/Footer.astro';
     <div class="container">
       <div class="section-heading">
         <p class="eyebrow">Start with context</p>
-        <h2>Tell us what the next market needs from your digital sales system.</h2>
-        <p>We will review the current structure and identify the most practical first decision.</p>
-        <a class="button button--primary" href="/en/contact/">Contact QCT Commerce</a>
+        <h2>Review the current sales system before choosing the next platform.</h2>
+        <p>The audit identifies the buyer journey, market and operational constraints that should shape the project.</p>
+        <a class="button button--primary" href="/en/audit/">Start with an audit</a>
       </div>
     </div>
   </section>
@@ -87,6 +112,20 @@ import Footer from '../../../components/Footer.astro';
   .qct-about-intro__grid { display: grid; gap: clamp(36px,7vw,90px); grid-template-columns: minmax(0,.9fr) minmax(320px,1.1fr); }
   .qct-about-intro__copy { color: #655d58; font-size: 1.08rem; line-height: 1.8; }
   .qct-about-intro__copy p { margin: 0 0 22px; }
+  .qct-about-founder { background: #171514 !important; color: #fffaf5; }
+  .qct-about-founder__grid { align-items: start; display: grid; gap: clamp(38px,7vw,92px); grid-template-columns: minmax(280px,.72fr) minmax(0,1.28fr); }
+  .qct-about-founder__portrait { margin: 0; }
+  .qct-about-founder__portrait img { aspect-ratio: 4 / 5; border-radius: 28px; display: block; object-fit: cover; width: 100%; }
+  .qct-about-founder__content h2 { color: #fffaf5; font-size: clamp(2.5rem,4vw,4.4rem); letter-spacing: -.045em; line-height: 1; margin: .4rem 0 .7rem; }
+  .qct-about-founder__role { color: #e9b4ae !important; font-weight: 800; margin: 0 0 26px; }
+  .qct-about-founder__content > p:not(.eyebrow):not(.qct-about-founder__role) { color: rgba(255,250,245,.72); line-height: 1.75; }
+  .qct-about-founder__facts { border-top: 1px solid rgba(255,255,255,.16); display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 34px; }
+  .qct-about-founder__facts div { border-bottom: 1px solid rgba(255,255,255,.16); padding: 20px 20px 20px 0; }
+  .qct-about-founder__facts div:not(:last-child) { border-right: 1px solid rgba(255,255,255,.16); padding-left: 20px; }
+  .qct-about-founder__facts div:first-child { padding-left: 0; }
+  .qct-about-founder__facts span { color: rgba(255,250,245,.48); display: block; font-size: .72rem; font-weight: 900; letter-spacing: .1em; margin-bottom: 8px; text-transform: uppercase; }
+  .qct-about-founder__facts strong { color: #fffaf5; line-height: 1.45; }
+  .qct-about-founder__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
   .qct-about-principles { background: #ebe4dc; }
   .qct-about-principles__grid { display: grid; gap: 18px; grid-template-columns: repeat(2,minmax(0,1fr)); }
   .qct-about-principles__grid article { background: #fffaf5; border: 1px solid rgba(23,21,20,.1); border-radius: 24px; padding: clamp(26px,3vw,38px); }
@@ -101,6 +140,6 @@ import Footer from '../../../components/Footer.astro';
   .qct-about-markets__facts div { border-top: 1px solid rgba(255,255,255,.14); padding: 20px 0; }
   .qct-about-markets__facts span { color: rgba(255,250,245,.52); display: block; font-size: .74rem; font-weight: 900; letter-spacing: .1em; margin-bottom: 8px; text-transform: uppercase; }
   .qct-about-markets__facts strong { color: #fffaf5; font-size: 1.05rem; line-height: 1.45; }
-  @media (max-width: 900px) { .qct-about-intro__grid, .qct-about-markets__card { grid-template-columns: 1fr; } }
-  @media (max-width: 700px) { .qct-about-principles__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .qct-about-intro__grid, .qct-about-founder__grid, .qct-about-markets__card { grid-template-columns: 1fr; } .qct-about-founder__portrait { max-width: 520px; } }
+  @media (max-width: 700px) { .qct-about-principles__grid, .qct-about-founder__facts { grid-template-columns: 1fr; } .qct-about-founder__facts div, .qct-about-founder__facts div:not(:last-child) { border-right: 0; padding-left: 0; } .qct-about-founder__actions .button { width: 100%; } }
 </style>
