@@ -1,0 +1,24 @@
+/* International case-study overrides loaded after shared international styles. */
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__dark {
+  background: #171514 !important;
+  color: #fffaf5 !important;
+}
+
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__dark h2,
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__dark li {
+  color: #fffaf5 !important;
+}
+
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__dark .eyebrow {
+  color: #e66b5f !important;
+}
+
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__outcome {
+  background: #2b2029 !important;
+  color: #fffaf5 !important;
+}
+
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__outcome h2,
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__outcome p {
+  color: #fffaf5 !important;
+}
