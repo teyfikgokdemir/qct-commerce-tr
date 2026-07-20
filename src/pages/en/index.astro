@@ -4,15 +4,15 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
 const title = 'Digital Commerce & International Sales Systems | QCT Commerce';
-const description = 'QCT Commerce builds multilingual websites, B2B sales systems, e-commerce experiences and AI automation for companies entering new markets.';
+const description = 'QCT Commerce builds digital sales systems, multilingual websites, e-commerce experiences and automation for companies in Türkiye and across markets.';
 const alternates = [
   { lang: 'tr-TR', href: '/' },
   { lang: 'en', href: '/en/' },
 ];
 const selectedWork = [
-  { name: 'HEADWEAR', type: 'Multilingual e-commerce', image: '/images/work/headwear/headwear-web-deneyimi.webp', alt: 'HEADWEAR multilingual e-commerce website' },
-  { name: 'Misima Group', type: 'Corporate and B2B web system', image: '/images/work/misima/misima-web-deneyimi.webp', alt: 'Misima Group corporate website' },
-  { name: 'Artman Group', type: 'Corporate service architecture', image: '/images/work/artman/artman-web-deneyimi.webp', alt: 'Artman Group corporate website' },
+  { name: 'HEADWEAR', type: 'Multilingual e-commerce', image: '/images/work/headwear/headwear-web-deneyimi.webp', alt: 'HEADWEAR multilingual e-commerce website', href: '/en/work/headwear/' },
+  { name: 'Misima Group', type: 'Corporate and B2B web system', image: '/images/work/misima/misima-web-deneyimi.webp', alt: 'Misima Group corporate website', href: '/en/work/misima/' },
+  { name: 'Artman Group', type: 'Corporate service architecture', image: '/images/work/artman/artman-web-deneyimi.webp', alt: 'Artman Group corporate website', href: '/en/work/artman/' },
 ];
 ---
 <BaseLayout title={title} description={description} lang="en" isHome={true} alternates={alternates} areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}>
@@ -22,11 +22,11 @@ const selectedWork = [
     <section class="hero section">
       <div class="container hero__inner">
         <div class="hero__content">
-          <p class="eyebrow">Digital commerce across borders</p>
-          <h1>Build the sales system your next market expects.</h1>
-          <p class="hero__lead">We help manufacturers, distributors and growing brands turn multilingual websites, e-commerce and automation into a practical international sales channel.</p>
+          <p class="eyebrow">Digital sales systems across markets</p>
+          <h1>Build the digital sales system your business and next market need.</h1>
+          <p class="hero__lead">QCT Commerce helps manufacturers, distributors and growing brands in Türkiye and across borders connect multilingual websites, e-commerce, search visibility and automation into one practical sales system.</p>
           <div class="hero__actions">
-            <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=International%20growth%20project">Discuss your market</a>
+            <a class="button button--primary" href="/en/audit/">Start with an audit</a>
             <a class="button button--secondary" href="/en/work/">View selected work</a>
           </div>
         </div>
@@ -38,12 +38,12 @@ const selectedWork = [
         <div class="section-heading">
           <p class="eyebrow">What we build</p>
           <h2>Not another website. A connected sales system.</h2>
-          <p>Each engagement starts with the commercial gap: weak product discovery, lost enquiries, poor international positioning or manual sales operations.</p>
+          <p>Each engagement starts with the commercial gap: weak product discovery, lost enquiries, poor market positioning or manual sales operations.</p>
         </div>
         <div class="service-grid qct-home-solutions">
           <a class="service-card" href="/en/web-design/"><span>01</span><h3>Multilingual B2B websites</h3><p>Clear market positioning, technical product presentation and conversion paths for buyers, partners and distributors.</p><strong>Explore web systems →</strong></a>
           <a class="service-card" href="/en/ecommerce/"><span>02</span><h3>Digital commerce</h3><p>E-commerce architecture, product journeys, checkout improvement and measurement designed around real buying behaviour.</p><strong>Explore commerce →</strong></a>
-          <a class="service-card" href="/en/search-visibility/"><span>03</span><h3>International visibility</h3><p>Technical SEO, GEO, AEO and AIO foundations that help companies become discoverable in search and AI-led research.</p><strong>Explore visibility →</strong></a>
+          <a class="service-card" href="/en/search-visibility/"><span>03</span><h3>Search and AI visibility</h3><p>Technical SEO, GEO, AEO and AIO foundations that help companies become discoverable in search and AI-led research.</p><strong>Explore visibility →</strong></a>
           <a class="service-card" href="/en/ai-automation/"><span>04</span><h3>Sales automation</h3><p>CRM, enquiry routing, WhatsApp and AI-assisted workflows that reduce manual follow-up and protect valuable leads.</p><strong>Explore automation →</strong></a>
         </div>
       </div>
@@ -53,13 +53,13 @@ const selectedWork = [
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Our approach</p>
-          <h2>Market first. Technology second.</h2>
-          <p>We define the commercial route before choosing platforms, integrations or automation.</p>
+          <h2>Commercial need first. Technology second.</h2>
+          <p>We define the buyer journey, market route and operational constraint before choosing platforms, integrations or automation.</p>
         </div>
         <div class="process-grid">
           <article><span>01</span><h3>Commercial audit</h3><p>We examine the current customer journey, website, sales channels and visible revenue leakage.</p></article>
-          <article><span>02</span><h3>Market-specific offer</h3><p>We adapt positioning, content, proof and conversion paths to the audience you need to reach.</p></article>
-          <article><span>03</span><h3>Build and measure</h3><p>We launch a focused system, track meaningful actions and improve it using real sales evidence.</p></article>
+          <article><span>02</span><h3>Focused sales structure</h3><p>We align positioning, content, proof and conversion paths with the buyers and markets the business needs to reach.</p></article>
+          <article><span>03</span><h3>Build and measure</h3><p>We launch a focused system, track meaningful actions and improve it using observable sales evidence.</p></article>
         </div>
       </div>
     </section>
@@ -73,7 +73,7 @@ const selectedWork = [
         </div>
         <div class="qct-home-work__grid">
           {selectedWork.map((item) => (
-            <a class="qct-home-work__card" href="/en/work/">
+            <a class="qct-home-work__card" href={item.href}>
               <span class="qct-home-work__image"><img src={item.image} alt={item.alt} width="1600" height="1000" loading="lazy" decoding="async" /></span>
               <span class="qct-home-work__meta"><small>{item.type}</small><strong>{item.name}</strong><em>View project evidence →</em></span>
             </a>
@@ -88,13 +88,13 @@ const selectedWork = [
         <div class="qct-market-entry__card">
           <div class="section-heading">
             <p class="eyebrow">Country-specific entry</p>
-            <h2>One international foundation. Focused market pages.</h2>
-            <p>Georgia is our first dedicated market. New country pages are added only after research, demand validation and a clear route to commercial value.</p>
+            <h2>One commercial foundation. Focused market routes.</h2>
+            <p>Georgia is our first dedicated international market page. New country routes are added only after research, demand validation and a clear path to commercial value.</p>
           </div>
           <div class="qct-market-entry__meta">
-            <span>Current market</span>
+            <span>Current international focus</span>
             <strong>Georgia</strong>
-            <p>For manufacturers, distributors, retailers and B2B service companies entering Türkiye, Europe and Gulf markets.</p>
+            <p>For manufacturers, distributors, retailers and B2B service companies connecting Georgia, Türkiye, Europe and Gulf markets.</p>
             <a class="button button--primary" href="/en/georgia/">Open Georgia market page</a>
           </div>
         </div>
@@ -104,10 +104,10 @@ const selectedWork = [
     <section id="contact" class="section qct-home-contact">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">Start with the market</p>
-          <h2>Tell us where your company wants to grow.</h2>
-          <p>We will review your current digital sales structure and identify the most practical first step.</p>
-          <a class="button button--primary qct-home-contact__button" href="mailto:info@qctcommerce.com?subject=International%20market%20review">Start the conversation</a>
+          <p class="eyebrow">Start with the constraint</p>
+          <h2>Review the current sales system before deciding what to build.</h2>
+          <p>The commercial digital audit identifies the buyer journey, market and operational constraints that should shape the project.</p>
+          <a class="button button--primary qct-home-contact__button" href="/en/audit/">Request a commercial digital audit</a>
         </div>
       </div>
     </section>
