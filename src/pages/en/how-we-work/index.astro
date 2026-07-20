@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const phases = [
+  {
+    number: '01',
+    title: 'Commercial audit',
+    text: 'We examine the current customer journey, offer, website, sales channels and visible points where demand is lost.'
+  },
+  {
+    number: '02',
+    title: 'Market-specific direction',
+    text: 'We define the audience, positioning, proof, content structure and conversion route before choosing a platform.'
+  },
+  {
+    number: '03',
+    title: 'Focused implementation',
+    text: 'We build the smallest complete system that can improve the commercial journey without creating unnecessary complexity.'
+  },
+  {
+    number: '04',
+    title: 'Measurement and improvement',
+    text: 'We track meaningful actions, review real usage and refine the system using evidence rather than assumptions.'
+  }
+];
+
+const principles = [
+  ['Business problem before technology', 'A platform is selected only after the commercial need, buyer journey and operational constraints are clear.'],
+  ['Clarity before visual decoration', 'Design must help buyers understand the offer, trust the company and take the next logical action.'],
+  ['Human control where it matters', 'Automation supports teams, but approvals, exceptions and valuable customer relationships remain under human control.'],
+  ['Evidence before growth claims', 'We describe observable scope, live outputs and measurable actions without inventing performance figures.']
+];
+---
+<BaseLayout
+  title="How We Work | Commercial Digital Systems | QCT Commerce"
+  description="See how QCT Commerce audits commercial needs, defines market-specific direction, builds focused digital systems and improves them using real evidence."
+  lang="en"
+  breadcrumbLabel="How we work"
+  areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}
+>
+  <Header slot="header" lang="en" />
+
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">How we work</p>
+      <h1>Market first. Technology second.</h1>
+      <p class="page-hero__lead">We define the commercial route before selecting platforms, integrations or automation. Every project starts with the business constraint the system must solve.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#process">See the process</a>
+        <a class="button button--secondary" href="/en/contact/">Discuss your project</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">A focused route</p>
+        <h2>From commercial need to a measurable system.</h2>
+        <p>The process stays structured enough to protect quality and flexible enough to match the company, market and operational reality.</p>
+      </div>
+      <div class="qct-method-grid">
+        {phases.map((phase) => (
+          <article>
+            <span>{phase.number}</span>
+            <h3>{phase.title}</h3>
+            <p>{phase.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Working principles</p>
+        <h2>The standards behind each decision.</h2>
+      </div>
+      <div class="service-grid">
+        {principles.map(([title, text]) => (
+          <article class="service-card"><h3>{title}</h3><p>{text}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-international-cta">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Start with context</p>
+        <h2>Bring us the constraint, not a predetermined platform.</h2>
+        <p>We will review the current structure and identify the most practical first step before recommending a build scope.</p>
+        <a class="button button--primary" href="/en/contact/">Start a project conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .qct-method-grid { display: grid; gap: 18px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .qct-method-grid article { background: #fffaf5; border: 1px solid rgba(23,21,20,.1); border-radius: 24px; box-shadow: 0 18px 50px rgba(23,21,20,.06); min-height: 300px; padding: clamp(26px,3vw,38px); }
+  .qct-method-grid span { color: #e66b5f; display: block; font-size: .8rem; font-weight: 900; letter-spacing: .14em; margin-bottom: 34px; }
+  .qct-method-grid h3 { color: #171514; font-size: clamp(1.25rem,1.65vw,1.6rem); line-height: 1.2; margin: 0 0 14px; }
+  .qct-method-grid p { color: #655d58; line-height: 1.7; margin: 0; }
+  @media (max-width: 1100px) { .qct-method-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media (max-width: 760px) { .qct-method-grid { grid-template-columns: 1fr; } .qct-method-grid article { min-height: 0; } }
+</style>
