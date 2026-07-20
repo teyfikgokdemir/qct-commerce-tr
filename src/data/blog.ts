@@ -50,7 +50,7 @@ export const articles: BlogArticle[] = [
     slug: 'ai-overviews-geo-aio-seo-rehberi', seoKey: 'blog-ai-search',
     title: 'Google AI Overviews, GEO ve AIO: 2026 arama görünürlüğü rehberi',
     excerpt: 'Yapay zekâ destekli aramada markanızın anlaşılması, kaynak gösterilmesi ve klasik SEO görünürlüğünün korunması için uygulanabilir yol haritası.',
-    published: '2026-07-08', modified: '2026-07-20',
+    published: '2026-07-08', modified: '2026-07-16',
     intro: 'Google’ın yapay zekâ destekli arama deneyimleri Türkiye’de yaygınlaşırken görünürlük artık yalnızca belirli bir anahtar kelimede sıralama almaktan ibaret değil. Sayfanın açık bir soruyu yanıtlaması, doğrulanabilir varlık bilgileri sunması ve hem kullanıcı hem makine için anlaşılır bir yapı kurması gerekiyor.',
     summary: ['Teknik SEO temelini GEO ve AIO çalışmasının önünde tutun.','Her sayfada tek bir arama niyetini açık ve kanıtlanabilir biçimde yanıtlayın.','Organization, Service, Product, FAQ ve Article verilerini görünür içerikle uyumlu kullanın.','Marka, uzmanlık ve kaynak sinyallerini site genelinde tutarlı hale getirin.'],
     sections: [
@@ -64,7 +64,7 @@ export const articles: BlogArticle[] = [
     slug: 'yapay-zeka-ile-urun-aciklamasi-hazirlama', seoKey: 'blog-ai-product-content',
     title: 'Yapay zekâ ile ürün açıklaması hazırlama: SEO ve satış için doğru yöntem',
     excerpt: 'AI ile hızlı ürün içeriği üretirken benzer metin, yanlış bilgi ve zayıf dönüşüm risklerini azaltan ürün veri ve editör kontrol sistemi.',
-    published: '2026-07-13', modified: '2026-07-20',
+    published: '2026-07-13', modified: '2026-07-18',
     intro: 'Yapay zekâ ürün açıklamalarını hızlandırabilir; fakat ham çıktıyı yüzlerce ürüne kopyalamak yanlış özellik, birbirine benzeyen sayfalar ve güven kaybı yaratabilir. Sağlıklı yöntem, önce ürün verisini yapılandırmak ve yapay zekâyı kontrollü bir içerik üretim katmanı olarak kullanmaktır.',
     summary: ['Önce ürün verisinin doğruluk kaynağını belirleyin.','Her kategori için ayrı içerik şablonu oluşturun.','AI çıktısını insan editör ve ürün sorumlusu kontrolünden geçirin.','Açıklamayı arama niyeti, karar bilgisi ve marka diliyle birlikte optimize edin.'],
     sections: [
