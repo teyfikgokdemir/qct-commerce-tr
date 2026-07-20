@@ -159,6 +159,42 @@
   background: #ebe4dc;
 }
 
+:is(html[lang="en"], html[lang="ka"]) .faq-list {
+  display: grid;
+  gap: 14px;
+  max-width: 920px;
+}
+
+:is(html[lang="en"], html[lang="ka"]) .faq-list details {
+  background: #fffaf5;
+  border: 1px solid rgba(23, 21, 20, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(23, 21, 20, 0.05);
+  padding: 0 24px;
+}
+
+:is(html[lang="en"], html[lang="ka"]) .faq-list summary {
+  color: #171514;
+  cursor: pointer;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-weight: 800;
+  line-height: 1.35;
+  padding: 22px 38px 22px 0;
+  position: relative;
+}
+
+:is(html[lang="en"], html[lang="ka"]) .faq-list summary::marker {
+  color: #e66b5f;
+}
+
+:is(html[lang="en"], html[lang="ka"]) .faq-list details p {
+  color: #655d58;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0 0 24px;
+  max-width: 780px;
+}
+
 html[lang="ka"] .site-main h1,
 html[lang="ka"] .site-main h2,
 html[lang="ka"] .site-main h3 {
@@ -203,6 +239,10 @@ html[lang="ka"] .main-navigation button {
   :is(html[lang="en"], html[lang="ka"]) .site-main .page-hero {
     min-height: auto;
     padding: 110px 0 84px;
+  }
+
+  :is(html[lang="en"], html[lang="ka"]) .faq-list details {
+    padding: 0 18px;
   }
 
   html[lang="ka"] .site-main .page-hero h1 {
