@@ -5,12 +5,17 @@ import Footer from '../../../components/Footer.astro';
 
 const title = 'Digital Sales Systems for Georgian Companies | QCT Commerce';
 const description = 'QCT Commerce helps Georgian manufacturers, distributors and growing brands enter Türkiye, Europe and Gulf markets with multilingual B2B websites, commerce and sales automation.';
+const alternates = [
+  { lang: 'en', href: '/en/georgia/' },
+  { lang: 'ka-GE', href: '/ka/georgia/' },
+];
 ---
 <BaseLayout
   title={title}
   description={description}
   lang="en"
   breadcrumbLabel="Georgia"
+  alternates={alternates}
   areaServed={['Georgia', 'Türkiye', 'European markets', 'Gulf countries']}
 >
   <Header slot="header" lang="en" />
@@ -57,7 +62,7 @@ const description = 'QCT Commerce helps Georgian manufacturers, distributors and
     </div>
   </section>
 
-  <section class="section">
+  <section id="system" class="section">
     <div class="container">
       <div class="section-heading">
         <p class="eyebrow">What the system can include</p>
@@ -72,7 +77,7 @@ const description = 'QCT Commerce helps Georgian manufacturers, distributors and
     </div>
   </section>
 
-  <section class="section">
+  <section id="audit" class="section">
     <div class="container">
       <div class="section-heading">
         <p class="eyebrow">A practical first step</p>
