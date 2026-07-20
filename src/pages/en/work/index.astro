@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const cases = [
+  {
+    name: 'HEADWEAR',
+    sector: 'Multilingual e-commerce',
+    image: '/images/work/headwear/headwear-web-deneyimi.webp',
+    alt: 'HEADWEAR multilingual e-commerce website on desktop',
+    challenge: 'Make a focused product range understandable and purchasable across languages and devices.',
+    system: 'Collection architecture, multilingual navigation, product templates and a mobile-first purchase journey.',
+    outcome: 'A live Shopify store connecting product discovery, account, cart and purchase actions in one responsive commerce experience.',
+    facts: ['Live commerce store', 'Verified Shopify platform', 'Multilingual routes'],
+    liveUrl: 'https://www.head-wear.com/'
+  },
+  {
+    name: 'Misima Group',
+    sector: 'Corporate and B2B web system',
+    image: '/images/work/misima/misima-web-deneyimi.webp',
+    alt: 'Misima Group corporate website on desktop',
+    challenge: 'Explain several business models without making the group appear fragmented.',
+    system: 'A structured information architecture for corporate content, private label services, brands and product discovery.',
+    outcome: 'A live 2025 web experience that gives brand owners, distribution partners and buyers clear routes through the group offer.',
+    facts: ['2025 project', 'Strategy, design and development', 'Responsive B2B website'],
+    liveUrl: 'https://www.misima.com.tr/'
+  },
+  {
+    name: 'Artman Group',
+    sector: 'Corporate supply and operations',
+    image: '/images/work/artman/artman-web-deneyimi.webp',
+    alt: 'Artman Group corporate website on desktop',
+    challenge: 'Present a broad service portfolio as one coherent corporate offer.',
+    system: 'Clear service categories, trust content and action paths designed around procurement questions.',
+    outcome: 'A live digital centre where visitors can identify the relevant service and move to the appropriate commercial contact path.',
+    facts: ['Türkiye market', 'Corporate B2B website', 'Information architecture and web experience'],
+    liveUrl: 'https://artmangroup.com.tr/'
+  }
+];
+---
+<BaseLayout
+  title="Selected Digital Commerce and B2B Work | QCT Commerce"
+  description="Explore selected QCT Commerce and QCT Studio projects across multilingual e-commerce, corporate B2B websites and commercial digital systems."
+  lang="en"
+  pageType="CollectionPage"
+  breadcrumbLabel="Selected work"
+  areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}
+>
+  <Header slot="header" lang="en" />
+
+  <section class="page-hero section qct-work-hero">
+    <div class="container">
+      <p class="eyebrow">Selected commercial work</p>
+      <h1>Digital systems built around a real business problem.</h1>
+      <p class="page-hero__lead">These projects show how product discovery, service architecture, multilingual content and conversion paths can be organised into a clearer commercial experience.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#cases">Explore the work</a>
+        <a class="button button--secondary" href="mailto:info@qctcommerce.com?subject=Project%20review">Discuss your project</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="section qct-work-showcase">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Evidence before claims</p>
+        <h2>Three different business models. Three focused digital structures.</h2>
+        <p>We describe only observable scope and live outputs. No invented performance figures or unsupported growth claims.</p>
+      </div>
+      <div class="qct-work-showcase__list">
+        {cases.map((item, index) => (
+          <article class="qct-work-showcase__card">
+            <a class="qct-work-showcase__image" href={item.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the live ${item.name} website`}>
+              <img src={item.image} alt={item.alt} width="1600" height="1000" loading="lazy" decoding="async" />
+            </a>
+            <div class="qct-work-showcase__content">
+              <p class="qct-work-showcase__index">0{index + 1} / {item.sector}</p>
+              <h2>{item.name}</h2>
+              <div class="qct-work-showcase__detail"><h3>Commercial need</h3><p>{item.challenge}</p></div>
+              <div class="qct-work-showcase__detail"><h3>System delivered</h3><p>{item.system}</p></div>
+              <div class="qct-work-showcase__detail"><h3>Live outcome</h3><p>{item.outcome}</p></div>
+              <ul class="qct-work-showcase__facts">{item.facts.map((fact) => <li>{fact}</li>)}</ul>
+              <a class="qct-work-showcase__link" href={item.liveUrl} target="_blank" rel="noopener noreferrer">Visit live project <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-international-cta">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Your commercial context</p>
+        <h2>The next system should start with your actual sales constraint.</h2>
+        <p>We review the current site, offer, buyer journey and lead flow before recommending a platform or build scope.</p>
+        <a class="button button--primary" href="mailto:info@qctcommerce.com?subject=Commercial%20digital%20review">Request a project review</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
