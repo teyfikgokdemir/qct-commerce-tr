@@ -1,0 +1,17 @@
+---
+import InternationalServicePage from '../../../components/InternationalServicePage.astro';
+const capabilities=[
+{title:'Commercial positioning',text:'A clear proposition, audience structure and page hierarchy built around real buying questions.'},
+{title:'B2B information architecture',text:'Services, products, capabilities, certifications and enquiry paths organised for decision-makers.'},
+{title:'Premium responsive design',text:'A credible, distinctive interface that remains usable and persuasive on every screen.'},
+{title:'Technical foundation',text:'Fast static delivery, accessible markup, structured data and scalable content architecture.'}
+];
+const process=[{title:'Understand the business',text:'We map audiences, commercial priorities and the current trust gap.'},{title:'Plan and design',text:'We create the information architecture, content direction and interface system.'},{title:'Build and validate',text:'We develop, test and launch a maintainable high-performance website.'}];
+const faqItems=[
+{q:'Do you use templates?',a:'We can work with an existing system when appropriate, but the structure and experience are planned around the company rather than a generic layout.'},
+{q:'Can you write the website content?',a:'Yes. Content strategy, page copy and multilingual localisation can be included in the project scope.'},
+{q:'Will the website be search-ready?',a:'Yes. Semantic structure, metadata, structured data, internal linking and performance are considered during the build.'},
+{q:'Can you redesign an existing website?',a:'Yes. We first identify what should be retained, improved or rebuilt before defining the new scope.'}
+];
+---
+<InternationalServicePage title="B2B Web Design & Development | QCT Commerce" description="QCT Commerce builds premium multilingual B2B websites that clarify complex offers, strengthen trust and convert international interest into enquiries." eyebrow="B2B web design" heading="Make a complex business easy to understand and trust." lead="We design and build multilingual websites for manufacturers, distributors and service companies that need a stronger commercial presence." serviceName="B2B web design and development" problem="Many companies have capable teams and strong products but present them through fragmented pages, generic language and weak enquiry paths. The website fails before a sales conversation begins." capabilities={capabilities} process={process} faqItems={faqItems}/>
