@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const emailHref = 'mailto:info@qctcommerce.com?subject=Commercial%20digital%20audit%20request&body=Company%3A%0AWebsite%3A%0ATarget%20market%3A%0AMain%20commercial%20constraint%3A%0ACurrent%20sales%20channels%3A';
+const whatsappHref = 'https://wa.me/905433856656?text=Hello%20QCT%20Commerce.%20I%20would%20like%20to%20request%20a%20commercial%20digital%20audit.';
+
+const reviewAreas = [
+  ['Market and buyer journey', 'We review who the system is expected to reach, how buyers evaluate the offer and where confidence or momentum is lost.'],
+  ['Website and commerce structure', 'We examine navigation, product or service discovery, conversion paths, mobile use and the relationship between content and commercial actions.'],
+  ['International readiness', 'We assess language structure, market-specific messaging, contact routes and the practical gaps that may block cross-border enquiries or sales.'],
+  ['Search and AI visibility', 'We review the technical and content foundations that help search engines and AI-assisted buyers understand the company, offer and target markets.'],
+  ['Operations and follow-up', 'We identify repetitive work, fragmented lead handling and opportunities for practical automation without removing necessary human control.'],
+  ['Priority and implementation path', 'We separate urgent commercial blockers from useful later improvements so the next investment starts in the right place.'],
+];
+---
+<BaseLayout
+  title="Commercial Digital Audit for International Growth | QCT Commerce"
+  description="A focused commercial digital audit for manufacturers, distributors and growing brands evaluating websites, e-commerce, international visibility and sales operations."
+  lang="en"
+  pageType="ServicePage"
+  breadcrumbLabel="Commercial digital audit"
+  service={{
+    name: 'Commercial Digital Audit',
+    description: 'A structured review of market fit, buyer journey, website and commerce architecture, international readiness, search visibility and sales operations.'
+  }}
+  areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}
+>
+  <Header slot="header" lang="en" />
+
+  <section class="page-hero section qct-audit-hero">
+    <div class="container">
+      <p class="eyebrow">Commercial digital audit</p>
+      <h1>Find the commercial constraint before choosing the platform.</h1>
+      <p class="page-hero__lead">A focused review for companies that know their digital system needs to improve but do not yet have a reliable implementation brief.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href={emailHref}>Request an audit</a>
+        <a class="button button--secondary" href="#included">See what is reviewed</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="included" class="section qct-audit-scope">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">What the review covers</p>
+        <h2>A commercial diagnosis, not a generic website checklist.</h2>
+        <p>The review connects market goals, buyer behaviour, digital structure and operating reality. Recommendations are prioritised around what can be observed and supported.</p>
+      </div>
+      <div class="qct-audit-scope__grid">
+        {reviewAreas.map(([title, text], index) => (
+          <article>
+            <span>0{index + 1}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-audit-deliverable">
+    <div class="container qct-audit-deliverable__grid">
+      <div>
+        <p class="eyebrow">The deliverable</p>
+        <h2>A decision-ready review your team can use.</h2>
+        <p>The final scope depends on the company and available evidence. The output is designed to clarify the next decision rather than create a long list of disconnected recommendations.</p>
+      </div>
+      <ul>
+        <li>Current-state commercial diagnosis</li>
+        <li>Priority risks and missed opportunities</li>
+        <li>Recommended market and buyer journey direction</li>
+        <li>Website, commerce and automation priorities</li>
+        <li>Practical implementation sequence</li>
+        <li>Clear separation between verified findings and assumptions</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section qct-audit-process">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">How it starts</p>
+        <h2>Enough context for a grounded first review.</h2>
+      </div>
+      <div class="qct-audit-process__steps">
+        <article><span>01</span><h3>Share the current system</h3><p>Send the company website, catalogue, sales channels and the market you want to reach.</p></article>
+        <article><span>02</span><h3>Define the constraint</h3><p>Explain where product discovery, enquiries, conversion, follow-up or international expansion is breaking down.</p></article>
+        <article><span>03</span><h3>Confirm the review scope</h3><p>We confirm what can be assessed, what evidence is required and which questions the audit should answer.</p></article>
+        <article><span>04</span><h3>Receive the priority path</h3><p>The findings are organised into immediate blockers, recommended actions and later-stage improvements.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-international-cta">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Start with evidence</p>
+        <h2>Send the current situation before committing to a rebuild.</h2>
+        <p>Pricing and timing are confirmed after the initial scope is understood. No platform or implementation is prescribed before the commercial context is reviewed.</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href={emailHref}>Request the audit</a>
+          <a class="button button--secondary" href={whatsappHref} target="_blank" rel="noopener noreferrer">Start on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .qct-audit-hero h1 { max-width: 980px; }
+  .qct-audit-scope { background: #ebe4dc; }
+  .qct-audit-scope__grid { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .qct-audit-scope__grid article, .qct-audit-process__steps article { background: #fffaf5; border: 1px solid rgba(23,21,20,.1); border-radius: 24px; padding: clamp(24px,3vw,34px); }
+  .qct-audit-scope__grid span, .qct-audit-process__steps span { color: #e66b5f; display: block; font-size: .76rem; font-weight: 900; letter-spacing: .14em; margin-bottom: 24px; }
+  .qct-audit-scope__grid h3, .qct-audit-process__steps h3 { color: #171514; font-size: 1.28rem; margin: 0 0 12px; }
+  .qct-audit-scope__grid p, .qct-audit-process__steps p { color: #655d58; line-height: 1.7; margin: 0; }
+  .qct-audit-deliverable { background: #171514; color: #fffaf5; }
+  .qct-audit-deliverable__grid { align-items: start; display: grid; gap: clamp(44px,7vw,100px); grid-template-columns: minmax(0,1fr) minmax(320px,.8fr); }
+  .qct-audit-deliverable h2 { color: #fffaf5; font-size: clamp(2.4rem,4.5vw,4.6rem); letter-spacing: -.045em; line-height: 1; margin: 0 0 20px; }
+  .qct-audit-deliverable p { color: rgba(255,250,245,.68); line-height: 1.72; max-width: 700px; }
+  .qct-audit-deliverable ul { list-style: none; margin: 0; padding: 0; }
+  .qct-audit-deliverable li { border-top: 1px solid rgba(255,255,255,.14); font-weight: 800; padding: 18px 0; }
+  .qct-audit-process__steps { display: grid; gap: 14px; grid-template-columns: repeat(4, minmax(0,1fr)); }
+  @media (max-width: 980px) { .qct-audit-scope__grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .qct-audit-process__steps { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media (max-width: 720px) { .qct-audit-scope__grid, .qct-audit-deliverable__grid, .qct-audit-process__steps { grid-template-columns: 1fr; } }
+</style>
