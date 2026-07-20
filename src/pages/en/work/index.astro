@@ -101,8 +101,8 @@ const cases = [
                 {item.relatedServices.map((service) => <a href={service.href}>{service.label}</a>)}
               </div>
               <div class="qct-work-showcase__actions">
-                <a class="qct-work-showcase__link" href={item.caseStudyUrl}>Read case study <span aria-hidden="true">→</span></a>
-                <a class="qct-work-showcase__link" href={item.liveUrl} target="_blank" rel="noopener noreferrer">Visit live project <span aria-hidden="true">↗</span></a>
+                <a class="qct-work-showcase__link qct-work-showcase__link--primary" href={item.caseStudyUrl}>Read case study <span aria-hidden="true">→</span></a>
+                <a class="qct-work-showcase__link qct-work-showcase__link--secondary" href={item.liveUrl} target="_blank" rel="noopener noreferrer">Visit live project <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
@@ -146,8 +146,13 @@ const cases = [
   .qct-work-showcase__services > span { color: #655d58; flex-basis: 100%; font-size: .74rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
   .qct-work-showcase__services a { border: 1px solid rgba(182,65,55,.22); border-radius: 999px; color: #b64137; font-size: .84rem; font-weight: 800; padding: 8px 12px; text-decoration: none; }
   .qct-work-showcase__services a:hover, .qct-work-showcase__services a:focus-visible { background: rgba(230,107,95,.08); border-color: rgba(182,65,55,.42); }
-  .qct-work-showcase__actions { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; }
-  .qct-work-showcase__link { color: #b64137; display: inline-flex; font-weight: 800; gap: 8px; min-height: 44px; text-underline-offset: .28em; }
+  .qct-work-showcase__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .qct-work-showcase__link { align-items: center; border: 1px solid transparent; border-radius: 999px; display: inline-flex; font-weight: 850; gap: 8px; justify-content: center; min-height: 48px; padding: 12px 17px; text-decoration: none; transition: background-color .18s ease,border-color .18s ease,color .18s ease,transform .18s ease; }
+  .qct-work-showcase__link:hover, .qct-work-showcase__link:focus-visible { transform: translateY(-2px); }
+  .qct-work-showcase__link--primary { background: #e66b5f; border-color: #e66b5f; color: #171514; }
+  .qct-work-showcase__link--primary:hover, .qct-work-showcase__link--primary:focus-visible { background: #f08a7f; border-color: #f08a7f; }
+  .qct-work-showcase__link--secondary { background: #fffaf5; border-color: rgba(23,21,20,.16); color: #171514; }
+  .qct-work-showcase__link--secondary:hover, .qct-work-showcase__link--secondary:focus-visible { border-color: rgba(23,21,20,.34); }
   @media (max-width: 960px) { .qct-work-showcase__card { grid-template-columns: 1fr; } .qct-work-showcase__card:nth-child(even) .qct-work-showcase__image { order: initial; } }
-  @media (max-width: 640px) { .qct-work-showcase__image { border-radius: 20px; } .qct-work-showcase__content > h2 { font-size: clamp(2rem,10vw,2.8rem); } }
+  @media (max-width: 640px) { .qct-work-showcase__image { border-radius: 20px; } .qct-work-showcase__content > h2 { font-size: clamp(2rem,10vw,2.8rem); } .qct-work-showcase__actions { display:grid; } .qct-work-showcase__link { width:100%; } }
 </style>
