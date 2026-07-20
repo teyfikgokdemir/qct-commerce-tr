@@ -13,6 +13,7 @@ const cases = [
     system: 'Collection architecture, multilingual navigation, product templates, customer account routes and a mobile-first purchase journey.',
     outcome: 'A live Shopify store connecting product discovery, account, cart and purchase actions in one responsive commerce experience.',
     facts: ['Live commerce store', 'Verified Shopify platform', 'Multilingual routes', 'Responsive product and cart flow'],
+    caseStudyUrl: '/en/work/headwear/',
     liveUrl: 'https://www.head-wear.com/',
     relatedServices: [
       { label: 'E-commerce systems', href: '/en/ecommerce/' },
@@ -83,7 +84,7 @@ const cases = [
       <div class="qct-work-showcase__list">
         {cases.map((item, index) => (
           <article class="qct-work-showcase__card">
-            <a class="qct-work-showcase__image" href={item.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the live ${item.name} website`}>
+            <a class="qct-work-showcase__image" href={item.caseStudyUrl ?? item.liveUrl} target={item.caseStudyUrl ? undefined : '_blank'} rel={item.caseStudyUrl ? undefined : 'noopener noreferrer'} aria-label={item.caseStudyUrl ? `Read the ${item.name} case study` : `Visit the live ${item.name} website`}>
               <img src={item.image} alt={item.alt} width="1600" height="1000" loading="lazy" decoding="async" />
             </a>
             <div class="qct-work-showcase__content">
@@ -97,7 +98,10 @@ const cases = [
                 <span>Related capabilities</span>
                 {item.relatedServices.map((service) => <a href={service.href}>{service.label}</a>)}
               </div>
-              <a class="qct-work-showcase__link" href={item.liveUrl} target="_blank" rel="noopener noreferrer">Visit live project <span aria-hidden="true">↗</span></a>
+              <div class="qct-work-showcase__actions">
+                {item.caseStudyUrl && <a class="qct-work-showcase__link" href={item.caseStudyUrl}>Read case study <span aria-hidden="true">→</span></a>}
+                <a class="qct-work-showcase__link" href={item.liveUrl} target="_blank" rel="noopener noreferrer">Visit live project <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </article>
         ))}
@@ -140,7 +144,8 @@ const cases = [
   .qct-work-showcase__services > span { color: #655d58; flex-basis: 100%; font-size: .74rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
   .qct-work-showcase__services a { border: 1px solid rgba(182,65,55,.22); border-radius: 999px; color: #b64137; font-size: .84rem; font-weight: 800; padding: 8px 12px; text-decoration: none; }
   .qct-work-showcase__services a:hover, .qct-work-showcase__services a:focus-visible { background: rgba(230,107,95,.08); border-color: rgba(182,65,55,.42); }
-  .qct-work-showcase__link { color: #b64137; display: inline-flex; font-weight: 800; gap: 8px; margin-top: 24px; min-height: 44px; text-underline-offset: .28em; }
+  .qct-work-showcase__actions { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; }
+  .qct-work-showcase__link { color: #b64137; display: inline-flex; font-weight: 800; gap: 8px; min-height: 44px; text-underline-offset: .28em; }
   @media (max-width: 960px) { .qct-work-showcase__card { grid-template-columns: 1fr; } .qct-work-showcase__card:nth-child(even) .qct-work-showcase__image { order: initial; } }
   @media (max-width: 640px) { .qct-work-showcase__image { border-radius: 20px; } .qct-work-showcase__content > h2 { font-size: clamp(2rem,10vw,2.8rem); } }
 </style>
