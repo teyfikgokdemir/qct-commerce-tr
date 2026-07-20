@@ -240,6 +240,98 @@
   line-height: 1.65;
 }
 
+/* English international homepage */
+html[lang="en"] .qct-international-home .hero {
+  min-height: min(640px, calc(100svh - 68px));
+}
+
+html[lang="en"] .qct-international-home .hero h1 {
+  font-size: clamp(3.1rem, 5vw, 5.25rem);
+  max-width: 920px;
+  text-wrap: balance;
+}
+
+html[lang="en"] .qct-home-solutions .service-card {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  text-decoration: none;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+html[lang="en"] .qct-home-solutions .service-card:hover,
+html[lang="en"] .qct-home-solutions .service-card:focus-visible {
+  border-color: rgba(230, 107, 95, 0.45);
+  box-shadow: 0 24px 64px rgba(23, 21, 20, 0.1);
+  transform: translateY(-4px);
+}
+
+html[lang="en"] .qct-home-solutions .service-card > span {
+  color: #e66b5f;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+  margin-bottom: 34px;
+}
+
+html[lang="en"] .qct-home-solutions .service-card strong {
+  color: #171514;
+  font-size: .92rem;
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+html[lang="en"] .qct-market-entry__card {
+  align-items: end;
+  background: #171514;
+  border-radius: 30px;
+  color: #fffaf5;
+  display: grid;
+  gap: clamp(36px, 7vw, 90px);
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+  padding: clamp(38px, 7vw, 82px);
+}
+
+html[lang="en"] .qct-market-entry__card .section-heading {
+  margin: 0;
+}
+
+html[lang="en"] .qct-market-entry__card .section-heading h2 {
+  color: #fffaf5;
+}
+
+html[lang="en"] .qct-market-entry__card .section-heading > p:not(.eyebrow),
+html[lang="en"] .qct-market-entry__meta p {
+  color: rgba(255, 250, 245, .7);
+}
+
+html[lang="en"] .qct-market-entry__meta {
+  border-left: 1px solid rgba(255,255,255,.14);
+  padding-left: clamp(28px, 4vw, 52px);
+}
+
+html[lang="en"] .qct-market-entry__meta > span {
+  color: #e66b5f;
+  display: block;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+html[lang="en"] .qct-market-entry__meta > strong {
+  display: block;
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin: 14px 0 18px;
+}
+
+html[lang="en"] .qct-home-contact .container {
+  background:
+    radial-gradient(circle at 84% 20%, rgba(230,107,95,.18), transparent 28%),
+    #fffaf5;
+}
+
 html[lang="ka"] .site-main h1,
 html[lang="ka"] .site-main h2,
 html[lang="ka"] .site-main h3 {
@@ -278,6 +370,17 @@ html[lang="ka"] .main-navigation button {
   :is(html[lang="en"], html[lang="ka"]) .site-main .process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  html[lang="en"] .qct-market-entry__card {
+    grid-template-columns: 1fr;
+  }
+
+  html[lang="en"] .qct-market-entry__meta {
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,.14);
+    padding-left: 0;
+    padding-top: 30px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -310,12 +413,25 @@ html[lang="ka"] .main-navigation button {
     padding: 28px 22px;
   }
 
+  html[lang="en"] .qct-international-home .hero h1 {
+    font-size: clamp(2.55rem, 11vw, 3.7rem);
+  }
+
+  html[lang="en"] .qct-home-solutions .service-card {
+    min-height: 0;
+  }
+
+  html[lang="en"] .qct-market-entry__card {
+    border-radius: 22px;
+    padding: 30px 22px;
+  }
+
   html[lang="ka"] .site-main .page-hero h1 {
     font-size: clamp(2rem, 8.5vw, 2.95rem);
     line-height: 1.18;
   }
 
   html[lang="ka"] .site-main .section-heading h2 {
-    font-size: clamp(1.85rem, 7.5vw, 2.55rem);
+    font-size: clamp(1.9rem, 8vw, 2.8rem);
   }
 }
