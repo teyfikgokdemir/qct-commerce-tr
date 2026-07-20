@@ -5,8 +5,8 @@ const selected = workCases.slice(0, 3);
 <section class="qct-selected-work" aria-labelledby="qct-selected-work-title">
   <div class="container">
     <div class="qct-section__header qct-section__header--split">
-      <div><p class="qct-section__eyebrow">SEÇİLİ ÇALIŞMALAR</p><h2 id="qct-selected-work-title" class="qct-section__title">Farklı iş modelleri için gerçek dijital yapılar.</h2></div>
-      <p class="qct-section__lead">QCT Studio ağı kapsamında gerçekleştirilen web ve e-ticaret çalışmalarından seçili örnekler.</p>
+      <div><p class="qct-section__eyebrow">SEÇİLİ ÇALIŞMALAR</p><h2 id="qct-selected-work-title" class="qct-section__title">Yalnızca ekran değil, çalışan dijital yapılar.</h2></div>
+      <p class="qct-section__lead">Her çalışma; işletmenin ihtiyacını, kurulan sistemi, teslim edilen çıktıları ve yayındaki sonucu birlikte gösterir.</p>
     </div>
     <div class="qct-selected-work__grid">
       {selected.map((item, index) => (
@@ -14,10 +14,19 @@ const selected = workCases.slice(0, 3);
           <a class="qct-selected-work__image" href={`/calismalar/${item.slug}/`} aria-label={`${item.name} vaka çalışmasını okuyun`}>
             <img src={item.image.src} width={item.image.width} height={item.image.height} alt={item.image.alt} loading="lazy" decoding="async" />
           </a>
-          <div><span>0{index + 1} / {item.sector}</span><h3>{item.name}</h3><p>{item.summary}</p><a class="qct-work-link" href={`/calismalar/${item.slug}/`}>{item.name} vaka çalışmasını okuyun <span aria-hidden="true">→</span></a></div>
+          <div>
+            <span>0{index + 1} / {item.sector}</span>
+            <h3>{item.name}</h3>
+            <p>{item.summary}</p>
+            <dl class="qct-selected-work__facts">
+              {item.facts.slice(0, 2).map((fact) => <div><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}
+            </dl>
+            <p class="qct-selected-work__outcome"><strong>Yayındaki sonuç:</strong> {item.outcome.title}</p>
+            <a class="qct-work-link" href={`/calismalar/${item.slug}/`}>İhtiyaç, yaklaşım ve çıktıları inceleyin <span aria-hidden="true">→</span></a>
+          </div>
         </article>
       ))}
     </div>
-    <a class="qct-work-link qct-selected-work__all" href="/calismalar/">Tüm seçili çalışmaları görüntüleyin <span aria-hidden="true">→</span></a>
+    <a class="qct-work-link qct-selected-work__all" href="/calismalar/">Tüm vaka çalışmalarını görüntüleyin <span aria-hidden="true">→</span></a>
   </div>
 </section>
