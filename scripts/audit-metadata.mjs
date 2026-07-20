@@ -1,13 +1,13 @@
 import fs from 'node:fs';
 
 const source = fs.readFileSync('src/i18n/seo.ts', 'utf8');
-const entryPattern = /title:\s*'([^']+)',\s*\r?\n\s*description:\s*'([^']+)'/g;
+const entryPattern = /title:\s*'([^']+)',\s*description:\s*'([^']+)'/g;
 const entries = [...source.matchAll(entryPattern)].map((match) => ({
   title: match[1],
   description: match[2],
 }));
 
-const expectedEntries = 19;
+const expectedEntries = 22;
 const errors = [];
 
 if (entries.length !== expectedEntries) {
