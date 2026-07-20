@@ -4,258 +4,136 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const SITE_URL = 'https://qctcommerce.com';
 const LOCALE = 'tr_TR';
-const AREA_SERVED = [
-	{ '@type': 'Country', name: 'Türkiye' },
-];
+const AREA_SERVED = [{ '@type': 'Country', name: 'Türkiye' }];
 
 export interface Props {
-	title: string;
-	description?: string;
-	lang?: string;
-	image?: string;
-	imageWidth?: number;
-	imageHeight?: number;
-	type?: 'website' | 'article';
-	noindex?: boolean;
-	isHome?: boolean;
-	/** schema.org @type for this page's WebPage node, e.g. 'AboutPage', 'ContactPage', 'CollectionPage' */
-	pageType?: string;
-	/** Second breadcrumb label (e.g. "About"). Omit on the home page — no breadcrumb is emitted. */
-	breadcrumbLabel?: string;
-	/** If set, emits a Service node (for the 6 service-concept pages) linked as the page's mainEntity */
-	service?: { name: string; description: string };
-	/** Adds the verified founder Person node and links it from Organization on the About page. */
-	includeFounder?: boolean;
-	/** Optional visible-breadcrumb mirror for pages with more than two levels. */
-	breadcrumbs?: Array<{ name: string; url: string }>;
-	/** Loads the case-study visual layer only where it is used. */
-	includeWorkStyles?: boolean;
+  title: string;
+  description?: string;
+  lang?: string;
+  image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  isHome?: boolean;
+  pageType?: string;
+  breadcrumbLabel?: string;
+  service?: { name: string; description: string };
+  includeFounder?: boolean;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+  includeWorkStyles?: boolean;
 }
 
 const {
-	title,
-	description = 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.',
-	lang = 'tr',
-	image = '/og-default.png',
-	imageWidth = 1200,
-	imageHeight = 630,
-	type = 'website',
-	noindex = false,
-	isHome = false,
-	pageType = 'WebPage',
-	breadcrumbLabel,
-	service,
-	includeFounder = false,
-	breadcrumbs,
-	includeWorkStyles = false,
+  title,
+  description = 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.',
+  lang = 'tr',
+  image = '/og-default.png',
+  imageWidth = 1200,
+  imageHeight = 630,
+  type = 'website',
+  noindex = false,
+  isHome = false,
+  pageType = 'WebPage',
+  breadcrumbLabel,
+  service,
+  includeFounder = false,
+  breadcrumbs,
+  includeWorkStyles = false,
 } = Astro.props;
 
 const isIndexable = !noindex;
-const ogImageType = image.toLowerCase().endsWith('.png')
-	? 'image/png'
-	: image.toLowerCase().endsWith('.webp')
-		? 'image/webp'
-		: 'image/jpeg';
-
+const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : image.toLowerCase().endsWith('.webp') ? 'image/webp' : 'image/jpeg';
 const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
 const homeUrl = new URL('/', SITE_URL).toString();
-
-// Stable @id anchors so every node in the graph can reference each other instead of repeating data
 const organizationId = `${SITE_URL}/#organization`;
 const founderId = `${SITE_URL}/hakkimizda/#teyfik-gokdemir`;
 const websiteId = `${SITE_URL}/#website`;
 const webpageId = `${canonicalUrl}#webpage`;
 
 const organizationSchema = {
-	'@type': 'Organization',
-	'@id': organizationId,
-	name: 'QCT Commerce',
-	url: SITE_URL,
-	logo: {
-		'@type': 'ImageObject',
-		'@id': `${organizationId}/logo`,
-		url: new URL('/logo.png', SITE_URL).toString(),
-		contentUrl: new URL('/logo.png', SITE_URL).toString(),
-		width: 600,
-		height: 180,
-		caption: 'QCT Commerce',
-	},
-	image: { '@id': `${organizationId}/logo` },
-	description: 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
-	parentOrganization: {
-		'@type': 'Organization',
-		name: 'QCT Studio',
-		url: 'https://qctstudio.com',
-	},
-	areaServed: AREA_SERVED,
-	email: 'info@qctcommerce.com',
-	telephone: '+90 543 385 66 56',
-	contactPoint: [
-		{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: 'TR', availableLanguage: ['Turkish'] },
-	],
-	...(includeFounder ? { founder: { '@id': founderId } } : {}),
+  '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
+  logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/logo.png', SITE_URL).toString(), contentUrl: new URL('/logo.png', SITE_URL).toString(), width: 600, height: 180, caption: 'QCT Commerce' },
+  image: { '@id': `${organizationId}/logo` },
+  description: 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
+  parentOrganization: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' },
+  areaServed: AREA_SERVED,
+  email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56',
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: 'TR', availableLanguage: ['Turkish'] }],
+  ...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };
 
 const founderSchema = includeFounder ? {
-	'@type': 'Person',
-	'@id': founderId,
-	name: 'Teyfik Gökdemir',
-	jobTitle: 'QCT Commerce Kurucusu',
-	worksFor: { '@id': organizationId },
-	image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(),
-	knowsLanguage: ['Türkçe', 'İngilizce'],
-	knowsAbout: [
-		'E-ticaret altyapısı ve mağaza mimarisi',
-		'Kurumsal web tasarımı ve geliştirme',
-		'Kullanıcı deneyimi ve dönüşüm optimizasyonu',
-		'Teknik SEO ve arama görünürlüğü',
-		'GEO, AEO ve AIO altyapısı',
-		'Meta reklam açılış sayfaları',
-		'WhatsApp satış sistemleri',
-		'Yapay zekâ destekli iş otomasyonları',
-		'Dijital ölçüm ve analitik',
-		'Pazaryeri ve bağımsız mağaza stratejisi',
-	],
+  '@type': 'Person', '@id': founderId, name: 'Teyfik Gökdemir', jobTitle: 'QCT Commerce Kurucusu', worksFor: { '@id': organizationId },
+  image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(), knowsLanguage: ['Türkçe', 'İngilizce'],
+  knowsAbout: ['E-ticaret altyapısı ve mağaza mimarisi','Kurumsal web tasarımı ve geliştirme','Kullanıcı deneyimi ve dönüşüm optimizasyonu','Teknik SEO ve arama görünürlüğü','GEO, AEO ve AIO altyapısı','Meta reklam açılış sayfaları','WhatsApp satış sistemleri','Yapay zekâ destekli iş otomasyonları','Dijital ölçüm ve analitik','Pazaryeri ve bağımsız mağaza stratejisi'],
 } : null;
 
-const websiteSchema = {
-	'@type': 'WebSite',
-	'@id': websiteId,
-	url: SITE_URL,
-	name: 'QCT Commerce',
-	description: organizationSchema.description,
-	inLanguage: 'tr-TR',
-	publisher: { '@id': organizationId },
-};
-
-const webpageSchema: Record<string, unknown> = {
-	'@type': pageType,
-	'@id': webpageId,
-	url: canonicalUrl,
-	name: title,
-	description,
-	inLanguage: 'tr-TR',
-	isPartOf: { '@id': websiteId },
-	about: { '@id': organizationId },
-};
-
-// BreadcrumbList — mirrors the visible "Home / X" breadcrumb rendered by ServicePage/LegalPage.
-// Omitted on the home page (no breadcrumb shown there).
+const websiteSchema = { '@type': 'WebSite', '@id': websiteId, url: SITE_URL, name: 'QCT Commerce', description: organizationSchema.description, inLanguage: 'tr-TR', publisher: { '@id': organizationId } };
+const webpageSchema: Record<string, unknown> = { '@type': pageType, '@id': webpageId, url: canonicalUrl, name: title, description, inLanguage: 'tr-TR', isPartOf: { '@id': websiteId }, about: { '@id': organizationId } };
 let breadcrumbSchema: Record<string, unknown> | null = null;
 if (breadcrumbs?.length) {
-	const breadcrumbId = `${canonicalUrl}#breadcrumb`;
-	breadcrumbSchema = {
-		'@type': 'BreadcrumbList',
-		'@id': breadcrumbId,
-		itemListElement: breadcrumbs.map((item, index) => ({
-			'@type': 'ListItem',
-			position: index + 1,
-			name: item.name,
-			item: new URL(item.url, SITE_URL).toString(),
-		})),
-	};
-	webpageSchema.breadcrumb = { '@id': breadcrumbId };
+  const breadcrumbId = `${canonicalUrl}#breadcrumb`;
+  breadcrumbSchema = { '@type': 'BreadcrumbList', '@id': breadcrumbId, itemListElement: breadcrumbs.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, item: new URL(item.url, SITE_URL).toString() })) };
+  webpageSchema.breadcrumb = { '@id': breadcrumbId };
 } else if (breadcrumbLabel) {
-	const breadcrumbId = `${canonicalUrl}#breadcrumb`;
-	breadcrumbSchema = {
-		'@type': 'BreadcrumbList',
-		'@id': breadcrumbId,
-		itemListElement: [
-			{ '@type': 'ListItem', position: 1, name: 'Ana sayfa', item: homeUrl },
-			{ '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl },
-		],
-	};
-	webpageSchema.breadcrumb = { '@id': breadcrumbId };
+  const breadcrumbId = `${canonicalUrl}#breadcrumb`;
+  breadcrumbSchema = { '@type': 'BreadcrumbList', '@id': breadcrumbId, itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Ana sayfa', item: homeUrl }, { '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl }] };
+  webpageSchema.breadcrumb = { '@id': breadcrumbId };
 }
-
-// Service node — only for the 6 service-concept pages (website design, e-commerce, etc.)
 let serviceSchema: Record<string, unknown> | null = null;
 if (service) {
-	const serviceId = `${canonicalUrl}#service`;
-	serviceSchema = {
-		'@type': 'Service',
-		'@id': serviceId,
-		url: canonicalUrl,
-		name: service.name,
-		description: service.description,
-		serviceType: service.name,
-		provider: { '@id': organizationId },
-		areaServed: AREA_SERVED,
-		mainEntityOfPage: { '@id': webpageId },
-	};
-	webpageSchema.mainEntity = { '@id': serviceId };
+  const serviceId = `${canonicalUrl}#service`;
+  serviceSchema = { '@type': 'Service', '@id': serviceId, url: canonicalUrl, name: service.name, description: service.description, serviceType: service.name, provider: { '@id': organizationId }, areaServed: AREA_SERVED, mainEntityOfPage: { '@id': webpageId } };
+  webpageSchema.mainEntity = { '@id': serviceId };
 }
-
-const graph = [organizationSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema, founderSchema].filter(Boolean);
-const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
+const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema, founderSchema].filter(Boolean) };
 ---
 <!doctype html>
 <html lang={lang}>
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>{title}</title>
-	<meta name="description" content={description} />
-	{!isIndexable && <meta name="robots" content="noindex, follow" />}
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-	<!-- Canonical -->
-	<link rel="canonical" href={canonicalUrl} />
-
-	<!-- Open Graph -->
-	<meta property="og:type" content={type} />
-	<meta property="og:site_name" content="QCT Commerce" />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description} />
-	<meta property="og:url" content={canonicalUrl} />
-	<meta property="og:image" content={ogImageUrl} />
-	<meta property="og:image:type" content={ogImageType} />
-	<meta property="og:image:width" content={String(imageWidth)} />
-	<meta property="og:image:height" content={String(imageHeight)} />
-	<meta property="og:locale" content={LOCALE} />
-
-	<!-- Twitter Card -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={description} />
-	<meta name="twitter:image" content={ogImageUrl} />
-
-	<!-- Structured data: Organization + WebSite + WebPage (+ Breadcrumb/Service where applicable), linked via @id -->
-	<script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
-	<slot name="schema" />
-
-	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
-	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
-	{isHome ? (
-		<>
-			<link rel="stylesheet" href="/styles/home.css?v=20260718-3" />
-			<link rel="stylesheet" href="/styles/animations.css?v=20260718-3" />
-		</>
-	) : (
-		<link rel="stylesheet" href="/styles/pages.css?v=20260718-3" />
-	)}
-	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
-	<link rel="stylesheet" href="/styles/brand.css?v=20260719-1" />
-	{includeWorkStyles && <link rel="stylesheet" href="/styles/work.css?v=20260719-1" />}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {!isIndexable && <meta name="robots" content="noindex, follow" />}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content="QCT Commerce" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:type" content={ogImageType} />
+  <meta property="og:image:width" content={String(imageWidth)} />
+  <meta property="og:image:height" content={String(imageHeight)} />
+  <meta property="og:locale" content={LOCALE} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+  <script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
+  <slot name="schema" />
+  <link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
+  <link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
+  {isHome ? <><link rel="stylesheet" href="/styles/home.css?v=20260718-3" /><link rel="stylesheet" href="/styles/animations.css?v=20260718-3" /></> : <link rel="stylesheet" href="/styles/pages.css?v=20260718-3" />}
+  <link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
+  <link rel="stylesheet" href="/styles/brand.css?v=20260719-1" />
+  <link rel="stylesheet" href="/styles/service-cards-isolated.css?v=20260720-1" />
+  {includeWorkStyles && <link rel="stylesheet" href="/styles/work.css?v=20260719-1" />}
 </head>
 <body>
-	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary">İçeriğe geç</a>
-
-		<slot name="header" />
-
-		<main id="primary" class="site-main">
-			<slot />
-		</main>
-
-		<slot name="footer" />
-	</div>
-
-	<CookieConsent lang={lang} />
-	<WhatsAppButton lang={lang} />
-
-	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
-	{isHome && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
+  <div id="page" class="site">
+    <a class="skip-link screen-reader-text" href="#primary">İçeriğe geç</a>
+    <slot name="header" />
+    <main id="primary" class="site-main"><slot /></main>
+    <slot name="footer" />
+  </div>
+  <CookieConsent lang={lang} />
+  <WhatsAppButton lang={lang} />
+  <script src="/scripts/main.js?v=20260718-3" is:inline></script>
+  {isHome && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
 </body>
 </html>
