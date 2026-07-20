@@ -1,0 +1,6 @@
+---
+import BlogArticle from '../../../components/BlogArticle.astro';
+import { getArticle } from '../../../data/blog';
+const article = getArticle('ai-overviews-geo-aio-seo-rehberi');
+---
+<BlogArticle article={article} />
