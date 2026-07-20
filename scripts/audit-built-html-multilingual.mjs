@@ -43,6 +43,12 @@ const servicePaths = new Set([
   '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/',
   '/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/',
 ]);
+const caseStudyPaths = new Set(['/en/work/headwear/', '/en/work/misima/', '/en/work/artman/']);
+const requiredPaths = new Set(['/en/audit/', ...caseStudyPaths]);
+
+for (const requiredPath of requiredPaths) {
+  if (!localPageExists(requiredPath)) errors.push(`${requiredPath}: required published route is missing.`);
+}
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
@@ -84,6 +90,9 @@ for (const file of htmlFiles) {
   const serviceNodes = nodes.filter((node) => node['@type'] === 'Service');
   if (servicePaths.has(pathname) && serviceNodes.length !== 1) errors.push(`${file}: service page must emit exactly one Service node.`);
   if (!servicePaths.has(pathname) && serviceNodes.length) errors.push(`${file}: Service schema is only allowed on service detail pages.`);
+  const creativeWorkNodes = nodes.filter((node) => node['@type'] === 'CreativeWork');
+  if (caseStudyPaths.has(pathname) && creativeWorkNodes.length !== 1) errors.push(`${file}: case study must emit exactly one CreativeWork node.`);
+  if (!caseStudyPaths.has(pathname) && creativeWorkNodes.length) errors.push(`${file}: CreativeWork schema is only allowed on published case studies.`);
   for (const tag of tags(html, 'a')) {
     const href = attribute(tag, 'href');
     if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) continue;
