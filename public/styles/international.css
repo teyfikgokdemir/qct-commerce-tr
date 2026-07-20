@@ -7,14 +7,33 @@ html[lang="en"] .site-main .section {
   padding: clamp(72px, 9vw, 124px) 0;
 }
 
-html[lang="en"] .site-main .hero {
+html[lang="en"] .site-main .hero,
+html[lang="en"] .site-main .page-hero {
   background:
     radial-gradient(circle at 78% 20%, rgba(230, 107, 95, 0.22), transparent 34%),
     linear-gradient(145deg, #171514 0%, #26211f 100%);
   color: #f8f2eb;
-  min-height: min(760px, calc(100svh - 68px));
   display: grid;
   align-items: center;
+}
+
+html[lang="en"] .site-main .hero {
+  min-height: min(760px, calc(100svh - 68px));
+}
+
+html[lang="en"] .site-main .page-hero {
+  min-height: clamp(560px, 72svh, 740px);
+  overflow: hidden;
+  position: relative;
+}
+
+html[lang="en"] .site-main .page-hero::after {
+  background: linear-gradient(120deg, transparent 10%, rgba(255,255,255,.06), transparent 56%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(38%);
 }
 
 html[lang="en"] .site-main .hero__inner {
@@ -24,6 +43,11 @@ html[lang="en"] .site-main .hero__inner {
 
 html[lang="en"] .site-main .hero__content {
   max-width: 860px;
+}
+
+html[lang="en"] .site-main .page-hero .container {
+  position: relative;
+  z-index: 1;
 }
 
 html[lang="en"] .site-main .eyebrow {
@@ -52,7 +76,12 @@ html[lang="en"] .site-main h1 {
   margin: 0;
 }
 
-html[lang="en"] .site-main .hero__lead {
+html[lang="en"] .site-main .page-hero h1 {
+  max-width: 860px;
+}
+
+html[lang="en"] .site-main .hero__lead,
+html[lang="en"] .site-main .page-hero__lead {
   color: rgba(255, 250, 245, 0.74);
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   line-height: 1.65;
@@ -136,7 +165,8 @@ html[lang="en"] .site-main .section:nth-of-type(even) {
     grid-template-columns: 1fr;
   }
 
-  html[lang="en"] .site-main .hero {
+  html[lang="en"] .site-main .hero,
+  html[lang="en"] .site-main .page-hero {
     min-height: auto;
     padding: 110px 0 84px;
   }
