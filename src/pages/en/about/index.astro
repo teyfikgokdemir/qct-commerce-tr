@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+<BaseLayout
+  title="About QCT Commerce | Digital Commerce Across Markets"
+  description="Learn how QCT Commerce approaches multilingual websites, digital commerce and sales automation for companies growing across markets."
+  lang="en"
+  pageType="AboutPage"
+  breadcrumbLabel="About"
+  areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}
+>
+  <Header slot="header" lang="en" />
+
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">About QCT Commerce</p>
+      <h1>Commercial clarity before platforms, features or automation.</h1>
+      <p class="page-hero__lead">QCT Commerce helps manufacturers, distributors and growing brands organise multilingual websites, digital commerce and sales operations around a real market opportunity.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="/en/work/">View selected work</a>
+        <a class="button button--secondary" href="/en/contact/">Discuss a project</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-about-intro">
+    <div class="container qct-about-intro__grid">
+      <div class="section-heading">
+        <p class="eyebrow">What we are</p>
+        <h2>A focused digital commerce practice within the QCT Studio network.</h2>
+      </div>
+      <div class="qct-about-intro__copy">
+        <p>QCT Commerce is the Türkiye-focused commerce and international sales practice within the QCT Studio network. The work combines commercial strategy, information architecture, web design, e-commerce and controlled automation.</p>
+        <p>We do not begin with a predetermined platform. We begin with the buyer, the target market, the current sales constraint and the operational reality behind the project.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-about-principles">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Operating principles</p>
+        <h2>Evidence before claims.</h2>
+        <p>Our public site describes observable scope, live outputs and verified capabilities. It does not use invented performance figures, unverified certifications or unsupported partner badges.</p>
+      </div>
+      <div class="qct-about-principles__grid">
+        <article><span>01</span><h3>Market first</h3><p>Positioning, buyer questions and commercial routes are defined before the technology stack.</p></article>
+        <article><span>02</span><h3>Connected systems</h3><p>Website, commerce, search visibility and lead handling are planned as one operating structure.</p></article>
+        <article><span>03</span><h3>Measured scope</h3><p>Recommendations are tied to a visible constraint rather than a generic list of agency deliverables.</p></article>
+        <article><span>04</span><h3>Transparent proof</h3><p>Live project links and verifiable project facts are preferred over speculative mock-ups or unsupported growth claims.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-about-markets">
+    <div class="container qct-about-markets__card">
+      <div class="section-heading">
+        <p class="eyebrow">Markets and delivery</p>
+        <h2>Built for companies working across language and market boundaries.</h2>
+        <p>The current focus is Türkiye and Georgia, with international delivery for suitable projects across Europe and Gulf markets.</p>
+      </div>
+      <div class="qct-about-markets__facts">
+        <div><span>Core practice</span><strong>Digital commerce and B2B sales systems</strong></div>
+        <div><span>Delivery model</span><strong>Focused project scope with direct communication</strong></div>
+        <div><span>Network</span><strong>Part of QCT Studio</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-international-cta">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Start with context</p>
+        <h2>Tell us what the next market needs from your digital sales system.</h2>
+        <p>We will review the current structure and identify the most practical first decision.</p>
+        <a class="button button--primary" href="/en/contact/">Contact QCT Commerce</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .qct-about-intro__grid { display: grid; gap: clamp(36px,7vw,90px); grid-template-columns: minmax(0,.9fr) minmax(320px,1.1fr); }
+  .qct-about-intro__copy { color: #655d58; font-size: 1.08rem; line-height: 1.8; }
+  .qct-about-intro__copy p { margin: 0 0 22px; }
+  .qct-about-principles { background: #ebe4dc; }
+  .qct-about-principles__grid { display: grid; gap: 18px; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .qct-about-principles__grid article { background: #fffaf5; border: 1px solid rgba(23,21,20,.1); border-radius: 24px; padding: clamp(26px,3vw,38px); }
+  .qct-about-principles__grid span { color: #e66b5f; display: block; font-size: .78rem; font-weight: 900; letter-spacing: .14em; margin-bottom: 28px; }
+  .qct-about-principles__grid h3 { color: #171514; font-size: clamp(1.35rem,2vw,1.8rem); margin: 0 0 12px; }
+  .qct-about-principles__grid p { color: #655d58; line-height: 1.7; margin: 0; }
+  .qct-about-markets__card { align-items: start; background: #171514; border-radius: 30px; color: #fffaf5; display: grid; gap: clamp(36px,7vw,90px); grid-template-columns: minmax(0,1.1fr) minmax(320px,.9fr); padding: clamp(38px,7vw,82px); }
+  .qct-about-markets__card .section-heading { margin: 0; }
+  .qct-about-markets__card .section-heading h2 { color: #fffaf5; }
+  .qct-about-markets__card .section-heading > p:not(.eyebrow) { color: rgba(255,250,245,.7); }
+  .qct-about-markets__facts { display: grid; gap: 0; }
+  .qct-about-markets__facts div { border-top: 1px solid rgba(255,255,255,.14); padding: 20px 0; }
+  .qct-about-markets__facts span { color: rgba(255,250,245,.52); display: block; font-size: .74rem; font-weight: 900; letter-spacing: .1em; margin-bottom: 8px; text-transform: uppercase; }
+  .qct-about-markets__facts strong { color: #fffaf5; font-size: 1.05rem; line-height: 1.45; }
+  @media (max-width: 900px) { .qct-about-intro__grid, .qct-about-markets__card { grid-template-columns: 1fr; } }
+  @media (max-width: 700px) { .qct-about-principles__grid { grid-template-columns: 1fr; } }
+</style>
