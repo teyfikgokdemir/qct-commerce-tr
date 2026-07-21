@@ -511,6 +511,45 @@
 	margin-top: 28px;
 }
 
+.qct-selected-work .qct-work-link {
+	background: transparent;
+	border: 1px solid color-mix(in srgb, var(--qct-color-coral-dark) 42%, transparent);
+	border-radius: 2px;
+	color: var(--qct-color-coral-dark);
+	justify-content: center;
+	padding: 9px 14px;
+	text-decoration: none;
+	transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.qct-selected-work .qct-work-link span {
+	display: inline-block;
+	transition: transform 180ms ease;
+}
+
+.qct-selected-work .qct-work-link:hover {
+	background: color-mix(in srgb, var(--qct-color-coral) 8%, transparent);
+	border-color: var(--qct-color-coral-dark);
+	color: var(--qct-color-text);
+}
+
+.qct-selected-work .qct-work-link:active {
+	background: color-mix(in srgb, var(--qct-color-coral) 16%, transparent);
+	border-color: var(--qct-color-coral-dark);
+}
+
+.qct-selected-work .qct-work-link:focus-visible {
+	border-color: var(--qct-color-coral-dark);
+	color: var(--qct-color-text);
+	outline: 2px solid var(--qct-color-coral-dark);
+	outline-offset: 3px;
+}
+
+.qct-selected-work .qct-work-link:hover span,
+.qct-selected-work .qct-work-link:focus-visible span {
+	transform: translateX(3px);
+}
+
 @media (max-width: 920px) {
 	.qct-work-case h1 {
 		font-size: clamp(2.75rem, 6vw, 3rem);
@@ -629,5 +668,14 @@
 	.qct-selected-work__image img,
 	.qct-work-link {
 		transition: none;
+	}
+
+	.qct-selected-work .qct-work-link span {
+		transition: none;
+	}
+
+	.qct-selected-work .qct-work-link:hover span,
+	.qct-selected-work .qct-work-link:focus-visible span {
+		transform: none;
 	}
 }

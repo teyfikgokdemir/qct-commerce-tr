@@ -357,6 +357,7 @@ body {
 	display: grid;
 	gap: 0;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
+	margin-top: var(--qct-home-content-gap);
 }
 
 .qct-problem-card {
@@ -367,6 +368,7 @@ body {
 	box-shadow: none;
 	min-height: 0;
 	padding: clamp(28px, 4vw, 48px) clamp(12px, 3vw, 34px) clamp(28px, 4vw, 48px) 0;
+	position: relative;
 	backdrop-filter: none;
 }
 
@@ -381,9 +383,12 @@ body {
 	background: var(--qct-color-accent);
 	border-radius: 0;
 	box-shadow: none;
+	display: block;
 	height: 2px;
 	margin-bottom: 24px;
+	position: relative;
 	width: 30px;
+	z-index: 1;
 }
 
 .qct-problem-card h3 {
@@ -391,9 +396,14 @@ body {
 	font-family: var(--qct-font-sans);
 	font-size: clamp(1.25rem, 2vw, 1.7rem);
 	font-weight: 700;
+	letter-spacing: 0;
+	line-height: 1.12;
+	margin: 0;
+	position: relative;
+	z-index: 1;
 }
 
-.qct-problem-card p { color: var(--qct-color-on-dark-muted); font-size: 1rem; line-height: 1.68; }
+.qct-problem-card p { color: var(--qct-color-on-dark-muted); font-size: 1rem; line-height: 1.68; margin: 16px 0 0; position: relative; z-index: 1; }
 
 .qct-services {
 	background: var(--qct-color-background);
@@ -403,6 +413,7 @@ body {
 .qct-services::after { display: none; }
 
 .qct-services__grid {
+	align-items: stretch;
 	border-top: 1px solid var(--qct-color-line-strong);
 	display: grid;
 	gap: 0 clamp(22px, 3vw, 42px);
@@ -412,6 +423,8 @@ body {
 }
 
 .qct-service-card {
+	--service-accent: var(--qct-color-coral);
+	--service-accent-soft: color-mix(in srgb, var(--qct-color-coral) 10%, transparent);
 	align-items: stretch;
 	background: transparent;
 	border: 0;
@@ -426,6 +439,7 @@ body {
 	min-width: 0;
 	overflow: visible;
 	padding: clamp(26px, 4vw, 44px) 0;
+	position: relative;
 	text-decoration: none;
 	transition: border-color 160ms ease, color 160ms ease;
 }
@@ -451,6 +465,9 @@ body {
 	display: grid;
 	gap: 12px;
 	grid-template-columns: 28px 1fr;
+	min-height: 30px;
+	position: relative;
+	z-index: 1;
 }
 
 .qct-service-card__number {
@@ -464,16 +481,20 @@ body {
 	font-size: 0.72rem;
 	font-weight: 750;
 	letter-spacing: 0.11em;
+	margin: 0;
+	text-transform: uppercase;
 }
 
-.qct-service-card__body { gap: 10px; }
+.qct-service-card__body { align-content: start; display: grid; gap: 10px; margin-top: 0; position: relative; z-index: 1; }
 
 .qct-service-card__title {
 	color: var(--qct-color-text);
+	display: block;
 	font-family: var(--qct-font-sans);
 	font-size: clamp(1.35rem, 1.65vw, 1.7rem);
 	font-weight: 720;
 	line-height: 1.18;
+	letter-spacing: 0;
 	min-width: 0;
 	overflow-wrap: normal;
 	word-break: normal;
@@ -481,25 +502,41 @@ body {
 
 .qct-service-card__text {
 	color: var(--qct-color-muted);
+	display: block;
 	font-size: 1rem;
 	line-height: 1.68;
 	max-width: 660px;
 }
 
 .qct-service-card__cta {
+	align-items: center;
 	color: var(--qct-color-coral-dark);
+	display: inline-flex;
 	font-size: 0.78rem;
 	font-weight: 750;
+	gap: 10px;
 	margin-top: auto;
+	padding-top: 2px;
 	position: static;
+	z-index: 1;
 }
 
 .qct-service-card .qct-service-card__cta { color: var(--qct-color-coral-dark); }
 
 .qct-service-card__cta::after {
+	border-right: 1px solid currentColor;
+	border-top: 1px solid currentColor;
+	content: "";
 	border-width: 1px;
 	height: 7px;
+	transform: rotate(45deg);
+	transition: transform 180ms ease;
 	width: 7px;
+}
+
+.qct-service-card:hover .qct-service-card__cta::after,
+.qct-service-card:focus-visible .qct-service-card__cta::after {
+	transform: translateX(4px) rotate(45deg);
 }
 
 .qct-section.qct-process {
@@ -523,6 +560,7 @@ body {
 	display: grid;
 	gap: 0;
 	grid-template-columns: repeat(5, minmax(0, 1fr));
+	margin-top: var(--qct-home-content-gap);
 	position: relative;
 }
 
@@ -532,13 +570,16 @@ body {
 }
 
 .qct-process-card {
+	align-content: start;
 	background: transparent;
 	border: 0;
 	border-radius: 0;
 	box-shadow: none;
 	display: grid;
+	gap: 12px;
 	grid-template-rows: 58px minmax(0, 1fr);
 	min-height: 260px;
+	overflow: hidden;
 	padding: 0 clamp(16px, 2vw, 28px) clamp(24px, 3vw, 36px);
 	position: relative;
 	transform: none !important;
@@ -595,11 +636,13 @@ body {
 	font-weight: 700;
 	line-height: 1.25;
 	margin: 0;
+	position: relative;
+	z-index: 1;
 }
 
-.qct-process-card p { color: var(--qct-color-on-dark); font-size: 1rem; line-height: 1.68; margin: 14px 0 0; }
+.qct-process-card p { color: var(--qct-color-on-dark); font-size: 1rem; line-height: 1.68; margin: 14px 0 0; position: relative; z-index: 1; }
 
-.qct-process-card__number { color: var(--qct-color-on-dark); height: auto; line-height: 1; width: auto; }
+.qct-process-card__number { align-items: center; color: var(--qct-color-on-dark); display: inline-flex; height: auto; line-height: 1; width: auto; }
 
 .qct-final-cta {
 	background: var(--qct-color-background);

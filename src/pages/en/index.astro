@@ -75,11 +75,11 @@ const selectedWork = [
           {selectedWork.map((item) => (
             <a class="qct-home-work__card" href={item.href}>
               <span class="qct-home-work__image"><img src={item.image} alt={item.alt} width="1600" height="1000" loading="lazy" decoding="async" /></span>
-              <span class="qct-home-work__meta"><small>{item.type}</small><strong>{item.name}</strong><em>View project evidence →</em></span>
+              <span class="qct-home-work__meta"><small>{item.type}</small><strong>{item.name}</strong><em>View project evidence <span aria-hidden="true">→</span></em></span>
             </a>
           ))}
         </div>
-        <a class="button button--primary qct-home-work__all" href="/en/work/">Explore selected work</a>
+        <a class="qct-home-work__all" href="/en/work/">Explore selected work <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -126,9 +126,17 @@ const selectedWork = [
   .qct-home-work__meta { display: flex; flex-direction: column; min-height: 190px; padding: 26px; }
   .qct-home-work__meta small { color: #b64137; font-size: .76rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
   .qct-home-work__meta strong { color: #171514; font-size: clamp(1.45rem, 2vw, 2rem); margin-top: 18px; }
-  .qct-home-work__meta em { color: #655d58; font-size: .92rem; font-style: normal; font-weight: 750; margin-top: auto; padding-top: 24px; }
+  .qct-home-work__meta em, .qct-home-work__all { align-items: center; align-self: flex-start; background: transparent; border: 1px solid rgba(182,65,55,.42); border-radius: 2px; color: #b64137; display: inline-flex; font-size: .92rem; font-style: normal; font-weight: 750; gap: 8px; justify-content: center; min-height: 44px; padding: 9px 14px; text-decoration: none; transition: background-color .18s ease, border-color .18s ease, color .18s ease; }
+  .qct-home-work__meta em { margin-top: auto; }
   .qct-home-work__all { margin-top: 30px; }
+  .qct-home-work__meta em span, .qct-home-work__all span { display: inline-block; transition: transform .18s ease; }
+  .qct-home-work__card:hover .qct-home-work__meta em, .qct-home-work__card:focus-visible .qct-home-work__meta em, .qct-home-work__all:hover { background: rgba(230,107,95,.08); border-color: #b64137; color: #171514; }
+  .qct-home-work__card:active .qct-home-work__meta em, .qct-home-work__all:active { background: rgba(230,107,95,.16); border-color: #b64137; }
+  .qct-home-work__card:focus-visible { outline: 2px solid #b64137; outline-offset: 3px; }
+  .qct-home-work__all:focus-visible { border-color: #b64137; color: #171514; outline: 2px solid #b64137; outline-offset: 3px; }
+  .qct-home-work__card:hover .qct-home-work__meta em span, .qct-home-work__card:focus-visible .qct-home-work__meta em span, .qct-home-work__all:hover span, .qct-home-work__all:focus-visible span { transform: translateX(3px); }
   @media (max-width: 960px) { .qct-home-work__grid { grid-template-columns: 1fr; } .qct-home-work__meta { min-height: 0; } }
+  @media (prefers-reduced-motion: reduce) { .qct-home-work__meta em, .qct-home-work__all, .qct-home-work__meta em span, .qct-home-work__all span { transition: none; } .qct-home-work__card:hover .qct-home-work__meta em span, .qct-home-work__card:focus-visible .qct-home-work__meta em span, .qct-home-work__all:hover span, .qct-home-work__all:focus-visible span { transform: none; } }
 </style>
 
 <style is:global>
