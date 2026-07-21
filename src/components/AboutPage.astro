@@ -11,7 +11,7 @@ const { lang } = Astro.props;
 const seo = getPageSeo('about');
 ---
 
-<BaseLayout title={seo.title} description={seo.description} lang={lang} pageType="AboutPage" breadcrumbLabel="Hakkımızda" includeFounder>
+<BaseLayout title={seo.title} description={seo.description} lang={lang} pageType="AboutPage" breadcrumbLabel="Hakkımızda" includeFounder includeServiceCardStyles>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}

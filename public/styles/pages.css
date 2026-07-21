@@ -2988,9 +2988,6 @@
 		grid-template-columns: minmax(190px, 0.42fr) minmax(0, 1fr);
 	}
 
-	.qct-error-page__layout {
-		grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.55fr);
-	}
 }
 
 @media (min-width: 800px) {
@@ -3003,11 +3000,6 @@
 	.qct-legal-layout {
 		grid-template-columns: minmax(220px, 280px) minmax(0, 780px);
 		justify-content: space-between;
-	}
-
-	.qct-legal-toc {
-		position: sticky;
-		top: 110px;
 	}
 
 	.qct-blog-page .qct-blog-empty:not(.qct-blog-empty--editorial) {

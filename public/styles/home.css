@@ -347,10 +347,6 @@
 }
 
 @media (max-width: 360px) {
-	.qct-hero {
-		padding: var(--qct-hero-clearance) 0 28px;
-	}
-
 	.qct-hero__inner {
 		gap: 22px;
 	}
@@ -452,10 +448,6 @@
 	min-width: 5.2ch;
 	position: relative;
 	text-shadow: 0 0 34px rgba(230, 107, 95, 0.36);
-}
-
-.qct-hero__rotator.is-switching {
-	animation: qct-word-switch 360ms ease both;
 }
 
 .qct-hero__subtitle {
@@ -3241,11 +3233,6 @@
 .qct-hero__title {
 	font-size: clamp(3.3rem, 7vw, 6.65rem);
 	line-height: 0.91;
-}
-
-.qct-hero__subtitle,
-.qct-section__lead {
-	color: var(--qct-color-muted);
 }
 
 .qct-hero__subtitle {

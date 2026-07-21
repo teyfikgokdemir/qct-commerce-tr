@@ -12,7 +12,7 @@ const seo = getPageSeo('website-design');
 const serviceDescription = 'Üreticiler, toptancılar, ihracatçılar ve büyüyen KOBİ’ler için teklifi açık anlatan, güven oluşturan, arama sistemleri tarafından anlaşılabilen ve ticari talebi doğru kanala yönlendiren web siteleri tasarlıyoruz.';
 ---
 
-<BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="B2B web tasarım" service={{ name: 'B2B web tasarım', description: serviceDescription }}>
+<BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="B2B web tasarım" service={{ name: 'B2B web tasarım', description: serviceDescription }} includeServiceCardStyles>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
