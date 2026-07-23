@@ -59,10 +59,10 @@ const isGeorgian = lang === 'ka';
 
 <style>
   .site-footer { position: relative; overflow: hidden; isolation: isolate; }
-  .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(8.5rem, 14vw, 13rem); }
+  .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(5.5rem, 8vw, 7rem); }
   .site-footer__marquee {
     position: absolute;
-    inset: 1.2rem 0 auto;
+    inset: 1.15rem 0 auto;
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
@@ -73,26 +73,26 @@ const isGeorgian = lang === 'ka';
   .site-footer__marquee-track {
     display: flex;
     width: max-content;
-    gap: clamp(2.5rem, 6vw, 7rem);
+    gap: clamp(1.5rem, 3vw, 3.5rem);
     animation: qctCommerceMarquee 42s linear infinite;
     will-change: transform;
   }
   .site-footer__marquee span {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(230, 107, 95, .08);
-    text-shadow: 0 0 32px rgba(230, 107, 95, .035);
-    font-size: clamp(5.2rem, 13vw, 12.5rem);
+    -webkit-text-stroke: 1px rgba(230, 107, 95, .16);
+    text-shadow: 0 0 24px rgba(230, 107, 95, .075);
+    font-size: clamp(2.8rem, 7vw, 6.5rem);
     font-weight: 800;
-    line-height: .82;
-    letter-spacing: -.065em;
+    line-height: .88;
+    letter-spacing: -.045em;
     white-space: nowrap;
   }
-  @keyframes qctCommerceMarquee { to { transform: translateX(calc(-25% - 1.5rem)); } }
+  @keyframes qctCommerceMarquee { to { transform: translateX(calc(-25% - .75rem)); } }
   @media (max-width: 760px) {
-    .site-footer__inner { padding-top: clamp(6.5rem, 25vw, 9rem); }
-    .site-footer__marquee { top: 1.35rem; }
+    .site-footer__inner { padding-top: clamp(4.5rem, 16vw, 6rem); }
+    .site-footer__marquee { top: 1.15rem; }
     .site-footer__marquee-track { animation: none; transform: translateX(-8%); }
-    .site-footer__marquee span { font-size: clamp(3.8rem, 20vw, 6.8rem); }
+    .site-footer__marquee span { font-size: clamp(2.4rem, 12vw, 4.2rem); }
   }
   @media (prefers-reduced-motion: reduce) {
     .site-footer__marquee-track { animation: none; transform: translateX(-8%); }
