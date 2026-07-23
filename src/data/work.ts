@@ -92,7 +92,7 @@ export const workCases: WorkCase[] = [
     name: 'Misima Group',
     eyebrow: 'Kurumsal ve B2B web deneyimi',
     title: 'Misima Group için hizmetleri, markaları ve ürünleri bir araya getiren kurumsal yapı',
-    summary: 'Kozmetik grubunun farklı iş modellerini, marka hizmetlerini ve ürün keşfini anlaşılır bir kurumsal web deneyiminde birleştiren 2025 projesi.',
+    summary: 'Kozmetik grubunun farklı iş modellerini, marka hizmetlerini ve ürün keşfini anlaşılır bir kurumsal web deneyiminde birleştiren; 2025’te tamamlanıp daha sonra QCT portföyüne dahil edilen çalışma.',
     sector: 'Kozmetik ve marka yönetimi',
     liveUrl: 'https://www.misima.com.tr/',
     liveLabel: 'Misima Group web sitesini ziyaret edin',
@@ -119,8 +119,8 @@ export const workCases: WorkCase[] = [
     outputs: ['Canlı kurumsal web sitesi', 'Hizmet ve içerik mimarisi', 'Marka ve ürün sunum sayfaları', 'Responsive arayüz sistemi'],
     facts: [
       { label: 'Proje yılı', value: '2025' },
-      { label: 'Proje türü', value: 'Kurumsal ve B2B web sitesi' },
-      { label: 'QCT Studio kapsamı', value: 'Strateji, tasarım ve geliştirme' },
+      { label: 'Portföy bağlamı', value: 'QCT markalaşmasından önce tamamlanan çalışma' },
+      { label: 'Çalışma kapsamı', value: 'Strateji, tasarım ve geliştirme' },
     ],
     outcome: {
       title: 'Karmaşık hizmet yapısını daha kolay incelenebilir hale getiren canlı web deneyimi',
