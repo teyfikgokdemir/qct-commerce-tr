@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="tr"
+  title="KVKK Aydınlatma Metni | QCT Commerce"
+  description="QCT Commerce tarafından kişisel verilerin işlenmesi, saklanması ve ilgili kişi hakları hakkında KVKK aydınlatma metni."
+  canonicalPath="/kvkk/"
+>
+  <main class="legal-page">
+    <article class="legal-card">
+      <p class="legal-eyebrow">Yasal bilgiler</p>
+      <h1>KVKK Aydınlatma Metni</h1>
+      <p class="legal-updated">Son güncelleme: 23 Temmuz 2026</p>
+
+      <h2>1. Veri sorumlusu</h2>
+      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında, qctcommerce.com üzerinden işlenen kişisel veriler bakımından veri sorumlusu QCT Commerce’tir. Sorularınız ve talepleriniz için <a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a> adresinden iletişime geçebilirsiniz.</p>
+
+      <h2>2. İşlenebilecek kişisel veriler</h2>
+      <p>İletişim formları, e-posta, telefon veya WhatsApp üzerinden paylaştığınız ad-soyad, iletişim bilgileri, şirket bilgileri, talep ve mesaj içerikleri işlenebilir. Analitik veriler yalnızca açık çerez onayı verilmesi halinde işlenir.</p>
+
+      <h2>3. İşleme amaçları ve hukuki sebepler</h2>
+      <ul>
+        <li>Teklif ve iletişim taleplerini yanıtlamak,</li>
+        <li>Hizmet ilişkisini kurmak ve yürütmek,</li>
+        <li>Bilgi güvenliğini ve teknik sürekliliği sağlamak,</li>
+        <li>Hukuki yükümlülükleri yerine getirmek,</li>
+        <li>Açık rıza verilmişse site kullanımını analiz etmek.</li>
+      </ul>
+      <p>Veriler; sözleşmenin kurulması veya ifası, hukuki yükümlülük, meşru menfaat ve gerekli durumlarda açık rıza hukuki sebeplerine dayanılarak işlenebilir.</p>
+
+      <h2>4. Verilerin aktarılması</h2>
+      <p>Kişisel veriler satılmaz. Veriler yalnızca barındırma, e-posta, iletişim ve analitik hizmet sağlayıcılarıyla hizmetin gerektirdiği ölçüde veya yetkili kamu kurumlarının hukuka uygun talepleri üzerine paylaşılabilir.</p>
+
+      <h2>5. Saklama süresi</h2>
+      <p>Veriler, işleme amacı ve ilgili mevzuattaki zorunlu süre boyunca saklanır; amaç ve hukuki sebep sona erdiğinde silinir, yok edilir veya anonim hale getirilir.</p>
+
+      <h2>6. İlgili kişinin hakları</h2>
+      <p>KVKK’nın 11. maddesi kapsamında kişisel verilerinizin işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltme, silme veya yok etme isteme, aktarılan üçüncü kişilere bildirim talep etme, otomatik analiz sonucuna itiraz etme ve zararın giderilmesini isteme haklarına sahipsiniz.</p>
+
+      <h2>7. Başvuru</h2>
+      <p>Başvurularınızı kimliğinizi ve talebinizi açıklayan bir mesajla <a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a> adresine iletebilirsiniz.</p>
+
+      <nav class="legal-links" aria-label="Diğer yasal sayfalar">
+        <a href="/gizlilik-politikasi/">Gizlilik Politikası</a>
+        <a href="/cerez-politikasi/">Çerez Politikası</a>
+        <a href="/kullanim-kosullari/">Kullanım Koşulları</a>
+      </nav>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .legal-page { padding: clamp(3rem, 7vw, 6rem) 1.25rem; }
+  .legal-card { width: min(860px, 100%); margin: 0 auto; }
+  .legal-eyebrow { color: var(--color-accent, #e66b5f); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
+  h1 { font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1; }
+  h2 { margin-top: 2.5rem; font-size: clamp(1.35rem, 3vw, 2rem); }
+  p, li { line-height: 1.75; }
+  a { text-decoration: underline; text-underline-offset: 3px; }
+  .legal-updated { opacity: .7; }
+  .legal-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid currentColor; }
+</style>
