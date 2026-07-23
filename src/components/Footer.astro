@@ -62,8 +62,11 @@ const isGeorgian = lang === 'ka';
   .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(5.5rem, 8vw, 7rem); }
   .site-footer__marquee {
     position: absolute;
-    inset: 1.15rem 0 auto;
+    inset: 0 0 auto;
     z-index: 0;
+    height: clamp(5.5rem, 8vw, 7rem);
+    display: flex;
+    align-items: center;
     overflow: hidden;
     pointer-events: none;
     user-select: none;
@@ -72,6 +75,7 @@ const isGeorgian = lang === 'ka';
   }
   .site-footer__marquee-track {
     display: flex;
+    align-items: center;
     width: max-content;
     gap: clamp(1.5rem, 3vw, 3.5rem);
     animation: qctCommerceMarquee 42s linear infinite;
@@ -90,7 +94,7 @@ const isGeorgian = lang === 'ka';
   @keyframes qctCommerceMarquee { to { transform: translateX(calc(-25% - .75rem)); } }
   @media (max-width: 760px) {
     .site-footer__inner { padding-top: clamp(4.5rem, 16vw, 6rem); }
-    .site-footer__marquee { top: 1.15rem; }
+    .site-footer__marquee { height: clamp(4.5rem, 16vw, 6rem); }
     .site-footer__marquee-track { animation: none; transform: translateX(-8%); }
     .site-footer__marquee span { font-size: clamp(2.4rem, 12vw, 4.2rem); }
   }
