@@ -57,6 +57,12 @@
 
 # Yeni İngilizce yapı ve eski Shopify İngilizce rotaları
 /en /en/ 301
+/en/e-commerce /en/ecommerce/ 301
+/en/e-commerce/ /en/ecommerce/ 301
+/en/meta-ads /en/ 301
+/en/meta-ads/ /en/ 301
+/en/blog /blog/ 301
+/en/blog/ /blog/ 301
 /en/products/baslangic-paketi /en/ecommerce/ 301
 /en/products/lansman-paketi /en/ecommerce/ 301
 /en/products/shopify-magaza-kurulumu /en/ecommerce/ 301
