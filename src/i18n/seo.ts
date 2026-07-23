@@ -8,7 +8,7 @@ export type SeoPage =
 interface SeoEntry { title: string; description: string; }
 
 const seo: Record<SeoPage, SeoEntry> = {
-  home: { title: 'QCT Commerce — Türkiye için E-ticaret ve Dijital Ticaret Sistemleri', description: 'E-ticaret altyapısı, web, performans pazarlaması, SEO ve yapay zekâ destekli büyüme sistemleri kuruyoruz.' },
+  home: { title: 'QCT Commerce — Türkiye için Dijital Ticaret Sistemleri', description: 'E-ticaret, web, görünürlük ve yapay zekâ destekli büyüme altyapılarını satış odaklı tek sistemde kuruyoruz.' },
   about: { title: 'Hakkımızda — QCT Commerce Türkiye', description: 'QCT Commerce’ın Türkiye’deki KOBİ, üretici, perakendeci ve e-ticaret markaları için dijital büyümeye nasıl yaklaştığını keşfedin.' },
   services: { title: 'E-ticaret ve Dijital Büyüme Hizmetleri', description: 'E-ticaret altyapısı, web tasarım, WhatsApp satış, SEO, GEO, AEO, AIO, Meta reklamları ve yapay zekâ otomasyonu hizmetlerini inceleyin.' },
   'website-design': { title: 'B2B Web Tasarım Hizmeti — QCT Commerce', description: 'Üretici, toptancı, ihracatçı ve büyüyen KOBİ’ler için SEO, GEO, AEO, AIO ve dönüşüm odaklı B2B web siteleri tasarlıyoruz.' },
