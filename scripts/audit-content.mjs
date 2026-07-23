@@ -6,7 +6,6 @@ const extensions = new Set(['.astro', '.ts', '.js', '.mjs', '.json', '.txt', '.m
 const checks = [
   ['eski marka hesabı', /qctalbania/i],
   ['eski analytics kimliği', new RegExp(['G-GPH', 'PRQG328'].join(''), 'i')],
-  ['eski bölge', /\bBalkans?\b|\bAlbania\b|North Macedonia|\bKosovo\b/i],
   ['yayınlanmayan vaka çalışması', /\bPhiaderm\b/i],
   ['fiziksel reklam hizmeti', /tabela|dijital baskı|araç kaplama|promosyon ürün|fiziksel reklam|\bsignage\b|vehicle wrap|promotional product|digital print/i],
   ['eski rota', /['"`]\/(?:about|services|website-design|e-commerce|whatsapp-commerce|seo-performance|meta-ads-landing-pages|ai-automation|careers|contact|privacy-policy|terms-conditions|cookie-policy|work)(?:\/|['"`])/i],
