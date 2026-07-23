@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run audit:content && npm run audit:metadata && astro build && npm run audit:html && npm run audit:redirects",
+    "build": "node scripts/apply-seo-fixes.mjs && npm run audit:content && npm run audit:metadata && astro build && npm run audit:html && npm run audit:redirects",
     "preview": "astro preview",
     "astro": "astro",
     "audit:content": "node scripts/audit-content.mjs",
