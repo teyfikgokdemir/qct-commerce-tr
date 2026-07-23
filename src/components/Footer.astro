@@ -5,7 +5,7 @@ const isEnglish = lang === 'en';
 const isGeorgian = lang === 'ka';
 ---
 <footer id="colophon" class="site-footer">
-  <div class="site-footer__watermark" aria-hidden="true">QCT COMMERCE</div>
+  <div class="site-footer__watermark" data-text="QCT COMMERCE" aria-hidden="true">QCT COMMERCE</div>
   <div class="site-footer__inner container">
     <div class="site-footer__columns">
       <div class="site-footer__group site-footer__brand">
@@ -74,10 +74,42 @@ const isGeorgian = lang === 'ka';
     pointer-events: none;
     user-select: none;
   }
+  .site-footer__watermark::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    -webkit-text-stroke: 1px transparent;
+    background: linear-gradient(100deg,
+      transparent 0%,
+      transparent 43%,
+      rgba(230, 107, 95, .08) 47%,
+      rgba(255, 188, 174, .42) 50%,
+      rgba(230, 107, 95, .08) 53%,
+      transparent 57%,
+      transparent 100%);
+    background-size: 260% 100%;
+    background-position: 135% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 7px rgba(230, 107, 95, .16));
+    opacity: .72;
+    animation: qctCommerceLetterSweep 17s linear infinite;
+  }
   @keyframes qctCommerceFooterDrift { from { transform: translateX(-53%); } to { transform: translateX(-47%); } }
+  @keyframes qctCommerceLetterSweep {
+    0%, 12% { background-position: 135% 0; opacity: 0; }
+    18% { opacity: .72; }
+    62% { opacity: .72; }
+    70%, 100% { background-position: -35% 0; opacity: 0; }
+  }
   @media (max-width: 760px) {
     .site-footer__inner { padding-top: clamp(6.5rem, 25vw, 9rem); }
     .site-footer__watermark { top: 1.4rem; font-size: clamp(3.8rem, 20vw, 6.8rem); animation: none; transform: translateX(-50%); }
+    .site-footer__watermark::after { animation: none; opacity: 0; }
   }
-  @media (prefers-reduced-motion: reduce) { .site-footer__watermark { animation: none; transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .site-footer__watermark { animation: none; transform: translateX(-50%); }
+    .site-footer__watermark::after { animation: none; opacity: 0; }
+  }
 </style>
