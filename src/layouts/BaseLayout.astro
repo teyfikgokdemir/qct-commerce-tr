@@ -65,6 +65,7 @@ const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
 const homePath = isGeorgian ? '/ka/georgia/' : isEnglish ? '/en/' : '/';
 const homeUrl = new URL(homePath, SITE_URL).toString();
+const xDefaultHref = alternates.find((alternate) => alternate.lang === 'en' || alternate.lang === 'en-US')?.href ?? '/en/';
 const organizationId = `${SITE_URL}/#organization`;
 const founderId = `${SITE_URL}/hakkimizda/#teyfik-gokdemir`;
 const websiteId = `${SITE_URL}/${isGeorgian ? 'ka/' : isEnglish ? 'en/' : ''}#website`;
@@ -87,7 +88,9 @@ const organizationSchema = {
 
 const founderSchema = includeFounder ? {
   '@type': 'Person', '@id': founderId, name: 'Teyfik Gökdemir', jobTitle: isEnglish ? 'Founder of QCT Commerce' : 'QCT Commerce Kurucusu', worksFor: { '@id': organizationId },
-  image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(), knowsLanguage: ['Türkçe', 'İngilizce'],
+  image: new URL('/images/teyfik-gokdemir-qct-commerce.webp', SITE_URL).toString(),
+  sameAs: ['https://teyfikgokdemir.com/', 'https://www.linkedin.com/in/teyfik-g%C3%B6kdemir-0b1a9758'],
+  knowsLanguage: ['Türkçe', 'İngilizce'],
   knowsAbout,
 } : null;
 
@@ -123,7 +126,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260720-1" />
   <link rel="canonical" href={canonicalUrl} />
   {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={new URL(alternate.href, SITE_URL).toString()} />)}
-  {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={new URL('/en/georgia/', SITE_URL).toString()} />}
+  {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={new URL(xDefaultHref, SITE_URL).toString()} />}
   <meta property="og:type" content={type} />
   <meta property="og:site_name" content="QCT Commerce" />
   <meta property="og:title" content={title} />
