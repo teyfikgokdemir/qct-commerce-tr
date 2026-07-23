@@ -42,7 +42,7 @@ const faqSchema = {
   })),
 };
 ---
-<BaseLayout title={seo.title} description={seo.description} image="/og-image-v2.png" lang={lang} isHome={true} includeWorkStyles={true} alternates={alternates}>
+<BaseLayout title={seo.title} description={seo.description} image="/og-image-square.png" imageWidth={600} imageHeight={600} lang={lang} isHome={true} includeWorkStyles={true} alternates={alternates}>
 <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <Header slot="header" lang={lang} />
 <Hero lang={lang} />
