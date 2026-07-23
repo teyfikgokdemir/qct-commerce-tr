@@ -5,6 +5,7 @@ const isEnglish = lang === 'en';
 const isGeorgian = lang === 'ka';
 ---
 <footer id="colophon" class="site-footer">
+  <div class="site-footer__watermark" aria-hidden="true">QCT COMMERCE</div>
   <div class="site-footer__inner container">
     <div class="site-footer__columns">
       <div class="site-footer__group site-footer__brand">
@@ -51,3 +52,32 @@ const isGeorgian = lang === 'ka';
     <div class="site-footer__bottom"><div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div></div>
   </div>
 </footer>
+
+<style>
+  .site-footer { position: relative; overflow: hidden; isolation: isolate; }
+  .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(8.5rem, 14vw, 13rem); }
+  .site-footer__watermark {
+    position: absolute;
+    top: 1.35rem;
+    left: 50%;
+    z-index: 0;
+    font-size: clamp(5.2rem, 13vw, 12.5rem);
+    font-weight: 800;
+    line-height: .82;
+    letter-spacing: -.065em;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(230, 107, 95, .075);
+    text-shadow: 0 0 42px rgba(230, 107, 95, .045);
+    transform: translateX(-52%);
+    animation: qctCommerceFooterDrift 34s ease-in-out infinite alternate;
+    pointer-events: none;
+    user-select: none;
+  }
+  @keyframes qctCommerceFooterDrift { from { transform: translateX(-53%); } to { transform: translateX(-47%); } }
+  @media (max-width: 760px) {
+    .site-footer__inner { padding-top: clamp(6.5rem, 25vw, 9rem); }
+    .site-footer__watermark { top: 1.4rem; font-size: clamp(3.8rem, 20vw, 6.8rem); animation: none; transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) { .site-footer__watermark { animation: none; transform: translateX(-50%); } }
+</style>
