@@ -122,7 +122,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={pageDescription} />
-  {!isIndexable && <meta name="robots" content="noindex, follow" />}
+  {isIndexable ? <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" /> : <meta name="robots" content="noindex, follow" />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260720-1" />
   <link rel="canonical" href={canonicalUrl} />
   {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={new URL(alternate.href, SITE_URL).toString()} />)}
