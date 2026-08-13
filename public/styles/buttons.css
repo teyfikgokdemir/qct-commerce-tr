@@ -74,16 +74,16 @@
   border-color: var(--qct-color-coral, #e66b5f);
 }
 
-:is(html[lang="en"], html[lang="ka"]) .page-hero .button--secondary,
-:is(html[lang="en"], html[lang="ka"]) .hero .button--secondary {
+.page-hero .button--secondary,
+.hero .button--secondary {
   border-color: rgba(255, 255, 255, 0.28);
   color: #fffaf5;
 }
 
-:is(html[lang="en"], html[lang="ka"]) .page-hero .button--secondary:hover,
-:is(html[lang="en"], html[lang="ka"]) .page-hero .button--secondary:focus-visible,
-:is(html[lang="en"], html[lang="ka"]) .hero .button--secondary:hover,
-:is(html[lang="en"], html[lang="ka"]) .hero .button--secondary:focus-visible {
+.page-hero .button--secondary:hover,
+.page-hero .button--secondary:focus-visible,
+.hero .button--secondary:hover,
+.hero .button--secondary:focus-visible {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.56);
 }
