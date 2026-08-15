@@ -149,7 +149,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <slot name="schema" />
   <link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
   <link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
-  {isHome ? <><link rel="stylesheet" href="/styles/home.css?v=20260718-3" /><link rel="stylesheet" href="/styles/animations.css?v=20260718-3" /></> : <link rel="stylesheet" href="/styles/pages.css?v=20260718-3" />}
+  {isHome ? <><link rel="stylesheet" href="/styles/home.css?v=20260718-3" /><link rel="preload" as="style" href="/styles/animations.css?v=20260718-3" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="/styles/animations.css?v=20260718-3" /></noscript></> : <link rel="stylesheet" href="/styles/pages.css?v=20260718-3" />}
   <link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
   <link rel="stylesheet" href="/styles/brand.css?v=20260719-1" />
   <link rel="stylesheet" href="/styles/buttons.css?v=20260721-1" />
