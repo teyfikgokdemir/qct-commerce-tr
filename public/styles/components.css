@@ -2291,17 +2291,36 @@ main :where([id]) {
 	}
 
 	.sub-menu {
-		background: rgba(10, 10, 16, 0.96);
+		background: rgba(10, 10, 16, 0.97);
 		border-radius: 18px;
 		box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
 		left: 0;
 		margin-top: 0 !important;
 		max-height: none;
-		min-width: 260px;
+		min-width: 360px;
 		overflow: visible;
+		padding: 10px !important;
 		position: absolute;
 		top: 100%;
 		transform: translateY(8px);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 6px !important;
+	}
+
+	.sub-menu a {
+		background: rgba(255, 255, 255, 0.035);
+		border: 1px solid rgba(255, 255, 255, 0.07);
+		border-radius: 12px;
+		min-height: 48px;
+		padding: 10px 12px;
+		transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+	}
+
+	.sub-menu a:hover,
+	.sub-menu a:focus-visible {
+		background: color-mix(in srgb, var(--qct-color-coral) 14%, transparent);
+		border-color: var(--qct-color-coral);
+		transform: translateY(-2px);
 	}
 
 	.sub-menu::before {
