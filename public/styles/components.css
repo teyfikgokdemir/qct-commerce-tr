@@ -561,37 +561,39 @@ main :where([id]) {
 	border-color: rgba(255, 255, 255, 0.4);
 }
 
-.main-navigation {
-	background: rgba(10, 10, 16, 0.995) !important;
-	border: none !important;
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	inset: 0;
-	position: fixed;
-	width: 100%;
-	height: 100dvh;
-	max-height: 100dvh;
-	opacity: 0;
-	padding: calc(14px + env(safe-area-inset-top, 0px)) 18px calc(24px + env(safe-area-inset-bottom, 0px));
-	pointer-events: none;
-	transform: translateY(-10px);
-	transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
-	visibility: hidden;
-	z-index: 140;
-	overflow-y: auto;
-	overscroll-behavior: contain;
-	backdrop-filter: blur(22px);
-	-webkit-backdrop-filter: blur(22px);
-}
+@media (max-width: 999px) {
+	.main-navigation {
+		background: rgba(10, 10, 16, 0.995) !important;
+		border: none !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		inset: 0;
+		position: fixed;
+		width: 100%;
+		height: 100dvh;
+		max-height: 100dvh;
+		opacity: 0;
+		padding: calc(14px + env(safe-area-inset-top, 0px)) 18px calc(24px + env(safe-area-inset-bottom, 0px));
+		pointer-events: none;
+		transform: translateY(-10px);
+		transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+		visibility: hidden;
+		z-index: 140;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		backdrop-filter: blur(22px);
+		-webkit-backdrop-filter: blur(22px);
+	}
 
-.main-navigation.is-open {
-	opacity: 1;
-	pointer-events: auto;
-	transform: translateY(0);
-	visibility: visible;
+	.main-navigation.is-open {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0);
+		visibility: visible;
+	}
 }
 
 body.has-open-menu {
@@ -2614,9 +2616,51 @@ body.has-open-menu {
 	}
 
 	.sub-menu {
-		background: var(--qct-color-surface);
-		border-radius: 3px;
-		box-shadow: 0 24px 56px rgba(23, 21, 26, 0.14);
+		position: absolute !important;
+		top: calc(100% + 8px) !important;
+		left: 0 !important;
+		min-width: 240px !important;
+		background: rgba(14, 12, 18, 0.96) !important;
+		backdrop-filter: blur(18px) !important;
+		-webkit-backdrop-filter: blur(18px) !important;
+		border: 1px solid rgba(255, 255, 255, 0.12) !important;
+		border-radius: 14px !important;
+		box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45) !important;
+		padding: 10px !important;
+		display: flex !important;
+		flex-direction: column !important;
+		gap: 4px !important;
+		max-height: none !important;
+		opacity: 0 !important;
+		visibility: hidden !important;
+		pointer-events: none !important;
+		transform: translateY(6px) !important;
+		transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease !important;
+	}
+
+	.menu-item-has-children:hover .sub-menu,
+	.menu-item-has-children:focus-within .sub-menu,
+	.submenu-toggle[aria-expanded="true"] + .sub-menu {
+		opacity: 1 !important;
+		visibility: visible !important;
+		pointer-events: auto !important;
+		transform: translateY(0) !important;
+	}
+
+	.sub-menu a {
+		color: rgba(255, 255, 255, 0.85) !important;
+		font-size: 0.85rem !important;
+		font-weight: 600 !important;
+		padding: 9px 12px !important;
+		border-radius: 8px !important;
+		transition: background 150ms ease, color 150ms ease !important;
+		white-space: normal !important;
+	}
+
+	.sub-menu a:hover,
+	.sub-menu a:focus-visible {
+		background: rgba(255, 255, 255, 0.1) !important;
+		color: #ffffff !important;
 	}
 }
 
