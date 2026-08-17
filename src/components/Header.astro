@@ -4,6 +4,43 @@ const { lang } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isEnglish = lang === 'en';
 const isGeorgian = lang === 'ka';
+
+const serviceLinks = isEnglish ? [
+  ['E-commerce Systems', '/en/ecommerce/'],
+  ['B2B Web Design', '/en/web-design/'],
+  ['SEO, GEO, AEO & AIO', '/en/search-visibility/'],
+  ['AI & Sales Automation', '/en/ai-automation/']
+] : [
+  ['Tüm Hizmetler', '/hizmetler/'],
+  ['E-Ticaret Altyapısı', '/e-ticaret/'],
+  ['Web Tasarım', '/web-tasarim/'],
+  ['WhatsApp Satış', '/whatsapp-satis/'],
+  ['SEO, GEO & AIO', '/seo-geo/'],
+  ['Meta Reklamları', '/meta-reklamlari/'],
+  ['Yapay Zekâ', '/yapay-zeka-otomasyonlari/']
+];
+
+const quickLinks = isGeorgian ? [
+  ['მთავარი', '/ka/georgia/'],
+  ['ვისთვისაა', '/ka/georgia/#fit'],
+  ['გადაწყვეტილებები', '/ka/georgia/#system'],
+  ['აუდიტი', '/ka/georgia/#audit'],
+  ['კონტაქტი', 'mailto:info@qctcommerce.com']
+] : isEnglish ? [
+  ['Home', '/en/'],
+  ['Work', '/en/work/'],
+  ['About', '/en/about/'],
+  ['How We Work', '/en/how-we-work/'],
+  ['Audit', '/en/audit/'],
+  ['Contact', '/en/contact/']
+] : [
+  ['Ana Sayfa', '/'],
+  ['Çalışmalar', '/calismalar/'],
+  ['Hakkımızda', '/hakkimizda/'],
+  ['Blog', '/blog/'],
+  ['İletişim', '/iletisim/']
+];
+
 const servicePaths = ['/hizmetler/', '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/'];
 const englishServicePaths = ['/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/'];
 const isCurrent = (path: string) => currentPath === path;
@@ -16,37 +53,246 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     <button class="site-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
       <span class="screen-reader-text">{isGeorgian ? 'მენიუს გახსნა' : isEnglish ? 'Open menu' : 'Menüyü aç'}</span><span class="site-menu-toggle__bar"></span><span class="site-menu-toggle__bar"></span>
     </button>
+    
     <nav id="site-navigation" class="main-navigation" aria-label={isGeorgian ? 'მთავარი მენიუ' : isEnglish ? 'Main menu' : 'Ana menü'} aria-hidden="true">
-      <div class="mobile-nav-head">
-        <span class="mobile-nav-title">{isGeorgian ? 'მენიუ' : isEnglish ? 'Menu' : 'Menü'}</span>
-        <button class="mobile-nav-close" type="button" aria-label={isGeorgian ? 'მენიუს დახურვა' : isEnglish ? 'Close menu' : 'Menüyü kapat'} data-mobile-close>
-          <span aria-hidden="true">✕</span>
-        </button>
+      <!-- MOBILE ONLY PANEL (Mythborn Card Architecture) -->
+      <div class="mobile-only-panel">
+        <div class="mobile-nav-head">
+          <div class="mobile-nav-brand">
+            <span class="mobile-nav-title">QCT COMMERCE</span>
+            <span class="mobile-nav-subtitle">{isGeorgian ? 'მენიუ' : isEnglish ? 'MAIN MENU' : 'ANA MENÜ'}</span>
+          </div>
+          <button class="mobile-nav-close" type="button" aria-label="Close menu" data-mobile-close>
+            <span aria-hidden="true">✕</span>
+          </button>
+        </div>
+
+        <!-- Card 1: Language Switcher -->
+        <div class="mobile-myth-card mobile-myth-card--lang">
+          <div class="myth-card-head">
+            <span class="myth-card-title">🌐 DİL SEÇİMİ / LANGUAGE</span>
+            <span class="myth-card-badge">GLOBAL</span>
+          </div>
+          <div class="mobile-lang-grid">
+            <a href="/" class:list={['mobile-lang-item', { active: !isEnglish && !isGeorgian }]}>
+              <span class="lang-code">TR</span>
+              <span class="lang-name">TÜRKÇE</span>
+            </a>
+            <a href="/en/" class:list={['mobile-lang-item', { active: isEnglish }]}>
+              <span class="lang-code">EN</span>
+              <span class="lang-name">ENGLISH</span>
+            </a>
+            <a href="/ka/georgia/" class:list={['mobile-lang-item', { active: isGeorgian }]}>
+              <span class="lang-code">KA</span>
+              <span class="lang-name">GEORGIA</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Services / Hizmetler (Mythborn Open Grid) -->
+        {!isGeorgian && (
+          <div class="mobile-myth-card">
+            <div class="myth-card-head">
+              <span class="myth-card-title">🏢 {isEnglish ? 'SOLUTIONS' : 'HİZMETLER'}</span>
+              <span class="myth-card-badge">SERVİSLER</span>
+            </div>
+            <div class="mobile-solutions-grid">
+              {serviceLinks.map(([label, href]) => (
+                <a href={href} class="mobile-solution-item">
+                  <strong class="sol-title">{label.toUpperCase()}</strong>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Card 3: Quick Navigation -->
+        <div class="mobile-myth-card">
+          <div class="myth-card-head">
+            <span class="myth-card-title">📌 {isGeorgian ? 'მენიუ' : isEnglish ? 'NAVIGATION' : 'HIZLI ERİŞİM'}</span>
+            <span class="myth-card-badge">MENÜ</span>
+          </div>
+          <div class="mobile-nav-grid">
+            {quickLinks.map(([label, href]) => (
+              <a href={href} class="mobile-nav-item">
+                <strong>{label.toUpperCase()}</strong>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Card 4: Mobile CTA Button -->
+        <a class="button button-primary mobile-cta-btn" href={isEnglish ? "/en/contact/" : "/iletisim/"}>
+          {isEnglish ? 'START A PROJECT' : 'PROJE BAŞLAT'}
+        </a>
       </div>
-      {isGeorgian ? (
-        <ul class="primary-menu">
-          <li><a href="/ka/georgia/" aria-current="page">მთავარი</a></li><li><a href="/ka/georgia/#fit">ვისთვისაა</a></li><li><a href="/ka/georgia/#system">გადაწყვეტილებები</a></li><li><a href="/ka/georgia/#audit">აუდიტი</a></li><li><a href="mailto:info@qctcommerce.com">კონტაქტი</a></li><li><a href="/en/georgia/" hreflang="en">EN</a></li>
-        </ul>
-      ) : isEnglish ? (
-        <ul class="primary-menu">
-          <li><a href="/en/" aria-current={isCurrent('/en/') ? 'page' : undefined}>Home</a></li>
-          <li class:list={['menu-item-has-children', { 'is-current': isEnglishServiceCurrent }]}>
-            <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Solutions</span></button>
-            <ul class="sub-menu">
-              <li><a href="/en/ecommerce/">E-commerce systems</a></li><li><a href="/en/web-design/">B2B web design</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/ai-automation/">AI & sales automation</a></li>
-            </ul>
-          </li>
-          <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Work</span></button><ul class="sub-menu"><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>View selected work</a></li><li><a href="/en/contact/">Start a project</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/georgia/" aria-current={isCurrent('/en/georgia/') ? 'page' : undefined}>Georgia</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
-          {currentPath === '/en/georgia/' && <li><a href="/ka/georgia/" hreflang="ka">KA</a></li>}<li><a href="/" hreflang="tr">TR</a></li>
-        </ul>
-      ) : (
-        <ul class="primary-menu">
-          <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
-          <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
-          <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Çalışmalar</span></button><ul class="sub-menu"><li><a href="/calismalar/">Çalışmaları gör</a></li><li><a href="/iletisim/">Proje başlat</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/en/" hreflang="en">EN</a></li>
-        </ul>
-      )}
+
+      <!-- DESKTOP ONLY NAVIGATION (Original 1-Column High Contrast Dropdown) -->
+      <div class="desktop-only-menu">
+        {isGeorgian ? (
+          <ul class="primary-menu">
+            <li><a href="/ka/georgia/" aria-current="page">მთავარი</a></li><li><a href="/ka/georgia/#fit">ვისთვისაა</a></li><li><a href="/ka/georgia/#system">გადაწყვეტილებები</a></li><li><a href="/ka/georgia/#audit">აუდიტი</a></li><li><a href="mailto:info@qctcommerce.com">კონტაქტი</a></li><li><a href="/en/georgia/" hreflang="en">EN</a></li>
+          </ul>
+        ) : isEnglish ? (
+          <ul class="primary-menu">
+            <li><a href="/en/" aria-current={isCurrent('/en/') ? 'page' : undefined}>Home</a></li>
+            <li class:list={['menu-item-has-children', { 'is-current': isEnglishServiceCurrent }]}>
+              <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Solutions</span></button>
+              <ul class="sub-menu">
+                <li><a href="/en/ecommerce/">E-commerce systems</a></li><li><a href="/en/web-design/">B2B web design</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/ai-automation/">AI & sales automation</a></li>
+              </ul>
+            </li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Work</span></button><ul class="sub-menu"><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>View selected work</a></li><li><a href="/en/contact/">Start a project</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/georgia/" aria-current={isCurrent('/en/georgia/') ? 'page' : undefined}>Georgia</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
+            {currentPath === '/en/georgia/' && <li><a href="/ka/georgia/" hreflang="ka">KA</a></li>}<li><a href="/" hreflang="tr">TR</a></li>
+          </ul>
+        ) : (
+          <ul class="primary-menu">
+            <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
+            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Çalışmalar</span></button><ul class="sub-menu"><li><a href="/calismalar/">Çalışmaları gör</a></li><li><a href="/iletisim/">Proje başlat</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/en/" hreflang="en">EN</a></li>
+          </ul>
+        )}
+      </div>
     </nav>
   </div>
 </header>
 <div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
+
+<style is:global>
+  @media (min-width: 1000px) {
+    .mobile-only-panel {
+      display: none !important;
+    }
+
+    .desktop-only-menu {
+      display: flex !important;
+      align-items: center !important;
+    }
+  }
+
+  @media (max-width: 999px) {
+    .desktop-only-menu {
+      display: none !important;
+    }
+
+    .mobile-only-panel {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+  }
+
+  .mobile-myth-card {
+    background: #171722 !important;
+    border: 1.5px solid #323246 !important;
+    border-radius: 16px !important;
+    padding: 14px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .myth-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .myth-card-title {
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: #ffffff !important;
+    text-transform: uppercase;
+  }
+
+  .myth-card-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 7px;
+    border-radius: 6px;
+    background: #e66b5f;
+    color: #ffffff !important;
+  }
+
+  .mobile-lang-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .mobile-lang-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 4px;
+    border-radius: 12px;
+    border: 1.5px solid #3a3a52;
+    background: #232332;
+    color: #ffffff !important;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .mobile-lang-item.active {
+    background: #e66b5f !important;
+    border-color: #f0887e !important;
+  }
+
+  .mobile-lang-item .lang-code {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #ffffff !important;
+  }
+
+  .mobile-lang-item .lang-name {
+    font-size: 0.65rem;
+    color: #d2d6df !important;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+
+  .mobile-solutions-grid,
+  .mobile-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .mobile-solution-item,
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 12px;
+    background: #232332 !important;
+    border: 1.5px solid #3a3a52 !important;
+    color: #ffffff !important;
+    text-decoration: none;
+  }
+
+  .mobile-solution-item .sol-title,
+  .mobile-nav-item strong {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #ffffff !important;
+  }
+
+  .mobile-cta-btn {
+    width: 100% !important;
+    min-height: 50px !important;
+    margin-top: 6px !important;
+    border-radius: 14px !important;
+    background: #e66b5f !important;
+    color: #ffffff !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+  }
+</style>

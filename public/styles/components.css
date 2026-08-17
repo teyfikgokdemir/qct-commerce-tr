@@ -2619,14 +2619,15 @@ body.has-open-menu {
 		position: absolute !important;
 		top: calc(100% + 10px) !important;
 		left: 0 !important;
-		min-width: 280px !important;
-		max-width: 340px !important;
-		background: rgba(14, 12, 18, 0.98) !important;
+		min-width: 320px !important;
+		width: max-content !important;
+		max-width: 420px !important;
+		background: #14141d !important;
 		backdrop-filter: blur(20px) !important;
 		-webkit-backdrop-filter: blur(20px) !important;
-		border: 1px solid rgba(255, 255, 255, 0.12) !important;
+		border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
 		border-radius: 16px !important;
-		box-shadow: 0 24px 52px rgba(0, 0, 0, 0.5) !important;
+		box-shadow: 0 24px 52px rgba(0, 0, 0, 0.65) !important;
 		padding: 12px !important;
 		display: flex !important;
 		flex-direction: column !important;
@@ -2651,22 +2652,26 @@ body.has-open-menu {
 
 	.sub-menu a {
 		color: #ffffff !important;
-		font-size: 0.88rem !important;
-		font-weight: 600 !important;
+		font-size: 0.86rem !important;
+		font-weight: 700 !important;
 		line-height: 1.35 !important;
 		padding: 10px 14px !important;
 		border-radius: 10px !important;
 		background: rgba(255, 255, 255, 0.04) !important;
 		border: 1px solid rgba(255, 255, 255, 0.06) !important;
-		transition: background 150ms ease, border-color 150ms ease !important;
-		white-space: normal !important;
+		transition: background 150ms ease, border-color 150ms ease, transform 150ms ease !important;
+		white-space: nowrap !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
 	}
 
 	.sub-menu a:hover,
 	.sub-menu a:focus-visible {
-		background: rgba(255, 255, 255, 0.12) !important;
-		border-color: rgba(255, 255, 255, 0.25) !important;
+		background: rgba(255, 255, 255, 0.14) !important;
+		border-color: rgba(255, 255, 255, 0.3) !important;
 		color: #ffffff !important;
+		transform: translateX(4px) !important;
 	}
 }
 
