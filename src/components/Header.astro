@@ -57,22 +57,23 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     <nav id="site-navigation" class="main-navigation" aria-label={isGeorgian ? 'მთავარი მენიუ' : isEnglish ? 'Main menu' : 'Ana menü'} aria-hidden="true">
       <!-- MOBILE ONLY PANEL (Mythborn Card Architecture) -->
       <div class="mobile-only-panel">
-        <!-- Card 1: Language Switcher -->
+        <!-- Card 1: Language Switcher (ctseg Standard) -->
         <div class="mobile-myth-card mobile-myth-card--lang">
           <div class="myth-card-head">
-            <span class="myth-card-title">🌐 DİL SEÇİMİ / LANGUAGE</span>
+            <span class="myth-card-title">🌐 DİL / LANGUAGE</span>
+            <span class="myth-card-badge">GLOBAL</span>
           </div>
           <div class="mobile-lang-grid">
             <a href="/" class:list={['mobile-lang-item', { active: !isEnglish && !isGeorgian }]}>
-              <strong class="lang-code">TR</strong>
+              <span class="lang-code">TR</span>
               <span class="lang-name">TÜRKÇE</span>
             </a>
             <a href="/en/" class:list={['mobile-lang-item', { active: isEnglish }]}>
-              <strong class="lang-code">EN</strong>
+              <span class="lang-code">EN</span>
               <span class="lang-name">ENGLISH</span>
             </a>
             <a href="/ka/georgia/" class:list={['mobile-lang-item', { active: isGeorgian }]}>
-              <strong class="lang-code">KA</strong>
+              <span class="lang-code">KA</span>
               <span class="lang-name">GEORGIA</span>
             </a>
           </div>
@@ -170,6 +171,54 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     .submenu-toggle:hover {
       color: #e66b5f !important;
     }
+
+    .sub-menu {
+      position: absolute !important;
+      top: calc(100% + 10px) !important;
+      left: 0 !important;
+      min-width: 320px !important;
+      width: max-content !important;
+      max-width: 420px !important;
+      background: #14141d !important;
+      background-color: #14141d !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 24px 52px rgba(0, 0, 0, 0.75) !important;
+      padding: 12px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+      z-index: 9999 !important;
+    }
+
+    .sub-menu li {
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .sub-menu a {
+      background: #232332 !important;
+      border: 1px solid #3a3a52 !important;
+      color: #ffffff !important;
+      font-size: 0.86rem !important;
+      font-weight: 700 !important;
+      padding: 10px 14px !important;
+      border-radius: 10px !important;
+      white-space: nowrap !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      transition: all 180ms ease !important;
+    }
+
+    .sub-menu a:hover,
+    .sub-menu a:focus-visible {
+      background: #323246 !important;
+      border-color: #e66b5f !important;
+      color: #ffffff !important;
+      transform: translateX(4px) !important;
+    }
   }
 
   @media (max-width: 999px) {
@@ -243,17 +292,16 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   }
 
   .mobile-lang-item .lang-code {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 800;
     color: #ffffff !important;
   }
 
   .mobile-lang-item .lang-name {
-    font-size: 0.66rem;
+    font-size: 0.65rem;
     color: #d0d4e4 !important;
     margin-top: 2px;
     font-weight: 600;
-    opacity: 0.92;
   }
 
   .mobile-solutions-grid,
