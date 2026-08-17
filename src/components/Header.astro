@@ -55,35 +55,35 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     </button>
     
     <nav id="site-navigation" class="main-navigation" aria-label={isGeorgian ? 'მთავარი მენიუ' : isEnglish ? 'Main menu' : 'Ana menü'} aria-hidden="true">
-      <!-- MOBILE ONLY PANEL (Mythborn Card Architecture) -->
+      <!-- MOBILE ONLY PANEL (teyfikgokdemir Standard Mythborn Card Grid) -->
       <div class="mobile-only-panel">
-        <!-- Card 1: Language Switcher (ctseg Standard) -->
-        <div class="mobile-myth-card mobile-myth-card--lang">
+        <!-- Mythborn Card 1: DİL SEÇİMİ (teyfikgokdemir standard 1:1) -->
+        <div class="myth-card">
           <div class="myth-card-head">
-            <span class="myth-card-title">🌐 DİL / LANGUAGE</span>
+            <span class="myth-card-title">DİL</span>
             <span class="myth-card-badge">GLOBAL</span>
           </div>
-          <div class="mobile-lang-grid">
-            <a href="/" class:list={['mobile-lang-item', { active: !isEnglish && !isGeorgian }]}>
-              <span class="lang-code">TR</span>
-              <span class="lang-name">TÜRKÇE</span>
+          <div class="myth-lang-grid">
+            <a href="/" class:list={['myth-lang-item', { active: !isEnglish && !isGeorgian }]}>
+              <span class="code">TR</span>
+              <span class="name">TÜRKÇE</span>
             </a>
-            <a href="/en/" class:list={['mobile-lang-item', { active: isEnglish }]}>
-              <span class="lang-code">EN</span>
-              <span class="lang-name">ENGLISH</span>
+            <a href="/en/" class:list={['myth-lang-item', { active: isEnglish }]}>
+              <span class="code">EN</span>
+              <span class="name">ENGLISH</span>
             </a>
-            <a href="/ka/georgia/" class:list={['mobile-lang-item', { active: isGeorgian }]}>
-              <span class="lang-code">KA</span>
-              <span class="lang-name">GEORGIA</span>
+            <a href="/ka/georgia/" class:list={['myth-lang-item', { active: isGeorgian }]}>
+              <span class="code">KA</span>
+              <span class="name">GEORGIA</span>
             </a>
           </div>
         </div>
 
-        <!-- Card 2: Services / Hizmetler (Mythborn Open Grid) -->
+        <!-- Mythborn Card 2: Hizmetler -->
         {!isGeorgian && (
-          <div class="mobile-myth-card">
+          <div class="myth-card">
             <div class="myth-card-head">
-              <span class="myth-card-title">🏢 {isEnglish ? 'SOLUTIONS' : 'HİZMETLER'}</span>
+              <span class="myth-card-title">{isEnglish ? 'SOLUTIONS' : 'HİZMETLER'}</span>
               <span class="myth-card-badge">SERVİSLER</span>
             </div>
             <div class="mobile-solutions-grid">
@@ -96,10 +96,10 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
           </div>
         )}
 
-        <!-- Card 3: Quick Navigation -->
-        <div class="mobile-myth-card">
+        <!-- Mythborn Card 3: Navigasyon -->
+        <div class="myth-card">
           <div class="myth-card-head">
-            <span class="myth-card-title">📌 {isGeorgian ? 'მენიუ' : isEnglish ? 'NAVIGATION' : 'HIZLI ERİŞİM'}</span>
+            <span class="myth-card-title">{isGeorgian ? 'მენიუ' : isEnglish ? 'NAVIGATION' : 'HIZLI ERİŞİM'}</span>
             <span class="myth-card-badge">MENÜ</span>
           </div>
           <div class="mobile-nav-grid">
@@ -117,7 +117,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
         </a>
       </div>
 
-      <!-- DESKTOP ONLY NAVIGATION (Original 1-Column High Contrast Dropdown) -->
+      <!-- DESKTOP ONLY NAVIGATION (Aesthetic 1-Column Dark Dropdown) -->
       <div class="desktop-only-menu">
         {isGeorgian ? (
           <ul class="primary-menu">
@@ -172,22 +172,21 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
       color: #e66b5f !important;
     }
 
+    /* Desktop Aesthetic 1-Column Dark Dropdown Popover */
     .sub-menu {
       position: absolute !important;
-      top: calc(100% + 10px) !important;
+      top: calc(100% + 8px) !important;
       left: 0 !important;
-      min-width: 320px !important;
-      width: max-content !important;
-      max-width: 420px !important;
-      background: #14141d !important;
-      background-color: #14141d !important;
-      border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+      width: 280px !important;
+      min-width: 280px !important;
+      background: #111118 !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
       border-radius: 16px !important;
-      box-shadow: 0 24px 52px rgba(0, 0, 0, 0.75) !important;
-      padding: 12px !important;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65) !important;
+      padding: 8px !important;
       display: flex !important;
       flex-direction: column !important;
-      gap: 6px !important;
+      gap: 2px !important;
       z-index: 9999 !important;
     }
 
@@ -198,26 +197,25 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     }
 
     .sub-menu a {
-      background: #232332 !important;
-      border: 1px solid #3a3a52 !important;
-      color: #ffffff !important;
+      background: transparent !important;
+      border: none !important;
+      color: #f1f2f6 !important;
       font-size: 0.86rem !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       padding: 10px 14px !important;
       border-radius: 10px !important;
       white-space: nowrap !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      transition: all 180ms ease !important;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease !important;
     }
 
     .sub-menu a:hover,
     .sub-menu a:focus-visible {
-      background: #323246 !important;
-      border-color: #e66b5f !important;
+      background: rgba(255, 255, 255, 0.08) !important;
       color: #ffffff !important;
-      transform: translateX(4px) !important;
+      transform: translateX(3px) !important;
     }
   }
 
@@ -234,9 +232,10 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     }
   }
 
-  .mobile-myth-card {
-    background: #171722 !important;
-    border: 1.5px solid #323246 !important;
+  /* teyfikgokdemir Standard Mythborn Mobile Cards */
+  .myth-card {
+    background: #1a1a26 !important;
+    border: 1px solid #2e2e42 !important;
     border-radius: 16px !important;
     padding: 14px !important;
     margin-bottom: 6px !important;
@@ -250,9 +249,9 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   }
 
   .myth-card-title {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: #ffffff !important;
     text-transform: uppercase;
   }
@@ -260,46 +259,46 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   .myth-card-badge {
     font-size: 0.65rem;
     font-weight: 800;
-    padding: 3px 7px;
+    padding: 3px 8px;
     border-radius: 6px;
     background: #e66b5f;
     color: #ffffff !important;
   }
 
-  .mobile-lang-grid {
+  .myth-lang-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
 
-  .mobile-lang-item {
+  .myth-lang-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 10px 4px;
     border-radius: 12px;
-    border: 1.5px solid #383850;
-    background: #242436;
+    border: 1px solid #383850;
+    background: #252538;
     color: #ffffff !important;
     text-decoration: none;
     text-align: center;
   }
 
-  .mobile-lang-item.active {
+  .myth-lang-item.active {
     background: #e66b5f !important;
     border-color: #f0887e !important;
   }
 
-  .mobile-lang-item .lang-code {
+  .myth-lang-item .code {
     font-size: 0.85rem;
     font-weight: 800;
     color: #ffffff !important;
   }
 
-  .mobile-lang-item .lang-name {
+  .myth-lang-item .name {
     font-size: 0.65rem;
-    color: #d0d4e4 !important;
+    color: #f3eee6 !important;
     margin-top: 2px;
     font-weight: 600;
   }
@@ -318,8 +317,8 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     flex-direction: column;
     padding: 12px;
     border-radius: 12px;
-    background: #232332 !important;
-    border: 1.5px solid #3a3a52 !important;
+    background: #252538 !important;
+    border: 1px solid #383850 !important;
     color: #ffffff !important;
     text-decoration: none;
   }
