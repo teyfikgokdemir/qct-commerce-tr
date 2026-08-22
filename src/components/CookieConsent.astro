@@ -4,23 +4,31 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const isEnglish = lang === 'en';
+const copyMap: Record<string, { label: string; text: string; accept: string; reject: string; policy: string }> = {
+  tr: {
+    label: 'Çerez tercihleri',
+    text: 'Site kullanımını anlamak için isteğe bağlı analiz çerezleri kullanıyoruz. Analiz yalnızca onay verirseniz başlar.',
+    accept: 'Onayla',
+    reject: 'Reddet',
+    policy: 'Çerez politikası',
+  },
+  en: {
+    label: 'Cookie preferences',
+    text: 'We use optional analytics cookies to understand site usage. Analytics starts only after your consent.',
+    accept: 'Accept',
+    reject: 'Reject',
+    policy: 'Cookie policy',
+  },
+  ka: {
+    label: 'ქუქიების პარამეტრები',
+    text: 'ჩვენ ვიყენებთ არასავალდებულო ანალიტიკურ ქუქიებს საიტის გამოყენების გასაგებად. ანალიტიკა იწყება მხოლოდ თქვენი თანხმობის შემდეგ.',
+    accept: 'დათანხმება',
+    reject: 'უარყოფა',
+    policy: 'ქუქიების პოლიტიკა',
+  },
+};
 
-const c = isEnglish
-  ? {
-      label: 'Cookie preferences',
-      text: 'We use optional analytics cookies to understand site usage. Analytics starts only after your consent.',
-      accept: 'Accept',
-      reject: 'Reject',
-      policy: 'Cookie policy',
-    }
-  : {
-      label: 'Çerez tercihleri',
-      text: 'Site kullanımını anlamak için isteğe bağlı analiz çerezleri kullanıyoruz. Analiz yalnızca onay verirseniz başlar.',
-      accept: 'Onayla',
-      reject: 'Reddet',
-      policy: 'Çerez politikası',
-    };
+const c = copyMap[lang] || copyMap.tr;
 const policyUrl = '/cerez-politikasi/';
 ---
 

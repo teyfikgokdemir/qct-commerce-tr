@@ -6,10 +6,22 @@ interface Props {
 const { lang } = Astro.props;
 const phoneNumber = '905433856656';
 
-const c = {
-  label: 'QCT Commerce ile WhatsApp üzerinden görüşün',
-  message: 'Merhaba QCT Commerce, dijital projem hakkında görüşmek istiyorum.',
+const copyMap: Record<string, { label: string; message: string }> = {
+  tr: {
+    label: 'QCT Commerce ile WhatsApp üzerinden görüşün',
+    message: 'Merhaba QCT Commerce, dijital projem hakkında görüşmek istiyorum.',
+  },
+  en: {
+    label: 'Chat with QCT Commerce on WhatsApp',
+    message: 'Hello QCT Commerce, I would like to discuss my digital project.',
+  },
+  ka: {
+    label: 'დაუკავშირდით QCT Commerce-ს WhatsApp-ის საშუალებით',
+    message: 'გამარჯობა QCT Commerce, მსურს ვისაუბრო ჩემი ციფრული პროექტის შესახებ.',
+  },
 };
+
+const c = copyMap[lang] || copyMap.tr;
 const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.message)}`;
 ---
 

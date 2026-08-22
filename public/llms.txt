@@ -52,10 +52,14 @@ Verified contact information: info@qctcommerce.com; telephone and WhatsApp: +90 
 - [Shopify mağaza kurma rehberi](https://qctcommerce.com/blog/shopify-magaza-kurma-rehberi/): Decisions to plan before launching an online store in Türkiye.
 - [E-ticarette yapılan hatalar](https://qctcommerce.com/blog/e-ticarette-yapilan-hatalar/): Common issues that weaken sales experience and operations.
 - [Pazaryerinden kendi sitenize geçiş](https://qctcommerce.com/blog/pazaryerinden-kendi-sitene-gecis/): Scope and planning for moving from marketplaces to an independent store.
+- [AI Overviews, GEO ve AIO rehberi](https://qctcommerce.com/blog/ai-overviews-geo-aio-seo-rehberi/): AI search engines, generative engine optimization and modern SEO foundations.
+- [WhatsApp satış otomasyonu rehberi](https://qctcommerce.com/blog/whatsapp-satis-otomasyonu-rehberi/): Order taking, customer communication and sales automation through WhatsApp.
+- [Yapay zekâ ile ürün açıklaması hazırlama](https://qctcommerce.com/blog/yapay-zeka-ile-urun-aciklamasi-hazirlama/): Systematic and conversion-oriented product description workflows using AI.
 
 ## Legal and company information
 
 - [Kariyer](https://qctcommerce.com/kariyer/): Working and application information.
 - [Gizlilik politikası](https://qctcommerce.com/gizlilik-politikasi/): Personal-data processing information.
+- [KVKK aydınlatma metni](https://qctcommerce.com/kvkk/): Information notice under Turkish Personal Data Protection Law.
 - [Kullanım koşulları](https://qctcommerce.com/kullanim-kosullari/): Website terms of use.
-- [Çerez politikası](https://qctcommerce.com/cerez-politikasi/): Cookie preferences and purposes.
+- [Çerez politikası](https://qctcommerce.com/cerez-politikasi/): Cookie policy and consent preferences.
