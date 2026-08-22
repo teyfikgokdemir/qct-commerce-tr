@@ -6,24 +6,21 @@ interface Props {
 const { lang } = Astro.props;
 const phoneNumber = '905433856656';
 
-const copyMap: Record<string, { whatsappLabel: string; whatsappMessage: string; topLabel: string; floatingLabel: string }> = {
+const copyMap: Record<string, { whatsappLabel: string; whatsappMessage: string; topLabel: string }> = {
   tr: {
     whatsappLabel: 'QCT Commerce ile WhatsApp üzerinden görüşün',
     whatsappMessage: 'Merhaba QCT Commerce, dijital projem hakkında görüşmek istiyorum.',
     topLabel: 'Sayfa başına dön',
-    floatingLabel: 'Hızlı işlemler',
   },
   en: {
     whatsappLabel: 'Chat with QCT Commerce on WhatsApp',
     whatsappMessage: 'Hello QCT Commerce, I would like to discuss my digital project.',
     topLabel: 'Back to top',
-    floatingLabel: 'Quick actions',
   },
   ka: {
     whatsappLabel: 'დაუკავშირდით QCT Commerce-ს WhatsApp-ის საშუალებით',
     whatsappMessage: 'გამარჯობა QCT Commerce, მსურს ვისაუბრო ჩემი ციფრული პროექტის შესახებ.',
     topLabel: 'ზემოთ დაბრუნება',
-    floatingLabel: 'სწრაფი მოქმედებები',
   },
 };
 
@@ -31,36 +28,36 @@ const c = copyMap[lang] || copyMap.tr;
 const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappMessage)}`;
 ---
 
-<nav class="qct-floating-actions" aria-label={c.floatingLabel} data-floating-actions>
-  <button
-    class="qct-floating-action qct-back-to-top"
-    type="button"
-    aria-label={c.topLabel}
-    title={c.topLabel}
-    aria-hidden="true"
-    tabindex="-1"
-    data-back-to-top
-  >
-    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-      <path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
+<!-- Floating WhatsApp on LEFT -->
+<a
+  class="qct-floating-action qct-whatsapp"
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={c.whatsappLabel}
+  title={c.whatsappLabel}
+  data-whatsapp-link
+  data-lang={lang}
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M20.52 3.48A11.81 11.81 0 0 0 12.1 0C5.56 0 .24 5.32.24 11.87c0 2.09.55 4.13 1.59 5.93L.14 24l6.35-1.67a11.84 11.84 0 0 0 5.61 1.43h.01c6.54 0 11.86-5.33 11.86-11.87 0-3.17-1.22-6.16-3.45-8.41Zm-8.41 18.27h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.77.99 1.01-3.67-.24-.38a9.84 9.84 0 1 1 8.38 4.64Zm5.4-7.37c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.29-.15-1.25-.46-2.38-1.47a8.9 8.9 0 0 1-1.64-2.04c-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.52.15-.17.2-.29.3-.49.09-.2.04-.37-.03-.52-.08-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.19 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.19-.56-.34Z"/>
+  </svg>
+</a>
 
-  <a
-    class="qct-floating-action qct-whatsapp"
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={c.whatsappLabel}
-    title={c.whatsappLabel}
-    data-whatsapp-link
-    data-lang={lang}
-  >
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M20.52 3.48A11.81 11.81 0 0 0 12.1 0C5.56 0 .24 5.32.24 11.87c0 2.09.55 4.13 1.59 5.93L.14 24l6.35-1.67a11.84 11.84 0 0 0 5.61 1.43h.01c6.54 0 11.86-5.33 11.86-11.87 0-3.17-1.22-6.16-3.45-8.41Zm-8.41 18.27h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.77.99 1.01-3.67-.24-.38a9.84 9.84 0 1 1 8.38 4.64Zm5.4-7.37c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.29-.15-1.25-.46-2.38-1.47a8.9 8.9 0 0 1-1.64-2.04c-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.52.15-.17.2-.29.3-.49.09-.2.04-.37-.03-.52-.08-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.19 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.19-.56-.34Z"/>
-    </svg>
-  </a>
-</nav>
+<!-- Floating Scroll to Top on RIGHT -->
+<button
+  class="qct-floating-action qct-back-to-top"
+  type="button"
+  aria-label={c.topLabel}
+  title={c.topLabel}
+  aria-hidden="true"
+  tabindex="-1"
+  data-back-to-top
+>
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+    <path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
 
 <script is:inline>
   (() => {
@@ -100,21 +97,9 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
 </script>
 
 <style is:global>
-  .qct-floating-actions {
+  .qct-floating-action {
     position: fixed !important;
-    right: max(1rem, env(safe-area-inset-right)) !important;
     bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 10px !important;
-    z-index: 9000 !important;
-    pointer-events: none !important;
-  }
-
-  .qct-floating-actions .qct-floating-action {
-    position: relative !important;
-    inset: auto !important;
     width: 48px !important;
     height: 48px !important;
     min-width: 48px !important;
@@ -124,45 +109,16 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
     place-items: center !important;
     padding: 0 !important;
     cursor: pointer !important;
-    pointer-events: auto !important;
     box-sizing: border-box !important;
     text-decoration: none !important;
+    z-index: 9000 !important;
     transition: transform 180ms ease, opacity 180ms ease, visibility 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease !important;
   }
 
-  .qct-floating-actions .qct-back-to-top {
-    background: linear-gradient(145deg, rgba(45, 25, 55, 0.96), rgba(28, 16, 35, 0.96)) !important;
-    backdrop-filter: blur(18px) !important;
-    -webkit-backdrop-filter: blur(18px) !important;
-    border: 1px solid rgba(230, 107, 95, 0.42) !important;
-    color: #f8f5ef !important;
-    box-shadow: 0 12px 32px rgba(38, 23, 48, 0.28) !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    transform: translateY(8px) !important;
-  }
-
-  .qct-floating-actions .qct-back-to-top.is-visible {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    transform: translateY(0) !important;
-  }
-
-  .qct-floating-actions .qct-back-to-top:hover {
-    border-color: rgba(230, 107, 95, 0.78) !important;
-    box-shadow: 0 16px 36px rgba(38, 23, 48, 0.36), 0 0 0 3px rgba(230, 107, 95, 0.15) !important;
-    color: #ffffff !important;
-    transform: translateY(-2px) !important;
-  }
-
-  .qct-floating-actions .qct-back-to-top:focus-visible {
-    outline: 2px solid #f8f5ef !important;
-    outline-offset: 3px !important;
-  }
-
-  .qct-floating-actions .qct-whatsapp {
+  /* WhatsApp on LEFT */
+  .qct-whatsapp {
+    left: max(1rem, env(safe-area-inset-left)) !important;
+    right: auto !important;
     background: linear-gradient(145deg, rgba(230, 107, 95, 0.98), rgba(38, 23, 48, 0.98)) !important;
     backdrop-filter: blur(18px) !important;
     -webkit-backdrop-filter: blur(18px) !important;
@@ -171,7 +127,7 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
     box-shadow: 0 16px 42px rgba(38, 23, 48, 0.32) !important;
   }
 
-  .qct-floating-actions .qct-whatsapp::after {
+  .qct-whatsapp::after {
     background: #25d366 !important;
     border: 2px solid #2b1936 !important;
     border-radius: 50% !important;
@@ -184,48 +140,86 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
     width: 11px !important;
   }
 
-  .qct-floating-actions .qct-whatsapp:hover,
-  .qct-floating-actions .qct-whatsapp:focus-visible {
+  .qct-whatsapp:hover,
+  .qct-whatsapp:focus-visible {
     border-color: rgba(255, 122, 115, 0.78) !important;
     box-shadow: 0 20px 48px rgba(38, 23, 48, 0.4), 0 0 0 4px rgba(255, 122, 115, 0.1) !important;
     color: #ffffff !important;
     transform: translateY(-2px) !important;
   }
 
-  .qct-floating-actions .qct-whatsapp:focus-visible {
+  .qct-whatsapp:focus-visible {
     outline: 2px solid #f8f5ef !important;
     outline-offset: 3px !important;
   }
 
-  .qct-floating-actions svg {
-    display: block !important;
-  }
-
-  .qct-floating-actions .qct-whatsapp svg {
+  .qct-whatsapp svg {
     width: 23px !important;
     height: 23px !important;
     fill: currentColor !important;
+    display: block !important;
+  }
+
+  /* Back to Top on RIGHT */
+  .qct-back-to-top {
+    right: max(1rem, env(safe-area-inset-right)) !important;
+    left: auto !important;
+    background: linear-gradient(145deg, rgba(45, 25, 55, 0.96), rgba(28, 16, 35, 0.96)) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1px solid rgba(230, 107, 95, 0.42) !important;
+    color: #f8f5ef !important;
+    box-shadow: 0 12px 32px rgba(38, 23, 48, 0.28) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(8px) !important;
+  }
+
+  .qct-back-to-top.is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+  }
+
+  .qct-back-to-top:hover {
+    border-color: rgba(230, 107, 95, 0.78) !important;
+    box-shadow: 0 16px 36px rgba(38, 23, 48, 0.36), 0 0 0 3px rgba(230, 107, 95, 0.15) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+  }
+
+  .qct-back-to-top:focus-visible {
+    outline: 2px solid #f8f5ef !important;
+    outline-offset: 3px !important;
+  }
+
+  .qct-back-to-top svg {
+    display: block !important;
   }
 
   @media (max-width: 720px) {
-    .qct-floating-actions {
-      right: max(14px, env(safe-area-inset-right)) !important;
-      bottom: calc(14px + env(safe-area-inset-bottom)) !important;
-      gap: 8px !important;
-    }
-    .qct-floating-actions .qct-floating-action {
+    .qct-floating-action {
       width: 46px !important;
       height: 46px !important;
       min-width: 46px !important;
       min-height: 46px !important;
+      bottom: calc(14px + env(safe-area-inset-bottom)) !important;
     }
-    body.is-menu-open .qct-floating-actions {
+    .qct-whatsapp {
+      left: max(14px, env(safe-area-inset-left)) !important;
+    }
+    .qct-back-to-top {
+      right: max(14px, env(safe-area-inset-right)) !important;
+    }
+    body.is-menu-open .qct-floating-action {
       display: none !important;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .qct-floating-actions .qct-floating-action {
+    .qct-floating-action {
       transition: none !important;
     }
   }
