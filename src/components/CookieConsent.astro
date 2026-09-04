@@ -78,6 +78,14 @@ const policyUrl = '/cerez-politikasi/';
       document.head.appendChild(script);
     };
 
+    window.addEventListener('load', () => {
+      if (window.requestIdleCallback) {
+        window.requestIdleCallback(loadAnalytics, { timeout: 2200 });
+      } else {
+        window.setTimeout(loadAnalytics, 1600);
+      }
+    });
+
     const closeBanner = () => {
       if (banner) banner.hidden = true;
     };
@@ -88,10 +96,7 @@ const policyUrl = '/cerez-politikasi/';
 
     const savedConsent = localStorage.getItem(storageKey);
 
-    if (savedConsent === 'granted') {
-      loadAnalytics();
-      closeBanner();
-    } else if (savedConsent === 'denied') {
+    if (savedConsent === 'granted' || savedConsent === 'denied') {
       closeBanner();
     } else {
       openBanner();
