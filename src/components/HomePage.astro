@@ -9,14 +9,16 @@ import SelectedWork from '../components/SelectedWork.astro';
 import Process from '../components/Process.astro';
 import FinalCta from '../components/FinalCta.astro';
 import Contact from '../components/Contact.astro';
-import { getPageSeo } from '../i18n/seo';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 
-const seo = getPageSeo('home');
+const seo = {
+  title: 'E-Ticaret, SEO ve Dijital Büyüme | QCT Commerce Türkiye',
+  description: 'QCT Commerce; e-ticaret, web tasarım, SEO/GEO/AEO/AIO, WhatsApp satış ve yapay zekâ otomasyonlarını ölçülebilir dijital büyüme sistemine dönüştürür.',
+};
 const alternates = [
   { lang: 'tr-TR', href: '/' },
   { lang: 'en', href: '/en/' },
@@ -42,7 +44,7 @@ const faqSchema = {
   })),
 };
 ---
-<BaseLayout title={seo.title} description={seo.description} image="/og-image-square.png" imageWidth={1200} imageHeight={1200} lang={lang} isHome={true} includeWorkStyles={true} alternates={alternates}>
+<BaseLayout title={seo.title} description={seo.description} image="/og-default.png" imageWidth={1200} imageHeight={630} lang={lang} isHome={true} includeWorkStyles={true} alternates={alternates}>
 <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <Header slot="header" lang={lang} />
 <Hero lang={lang} />
