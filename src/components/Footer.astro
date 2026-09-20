@@ -83,8 +83,11 @@ const isGeorgian = lang === 'ka';
   }
   .site-footer__marquee span {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(230, 107, 95, .16);
-    text-shadow: 0 0 24px rgba(230, 107, 95, .075);
+    background: linear-gradient(90deg, #c8ff3d 0%, #dffb64 26%, #ff8b78 62%, #e66b5f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 24px rgba(230, 107, 95, .08);
     font-size: clamp(2.8rem, 7vw, 6.5rem);
     font-weight: 800;
     line-height: .88;
@@ -95,9 +98,10 @@ const isGeorgian = lang === 'ka';
   @media (max-width: 760px) {
     .site-footer__inner { padding-top: clamp(4.5rem, 16vw, 6rem); }
     .site-footer__marquee { height: clamp(4.5rem, 16vw, 6rem); }
-    .site-footer__marquee-track { animation: none; transform: translateX(-8%); }
+    .site-footer__marquee-track { animation: qctCommerceMarqueeMobile 24s linear infinite; }
     .site-footer__marquee span { font-size: clamp(2.4rem, 12vw, 4.2rem); }
   }
+  @keyframes qctCommerceMarqueeMobile { to { transform: translateX(calc(-25% - .75rem)); } }
   @media (prefers-reduced-motion: reduce) {
     .site-footer__marquee-track { animation: none; transform: translateX(-8%); }
   }
