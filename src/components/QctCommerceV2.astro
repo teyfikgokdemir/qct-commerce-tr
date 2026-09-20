@@ -11,12 +11,19 @@ const services = [
 ];
 
 const platforms = [
-  { name: 'Shopify', href: '/shopify-magaza-kurulumu/' },
-  { name: 'ikas', href: '/ikas-magaza-kurulumu/' },
-  { name: 'WooCommerce', href: '/e-ticaret/' },
-  { name: 'WordPress', href: '/web-tasarim/' },
-  { name: 'Ticimax', href: '/e-ticaret/' },
-  { name: 'IdeaSoft', href: '/e-ticaret/' },
+  { name: 'Shopify', href: '/shopify-magaza-kurulumu/', type: 'Altyapı' },
+  { name: 'ikas', href: '/ikas-magaza-kurulumu/', type: 'Altyapı' },
+  { name: 'WooCommerce', href: '/e-ticaret/', type: 'Altyapı' },
+  { name: 'WordPress', href: '/web-tasarim/', type: 'Web' },
+  { name: 'Ticimax', href: '/e-ticaret/', type: 'Altyapı' },
+  { name: 'IdeaSoft', href: '/e-ticaret/', type: 'Altyapı' },
+  { name: 'PayTR', href: '/e-ticaret/', type: 'Ödeme' },
+  { name: 'iyzico', href: '/e-ticaret/', type: 'Ödeme' },
+  { name: 'Trendyol', href: '/e-ticaret/', type: 'Pazaryeri' },
+  { name: 'Hepsiburada', href: '/e-ticaret/', type: 'Pazaryeri' },
+  { name: 'Google Merchant Center', href: '/seo-geo/', type: 'Büyüme' },
+  { name: 'Meta', href: '/meta-reklamlari/', type: 'Reklam' },
+  { name: 'WhatsApp', href: '/whatsapp-satis/', type: 'Satış' },
 ];
 ---
 
@@ -124,11 +131,29 @@ const platforms = [
     </div>
   </section>
 
-  <section class="qct-platforms" aria-label="Desteklenen platformlar">
-    <div class="qct-shell">
-      <p class="qct-section-label">DESTEKLEDİĞİMİZ ALTYAPILAR</p>
-      <div class="qct-platform-row">
-        {platforms.map((platform) => <a href={platform.href}>{platform.name}</a>)}
+  <section class="qct-platforms qct-ecosystem" aria-label="Desteklenen altyapılar ve entegrasyonlar">
+    <div class="qct-shell qct-ecosystem-head">
+      <p class="qct-section-label">ALTYAPILAR & ENTEGRASYONLAR</p>
+      <span>Kurulumdan satışa, tek ekosistem.</span>
+    </div>
+    <div class="qct-marquee" data-marquee>
+      <div class="qct-marquee-track">
+        <div class="qct-marquee-group">
+          {platforms.map((platform) => (
+            <a class="qct-marquee-item" href={platform.href}>
+              <small>{platform.type}</small>
+              <strong>{platform.name}</strong>
+            </a>
+          ))}
+        </div>
+        <div class="qct-marquee-group" aria-hidden="true">
+          {platforms.map((platform) => (
+            <a class="qct-marquee-item" href={platform.href} tabindex="-1">
+              <small>{platform.type}</small>
+              <strong>{platform.name}</strong>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>
