@@ -2,13 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import Problem from '../components/Problem.astro';
-import Services from '../components/Services.astro';
-import SelectedWork from '../components/SelectedWork.astro';
-import Process from '../components/Process.astro';
-import FinalCta from '../components/FinalCta.astro';
-import Contact from '../components/Contact.astro';
+import QctCommerceV2 from '../components/QctCommerceV2.astro';
 
 interface Props {
   lang: string;
@@ -16,19 +10,18 @@ interface Props {
 const { lang } = Astro.props;
 
 const seo = {
-  title: 'E-Ticaret, SEO ve Dijital Büyüme | QCT Commerce Türkiye',
-  description: 'QCT Commerce; e-ticaret, web tasarım, SEO/GEO/AEO/AIO, WhatsApp satış ve yapay zekâ otomasyonlarını ölçülebilir dijital büyüme sistemine dönüştürür.',
+  title: 'Web & E-Ticaret Projelerinde Net Fiyat | QCT Commerce',
+  description: 'Shopify, ikas, WooCommerce, WordPress, Ticimax ve IdeaSoft projeleri için şeffaf başlangıç fiyatları, canlı fiyat hesaplama ve satışa hazır teslim.',
 };
 const alternates = [
   { lang: 'tr-TR', href: '/' },
   { lang: 'en', href: '/en/' },
 ];
 const faqItems = [
-  { q: 'Hangi hizmetle başlamalıyız?', a: 'İlk adım, mevcut dijital yapınızda satış sürecini en çok zorlayan noktayı belirlemektir. İhtiyaç tek bir hizmetle çözülebiliyorsa kapsamı o alanda tutar; birden fazla katman birbirini etkiliyorsa öncelikli sırayı birlikte çıkarırız.' },
-  { q: 'Mevcut web sitemiz veya mağazamız geliştirilebilir mi?', a: 'Evet. Yeni bir yapı kurmadan önce mevcut sitenin veya mağazanın teknik altyapısını, kullanıcı akışını, içeriklerini ve ölçüm düzenini değerlendirir; korunabilecek ve geliştirilmesi gereken alanları ayırırız.' },
-  { q: 'Yalnızca tek bir hizmet için çalışabilir miyiz?', a: 'Evet. İhtiyaç netse e-ticaret altyapısı, web tasarım, WhatsApp satış sistemi, arama görünürlüğü, Meta reklamları veya otomasyon gibi tek bir çalışma alanıyla ilerlenebilir.' },
-  { q: 'İlk görüşmede neleri değerlendiriyorsunuz?', a: 'İş modelinizi, mevcut web sitesi veya mağazanızı, satış kanallarınızı, öncelikli sorunu ve ekip kapasitenizi konuşuruz. Amaç, çözüm önermeden önce mevcut durumu ve hedefi aynı çerçevede görmektir.' },
-  { q: 'Çalışma kapsamı nasıl belirleniyor?', a: 'Kapsam; çözülmesi gereken problem, mevcut altyapı, gerekli içerik ve entegrasyonlar ile işletmenin uygulama önceliklerine göre belirlenir. Başlangıç adımı ve sonraki geliştirmeler birbirinden ayrılarak netleştirilir.' },
+  { q: 'Fiyat hesaplayıcıdaki tutar kesin fiyat mı?', a: 'Standart kapsamlar için gösterilen tutar tahmini başlangıç bedelidir. Özel entegrasyon, yoğun varyant yapısı veya standart dışı geliştirme varsa kapsam netleştirilerek ayrıca belirtilir.' },
+  { q: 'Hangi platformlarda çalışıyorsunuz?', a: 'Shopify, ikas, WooCommerce, WordPress, Ticimax ve IdeaSoft başta olmak üzere yaygın web ve e-ticaret altyapılarında kurulum, yenileme ve taşıma hizmeti veriyoruz.' },
+  { q: 'Mevcut sitemi tamamen değiştirmeden yenileyebilir misiniz?', a: 'Evet. Mevcut altyapının korunabilir bölümlerini ayırır, mobil deneyim, tasarım, hız ve dönüşüm noktalarını önceliklendirerek yenileme planı çıkarırız.' },
+  { q: 'Ürün ekleme hizmeti ayrıca alınabilir mi?', a: 'Evet. Ürün ekleme hizmeti ürün adedine göre kademeli fiyatlanır ve tek başına veya mağaza kurulum paketine ek olarak alınabilir.' },
 ];
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -36,7 +29,6 @@ const faqSchema = {
   '@id': 'https://qctcommerce.com/#faq',
   url: 'https://qctcommerce.com/',
   inLanguage: 'tr-TR',
-  isPartOf: { '@id': 'https://qctcommerce.com/#webpage' },
   mainEntity: faqItems.map((item) => ({
     '@type': 'Question',
     name: item.q,
@@ -44,15 +36,10 @@ const faqSchema = {
   })),
 };
 ---
-<BaseLayout title={seo.title} description={seo.description} image="/og-commerce-1200x630.jpg" imageWidth={1200} imageHeight={630} lang={lang} isHome={true} includeWorkStyles={true} alternates={alternates}>
-<script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-<Header slot="header" lang={lang} />
-<Hero lang={lang} />
-<Problem lang={lang} />
-<Services lang={lang} />
-<SelectedWork />
-<Process lang={lang} />
-<FinalCta lang={lang} />
-<Contact lang={lang} faqItems={faqItems} />
-<Footer slot="footer" lang={lang} />
+<BaseLayout title={seo.title} description={seo.description} image="/og-commerce-1200x630.jpg" imageWidth={1200} imageHeight={630} lang={lang} isHome={true} includeWorkStyles={false} alternates={alternates}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Header slot="header" lang={lang} />
+  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-1" />
+  <QctCommerceV2 />
+  <Footer slot="footer" lang={lang} />
 </BaseLayout>
