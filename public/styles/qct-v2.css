@@ -1,4 +1,4 @@
-.qct-v2{--qct-bg:#f3f0e9;--qct-surface:#e8e3da;--qct-ink:#171717;--qct-muted:#6e6961;--qct-line:#cec7bc;--qct-accent:#a13d2d;--qct-accent-dark:#7f2f23;background:var(--qct-bg);color:var(--qct-ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.qct-v2{--qct-bg:#f4efe7;--qct-surface:#e6ded3;--qct-ink:#141312;--qct-muted:#5f5a54;--qct-line:#c7bdb1;--qct-accent:#b24330;--qct-accent-dark:#8b2f22;background:var(--qct-bg);color:var(--qct-ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 .qct-v2 *{box-sizing:border-box}.qct-shell{width:min(1180px,calc(100% - 40px));margin-inline:auto}.qct-hero{padding:34px 0 42px;overflow:hidden;min-height:calc(100svh - 84px);display:flex;align-items:center}.qct-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(500px,.92fr);gap:52px;align-items:center}.qct-eyebrow,.qct-kicker,.qct-section-label{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--qct-muted);margin:0 0 18px}.qct-hero h1,.qct-section-head h2,.qct-close h2{font-size:clamp(48px,6.3vw,88px);line-height:.94;letter-spacing:-.055em;margin:0;font-weight:750}.qct-hero h1 em,.qct-section-head h2 em,.qct-close h2 em{font-style:normal;color:var(--qct-accent)}.qct-lead{max-width:670px;margin:22px 0 0;font-size:17px;line-height:1.62;color:#4f4b45}.qct-hero-actions{display:flex;gap:22px;align-items:center;margin-top:26px;flex-wrap:wrap}.qct-btn{min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:18px;border-radius:999px;padding:0 24px;font-weight:700;text-decoration:none;transition:transform .2s ease,background .2s ease}.qct-btn:hover{transform:translateY(-2px)}.qct-btn-primary{background:var(--qct-accent);color:white}.qct-btn-primary:hover{background:var(--qct-accent-dark)}.qct-text-link{color:var(--qct-ink);font-weight:650;text-underline-offset:6px}.qct-proof-line{display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;padding-top:16px;border-top:1px solid var(--qct-line);font-size:12px;color:var(--qct-muted)}.qct-proof-line span{position:relative;padding-left:14px}.qct-proof-line span:before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--qct-accent)}
 .qct-calculator{background:rgba(255,255,255,.72);border:1px solid rgba(23,23,23,.1);border-radius:26px;padding:22px;box-shadow:0 24px 70px rgba(38,29,22,.08);backdrop-filter:blur(12px);max-height:calc(100svh - 112px);overflow:auto;scrollbar-width:thin}.qct-calculator-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:16px}.qct-calculator h2{font-size:28px;letter-spacing:-.035em;margin:0}.qct-time-pill{font-size:12px;padding:8px 11px;border-radius:999px;background:#efe8df;white-space:nowrap}.qct-calculator form{display:grid;gap:11px}.qct-calculator label>span,.qct-calculator legend{display:block;font-size:12px;font-weight:700;margin-bottom:5px}.qct-calculator select{width:100%;min-height:44px;border:1px solid #d8d1c7;border-radius:12px;background:#faf8f4;color:var(--qct-ink);padding:0 13px;font-size:15px}.qct-calculator fieldset{border:0;padding:0;margin:2px 0 0}.qct-addon-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.qct-check{display:flex;align-items:center;gap:8px;min-height:48px;border:1px solid #ddd5ca;border-radius:12px;padding:8px 9px;background:#f8f5f0;cursor:pointer}.qct-check input{width:18px;height:18px;accent-color:var(--qct-accent)}.qct-check span{margin:0!important;font-size:12px!important;line-height:1.2}.qct-check small{display:block;color:var(--qct-muted);font-weight:500;margin-top:2px;font-size:11px}.qct-price-result{position:sticky;bottom:-1px;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0 2px;margin-top:3px;border-top:1px solid #d8d1c7;background:linear-gradient(to bottom,rgba(255,255,255,.93),rgba(255,255,255,.98) 35%)}.qct-price-result>div{min-width:0}.qct-price-result span{display:block;font-size:12px;color:var(--qct-muted)}.qct-price-result strong{display:block;font-size:30px;letter-spacing:-.04em;margin:1px 0}.qct-price-result small{display:block;max-width:300px;color:var(--qct-muted);line-height:1.3;font-size:11px}.qct-result-btn{font-size:14px;white-space:nowrap}
 .qct-platforms{padding:30px 0;border-top:1px solid var(--qct-line);border-bottom:1px solid var(--qct-line)}.qct-platform-row{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;align-items:center}.qct-platform-row a{font-size:19px;font-weight:750;letter-spacing:-.03em;text-align:center;color:var(--qct-ink);text-decoration:none}.qct-platform-row a:hover{color:var(--qct-accent)}.qct-benefits{padding:54px 0}.qct-benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--qct-line)}.qct-benefit-grid article{padding:30px 28px 12px 0;border-right:1px solid var(--qct-line);margin-right:28px}.qct-benefit-grid article:last-child{border-right:0;margin-right:0}.qct-index{display:block;color:var(--qct-accent);font-weight:800;font-size:13px;margin-bottom:28px}.qct-benefit-grid h3{font-size:21px;margin:0 0 10px;letter-spacing:-.03em}.qct-benefit-grid p{font-size:14px;line-height:1.7;color:var(--qct-muted);margin:0}
@@ -39,4 +39,38 @@
 }
 @media (min-width:961px) and (max-width:1300px){
   .qct-addon-grid{grid-template-columns:1fr 1fr}
+}
+
+.qct-builder-status{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:800;letter-spacing:.18em;color:var(--qct-accent);margin-bottom:8px}
+.qct-live-dot{width:8px;height:8px;border-radius:50%;background:var(--qct-accent);box-shadow:0 0 0 5px rgba(178,67,48,.10)}
+.qct-builder-sub{margin:5px 0 0;color:var(--qct-muted);font-size:12px;line-height:1.4}
+.qct-builder-progress{display:flex;gap:5px;align-items:center;padding-top:6px}
+.qct-builder-progress span{display:block;width:22px;height:4px;border-radius:999px;background:#ddd3c8;transition:background .2s ease,width .2s ease}
+.qct-builder-progress span.is-active{background:var(--qct-accent);width:28px}
+.qct-field>span{display:flex!important;align-items:baseline;justify-content:space-between;gap:10px}
+.qct-field>span b{font-size:12px}
+.qct-field>span small{font-size:10px;color:var(--qct-muted);font-weight:500;text-align:right}
+.qct-calculator select{border-color:#cfc4b7;background:#fbf8f3;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.qct-calculator select:hover{border-color:#b7aa9a;background:#fffdf9}
+.qct-calculator select:focus{outline:none;border-color:var(--qct-accent);box-shadow:0 0 0 3px rgba(178,67,48,.12)}
+.qct-calculator fieldset legend{display:flex;align-items:baseline;justify-content:space-between;gap:12px;width:100%}
+.qct-calculator fieldset legend small{font-size:10px;color:var(--qct-muted);font-weight:500}
+.qct-check{position:relative;overflow:hidden;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+.qct-check:has(input:checked){border-color:rgba(178,67,48,.5);background:#fff7f2}
+.qct-check:has(input:checked)::after{content:"";position:absolute;right:-14px;top:-14px;width:34px;height:34px;border-radius:50%;background:rgba(178,67,48,.10)}
+.qct-check:hover{border-color:#b7aa9a;transform:translateY(-1px)}
+.qct-price-result{border-top:1px solid rgba(178,67,48,.22)}
+.qct-price-label{color:var(--qct-accent)!important;font-weight:800!important;letter-spacing:.12em;font-size:9px!important}
+.qct-price-result strong{color:var(--qct-ink)}
+.qct-price-result strong.is-updating{animation:qct-price-pop .28s ease}
+@keyframes qct-price-pop{0%{transform:translateY(2px);opacity:.55}100%{transform:translateY(0);opacity:1}}
+.qct-pathway-label{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;background:#efe5db;color:var(--qct-accent);font-size:10px;font-weight:800;letter-spacing:.12em;margin-bottom:18px}
+.qct-benefit-grid article{padding-top:24px}
+.qct-benefit-grid h3{margin-top:0}
+@media(max-width:640px){
+  .qct-field>span{display:block!important}
+  .qct-field>span small{display:block;text-align:left;margin-top:2px}
+  .qct-builder-sub{display:none}
+  .qct-builder-progress span{width:18px}
+  .qct-builder-progress span.is-active{width:22px}
 }
