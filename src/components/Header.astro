@@ -13,6 +13,8 @@ const serviceLinks = isEnglish ? [
 ] : [
   ['Tüm Hizmetler', '/hizmetler/'],
   ['E-Ticaret Altyapısı', '/e-ticaret/'],
+  ['Shopify Kurulum', '/shopify-magaza-kurulumu/'],
+  ['ikas Kurulum', '/ikas-magaza-kurulumu/'],
   ['Web Tasarım', '/web-tasarim/'],
   ['WhatsApp Satış', '/whatsapp-satis/'],
   ['SEO, GEO & AIO', '/seo-geo/'],
@@ -139,7 +141,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
-            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
+            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
             <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Çalışmalar</span></button><ul class="sub-menu"><li><a href="/calismalar/">Çalışmaları gör</a></li><li><a href="/iletisim/">Proje başlat</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/en/" hreflang="en">EN</a></li>
           </ul>
         )}
