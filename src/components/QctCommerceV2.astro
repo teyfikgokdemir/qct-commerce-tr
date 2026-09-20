@@ -10,7 +10,14 @@ const services = [
   { value: 'products', label: 'Sadece ürün ekleme', base: 0 },
 ];
 
-const platforms = ['Shopify', 'ikas', 'WooCommerce', 'WordPress', 'Ticimax', 'IdeaSoft'];
+const platforms = [
+  { name: 'Shopify', href: '/shopify-magaza-kurulumu/' },
+  { name: 'ikas', href: '/ikas-magaza-kurulumu/' },
+  { name: 'WooCommerce', href: '/e-ticaret/' },
+  { name: 'WordPress', href: '/web-tasarim/' },
+  { name: 'Ticimax', href: '/e-ticaret/' },
+  { name: 'IdeaSoft', href: '/e-ticaret/' },
+];
 ---
 
 <div class="qct-v2" data-qct-v2>
@@ -107,7 +114,7 @@ const platforms = ['Shopify', 'ikas', 'WooCommerce', 'WordPress', 'Ticimax', 'Id
     <div class="qct-shell">
       <p class="qct-section-label">DESTEKLEDİĞİMİZ ALTYAPILAR</p>
       <div class="qct-platform-row">
-        {platforms.map((platform) => <span>{platform}</span>)}
+        {platforms.map((platform) => <a href={platform.href}>{platform.name}</a>)}
       </div>
     </div>
   </section>
