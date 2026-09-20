@@ -46,23 +46,26 @@ const platforms = [
       <aside class="qct-calculator" id="fiyat-hesapla" aria-labelledby="calculator-title">
         <div class="qct-calculator-head">
           <div>
-            <p class="qct-kicker">CANLI HESAPLAMA</p>
-            <h2 id="calculator-title">Hemen fiyatını hesapla</h2>
+            <div class="qct-builder-status"><span class="qct-live-dot"></span> CANLI PROJE OLUŞTURUCU</div>
+            <h2 id="calculator-title">Projenizi oluşturun</h2>
+            <p class="qct-builder-sub">Seçimlerinizi yapın, başlangıç fiyatını anlık görün.</p>
           </div>
-          <span class="qct-time-pill">~ 60 saniye</span>
+          <div class="qct-builder-progress" aria-label="Hızlı fiyat hesaplama">
+            <span class="is-active"></span><span></span><span></span>
+          </div>
         </div>
 
         <form data-price-form>
-          <label>
-            <span>Ne yaptırmak istiyorsunuz?</span>
+          <label class="qct-field">
+            <span><b>Proje türü</b><small>Ne yaptırmak istiyorsunuz?</small></span>
             <select name="service" data-service>
               <option value="" data-base="0" selected disabled>İhtiyacınızı seçin</option>
               {services.map((service) => <option value={service.value} data-base={service.base}>{service.label}</option>)}
             </select>
           </label>
 
-          <label>
-            <span>Platform</span>
+          <label class="qct-field">
+            <span><b>Altyapı</b><small>Kullandığınız veya tercih ettiğiniz platform</small></span>
             <select name="platform" data-platform>
               <option value="" selected disabled>Altyapınızı seçin</option>
               <option value="shopify">Shopify</option>
@@ -76,8 +79,8 @@ const platforms = [
             </select>
           </label>
 
-          <label>
-            <span>Ürün sayısı</span>
+          <label class="qct-field">
+            <span><b>Ürün kapsamı</b><small>Ürün girişi gerekiyorsa adet seçin</small></span>
             <select name="products" data-products>
               <option value="" data-price="0" selected disabled>Ürün kapsamını seçin</option>
               <option value="0" data-price="0">Ürün girişi gerekmiyor</option>
@@ -90,7 +93,7 @@ const platforms = [
           </label>
 
           <fieldset>
-            <legend>Ek hizmetler</legend>
+            <legend>Projeyi güçlendirin <small>İhtiyacınız olanları ekleyin</small></legend>
             <div class="qct-addon-grid">
               <label class="qct-check"><input type="checkbox" value="2490" data-addon /><span>Teknik SEO <small>+2.490 TL</small></span></label>
               <label class="qct-check"><input type="checkbox" value="3900" data-addon /><span>SEO + GEO + AEO + AIO <small>+3.900 TL</small></span></label>
@@ -103,7 +106,7 @@ const platforms = [
 
           <div class="qct-price-result" aria-live="polite">
             <div>
-              <span>Başlangıç fiyatı</span>
+              <span class="qct-price-label">PROJENİZİN BAŞLANGIÇ FİYATI</span>
               <strong data-total>Seçiminizi yapın</strong>
               <small data-result-note>İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.</small>
             </div>
@@ -134,7 +137,7 @@ const platforms = [
       </div>
       <div class="qct-pathway-grid">
         <article>
-          <span class="qct-index">YENİ PROJE</span>
+          <span class="qct-pathway-label">YENİ PROJE</span>
           <h3>Bir site kurmak istiyorum</h3>
           <p>Kurumsal, kişisel veya e-ticaret projesini tasarım, mobil deneyim, altyapı, ölçüm ve temel görünürlük katmanlarıyla birlikte kuruyoruz.</p>
           <ul>
@@ -147,7 +150,7 @@ const platforms = [
           <a href="#fiyat-hesapla">Yeni proje fiyatını hesapla →</a>
         </article>
         <article>
-          <span class="qct-index">MEVCUT SİTE</span>
+          <span class="qct-pathway-label">MEVCUT SİTE</span>
           <h3>Sitem var, daha iyi çalışmasını istiyorum</h3>
           <p>Önce mevcut durumu analiz ediyor; teknik, tasarım, hız, SEO ve yapay zekâ arama görünürlüğü tarafında gerçekten gerekli çalışmaları ayırıyoruz.</p>
           <ul>
@@ -165,10 +168,10 @@ const platforms = [
 
   <section class="qct-benefits">
     <div class="qct-shell qct-benefit-grid">
-      <article><span class="qct-index">01</span><h3>Net kapsam</h3><p>Projeye başlamadan önce ne yapılacağını ve neyin kapsam dışında olduğunu açıkça görün.</p></article>
-      <article><span class="qct-index">02</span><h3>Şeffaf fiyat</h3><p>Teklif almak için günlerce beklemeyin. Standart işler için fiyatları baştan bilin.</p></article>
-      <article><span class="qct-index">03</span><h3>Mobil öncelik</h3><p>Siteyi masaüstünden küçültmüyoruz; mobil deneyimi ayrı bir ürün yüzeyi gibi tasarlıyoruz.</p></article>
-      <article><span class="qct-index">04</span><h3>Sürekli geliştirilebilir</h3><p>Teslim sonrası SEO, GEO, AEO, AIO, hız, ürün ve dönüşüm ihtiyaçlarında aynı yapı üzerinden ilerleyebilirsiniz.</p></article>
+      <article><h3>Net kapsam</h3><p>Projeye başlamadan önce ne yapılacağını ve neyin kapsam dışında olduğunu açıkça görün.</p></article>
+      <article><h3>Şeffaf fiyat</h3><p>Teklif almak için günlerce beklemeyin. Standart işler için fiyatları baştan bilin.</p></article>
+      <article><h3>Mobil öncelik</h3><p>Siteyi masaüstünden küçültmüyoruz; mobil deneyimi ayrı bir ürün yüzeyi gibi tasarlıyoruz.</p></article>
+      <article><h3>Sürekli geliştirilebilir</h3><p>Teslim sonrası SEO, GEO, AEO, AIO, hız, ürün ve dönüşüm ihtiyaçlarında aynı yapı üzerinden ilerleyebilirsiniz.</p></article>
     </div>
   </section>
 
@@ -248,6 +251,7 @@ const platforms = [
   const totalNode = root.querySelector('[data-total]');
   const noteNode = root.querySelector('[data-result-note]');
   const whatsapp = root.querySelector('[data-whatsapp]');
+  const progress = [...root.querySelectorAll('.qct-builder-progress span')];
 
   const money = new Intl.NumberFormat('tr-TR');
 
@@ -258,10 +262,18 @@ const platforms = [
     const productPrice = Number(products?.selectedOptions?.[0]?.dataset.price || 0);
     const addonPrice = addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
     const total = base + productPrice + addonPrice;
+    const completed = [Boolean(service?.value), Boolean(root.querySelector('[data-platform]')?.value), Boolean(products?.value)].filter(Boolean).length;
+    progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
 
-    if (totalNode) totalNode.textContent = hasService
-      ? (total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre')
-      : 'Seçiminizi yapın';
+    if (totalNode) {
+      const nextText = hasService ? (total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre') : 'Seçiminizi yapın';
+      if (totalNode.textContent !== nextText) {
+        totalNode.textContent = nextText;
+        totalNode.classList.remove('is-updating');
+        void totalNode.offsetWidth;
+        totalNode.classList.add('is-updating');
+      }
+    }
     if (noteNode) noteNode.textContent = hasService
       ? 'Gösterilen tutar standart kapsam için başlangıç fiyatıdır; proje detayına göre değişebilir.'
       : 'İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.';
