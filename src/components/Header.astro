@@ -62,66 +62,42 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
         <span class="mobile-nav-title">{isGeorgian ? 'QCT COMMERCE' : isEnglish ? 'QCT COMMERCE' : 'QCT COMMERCE'}</span>
         <button class="mobile-nav-close" type="button" aria-label={isGeorgian ? 'მენიუს დახურვა' : isEnglish ? 'Close menu' : 'Menüyü kapat'} data-mobile-close>×</button>
       </div>
-      <!-- MOBILE ONLY PANEL (ctseg Standard Mythborn Card Grid) -->
+      <!-- MOBILE ONLY PANEL -->
       <div class="mobile-only-panel">
-        <!-- Card 1: Language Switcher (ctseg Standard 1:1) -->
-        <div class="mobile-myth-card mobile-myth-card--lang">
-          <div class="myth-card-head">
-            <span class="myth-card-title">🌐 DİL / LANGUAGE</span>
-            <span class="myth-card-badge">GLOBAL</span>
-          </div>
-          <div class="mobile-lang-grid">
-            <a href="/" class:list={['mobile-lang-item', { active: !isEnglish && !isGeorgian }]}>
-              <span class="lang-code">TR</span>
-              <span class="lang-name">TÜRKÇE</span>
+        <nav class="qct-mobile-primary" aria-label={isEnglish ? 'Mobile navigation' : 'Mobil navigasyon'}>
+          {quickLinks.map(([label, href]) => (
+            <a href={href} class="qct-mobile-primary__link">
+              <span>{label}</span>
+              <span aria-hidden="true">↗</span>
             </a>
-            <a href="/en/" class:list={['mobile-lang-item', { active: isEnglish }]}>
-              <span class="lang-code">EN</span>
-              <span class="lang-name">ENGLISH</span>
-            </a>
-            <a href="/ka/georgia/" class:list={['mobile-lang-item', { active: isGeorgian }]}>
-              <span class="lang-code">KA</span>
-              <span class="lang-name">GEORGIA</span>
-            </a>
-          </div>
-        </div>
+          ))}
+        </nav>
 
-        <!-- Card 2: Services / Hizmetler (Mythborn Open Grid) -->
         {!isGeorgian && (
-          <div class="mobile-myth-card">
-            <div class="myth-card-head">
-              <span class="myth-card-title">🏢 {isEnglish ? 'SOLUTIONS' : 'HİZMETLER'}</span>
-              <span class="myth-card-badge">SERVİSLER</span>
+          <div class="qct-mobile-services">
+            <div class="qct-mobile-section-head">
+              <span>{isEnglish ? 'SERVICES' : 'HİZMETLER'}</span>
+              <small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small>
             </div>
-            <div class="mobile-solutions-grid">
+            <div class="qct-mobile-services__grid">
               {serviceLinks.map(([label, href]) => (
-                <a href={href} class="mobile-solution-item">
-                  <strong class="sol-title">{label.toUpperCase()}</strong>
-                </a>
+                <a href={href}>{label}</a>
               ))}
             </div>
           </div>
         )}
 
-        <!-- Card 3: Quick Navigation -->
-        <div class="mobile-myth-card">
-          <div class="myth-card-head">
-            <span class="myth-card-title">📌 {isGeorgian ? 'მენიუ' : isEnglish ? 'NAVIGATION' : 'HIZLI ERİŞİM'}</span>
-            <span class="myth-card-badge">MENÜ</span>
+        <div class="qct-mobile-bottom">
+          <div class="qct-mobile-languages" aria-label={isEnglish ? 'Language' : 'Dil seçimi'}>
+            <a href="/" class:list={[{ active: !isEnglish && !isGeorgian }]}>TR</a>
+            <a href="/en/" class:list={[{ active: isEnglish }]}>EN</a>
+            <a href="/ka/georgia/" class:list={[{ active: isGeorgian }]}>KA</a>
           </div>
-          <div class="mobile-nav-grid">
-            {quickLinks.map(([label, href]) => (
-              <a href={href} class="mobile-nav-item">
-                <strong>{label.toUpperCase()}</strong>
-              </a>
-            ))}
-          </div>
+          <a class="qct-mobile-project" href={isEnglish ? "/en/contact/" : "/iletisim/"}>
+            <span>{isEnglish ? 'Start a project' : 'Proje başlat'}</span>
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
-
-        <!-- Card 4: Mobile CTA Button -->
-        <a class="button button-primary mobile-cta-btn" href={isEnglish ? "/en/contact/" : "/iletisim/"}>
-          {isEnglish ? 'START A PROJECT' : 'PROJE BAŞLAT'}
-        </a>
       </div>
 
       <!-- DESKTOP ONLY NAVIGATION (Aesthetic 1-Column Dark Dropdown) -->
@@ -372,5 +348,169 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   .site-menu-toggle{touch-action:manipulation}
   .main-navigation.is-open{display:flex!important}
   .mobile-nav-close{touch-action:manipulation}
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .main-navigation{
+    background:#f4efe7!important;
+    color:#171614!important;
+    padding:calc(14px + env(safe-area-inset-top,0px)) 18px calc(18px + env(safe-area-inset-bottom,0px))!important;
+  }
+  .mobile-nav-head{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    position:sticky!important;
+    top:0!important;
+    z-index:5!important;
+    margin:-2px -2px 18px!important;
+    padding:4px 2px 14px!important;
+    background:linear-gradient(180deg,#f4efe7 82%,rgba(244,239,231,0))!important;
+    border-bottom:1px solid rgba(23,22,20,.1)!important;
+  }
+  .mobile-nav-title{
+    color:#171614!important;
+    font-size:.92rem!important;
+    font-weight:900!important;
+    letter-spacing:.12em!important;
+  }
+  .mobile-nav-close{
+    width:42px!important;
+    height:42px!important;
+    border-radius:999px!important;
+    border:1px solid rgba(23,22,20,.12)!important;
+    background:#fffaf5!important;
+    color:#171614!important;
+    font-size:20px!important;
+    box-shadow:none!important;
+  }
+  .mobile-only-panel{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:26px!important;
+    width:100%!important;
+    padding-bottom:8px!important;
+  }
+
+  .qct-mobile-primary{
+    display:grid!important;
+    border-top:1px solid rgba(23,22,20,.12)!important;
+  }
+  .qct-mobile-primary__link{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:16px!important;
+    min-height:58px!important;
+    padding:0!important;
+    border-bottom:1px solid rgba(23,22,20,.12)!important;
+    border-radius:0!important;
+    background:transparent!important;
+    color:#171614!important;
+    text-decoration:none!important;
+    font-size:clamp(1.45rem,7vw,2rem)!important;
+    font-weight:800!important;
+    letter-spacing:-.04em!important;
+  }
+  .qct-mobile-primary__link span:last-child{
+    color:#b24330!important;
+    font-size:1rem!important;
+    font-weight:700!important;
+  }
+
+  .qct-mobile-services{
+    display:grid!important;
+    gap:12px!important;
+  }
+  .qct-mobile-section-head{
+    display:flex!important;
+    align-items:flex-end!important;
+    justify-content:space-between!important;
+    gap:12px!important;
+  }
+  .qct-mobile-section-head>span{
+    color:#b24330!important;
+    font-size:.68rem!important;
+    font-weight:900!important;
+    letter-spacing:.16em!important;
+  }
+  .qct-mobile-section-head small{
+    color:#756e66!important;
+    font-size:.68rem!important;
+  }
+  .qct-mobile-services__grid{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+  }
+  .qct-mobile-services__grid a{
+    display:flex!important;
+    align-items:flex-end!important;
+    min-height:76px!important;
+    padding:12px!important;
+    border:1px solid rgba(23,22,20,.1)!important;
+    border-radius:14px!important;
+    background:#fffaf5!important;
+    color:#171614!important;
+    text-decoration:none!important;
+    font-size:.82rem!important;
+    line-height:1.25!important;
+    font-weight:750!important;
+  }
+
+  .qct-mobile-bottom{
+    display:grid!important;
+    gap:12px!important;
+    margin-top:auto!important;
+    padding-top:4px!important;
+  }
+  .qct-mobile-languages{
+    display:flex!important;
+    gap:8px!important;
+  }
+  .qct-mobile-languages a{
+    display:grid!important;
+    place-items:center!important;
+    width:44px!important;
+    height:36px!important;
+    padding:0!important;
+    border:1px solid rgba(23,22,20,.12)!important;
+    border-radius:999px!important;
+    background:transparent!important;
+    color:#171614!important;
+    text-decoration:none!important;
+    font-size:.72rem!important;
+    font-weight:900!important;
+  }
+  .qct-mobile-languages a.active{
+    background:#171614!important;
+    color:#c8ff3d!important;
+    border-color:#171614!important;
+  }
+  .qct-mobile-project{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    min-height:54px!important;
+    padding:0 18px!important;
+    border-radius:14px!important;
+    background:#171614!important;
+    color:#f7f1e9!important;
+    text-decoration:none!important;
+    font-size:.95rem!important;
+    font-weight:850!important;
+    box-shadow:none!important;
+  }
+  .qct-mobile-project span:last-child{
+    color:#c8ff3d!important;
+    font-size:1.1rem!important;
+  }
+
+  body.has-open-menu .site-menu-toggle{
+    opacity:0!important;
+    pointer-events:none!important;
+  }
 }
 </style>
