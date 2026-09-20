@@ -3,6 +3,8 @@ export type SeoPage =
   | 'seo-performance' | 'whatsapp-commerce' | 'meta-ads' | 'careers' | 'contact' | 'blog'
   | 'blog-shopify' | 'blog-mistakes' | 'blog-marketplace' | 'blog-ai-search'
   | 'blog-ai-product-content' | 'blog-whatsapp-automation'
+  | 'blog-google-not-visible' | 'blog-chatgpt-visibility' | 'blog-web-pricing-2026'
+  | 'blog-ikas-shopify-2026' | 'blog-mobile-ecommerce-conversion'
   | 'work' | 'work-headwear' | 'work-misima' | 'work-artman';
 
 interface SeoEntry { title: string; description: string; }
@@ -26,6 +28,11 @@ const seo: Record<SeoPage, SeoEntry> = {
   'blog-ai-search': { title: 'Google AI Overviews, GEO ve AIO Rehberi 2026', description: 'Google AI Overviews, GEO, AEO ve AIO için içerik yapısı, schema, marka sinyalleri ve ölçüm adımlarını içeren güncel arama görünürlüğü rehberi.' },
   'blog-ai-product-content': { title: 'Yapay Zekâ ile Ürün Açıklaması Hazırlama', description: 'AI ile SEO ve satış odaklı ürün açıklaması üretirken veri doğruluğu, içerik şablonu, editör kontrolü ve benzer içerik riskini yönetin.' },
   'blog-whatsapp-automation': { title: 'WhatsApp Satış Otomasyonu Nasıl Kurulur?', description: 'B2B işletmeler için web ve reklam taleplerini toplayan, doğru ekibe yönlendiren ve insan kontrollü takip sağlayan WhatsApp satış otomasyonu rehberi.' },
+  'blog-google-not-visible': { title: 'Web Sitem Google’da Neden Çıkmıyor? 2026 Kontrol Rehberi', description: 'Web siteniz Google’da görünmüyorsa indeksleme, Search Console, robots, canonical, içerik, yerel SEO ve teknik sorunları adım adım kontrol edin.' },
+  'blog-chatgpt-visibility': { title: 'ChatGPT’de Firmam Nasıl Görünür? AI Görünürlük Rehberi', description: 'Firmanızın ChatGPT, Gemini ve diğer yapay zekâ sistemlerinde doğru anlaşılması için marka varlığı, içerik, schema, kaynak ve GEO/AEO adımlarını inceleyin.' },
+  'blog-web-pricing-2026': { title: 'Web Sitesi Yaptırma Fiyatları 2026: Neye Göre Değişir?', description: 'Kurumsal web, e-ticaret, site yenileme ve SEO projelerinde fiyatı belirleyen kapsam, sayfa, ürün, entegrasyon ve bakım kalemlerini şeffaf biçimde öğrenin.' },
+  'blog-ikas-shopify-2026': { title: 'ikas mı Shopify mı? Türkiye için 2026 Karşılaştırması', description: 'ikas ve Shopify’ı Türkiye pazarı için ödeme, entegrasyon, yönetim, uluslararası satış, SEO ve toplam sahip olma maliyeti açısından karşılaştırın.' },
+  'blog-mobile-ecommerce-conversion': { title: 'Mobil E-Ticaret Sitesi Neden Satış Yapmıyor? 2026 Rehberi', description: 'Mobil e-ticaret dönüşümünü düşüren hız, menü, filtre, ürün sayfası, sepet ve ödeme sorunlarını tespit etmek için uygulamalı kontrol listesi.' },
   work: { title: 'Seçili Web ve E-ticaret Çalışmaları — QCT Commerce', description: 'QCT Studio ağı kapsamında gerçekleştirilen seçili web, e-ticaret ve dijital deneyim çalışmalarını QCT Commerce Türkiye bağlamında inceleyin.' },
   'work-headwear': { title: 'HEADWEAR E-ticaret Vaka Çalışması — QCT Commerce', description: 'HEADWEAR için ürün keşfi, çok dilli mağaza yapısı, mobil alışveriş ve teknik arama temellerini birleştiren e-ticaret çalışmasını inceleyin.' },
   'work-misima': { title: 'Misima Group Web Vaka Çalışması — QCT Commerce', description: 'Misima Group için web stratejisi, bilgi mimarisi, arayüz tasarımı ve geliştirmeyi birleştiren kurumsal dijital deneyimi inceleyin.' },
