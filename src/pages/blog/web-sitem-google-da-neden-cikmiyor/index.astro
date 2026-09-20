@@ -1,0 +1,6 @@
+---
+import BlogArticle from '../../../components/BlogArticle.astro';
+import { getArticle } from '../../../data/blog';
+const article = getArticle('web-sitem-google-da-neden-cikmiyor');
+---
+<BlogArticle article={article} />
