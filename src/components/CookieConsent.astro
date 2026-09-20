@@ -125,37 +125,32 @@ const policyUrl = '/cerez-politikasi/';
   .qct-cookie-consent {
     position: fixed;
     left: 50%;
-    bottom: .8rem;
+    bottom: .9rem;
     transform: translateX(-50%);
     z-index: 9998;
     width: min(1320px, calc(100vw - 2rem));
-    min-height: 64px;
-    padding: .55rem .7rem .55rem .8rem;
-    color: #f7f1e9;
-    background:
-      radial-gradient(circle at 0% 50%, rgba(255,123,103,.07), transparent 22%),
-      radial-gradient(circle at 100% 50%, rgba(200,255,61,.07), transparent 22%),
-      #171614;
-    border: 1px solid rgba(255,255,255,.10);
-    border-radius: 16px;
-    box-shadow: 0 16px 46px rgba(0,0,0,.22);
-    backdrop-filter: blur(18px);
+    min-height: 58px;
+    padding: .48rem .56rem .48rem .7rem;
+    color: #f6f0e8;
+    background: rgba(22,21,19,.96);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    box-shadow: 0 12px 34px rgba(0,0,0,.18);
+    backdrop-filter: blur(16px);
     display: grid;
     grid-template-columns: minmax(0,1fr) auto;
-    gap: .8rem;
+    gap: .7rem;
     align-items: center;
   }
 
   .qct-cookie-consent::before {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    padding: 1px;
-    background: linear-gradient(90deg, rgba(255,123,103,.34), rgba(255,255,255,.03) 50%, rgba(200,255,61,.34));
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    left: 14px;
+    right: 14px;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,123,103,.48), rgba(200,255,61,.36), transparent);
     pointer-events: none;
   }
 
@@ -165,66 +160,68 @@ const policyUrl = '/cerez-politikasi/';
     min-width: 0;
     display: flex;
     align-items: center;
-    gap: .65rem;
+    gap: .55rem;
   }
 
   .qct-cookie-consent__icon {
     position: relative;
-    flex: 0 0 34px;
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
     background: #c8ff3d;
   }
 
   .qct-cookie-consent__icon::before {
     content: "";
     position: absolute;
-    inset: 8px;
-    border: 2px solid #171614;
+    inset: 7px;
+    border: 1.7px solid #171614;
     border-radius: 50%;
     border-right-color: transparent;
   }
 
   .qct-cookie-consent__icon span {
     position: absolute;
-    width: 3px;
-    height: 3px;
+    width: 2.5px;
+    height: 2.5px;
     border-radius: 50%;
     background: #171614;
   }
 
-  .qct-cookie-consent__icon span:nth-child(1) { left: 9px; top: 15px; }
-  .qct-cookie-consent__icon span:nth-child(2) { left: 16px; top: 9px; }
-  .qct-cookie-consent__icon span:nth-child(3) { left: 17px; top: 21px; }
+  .qct-cookie-consent__icon span:nth-child(1) { left: 8px; top: 13px; }
+  .qct-cookie-consent__icon span:nth-child(2) { left: 13px; top: 8px; }
+  .qct-cookie-consent__icon span:nth-child(3) { left: 14px; top: 17px; }
 
   .qct-cookie-consent__content > div:last-child {
     min-width: 0;
     display: flex;
     align-items: baseline;
-    gap: .55rem;
+    gap: .5rem;
     flex-wrap: nowrap;
   }
 
   .qct-cookie-consent__eyebrow {
-    color: #ff7b67;
-    font-size: .55rem;
-    font-weight: 800;
-    letter-spacing: .15em;
+    color: #ff8b78;
+    font-size: .52rem;
+    font-weight: 700;
+    letter-spacing: .14em;
     white-space: nowrap;
+    opacity: .9;
   }
 
   .qct-cookie-consent strong {
     color: #fff;
-    font-size: .83rem;
+    font-size: .8rem;
     line-height: 1.2;
+    font-weight: 750;
     white-space: nowrap;
   }
 
   .qct-cookie-consent p {
     margin: 0;
-    color: rgba(247,241,233,.68);
-    font-size: .72rem;
+    color: rgba(246,240,232,.58);
+    font-size: .69rem;
     line-height: 1.35;
     white-space: nowrap;
     overflow: hidden;
@@ -232,59 +229,59 @@ const policyUrl = '/cerez-politikasi/';
   }
 
   .qct-cookie-consent a {
-    color: #f7f1e9;
-    text-decoration-color: #ff7b67;
+    color: rgba(246,240,232,.9);
+    text-decoration-color: rgba(255,139,120,.7);
     text-underline-offset: 3px;
   }
 
   .qct-cookie-consent__actions {
     display: flex;
     align-items: center;
-    gap: .4rem;
+    gap: .35rem;
   }
 
   .qct-cookie-consent button {
-    min-height: 38px;
-    padding: .45rem .8rem;
+    min-height: 34px;
+    padding: .38rem .72rem;
     font: inherit;
-    font-size: .72rem;
-    font-weight: 800;
+    font-size: .68rem;
+    font-weight: 750;
     cursor: pointer;
-    color: rgba(247,241,233,.9);
-    background: rgba(255,255,255,.045);
-    border: 1px solid rgba(255,255,255,.13);
-    border-radius: 10px;
-    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    color: rgba(246,240,232,.82);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 9px;
+    transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
     white-space: nowrap;
   }
 
   .qct-cookie-consent button:hover {
     transform: translateY(-1px);
-    background: rgba(255,255,255,.075);
-    border-color: rgba(255,255,255,.24);
+    background: rgba(255,255,255,.05);
+    border-color: rgba(255,255,255,.20);
   }
 
   .qct-cookie-consent button.is-primary {
     color: #171614;
-    background: #c8ff3d;
-    border-color: #c8ff3d;
+    background: #d2ff59;
+    border-color: #d2ff59;
+    box-shadow: none;
   }
 
   .qct-cookie-consent button.is-primary:hover {
-    background: #d7ff72;
-    border-color: #d7ff72;
+    background: #dcff78;
+    border-color: #dcff78;
   }
 
   .qct-cookie-consent button:focus-visible,
   .qct-cookie-consent a:focus-visible {
-    outline: 3px solid rgba(255,123,103,.45);
-    outline-offset: 3px;
+    outline: 2px solid rgba(255,139,120,.48);
+    outline-offset: 2px;
   }
 
   @media (max-width: 1100px) {
     .qct-cookie-consent {
       width: min(900px, calc(100vw - 1.5rem));
-      grid-template-columns: 1fr auto;
     }
     .qct-cookie-consent__content > div:last-child { flex-wrap: wrap; }
     .qct-cookie-consent p { white-space: normal; }
@@ -298,17 +295,18 @@ const policyUrl = '/cerez-politikasi/';
       transform: none;
       width: auto;
       grid-template-columns: 1fr;
-      padding: .8rem;
-      gap: .65rem;
+      padding: .72rem;
+      gap: .55rem;
+      border-radius: 14px;
     }
 
     .qct-cookie-consent__content { align-items: flex-start; }
     .qct-cookie-consent__content > div:last-child { display: block; }
-    .qct-cookie-consent__eyebrow { display:block; margin-bottom:.25rem; }
-    .qct-cookie-consent strong { display:block; margin-bottom:.3rem; white-space:normal; }
-    .qct-cookie-consent p { font-size:.72rem; white-space:normal; }
+    .qct-cookie-consent__eyebrow { display:block; margin-bottom:.2rem; }
+    .qct-cookie-consent strong { display:block; margin-bottom:.25rem; white-space:normal; }
+    .qct-cookie-consent p { font-size:.7rem; white-space:normal; }
     .qct-cookie-consent__actions { display:grid; grid-template-columns:1fr 1fr; }
-    .qct-cookie-consent button { width:100%; min-height:44px; }
+    .qct-cookie-consent button { width:100%; min-height:42px; }
   }
 
   @media (max-width: 390px) {
