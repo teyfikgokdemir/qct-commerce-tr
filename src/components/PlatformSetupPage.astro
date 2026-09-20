@@ -23,7 +23,7 @@ const faqSchema = {
   })),
 };
 ---
-<BaseLayout title={title} description={description} lang="tr" breadcrumbLabel={platform + ' mağaza kurulumu'} service={{name: platform + ' mağaza kurulumu', description}}>
+<BaseLayout title={title} description={description} lang="tr" breadcrumbLabel={platform + ' mağaza kurulumu'}>
   <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Header slot="header" lang="tr" />
   <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-3" />
