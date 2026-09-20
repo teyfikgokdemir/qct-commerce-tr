@@ -56,6 +56,7 @@ const platforms = [
           <label>
             <span>Ne yaptırmak istiyorsunuz?</span>
             <select name="service" data-service>
+              <option value="" data-base="0" selected disabled>İhtiyacınızı seçin</option>
               {services.map((service) => <option value={service.value} data-base={service.base}>{service.label}</option>)}
             </select>
           </label>
@@ -63,20 +64,23 @@ const platforms = [
           <label>
             <span>Platform</span>
             <select name="platform" data-platform>
+              <option value="" selected disabled>Altyapınızı seçin</option>
               <option value="shopify">Shopify</option>
               <option value="ikas">ikas</option>
               <option value="woocommerce">WooCommerce</option>
               <option value="wordpress">WordPress</option>
               <option value="ticimax">Ticimax</option>
               <option value="ideasoft">IdeaSoft</option>
-              <option value="kararsiz">Kararsızım</option>
+              <option value="kararsiz">Henüz karar vermedim</option>
+              <option value="diger">Diğer / mevcut altyapım</option>
             </select>
           </label>
 
           <label>
             <span>Ürün sayısı</span>
             <select name="products" data-products>
-              <option value="0" data-price="0">Ürün girişi istemiyorum</option>
+              <option value="" data-price="0" selected disabled>Ürün kapsamını seçin</option>
+              <option value="0" data-price="0">Ürün girişi gerekmiyor</option>
               <option value="25" data-price="1490">1–25 ürün</option>
               <option value="50" data-price="2490">26–50 ürün</option>
               <option value="100" data-price="3990">51–100 ürün</option>
@@ -99,11 +103,11 @@ const platforms = [
 
           <div class="qct-price-result" aria-live="polite">
             <div>
-              <span>Tahmini proje bedeli</span>
-              <strong data-total>9.900 TL</strong>
-              <small data-result-note>Standart kapsam için tahmini başlangıç bedeli.</small>
+              <span>Başlangıç fiyatı</span>
+              <strong data-total>Seçiminizi yapın</strong>
+              <small data-result-note>İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.</small>
             </div>
-            <a class="qct-btn qct-btn-primary qct-result-btn" data-whatsapp href="https://wa.me/905433856656" target="_blank" rel="noopener">Teklifi Detaylandır <span>→</span></a>
+            <a class="qct-btn qct-btn-primary qct-result-btn is-disabled" data-whatsapp aria-disabled="true" href="https://wa.me/905433856656" target="_blank" rel="noopener">Detaylandır <span>→</span></a>
           </div>
         </form>
       </aside>
@@ -188,6 +192,37 @@ const platforms = [
     </div>
   </section>
 
+
+  <section class="qct-search-faq">
+    <div class="qct-shell">
+      <div class="qct-section-head">
+        <div>
+          <p class="qct-section-label">SIK SORULANLAR</p>
+          <h2>Aramada görünürlük.<br/><em>Net cevaplar.</em></h2>
+        </div>
+        <p>Web sitesi sahiplerinin Google ve yapay zekâ aramalarında en sık sorduğu soruları teknik jargon yerine uygulanabilir cevaplarla ele alıyoruz.</p>
+      </div>
+      <div class="qct-faq-grid">
+        <details>
+          <summary>Google’da nasıl çıkarım?</summary>
+          <p>Önce sitenin taranabilir ve indekslenebilir olması gerekir. Ardından doğru hizmet ve ürün sayfaları, arama niyetine uygun içerik, teknik SEO, iç bağlantılar, yapılandırılmış veri ve güven sinyalleri birlikte çalışır. QCT Commerce önce mevcut durumu analiz eder, sonra en yüksek etkili düzeltmeleri önceliklendirir.</p>
+        </details>
+        <details>
+          <summary>ChatGPT’de firmam nasıl görünür?</summary>
+          <p>Tek bir ayar veya garanti yoktur. Marka ve hizmet bilgilerinin açık, doğrulanabilir ve tutarlı olması; özgün içerik, güçlü entity sinyalleri, kaynak niteliğinde sayfalar ve teknik erişilebilirlik önemlidir. GEO, AEO ve AI görünürlük çalışmaları bu yapıyı güçlendirmeyi hedefler.</p>
+        </details>
+        <details>
+          <summary>SEO yaptırmak istiyorum. Nereden başlamalıyım?</summary>
+          <p>İlk adım paket satın almak değil, mevcut sitenin teknik durumunu, hangi sorgularda görünmek istediğinizi ve ticari hedefinizi belirlemektir. Site analizi sonrası teknik SEO, içerik, hız, sayfa mimarisi ve görünürlük çalışmalarından gerçekten gerekenler seçilir.</p>
+        </details>
+        <details>
+          <summary>Web sitem neden Google’da çıkmıyor?</summary>
+          <p>İndeksleme sorunları, zayıf içerik, yanlış sayfa yapısı, düşük teknik kalite, yetersiz iç bağlantı, yeni alan adı veya yüksek rekabet bunun nedeni olabilir. Search Console, sitemap, robots, canonical, performans ve içerik eşleşmesi birlikte kontrol edilmeden tek bir neden söylemek doğru olmaz.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="qct-close">
     <div class="qct-shell qct-close-grid">
       <div>
@@ -218,23 +253,35 @@ const platforms = [
 
   function calculate() {
     const selectedService = service?.selectedOptions?.[0];
+    const hasService = Boolean(service?.value);
     const base = Number(selectedService?.dataset.base || 0);
     const productPrice = Number(products?.selectedOptions?.[0]?.dataset.price || 0);
     const addonPrice = addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
     const total = base + productPrice + addonPrice;
 
-    if (totalNode) totalNode.textContent = total > 0 ? money.format(total) + ' TL' : 'Kapsama göre';
-    if (noteNode) noteNode.textContent = total > 0
-      ? 'Standart kapsam için tahmini başlangıç bedeli.'
-      : '500+ ürün veya özel kapsam için hızlı teklif hazırlıyoruz.';
+    if (totalNode) totalNode.textContent = hasService
+      ? (total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre')
+      : 'Seçiminizi yapın';
+    if (noteNode) noteNode.textContent = hasService
+      ? 'Gösterilen tutar standart kapsam için başlangıç fiyatıdır; proje detayına göre değişebilir.'
+      : 'İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.';
 
-    const serviceText = selectedService?.textContent?.trim() || 'Web projesi';
-    const productText = products?.selectedOptions?.[0]?.textContent?.trim() || '';
-    const message = 'Merhaba, QCT Commerce fiyat hesaplayıcıdan geldim. ' + serviceText + ', ' + productText + '. Tahmini bedel: ' + (total > 0 ? money.format(total) + ' TL' : 'özel teklif') + '. Detayları görüşmek istiyorum.';
-    if (whatsapp) whatsapp.href = 'https://wa.me/905433856656?text=' + encodeURIComponent(message);
+    const serviceText = hasService ? (selectedService?.textContent?.trim() || 'Web projesi') : '';
+    const productText = products?.value ? (products?.selectedOptions?.[0]?.textContent?.trim() || '') : '';
+    const message = 'Merhaba, QCT Commerce fiyat hesaplayıcıdan geldim. ' + serviceText + (productText ? ', ' + productText : '') + '. Başlangıç fiyatı: ' + (total > 0 ? money.format(total) + ' TL’den' : 'kapsama göre') + '. Detayları görüşmek istiyorum.';
+    if (whatsapp) {
+      whatsapp.classList.toggle('is-disabled', !hasService);
+      whatsapp.setAttribute('aria-disabled', String(!hasService));
+      whatsapp.href = hasService
+        ? 'https://wa.me/905433856656?text=' + encodeURIComponent(message)
+        : 'https://wa.me/905433856656';
+    }
   }
 
   form?.addEventListener('change', calculate);
+  whatsapp?.addEventListener('click', (event) => {
+    if (whatsapp.getAttribute('aria-disabled') === 'true') event.preventDefault();
+  });
   calculate();
 
   const banner = root.querySelector('[data-intro-banner]');
