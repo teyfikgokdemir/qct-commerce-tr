@@ -1,0 +1,209 @@
+---
+const services = [
+  { value: 'ecommerce', label: 'Yeni e-ticaret sitesi', base: 14900 },
+  { value: 'corporate', label: 'Kurumsal web sitesi', base: 12900 },
+  { value: 'refresh', label: 'Mevcut site yenileme', base: 7900 },
+  { value: 'migration', label: 'Platform taşıma', base: 9900 },
+  { value: 'products', label: 'Sadece ürün ekleme', base: 0 },
+];
+
+const platforms = ['Shopify', 'ikas', 'WooCommerce', 'WordPress', 'Ticimax', 'IdeaSoft'];
+---
+
+<div class="qct-v2" data-qct-v2>
+  <div class="qct-intro" data-intro-banner hidden>
+    <span>Web projenizin fiyatını artık 60 saniyede öğrenebilirsiniz.</span>
+    <button type="button" aria-label="Duyuruyu kapat" data-intro-close>×</button>
+  </div>
+
+  <section class="qct-hero" aria-labelledby="qct-hero-title">
+    <div class="qct-shell qct-hero-grid">
+      <div class="qct-hero-copy">
+        <p class="qct-eyebrow">DAHA AZ SORU İŞARETİ. DAHA NET PROJE.</p>
+        <h1 id="qct-hero-title">Web ve e-ticaret projelerinde <em>net fiyat.</em></h1>
+        <p class="qct-lead">Shopify, ikas, WooCommerce, WordPress, Ticimax ve IdeaSoft için profesyonel kurulum, yenileme ve taşıma hizmetleri. Kapsamı seçin, fiyatınızı anında görün.</p>
+        <div class="qct-hero-actions">
+          <a class="qct-btn qct-btn-primary" href="#fiyat-hesapla">Fiyatını Hesapla <span>→</span></a>
+          <a class="qct-text-link" href="/calismalar/">Örnek Projeleri Gör</a>
+        </div>
+        <div class="qct-proof-line">
+          <span>Şeffaf fiyatlandırma</span>
+          <span>Mobil öncelikli teslim</span>
+          <span>Platform bağımsız yaklaşım</span>
+        </div>
+      </div>
+
+      <aside class="qct-calculator" id="fiyat-hesapla" aria-labelledby="calculator-title">
+        <div class="qct-calculator-head">
+          <div>
+            <p class="qct-kicker">CANLI HESAPLAMA</p>
+            <h2 id="calculator-title">Hemen fiyatını hesapla</h2>
+          </div>
+          <span class="qct-time-pill">~ 60 saniye</span>
+        </div>
+
+        <form data-price-form>
+          <label>
+            <span>Ne yaptırmak istiyorsunuz?</span>
+            <select name="service" data-service>
+              {services.map((service) => <option value={service.value} data-base={service.base}>{service.label}</option>)}
+            </select>
+          </label>
+
+          <label>
+            <span>Platform</span>
+            <select name="platform" data-platform>
+              <option value="shopify">Shopify</option>
+              <option value="ikas">ikas</option>
+              <option value="woocommerce">WooCommerce</option>
+              <option value="wordpress">WordPress</option>
+              <option value="ticimax">Ticimax</option>
+              <option value="ideasoft">IdeaSoft</option>
+              <option value="kararsiz">Kararsızım</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Ürün sayısı</span>
+            <select name="products" data-products>
+              <option value="0" data-price="0">Ürün girişi istemiyorum</option>
+              <option value="25" data-price="2490">1–25 ürün</option>
+              <option value="50" data-price="3990">26–50 ürün</option>
+              <option value="100" data-price="6490">51–100 ürün</option>
+              <option value="250" data-price="11900">101–250 ürün</option>
+              <option value="500" data-price="19900">251–500 ürün</option>
+            </select>
+          </label>
+
+          <fieldset>
+            <legend>Ek hizmetler</legend>
+            <div class="qct-addon-grid">
+              <label class="qct-check"><input type="checkbox" value="3900" data-addon /><span>Temel SEO <small>+3.900 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="2490" data-addon /><span>Merchant Center <small>+2.490 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="3900" data-addon /><span>Ek dil <small>+3.900 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="2900" data-addon /><span>Hız optimizasyonu <small>+2.900 TL</small></span></label>
+            </div>
+          </fieldset>
+
+          <div class="qct-price-result" aria-live="polite">
+            <div>
+              <span>Tahmini proje bedeli</span>
+              <strong data-total>14.900 TL</strong>
+              <small data-result-note>Standart kapsam için tahmini başlangıç bedeli.</small>
+            </div>
+            <a class="qct-btn qct-btn-primary qct-result-btn" data-whatsapp href="https://wa.me/905433856656" target="_blank" rel="noopener">Teklifi Detaylandır <span>→</span></a>
+          </div>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <section class="qct-platforms" aria-label="Desteklenen platformlar">
+    <div class="qct-shell">
+      <p class="qct-section-label">DESTEKLEDİĞİMİZ ALTYAPILAR</p>
+      <div class="qct-platform-row">
+        {platforms.map((platform) => <span>{platform}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="qct-benefits">
+    <div class="qct-shell qct-benefit-grid">
+      <article><span class="qct-index">01</span><h3>Net kapsam</h3><p>Projeye başlamadan önce ne yapılacağını ve neyin kapsam dışında olduğunu açıkça görün.</p></article>
+      <article><span class="qct-index">02</span><h3>Şeffaf fiyat</h3><p>Teklif almak için günlerce beklemeyin. Standart işler için fiyatları baştan bilin.</p></article>
+      <article><span class="qct-index">03</span><h3>Mobil öncelik</h3><p>Siteyi masaüstünden küçültmüyoruz; mobil deneyimi ayrı bir ürün yüzeyi gibi tasarlıyoruz.</p></article>
+      <article><span class="qct-index">04</span><h3>Satışa hazır teslim</h3><p>Sadece güzel görünen değil; ödeme, kargo, ölçüm ve temel SEO katmanları tamamlanmış yapı teslim ediyoruz.</p></article>
+    </div>
+  </section>
+
+  <section class="qct-offers">
+    <div class="qct-shell">
+      <div class="qct-section-head">
+        <div>
+          <p class="qct-section-label">HIZLI BAŞLANGIÇ</p>
+          <h2>İhtiyacı seçin.<br/><em>Fiyatı baştan görün.</em></h2>
+        </div>
+        <p>Küçük düzenlemeden tam e-ticaret kurulumuna kadar standart hizmetlerimizi açık başlangıç fiyatlarıyla sunuyoruz.</p>
+      </div>
+      <div class="qct-offer-grid">
+        <a href="#fiyat-hesapla"><span>Site yenileme</span><strong>7.900 TL’den</strong><small>Mobil, görsel düzen, CTA, temel teknik kontrol</small></a>
+        <a href="#fiyat-hesapla"><span>Kurumsal web</span><strong>12.900 TL’den</strong><small>Modern arayüz, responsive yapı, temel SEO</small></a>
+        <a href="#fiyat-hesapla"><span>E-ticaret kurulumu</span><strong>14.900 TL’den</strong><small>Shopify, ikas, WooCommerce, Ticimax</small></a>
+        <a href="#fiyat-hesapla"><span>Platform taşıma</span><strong>9.900 TL’den</strong><small>Ürün, kategori ve temel yönlendirme planı</small></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="qct-close">
+    <div class="qct-shell qct-close-grid">
+      <div>
+        <p class="qct-section-label">HAZIR MISINIZ?</p>
+        <h2>Sıradaki başarılı proje <em>sizin olabilir.</em></h2>
+        <p>İhtiyacınızı seçin, fiyatınızı görün, hazır olduğunuzda projeyi birlikte netleştirelim.</p>
+      </div>
+      <a class="qct-btn qct-btn-light" href="#fiyat-hesapla">Fiyatını Hesapla <span>→</span></a>
+    </div>
+  </section>
+</div>
+
+<script is:inline>
+(() => {
+  const root = document.querySelector('[data-qct-v2]');
+  if (!root || root.dataset.ready === 'true') return;
+  root.dataset.ready = 'true';
+
+  const form = root.querySelector('[data-price-form]');
+  const service = root.querySelector('[data-service]');
+  const products = root.querySelector('[data-products]');
+  const addons = [...root.querySelectorAll('[data-addon]')];
+  const totalNode = root.querySelector('[data-total]');
+  const noteNode = root.querySelector('[data-result-note]');
+  const whatsapp = root.querySelector('[data-whatsapp]');
+
+  const money = new Intl.NumberFormat('tr-TR');
+
+  function calculate() {
+    const selectedService = service?.selectedOptions?.[0];
+    const base = Number(selectedService?.dataset.base || 0);
+    const productPrice = Number(products?.selectedOptions?.[0]?.dataset.price || 0);
+    const addonPrice = addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
+    const total = base + productPrice + addonPrice;
+
+    if (totalNode) totalNode.textContent = total > 0 ? money.format(total) + ' TL' : 'Kapsama göre';
+    if (noteNode) noteNode.textContent = total > 0
+      ? 'Standart kapsam için tahmini başlangıç bedeli.'
+      : '500+ ürün veya özel kapsam için hızlı teklif hazırlıyoruz.';
+
+    const serviceText = selectedService?.textContent?.trim() || 'Web projesi';
+    const productText = products?.selectedOptions?.[0]?.textContent?.trim() || '';
+    const message = 'Merhaba, QCT Commerce fiyat hesaplayıcıdan geldim. ' + serviceText + ', ' + productText + '. Tahmini bedel: ' + (total > 0 ? money.format(total) + ' TL' : 'özel teklif') + '. Detayları görüşmek istiyorum.';
+    if (whatsapp) whatsapp.href = 'https://wa.me/905433856656?text=' + encodeURIComponent(message);
+  }
+
+  form?.addEventListener('change', calculate);
+  calculate();
+
+  const banner = root.querySelector('[data-intro-banner]');
+  const close = root.querySelector('[data-intro-close]');
+  const key = 'qct-v2-intro-seen';
+
+  try {
+    if (banner && !localStorage.getItem(key)) {
+      window.setTimeout(() => {
+        banner.hidden = false;
+        requestAnimationFrame(() => banner.classList.add('is-visible'));
+        localStorage.setItem(key, '1');
+        window.setTimeout(() => {
+          banner.classList.remove('is-visible');
+          window.setTimeout(() => { banner.hidden = true; }, 350);
+        }, 2800);
+      }, 350);
+    }
+  } catch {}
+
+  close?.addEventListener('click', () => {
+    banner?.classList.remove('is-visible');
+    window.setTimeout(() => { if (banner) banner.hidden = true; }, 250);
+  });
+})();
+</script>
