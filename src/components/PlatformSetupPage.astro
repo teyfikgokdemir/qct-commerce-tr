@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  platform: 'Shopify' | 'ikas';
+  title: string;
+  description: string;
+  heading: string;
+  lead: string;
+  strengths: string[];
+  faqItems: Array<{ q: string; a: string }>;
+}
+const { platform, title, description, heading, lead, strengths, faqItems } = Astro.props;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+<BaseLayout title={title} description={description} lang="tr" breadcrumbLabel={platform + ' mağaza kurulumu'} service={{name: platform + ' mağaza kurulumu', description}}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Header slot="header" lang="tr" />
+  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-3" />
+  <div class="qct-v2">
+    <section class="qct-platform-hero">
+      <div class="qct-shell qct-platform-hero-grid">
+        <div>
+          <p class="qct-eyebrow">{platform.toUpperCase()} MAĞAZA KURULUMU</p>
+          <h1>{heading}</h1>
+          <p class="qct-lead">{lead}</p>
+          <div class="qct-hero-actions">
+            <a class="qct-btn qct-btn-primary" href="/#fiyat-hesapla">9.900 TL’den fiyatını hesapla <span>→</span></a>
+            <a class="qct-text-link" href="/fiyatlar/">Tüm fiyatları gör</a>
+          </div>
+        </div>
+        <aside class="qct-platform-price">
+          <span>Başlangıç fiyatı</span>
+          <strong>9.900 TL</strong>
+          <p>Standart kurulum, mobil düzen, temel teknik SEO ve yayına hazırlık.</p>
+          <ul>
+            <li>Mağaza temel ayarları</li>
+            <li>Tema ve mobil düzen</li>
+            <li>Menü / kategori yapısı</li>
+            <li>Ödeme ve kargo ayarları</li>
+            <li>Temel SEO & ölçüm kontrolü</li>
+            <li>Yayın öncesi QA</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="qct-platform-detail">
+      <div class="qct-shell">
+        <div class="qct-section-head">
+          <div><p class="qct-section-label">SATIŞA HAZIR KURULUM</p><h2>Sadece mağaza açmıyoruz.<br/><em>Çalışan sistemi kuruyoruz.</em></h2></div>
+          <p>{platform} mağazanızı tema kurup bırakmak yerine ürün keşfi, mobil kullanım, güven, ölçüm ve satış akışıyla birlikte ele alıyoruz.</p>
+        </div>
+        <div class="qct-benefit-grid">
+          {strengths.map((item, i) => <article><span class="qct-index">0{i+1}</span><h3>{item}</h3><p>Kurulum sırasında bu alanı mağazanızın ürün yapısı ve ticari ihtiyacına göre yapılandırıyoruz.</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-platform-process">
+      <div class="qct-shell">
+        <p class="qct-section-label">SÜREÇ</p>
+        <div class="qct-offer-grid">
+          <div><span>01 — Analiz</span><small>Ürün, kategori, ödeme, kargo, marka ve mevcut varlıklar.</small></div>
+          <div><span>02 — Yapı</span><small>Menü, kategori, ürün şablonu, tema ve mobil deneyim.</small></div>
+          <div><span>03 — Kurulum</span><small>Teknik ayarlar, gerekli entegrasyonlar ve ürün hazırlığı.</small></div>
+          <div><span>04 — QA & yayın</span><small>Mobil, ödeme, kargo, SEO, analitik ve dönüşüm kontrolleri.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-pricing-faq">
+      <div class="qct-shell">
+        <p class="qct-section-label">SIK SORULANLAR</p>
+        <h2>{platform} kurulumu hakkında</h2>
+        <div class="qct-faq-grid">
+          {faqItems.map((item) => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-close">
+      <div class="qct-shell qct-close-grid">
+        <div><p class="qct-section-label">ŞEFFAF BAŞLANGIÇ</p><h2>{platform} mağazanızı <em>satışa hazırlayalım.</em></h2></div>
+        <a class="qct-btn qct-btn-light" href="/#fiyat-hesapla">Fiyatını hesapla <span>→</span></a>
+      </div>
+    </section>
+  </div>
+  <Footer slot="footer" lang="tr" />
+</BaseLayout>
