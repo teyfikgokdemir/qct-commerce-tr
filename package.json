@@ -19,5 +19,9 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.3.3"
+  },
+  "overrides": {
+    "devalue": "5.9.1",
+    "svgo": "4.1.0"
   }
 }
