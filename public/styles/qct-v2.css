@@ -222,3 +222,6 @@
   .qct-hero-copy>*,.qct-calculator{opacity:1;transform:none;animation:none}
   .qct-hero-actions .qct-btn-primary::after{display:none}
 }
+
+.qct-price-rows article>small{grid-column:2;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--qct-muted);font-weight:700;text-align:right;margin-top:-2px}
+@media(max-width:760px){.qct-price-rows article>small{grid-column:1;text-align:left;margin-top:-3px}}
