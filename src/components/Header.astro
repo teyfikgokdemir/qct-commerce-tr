@@ -58,6 +58,10 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     </button>
     
     <nav id="site-navigation" class="main-navigation" aria-label={isGeorgian ? 'მთავარი მენიუ' : isEnglish ? 'Main menu' : 'Ana menü'} aria-hidden="true">
+      <div class="mobile-nav-head">
+        <span class="mobile-nav-title">{isGeorgian ? 'QCT COMMERCE' : isEnglish ? 'QCT COMMERCE' : 'QCT COMMERCE'}</span>
+        <button class="mobile-nav-close" type="button" aria-label={isGeorgian ? 'მენიუს დახურვა' : isEnglish ? 'Close menu' : 'Menüyü kapat'} data-mobile-close>×</button>
+      </div>
       <!-- MOBILE ONLY PANEL (ctseg Standard Mythborn Card Grid) -->
       <div class="mobile-only-panel">
         <!-- Card 1: Language Switcher (ctseg Standard 1:1) -->
@@ -153,6 +157,9 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
 
 <style is:global>
   @media (min-width: 1000px) {
+    .mobile-nav-head {
+      display: none !important;
+    }
     .mobile-only-panel {
       display: none !important;
     }
@@ -227,6 +234,15 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
       display: none !important;
     }
 
+    .mobile-nav-head {
+      display: flex !important;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(10,10,16,.96);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
     .mobile-only-panel {
       display: flex !important;
       flex-direction: column !important;
@@ -350,4 +366,11 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     justify-content: center !important;
     text-decoration: none !important;
   }
+</style>
+<style is:global>
+@media (max-width:999px){
+  .site-menu-toggle{touch-action:manipulation}
+  .main-navigation.is-open{display:flex!important}
+  .mobile-nav-close{touch-action:manipulation}
+}
 </style>
