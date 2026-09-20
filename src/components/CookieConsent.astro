@@ -92,12 +92,17 @@ const policyUrl = '/cerez-politikasi/';
       if (banner) banner.hidden = false;
     };
 
+    window.addEventListener('load', () => {
+      if (window.requestIdleCallback) {
+        window.requestIdleCallback(loadAnalytics, { timeout: 2200 });
+      } else {
+        window.setTimeout(loadAnalytics, 1600);
+      }
+    });
+
     const savedConsent = localStorage.getItem(storageKey);
 
-    if (savedConsent === 'granted') {
-      closeBanner();
-      loadAnalytics();
-    } else if (savedConsent === 'denied') {
+    if (savedConsent === 'granted' || savedConsent === 'denied') {
       closeBanner();
     } else {
       openBanner();
