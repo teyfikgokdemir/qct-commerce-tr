@@ -21,9 +21,16 @@ const platforms = [
 ---
 
 <div class="qct-v2" data-qct-v2>
-  <div class="qct-intro" data-intro-banner hidden>
-    <span>Web projenizin fiyatını artık 60 saniyede öğrenebilirsiniz.</span>
-    <button type="button" aria-label="Duyuruyu kapat" data-intro-close>×</button>
+  <div class="qct-intro-overlay" data-intro-banner hidden>
+    <div class="qct-intro-card" role="dialog" aria-modal="false" aria-label="QCT Commerce yenilik duyurusu">
+      <button type="button" class="qct-intro-close" aria-label="Duyuruyu kapat" data-intro-close>×</button>
+      <div class="qct-intro-mark">QCT</div>
+      <p class="qct-intro-kicker">YENİ QCT COMMERCE</p>
+      <h2>Fiyat artık gizli değil.</h2>
+      <p>Web, e-ticaret ve görünürlük projeleriniz için başlangıç fiyatını 60 saniyede hesaplayın.</p>
+      <div class="qct-intro-line"></div>
+      <span class="qct-intro-foot">Şeffaf fiyat · Net kapsam · Hızlı başlangıç</span>
+    </div>
   </div>
 
   <section class="qct-hero" aria-labelledby="qct-hero-title">
@@ -308,9 +315,9 @@ const platforms = [
         localStorage.setItem(key, '1');
         window.setTimeout(() => {
           banner.classList.remove('is-visible');
-          window.setTimeout(() => { banner.hidden = true; }, 350);
-        }, 2800);
-      }, 350);
+          window.setTimeout(() => { banner.hidden = true; }, 420);
+        }, 3000);
+      }, 450);
     }
   } catch {}
 
