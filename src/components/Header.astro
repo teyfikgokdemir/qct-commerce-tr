@@ -514,3 +514,110 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   }
 }
 </style>
+
+<style is:global>
+@media (max-width:999px){
+  .main-navigation{
+    padding:calc(12px + env(safe-area-inset-top,0px)) 16px calc(14px + env(safe-area-inset-bottom,0px))!important;
+  }
+
+  .mobile-nav-head{
+    margin:0 0 12px!important;
+    padding:2px 0 10px!important;
+  }
+
+  .mobile-nav-title{
+    font-size:.78rem!important;
+    letter-spacing:.14em!important;
+  }
+
+  .mobile-nav-close{
+    width:38px!important;
+    height:38px!important;
+    font-size:18px!important;
+  }
+
+  .mobile-only-panel{
+    gap:18px!important;
+  }
+
+  .qct-mobile-primary{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    border-top:0!important;
+  }
+
+  .qct-mobile-primary__link{
+    min-height:54px!important;
+    padding:12px 13px!important;
+    border:1px solid rgba(23,22,20,.1)!important;
+    border-radius:14px!important;
+    background:rgba(255,250,245,.72)!important;
+    font-size:1rem!important;
+    font-weight:800!important;
+    letter-spacing:-.025em!important;
+  }
+
+  .qct-mobile-primary__link span:last-child{
+    font-size:.75rem!important;
+    opacity:.65!important;
+  }
+
+  .qct-mobile-services{
+    gap:9px!important;
+  }
+
+  .qct-mobile-section-head>span{
+    font-size:.6rem!important;
+  }
+
+  .qct-mobile-section-head small{
+    font-size:.62rem!important;
+  }
+
+  .qct-mobile-services__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;
+  }
+
+  .qct-mobile-services__grid a{
+    min-height:48px!important;
+    padding:10px 11px!important;
+    border-radius:12px!important;
+    font-size:.74rem!important;
+    line-height:1.2!important;
+    background:rgba(255,250,245,.58)!important;
+  }
+
+  .qct-mobile-bottom{
+    gap:9px!important;
+    padding-top:0!important;
+  }
+
+  .qct-mobile-languages{
+    gap:6px!important;
+  }
+
+  .qct-mobile-languages a{
+    width:40px!important;
+    height:32px!important;
+    font-size:.66rem!important;
+  }
+
+  .qct-mobile-project{
+    min-height:48px!important;
+    border-radius:12px!important;
+    padding:0 15px!important;
+    font-size:.84rem!important;
+  }
+
+  @media (max-height:760px){
+    .mobile-only-panel{gap:14px!important}
+    .qct-mobile-primary{gap:6px!important}
+    .qct-mobile-primary__link{min-height:48px!important;font-size:.92rem!important;padding:10px 11px!important}
+    .qct-mobile-services__grid a{min-height:44px!important;font-size:.7rem!important}
+    .qct-mobile-project{min-height:44px!important}
+  }
+}
+</style>
