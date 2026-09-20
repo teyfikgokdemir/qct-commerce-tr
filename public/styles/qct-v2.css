@@ -81,15 +81,18 @@
 .qct-intro-card{position:relative;width:min(560px,calc(100% - 16px));background:#171614;color:#f7f1e9;border:1px solid rgba(255,255,255,.10);border-radius:30px;padding:34px 34px 28px;box-shadow:0 28px 90px rgba(0,0,0,.28);transform:translateY(14px) scale(.97);opacity:.9;transition:transform .42s cubic-bezier(.2,.7,.2,1),opacity .42s ease}
 .qct-intro-overlay.is-visible .qct-intro-card{transform:translateY(0) scale(1);opacity:1}
 .qct-intro-close{position:absolute;right:18px;top:18px;width:36px;height:36px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(255,255,255,.06);color:#fff;font-size:22px;line-height:1;cursor:pointer}
-.qct-intro-mark{display:grid;place-items:center;width:54px;height:54px;border-radius:16px;background:var(--qct-accent);color:white;font-weight:900;letter-spacing:.08em;font-size:15px;margin-bottom:22px}
-.qct-intro-kicker{margin:0 0 10px;font-size:10px;letter-spacing:.22em;font-weight:800;color:#d9b0a6}
+.qct-intro-mark{display:grid;place-items:center;width:54px;height:54px;border-radius:16px;background:#c8ff3d;color:#171614;font-weight:900;letter-spacing:.08em;font-size:15px;margin-bottom:22px;box-shadow:0 0 0 6px rgba(200,255,61,.08)}
+.qct-intro-kicker{margin:0 0 10px;font-size:10px;letter-spacing:.22em;font-weight:800;color:#ff7b67}
 .qct-intro-card h2{margin:0;font-size:clamp(34px,5vw,54px);line-height:.98;letter-spacing:-.05em}
 .qct-intro-card>p:not(.qct-intro-kicker){margin:18px 0 0;color:#cfc7be;font-size:16px;line-height:1.6;max-width:470px}
-.qct-intro-line{height:1px;background:linear-gradient(90deg,var(--qct-accent),rgba(255,255,255,.08));margin:24px 0 14px}
-.qct-intro-foot{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#aFA79f}
+.qct-intro-line{height:2px;background:linear-gradient(90deg,#c8ff3d 0%,#ff7b67 54%,rgba(255,255,255,.08) 100%);margin:24px 0 14px}
+.qct-intro-foot{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#d4ccc4}
 @media(max-width:640px){
   .qct-intro-overlay{padding:16px}
   .qct-intro-card{border-radius:24px;padding:28px 24px 24px}
   .qct-intro-card h2{font-size:38px}
   .qct-intro-card>p:not(.qct-intro-kicker){font-size:15px}
 }
+
+.qct-intro-card::before{content:"";position:absolute;inset:0;border-radius:30px;padding:1px;background:linear-gradient(135deg,rgba(200,255,61,.6),rgba(255,123,103,.38),rgba(255,255,255,.06));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.qct-intro-card::after{content:"";position:absolute;right:34px;bottom:30px;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,61,.18),rgba(200,255,61,0) 68%);pointer-events:none}
