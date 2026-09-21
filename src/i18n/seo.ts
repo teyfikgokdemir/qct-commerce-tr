@@ -4,7 +4,7 @@ export type SeoPage =
   | 'blog-shopify' | 'blog-mistakes' | 'blog-marketplace' | 'blog-ai-search'
   | 'blog-ai-product-content' | 'blog-whatsapp-automation'
   | 'blog-google-not-visible' | 'blog-chatgpt-visibility' | 'blog-web-pricing-2026'
-  | 'blog-ikas-shopify-2026' | 'blog-mobile-ecommerce-conversion'
+  | 'blog-ikas-shopify-2026' | 'blog-mobile-ecommerce-conversion' | 'blog-ikas-cost-2026'
   | 'work' | 'work-headwear' | 'work-misima' | 'work-artman';
 
 interface SeoEntry { title: string; description: string; }
@@ -33,6 +33,7 @@ const seo: Record<SeoPage, SeoEntry> = {
   'blog-web-pricing-2026': { title: 'Web Sitesi Yaptırma Fiyatları 2026: Neye Göre Değişir?', description: 'Kurumsal web, e-ticaret, site yenileme ve SEO projelerinde fiyatı belirleyen kapsam, sayfa, ürün, entegrasyon ve bakım kalemlerini şeffaf biçimde öğrenin.' },
   'blog-ikas-shopify-2026': { title: 'ikas mı Shopify mı? Türkiye için 2026 Karşılaştırması', description: 'ikas ve Shopify’ı Türkiye pazarı için ödeme, entegrasyon, yönetim, uluslararası satış, SEO ve toplam sahip olma maliyeti açısından karşılaştırın.' },
   'blog-mobile-ecommerce-conversion': { title: 'Mobil E-Ticaret Sitesi Neden Satış Yapmıyor? 2026 Rehberi', description: 'Mobil e-ticaret dönüşümünü düşüren hız, menü, filtre, ürün sayfası, sepet ve ödeme sorunlarını tespit etmek için uygulamalı kontrol listesi.' },
+  'blog-ikas-cost-2026': { title: 'ikas Fiyatları 2026: Paket, Kurulum, Tema ve SEO', description: 'ikas paket, mağaza kurulum, tema düzenleme, ürün girişi, SEO, entegrasyon ve üçüncü taraf maliyetlerini ayrı kalemlerle planlayın.' },
   work: { title: 'Seçili Web ve E-ticaret Çalışmaları — QCT Commerce', description: 'QCT ekosistemi kapsamında gerçekleştirilen seçili web, e-ticaret ve dijital deneyim çalışmalarını doğrulanabilir kapsam ve çıktılarıyla inceleyin.' },
   'work-headwear': { title: 'HEADWEAR E-ticaret Vaka Çalışması — QCT Commerce', description: 'HEADWEAR için ürün keşfi, çok dilli mağaza yapısı, mobil alışveriş ve teknik arama temellerini birleştiren e-ticaret çalışmasını inceleyin.' },
   'work-misima': { title: 'Misima Group Web Vaka Çalışması — QCT Commerce', description: 'Misima Group için web stratejisi, bilgi mimarisi, arayüz tasarımı ve geliştirmeyi birleştiren kurumsal dijital deneyimi inceleyin.' },

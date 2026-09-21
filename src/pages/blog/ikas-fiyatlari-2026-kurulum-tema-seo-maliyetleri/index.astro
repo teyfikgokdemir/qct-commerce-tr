@@ -1,0 +1,6 @@
+---
+import BlogArticle from '../../../components/BlogArticle.astro';
+import { getArticle } from '../../../data/blog';
+const article = getArticle('ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri');
+---
+<BlogArticle article={article} />
