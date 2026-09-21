@@ -704,3 +704,66 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   }
 }
 </style>
+
+<style is:global>
+@media (max-width:999px){
+  .qct-mobile-primary__link,
+  .qct-mobile-services__grid a{
+    color:#ff8b78!important;
+  }
+
+  .qct-mobile-primary__link:hover,
+  .qct-mobile-primary__link:focus-visible,
+  .qct-mobile-services__grid a:hover,
+  .qct-mobile-services__grid a:focus-visible{
+    color:#ff9a87!important;
+  }
+
+  .mobile-nav-title{
+    color:#ff8b78!important;
+  }
+
+  .qct-mobile-bottom{
+    margin-top:2px!important;
+    padding-top:12px!important;
+    border-top:1px solid rgba(255,255,255,.08)!important;
+    background:transparent!important;
+  }
+
+  .qct-mobile-languages{
+    align-items:center!important;
+    flex-wrap:wrap!important;
+  }
+
+  .qct-mobile-languages a{
+    color:#ff8b78!important;
+    background:transparent!important;
+  }
+
+  .qct-mobile-languages a.active{
+    background:#c8ff3d!important;
+    color:#171614!important;
+  }
+
+  .qct-mobile-project{
+    margin-top:1px!important;
+  }
+
+  .main-navigation{
+    padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))!important;
+  }
+
+  @media (max-height:760px){
+    .qct-mobile-bottom{
+      padding-top:9px!important;
+    }
+    .qct-mobile-languages a{
+      width:38px!important;
+      height:30px!important;
+    }
+    .qct-mobile-project{
+      min-height:42px!important;
+    }
+  }
+}
+</style>
