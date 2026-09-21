@@ -20,7 +20,7 @@ const seo: Record<SeoPage, SeoEntry> = {
   'whatsapp-commerce': { title: 'B2B WhatsApp Satış Sistemleri — QCT Commerce', description: 'Web, ürün sayfası ve reklamlardan gelen talepleri bağlamlı, ölçülebilir ve ekip kontrolündeki WhatsApp satış akışlarına dönüştürüyoruz.' },
   'meta-ads': { title: 'Meta Reklamları ve Landing Page — QCT Commerce', description: 'Meta reklamlarını teklif ile eşleşen mobil landing page, net CTA, WhatsApp veya form akışı ve doğru dönüşüm ölçümüyle birlikte kuruyoruz.' },
   careers: { title: 'Kariyer ve İş Birliği — QCT Commerce', description: 'QCT Commerce kariyer duyurularını, çalışma ilkelerini ve genel iş birliği başvuruları için paylaşmanız gereken bilgileri inceleyin.' },
-  contact: { title: 'İletişim — QCT Commerce Türkiye', description: 'E-ticaret veya dijital büyüme projenizi anlatmak için QCT Commerce’a e-posta, telefon ya da WhatsApp üzerinden ulaşın.' },
+  contact: { title: 'İletişim — QCT Commerce Türkiye', description: 'E-ticaret veya dijital büyüme projenizi anlatmak için QCT Commerce’a e-posta veya WhatsApp üzerinden ulaşın.' },
   blog: { title: 'E-ticaret ve Dijital Büyüme Blogu', description: 'Türkiye’de e-ticaret altyapısı, Shopify, yapay zekâ araması, WhatsApp satış, dönüşüm ve dijital büyüme için uygulamaya dönük rehberler.' },
   'blog-shopify': { title: 'Shopify Mağaza Kurma Rehberi — Türkiye', description: 'Türkiye’de Shopify mağazası kurmadan önce ürün yapısı, ödeme, kargo, mobil deneyim, ölçüm ve operasyon için planlanması gereken adımlar.' },
   'blog-mistakes': { title: 'E-ticaret Sitesinde Sık Yapılan Hatalar', description: 'Ürün sayfası, mobil deneyim, ödeme akışı, ölçüm ve içerik yapısında e-ticaret satışını zorlaştıran temel hataları ve çözüm yollarını inceleyin.' },

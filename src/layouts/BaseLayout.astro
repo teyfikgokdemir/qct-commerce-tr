@@ -79,8 +79,8 @@ const organizationSchema = {
   description: isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
   areaServed: areaServedSchema,
   knowsAbout,
-  email: 'info@qctcommerce.com', telephone: '+90 545 678 26 55',
-  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 545 678 26 55', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
+  email: 'info@qctcommerce.com',
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
   hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Digital commerce and international sales solutions', itemListElement: knowsAbout.map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })) },
   ...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };
@@ -124,6 +124,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   {isIndexable ? <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" /> : <meta name="robots" content="noindex, follow" />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260720-1" />
   <link rel="canonical" href={canonicalUrl} />
+  <link rel="describedby" href="/llms.txt" type="text/markdown" />
   {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={new URL(alternate.href, SITE_URL).toString()} />)}
   {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={new URL(xDefaultHref, SITE_URL).toString()} />}
   <meta property="og:type" content={type} />
