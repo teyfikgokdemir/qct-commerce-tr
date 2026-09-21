@@ -7,7 +7,7 @@ import { getPageSeo } from '../i18n/seo';
 interface Props { lang: string; }
 const { lang } = Astro.props;
 const seo = getPageSeo('seo-performance');
-const d = 'Üreticiler, toptancılar, ihracatçılar, perakende markaları ve büyüyen KOBİ’lerin Google, yanıt motorları ve yapay zekâ destekli arama sistemlerinde doğru bağlamla bulunmasını sağlayan teknik, içerik ve varlık altyapısını geliştiriyoruz.';
+const d = 'Mevcut web sitenizi teknik SEO, içerik, arama niyeti, yapılandırılmış veri, GEO, AEO ve AI görünürlük açısından analiz ediyor; Google ve yapay zekâ destekli aramalarda daha doğru anlaşılması için gerekli iyileştirmeleri uyguluyoruz.';
 ---
 <BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="SEO, GEO, AEO ve AIO" service={{ name: 'SEO, GEO, AEO ve AIO', description: d }} includeServiceCardStyles>
 <Header slot="header" lang={lang}/><ServicePage lang={lang} eyebrow="SEO, GEO, AEO VE AIO" title="Google’da ve yapay zekâ aramalarında daha görünür olun." lead={d} ctaPrimary="Görünürlük yapımızı değerlendirelim" ctaSecondary="Tüm hizmetler"
