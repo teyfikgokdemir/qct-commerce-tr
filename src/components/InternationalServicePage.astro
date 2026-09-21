@@ -29,7 +29,7 @@ const faqSchema = {
   mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
 };
 ---
-<BaseLayout title={title} description={description} lang="en" breadcrumbLabel={serviceName} service={{ name: serviceName, description }} areaServed={['Türkiye', 'Georgia', 'Europe', 'Gulf countries']}>
+<BaseLayout title={title} description={description} lang="en" breadcrumbLabel={serviceName} service={{ name: serviceName, description }} areaServed={['Türkiye']}>
   <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Header slot="header" lang="en" />
 

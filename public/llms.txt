@@ -23,16 +23,8 @@ The English section mirrors the Türkiye service scope for English-speaking resi
 - [Meta ads and landing pages](https://qctcommerce.com/en/meta-ads/): Campaign-to-conversion systems.
 - [English blog](https://qctcommerce.com/en/blog/): English versions of QCT Commerce guides for Türkiye.
 
-## International pages
+## Dedicated international market-entry pages
 
-- [International home](https://qctcommerce.com/en/): Digital commerce and international sales systems for manufacturers, distributors and growing brands.
-- [English selected work](https://qctcommerce.com/en/work/): Verified live projects across multilingual e-commerce, corporate B2B websites and service architecture.
-- [English how we work](https://qctcommerce.com/en/how-we-work/): Commercial audit, market-specific direction, focused implementation and evidence-led improvement.
-- [English contact](https://qctcommerce.com/en/contact/): Verified contact details and guidance for starting an international digital project.
-- [English e-commerce systems](https://qctcommerce.com/en/ecommerce/): Product discovery, checkout, measurement and commerce operations.
-- [English B2B web design](https://qctcommerce.com/en/web-design/): Multilingual B2B websites structured around buyer questions and conversion paths.
-- [English search visibility](https://qctcommerce.com/en/search-visibility/): Technical SEO, GEO, AEO and AIO foundations for search and AI-assisted research.
-- [English AI and sales automation](https://qctcommerce.com/en/ai-automation/): Controlled CRM, lead routing and AI-assisted operational workflows.
 - [Georgia market page in English](https://qctcommerce.com/en/georgia/): Multilingual B2B websites, export catalogues, SEO, GEO and sales automation for Georgian companies.
 - [Georgia market page in Georgian](https://qctcommerce.com/ka/georgia/): ქართული კომპანიებისთვის მრავალენოვანი B2B ვებსაიტები, საექსპორტო კატალოგები და გაყიდვების ავტომატიზაცია.
 
@@ -42,7 +34,7 @@ The English section mirrors the Türkiye service scope for English-speaking resi
 - [Hakkımızda](https://qctcommerce.com/hakkimizda/): Brand positioning, working approach and QCT Studio relationship.
 - [Hizmetler](https://qctcommerce.com/hizmetler/): Overview of digital commerce and growth services.
 - [Çalışmalar](https://qctcommerce.com/calismalar/): Selected project and implementation examples.
-- [İletişim](https://qctcommerce.com/iletisim/): Verified email, telephone and WhatsApp details.
+- [İletişim](https://qctcommerce.com/iletisim/): Verified email and WhatsApp details.
 
 ## Services
 

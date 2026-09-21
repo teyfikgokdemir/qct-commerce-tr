@@ -108,7 +108,7 @@ const schema = {
   about: work.sector, creator: { '@id': 'https://qctcommerce.com/#organization' }, mainEntityOfPage: { '@id': `${canonical}#webpage` }
 };
 ---
-<BaseLayout title={`${work.name} Case Study | QCT Commerce`} description={work.summary} lang="en" image={work.image} imageWidth={1600} imageHeight={1000} pageType="WebPage" breadcrumbLabel={work.name} includeWorkStyles={true} areaServed={['Türkiye','Georgia','Europe','Gulf countries']}>
+<BaseLayout title={`${work.name} Case Study | QCT Commerce`} description={work.summary} lang="en" image={work.image} imageWidth={1600} imageHeight={1000} pageType="WebPage" breadcrumbLabel={work.name} includeWorkStyles={true} areaServed={['Türkiye']}>
   <Header slot="header" lang="en" />
   <script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
   <article class="qct-int-case">
