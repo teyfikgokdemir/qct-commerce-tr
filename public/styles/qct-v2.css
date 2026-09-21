@@ -251,3 +251,9 @@
     letter-spacing:.16em!important;
   }
 }
+
+@media(max-width:640px){
+  .qct-hero{
+    padding-top:calc(var(--qct-header-height) + var(--qct-header-gap))!important;
+  }
+}
