@@ -13,7 +13,6 @@ const mobileCopy = isGeorgian ? {
   title: 'იდეა ერთად გადავაქციოთ რეალურ ციფრულ სისტემად.',
   text: 'მოგვწერეთ WhatsApp-ზე და საჭიროება მოკლედ დავაზუსტოთ.',
   whatsapp: 'WhatsApp-ზე დაწყება',
-  phoneLabel: 'დაგვირეკეთ',
   top: 'ზემოთ',
   rights: 'ყველა უფლება დაცულია.'
 } : isEnglish ? {
@@ -25,7 +24,6 @@ const mobileCopy = isGeorgian ? {
   title: 'Turn the idea into a digital system that can actually be used.',
   text: 'Message us on WhatsApp and we will clarify the right starting scope.',
   whatsapp: 'Start on WhatsApp',
-  phoneLabel: 'Call us',
   top: 'Back to top',
   rights: 'All rights reserved.'
 } : {
@@ -37,7 +35,6 @@ const mobileCopy = isGeorgian ? {
   title: 'Fikrinizi birlikte gerçeğe dönüştürelim.',
   text: 'İhtiyacınızı WhatsApp’tan paylaşın; doğru başlangıç kapsamını birlikte netleştirelim.',
   whatsapp: 'WhatsApp’tan Başla',
-  phoneLabel: 'Bizi arayın',
   top: 'Yukarı çık',
   rights: 'Tüm hakları saklıdır.'
 };
@@ -153,7 +150,7 @@ const legalLinks = isGeorgian ? [
     <div class="site-footer__accordions">
       <details open>
         <summary>
-          <span class="site-footer__round-icon" aria-hidden="true">◆</span>
+          <span class="site-footer__round-icon" aria-hidden="true"><i></i></span>
           <strong>{mobileCopy.services}</strong>
           <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
         </summary>
@@ -164,7 +161,7 @@ const legalLinks = isGeorgian ? [
 
       <details>
         <summary>
-          <span class="site-footer__round-icon" aria-hidden="true">◇</span>
+          <span class="site-footer__round-icon" aria-hidden="true"><i></i></span>
           <strong>{mobileCopy.company}</strong>
           <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
         </summary>
@@ -175,7 +172,7 @@ const legalLinks = isGeorgian ? [
 
       <details>
         <summary>
-          <span class="site-footer__round-icon" aria-hidden="true">▤</span>
+          <span class="site-footer__round-icon" aria-hidden="true"><i></i></span>
           <strong>{mobileCopy.legal}</strong>
           <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
         </summary>
@@ -197,10 +194,7 @@ const legalLinks = isGeorgian ? [
           <strong>{mobileCopy.whatsapp}</strong>
           <span aria-hidden="true">→</span>
         </a>
-        <a class="site-footer__phone" href="tel:+905456782655">
-          <small>{mobileCopy.phoneLabel}</small>
-          <strong>+90 545 678 26 55</strong>
-        </a>
+
       </div>
     </section>
 
@@ -315,15 +309,32 @@ const legalLinks = isGeorgian ? [
     .site-footer__accordions summary::-webkit-details-marker { display:none; }
 
     .site-footer__round-icon {
+      position:relative;
       width:38px;
       height:38px;
       display:grid;
       place-items:center;
-      border:1px solid rgba(255,123,103,.34);
+      border:1px solid rgba(255,123,103,.24);
       border-radius:50%;
-      color:#ff7b67;
-      font-size:.78rem;
-      background:rgba(255,123,103,.04);
+      background:linear-gradient(145deg,rgba(255,123,103,.07),rgba(255,255,255,.01));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+    }
+
+    .site-footer__round-icon::before {
+      content:"";
+      position:absolute;
+      inset:6px;
+      border:1px solid rgba(255,123,103,.10);
+      border-radius:50%;
+    }
+
+    .site-footer__round-icon i {
+      width:7px;
+      height:7px;
+      border-radius:2px;
+      background:#ff634f;
+      box-shadow:0 0 14px rgba(255,99,79,.28);
+      transform:rotate(45deg);
     }
 
     .site-footer__accordions summary strong {
@@ -443,8 +454,7 @@ const legalLinks = isGeorgian ? [
     }
 
     .site-footer__cta-actions {
-      display:grid;
-      gap:10px;
+      display:block;
       margin-top:20px;
     }
 
@@ -469,28 +479,6 @@ const legalLinks = isGeorgian ? [
 
     .site-footer__whatsapp span:last-child { font-size:1rem; }
 
-    .site-footer__phone {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:0 3px;
-      min-height:38px;
-      color:#f7f1e9;
-      text-decoration:none;
-    }
-
-    .site-footer__phone small {
-      color:rgba(247,241,233,.48);
-      font-size:.62rem;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-    }
-
-    .site-footer__phone strong {
-      font-size:.78rem;
-      font-weight:750;
-    }
 
     .site-footer__mobile-bottom {
       display:block;
