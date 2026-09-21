@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';import Header from '../../../components/Header.astro';import Footer from '../../../components/Footer.astro';
+const sections=[
+  {
+    "title": "Data controller context",
+    "text": "For personal data processed through qctcommerce.com, QCT Commerce provides the relevant data-controller information in its Turkish KVKK notice."
+  },
+  {
+    "title": "Possible personal data",
+    "text": "Depending on how you contact us, data may include name, contact details, company information, project or enquiry content and consent-based analytics information."
+  },
+  {
+    "title": "Purposes",
+    "text": "Data may be processed to respond to requests, manage project communication, provide services, maintain security and meet applicable legal obligations."
+  },
+  {
+    "title": "Your requests",
+    "text": "For data-related requests, contact info@qctcommerce.com. For legal interpretation, refer to the Turkish KVKK notice and applicable Turkish law."
+  }
+];
+---
+<BaseLayout title="KVKK Information Notice in English | QCT Commerce" description="English-language summary of the QCT Commerce KVKK information notice for users who prefer English while operating or residing in Türkiye." lang="en" breadcrumbLabel="KVKK information notice — English summary"><Header slot="header" lang="en"/><section class="page-hero section"><div class="container"><p class="eyebrow">LEGAL · TÜRKİYE</p><h1>KVKK information notice — English summary</h1><p class="page-hero__lead">An English-language summary for users who prefer English. The Turkish KVKK notice remains the primary legal-language version.</p></div></section><section class="section"><div class="container"><div class="qct-legal-en">{sections.map(s=><section><h2>{s.title}</h2><p>{s.text}</p></section>)}</div></div></section><Footer slot="footer" lang="en"/></BaseLayout>
+<style>.qct-legal-en{max-width:860px}.qct-legal-en section{padding:24px 0;border-top:1px solid var(--qct-color-line)}.qct-legal-en h2{font-size:1.5rem}.qct-legal-en p{color:var(--qct-color-muted);line-height:1.75}</style>

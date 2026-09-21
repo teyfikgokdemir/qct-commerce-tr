@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';import Header from '../../../components/Header.astro';import Footer from '../../../components/Footer.astro';
+const sections=[
+  {
+    "title": "Essential storage",
+    "text": "Essential storage may be used where required for core site functionality, interface preferences or security."
+  },
+  {
+    "title": "Optional analytics",
+    "text": "Analytics is optional and should only be activated after the relevant consent is given through the cookie banner."
+  },
+  {
+    "title": "Changing preferences",
+    "text": "Where available, cookie preferences can be changed through the site controls or browser settings."
+  },
+  {
+    "title": "Third-party services",
+    "text": "Some embedded or connected services may apply their own storage rules according to their terms and technical behaviour."
+  }
+];
+---
+<BaseLayout title="Cookie Policy | QCT Commerce" description="English cookie policy for qctcommerce.com describing essential cookies, optional analytics and consent controls." lang="en" breadcrumbLabel="Cookie policy"><Header slot="header" lang="en"/><section class="page-hero section"><div class="container"><p class="eyebrow">LEGAL</p><h1>Cookie policy</h1><p class="page-hero__lead">How essential storage and optional analytics may be used on qctcommerce.com.</p></div></section><section class="section"><div class="container"><div class="qct-legal-en">{sections.map(s=><section><h2>{s.title}</h2><p>{s.text}</p></section>)}</div></div></section><Footer slot="footer" lang="en"/></BaseLayout>
+<style>.qct-legal-en{max-width:860px}.qct-legal-en section{padding:24px 0;border-top:1px solid var(--qct-color-line)}.qct-legal-en h2{font-size:1.5rem}.qct-legal-en p{color:var(--qct-color-muted);line-height:1.75}</style>
