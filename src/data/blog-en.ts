@@ -1,6 +1,34 @@
 export interface BlogArticleEn{slug:string;trSlug:string;title:string;description:string;published:string;modified:string;intro:string;summary:string[];sections:{heading:string;paragraphs:string[];items?:string[]}[];relatedLabel:string;relatedHref:string}
 export const articlesEn:BlogArticleEn[]=[
   {
+    "slug": "marketplace-commission-rates-turkiye-2026",
+    "trSlug": "pazaryeri-komisyon-oranlari-2026",
+    "title": "Marketplace commission rates in Türkiye 2026: Trendyol, Hepsiburada, Amazon, n11 and Pazarama",
+    "description": "Compare marketplace commission, service, advertising, logistics and return costs in Türkiye and calculate the real contribution margin per order.",
+    "published": "2026-09-22",
+    "modified": "2026-09-22",
+    "intro": "High marketplace sales do not automatically mean high profit. Commission, service fees, campaigns, advertising, shipping, returns and product cost can compress the contribution left from each order.",
+    "summary": [
+      "Compare total order cost, not commission alone.",
+      "Verify current Trendyol, Hepsiburada, Pazarama and other rates in the seller panel because terms vary by category and campaign.",
+      "Amazon Türkiye officially lists category commissions generally ranging from 6% to 20%.",
+      "n11 can apply marketing and marketplace service fees in addition to category commission.",
+      "An owned e-commerce store can complement marketplaces by improving margin and customer-relationship control."
+    ],
+    "sections": [
+      {"heading":"Why marketplace margin matters in 2026","paragraphs":["Türkiye's Ministry of Trade reported 2025 e-commerce volume above 4.57 trillion TL and more than 634,000 businesses active in e-commerce. Growth creates opportunity, but it also increases price, campaign and advertising competition."]},
+      {"heading":"Trendyol and Hepsiburada: use the current seller terms","paragraphs":["Commission and commercial terms can change by category, campaign and seller agreement. Use the current seller panel as the source of truth and compare total deductions, logistics, advertising and payment timing for the same SKU."]},
+      {"heading":"Amazon Türkiye commission rates","paragraphs":["Amazon Türkiye's official pricing page states that sales commissions generally range from 6% to 20% depending on category. Logistics and programme-specific charges may be additional."]},
+      {"heading":"n11 commission and service fees","paragraphs":["n11 publishes category-level commission tables. Its official support documentation also describes marketing service and marketplace service fees that can apply in addition to commission, so the visible commission percentage may not equal the total deduction."]},
+      {"heading":"Pazarama and ÇiçekSepeti","paragraphs":["Current category rates and commercial terms should be verified directly in each seller panel. Do not use a static third-party rate list as a permanent pricing assumption."]},
+      {"heading":"How to calculate marketplace contribution margin","paragraphs":["A practical operating formula is order revenue minus product cost, marketplace commission and service fees, logistics, advertising allocation, expected return/cancellation cost and other order-linked expenses. The remainder is contribution before fixed overhead and taxes."]},
+      {"heading":"Should you leave marketplaces for your own store?","paragraphs":["Usually not completely. Marketplaces can provide ready demand and discovery; an owned store gives more control over brand experience, customer relationship, SEO and AI-search visibility. A hybrid channel model is often more resilient."]},
+      {"heading":"Where to verify current data","paragraphs":["This guide was reviewed on 22 September 2026 using official sources from Türkiye's Ministry of Trade, Amazon Türkiye and n11. Marketplace terms can change, so current seller panels remain the final source for commercial decisions."]}
+    ],
+    "relatedLabel": "Explore e-commerce and marketplace strategy",
+    "relatedHref": "/en/ecommerce/"
+  },
+  {
     "slug": "ikas-pricing-2026-setup-theme-seo-costs",
     "trSlug": "ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri",
     "title": "ikas pricing 2026: package, setup, theme, SEO and additional costs",

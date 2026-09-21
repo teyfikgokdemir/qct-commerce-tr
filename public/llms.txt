@@ -93,3 +93,7 @@ The English section mirrors the Türkiye service scope for English-speaking resi
 - [English KVKK notice](https://qctcommerce.com/en/kvkk/): English summary of Türkiye's personal-data information notice.
 - [English terms of use](https://qctcommerce.com/en/terms/): Website terms and pricing/third-party-service scope.
 - [English cookie policy](https://qctcommerce.com/en/cookie-policy/): Cookie preferences and optional analytics information.
+
+
+- [Pazaryeri komisyon oranları 2026](https://qctcommerce.com/blog/pazaryeri-komisyon-oranlari-2026/): Trendyol, Hepsiburada, Amazon Türkiye, n11, Pazarama ve ÇiçekSepeti satışlarında komisyon, hizmet bedeli, reklam, lojistik ve gerçek katkı marjı hesabı.
+- [Marketplace commission rates in Türkiye 2026](https://qctcommerce.com/en/blog/marketplace-commission-rates-turkiye-2026/): English guide to total marketplace costs and contribution margin in Türkiye.
