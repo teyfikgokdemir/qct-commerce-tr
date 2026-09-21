@@ -6,10 +6,15 @@ const isEnglish = lang === 'en';
 const isGeorgian = lang === 'ka';
 
 const serviceLinks = isEnglish ? [
-  ['E-commerce Systems', '/en/ecommerce/'],
-  ['B2B Web Design', '/en/web-design/'],
+  ['All Services', '/en/services/'],
+  ['E-commerce', '/en/ecommerce/'],
+  ['Shopify Setup', '/en/shopify-store-setup/'],
+  ['ikas Setup', '/en/ikas-store-setup/'],
+  ['Web Design', '/en/web-design/'],
+  ['WhatsApp Sales', '/en/whatsapp-sales/'],
   ['SEO, GEO, AEO & AIO', '/en/search-visibility/'],
-  ['AI & Sales Automation', '/en/ai-automation/']
+  ['Meta Ads', '/en/meta-ads/'],
+  ['AI Automation', '/en/ai-automation/']
 ] : [
   ['Tüm Hizmetler', '/hizmetler/'],
   ['E-Ticaret Altyapısı', '/e-ticaret/'],
@@ -30,10 +35,10 @@ const quickLinks = isGeorgian ? [
   ['კონტაქტი', 'mailto:info@qctcommerce.com']
 ] : isEnglish ? [
   ['Home', '/en/'],
+  ['Services', '/en/services/'],
   ['Work', '/en/work/'],
-  ['About', '/en/about/'],
-  ['How We Work', '/en/how-we-work/'],
-  ['Audit', '/en/audit/'],
+  ['Pricing', '/en/pricing/'],
+  ['Blog', '/en/blog/'],
   ['Contact', '/en/contact/']
 ] : [
   ['Ana Sayfa', '/'],
@@ -112,7 +117,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
             <li class:list={['menu-item-has-children', { 'is-current': isEnglishServiceCurrent }]}>
               <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Solutions</span></button>
               <ul class="sub-menu">
-                <li><a href="/en/ecommerce/">E-commerce systems</a></li><li><a href="/en/web-design/">B2B web design</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/ai-automation/">AI & sales automation</a></li>
+                <li><a href="/en/services/">All services</a></li><li><a href="/en/ecommerce/">E-commerce</a></li><li><a href="/en/shopify-store-setup/">Shopify setup</a></li><li><a href="/en/ikas-store-setup/">ikas setup</a></li><li><a href="/en/web-design/">Web design</a></li><li><a href="/en/whatsapp-sales/">WhatsApp sales</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/meta-ads/">Meta ads</a></li><li><a href="/en/ai-automation/">AI automation</a></li>
               </ul>
             </li>
             <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Work</span></button><ul class="sub-menu"><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>View selected work</a></li><li><a href="/en/contact/">Start a project</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/georgia/" aria-current={isCurrent('/en/georgia/') ? 'page' : undefined}>Georgia</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>

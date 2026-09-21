@@ -1,17 +1,106 @@
 ---
 import InternationalServicePage from '../../../components/InternationalServicePage.astro';
 const capabilities=[
-{title:'Lead capture and routing',text:'Enquiries collected, qualified and assigned without losing context between channels.'},
-{title:'Customer response workflows',text:'AI-assisted replies, knowledge access and escalation rules that keep human control where it matters.'},
-{title:'CRM and operational automation',text:'Connected forms, pipelines, notifications and follow-up tasks that reduce repetitive manual work.'},
-{title:'Measurement and governance',text:'Clear ownership, logs, approval points and performance signals for reliable automation.'}
+  {
+    "title": "Process and bottleneck analysis",
+    "text": "We map repetitive manual steps, waiting time, ownership and error points before selecting a tool."
+  },
+  {
+    "title": "Lead classification and routing",
+    "text": "Forms or messages can be organised by topic, priority, language, product or customer type."
+  },
+  {
+    "title": "Summaries and task extraction",
+    "text": "Meetings, emails, documents or conversations can produce controlled summaries and draft next actions."
+  },
+  {
+    "title": "Data processing",
+    "text": "Rule-based cleaning, formatting, matching and transfer can reduce repeated manual entry."
+  },
+  {
+    "title": "CRM and workflow integration",
+    "text": "Existing systems are connected only where APIs, permissions, security and data quality make sense."
+  },
+  {
+    "title": "Human approval",
+    "text": "Pricing, commitments, sensitive actions and uncertain cases remain behind approval or escalation."
+  },
+  {
+    "title": "Logging and monitoring",
+    "text": "The workflow should make it visible what happened, where it failed and when a human took over."
+  },
+  {
+    "title": "Pilot-first implementation",
+    "text": "We validate a small measurable workflow before expanding into more critical operations."
+  }
 ];
-const process=[{title:'Find the operational leak',text:'We map repeated work, delays, handoff failures and lost enquiries.'},{title:'Design the controlled workflow',text:'We define triggers, data, decisions, human approvals and exception handling.'},{title:'Implement and improve',text:'We release a focused automation, observe real use and refine it safely.'}];
+const process=[
+  {
+    "title": "Business and goal analysis",
+    "text": "We define the business model, target customers, current channels, operational constraints and the commercial result the project should support."
+  },
+  {
+    "title": "Current-state audit",
+    "text": "We review the existing website or store, analytics, content, technical structure, search visibility and integrations where available."
+  },
+  {
+    "title": "Architecture and scope",
+    "text": "We decide what should be retained, rebuilt, migrated or added and document the scope before implementation."
+  },
+  {
+    "title": "Customer journey",
+    "text": "We map the route from search or advertising to evaluation, enquiry, checkout or follow-up."
+  },
+  {
+    "title": "Content and interface",
+    "text": "We structure information, messages, pages and mobile experience around real customer questions."
+  },
+  {
+    "title": "Implementation",
+    "text": "We build the approved structure, connect relevant tools and keep the system maintainable for the internal team."
+  },
+  {
+    "title": "QA and measurement",
+    "text": "We test mobile, forms, links, structured data, performance and included measurement events."
+  },
+  {
+    "title": "Launch and improvement",
+    "text": "We launch in a controlled way and prioritise later improvements using real usage and commercial evidence."
+  }
+];
 const faqItems=[
-{q:'Does AI replace the sales or support team?',a:'No. The system handles repeatable tasks and information retrieval while preserving human ownership of important decisions and relationships.'},
-{q:'Can automation connect to our existing tools?',a:'Often yes. The scope depends on the APIs, permissions and data quality available in the current systems.'},
-{q:'What should be automated first?',a:'The best first workflow is frequent, rule-based, measurable and currently causing delay, lost leads or unnecessary manual effort.'},
-{q:'How do you reduce automation risk?',a:'We define approval points, fallbacks, access rules, logging and human escalation before launch.'}
+  {
+    "q": "Does AI replace employees?",
+    "a": "The objective is to reduce repetitive work, not remove human responsibility for relationships, expertise and business decisions."
+  },
+  {
+    "q": "Can AI make decisions on its own?",
+    "a": "Critical decisions should remain behind human approval and defined stop conditions."
+  },
+  {
+    "q": "What should be automated first?",
+    "a": "A frequent, rule-based, measurable and relatively low-risk process is usually the best pilot."
+  },
+  {
+    "q": "Can you connect our CRM?",
+    "a": "Possibly. Feasibility depends on the CRM API, permissions, security and data model."
+  },
+  {
+    "q": "Can WhatsApp enquiries be classified?",
+    "a": "Where account and permission conditions allow, classification and team routing can be evaluated."
+  },
+  {
+    "q": "How is privacy handled?",
+    "a": "Data minimisation, access permissions, provider terms, retention and sensitive-data handling are reviewed before implementation."
+  },
+  {
+    "q": "How long does setup take?",
+    "a": "It depends on process complexity, system count, data quality and testing."
+  },
+  {
+    "q": "Can the automation be expanded later?",
+    "a": "Yes. Once the pilot is validated, new sources, teams and steps can be added gradually."
+  }
 ];
 ---
-<InternationalServicePage title="AI & Sales Automation Systems | QCT Commerce" description="QCT Commerce builds controlled AI, CRM and sales automation workflows that protect leads, reduce delays and support growing commercial teams." eyebrow="AI and sales automation" heading="Automate the repeated work without losing control of the customer relationship." lead="We connect enquiries, CRM, messaging and internal workflows so teams respond faster and focus on decisions that require people." serviceName="AI and sales automation" problem="Growth creates more messages, handoffs and follow-up tasks. Without a controlled workflow, qualified enquiries wait, context disappears and teams spend time repeating the same operational work." capabilities={capabilities} process={process} faqItems={faqItems}/>
+<InternationalServicePage title="AI & Business Automation in Türkiye | QCT Commerce" description="Human-controlled AI and workflow automation for lead routing, summaries, data handling, CRM and repetitive operations for businesses in Türkiye." eyebrow="AI automation" heading="Move team time from repetitive handling to decisions that require people." lead="We design controlled AI and workflow automations that organise data and enquiries, reduce repeated work and keep critical decisions under human responsibility." serviceName="AI and business automation" problem="As operations grow, manual copy-paste, repeated classification, delayed handoffs and scattered information create cost and errors. Automation is useful only when the rules, data and fallback path are clear." capabilities={capabilities} process={process} faqItems={faqItems}/>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  platform: 'Shopify' | 'ikas';
+  title: string;
+  description: string;
+  heading: string;
+  lead: string;
+  strengths: string[];
+  faqItems: Array<{ q: string; a: string }>;
+}
+const { platform, title, description, heading, lead, strengths, faqItems } = Astro.props;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+<BaseLayout title={title} description={description} lang="en" breadcrumbLabel={platform + ' store setup'}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Header slot="header" lang="en" />
+  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-3" />
+  <div class="qct-v2">
+    <section class="qct-platform-hero">
+      <div class="qct-shell qct-platform-hero-grid">
+        <div>
+          <p class="qct-eyebrow">{platform.toUpperCase()} STORE SETUP</p>
+          <h1>{heading}</h1>
+          <p class="qct-lead">{lead}</p>
+          <div class="qct-hero-actions">
+            <a class="qct-btn qct-btn-primary" href="/en/#fiyat-hesapla">Calculate from 9,900 TL <span>→</span></a>
+            <a class="qct-text-link" href="/en/pricing/">View all pricing</a>
+          </div>
+        </div>
+        <aside class="qct-platform-price">
+          <span>Starting price</span>
+          <strong>9.900 TL</strong>
+          <p>Standard setup, mobile layout, basic technical SEO and launch preparation.</p>
+          <ul>
+            <li>Core store settings</li>
+            <li>Theme and mobile layout</li>
+            <li>Menu / category structure</li>
+            <li>Payment and shipping settings</li>
+            <li>Basic SEO & measurement checks</li>
+            <li>Pre-launch QA</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="qct-platform-detail">
+      <div class="qct-shell">
+        <div class="qct-section-head">
+          <div><p class="qct-section-label">SALES-READY SETUP</p><h2>We do not just open a store.<br/><em>We build a working system.</em></h2></div>
+          <p>{platform} store is planned around product discovery, mobile usability, trust, measurement and the sales journey rather than simply installing a theme.</p>
+        </div>
+        <div class="qct-benefit-grid">
+          {strengths.map((item, i) => <article><span class="qct-index">0{i+1}</span><h3>{item}</h3><p>We configure this area around your product structure and commercial requirements during setup.</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-platform-process">
+      <div class="qct-shell">
+        <p class="qct-section-label">PROCESS</p>
+        <div class="qct-offer-grid">
+          <div><span>01 — Audit</span><small>Ürün, kategori, ödeme, kargo, marka ve mevcut varlıklar.</small></div>
+          <div><span>02 — Structure</span><small>Menü, kategori, ürün şablonu, tema ve mobil deneyim.</small></div>
+          <div><span>03 — Setup</span><small>Teknik ayarlar, gerekli entegrasyonlar ve ürün hazırlığı.</small></div>
+          <div><span>04 — QA & launch</span><small>Mobil, ödeme, kargo, SEO, analitik ve dönüşüm kontrolleri.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-pricing-faq">
+      <div class="qct-shell">
+        <p class="qct-section-label">FREQUENTLY ASKED QUESTIONS</p>
+        <h2>{platform} setup</h2>
+        <div class="qct-faq-grid">
+          {faqItems.map((item) => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-close">
+      <div class="qct-shell qct-close-grid">
+        <div><p class="qct-section-label">TRANSPARENT START</p><h2>{platform} store <em>ready to sell.</em></h2></div>
+        <a class="qct-btn qct-btn-light" href="/en/#fiyat-hesapla">Calculate price <span>→</span></a>
+      </div>
+    </section>
+  </div>
+  <Footer slot="footer" lang="en" />
+</BaseLayout>

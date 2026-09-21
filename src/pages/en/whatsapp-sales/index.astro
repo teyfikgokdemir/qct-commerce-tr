@@ -1,0 +1,106 @@
+---
+import InternationalServicePage from '../../../components/InternationalServicePage.astro';
+const capabilities=[
+  {
+    "title": "Contextual WhatsApp links",
+    "text": "Product, category, campaign, language or enquiry type can be carried into the starting message."
+  },
+  {
+    "title": "Enquiry classification",
+    "text": "Sales, quotation, sample, dealer, export, support and delivery topics can be separated."
+  },
+  {
+    "title": "Team routing",
+    "text": "Where tools allow, enquiries can be routed by region, product, language or priority."
+  },
+  {
+    "title": "Prepared knowledge and replies",
+    "text": "Repeated questions can use consistent answers, catalogues, links and documents."
+  },
+  {
+    "title": "Follow-up structure",
+    "text": "Pending quotes, missing information and follow-up timing can be made visible."
+  },
+  {
+    "title": "Website and ad integration",
+    "text": "Landing pages, product pages and campaigns can start the appropriate WhatsApp flow."
+  },
+  {
+    "title": "Measurement",
+    "text": "Consent-aware events can help distinguish clicks from more meaningful enquiries."
+  },
+  {
+    "title": "Human control",
+    "text": "Pricing, promises, exceptions and relationship-sensitive conversations remain under team control."
+  }
+];
+const process=[
+  {
+    "title": "Business and goal analysis",
+    "text": "We define the business model, target customers, current channels, operational constraints and the commercial result the project should support."
+  },
+  {
+    "title": "Current-state audit",
+    "text": "We review the existing website or store, analytics, content, technical structure, search visibility and integrations where available."
+  },
+  {
+    "title": "Architecture and scope",
+    "text": "We decide what should be retained, rebuilt, migrated or added and document the scope before implementation."
+  },
+  {
+    "title": "Customer journey",
+    "text": "We map the route from search or advertising to evaluation, enquiry, checkout or follow-up."
+  },
+  {
+    "title": "Content and interface",
+    "text": "We structure information, messages, pages and mobile experience around real customer questions."
+  },
+  {
+    "title": "Implementation",
+    "text": "We build the approved structure, connect relevant tools and keep the system maintainable for the internal team."
+  },
+  {
+    "title": "QA and measurement",
+    "text": "We test mobile, forms, links, structured data, performance and included measurement events."
+  },
+  {
+    "title": "Launch and improvement",
+    "text": "We launch in a controlled way and prioritise later improvements using real usage and commercial evidence."
+  }
+];
+const faqItems=[
+  {
+    "q": "Can we use our existing WhatsApp number?",
+    "a": "Usually, depending on current account type, team usage, integration need and platform conditions."
+  },
+  {
+    "q": "Is WhatsApp Business enough?",
+    "a": "For a small team it may be. Multi-agent routing or integrations can require a different setup."
+  },
+  {
+    "q": "Do all messages need automation?",
+    "a": "No. Only clear, low-risk repeated steps should be automated."
+  },
+  {
+    "q": "Can Meta ads open WhatsApp with campaign context?",
+    "a": "Yes. Campaign or product context can be included in the initial message."
+  },
+  {
+    "q": "Can messages include the product name or code?",
+    "a": "Yes. Product name, code, page URL or enquiry type can be carried into the message."
+  },
+  {
+    "q": "Can enquiries be routed to several representatives?",
+    "a": "Where tools allow, routing can use region, product, language, hours or topic."
+  },
+  {
+    "q": "Can WhatsApp connect to a CRM?",
+    "a": "It can be evaluated when suitable APIs and permissions are available."
+  },
+  {
+    "q": "Do you send unsolicited bulk messages?",
+    "a": "No. We do not build unsolicited or policy-violating bulk messaging systems."
+  }
+];
+---
+<InternationalServicePage title="WhatsApp Sales Systems in Türkiye | QCT Commerce" description="WhatsApp sales flows for websites, ads and e-commerce in Türkiye: contextual entry, enquiry routing, follow-up, measurement and human-controlled automation." eyebrow="WhatsApp sales systems" heading="Turn WhatsApp from a message inbox into a manageable sales flow." lead="We connect website, advertising and product context to WhatsApp so enquiries reach the right person with the right information and can be followed without unnecessary repetition." serviceName="WhatsApp sales systems" problem="When every enquiry reaches the same inbox without source, product or intent context, response time increases and qualified opportunities are easier to lose." capabilities={capabilities} process={process} faqItems={faqItems}/>

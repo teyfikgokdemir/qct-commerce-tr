@@ -1,17 +1,106 @@
 ---
 import InternationalServicePage from '../../../components/InternationalServicePage.astro';
 const capabilities=[
-{title:'Commerce architecture',text:'Product structure, customer journeys, checkout logic and operational requirements planned as one system.'},
-{title:'Conversion-focused experience',text:'Clear discovery, product comparison, trust signals and buying actions across desktop and mobile.'},
-{title:'Platform and integration planning',text:'A platform-neutral review of catalogue, payment, logistics, CRM, analytics and automation needs.'},
-{title:'International readiness',text:'Scalable language, market and content structures for companies selling across borders.'}
+  {
+    "title": "Manufacturers and B2B sellers",
+    "text": "Technical product, quotation, minimum quantity and account-based journeys can be structured around real commercial rules."
+  },
+  {
+    "title": "Retail and DTC brands",
+    "text": "Product discovery, campaigns, collections, mobile shopping and repeat-purchase journeys are planned as one system."
+  },
+  {
+    "title": "Product and category architecture",
+    "text": "Categories, filters, variants and internal links are aligned with how customers search rather than only internal stock logic."
+  },
+  {
+    "title": "Mobile shopping and checkout",
+    "text": "Navigation, filters, variants, cart and checkout are tested on real mobile scenarios."
+  },
+  {
+    "title": "Migration and product operations",
+    "text": "CSV cleanup, product entry, image mapping, category matching and redirect planning can be included when moving platforms."
+  },
+  {
+    "title": "SEO, GEO, AEO and AIO foundation",
+    "text": "Crawlability, structured data, product entities, category context and answer-first content are built for search and AI-assisted discovery."
+  },
+  {
+    "title": "Measurement",
+    "text": "Product views, search, filters, add-to-cart, checkout, purchase and enquiry actions can be measured appropriately."
+  },
+  {
+    "title": "Platforms used in Türkiye",
+    "text": "Shopify, ikas, WooCommerce, Ticimax and IdeaSoft are assessed against products, integrations, team capability and total ownership cost."
+  }
 ];
-const process=[{title:'Audit the current journey',text:'We identify friction, lost demand and operational constraints.'},{title:'Design the commerce system',text:'We define architecture, content, integrations and measurement.'},{title:'Build, launch and improve',text:'We release a focused system and improve it using commercial evidence.'}];
+const process=[
+  {
+    "title": "Business and goal analysis",
+    "text": "We define the business model, target customers, current channels, operational constraints and the commercial result the project should support."
+  },
+  {
+    "title": "Current-state audit",
+    "text": "We review the existing website or store, analytics, content, technical structure, search visibility and integrations where available."
+  },
+  {
+    "title": "Architecture and scope",
+    "text": "We decide what should be retained, rebuilt, migrated or added and document the scope before implementation."
+  },
+  {
+    "title": "Customer journey",
+    "text": "We map the route from search or advertising to evaluation, enquiry, checkout or follow-up."
+  },
+  {
+    "title": "Content and interface",
+    "text": "We structure information, messages, pages and mobile experience around real customer questions."
+  },
+  {
+    "title": "Implementation",
+    "text": "We build the approved structure, connect relevant tools and keep the system maintainable for the internal team."
+  },
+  {
+    "title": "QA and measurement",
+    "text": "We test mobile, forms, links, structured data, performance and included measurement events."
+  },
+  {
+    "title": "Launch and improvement",
+    "text": "We launch in a controlled way and prioritise later improvements using real usage and commercial evidence."
+  }
+];
 const faqItems=[
-{q:'Do you only build Shopify stores?',a:'No. We select or improve the platform according to the business model, catalogue, integrations, team and growth plan.'},
-{q:'Can you improve an existing store?',a:'Yes. We can review and improve product discovery, mobile experience, checkout, content, analytics and operational workflows.'},
-{q:'Do you support B2B commerce?',a:'Yes. We build catalogue, quotation, dealer, distributor and account-based buying flows for B2B companies.'},
-{q:'Can the store support multiple countries and languages?',a:'Yes. International information architecture, language routes and market-specific journeys can be included.'}
+  {
+    "q": "Do you work with Shopify and ikas in Türkiye?",
+    "a": "Yes. We work with Shopify and ikas as well as WooCommerce, Ticimax and IdeaSoft according to the business model."
+  },
+  {
+    "q": "Can you migrate an existing store?",
+    "a": "Yes. Product, category and content migration can include URL mapping, redirects and QA."
+  },
+  {
+    "q": "Do you enter products?",
+    "a": "Yes. Product entry is priced separately by quantity and scope."
+  },
+  {
+    "q": "Are platform subscriptions included?",
+    "a": "No. QCT Commerce pricing covers our service. Platform subscriptions, paid themes/apps and other third-party fees are separate unless stated otherwise."
+  },
+  {
+    "q": "Can you improve an existing store instead of rebuilding it?",
+    "a": "Yes. We can improve theme structure, mobile UX, product pages, speed and conversion points without unnecessary rebuilding."
+  },
+  {
+    "q": "Do you support B2B ordering?",
+    "a": "Yes. Minimum quantity, pack rules, quotation and customer-group flows can be evaluated where the selected platform supports them."
+  },
+  {
+    "q": "Can the site be multilingual?",
+    "a": "Yes. Language routes, content architecture and local terminology can be included."
+  },
+  {
+    "q": "Is SEO included?",
+    "a": "Basic technical foundations are considered during setup; broader SEO, GEO, AEO and AIO work can be scoped separately."
+  }
 ];
 ---
-<InternationalServicePage title="E-commerce Systems for Growth | QCT Commerce" description="QCT Commerce designs e-commerce architecture, customer journeys, integrations and conversion systems for growing B2B and retail companies." eyebrow="E-commerce systems" heading="Build a commerce system that works beyond the storefront." lead="We connect product discovery, buying journeys, integrations, operations and measurement in one practical commerce structure." serviceName="E-commerce systems" problem="A store can look polished and still lose revenue through unclear product structure, weak mobile journeys, disconnected operations or unreliable measurement." capabilities={capabilities} process={process} faqItems={faqItems}/>
+<InternationalServicePage title="E-commerce Website Setup in Türkiye | QCT Commerce" description="Shopify, ikas, WooCommerce, Ticimax and IdeaSoft e-commerce setup, redesign, migration, product structure and mobile conversion work in Türkiye." eyebrow="E-commerce solutions" heading="Build your e-commerce system around the way you actually sell." lead="We set up new stores and improve or migrate existing stores on Shopify, ikas, WooCommerce, Ticimax and IdeaSoft, including product structure, mobile UX, payment, shipping, measurement and search foundations." serviceName="E-commerce solutions" problem="A store can be technically live and still lose sales because products are hard to find, product pages do not answer buying questions, mobile checkout creates friction, B2B rules remain manual or measurement is incomplete." capabilities={capabilities} process={process} faqItems={faqItems}/>

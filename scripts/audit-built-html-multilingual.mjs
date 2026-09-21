@@ -41,7 +41,7 @@ function schemaNodes(value) {
 walk(DIST);
 const servicePaths = new Set([
   '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/',
-  '/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/',
+  '/en/ecommerce/', '/en/web-design/', '/en/whatsapp-sales/', '/en/search-visibility/', '/en/meta-ads/', '/en/ai-automation/',
 ]);
 const caseStudyPaths = new Set([
   '/calismalar/headwear/', '/calismalar/misima/', '/calismalar/artman/',
@@ -79,7 +79,10 @@ for (const file of htmlFiles) {
   } else if (isGeorgiaPair) {
     const langs = new Set(alternates.map((tag) => attribute(tag, 'hreflang')));
     for (const required of ['en', 'ka-GE', 'x-default']) if (!langs.has(required)) errors.push(`${file}: Georgia language pair is missing ${required} hreflang.`);
-  } else if (alternates.length) errors.push(`${file}: unpaired page must not emit hreflang alternates.`);
+  } else if (alternates.length) {
+    const langs = new Set(alternates.map((tag) => attribute(tag, 'hreflang')));
+    for (const required of ['tr-TR','en','x-default']) if (!langs.has(required)) errors.push(file + ': paired page is missing ' + required + ' hreflang.');
+  }
   const jsonLdMatches = [...html.matchAll(/<script\s+[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
   if (!jsonLdMatches.length) errors.push(`${file}: expected at least one JSON-LD block.`);
   const nodes = [];
@@ -87,7 +90,7 @@ for (const file of htmlFiles) {
   for (const required of ['Organization', 'WebSite']) if (!nodes.some((node) => node['@type'] === required)) errors.push(`${file}: JSON-LD is missing ${required}.`);
   if (!nodes.some((node) => ['WebPage', 'AboutPage', 'ContactPage', 'CollectionPage'].includes(node['@type']))) errors.push(`${file}: JSON-LD is missing a WebPage-compatible node.`);
   const articleNodes = nodes.filter((node) => node['@type'] === 'Article');
-  const isArticle = pathname.startsWith('/blog/') && pathname !== '/blog/';
+  const isArticle = (pathname.startsWith('/blog/') && pathname !== '/blog/') || (pathname.startsWith('/en/blog/') && pathname !== '/en/blog/');
   if (isArticle && articleNodes.length !== 1) errors.push(`${file}: blog article must emit exactly one Article node.`);
   if (!isArticle && articleNodes.length) errors.push(`${file}: Article schema is only allowed on blog articles.`);
   const serviceNodes = nodes.filter((node) => node['@type'] === 'Service');

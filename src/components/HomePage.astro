@@ -3,13 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import QctCommerceV2 from '../components/QctCommerceV2.astro';
+import QctCommerceV2En from '../components/QctCommerceV2En.astro';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 
-const seo = {
+const isEnglish = lang === 'en';
+const seo = isEnglish ? { title: 'Web, E-commerce, SEO, GEO, AEO & AIO | QCT Commerce', description: 'Website and e-commerce setup in Türkiye, redesign, audits, SEO, GEO, AEO, AIO, product operations and platform migration with transparent TL pricing.' } : {
   title: 'Web, E-Ticaret, SEO, GEO, AEO & AIO | QCT Commerce',
   description: 'Yeni web ve e-ticaret projeleri, mevcut site analizi, yenileme, hız optimizasyonu, SEO, GEO, AEO, AIO, ürün yönetimi ve platform taşıma hizmetleri. Şeffaf fiyatlarla tek merkez.',
 };
@@ -17,7 +19,13 @@ const alternates = [
   { lang: 'tr-TR', href: '/' },
   { lang: 'en', href: '/en/' },
 ];
-const faqItems = [
+const faqItems = isEnglish ? [
+  { q: 'How do I appear on Google?', a: 'Your website needs crawlable architecture, useful service and product pages, technical SEO, internal links, structured data and consistent trust signals.' },
+  { q: 'How can my company appear in ChatGPT?', a: 'There is no single setting or guarantee. Clear and verifiable company information, original content, strong entity signals and technical accessibility are important.' },
+  { q: 'Where should I start with SEO?', a: 'Start by auditing the current technical state, the searches you need to appear for and the commercial objective.' },
+  { q: 'Why is my website not showing on Google?', a: 'Indexing issues, weak content, poor architecture, technical errors, limited internal linking, a new domain or strong competition can all contribute.' },
+  { q: 'Is the calculator amount a fixed quote?', a: 'No. It is a starting price for standard scope. Special integrations and custom development are scoped separately.' },
+] : [
   { q: 'Google’da nasıl çıkarım?', a: 'Sitenin taranabilir ve indekslenebilir olması, doğru hizmet ve ürün sayfaları, arama niyetine uygun içerik, teknik SEO, iç bağlantılar, yapılandırılmış veri ve güven sinyallerinin birlikte çalışması gerekir.' },
   { q: 'ChatGPT’de firmam nasıl görünür?', a: 'Tek bir ayar veya garanti yoktur. Marka ve hizmet bilgilerinin açık, doğrulanabilir ve tutarlı olması; özgün içerik, güçlü entity sinyalleri, kaynak niteliğinde sayfalar ve teknik erişilebilirlik önemlidir.' },
   { q: 'SEO yaptırmak istiyorum. Nereden başlamalıyım?', a: 'İlk adım mevcut sitenin teknik durumunu, görünmek istediğiniz sorguları ve ticari hedefinizi belirlemektir. Analiz sonrası teknik SEO, içerik, hız ve sayfa mimarisi çalışmalarından gerçekten gerekenler seçilir.' },
@@ -29,7 +37,7 @@ const faqSchema = {
   '@type': 'FAQPage',
   '@id': 'https://qctcommerce.com/#faq',
   url: 'https://qctcommerce.com/',
-  inLanguage: 'tr-TR',
+  inLanguage: isEnglish ? 'en-US' : 'tr-TR',
   mainEntity: faqItems.map((item) => ({
     '@type': 'Question',
     name: item.q,
@@ -40,7 +48,7 @@ const faqSchema = {
 <BaseLayout title={seo.title} description={seo.description} image="/og-commerce-1200x630.jpg" imageWidth={1200} imageHeight={630} lang={lang} isHome={true} includeWorkStyles={false} alternates={alternates}>
   <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Header slot="header" lang={lang} />
-  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-4" />
-  <QctCommerceV2 />
+  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-5" />
+  {isEnglish ? <QctCommerceV2En /> : <QctCommerceV2 />}
   <Footer slot="footer" lang={lang} />
 </BaseLayout>

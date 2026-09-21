@@ -1,0 +1,6 @@
+---
+import BlogArticleEn from '../../../components/BlogArticleEn.astro';import {articlesEn,getArticleEn} from '../../../data/blog-en';
+export function getStaticPaths(){return articlesEn.map(a=>({params:{slug:a.slug}}))}
+const {slug}=Astro.params;const article=getArticleEn(slug!);
+---
+<BlogArticleEn article={article}/>

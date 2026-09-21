@@ -1,17 +1,106 @@
 ---
 import InternationalServicePage from '../../../components/InternationalServicePage.astro';
 const capabilities=[
-{title:'Technical SEO',text:'Crawlable architecture, canonical control, metadata, performance and structured data built into the site.'},
-{title:'GEO and market relevance',text:'Country, city, sector and buyer context that makes the offer understandable for each target market.'},
-{title:'AEO and answer structure',text:'Direct, evidence-based answers and visible FAQs aligned with real commercial questions.'},
-{title:'AIO and entity clarity',text:'Consistent organisation, service and market signals for AI-assisted research and recommendation systems.'}
+  {
+    "title": "Technical SEO",
+    "text": "Crawlability, indexing, canonical, sitemap, metadata, performance, mobile rendering and internal links are reviewed first."
+  },
+  {
+    "title": "Search intent and page architecture",
+    "text": "Service, product, category and guide pages are aligned with commercial questions people actually search for."
+  },
+  {
+    "title": "GEO — Generative Engine Optimization",
+    "text": "Content is structured so generative systems can understand the company, services, scope, evidence and context."
+  },
+  {
+    "title": "AEO — Answer Engine Optimization",
+    "text": "Important questions receive concise visible answers supported by deeper explanations."
+  },
+  {
+    "title": "AI visibility and entities",
+    "text": "Organization, service, founder, market and content signals are kept consistent across visible content and structured data."
+  },
+  {
+    "title": "ChatGPT, Claude, Gemini and Perplexity",
+    "text": "Publicly crawlable, source-quality pages and consistent entity data improve the conditions for AI-assisted discovery; no citation can be guaranteed."
+  },
+  {
+    "title": "Structured data",
+    "text": "Organization, Service, Article and FAQ schema are used only when they match visible content."
+  },
+  {
+    "title": "Measurement",
+    "text": "Search Console, branded queries, long-tail impressions, qualified enquiries and AI-referral signals are evaluated together where available."
+  }
 ];
-const process=[{title:'Map demand and entities',text:'We identify search intent, buyer questions, markets and the entities that must be understood.'},{title:'Build the information layer',text:'We improve architecture, content, schema, internal links and answer formats.'},{title:'Measure and expand',text:'We track discoverability and develop content around verified commercial demand.'}];
+const process=[
+  {
+    "title": "Business and goal analysis",
+    "text": "We define the business model, target customers, current channels, operational constraints and the commercial result the project should support."
+  },
+  {
+    "title": "Current-state audit",
+    "text": "We review the existing website or store, analytics, content, technical structure, search visibility and integrations where available."
+  },
+  {
+    "title": "Architecture and scope",
+    "text": "We decide what should be retained, rebuilt, migrated or added and document the scope before implementation."
+  },
+  {
+    "title": "Customer journey",
+    "text": "We map the route from search or advertising to evaluation, enquiry, checkout or follow-up."
+  },
+  {
+    "title": "Content and interface",
+    "text": "We structure information, messages, pages and mobile experience around real customer questions."
+  },
+  {
+    "title": "Implementation",
+    "text": "We build the approved structure, connect relevant tools and keep the system maintainable for the internal team."
+  },
+  {
+    "title": "QA and measurement",
+    "text": "We test mobile, forms, links, structured data, performance and included measurement events."
+  },
+  {
+    "title": "Launch and improvement",
+    "text": "We launch in a controlled way and prioritise later improvements using real usage and commercial evidence."
+  }
+];
 const faqItems=[
-{q:'What is the difference between SEO, GEO, AEO and AIO?',a:'SEO improves search visibility, GEO (Generative Engine Optimization) strengthens how content is understood and cited in generative search, AEO structures direct answers and AIO improves clarity across AI-assisted discovery systems.'},
-{q:'Can you optimise an existing website?',a:'Yes. We can audit technical structure, content, schema, internal linking and market relevance without rebuilding everything.'},
-{q:'Does structured data guarantee AI citations?',a:'No. It improves machine understanding, but citations also depend on authority, evidence, relevance and the systems selecting sources.'},
-{q:'Do you create multilingual search strategies?',a:'Yes. We plan language and country routes around the actual market, audience and commercial objective.'}
+  {
+    "q": "Can you guarantee that ChatGPT or another AI will cite my site?",
+    "a": "No. We can improve crawlability, entity clarity, content quality and source signals, but independent AI systems decide what to use."
+  },
+  {
+    "q": "What is GEO?",
+    "a": "Generative Engine Optimization structures reliable content and entity context for generative systems."
+  },
+  {
+    "q": "What is AEO?",
+    "a": "Answer Engine Optimization focuses on clear and useful answers to real user questions."
+  },
+  {
+    "q": "Does llms.txt guarantee AI visibility?",
+    "a": "No. It may help some agents understand site resources, but crawl access, quality HTML, search fundamentals and trustworthy content remain more important."
+  },
+  {
+    "q": "Can you optimise an existing website?",
+    "a": "Yes. We can audit technical SEO, content, schema, internal linking and entity consistency."
+  },
+  {
+    "q": "Do you work with English content for businesses in Türkiye?",
+    "a": "Yes. English pages can target English-speaking residents, founders and teams operating in Türkiye with the same local scope and TL pricing."
+  },
+  {
+    "q": "How long does SEO take?",
+    "a": "Technical issues may be fixed quickly, but competitive visibility depends on indexing, content, authority and market conditions."
+  },
+  {
+    "q": "Do you set up Search Console and GA4?",
+    "a": "Yes, basic setup and verification can be scoped separately."
+  }
 ];
 ---
-<InternationalServicePage title="SEO, GEO, AEO & AIO Systems | QCT Commerce" description="QCT Commerce builds technical SEO, geographic relevance, answer structures and AI-ready entity signals for multilingual business websites." eyebrow="Search and AI visibility" heading="Become easier to find, understand and recommend." lead="We combine technical SEO, market relevance, answer-first content and entity clarity for search engines and AI-assisted buyer research." serviceName="SEO, GEO, AEO and AIO" problem="Publishing more content is not enough when the website is technically unclear, geographically vague, unable to answer buyer questions or inconsistent about the company and its services." capabilities={capabilities} process={process} faqItems={faqItems}/>
+<InternationalServicePage title="SEO, GEO, AEO & AI Visibility in Türkiye | QCT Commerce" description="Technical SEO, GEO, AEO and AI visibility audits and implementation for Google, ChatGPT, Claude, Gemini, Perplexity and AI-assisted discovery in Türkiye." eyebrow="SEO, GEO, AEO and AIO" heading="Make your business easier to find, understand and cite." lead="We combine technical SEO, search-intent content, entity clarity, structured data, answer-first information and AI-search accessibility for websites in Türkiye." serviceName="SEO, GEO, AEO and AI visibility" problem="Publishing more pages does not solve visibility when the site has indexing problems, weak architecture, unclear entities, generic content or inconsistent information." capabilities={capabilities} process={process} faqItems={faqItems}/>

@@ -10,6 +10,19 @@ QCT Commerce is part of the wider QCT ecosystem. QCT Studio is a separate sister
 
 Verified contact information: info@qctcommerce.com; WhatsApp only: +90 545 678 26 55.
 
+## English pages for Türkiye
+
+The English section mirrors the Türkiye service scope for English-speaking residents, founders and teams operating in Türkiye. Prices remain in Turkish lira and local platform context is preserved.
+
+- [English home](https://qctcommerce.com/en/): Same website, e-commerce, redesign, audit, migration and visibility scope with transparent TL pricing.
+- [English services](https://qctcommerce.com/en/services/): Same core service scope as the Turkish section.
+- [English pricing](https://qctcommerce.com/en/pricing/): Website, e-commerce, redesign, product entry and SEO/GEO/AEO/AIO prices in TL.
+- [Shopify store setup](https://qctcommerce.com/en/shopify-store-setup/): Shopify setup and redesign for businesses in Türkiye.
+- [ikas store setup](https://qctcommerce.com/en/ikas-store-setup/): ikas setup, redesign and migration.
+- [WhatsApp sales systems](https://qctcommerce.com/en/whatsapp-sales/): Contextual enquiry, routing and follow-up systems.
+- [Meta ads and landing pages](https://qctcommerce.com/en/meta-ads/): Campaign-to-conversion systems.
+- [English blog](https://qctcommerce.com/en/blog/): English versions of QCT Commerce guides for Türkiye.
+
 ## International pages
 
 - [International home](https://qctcommerce.com/en/): Digital commerce and international sales systems for manufacturers, distributors and growing brands.
@@ -69,3 +82,13 @@ Verified contact information: info@qctcommerce.com; WhatsApp only: +90 545 678 2
 - [KVKK aydınlatma metni](https://qctcommerce.com/kvkk/): Information notice under Turkish Personal Data Protection Law.
 - [Kullanım koşulları](https://qctcommerce.com/kullanim-kosullari/): Website terms of use.
 - [Çerez politikası](https://qctcommerce.com/cerez-politikasi/): Cookie policy and consent preferences.
+
+## English AI and search guides for Türkiye
+- [How can my company appear in ChatGPT?](https://qctcommerce.com/en/blog/how-can-my-company-appear-in-chatgpt/)
+- [Why is my website not showing on Google?](https://qctcommerce.com/en/blog/why-is-my-website-not-showing-on-google/)
+- [Google AI Overviews, GEO, AEO and AIO guide](https://qctcommerce.com/en/blog/ai-overviews-geo-aeo-aio-seo-guide/)
+- [Website pricing 2026](https://qctcommerce.com/en/blog/website-pricing-2026-what-changes-the-cost/)
+- [ikas vs Shopify for Türkiye](https://qctcommerce.com/en/blog/ikas-vs-shopify-2026-turkiye/)
+- [Mobile e-commerce conversion guide](https://qctcommerce.com/en/blog/why-mobile-ecommerce-sites-do-not-convert/)
+- [Shopify setup guide for Türkiye](https://qctcommerce.com/en/blog/shopify-store-setup-guide-turkiye/)
+- [WhatsApp sales automation guide](https://qctcommerce.com/en/blog/whatsapp-sales-automation-guide/)
