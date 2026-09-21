@@ -155,7 +155,7 @@ const legalLinks = isGeorgian ? [
         <summary>
           <span class="site-footer__round-icon" aria-hidden="true">◆</span>
           <strong>{mobileCopy.services}</strong>
-          <span class="site-footer__chevron" aria-hidden="true">⌄</span>
+          <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
         </summary>
         <div class="site-footer__accordion-body">
           {serviceLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
@@ -166,7 +166,7 @@ const legalLinks = isGeorgian ? [
         <summary>
           <span class="site-footer__round-icon" aria-hidden="true">◇</span>
           <strong>{mobileCopy.company}</strong>
-          <span class="site-footer__chevron" aria-hidden="true">⌄</span>
+          <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
         </summary>
         <div class="site-footer__accordion-body">
           {companyLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
@@ -177,7 +177,7 @@ const legalLinks = isGeorgian ? [
         <summary>
           <span class="site-footer__round-icon" aria-hidden="true">▤</span>
           <strong>{mobileCopy.legal}</strong>
-          <span class="site-footer__chevron" aria-hidden="true">⌄</span>
+          <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
         </summary>
         <div class="site-footer__accordion-body">
           {legalLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
@@ -206,7 +206,6 @@ const legalLinks = isGeorgian ? [
 
     <div class="site-footer__mobile-bottom">
       <p>&copy; 2026 QCT Commerce. {mobileCopy.rights}</p>
-      <a href="#page">{mobileCopy.top} <span aria-hidden="true">↑</span></a>
     </div>
   </div>
 </footer>
@@ -335,13 +334,39 @@ const legalLinks = isGeorgian ? [
     }
 
     .site-footer__chevron {
-      color:#ff8b78;
-      font-size:1.2rem;
-      transition:transform .2s ease;
+      position:relative;
+      width:30px;
+      height:30px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,99,79,.22);
+      border-radius:50%;
+      background:linear-gradient(145deg,rgba(255,99,79,.08),rgba(255,255,255,.015));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+      transition:transform .24s cubic-bezier(.2,.7,.2,1),border-color .2s ease,background .2s ease;
+    }
+
+    .site-footer__chevron i {
+      position:absolute;
+      top:14px;
+      width:7px;
+      height:1.5px;
+      border-radius:999px;
+      background:#ff634f;
+      box-shadow:0 0 10px rgba(255,99,79,.22);
+    }
+
+    .site-footer__chevron i:first-child { left:8px; transform:rotate(42deg); }
+    .site-footer__chevron i:last-child { right:8px; transform:rotate(-42deg); }
+
+    .site-footer__accordions summary:active .site-footer__chevron {
+      border-color:rgba(200,255,61,.32);
+      background:rgba(200,255,61,.05);
     }
 
     .site-footer__accordions details[open] .site-footer__chevron {
       transform:rotate(180deg);
+      border-color:rgba(255,99,79,.34);
     }
 
     .site-footer__accordion-body {
@@ -468,9 +493,7 @@ const legalLinks = isGeorgian ? [
     }
 
     .site-footer__mobile-bottom {
-      display:grid;
-      grid-template-columns:1fr auto;
-      align-items:center;
+      display:block;
       gap:14px;
       margin-top:24px;
       padding:18px 4px 0;
@@ -484,25 +507,6 @@ const legalLinks = isGeorgian ? [
       line-height:1.4;
     }
 
-    .site-footer__mobile-bottom a {
-      display:flex;
-      align-items:center;
-      gap:7px;
-      color:#ff8b78;
-      text-decoration:none;
-      font-size:.7rem;
-      white-space:nowrap;
-    }
-
-    .site-footer__mobile-bottom a span {
-      width:30px;
-      height:30px;
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(255,123,103,.32);
-      border-radius:50%;
-      color:#c8ff3d;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
