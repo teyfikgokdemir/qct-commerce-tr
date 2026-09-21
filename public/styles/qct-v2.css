@@ -257,3 +257,40 @@
     padding-top:calc(var(--qct-header-height) + var(--qct-header-gap))!important;
   }
 }
+
+
+/* Final hero/closing alignment fixes */
+html[lang="en"] .site-main .qct-v2 .qct-hero h1{
+  color:var(--qct-ink);
+}
+.qct-close-grid{
+  grid-template-columns:1fr;
+  justify-items:center;
+  align-items:center;
+  gap:18px;
+  text-align:center;
+}
+.qct-close-grid>div{
+  width:100%;
+}
+.qct-close h2{
+  max-width:none;
+  white-space:nowrap;
+  font-size:clamp(42px,4.7vw,70px);
+}
+.qct-close p:not(.qct-section-label){
+  max-width:none;
+  margin:22px auto 0;
+  white-space:nowrap;
+  text-align:center;
+}
+.qct-close .qct-btn-light{
+  justify-self:center;
+  margin-top:4px;
+}
+@media(max-width:960px){
+  .qct-close h2,
+  .qct-close p:not(.qct-section-label){
+    white-space:normal;
+  }
+}
