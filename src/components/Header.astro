@@ -767,3 +767,102 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   }
 }
 </style>
+
+<style is:global>
+@media (max-width:999px){
+  .mobile-nav-title,
+  .qct-mobile-primary__link,
+  .qct-mobile-services__grid a{
+    color:#c8ff3d!important;
+  }
+
+  .qct-mobile-primary__link:hover,
+  .qct-mobile-primary__link:focus-visible,
+  .qct-mobile-services__grid a:hover,
+  .qct-mobile-services__grid a:focus-visible{
+    color:#dcff72!important;
+  }
+
+  .qct-mobile-primary__link span:last-child{
+    color:#ff5f4d!important;
+  }
+
+  .qct-mobile-section-head>span{
+    color:#ff5f4d!important;
+  }
+
+  .qct-mobile-bottom{
+    position:sticky!important;
+    bottom:0!important;
+    z-index:6!important;
+    display:grid!important;
+    grid-template-columns:auto 1fr!important;
+    align-items:center!important;
+    gap:10px!important;
+    margin:0 -4px!important;
+    padding:10px 4px calc(8px + env(safe-area-inset-bottom,0px))!important;
+    border-top:1px solid rgba(255,255,255,.08)!important;
+    background:linear-gradient(180deg,rgba(23,22,20,.88),#171614 24%)!important;
+    backdrop-filter:blur(16px)!important;
+    -webkit-backdrop-filter:blur(16px)!important;
+  }
+
+  .mobile-only-panel{
+    padding-bottom:0!important;
+  }
+
+  .qct-mobile-languages{
+    display:flex!important;
+    align-items:center!important;
+    gap:5px!important;
+    flex-wrap:nowrap!important;
+  }
+
+  .qct-mobile-languages a{
+    width:34px!important;
+    height:34px!important;
+    border-color:rgba(200,255,61,.18)!important;
+    color:#c8ff3d!important;
+    background:#1d1b18!important;
+    font-size:.62rem!important;
+  }
+
+  .qct-mobile-languages a.active{
+    background:#ff5f4d!important;
+    color:#171614!important;
+    border-color:#ff5f4d!important;
+  }
+
+  .qct-mobile-project{
+    min-height:42px!important;
+    margin:0!important;
+    padding:0 14px!important;
+    border-radius:11px!important;
+    background:#c8ff3d!important;
+    color:#171614!important;
+    font-size:.78rem!important;
+  }
+
+  .qct-mobile-project span:last-child{
+    color:#ff5f4d!important;
+  }
+
+  .main-navigation{
+    padding-bottom:0!important;
+  }
+
+  @media (max-height:760px){
+    .qct-mobile-bottom{
+      padding-top:8px!important;
+      padding-bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;
+    }
+    .qct-mobile-languages a{
+      width:32px!important;
+      height:32px!important;
+    }
+    .qct-mobile-project{
+      min-height:40px!important;
+    }
+  }
+}
+</style>
