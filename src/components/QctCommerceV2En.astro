@@ -17,13 +17,13 @@ const platforms = [
   { name: 'WordPress', href: '/en/web-design/', type: 'Web' },
   { name: 'Ticimax', href: '/en/ecommerce/', type: 'Platform' },
   { name: 'IdeaSoft', href: '/en/ecommerce/', type: 'Platform' },
-  { name: 'PayTR', href: '/en/ecommerce/', type: 'Payment' },
-  { name: 'iyzico', href: '/en/ecommerce/', type: 'Payment' },
-  { name: 'Trendyol', href: '/en/ecommerce/', type: 'Marketplace' },
-  { name: 'Hepsiburada', href: '/en/ecommerce/', type: 'Marketplace' },
-  { name: 'Google Merchant Center', href: '/en/search-visibility/', type: 'Growth' },
-  { name: 'Meta', href: '/en/meta-ads/', type: 'Advertising' },
-  { name: 'WhatsApp', href: '/en/whatsapp-sales/', type: 'Sales' },
+  { name: 'PayTR', href: '/en/ecommerce/', type: 'Ödeme' },
+  { name: 'iyzico', href: '/en/ecommerce/', type: 'Ödeme' },
+  { name: 'Trendyol', href: '/en/ecommerce/', type: 'Pazaryeri' },
+  { name: 'Hepsiburada', href: '/en/ecommerce/', type: 'Pazaryeri' },
+  { name: 'Google Merchant Center', href: '/en/search-visibility/', type: 'Büyüme' },
+  { name: 'Meta', href: '/en/meta-ads/', type: 'Reklam' },
+  { name: 'WhatsApp', href: '/en/whatsapp-sales/', type: 'Satış' },
 ];
 ---
 
@@ -48,7 +48,6 @@ const platforms = [
         <p class="qct-lead">We build new websites and improve existing ones through audits, redesign, performance and visibility work. For e-commerce, corporate and personal websites, we bring SEO, GEO, AEO, AIO, product operations and platform work into one scope.</p>
         <div class="qct-hero-actions">
           <a class="qct-btn qct-btn-primary" href="#fiyat-hesapla">Calculate Your Price <span>→</span></a>
-          <a class="qct-text-link" href="https://wa.me/905456782655?text=Hello%2C%20I%20am%20contacting%20QCT%20Commerce%20from%20the%20website.%20I%20would%20like%20to%20discuss%20my%20project." target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
         </div>
         <div class="qct-proof-line">
           <span>Transparent pricing</span>
@@ -81,7 +80,7 @@ const platforms = [
           <label class="qct-field">
             <span><b>Platform</b><small>Your current or preferred platform</small></span>
             <select name="platform" data-platform>
-              <option value="" selected disabled>Select your platform</option>
+              <option value="" selected disabled>Platformnızı seçin</option>
               <option value="shopify">Shopify</option>
               <option value="ikas">ikas</option>
               <option value="woocommerce">WooCommerce</option>
@@ -96,20 +95,20 @@ const platforms = [
           <label class="qct-field">
             <span><b>Product scope</b><small>Choose quantity if product entry is needed</small></span>
             <select name="products" data-products>
-              <option value="" data-price="0" selected disabled>Select product scope</option>
+              <option value="" data-price="0" selected disabled>Product scopenı seçin</option>
               <option value="0" data-price="0">No product entry needed</option>
-              <option value="25" data-price="1490">1–25 products</option>
-              <option value="50" data-price="2490">26–50 products</option>
-              <option value="100" data-price="3990">51–100 products</option>
-              <option value="250" data-price="7900">101–250 products</option>
-              <option value="500" data-price="12900">251–500 products</option>
+              <option value="25" data-price="1490">1–25 ürün</option>
+              <option value="50" data-price="2490">26–50 ürün</option>
+              <option value="100" data-price="3990">51–100 ürün</option>
+              <option value="250" data-price="7900">101–250 ürün</option>
+              <option value="500" data-price="12900">251–500 ürün</option>
             </select>
           </label>
 
           <fieldset>
             <legend>Strengthen the project <small>Add what you need</small></legend>
             <div class="qct-addon-grid">
-              <label class="qct-check"><input type="checkbox" value="2490" data-addon /><span>Technical SEO <small>+2.490 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="2490" data-addon /><span>Teknik SEO <small>+2.490 TL</small></span></label>
               <label class="qct-check"><input type="checkbox" value="3900" data-addon /><span>SEO + GEO + AEO + AIO <small>+3.900 TL</small></span></label>
               <label class="qct-check"><input type="checkbox" value="1490" data-addon /><span>Merchant Center <small>+1.490 TL</small></span></label>
               <label class="qct-check"><input type="checkbox" value="990" data-addon /><span>GA4 + Search Console <small>+990 TL</small></span></label>
@@ -191,7 +190,7 @@ const platforms = [
             <li>Design / mobile UX redesign</li>
             <li>Technical SEO and performance</li>
             <li>SEO + GEO + AEO + AIO</li>
-            <li>Platform migration and product cleanup</li>
+            <li>Platform migration ve ürün düzenleme</li>
           </ul>
           <a href="#fiyat-hesapla">Calculate the improvement scope →</a>
         </article>
@@ -208,7 +207,6 @@ const platforms = [
     </div>
   </section>
 
-
   <section class="qct-offers">
     <div class="qct-shell">
       <div class="qct-section-head">
@@ -219,12 +217,12 @@ const platforms = [
         <p>From new website setup to audits, visibility work and technical improvements, standard services are published with clear starting prices.</p>
       </div>
       <div class="qct-offer-grid">
-        <a href="#fiyat-hesapla"><span>Website redesign</span><div class="qct-offer-price"><strong>4.900 TL</strong><small>Starting price</small></div><small>Mobile UX, visual refinement, CTA and core technical checks</small></a>
-        <a href="#fiyat-hesapla"><span>Corporate web</span><div class="qct-offer-price"><strong>8.900 TL</strong><small>Starting price</small></div><small>Modern interface, responsive structure and core SEO</small></a>
+        <a href="#fiyat-hesapla"><span>Website redesign</span><div class="qct-offer-price"><strong>4.900 TL</strong><small>Starting price</small></div><small>Mobil, görsel düzen, CTA, temel teknik kontrol</small></a>
+        <a href="#fiyat-hesapla"><span>Corporate web</span><div class="qct-offer-price"><strong>8.900 TL</strong><small>Starting price</small></div><small>Modern arayüz, responsive yapı, temel SEO</small></a>
         <a href="#fiyat-hesapla"><span>E-commerce setup</span><div class="qct-offer-price"><strong>9.900 TL</strong><small>Starting price</small></div><small>Shopify, ikas, WooCommerce, Ticimax</small></a>
-        <a href="#fiyat-hesapla"><span>SEO + GEO + AEO + AIO</span><div class="qct-offer-price"><strong>3.900 TL</strong><small>Starting price</small></div><small>Technical and content improvements for search and AI visibility</small></a>
-        <a href="#fiyat-hesapla"><span>Website audit</span><div class="qct-offer-price"><strong>1.490 TL</strong><small>Starting price</small></div><small>Technical, mobile, speed, visibility and conversion review</small></a>
-        <a href="#fiyat-hesapla"><span>Platform migration</span><div class="qct-offer-price"><strong>7.900 TL</strong><small>Starting price</small></div><small>Product, category and core redirect plan</small></a>
+        <a href="#fiyat-hesapla"><span>SEO + GEO + AEO + AIO</span><div class="qct-offer-price"><strong>3.900 TL</strong><small>Starting price</small></div><small>Arama ve yapay zekâ görünürlüğü için teknik ve içerik iyileştirmeleri</small></a>
+        <a href="#fiyat-hesapla"><span>Website audit</span><div class="qct-offer-price"><strong>1.490 TL</strong><small>Starting price</small></div><small>Teknik, mobil, hız, görünürlük ve dönüşüm kontrolü</small></a>
+        <a href="#fiyat-hesapla"><span>Platform migration</span><div class="qct-offer-price"><strong>7.900 TL</strong><small>Starting price</small></div><small>Ürün, kategori ve temel yönlendirme planı</small></a>
       </div>
     </div>
   </section>
@@ -242,19 +240,19 @@ const platforms = [
       <div class="qct-faq-grid">
         <details>
           <summary>How do I appear on Google?</summary>
-          <p>The site must first be crawlable and indexable. Then service and product pages, search-intent content, technical SEO, internal links, structured data and trust signals need to work together. QCT Commerce audits the current state first and prioritises the highest-impact fixes.</p>
+          <p>Önce sitenin taranabilir ve indekslenebilir olması gerekir. Ardından doğru hizmet ve ürün sayfaları, arama niyetine uygun içerik, teknik SEO, iç bağlantılar, yapılandırılmış veri ve güven sinyalleri birlikte çalışır. QCT Commerce önce mevcut durumu analiz eder, sonra en yüksek etkili düzeltmeleri önceliklendirir.</p>
         </details>
         <details>
           <summary>How can my company appear in ChatGPT?</summary>
-          <p>There is no single setting or guarantee. Clear, verifiable and consistent company and service information, original content, strong entity signals, source-quality pages and technical accessibility all matter. GEO, AEO and AI-visibility work strengthens this foundation.</p>
+          <p>Tek bir ayar veya garanti yoktur. Marka ve hizmet bilgilerinin açık, doğrulanabilir ve tutarlı olması; özgün içerik, güçlü entity sinyalleri, kaynak niteliğinde sayfalar ve teknik erişilebilirlik önemlidir. GEO, AEO ve AI görünürlük çalışmaları bu yapıyı güçlendirmeyi hedefler.</p>
         </details>
         <details>
           <summary>I want SEO work. Where should I start?</summary>
-          <p>The first step is not buying a package. It is understanding the current technical state, the searches you need to appear for and the commercial goal. After an audit, only the necessary technical SEO, content, performance, architecture and visibility work is scoped.</p>
+          <p>İlk adım paket satın almak değil, mevcut sitenin teknik durumunu, hangi sorgularda görünmek istediğinizi ve ticari hedefinizi belirlemektir. Website audit sonrası teknik SEO, içerik, hız, sayfa mimarisi ve görünürlük çalışmalarından gerçekten gerekenler seçilir.</p>
         </details>
         <details>
           <summary>Why is my website not showing on Google?</summary>
-          <p>Indexing issues, weak content, poor page structure, technical problems, weak internal linking, a new domain or strong competition can all contribute. Search Console, sitemap, robots, canonical, performance and content relevance should be reviewed together.</p>
+          <p>İndeksleme sorunları, zayıf içerik, yanlış sayfa yapısı, düşük teknik kalite, yetersiz iç bağlantı, yeni alan adı veya yüksek rekabet bunun nedeni olabilir. Search Console, sitemap, robots, canonical, performans ve içerik eşleşmesi birlikte kontrol edilmeden tek bir neden söylemek doğru olmaz.</p>
         </details>
       </div>
     </div>
@@ -265,7 +263,7 @@ const platforms = [
       <div>
         <p class="qct-section-label">READY?</p>
         <h2>The next successful project <em>could be yours.</em></h2>
-        <p>Choose what you need, see the starting price and clarify the project with us when you are ready.</p>
+        <p>Choose your need, fiyatınızı görün, hazır olduğunuzda projeyi birlikte netleştirelim.</p>
       </div>
       <a class="qct-btn qct-btn-light" href="#fiyat-hesapla">Calculate Your Price <span>→</span></a>
     </div>
@@ -300,7 +298,7 @@ const platforms = [
     progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
 
     if (totalNode) {
-      const nextText = hasService ? (total > 0 ? money.format(total) + ' TL+' : 'Based on scope') : 'Make your selection';
+      const nextText = hasService ? (total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre') : 'Make your selection';
       if (totalNode.textContent !== nextText) {
         totalNode.textContent = nextText;
         totalNode.classList.remove('is-updating');
@@ -314,7 +312,7 @@ const platforms = [
 
     const serviceText = hasService ? (selectedService?.textContent?.trim() || 'Web projesi') : '';
     const productText = products?.value ? (products?.selectedOptions?.[0]?.textContent?.trim() || '') : '';
-    const message = 'Hello, I used the QCT Commerce price calculator. ' + serviceText + (productText ? ', ' + productText : '') + '. Starting price: ' + (total > 0 ? money.format(total) + ' TL+' : 'scope-based') + '. I would like to discuss the details.';
+    const message = 'Hello, I used the QCT Commerce price calculator. ' + serviceText + (productText ? ', ' + productText : '') + '. Starting price: ' + (total > 0 ? money.format(total) + ' TL’den' : 'scope-based') + '. I would like to discuss the details.';
     if (whatsapp) {
       whatsapp.classList.toggle('is-disabled', !hasService);
       whatsapp.setAttribute('aria-disabled', String(!hasService));
