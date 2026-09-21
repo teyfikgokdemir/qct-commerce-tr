@@ -1,19 +1,4 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';import Header from '../../../components/Header.astro';import Footer from '../../../components/Footer.astro';
-const sections=[
-  {
-    "title": "What to send",
-    "text": "Share a short introduction, relevant work or portfolio links, the area you want to contribute to and your preferred working arrangement."
-  },
-  {
-    "title": "Relevant disciplines",
-    "text": "Web development, e-commerce operations, UX/UI, technical SEO, content, multilingual localisation, performance, analytics and controlled AI automation are relevant areas."
-  },
-  {
-    "title": "How to apply",
-    "text": "Send a concise application to info@qctcommerce.com. General applications are reviewed according to current project and team needs."
-  }
-];
+import EnglishInfoPage from '../../../components/EnglishInfoPage.astro';
 ---
-<BaseLayout title="Careers & Collaboration | QCT Commerce" description="English careers and collaboration information for QCT Commerce, including what to include when sending a general application or collaboration proposal." lang="en" breadcrumbLabel="Careers and collaboration"><Header slot="header" lang="en"/><section class="page-hero section"><div class="container"><p class="eyebrow">CAREERS</p><h1>Careers and collaboration</h1><p class="page-hero__lead">For people who want to work with QCT Commerce or propose a relevant collaboration in web, e-commerce, growth or automation.</p></div></section><section class="section"><div class="container"><div class="qct-legal-en">{sections.map(s=><section><h2>{s.title}</h2><p>{s.text}</p></section>)}</div></div></section><Footer slot="footer" lang="en"/></BaseLayout>
-<style>.qct-legal-en{max-width:860px}.qct-legal-en section{padding:24px 0;border-top:1px solid var(--qct-color-line)}.qct-legal-en h2{font-size:1.5rem}.qct-legal-en p{color:var(--qct-color-muted);line-height:1.75}</style>
+<EnglishInfoPage title="Careers & Collaboration | QCT Commerce" description="Career and collaboration information for QCT Commerce web, e-commerce, search visibility and automation work in Türkiye." eyebrow="CAREERS" heading="Work and collaboration with QCT Commerce." lead="We evaluate collaboration around practical capability, ownership, clear communication and careful execution." sections={[{title:'Applications',text:'Send a concise introduction, relevant work examples and the type of collaboration you are looking for to info@qctcommerce.com.'},{title:'Areas of work',text:'Web development, e-commerce operations, interface design, content, SEO, AI visibility and controlled automation.'},{title:'Working approach',text:'Transparent scope, evidence-led execution, careful QA and respect for customer data and platform rules.'},{title:'Türkiye-focused work',text:'The English site supports English-speaking residents, founders and teams operating in Türkiye with the same service scope as the Turkish site.'}]}/>

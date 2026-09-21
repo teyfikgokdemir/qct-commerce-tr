@@ -4,7 +4,7 @@
 
 QCT Commerce provides corporate and personal websites, e-commerce setup and migration, website redesign, product operations, conversion-focused landing pages, SEO, GEO, AEO, AIO, analytics, WhatsApp sales systems and AI-supported business automation.
 
-The primary market is Türkiye. International market entry pages are currently available in English and Georgian for companies in Georgia entering Türkiye, Europe and Gulf markets.
+The primary market is Türkiye. The English section mirrors the Türkiye-focused service and knowledge scope for English-speaking residents, founders and teams operating in Türkiye. Dedicated international market-entry pages, such as Georgia, remain separate.
 
 QCT Commerce is part of the wider QCT ecosystem. QCT Studio is a separate sister brand.
 
@@ -92,3 +92,12 @@ The English section mirrors the Türkiye service scope for English-speaking resi
 - [Mobile e-commerce conversion guide](https://qctcommerce.com/en/blog/why-mobile-ecommerce-sites-do-not-convert/)
 - [Shopify setup guide for Türkiye](https://qctcommerce.com/en/blog/shopify-store-setup-guide-turkiye/)
 - [WhatsApp sales automation guide](https://qctcommerce.com/en/blog/whatsapp-sales-automation-guide/)
+
+
+## English company and legal pages
+
+- [English careers](https://qctcommerce.com/en/careers/): Career and collaboration information for QCT Commerce.
+- [English privacy policy](https://qctcommerce.com/en/privacy-policy/): Privacy information for English-speaking users.
+- [English KVKK notice](https://qctcommerce.com/en/kvkk/): English summary of Türkiye's personal-data information notice.
+- [English terms of use](https://qctcommerce.com/en/terms/): Website terms and pricing/third-party-service scope.
+- [English cookie policy](https://qctcommerce.com/en/cookie-policy/): Cookie preferences and optional analytics information.

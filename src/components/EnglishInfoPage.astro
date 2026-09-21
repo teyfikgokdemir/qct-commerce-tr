@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+interface Props{title:string;description:string;eyebrow:string;heading:string;lead:string;sections:Array<{title:string;text:string}>}
+const{title,description,eyebrow,heading,lead,sections}=Astro.props;
+---
+<BaseLayout title={title} description={description} lang="en" breadcrumbLabel={heading} areaServed={['Türkiye']}>
+<Header slot="header" lang="en"/>
+<section class="en-info-hero"><div class="container"><nav class="qct-breadcrumb" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">/</span><span>{heading}</span></nav><p class="qct-section__eyebrow">{eyebrow}</p><h1>{heading}</h1><p>{lead}</p></div></section>
+<section class="en-info-body"><div class="container"><div class="en-info-grid">{sections.map(s=><article><h2>{s.title}</h2><p>{s.text}</p></article>)}</div></div></section>
+<Footer slot="footer" lang="en"/></BaseLayout>
+<style>
+.en-info-hero{padding:calc(var(--qct-hero-clearance) + 42px) 0 56px;border-bottom:1px solid var(--qct-color-line)}
+.en-info-hero h1{font-size:clamp(2.6rem,5.8vw,5rem);line-height:1.02;letter-spacing:-.05em;max-width:18ch;margin:.5rem 0 1.25rem}
+.en-info-hero>div>p:last-child{color:var(--qct-color-muted);font-size:1.1rem;line-height:1.75;max-width:820px}
+.en-info-body{padding:64px 0 90px}.en-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.en-info-grid article{border:1px solid var(--qct-color-line);border-radius:20px;background:#fffaf5;padding:28px}
+.en-info-grid h2{font-size:1.35rem;margin:0 0 .8rem}.en-info-grid p{color:var(--qct-color-muted);line-height:1.72;margin:0}
+@media(max-width:700px){.en-info-grid{grid-template-columns:1fr}.en-info-hero{padding-top:calc(var(--qct-hero-clearance) + 24px)}}
+</style>

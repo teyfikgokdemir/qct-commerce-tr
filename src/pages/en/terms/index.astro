@@ -1,27 +1,4 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';import Header from '../../../components/Header.astro';import Footer from '../../../components/Footer.astro';
-const sections=[
-  {
-    "title": "Website information",
-    "text": "Content is provided for general information about QCT Commerce services and does not create a binding project agreement by itself."
-  },
-  {
-    "title": "Pricing and scope",
-    "text": "Published prices are starting prices for standard QCT Commerce service scope unless explicitly stated otherwise. Platform, licence and third-party costs are separate."
-  },
-  {
-    "title": "External services",
-    "text": "Third-party platforms, payment providers, applications and external links are subject to their own terms, availability and pricing."
-  },
-  {
-    "title": "Intellectual property",
-    "text": "Site design, original text and other QCT Commerce materials may not be copied or commercially reused without permission except where applicable law allows."
-  },
-  {
-    "title": "Contact",
-    "text": "Questions about these terms can be sent to info@qctcommerce.com."
-  }
-];
+import EnglishInfoPage from '../../../components/EnglishInfoPage.astro';
 ---
-<BaseLayout title="Terms of Use | QCT Commerce" description="English terms of use for qctcommerce.com covering website information, service descriptions, intellectual property and external services." lang="en" breadcrumbLabel="Terms of use"><Header slot="header" lang="en"/><section class="page-hero section"><div class="container"><p class="eyebrow">LEGAL</p><h1>Terms of use</h1><p class="page-hero__lead">These terms explain the general use of qctcommerce.com and the limits of information published on the website.</p></div></section><section class="section"><div class="container"><div class="qct-legal-en">{sections.map(s=><section><h2>{s.title}</h2><p>{s.text}</p></section>)}</div></div></section><Footer slot="footer" lang="en"/></BaseLayout>
-<style>.qct-legal-en{max-width:860px}.qct-legal-en section{padding:24px 0;border-top:1px solid var(--qct-color-line)}.qct-legal-en h2{font-size:1.5rem}.qct-legal-en p{color:var(--qct-color-muted);line-height:1.75}</style>
+<EnglishInfoPage title="Terms of Use | QCT Commerce" description="Terms governing informational use of qctcommerce.com, published starting prices, third-party services and project enquiries." eyebrow="LEGAL" heading="Terms of use" lead="These terms apply to informational use of qctcommerce.com and do not replace a signed project proposal or agreement." sections={[{title:'Website information',text:'Content is provided for general information and may be updated as services, platforms and market conditions change.'},{title:'Published prices',text:'Prices shown on the website are starting prices for standard QCT Commerce service scope unless explicitly stated otherwise.'},{title:'Third-party services',text:'Platform subscriptions, paid themes or apps, payment providers, advertising platforms and other third-party services are subject to their own terms and fees.'},{title:'Project agreements',text:'Final deliverables, timing, responsibilities and commercial terms are defined in the relevant written proposal or agreement.'}]}/>

@@ -46,7 +46,7 @@ const {
   areaServed,
 } = Astro.props;
 
-const parityRoutes: Record<string,string> = {"/":"/en/","/en/":"/","/hakkimizda/":"/en/about/","/en/about/":"/hakkimizda/","/hizmetler/":"/en/services/","/en/services/":"/hizmetler/","/calismalar/":"/en/work/","/en/work/":"/calismalar/","/iletisim/":"/en/contact/","/en/contact/":"/iletisim/","/fiyatlar/":"/en/pricing/","/en/pricing/":"/fiyatlar/","/e-ticaret/":"/en/ecommerce/","/en/ecommerce/":"/e-ticaret/","/web-tasarim/":"/en/web-design/","/en/web-design/":"/web-tasarim/","/whatsapp-satis/":"/en/whatsapp-sales/","/en/whatsapp-sales/":"/whatsapp-satis/","/seo-geo/":"/en/search-visibility/","/en/search-visibility/":"/seo-geo/","/meta-reklamlari/":"/en/meta-ads/","/en/meta-ads/":"/meta-reklamlari/","/yapay-zeka-otomasyonlari/":"/en/ai-automation/","/en/ai-automation/":"/yapay-zeka-otomasyonlari/","/shopify-magaza-kurulumu/":"/en/shopify-store-setup/","/en/shopify-store-setup/":"/shopify-magaza-kurulumu/","/ikas-magaza-kurulumu/":"/en/ikas-store-setup/","/en/ikas-store-setup/":"/ikas-magaza-kurulumu/","/blog/":"/en/blog/","/en/blog/":"/blog/","/gizlilik-politikasi/":"/en/privacy-policy/","/en/privacy-policy/":"/gizlilik-politikasi/","/kvkk/":"/en/kvkk/","/en/kvkk/":"/kvkk/","/kullanim-kosullari/":"/en/terms/","/en/terms/":"/kullanim-kosullari/","/cerez-politikasi/":"/en/cookie-policy/","/en/cookie-policy/":"/cerez-politikasi/","/kariyer/":"/en/careers/","/en/careers/":"/kariyer/"};
+const parityRoutes: Record<string,string> = {"/":"/en/","/en/":"/","/hakkimizda/":"/en/about/","/en/about/":"/hakkimizda/","/hizmetler/":"/en/services/","/en/services/":"/hizmetler/","/calismalar/":"/en/work/","/en/work/":"/calismalar/","/iletisim/":"/en/contact/","/en/contact/":"/iletisim/","/fiyatlar/":"/en/pricing/","/en/pricing/":"/fiyatlar/","/e-ticaret/":"/en/ecommerce/","/en/ecommerce/":"/e-ticaret/","/web-tasarim/":"/en/web-design/","/en/web-design/":"/web-tasarim/","/whatsapp-satis/":"/en/whatsapp-sales/","/en/whatsapp-sales/":"/whatsapp-satis/","/seo-geo/":"/en/search-visibility/","/en/search-visibility/":"/seo-geo/","/meta-reklamlari/":"/en/meta-ads/","/en/meta-ads/":"/meta-reklamlari/","/yapay-zeka-otomasyonlari/":"/en/ai-automation/","/en/ai-automation/":"/yapay-zeka-otomasyonlari/","/shopify-magaza-kurulumu/":"/en/shopify-store-setup/","/en/shopify-store-setup/":"/shopify-magaza-kurulumu/","/ikas-magaza-kurulumu/":"/en/ikas-store-setup/","/en/ikas-store-setup/":"/ikas-magaza-kurulumu/","/blog/":"/en/blog/","/en/blog/":"/blog/","/kariyer/":"/en/careers/","/en/careers/":"/kariyer/","/gizlilik-politikasi/":"/en/privacy-policy/","/en/privacy-policy/":"/gizlilik-politikasi/","/kvkk/":"/en/kvkk/","/en/kvkk/":"/kvkk/","/kullanim-kosullari/":"/en/terms/","/en/terms/":"/kullanim-kosullari/","/cerez-politikasi/":"/en/cookie-policy/","/en/cookie-policy/":"/cerez-politikasi/","/gizlilik-politikasi/":"/en/privacy-policy/","/en/privacy-policy/":"/gizlilik-politikasi/","/kvkk/":"/en/kvkk/","/en/kvkk/":"/kvkk/","/kullanim-kosullari/":"/en/terms/","/en/terms/":"/kullanim-kosullari/","/cerez-politikasi/":"/en/cookie-policy/","/en/cookie-policy/":"/cerez-politikasi/","/kariyer/":"/en/careers/","/en/careers/":"/kariyer/"};
 const currentPath = Astro.url.pathname;
 const pairedPath = parityRoutes[currentPath];
 const alternates = providedAlternates.length ? providedAlternates : pairedPath ? (currentPath.startsWith('/en/') ? [{ lang: 'tr-TR', href: pairedPath }, { lang: 'en', href: currentPath }] : [{ lang: 'tr-TR', href: currentPath }, { lang: 'en', href: pairedPath }]) : [];
@@ -58,10 +58,10 @@ const languageTag = isGeorgian ? 'ka-GE' : isEnglish ? 'en-US' : 'tr-TR';
 const defaultDescription = isGeorgian
   ? 'QCT Commerce ქმნის მრავალენოვან B2B ვებსაიტებს, ციფრული გაყიდვებისა და ავტომატიზაციის სისტემებს საერთაშორისო ზრდისთვის.'
   : isEnglish
-    ? 'QCT Commerce builds digital commerce, B2B sales and automation systems for ambitious companies entering new markets.'
+    ? 'QCT Commerce provides website, e-commerce, search visibility and AI-supported digital services for English-speaking businesses and founders operating in Türkiye.'
     : 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.';
 const pageDescription = description ?? defaultDescription;
-const servedMarkets = areaServed ?? (isInternational ? ['Georgia', 'Türkiye', 'Europe', 'Gulf countries'] : ['Türkiye']);
+const servedMarkets = areaServed ?? (isGeorgian ? ['Georgia', 'Türkiye', 'Europe', 'Gulf countries'] : ['Türkiye']);
 const areaServedSchema = servedMarkets.map((name) => ({ '@type': 'Country', name }));
 const isIndexable = !noindex;
 const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : image.toLowerCase().endsWith('.webp') ? 'image/webp' : 'image/jpeg';
@@ -80,7 +80,7 @@ const organizationSchema = {
   '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
   logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/logo.png', SITE_URL).toString(), contentUrl: new URL('/logo.png', SITE_URL).toString(), width: 600, height: 180, caption: 'QCT Commerce' },
   image: { '@type': 'ImageObject', url: ogImageUrl, width: imageWidth, height: imageHeight },
-  description: isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
+  description: isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Website, e-commerce, search visibility and AI-supported digital services for English-speaking businesses and founders operating in Türkiye.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
   areaServed: areaServedSchema,
   knowsAbout,
   email: 'info@qctcommerce.com',

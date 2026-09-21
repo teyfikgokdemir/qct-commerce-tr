@@ -1,27 +1,4 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';import Header from '../../../components/Header.astro';import Footer from '../../../components/Footer.astro';
-const sections=[
-  {
-    "title": "Information we may receive",
-    "text": "Information you send by email or WhatsApp may include contact details, company information and project-request content. Basic analytics information is processed only where the relevant consent is given."
-  },
-  {
-    "title": "Why information is used",
-    "text": "Information may be used to respond to enquiries, understand project requirements, maintain communication, protect the service and improve the website using permitted analytics."
-  },
-  {
-    "title": "Service providers",
-    "text": "Hosting, email, analytics or communication providers may process only the limited information necessary to provide their service."
-  },
-  {
-    "title": "Retention and security",
-    "text": "Records are retained only as long as reasonably necessary for the enquiry, project process or applicable legal obligations, with appropriate technical and administrative safeguards."
-  },
-  {
-    "title": "Requests",
-    "text": "Questions about personal data can be sent to info@qctcommerce.com."
-  }
-];
+import EnglishInfoPage from '../../../components/EnglishInfoPage.astro';
 ---
-<BaseLayout title="Privacy Policy | QCT Commerce" description="English privacy information for qctcommerce.com covering contact data, analytics consent, service providers, retention and data requests." lang="en" breadcrumbLabel="Privacy policy"><Header slot="header" lang="en"/><section class="page-hero section"><div class="container"><p class="eyebrow">LEGAL</p><h1>Privacy policy</h1><p class="page-hero__lead">How information submitted through qctcommerce.com may be handled for contact, project enquiries, security and consent-based analytics.</p></div></section><section class="section"><div class="container"><div class="qct-legal-en">{sections.map(s=><section><h2>{s.title}</h2><p>{s.text}</p></section>)}</div></div></section><Footer slot="footer" lang="en"/></BaseLayout>
-<style>.qct-legal-en{max-width:860px}.qct-legal-en section{padding:24px 0;border-top:1px solid var(--qct-color-line)}.qct-legal-en h2{font-size:1.5rem}.qct-legal-en p{color:var(--qct-color-muted);line-height:1.75}</style>
+<EnglishInfoPage title="Privacy Policy | QCT Commerce" description="Privacy policy explaining how QCT Commerce handles personal data submitted through qctcommerce.com and its communication channels." eyebrow="LEGAL" heading="Privacy policy" lead="This policy explains information that may be processed when using qctcommerce.com and contacting QCT Commerce." sections={[{title:'Information we may receive',text:'Contact details, company information, project-request details and basic site-usage data when optional analytics consent has been provided.'},{title:'Purpose of processing',text:'Information may be used to respond to enquiries, understand project needs, maintain communication, protect security and improve the website using permitted analytics.'},{title:'Service providers',text:'Hosting, email, analytics or communication providers may process only the limited information required to deliver their services.'},{title:'Retention and rights',text:'Records are kept only as necessary for the enquiry, project or applicable legal obligations. Privacy requests can be sent to info@qctcommerce.com.'}]}/>
