@@ -234,3 +234,20 @@
 @media(max-width:640px){
   .qct-hero{padding-top:56px}
 }
+
+@media(max-width:640px){
+  .qct-hero-copy>.qct-eyebrow{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+    position:relative;
+    z-index:2;
+    margin:0 0 14px!important;
+    color:#6b6259!important;
+    font-size:10px!important;
+    line-height:1.4!important;
+    letter-spacing:.16em!important;
+  }
+}
