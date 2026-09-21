@@ -7,7 +7,7 @@ import { getPageSeo } from '../i18n/seo';
 interface Props { lang: string; }
 const { lang } = Astro.props;
 const seo = getPageSeo('meta-ads');
-const d = 'Üreticiler, toptancılar, perakende markaları ve büyüyen KOBİ’ler için Meta reklamlarını, teklif ile eşleşen landing page’ler, doğru CTA akışları ve ölçülebilir dönüşüm altyapısıyla birlikte kuruyoruz.';
+const d = 'Meta reklamlarını; doğru teklif, mobil landing page, net CTA, WhatsApp veya form akışı ve ölçülebilir dönüşüm altyapısıyla birlikte kurguluyoruz.';
 ---
 <BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="Meta reklamları ve landing page" service={{ name: 'Meta reklamları ve landing page', description: d }} includeServiceCardStyles>
 <Header slot="header" lang={lang}/><ServicePage lang={lang} eyebrow="META REKLAMLARI VE LANDING PAGE" title="Reklam bütçenizi yalnızca tıklamaya değil, ölçülebilir talebe yönlendirin." lead={d} ctaPrimary="Kampanya akışımızı değerlendirelim" ctaSecondary="Tüm hizmetler"

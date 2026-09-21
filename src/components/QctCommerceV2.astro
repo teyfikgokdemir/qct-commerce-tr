@@ -1,0 +1,353 @@
+---
+const services = [
+  { value: 'ecommerce', label: 'Yeni e-ticaret sitesi', base: 9900 },
+  { value: 'corporate', label: 'Kurumsal web sitesi', base: 8900 },
+  { value: 'personal', label: 'Kişisel / portföy sitesi', base: 6900 },
+  { value: 'refresh', label: 'Mevcut site yenileme', base: 4900 },
+  { value: 'audit', label: 'Site analizi & iyileştirme planı', base: 1490 },
+  { value: 'visibility', label: 'SEO + GEO + AEO + AIO çalışması', base: 3900 },
+  { value: 'migration', label: 'Platform taşıma', base: 7900 },
+  { value: 'products', label: 'Sadece ürün ekleme', base: 0 },
+];
+
+const platforms = [
+  { name: 'Shopify', href: '/shopify-magaza-kurulumu/', type: 'Altyapı' },
+  { name: 'ikas', href: '/ikas-magaza-kurulumu/', type: 'Altyapı' },
+  { name: 'WooCommerce', href: '/e-ticaret/', type: 'Altyapı' },
+  { name: 'WordPress', href: '/web-tasarim/', type: 'Web' },
+  { name: 'Ticimax', href: '/e-ticaret/', type: 'Altyapı' },
+  { name: 'IdeaSoft', href: '/e-ticaret/', type: 'Altyapı' },
+  { name: 'PayTR', href: '/e-ticaret/', type: 'Ödeme' },
+  { name: 'iyzico', href: '/e-ticaret/', type: 'Ödeme' },
+  { name: 'Trendyol', href: '/e-ticaret/', type: 'Pazaryeri' },
+  { name: 'Hepsiburada', href: '/e-ticaret/', type: 'Pazaryeri' },
+  { name: 'Google Merchant Center', href: '/seo-geo/', type: 'Büyüme' },
+  { name: 'Meta', href: '/meta-reklamlari/', type: 'Reklam' },
+  { name: 'WhatsApp', href: '/whatsapp-satis/', type: 'Satış' },
+];
+---
+
+<div class="qct-v2" data-qct-v2>
+  <div class="qct-intro-overlay" data-intro-banner hidden>
+    <div class="qct-intro-card" role="dialog" aria-modal="false" aria-label="QCT Commerce yenilik duyurusu">
+      <button type="button" class="qct-intro-close" aria-label="Duyuruyu kapat" data-intro-close>×</button>
+      <div class="qct-intro-brand">QCT Commerce</div>
+      <p class="qct-intro-kicker">WEB SİTESİ FİYATLARI · ŞEFFAF BAŞLANGIÇ</p>
+      <h2>Web sitesi yaptırma fiyatınızı 60 saniyede öğrenin.</h2>
+      <p>Kurumsal site, e-ticaret, site yenileme ve görünürlük çalışmalarında başlangıç fiyatını anında hesaplayın.</p>
+      <div class="qct-intro-line"></div>
+      <span class="qct-intro-foot">Başlangıç fiyatları · Net kapsam · Hızlı teklif</span>
+    </div>
+  </div>
+
+  <section class="qct-hero" aria-labelledby="qct-hero-title">
+    <div class="qct-shell qct-hero-grid">
+      <div class="qct-hero-copy">
+        <p class="qct-eyebrow">DAHA AZ SORU İŞARETİ. DAHA NET PROJE.</p>
+        <h1 id="qct-hero-title">Dijital varlığınız için <em>tek merkez.</em></h1>
+        <p class="qct-lead">Yeni bir web sitesi kuruyoruz; mevcut sitenizi analiz ediyor, yeniliyor, hızlandırıyor ve görünürlüğünü geliştiriyoruz. E-ticaret, kurumsal ve kişisel sitelerde SEO, GEO, AEO, AIO, ürün yönetimi ve platform çalışmalarını tek kapsamda çözüyoruz.</p>
+        <div class="qct-hero-actions">
+          <a class="qct-btn qct-btn-primary" href="#fiyat-hesapla">Fiyatını Hesapla <span>→</span></a>
+        </div>
+        <div class="qct-proof-line">
+          <span>Şeffaf fiyatlandırma</span>
+          <span>Kurulum + geliştirme</span>
+          <span>SEO + GEO + AEO + AIO</span>
+        </div>
+      </div>
+
+      <aside class="qct-calculator" id="fiyat-hesapla" aria-labelledby="calculator-title">
+        <div class="qct-calculator-head">
+          <div>
+            <div class="qct-builder-status"><span class="qct-live-dot"></span> CANLI PROJE OLUŞTURUCU</div>
+            <h2 id="calculator-title">Projenizi oluşturun</h2>
+            <p class="qct-builder-sub">Seçimlerinizi yapın, başlangıç fiyatını anlık görün.</p>
+          </div>
+          <div class="qct-builder-progress" aria-label="Hızlı fiyat hesaplama">
+            <span class="is-active"></span><span></span><span></span>
+          </div>
+        </div>
+
+        <form data-price-form>
+          <label class="qct-field">
+            <span><b>Proje türü</b><small>Ne yaptırmak istiyorsunuz?</small></span>
+            <select name="service" data-service>
+              <option value="" data-base="0" selected disabled>İhtiyacınızı seçin</option>
+              {services.map((service) => <option value={service.value} data-base={service.base}>{service.label}</option>)}
+            </select>
+          </label>
+
+          <label class="qct-field">
+            <span><b>Altyapı</b><small>Kullandığınız veya tercih ettiğiniz platform</small></span>
+            <select name="platform" data-platform>
+              <option value="" selected disabled>Altyapınızı seçin</option>
+              <option value="shopify">Shopify</option>
+              <option value="ikas">ikas</option>
+              <option value="woocommerce">WooCommerce</option>
+              <option value="wordpress">WordPress</option>
+              <option value="ticimax">Ticimax</option>
+              <option value="ideasoft">IdeaSoft</option>
+              <option value="kararsiz">Henüz karar vermedim</option>
+              <option value="diger">Diğer / mevcut altyapım</option>
+            </select>
+          </label>
+
+          <label class="qct-field">
+            <span><b>Ürün kapsamı</b><small>Ürün girişi gerekiyorsa adet seçin</small></span>
+            <select name="products" data-products>
+              <option value="" data-price="0" selected disabled>Ürün kapsamını seçin</option>
+              <option value="0" data-price="0">Ürün girişi gerekmiyor</option>
+              <option value="25" data-price="1490">1–25 ürün</option>
+              <option value="50" data-price="2490">26–50 ürün</option>
+              <option value="100" data-price="3990">51–100 ürün</option>
+              <option value="250" data-price="7900">101–250 ürün</option>
+              <option value="500" data-price="12900">251–500 ürün</option>
+            </select>
+          </label>
+
+          <fieldset>
+            <legend>Projeyi güçlendirin <small>İhtiyacınız olanları ekleyin</small></legend>
+            <div class="qct-addon-grid">
+              <label class="qct-check"><input type="checkbox" value="2490" data-addon /><span>Teknik SEO <small>+2.490 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="3900" data-addon /><span>SEO + GEO + AEO + AIO <small>+3.900 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="1490" data-addon /><span>Merchant Center <small>+1.490 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="990" data-addon /><span>GA4 + Search Console <small>+990 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="2490" data-addon /><span>Ek dil <small>+2.490 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="1990" data-addon /><span>Hız optimizasyonu <small>+1.990 TL</small></span></label>
+            </div>
+          </fieldset>
+
+          <div class="qct-price-result" aria-live="polite">
+            <div>
+              <span class="qct-price-label">PROJENİZİN BAŞLANGIÇ FİYATI</span>
+              <strong data-total>Seçiminizi yapın</strong>
+              <small data-result-note>İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.</small>
+            </div>
+            <a class="qct-btn qct-btn-primary qct-result-btn is-disabled" data-whatsapp aria-disabled="true" href="https://wa.me/905456782655" target="_blank" rel="noopener">Detaylandır <span>→</span></a>
+          </div>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <section class="qct-platforms qct-ecosystem" aria-label="Desteklenen altyapılar ve entegrasyonlar">
+    <div class="qct-shell qct-ecosystem-head">
+      <p class="qct-section-label">ALTYAPILAR & ENTEGRASYONLAR</p>
+      <span>Kurulumdan satışa, tek ekosistem.</span>
+    </div>
+    <div class="qct-marquee" data-marquee>
+      <div class="qct-marquee-track">
+        <div class="qct-marquee-group">
+          {platforms.map((platform) => (
+            <a class="qct-marquee-item" href={platform.href}>
+              <small>{platform.type}</small>
+              <strong>{platform.name}</strong>
+            </a>
+          ))}
+        </div>
+        <div class="qct-marquee-group" aria-hidden="true">
+          {platforms.map((platform) => (
+            <a class="qct-marquee-item" href={platform.href} tabindex="-1">
+              <small>{platform.type}</small>
+              <strong>{platform.name}</strong>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="qct-pathways">
+    <div class="qct-shell">
+      <div class="qct-section-head qct-pathway-head">
+        <div>
+          <p class="qct-section-label">İKİ FARKLI BAŞLANGIÇ, TEK SİSTEM</p>
+          <h2>Siteniz yoksa kurarız.<br/><em>Varsa geliştiririz.</em></h2>
+        </div>
+        <p>QCT Commerce yalnızca web sitesi üretmez. Mevcut dijital yapıyı analiz eder, eksikleri belirler ve ihtiyaç olan katmanı uygular.</p>
+      </div>
+      <div class="qct-pathway-grid">
+        <article>
+          <span class="qct-pathway-label">YENİ PROJE</span>
+          <h3>Bir site kurmak istiyorum</h3>
+          <p>Kurumsal, kişisel veya e-ticaret projesini tasarım, mobil deneyim, altyapı, ölçüm ve temel görünürlük katmanlarıyla birlikte kuruyoruz.</p>
+          <ul>
+            <li>Kurumsal web sitesi</li>
+            <li>Kişisel / portföy sitesi</li>
+            <li>E-ticaret mağazası</li>
+            <li>Shopify, ikas, WooCommerce, Ticimax</li>
+            <li>Ürün girişi ve mağaza hazırlığı</li>
+          </ul>
+          <a href="#fiyat-hesapla">Yeni proje fiyatını hesapla →</a>
+        </article>
+        <article>
+          <span class="qct-pathway-label">MEVCUT SİTE</span>
+          <h3>Sitem var, daha iyi çalışmasını istiyorum</h3>
+          <p>Önce mevcut durumu analiz ediyor; teknik, tasarım, hız, SEO ve yapay zekâ arama görünürlüğü tarafında gerçekten gerekli çalışmaları ayırıyoruz.</p>
+          <ul>
+            <li>Site analizi ve iyileştirme planı</li>
+            <li>Tasarım / mobil UX yenileme</li>
+            <li>Teknik SEO ve performans</li>
+            <li>SEO + GEO + AEO + AIO</li>
+            <li>Platform taşıma ve ürün düzenleme</li>
+          </ul>
+          <a href="#fiyat-hesapla">İyileştirme kapsamını hesapla →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="qct-benefits">
+    <div class="qct-shell qct-benefit-grid">
+      <article><h3>Net kapsam</h3><p>Projeye başlamadan önce ne yapılacağını ve neyin kapsam dışında olduğunu açıkça görün.</p></article>
+      <article><h3>Şeffaf fiyat</h3><p>Teklif almak için günlerce beklemeyin. Standart işler için fiyatları baştan bilin.</p></article>
+      <article><h3>Mobil öncelik</h3><p>Siteyi masaüstünden küçültmüyoruz; mobil deneyimi ayrı bir ürün yüzeyi gibi tasarlıyoruz.</p></article>
+      <article><h3>Sürekli geliştirilebilir</h3><p>Teslim sonrası SEO, GEO, AEO, AIO, hız, ürün ve dönüşüm ihtiyaçlarında aynı yapı üzerinden ilerleyebilirsiniz.</p></article>
+    </div>
+  </section>
+
+  <section class="qct-offers">
+    <div class="qct-shell">
+      <div class="qct-section-head">
+        <div>
+          <p class="qct-section-label">HIZLI BAŞLANGIÇ</p>
+          <h2>İhtiyacı seçin.<br/><em>Fiyatı baştan görün.</em></h2>
+        </div>
+        <p>Yeni site kurulumundan mevcut sitenin analizi, görünürlük çalışmaları ve teknik iyileştirmelere kadar standart hizmetleri açık başlangıç fiyatlarıyla sunuyoruz.</p>
+      </div>
+      <div class="qct-offer-grid">
+        <a href="#fiyat-hesapla"><span>Site yenileme</span><div class="qct-offer-price"><strong>4.900 TL</strong><small>Başlangıç fiyatı</small></div><small>Mobil, görsel düzen, CTA, temel teknik kontrol</small></a>
+        <a href="#fiyat-hesapla"><span>Kurumsal web</span><div class="qct-offer-price"><strong>8.900 TL</strong><small>Başlangıç fiyatı</small></div><small>Modern arayüz, responsive yapı, temel SEO</small></a>
+        <a href="#fiyat-hesapla"><span>E-ticaret kurulumu</span><div class="qct-offer-price"><strong>9.900 TL</strong><small>Başlangıç fiyatı</small></div><small>Shopify, ikas, WooCommerce, Ticimax</small></a>
+        <a href="#fiyat-hesapla"><span>SEO + GEO + AEO + AIO</span><div class="qct-offer-price"><strong>3.900 TL</strong><small>Başlangıç fiyatı</small></div><small>Arama ve yapay zekâ görünürlüğü için teknik ve içerik iyileştirmeleri</small></a>
+        <a href="#fiyat-hesapla"><span>Site analizi</span><div class="qct-offer-price"><strong>1.490 TL</strong><small>Başlangıç fiyatı</small></div><small>Teknik, mobil, hız, görünürlük ve dönüşüm kontrolü</small></a>
+        <a href="#fiyat-hesapla"><span>Platform taşıma</span><div class="qct-offer-price"><strong>7.900 TL</strong><small>Başlangıç fiyatı</small></div><small>Ürün, kategori ve temel yönlendirme planı</small></a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="qct-search-faq">
+    <div class="qct-shell">
+      <div class="qct-section-head">
+        <div>
+          <p class="qct-section-label">SIK SORULANLAR</p>
+          <h2>Aramada görünürlük.<br/><em>Net cevaplar.</em></h2>
+        </div>
+        <p>Web sitesi sahiplerinin Google ve yapay zekâ aramalarında en sık sorduğu soruları teknik jargon yerine uygulanabilir cevaplarla ele alıyoruz.</p>
+      </div>
+      <div class="qct-faq-grid">
+        <details>
+          <summary>Google’da nasıl çıkarım?</summary>
+          <p>Önce sitenin taranabilir ve indekslenebilir olması gerekir. Ardından doğru hizmet ve ürün sayfaları, arama niyetine uygun içerik, teknik SEO, iç bağlantılar, yapılandırılmış veri ve güven sinyalleri birlikte çalışır. QCT Commerce önce mevcut durumu analiz eder, sonra en yüksek etkili düzeltmeleri önceliklendirir.</p>
+        </details>
+        <details>
+          <summary>ChatGPT’de firmam nasıl görünür?</summary>
+          <p>Tek bir ayar veya garanti yoktur. Marka ve hizmet bilgilerinin açık, doğrulanabilir ve tutarlı olması; özgün içerik, güçlü entity sinyalleri, kaynak niteliğinde sayfalar ve teknik erişilebilirlik önemlidir. GEO, AEO ve AI görünürlük çalışmaları bu yapıyı güçlendirmeyi hedefler.</p>
+        </details>
+        <details>
+          <summary>SEO yaptırmak istiyorum. Nereden başlamalıyım?</summary>
+          <p>İlk adım paket satın almak değil, mevcut sitenin teknik durumunu, hangi sorgularda görünmek istediğinizi ve ticari hedefinizi belirlemektir. Site analizi sonrası teknik SEO, içerik, hız, sayfa mimarisi ve görünürlük çalışmalarından gerçekten gerekenler seçilir.</p>
+        </details>
+        <details>
+          <summary>Web sitem neden Google’da çıkmıyor?</summary>
+          <p>İndeksleme sorunları, zayıf içerik, yanlış sayfa yapısı, düşük teknik kalite, yetersiz iç bağlantı, yeni alan adı veya yüksek rekabet bunun nedeni olabilir. Search Console, sitemap, robots, canonical, performans ve içerik eşleşmesi birlikte kontrol edilmeden tek bir neden söylemek doğru olmaz.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="qct-close">
+    <div class="qct-shell qct-close-grid">
+      <div>
+        <p class="qct-section-label">HAZIR MISINIZ?</p>
+        <h2>Sıradaki başarılı proje <em>sizin olabilir.</em></h2>
+        <p>İhtiyacınızı seçin, fiyatınızı görün, hazır olduğunuzda projeyi birlikte netleştirelim.</p>
+      </div>
+      <a class="qct-btn qct-btn-light" href="#fiyat-hesapla">Fiyatını Hesapla <span>→</span></a>
+    </div>
+  </section>
+</div>
+
+<script is:inline>
+(() => {
+  const root = document.querySelector('[data-qct-v2]');
+  if (!root || root.dataset.ready === 'true') return;
+  root.dataset.ready = 'true';
+
+  const form = root.querySelector('[data-price-form]');
+  const service = root.querySelector('[data-service]');
+  const products = root.querySelector('[data-products]');
+  const addons = [...root.querySelectorAll('[data-addon]')];
+  const totalNode = root.querySelector('[data-total]');
+  const noteNode = root.querySelector('[data-result-note]');
+  const whatsapp = root.querySelector('[data-whatsapp]');
+  const progress = [...root.querySelectorAll('.qct-builder-progress span')];
+
+  const money = new Intl.NumberFormat('tr-TR');
+
+  function calculate() {
+    const selectedService = service?.selectedOptions?.[0];
+    const hasService = Boolean(service?.value);
+    const base = Number(selectedService?.dataset.base || 0);
+    const productPrice = Number(products?.selectedOptions?.[0]?.dataset.price || 0);
+    const addonPrice = addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
+    const total = base + productPrice + addonPrice;
+    const completed = [Boolean(service?.value), Boolean(root.querySelector('[data-platform]')?.value), Boolean(products?.value)].filter(Boolean).length;
+    progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
+
+    if (totalNode) {
+      const nextText = hasService ? (total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre') : 'Seçiminizi yapın';
+      if (totalNode.textContent !== nextText) {
+        totalNode.textContent = nextText;
+        totalNode.classList.remove('is-updating');
+        void totalNode.offsetWidth;
+        totalNode.classList.add('is-updating');
+      }
+    }
+    if (noteNode) noteNode.textContent = hasService
+      ? 'Gösterilen tutar standart kapsam için başlangıç fiyatıdır; proje detayına göre değişebilir.'
+      : 'İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.';
+
+    const serviceText = hasService ? (selectedService?.textContent?.trim() || 'Web projesi') : '';
+    const productText = products?.value ? (products?.selectedOptions?.[0]?.textContent?.trim() || '') : '';
+    const message = 'Merhaba, QCT Commerce fiyat hesaplayıcıdan geldim. ' + serviceText + (productText ? ', ' + productText : '') + '. Başlangıç fiyatı: ' + (total > 0 ? money.format(total) + ' TL’den' : 'kapsama göre') + '. Detayları görüşmek istiyorum.';
+    if (whatsapp) {
+      whatsapp.classList.toggle('is-disabled', !hasService);
+      whatsapp.setAttribute('aria-disabled', String(!hasService));
+      whatsapp.href = hasService
+        ? 'https://wa.me/905456782655?text=' + encodeURIComponent(message)
+        : 'https://wa.me/905456782655';
+    }
+  }
+
+  form?.addEventListener('change', calculate);
+  whatsapp?.addEventListener('click', (event) => {
+    if (whatsapp.getAttribute('aria-disabled') === 'true') event.preventDefault();
+  });
+  calculate();
+
+  const banner = root.querySelector('[data-intro-banner]');
+  const close = root.querySelector('[data-intro-close]');
+  const key = 'qct-v2-intro-seen';
+
+  try {
+    if (banner && !localStorage.getItem(key)) {
+      window.setTimeout(() => {
+        banner.hidden = false;
+        requestAnimationFrame(() => banner.classList.add('is-visible'));
+        localStorage.setItem(key, '1');
+        window.setTimeout(() => {
+          banner.classList.remove('is-visible');
+          window.setTimeout(() => { banner.hidden = true; }, 420);
+        }, 3000);
+      }, 450);
+    }
+  } catch {}
+
+  close?.addEventListener('click', () => {
+    banner?.classList.remove('is-visible');
+    window.setTimeout(() => { if (banner) banner.hidden = true; }, 250);
+  });
+})();
+</script>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+const faqItems = [
+  { q: 'Web sitesi yaptırma fiyatları ne kadar?', a: 'QCT Commerce’te kişisel veya portföy sitesi 6.900 TL, kurumsal web sitesi 8.900 TL ve e-ticaret sitesi kurulumu 9.900 TL başlangıç fiyatıyla sunulur. Kapsam; sayfa, ürün, entegrasyon ve ek hizmetlere göre değişir.' },
+  { q: 'Mevcut web sitesi yenileme fiyatı nedir?', a: 'Temel site yenileme çalışmaları 4.900 TL’den başlar. Mobil düzen, tasarım, hız, teknik sorunlar ve SEO geçiş gereksinimi mevcut siteye göre değerlendirilir.' },
+  { q: 'SEO, GEO, AEO ve AI görünürlük çalışması ne kadar?', a: 'Başlangıç görünürlük paketi 3.900 TL’den başlar. Teknik SEO, arama niyeti, içerik yapısı, GEO ve AEO ihtiyaçları sitenin mevcut durumuna göre kapsamlanır.' },
+  { q: 'Site analizi yaptırabilir miyim?', a: 'Evet. Teknik, mobil, hız, görünürlük ve dönüşüm odaklı site analizi 1.490 TL’den başlar. Analiz sonunda önceliklendirilmiş iyileştirme planı sunulur.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+<BaseLayout
+  title="Web Sitesi Fiyatları 2026 | E-Ticaret, SEO & Site Yenileme | QCT"
+  description="2026 web sitesi yaptırma fiyatları: kişisel site 6.900 TL, kurumsal web 8.900 TL, e-ticaret 9.900 TL, site yenileme 4.900 TL, SEO/GEO/AEO 3.900 TL’den. Şeffaf fiyatları inceleyin."
+  lang="tr"
+  breadcrumbLabel="Fiyatlar"
+>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Header slot="header" lang="tr" />
+  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-2" />
+  <div class="qct-v2">
+    <section class="qct-pricing-hero">
+      <div class="qct-shell">
+        <p class="qct-eyebrow">WEB SİTESİ FİYATLARI 2026</p>
+        <h1>Ne alacağınızı bilin.<br/><em>Ne ödeyeceğinizi de.</em></h1>
+        <p class="qct-lead">Web sitesi yaptırma, e-ticaret kurulumu, mevcut site yenileme, ürün girişi ve SEO–GEO–AEO görünürlük çalışmalarında başlangıç fiyatlarını açıkça yayınlıyoruz.</p>
+        <div class="qct-hero-actions">
+          <a class="qct-btn qct-btn-primary" href="/#fiyat-hesapla">Canlı fiyatını hesapla <span>→</span></a>
+          <a class="qct-text-link" href="/iletisim/">Projeyi konuşalım</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-pricing-list">
+      <div class="qct-shell">
+        <div class="qct-price-category">
+          <div><p class="qct-section-label">YENİ WEB SİTESİ</p><h2>Web sitesi yaptırma fiyatları</h2></div>
+          <div class="qct-price-rows">
+            <article><span>Kişisel / portföy sitesi</span><strong>6.900 TL</strong><small>Başlangıç fiyatı</small><p>Mobil uyumlu modern yapı, temel SEO, iletişim ve içerik sayfaları.</p></article>
+            <article><span>Kurumsal web sitesi</span><strong>8.900 TL</strong><small>Başlangıç fiyatı</small><p>Şirket, hizmet, referans, iletişim ve dönüşüm odaklı profesyonel yapı.</p></article>
+            <article><span>E-ticaret sitesi</span><strong>9.900 TL</strong><small>Başlangıç fiyatı</small><p>Shopify, ikas, WooCommerce, Ticimax veya IdeaSoft kurulum ve satışa hazırlık.</p></article>
+          </div>
+        </div>
+
+        <div class="qct-price-category">
+          <div><p class="qct-section-label">MEVCUT SİTE</p><h2>Yenileme ve iyileştirme</h2></div>
+          <div class="qct-price-rows">
+            <article><span>Site analizi & yol haritası</span><strong>1.490 TL</strong><small>Başlangıç fiyatı</small><p>Teknik, mobil, hız, SEO, içerik ve dönüşüm sorunlarının önceliklendirilmesi.</p></article>
+            <article><span>Web sitesi yenileme</span><strong>4.900 TL</strong><small>Başlangıç fiyatı</small><p>Görsel kalite, mobil UX, CTA, sayfa yapısı ve temel teknik düzenlemeler.</p></article>
+            <article><span>Platform taşıma</span><strong>7.900 TL</strong><small>Başlangıç fiyatı</small><p>İçerik, ürün, kategori, URL ve temel SEO yönlendirme planıyla geçiş.</p></article>
+          </div>
+        </div>
+
+        <div class="qct-price-category">
+          <div><p class="qct-section-label">GÖRÜNÜRLÜK</p><h2>SEO, GEO, AEO ve AI görünürlük</h2></div>
+          <div class="qct-price-rows">
+            <article><span>Teknik SEO</span><strong>2.490 TL</strong><small>Başlangıç fiyatı</small><p>Tarama, indeksleme, metadata, canonical, sitemap, mobil ve performans kontrolü.</p></article>
+            <article><span>SEO + GEO + AEO + AI görünürlük</span><strong>3.900 TL</strong><small>Başlangıç fiyatı</small><p>Google ve üretken yapay zekâ aramalarında bulunabilirliği güçlendiren teknik ve içerik çalışması.</p></article>
+            <article><span>GA4 + Search Console</span><strong>990 TL</strong><small>Başlangıç fiyatı</small><p>Temel ölçüm, doğrulama ve görünürlük verisinin takip edilmesi.</p></article>
+          </div>
+        </div>
+
+        <div class="qct-price-category">
+          <div><p class="qct-section-label">ÜRÜN GİRİŞİ</p><h2>E-ticaret ürün ekleme</h2></div>
+          <div class="qct-price-rows">
+            <article><span>1–25 ürün</span><strong>1.490 TL</strong><p>Ürün adı, fiyat, stok, SKU, kategori, görsel, varyant ve mevcut açıklama.</p></article>
+            <article><span>26–50 ürün</span><strong>2.490 TL</strong><p>Standart ürün giriş kapsamı.</p></article>
+            <article><span>51–100 ürün</span><strong>3.990 TL</strong><p>Standart ürün giriş kapsamı.</p></article>
+            <article><span>101–250 ürün</span><strong>7.900 TL</strong><p>Standart ürün giriş kapsamı.</p></article>
+            <article><span>251–500 ürün</span><strong>12.900 TL</strong><p>Standart ürün giriş kapsamı.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-pricing-faq">
+      <div class="qct-shell">
+        <p class="qct-section-label">SIK SORULANLAR</p>
+        <h2>Fiyatlandırma hakkında</h2>
+        <div class="qct-faq-grid">
+          {faqItems.map((item) => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-close">
+      <div class="qct-shell qct-close-grid">
+        <div><p class="qct-section-label">60 SANİYEDE BAŞLAYIN</p><h2>İhtiyacınızı seçin.<br/><em>Fiyatınızı görün.</em></h2></div>
+        <a class="qct-btn qct-btn-light" href="/#fiyat-hesapla">Canlı hesapla <span>→</span></a>
+      </div>
+    </section>
+  </div>
+  <Footer slot="footer" lang="tr" />
+</BaseLayout>

@@ -2,13 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import Problem from '../components/Problem.astro';
-import Services from '../components/Services.astro';
-import SelectedWork from '../components/SelectedWork.astro';
-import Process from '../components/Process.astro';
-import FinalCta from '../components/FinalCta.astro';
-import Contact from '../components/Contact.astro';
+import QctCommerceV2 from '../components/QctCommerceV2.astro';
 
 interface Props {
   lang: string;
@@ -16,19 +10,19 @@ interface Props {
 const { lang } = Astro.props;
 
 const seo = {
-  title: 'E-Ticaret, SEO ve Dijital Büyüme | QCT Commerce Türkiye',
-  description: 'QCT Commerce; e-ticaret, web tasarım, SEO/GEO/AEO/AIO, WhatsApp satış ve yapay zekâ otomasyonlarını ölçülebilir dijital büyüme sistemine dönüştürür.',
+  title: 'Web, E-Ticaret, SEO, GEO, AEO & AIO | QCT Commerce',
+  description: 'Yeni web ve e-ticaret projeleri, mevcut site analizi, yenileme, hız optimizasyonu, SEO, GEO, AEO, AIO, ürün yönetimi ve platform taşıma hizmetleri. Şeffaf fiyatlarla tek merkez.',
 };
 const alternates = [
   { lang: 'tr-TR', href: '/' },
   { lang: 'en', href: '/en/' },
 ];
 const faqItems = [
-  { q: 'Hangi hizmetle başlamalıyız?', a: 'İlk adım, mevcut dijital yapınızda satış sürecini en çok zorlayan noktayı belirlemektir. İhtiyaç tek bir hizmetle çözülebiliyorsa kapsamı o alanda tutar; birden fazla katman birbirini etkiliyorsa öncelikli sırayı birlikte çıkarırız.' },
-  { q: 'Mevcut web sitemiz veya mağazamız geliştirilebilir mi?', a: 'Evet. Yeni bir yapı kurmadan önce mevcut sitenin veya mağazanın teknik altyapısını, kullanıcı akışını, içeriklerini ve ölçüm düzenini değerlendirir; korunabilecek ve geliştirilmesi gereken alanları ayırırız.' },
-  { q: 'Yalnızca tek bir hizmet için çalışabilir miyiz?', a: 'Evet. İhtiyaç netse e-ticaret altyapısı, web tasarım, WhatsApp satış sistemi, arama görünürlüğü, Meta reklamları veya otomasyon gibi tek bir çalışma alanıyla ilerlenebilir.' },
-  { q: 'İlk görüşmede neleri değerlendiriyorsunuz?', a: 'İş modelinizi, mevcut web sitesi veya mağazanızı, satış kanallarınızı, öncelikli sorunu ve ekip kapasitenizi konuşuruz. Amaç, çözüm önermeden önce mevcut durumu ve hedefi aynı çerçevede görmektir.' },
-  { q: 'Çalışma kapsamı nasıl belirleniyor?', a: 'Kapsam; çözülmesi gereken problem, mevcut altyapı, gerekli içerik ve entegrasyonlar ile işletmenin uygulama önceliklerine göre belirlenir. Başlangıç adımı ve sonraki geliştirmeler birbirinden ayrılarak netleştirilir.' },
+  { q: 'Google’da nasıl çıkarım?', a: 'Sitenin taranabilir ve indekslenebilir olması, doğru hizmet ve ürün sayfaları, arama niyetine uygun içerik, teknik SEO, iç bağlantılar, yapılandırılmış veri ve güven sinyallerinin birlikte çalışması gerekir.' },
+  { q: 'ChatGPT’de firmam nasıl görünür?', a: 'Tek bir ayar veya garanti yoktur. Marka ve hizmet bilgilerinin açık, doğrulanabilir ve tutarlı olması; özgün içerik, güçlü entity sinyalleri, kaynak niteliğinde sayfalar ve teknik erişilebilirlik önemlidir.' },
+  { q: 'SEO yaptırmak istiyorum. Nereden başlamalıyım?', a: 'İlk adım mevcut sitenin teknik durumunu, görünmek istediğiniz sorguları ve ticari hedefinizi belirlemektir. Analiz sonrası teknik SEO, içerik, hız ve sayfa mimarisi çalışmalarından gerçekten gerekenler seçilir.' },
+  { q: 'Web sitem neden Google’da çıkmıyor?', a: 'İndeksleme sorunları, zayıf içerik, yanlış sayfa yapısı, düşük teknik kalite, yetersiz iç bağlantı, yeni alan adı veya yüksek rekabet neden olabilir. Search Console ve teknik yapı birlikte kontrol edilmelidir.' },
+  { q: 'Fiyat hesaplayıcıdaki tutar kesin fiyat mı?', a: 'Hayır. Gösterilen tutarlar standart kapsam için başlangıç fiyatıdır. Özel entegrasyon, yoğun varyant yapısı veya standart dışı geliştirme varsa kapsam ayrıca netleştirilir.' },
 ];
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -36,7 +30,6 @@ const faqSchema = {
   '@id': 'https://qctcommerce.com/#faq',
   url: 'https://qctcommerce.com/',
   inLanguage: 'tr-TR',
-  isPartOf: { '@id': 'https://qctcommerce.com/#webpage' },
   mainEntity: faqItems.map((item) => ({
     '@type': 'Question',
     name: item.q,
@@ -44,15 +37,10 @@ const faqSchema = {
   })),
 };
 ---
-<BaseLayout title={seo.title} description={seo.description} image="/og-commerce-1200x630.jpg" imageWidth={1200} imageHeight={630} lang={lang} isHome={true} includeWorkStyles={true} alternates={alternates}>
-<script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-<Header slot="header" lang={lang} />
-<Hero lang={lang} />
-<Problem lang={lang} />
-<Services lang={lang} />
-<SelectedWork />
-<Process lang={lang} />
-<FinalCta lang={lang} />
-<Contact lang={lang} faqItems={faqItems} />
-<Footer slot="footer" lang={lang} />
+<BaseLayout title={seo.title} description={seo.description} image="/og-commerce-1200x630.jpg" imageWidth={1200} imageHeight={630} lang={lang} isHome={true} includeWorkStyles={false} alternates={alternates}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Header slot="header" lang={lang} />
+  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-1" />
+  <QctCommerceV2 />
+  <Footer slot="footer" lang={lang} />
 </BaseLayout>

@@ -13,6 +13,8 @@ const serviceLinks = isEnglish ? [
 ] : [
   ['Tüm Hizmetler', '/hizmetler/'],
   ['E-Ticaret Altyapısı', '/e-ticaret/'],
+  ['Shopify Kurulum', '/shopify-magaza-kurulumu/'],
+  ['ikas Kurulum', '/ikas-magaza-kurulumu/'],
   ['Web Tasarım', '/web-tasarim/'],
   ['WhatsApp Satış', '/whatsapp-satis/'],
   ['SEO, GEO & AIO', '/seo-geo/'],
@@ -37,6 +39,7 @@ const quickLinks = isGeorgian ? [
   ['Ana Sayfa', '/'],
   ['Çalışmalar', '/calismalar/'],
   ['Hakkımızda', '/hakkimizda/'],
+  ['Fiyatlar', '/fiyatlar/'],
   ['Blog', '/blog/'],
   ['İletişim', '/iletisim/']
 ];
@@ -55,66 +58,46 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     </button>
     
     <nav id="site-navigation" class="main-navigation" aria-label={isGeorgian ? 'მთავარი მენიუ' : isEnglish ? 'Main menu' : 'Ana menü'} aria-hidden="true">
-      <!-- MOBILE ONLY PANEL (ctseg Standard Mythborn Card Grid) -->
+      <div class="mobile-nav-head">
+        <span class="mobile-nav-title">{isGeorgian ? 'QCT COMMERCE' : isEnglish ? 'QCT COMMERCE' : 'QCT COMMERCE'}</span>
+        <button class="mobile-nav-close" type="button" aria-label={isGeorgian ? 'მენიუს დახურვა' : isEnglish ? 'Close menu' : 'Menüyü kapat'} data-mobile-close>×</button>
+      </div>
+      <!-- MOBILE ONLY PANEL -->
       <div class="mobile-only-panel">
-        <!-- Card 1: Language Switcher (ctseg Standard 1:1) -->
-        <div class="mobile-myth-card mobile-myth-card--lang">
-          <div class="myth-card-head">
-            <span class="myth-card-title">🌐 DİL / LANGUAGE</span>
-            <span class="myth-card-badge">GLOBAL</span>
-          </div>
-          <div class="mobile-lang-grid">
-            <a href="/" class:list={['mobile-lang-item', { active: !isEnglish && !isGeorgian }]}>
-              <span class="lang-code">TR</span>
-              <span class="lang-name">TÜRKÇE</span>
+        <nav class="qct-mobile-primary" aria-label={isEnglish ? 'Mobile navigation' : 'Mobil navigasyon'}>
+          {quickLinks.map(([label, href]) => (
+            <a href={href} class="qct-mobile-primary__link">
+              <span>{label}</span>
+              <span aria-hidden="true">↗</span>
             </a>
-            <a href="/en/" class:list={['mobile-lang-item', { active: isEnglish }]}>
-              <span class="lang-code">EN</span>
-              <span class="lang-name">ENGLISH</span>
-            </a>
-            <a href="/ka/georgia/" class:list={['mobile-lang-item', { active: isGeorgian }]}>
-              <span class="lang-code">KA</span>
-              <span class="lang-name">GEORGIA</span>
-            </a>
-          </div>
-        </div>
+          ))}
+        </nav>
 
-        <!-- Card 2: Services / Hizmetler (Mythborn Open Grid) -->
         {!isGeorgian && (
-          <div class="mobile-myth-card">
-            <div class="myth-card-head">
-              <span class="myth-card-title">🏢 {isEnglish ? 'SOLUTIONS' : 'HİZMETLER'}</span>
-              <span class="myth-card-badge">SERVİSLER</span>
+          <div class="qct-mobile-services">
+            <div class="qct-mobile-section-head">
+              <span>{isEnglish ? 'SERVICES' : 'HİZMETLER'}</span>
+              <small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small>
             </div>
-            <div class="mobile-solutions-grid">
+            <div class="qct-mobile-services__grid">
               {serviceLinks.map(([label, href]) => (
-                <a href={href} class="mobile-solution-item">
-                  <strong class="sol-title">{label.toUpperCase()}</strong>
-                </a>
+                <a href={href}>{label}</a>
               ))}
             </div>
           </div>
         )}
 
-        <!-- Card 3: Quick Navigation -->
-        <div class="mobile-myth-card">
-          <div class="myth-card-head">
-            <span class="myth-card-title">📌 {isGeorgian ? 'მენიუ' : isEnglish ? 'NAVIGATION' : 'HIZLI ERİŞİM'}</span>
-            <span class="myth-card-badge">MENÜ</span>
+        <div class="qct-mobile-bottom">
+          <div class="qct-mobile-languages" aria-label={isEnglish ? 'Language' : 'Dil seçimi'}>
+            <a href="/" class:list={[{ active: !isEnglish && !isGeorgian }]}>TR</a>
+            <a href="/en/" class:list={[{ active: isEnglish }]}>EN</a>
+            <a href="/ka/georgia/" class:list={[{ active: isGeorgian }]}>KA</a>
           </div>
-          <div class="mobile-nav-grid">
-            {quickLinks.map(([label, href]) => (
-              <a href={href} class="mobile-nav-item">
-                <strong>{label.toUpperCase()}</strong>
-              </a>
-            ))}
-          </div>
+          <a class="qct-mobile-project" href={isEnglish ? "/en/contact/" : "/iletisim/"}>
+            <span>{isEnglish ? 'Start a project' : 'Proje başlat'}</span>
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
-
-        <!-- Card 4: Mobile CTA Button -->
-        <a class="button button-primary mobile-cta-btn" href={isEnglish ? "/en/contact/" : "/iletisim/"}>
-          {isEnglish ? 'START A PROJECT' : 'PROJE BAŞLAT'}
-        </a>
       </div>
 
       <!-- DESKTOP ONLY NAVIGATION (Aesthetic 1-Column Dark Dropdown) -->
@@ -138,8 +121,8 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
-            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Çalışmalar</span></button><ul class="sub-menu"><li><a href="/calismalar/">Çalışmaları gör</a></li><li><a href="/iletisim/">Proje başlat</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/en/" hreflang="en">EN</a></li>
+            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Çalışmalar</span></button><ul class="sub-menu"><li><a href="/calismalar/">Çalışmaları gör</a></li><li><a href="/iletisim/">Proje başlat</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/en/" hreflang="en">EN</a></li>
           </ul>
         )}
       </div>
@@ -150,6 +133,9 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
 
 <style is:global>
   @media (min-width: 1000px) {
+    .mobile-nav-head {
+      display: none !important;
+    }
     .mobile-only-panel {
       display: none !important;
     }
@@ -224,6 +210,15 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
       display: none !important;
     }
 
+    .mobile-nav-head {
+      display: flex !important;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(10,10,16,.96);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
     .mobile-only-panel {
       display: flex !important;
       flex-direction: column !important;
@@ -347,4 +342,527 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
     justify-content: center !important;
     text-decoration: none !important;
   }
+</style>
+<style is:global>
+@media (max-width:999px){
+  .site-menu-toggle{touch-action:manipulation}
+  .main-navigation.is-open{display:flex!important}
+  .mobile-nav-close{touch-action:manipulation}
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .main-navigation{
+    background:#f4efe7!important;
+    color:#171614!important;
+    padding:calc(14px + env(safe-area-inset-top,0px)) 18px calc(18px + env(safe-area-inset-bottom,0px))!important;
+  }
+  .mobile-nav-head{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    position:sticky!important;
+    top:0!important;
+    z-index:5!important;
+    margin:-2px -2px 18px!important;
+    padding:4px 2px 14px!important;
+    background:linear-gradient(180deg,#f4efe7 82%,rgba(244,239,231,0))!important;
+    border-bottom:1px solid rgba(23,22,20,.1)!important;
+  }
+  .mobile-nav-title{
+    color:#171614!important;
+    font-size:.92rem!important;
+    font-weight:900!important;
+    letter-spacing:.12em!important;
+  }
+  .mobile-nav-close{
+    width:42px!important;
+    height:42px!important;
+    border-radius:999px!important;
+    border:1px solid rgba(23,22,20,.12)!important;
+    background:#fffaf5!important;
+    color:#171614!important;
+    font-size:20px!important;
+    box-shadow:none!important;
+  }
+  .mobile-only-panel{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:26px!important;
+    width:100%!important;
+    padding-bottom:8px!important;
+  }
+
+  .qct-mobile-primary{
+    display:grid!important;
+    border-top:1px solid rgba(23,22,20,.12)!important;
+  }
+  .qct-mobile-primary__link{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:16px!important;
+    min-height:58px!important;
+    padding:0!important;
+    border-bottom:1px solid rgba(23,22,20,.12)!important;
+    border-radius:0!important;
+    background:transparent!important;
+    color:#171614!important;
+    text-decoration:none!important;
+    font-size:clamp(1.45rem,7vw,2rem)!important;
+    font-weight:800!important;
+    letter-spacing:-.04em!important;
+  }
+  .qct-mobile-primary__link span:last-child{
+    color:#b24330!important;
+    font-size:1rem!important;
+    font-weight:700!important;
+  }
+
+  .qct-mobile-services{
+    display:grid!important;
+    gap:12px!important;
+  }
+  .qct-mobile-section-head{
+    display:flex!important;
+    align-items:flex-end!important;
+    justify-content:space-between!important;
+    gap:12px!important;
+  }
+  .qct-mobile-section-head>span{
+    color:#b24330!important;
+    font-size:.68rem!important;
+    font-weight:900!important;
+    letter-spacing:.16em!important;
+  }
+  .qct-mobile-section-head small{
+    color:#756e66!important;
+    font-size:.68rem!important;
+  }
+  .qct-mobile-services__grid{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+  }
+  .qct-mobile-services__grid a{
+    display:flex!important;
+    align-items:flex-end!important;
+    min-height:76px!important;
+    padding:12px!important;
+    border:1px solid rgba(23,22,20,.1)!important;
+    border-radius:14px!important;
+    background:#fffaf5!important;
+    color:#171614!important;
+    text-decoration:none!important;
+    font-size:.82rem!important;
+    line-height:1.25!important;
+    font-weight:750!important;
+  }
+
+  .qct-mobile-bottom{
+    display:grid!important;
+    gap:12px!important;
+    margin-top:auto!important;
+    padding-top:4px!important;
+  }
+  .qct-mobile-languages{
+    display:flex!important;
+    gap:8px!important;
+  }
+  .qct-mobile-languages a{
+    display:grid!important;
+    place-items:center!important;
+    width:44px!important;
+    height:36px!important;
+    padding:0!important;
+    border:1px solid rgba(23,22,20,.12)!important;
+    border-radius:999px!important;
+    background:transparent!important;
+    color:#171614!important;
+    text-decoration:none!important;
+    font-size:.72rem!important;
+    font-weight:900!important;
+  }
+  .qct-mobile-languages a.active{
+    background:#171614!important;
+    color:#c8ff3d!important;
+    border-color:#171614!important;
+  }
+  .qct-mobile-project{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    min-height:54px!important;
+    padding:0 18px!important;
+    border-radius:14px!important;
+    background:#171614!important;
+    color:#f7f1e9!important;
+    text-decoration:none!important;
+    font-size:.95rem!important;
+    font-weight:850!important;
+    box-shadow:none!important;
+  }
+  .qct-mobile-project span:last-child{
+    color:#c8ff3d!important;
+    font-size:1.1rem!important;
+  }
+
+  body.has-open-menu .site-menu-toggle{
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .main-navigation{
+    padding:calc(12px + env(safe-area-inset-top,0px)) 16px calc(14px + env(safe-area-inset-bottom,0px))!important;
+  }
+
+  .mobile-nav-head{
+    margin:0 0 12px!important;
+    padding:2px 0 10px!important;
+  }
+
+  .mobile-nav-title{
+    font-size:.78rem!important;
+    letter-spacing:.14em!important;
+  }
+
+  .mobile-nav-close{
+    width:38px!important;
+    height:38px!important;
+    font-size:18px!important;
+  }
+
+  .mobile-only-panel{
+    gap:18px!important;
+  }
+
+  .qct-mobile-primary{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    border-top:0!important;
+  }
+
+  .qct-mobile-primary__link{
+    min-height:54px!important;
+    padding:12px 13px!important;
+    border:1px solid rgba(23,22,20,.1)!important;
+    border-radius:14px!important;
+    background:rgba(255,250,245,.72)!important;
+    font-size:1rem!important;
+    font-weight:800!important;
+    letter-spacing:-.025em!important;
+  }
+
+  .qct-mobile-primary__link span:last-child{
+    font-size:.75rem!important;
+    opacity:.65!important;
+  }
+
+  .qct-mobile-services{
+    gap:9px!important;
+  }
+
+  .qct-mobile-section-head>span{
+    font-size:.6rem!important;
+  }
+
+  .qct-mobile-section-head small{
+    font-size:.62rem!important;
+  }
+
+  .qct-mobile-services__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;
+  }
+
+  .qct-mobile-services__grid a{
+    min-height:48px!important;
+    padding:10px 11px!important;
+    border-radius:12px!important;
+    font-size:.74rem!important;
+    line-height:1.2!important;
+    background:rgba(255,250,245,.58)!important;
+  }
+
+  .qct-mobile-bottom{
+    gap:9px!important;
+    padding-top:0!important;
+  }
+
+  .qct-mobile-languages{
+    gap:6px!important;
+  }
+
+  .qct-mobile-languages a{
+    width:40px!important;
+    height:32px!important;
+    font-size:.66rem!important;
+  }
+
+  .qct-mobile-project{
+    min-height:48px!important;
+    border-radius:12px!important;
+    padding:0 15px!important;
+    font-size:.84rem!important;
+  }
+
+  @media (max-height:760px){
+    .mobile-only-panel{gap:14px!important}
+    .qct-mobile-primary{gap:6px!important}
+    .qct-mobile-primary__link{min-height:48px!important;font-size:.92rem!important;padding:10px 11px!important}
+    .qct-mobile-services__grid a{min-height:44px!important;font-size:.7rem!important}
+    .qct-mobile-project{min-height:44px!important}
+  }
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .main-navigation{
+    background:#171614!important;
+    color:#f7f1e9!important;
+  }
+
+  .mobile-nav-head{
+    background:linear-gradient(180deg,#171614 82%,rgba(23,22,20,0))!important;
+    border-bottom-color:rgba(255,255,255,.08)!important;
+  }
+
+  .mobile-nav-title{
+    color:#f7f1e9!important;
+  }
+
+  .mobile-nav-close{
+    border-color:rgba(255,255,255,.12)!important;
+    background:#211f1c!important;
+    color:#f7f1e9!important;
+  }
+
+  .qct-mobile-primary__link{
+    border-color:rgba(255,255,255,.08)!important;
+    background:#1d1b18!important;
+    color:#f7f1e9!important;
+  }
+
+  .qct-mobile-primary__link:hover,
+  .qct-mobile-primary__link:focus-visible{
+    background:#24211d!important;
+    border-color:rgba(200,255,61,.22)!important;
+  }
+
+  .qct-mobile-primary__link span:last-child{
+    color:#c8ff3d!important;
+    opacity:1!important;
+  }
+
+  .qct-mobile-section-head>span{
+    color:#ff7b67!important;
+  }
+
+  .qct-mobile-section-head small{
+    color:#a9a198!important;
+  }
+
+  .qct-mobile-services__grid a{
+    background:#1d1b18!important;
+    border-color:rgba(255,255,255,.08)!important;
+    color:#f7f1e9!important;
+  }
+
+  .qct-mobile-services__grid a:hover,
+  .qct-mobile-services__grid a:focus-visible{
+    background:#24211d!important;
+    border-color:rgba(255,123,103,.22)!important;
+    color:#fff!important;
+  }
+
+  .qct-mobile-languages a{
+    border-color:rgba(255,255,255,.12)!important;
+    color:#d8d0c7!important;
+    background:#1d1b18!important;
+  }
+
+  .qct-mobile-languages a.active{
+    background:#c8ff3d!important;
+    color:#171614!important;
+    border-color:#c8ff3d!important;
+  }
+
+  .qct-mobile-project{
+    background:linear-gradient(90deg,#c8ff3d 0%,#ff7b67 100%)!important;
+    color:#171614!important;
+  }
+
+  .qct-mobile-project span:last-child{
+    color:#171614!important;
+  }
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .qct-mobile-primary__link,
+  .qct-mobile-services__grid a{
+    color:#ff8b78!important;
+  }
+
+  .qct-mobile-primary__link:hover,
+  .qct-mobile-primary__link:focus-visible,
+  .qct-mobile-services__grid a:hover,
+  .qct-mobile-services__grid a:focus-visible{
+    color:#ff9a87!important;
+  }
+
+  .mobile-nav-title{
+    color:#ff8b78!important;
+  }
+
+  .qct-mobile-bottom{
+    margin-top:2px!important;
+    padding-top:12px!important;
+    border-top:1px solid rgba(255,255,255,.08)!important;
+    background:transparent!important;
+  }
+
+  .qct-mobile-languages{
+    align-items:center!important;
+    flex-wrap:wrap!important;
+  }
+
+  .qct-mobile-languages a{
+    color:#ff8b78!important;
+    background:transparent!important;
+  }
+
+  .qct-mobile-languages a.active{
+    background:#c8ff3d!important;
+    color:#171614!important;
+  }
+
+  .qct-mobile-project{
+    margin-top:1px!important;
+  }
+
+  .main-navigation{
+    padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))!important;
+  }
+
+  @media (max-height:760px){
+    .qct-mobile-bottom{
+      padding-top:9px!important;
+    }
+    .qct-mobile-languages a{
+      width:38px!important;
+      height:30px!important;
+    }
+    .qct-mobile-project{
+      min-height:42px!important;
+    }
+  }
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .mobile-nav-title,
+  .qct-mobile-primary__link,
+  .qct-mobile-services__grid a{
+    color:#c8ff3d!important;
+  }
+
+  .qct-mobile-primary__link:hover,
+  .qct-mobile-primary__link:focus-visible,
+  .qct-mobile-services__grid a:hover,
+  .qct-mobile-services__grid a:focus-visible{
+    color:#dcff72!important;
+  }
+
+  .qct-mobile-primary__link span:last-child{
+    color:#ff5f4d!important;
+  }
+
+  .qct-mobile-section-head>span{
+    color:#ff5f4d!important;
+  }
+
+  .qct-mobile-bottom{
+    position:sticky!important;
+    bottom:0!important;
+    z-index:6!important;
+    display:grid!important;
+    grid-template-columns:auto 1fr!important;
+    align-items:center!important;
+    gap:10px!important;
+    margin:0 -4px!important;
+    padding:10px 4px calc(8px + env(safe-area-inset-bottom,0px))!important;
+    border-top:1px solid rgba(255,255,255,.08)!important;
+    background:linear-gradient(180deg,rgba(23,22,20,.88),#171614 24%)!important;
+    backdrop-filter:blur(16px)!important;
+    -webkit-backdrop-filter:blur(16px)!important;
+  }
+
+  .mobile-only-panel{
+    padding-bottom:0!important;
+  }
+
+  .qct-mobile-languages{
+    display:flex!important;
+    align-items:center!important;
+    gap:5px!important;
+    flex-wrap:nowrap!important;
+  }
+
+  .qct-mobile-languages a{
+    width:34px!important;
+    height:34px!important;
+    border-color:rgba(200,255,61,.18)!important;
+    color:#c8ff3d!important;
+    background:#1d1b18!important;
+    font-size:.62rem!important;
+  }
+
+  .qct-mobile-languages a.active{
+    background:#ff5f4d!important;
+    color:#171614!important;
+    border-color:#ff5f4d!important;
+  }
+
+  .qct-mobile-project{
+    min-height:42px!important;
+    margin:0!important;
+    padding:0 14px!important;
+    border-radius:11px!important;
+    background:#c8ff3d!important;
+    color:#171614!important;
+    font-size:.78rem!important;
+  }
+
+  .qct-mobile-project span:last-child{
+    color:#ff5f4d!important;
+  }
+
+  .main-navigation{
+    padding-bottom:0!important;
+  }
+
+  @media (max-height:760px){
+    .qct-mobile-bottom{
+      padding-top:8px!important;
+      padding-bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;
+    }
+    .qct-mobile-languages a{
+      width:32px!important;
+      height:32px!important;
+    }
+    .qct-mobile-project{
+      min-height:40px!important;
+    }
+  }
+}
 </style>

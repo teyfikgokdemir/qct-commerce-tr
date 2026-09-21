@@ -9,21 +9,21 @@ interface Props { lang: string; }
 
 const { lang } = Astro.props;
 const seo = getPageSeo('website-design');
-const serviceDescription = 'Üreticiler, toptancılar, ihracatçılar ve büyüyen KOBİ’ler için teklifi açık anlatan, güven oluşturan, arama sistemleri tarafından anlaşılabilen ve ticari talebi doğru kanala yönlendiren web siteleri tasarlıyoruz.';
+const serviceDescription = 'Yeni bir kurumsal veya kişisel web sitesi kurmak ya da mevcut sitenizi daha modern, hızlı, mobil uyumlu ve görünür hale getirmek için tasarım, içerik mimarisi, geliştirme ve teknik iyileştirmeleri birlikte uyguluyoruz.';
 ---
 
-<BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="B2B web tasarım" service={{ name: 'B2B web tasarım', description: serviceDescription }} includeServiceCardStyles>
+<BaseLayout title={seo.title} description={seo.description} lang={lang} breadcrumbLabel="Web tasarım" service={{ name: 'Web tasarım', description: serviceDescription }} includeServiceCardStyles>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
-    eyebrow="B2B WEB TASARIM"
+    eyebrow="WEB TASARIM"
     title="Web siteniz yalnızca işletmenizi tanıtmasın; satış sürecinizi ilerletsin."
     lead={serviceDescription}
     ctaPrimary="Web sitenizi birlikte değerlendirelim"
     ctaSecondary="Tüm hizmetler"
     problem={{
       eyebrow: 'KİMLER İÇİN UYGUN?',
-      title: 'Dijital görünümü ile gerçek iş kapasitesi arasında fark oluşan işletmeler için.',
+      title: 'Yeni site kurmak veya mevcut sitesini daha güçlü hale getirmek isteyenler için.',
       intro: [
         'Bir üreticinin teknik yeterliliği, bir ihracatçının pazar deneyimi veya bir toptancının ürün çeşitliliği web sitesinde açık görünmüyorsa potansiyel müşteri doğru değerlendirme yapamaz. Bu hizmet; teklifini daha net anlatmak, kurumsal güveni güçlendirmek ve web sitesini aktif bir talep toplama kanalına dönüştürmek isteyen işletmeler için tasarlanmıştır.',
       ],
