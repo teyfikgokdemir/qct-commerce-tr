@@ -3,6 +3,92 @@ interface Props { lang: string; }
 const { lang } = Astro.props;
 const isEnglish = lang === 'en';
 const isGeorgian = lang === 'ka';
+
+const mobileCopy = isGeorgian ? {
+  tagline: 'ვებსაიტი, e-commerce და ციფრული ხილვადობა ერთ სივრცეში.',
+  services: 'სერვისები',
+  company: 'კომპანია',
+  legal: 'იურიდიული',
+  talk: 'მოდით ვისაუბროთ თქვენს პროექტზე',
+  title: 'იდეა ერთად გადავაქციოთ რეალურ ციფრულ სისტემად.',
+  text: 'მოგვწერეთ WhatsApp-ზე და საჭიროება მოკლედ დავაზუსტოთ.',
+  whatsapp: 'WhatsApp-ზე დაწყება',
+  phoneLabel: 'დაგვირეკეთ',
+  top: 'ზემოთ',
+  rights: 'ყველა უფლება დაცულია.'
+} : isEnglish ? {
+  tagline: 'One place for websites, e-commerce and digital visibility.',
+  services: 'Services',
+  company: 'Company',
+  legal: 'Legal',
+  talk: 'LET’S TALK ABOUT YOUR PROJECT',
+  title: 'Turn the idea into a digital system that can actually be used.',
+  text: 'Message us on WhatsApp and we will clarify the right starting scope.',
+  whatsapp: 'Start on WhatsApp',
+  phoneLabel: 'Call us',
+  top: 'Back to top',
+  rights: 'All rights reserved.'
+} : {
+  tagline: 'Web sitesi, e-ticaret ve dijital görünürlük için tek merkez.',
+  services: 'Hizmetler',
+  company: 'Kurumsal',
+  legal: 'Yasal',
+  talk: 'PROJENİZİ KONUŞALIM',
+  title: 'Fikrinizi birlikte gerçeğe dönüştürelim.',
+  text: 'İhtiyacınızı WhatsApp’tan paylaşın; doğru başlangıç kapsamını birlikte netleştirelim.',
+  whatsapp: 'WhatsApp’tan Başla',
+  phoneLabel: 'Bizi arayın',
+  top: 'Yukarı çık',
+  rights: 'Tüm hakları saklıdır.'
+};
+
+const serviceLinks = isGeorgian ? [
+  ['ციფრული კომერცია','/ka/georgia/#system'],
+  ['B2B გაყიდვების სისტემები','/ka/georgia/#system'],
+  ['მრავალენოვანი ვებსაიტები','/ka/georgia/#system'],
+  ['SEO, GEO, AEO და AIO','/ka/georgia/#system'],
+] : isEnglish ? [
+  ['E-commerce systems','/en/ecommerce/'],
+  ['Web design','/en/web-design/'],
+  ['SEO, GEO, AEO and AIO','/en/search-visibility/'],
+  ['AI and sales automation','/en/ai-automation/'],
+] : [
+  ['E-ticaret altyapısı','/e-ticaret/'],
+  ['Web tasarım','/web-tasarim/'],
+  ['WhatsApp satış sistemleri','/whatsapp-satis/'],
+  ['SEO, GEO, AEO ve AIO','/seo-geo/'],
+];
+
+const companyLinks = isGeorgian ? [
+  ['საქართველო','/ka/georgia/'],
+  ['International','/en/'],
+  ['Türkiye','/'],
+] : isEnglish ? [
+  ['About QCT Commerce','/en/about/'],
+  ['Selected work','/en/work/'],
+  ['How we work','/en/how-we-work/'],
+  ['Contact','/en/contact/'],
+] : [
+  ['Hakkımızda','/hakkimizda/'],
+  ['Çalışmalar','/calismalar/'],
+  ['Blog','/blog/'],
+  ['Fiyatlar','/fiyatlar/'],
+  ['İletişim','/iletisim/'],
+];
+
+const legalLinks = isGeorgian ? [
+  ['Privacy policy','/gizlilik-politikasi/'],
+  ['Cookie policy','/cerez-politikasi/'],
+] : isEnglish ? [
+  ['Privacy policy','/gizlilik-politikasi/'],
+  ['Terms of use','/kullanim-kosullari/'],
+  ['Cookie policy','/cerez-politikasi/'],
+] : [
+  ['Gizlilik politikası','/gizlilik-politikasi/'],
+  ['KVKK aydınlatma metni','/kvkk/'],
+  ['Kullanım koşulları','/kullanim-kosullari/'],
+  ['Çerez politikası','/cerez-politikasi/'],
+];
 ---
 <footer id="colophon" class="site-footer">
   <div class="site-footer__marquee" aria-hidden="true">
@@ -10,12 +96,13 @@ const isGeorgian = lang === 'ka';
       <span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span>
     </div>
   </div>
-  <div class="site-footer__inner container">
+
+  <div class="site-footer__inner container site-footer__desktop">
     <div class="site-footer__columns">
       <div class="site-footer__group site-footer__brand">
         <h2>QCT Commerce</h2>
         <p>{isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'Web, e-ticaret ve dijital görünürlük için uygulama ortağınız.'}</p>
-        <p class="site-footer__brand-relationship">{isGeorgian ? 'QCT Studio-ს ქსელის ნაწილი.' : isEnglish ? 'Part of the wider QCT ecosystem.' : 'QCT ekosisteminin web ve dijital ticaret odaklı yapısıdır.'}</p>
+        <p class="site-footer__brand-relationship">{isGeorgian ? 'QCT ekosisteminin bir parçasıdır.' : isEnglish ? 'Part of the wider QCT ecosystem.' : 'QCT ekosisteminin web ve dijital ticaret odaklı yapısıdır.'}</p>
       </div>
 
       {isGeorgian ? (
@@ -55,11 +142,79 @@ const isGeorgian = lang === 'ka';
     </div>
     <div class="site-footer__bottom"><div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div></div>
   </div>
+
+  <div class="site-footer__mobile" aria-label={isEnglish ? 'Footer' : 'Alt bilgi'}>
+    <div class="site-footer__mobile-brand">
+      <span class="site-footer__mobile-mark"></span>
+      <strong>QCT COMMERCE</strong>
+      <p>{mobileCopy.tagline}</p>
+    </div>
+
+    <div class="site-footer__accordions">
+      <details open>
+        <summary>
+          <span class="site-footer__round-icon" aria-hidden="true">◆</span>
+          <strong>{mobileCopy.services}</strong>
+          <span class="site-footer__chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="site-footer__accordion-body">
+          {serviceLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="site-footer__round-icon" aria-hidden="true">◇</span>
+          <strong>{mobileCopy.company}</strong>
+          <span class="site-footer__chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="site-footer__accordion-body">
+          {companyLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="site-footer__round-icon" aria-hidden="true">▤</span>
+          <strong>{mobileCopy.legal}</strong>
+          <span class="site-footer__chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="site-footer__accordion-body">
+          {legalLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
+        </div>
+      </details>
+    </div>
+
+    <section class="site-footer__cta" aria-label={mobileCopy.talk}>
+      <div>
+        <p class="site-footer__cta-eyebrow">{mobileCopy.talk}</p>
+        <h2>{mobileCopy.title}</h2>
+        <p>{mobileCopy.text}</p>
+      </div>
+      <div class="site-footer__cta-actions">
+        <a class="site-footer__whatsapp" href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">◉</span>
+          <strong>{mobileCopy.whatsapp}</strong>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="site-footer__phone" href="tel:+905456782655">
+          <small>{mobileCopy.phoneLabel}</small>
+          <strong>+90 545 678 26 55</strong>
+        </a>
+      </div>
+    </section>
+
+    <div class="site-footer__mobile-bottom">
+      <p>&copy; 2026 QCT Commerce. {mobileCopy.rights}</p>
+      <a href="#page">{mobileCopy.top} <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
 </footer>
 
 <style>
   .site-footer { position: relative; overflow: hidden; isolation: isolate; }
   .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(3.9rem, 5.4vw, 5rem); }
+  .site-footer__mobile { display: none; }
   .site-footer__marquee {
     position: absolute;
     inset: 0 0 auto;
@@ -95,14 +250,263 @@ const isGeorgian = lang === 'ka';
     white-space: nowrap;
   }
   @keyframes qctCommerceMarquee { to { transform: translateX(calc(-25% - .75rem)); } }
-  @media (max-width: 760px) {
-    .site-footer__inner { padding-top: clamp(3.3rem, 11vw, 4.2rem); }
-    .site-footer__marquee { height: clamp(3.3rem, 11vw, 4.2rem); }
-    .site-footer__marquee-track { animation: qctCommerceMarqueeMobile 17s linear infinite; }
-    .site-footer__marquee span { font-size: clamp(2rem, 9vw, 3.4rem); }
+
+  @media (max-width:760px) {
+    .site-footer {
+      background:
+        radial-gradient(circle at 88% 72%, rgba(200,255,61,.08), transparent 24%),
+        radial-gradient(circle at 10% 8%, rgba(255,123,103,.08), transparent 28%),
+        #171412;
+      color:#f7f1e9;
+      overflow:visible;
+    }
+
+    .site-footer__desktop,
+    .site-footer__marquee { display:none; }
+
+    .site-footer__mobile {
+      display:block;
+      padding:38px 18px calc(22px + env(safe-area-inset-bottom,0px));
+    }
+
+    .site-footer__mobile-brand {
+      padding:0 6px 24px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .site-footer__mobile-mark {
+      display:block;
+      width:4px;
+      height:32px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#ff7b67,#c8ff3d);
+      margin-bottom:14px;
+    }
+
+    .site-footer__mobile-brand strong {
+      display:block;
+      color:#f7f1e9;
+      font-size:1.02rem;
+      letter-spacing:.16em;
+      font-weight:900;
+    }
+
+    .site-footer__mobile-brand p {
+      margin:10px 0 0;
+      color:rgba(247,241,233,.64);
+      font-size:.9rem;
+      line-height:1.55;
+      max-width:32ch;
+    }
+
+    .site-footer__accordions details {
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .site-footer__accordions summary {
+      list-style:none;
+      display:grid;
+      grid-template-columns:42px 1fr auto;
+      align-items:center;
+      gap:12px;
+      min-height:74px;
+      cursor:pointer;
+    }
+
+    .site-footer__accordions summary::-webkit-details-marker { display:none; }
+
+    .site-footer__round-icon {
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,123,103,.34);
+      border-radius:50%;
+      color:#ff7b67;
+      font-size:.78rem;
+      background:rgba(255,123,103,.04);
+    }
+
+    .site-footer__accordions summary strong {
+      color:#f7f1e9;
+      font-size:1rem;
+      font-weight:800;
+      letter-spacing:-.01em;
+    }
+
+    .site-footer__chevron {
+      color:#ff8b78;
+      font-size:1.2rem;
+      transition:transform .2s ease;
+    }
+
+    .site-footer__accordions details[open] .site-footer__chevron {
+      transform:rotate(180deg);
+    }
+
+    .site-footer__accordion-body {
+      padding:0 4px 16px 54px;
+      display:grid;
+      gap:2px;
+    }
+
+    .site-footer__accordion-body a {
+      min-height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      color:rgba(247,241,233,.78);
+      text-decoration:none;
+      font-size:.88rem;
+      border-bottom:1px solid rgba(255,255,255,.045);
+    }
+
+    .site-footer__accordion-body a span:last-child {
+      color:#c8ff3d;
+      font-size:1.05rem;
+    }
+
+    .site-footer__cta {
+      position:relative;
+      overflow:hidden;
+      margin-top:26px;
+      padding:24px 20px 20px;
+      border:1px solid rgba(255,123,103,.44);
+      border-radius:24px;
+      background:
+        linear-gradient(145deg,rgba(255,123,103,.12),rgba(255,255,255,.02) 54%,rgba(200,255,61,.06)),
+        #1d1917;
+      box-shadow:0 24px 60px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .site-footer__cta::after {
+      content:"";
+      position:absolute;
+      width:110px;
+      height:110px;
+      right:-38px;
+      top:-38px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(200,255,61,.14),transparent 68%);
+      pointer-events:none;
+    }
+
+    .site-footer__cta-eyebrow {
+      margin:0 0 12px;
+      color:#ff8b78!important;
+      font-size:.62rem!important;
+      letter-spacing:.18em;
+      font-weight:900;
+    }
+
+    .site-footer__cta h2 {
+      margin:0;
+      color:#fffaf5;
+      font-size:clamp(1.65rem,7.5vw,2.2rem);
+      line-height:1.02;
+      letter-spacing:-.04em;
+      max-width:11ch;
+    }
+
+    .site-footer__cta>div>p:last-child {
+      margin:14px 0 0;
+      color:rgba(247,241,233,.62);
+      font-size:.86rem;
+      line-height:1.55;
+      max-width:31ch;
+    }
+
+    .site-footer__cta-actions {
+      display:grid;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .site-footer__whatsapp {
+      min-height:52px;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:10px;
+      padding:0 15px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#ff7b67 0%,#ff8b78 58%,#c8ff3d 135%);
+      color:#171412;
+      text-decoration:none;
+      box-shadow:0 12px 28px rgba(255,123,103,.16);
+    }
+
+    .site-footer__whatsapp strong {
+      font-size:.88rem;
+      font-weight:900;
+    }
+
+    .site-footer__whatsapp span:last-child { font-size:1rem; }
+
+    .site-footer__phone {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:0 3px;
+      min-height:38px;
+      color:#f7f1e9;
+      text-decoration:none;
+    }
+
+    .site-footer__phone small {
+      color:rgba(247,241,233,.48);
+      font-size:.62rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .site-footer__phone strong {
+      font-size:.78rem;
+      font-weight:750;
+    }
+
+    .site-footer__mobile-bottom {
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:14px;
+      margin-top:24px;
+      padding:18px 4px 0;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+
+    .site-footer__mobile-bottom p {
+      margin:0;
+      color:rgba(247,241,233,.45);
+      font-size:.68rem;
+      line-height:1.4;
+    }
+
+    .site-footer__mobile-bottom a {
+      display:flex;
+      align-items:center;
+      gap:7px;
+      color:#ff8b78;
+      text-decoration:none;
+      font-size:.7rem;
+      white-space:nowrap;
+    }
+
+    .site-footer__mobile-bottom a span {
+      width:30px;
+      height:30px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,123,103,.32);
+      border-radius:50%;
+      color:#c8ff3d;
+    }
   }
-  @keyframes qctCommerceMarqueeMobile { to { transform: translateX(calc(-25% - .75rem)); } }
+
   @media (prefers-reduced-motion: reduce) {
-    .site-footer__marquee-track { animation: none; transform: translateX(-8%); }
+    .site-footer__marquee-track { animation:none; transform:translateX(-8%); }
+    .site-footer__chevron { transition:none; }
   }
 </style>
