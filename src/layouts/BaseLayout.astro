@@ -70,18 +70,17 @@ const organizationId = `${SITE_URL}/#organization`;
 const founderId = `${SITE_URL}/hakkimizda/#teyfik-gokdemir`;
 const websiteId = `${SITE_URL}/${isGeorgian ? 'ka/' : isEnglish ? 'en/' : ''}#website`;
 const webpageId = `${canonicalUrl}#webpage`;
-const knowsAbout = ['E-commerce architecture','B2B digital sales systems','Multilingual websites','Conversion optimization','Technical SEO','Geographic search optimization','Answer engine optimization','AI visibility optimization','CRM integration','AI sales automation'];
+const knowsAbout = ['E-commerce architecture','Web design and website improvement','Digital sales systems','Multilingual websites','Conversion optimization','Technical SEO','Generative engine optimization','Answer engine optimization','AI visibility optimization','CRM integration','AI sales automation'];
 
 const organizationSchema = {
   '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
   logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/logo.png', SITE_URL).toString(), contentUrl: new URL('/logo.png', SITE_URL).toString(), width: 600, height: 180, caption: 'QCT Commerce' },
   image: { '@type': 'ImageObject', url: ogImageUrl, width: imageWidth, height: imageHeight },
   description: isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Digital commerce and international sales systems for growing companies.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
-  parentOrganization: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' },
   areaServed: areaServedSchema,
   knowsAbout,
-  email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56',
-  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 543 385 66 56', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
+  email: 'info@qctcommerce.com', telephone: '+90 545 678 26 55',
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', telephone: '+90 545 678 26 55', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
   hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Digital commerce and international sales solutions', itemListElement: knowsAbout.map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })) },
   ...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };

@@ -1,14 +1,14 @@
 # QCT Commerce
 
-> QCT Commerce builds multilingual digital commerce, B2B sales and automation systems for companies growing in Türkiye and selected international markets.
+> QCT Commerce builds and improves websites, e-commerce systems, search visibility and AI-supported digital growth infrastructure for businesses in Türkiye and selected international markets.
 
-QCT Commerce provides e-commerce architecture, multilingual websites, B2B catalogues, conversion-focused landing pages, SEO, GEO, AEO, AIO, CRM integration, WhatsApp sales systems and AI-supported business automation.
+QCT Commerce provides corporate and personal websites, e-commerce setup and migration, website redesign, product operations, conversion-focused landing pages, SEO, GEO, AEO, AIO, analytics, WhatsApp sales systems and AI-supported business automation.
 
 The primary market is Türkiye. International market entry pages are currently available in English and Georgian for companies in Georgia entering Türkiye, Europe and Gulf markets.
 
-QCT Commerce is part of the [QCT Studio](https://qctstudio.com/) network.
+QCT Commerce is part of the wider QCT ecosystem. QCT Studio is a separate sister brand.
 
-Verified contact information: info@qctcommerce.com; telephone and WhatsApp: +90 543 385 66 56.
+Verified contact information: info@qctcommerce.com; telephone and WhatsApp: +90 545 678 26 55.
 
 ## International pages
 
@@ -36,7 +36,7 @@ Verified contact information: info@qctcommerce.com; telephone and WhatsApp: +90 
 - [E-ticaret altyapısı](https://qctcommerce.com/e-ticaret/): Product discovery, cart, checkout and store operations planned as one system.
 - [Web tasarımı](https://qctcommerce.com/web-tasarim/): Corporate websites aligned with commercial goals and user needs.
 - [WhatsApp satış sistemleri](https://qctcommerce.com/whatsapp-satis/): Messaging, lead handling and customer follow-up systems.
-- [SEO, GEO, AEO ve AIO](https://qctcommerce.com/seo-geo/): Search-engine, geographic, answer-engine and AI visibility foundations.
+- [SEO, GEO, AEO ve AIO](https://qctcommerce.com/seo-geo/): Search-engine, generative-engine, answer-engine and AI visibility foundations.
 - [Meta reklamları](https://qctcommerce.com/meta-reklamlari/): Meta campaigns and conversion-focused landing pages.
 - [Yapay zekâ otomasyonları](https://qctcommerce.com/yapay-zeka-otomasyonlari/): Workflow automation for repeated business operations.
 
