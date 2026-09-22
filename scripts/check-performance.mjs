@@ -33,7 +33,11 @@ const attrValues = (html, tag, attr) => {
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
   const rel = path.relative(dist, file).replaceAll('\\', '/');
-  const styles = attrValues(html, 'link', 'href').filter((href) => /\.css(?:[?#]|$)/i.test(href));
+  const stylesheetTags = [...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>/gi)].map((m) => m[0]);
+  const styles = stylesheetTags.map((tag) => {
+    const match = tag.match(/\bhref=["']([^"']+)["']/i);
+    return match?.[1] ?? null;
+  }).filter(Boolean);
   const scripts = attrValues(html, 'script', 'src');
 
   for (const [kind, values] of [['stylesheet', styles], ['script', scripts]]) {
