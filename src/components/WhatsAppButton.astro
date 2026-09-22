@@ -76,23 +76,6 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
         window.scrollTo({ top: 0, behavior: reduced.matches ? 'auto' : 'smooth' });
       });
     }
-
-    document.querySelector('[data-whatsapp-link]')?.addEventListener('click', (event) => {
-      const link = event.currentTarget;
-      try {
-        if (
-          localStorage.getItem('qct-analytics-consent') === 'granted' &&
-          typeof window.gtag === 'function'
-        ) {
-          window.gtag('event', 'whatsapp_click', {
-            link_url: link.href,
-            page_language: link.dataset.lang,
-          });
-        }
-      } catch {
-        // The link must remain usable even when storage is unavailable.
-      }
-    });
   })();
 </script>
 
