@@ -29,7 +29,7 @@ const copyMap: Record<string, { label: string; text: string; accept: string; rej
 };
 
 const c = copyMap[lang] || copyMap.tr;
-const policyUrl = '/cerez-politikasi/';
+const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
 ---
 
 <div
@@ -44,7 +44,7 @@ const policyUrl = '/cerez-politikasi/';
       <span></span><span></span><span></span>
     </div>
     <div>
-      <div class="qct-cookie-consent__eyebrow">GİZLİLİK TERCİHİ</div>
+      <div class="qct-cookie-consent__eyebrow">{lang === 'en' ? 'PRIVACY PREFERENCES' : 'GİZLİLİK TERCİHİ'}</div>
       <strong>{c.label}</strong>
       <p>{c.text} <a href={policyUrl}>{c.policy}</a></p>
     </div>
