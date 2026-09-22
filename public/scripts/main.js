@@ -87,16 +87,22 @@
 		}, submenuCloseDelay));
 	};
 
-	var mobileGroupSummaries = document.querySelectorAll('[data-mobile-group-summary]');
+	var mobileGroupToggles = document.querySelectorAll('[data-mobile-group-toggle]');
 
-	mobileGroupSummaries.forEach(function (summary) {
-		summary.addEventListener('click', function (event) {
+	mobileGroupToggles.forEach(function (toggle) {
+		toggle.addEventListener('click', function (event) {
 			if (desktopNavigation.matches) return;
 			event.preventDefault();
 			event.stopPropagation();
-			var details = summary.closest('details');
-			if (!details) return;
-			details.open = !details.open;
+
+			var group = toggle.closest('.qct-mobile-group');
+			var panel = group ? group.querySelector('[data-mobile-group-panel]') : null;
+			if (!group || !panel) return;
+
+			var open = toggle.getAttribute('aria-expanded') === 'true';
+			toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+			group.classList.toggle('is-open', !open);
+			panel.hidden = open;
 		});
 	});
 
