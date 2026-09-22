@@ -261,7 +261,7 @@
 
 /* Final hero/closing alignment fixes */
 html[lang="en"] .site-main .qct-v2 .qct-hero h1{
-  color:var(--qct-ink);
+  color:var(--qct-ink)!important;
 }
 .qct-close-grid{
   grid-template-columns:1fr;
