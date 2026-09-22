@@ -35,8 +35,8 @@ const approvedWildcardRedirects = new Map([
   ['/en/products/*', '/en/ecommerce/'],
   ['/en/pages/*', '/en/'],
   ['/en/collections/*', '/en/'],
-  ['/en/policies/*', '/kullanim-kosullari/'],
-  ['/en/blogs/*', '/blog/'],
+  ['/en/policies/*', '/en/terms/'],
+  ['/en/blogs/*', '/en/blog/'],
 ]);
 
 for (const entry of entries) {

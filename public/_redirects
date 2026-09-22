@@ -59,10 +59,8 @@
 /en /en/ 301
 /en/e-commerce /en/ecommerce/ 301
 /en/e-commerce/ /en/ecommerce/ 301
-/en/meta-ads /en/ 301
-/en/meta-ads/ /en/ 301
-/en/blog /blog/ 301
-/en/blog/ /blog/ 301
+/en/meta-ads /en/meta-ads/ 301
+/en/blog /en/blog/ 301
 /en/products/baslangic-paketi /en/ecommerce/ 301
 /en/products/lansman-paketi /en/ecommerce/ 301
 /en/products/shopify-magaza-kurulumu /en/ecommerce/ 301
@@ -83,9 +81,9 @@
 /en/pages/katalog-brosur /en/ 301
 /en/pages/kurumsal-kimlik /en/ 301
 /en/pages/magaza-acilis-paketi /en/ 301
-/en/pages/gdpr /gizlilik-politikasi/ 301
-/en/pages/cookie-policy /cerez-politikasi/ 301
-/en/pages/data-sharing-opt-out /gizlilik-politikasi/ 301
+/en/pages/gdpr /en/privacy-policy/ 301
+/en/pages/cookie-policy /en/cookie-policy/ 301
+/en/pages/data-sharing-opt-out /en/privacy-policy/ 301
 /en/pages/e-ticaret /en/ecommerce/ 301
 /en/pages/wordpress-woocommerce-servisleri /en/ecommerce/ 301
 /en/pages/aylik-e-ticaret-buyume-yonetimi /en/ecommerce/ 301
@@ -94,17 +92,17 @@
 /en/collections/frontpage /en/ 301
 /en/collections/services /en/ 301
 /en/collections/* /en/ 301
-/en/policies/privacy-policy /gizlilik-politikasi/ 301
-/en/policies/terms-of-service /kullanim-kosullari/ 301
+/en/policies/privacy-policy /en/privacy-policy/ 301
+/en/policies/terms-of-service /en/terms/ 301
 /en/policies/contact-information /en/contact/ 301
-/en/policies/legal-notice /kullanim-kosullari/ 301
-/en/policies/* /kullanim-kosullari/ 301
+/en/policies/legal-notice /en/terms/ 301
+/en/policies/* /en/terms/ 301
 /en/pages/agents-md /llms.txt 301
-/en/blogs/blog /blog/ 301
-/en/blogs/blog/how-to-launch-shopify-store-14-days-2026 /blog/shopify-magaza-kurma-rehberi/ 301
-/en/blogs/blog/ecommerce-mistakes-shopify-stores /blog/e-ticarette-yapilan-hatalar/ 301
-/en/blogs/blog/5-reasons-to-leave-amazon-build-your-own-store /blog/pazaryerinden-kendi-sitene-gecis/ 301
-/en/blogs/* /blog/ 301
+/en/blogs/blog /en/blog/ 301
+/en/blogs/blog/how-to-launch-shopify-store-14-days-2026 /en/blog/shopify-store-setup-guide-turkiye/ 301
+/en/blogs/blog/ecommerce-mistakes-shopify-stores /en/blog/common-ecommerce-mistakes/ 301
+/en/blogs/blog/5-reasons-to-leave-amazon-build-your-own-store /en/blog/move-from-marketplaces-to-your-own-store/ 301
+/en/blogs/* /en/blog/ 301
 
 # Eski QCT Studio çalışma rotalarının yayımlanan karşılıkları
 /work/ /calismalar/ 301
