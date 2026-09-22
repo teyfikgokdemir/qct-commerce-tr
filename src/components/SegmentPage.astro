@@ -155,24 +155,45 @@ const process = isEnglish
 </BaseLayout>
 
 <style>
-.qct-segment-hero { padding: clamp(6rem,10vw,9rem) 0 clamp(4rem,7vw,6rem); background: radial-gradient(circle at 50% 0,rgba(230,107,95,.09),transparent 36%),#f8f3ef; border-bottom:1px solid rgba(23,21,20,.08); }
+.qct-segment-hero { padding: clamp(5.4rem,8.5vw,7.6rem) 0 clamp(3.6rem,6vw,5rem); background: radial-gradient(circle at 50% 0,rgba(230,107,95,.09),transparent 36%),#f8f3ef; border-bottom:1px solid rgba(23,21,20,.08); }
 .qct-segment-hero .container,.qct-segment-cta .container { text-align:center; max-width:960px; }
-.qct-segment-hero h1 { margin:.6rem auto 1.2rem; max-width:18ch; font-size:clamp(3rem,7vw,6.5rem); line-height:.96; letter-spacing:-.055em; text-wrap:balance; }
+.qct-segment-hero h1 { margin:.6rem auto 1.2rem; max-width:17ch; font-size:clamp(3rem,6.2vw,5.8rem); line-height:.96; letter-spacing:-.052em; text-wrap:balance; }
 .qct-segment-hero p:not(.eyebrow),.qct-segment-cta p { max-width:760px; margin:0 auto; color:#665e59; font-size:clamp(1rem,1.5vw,1.18rem); line-height:1.7; }
 .qct-segment-actions { display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; margin-top:2rem; }
 .qct-segment-heading { max-width:760px; margin-bottom:2rem; }
-.qct-segment-heading h2,.qct-segment-cta h2 { margin:.45rem 0 1rem; font-size:clamp(2rem,4vw,3.5rem); line-height:1.05; letter-spacing:-.035em; text-wrap:balance; }
+.qct-segment-heading h2,.qct-segment-cta h2 { margin:.45rem 0 1rem; font-size:clamp(2rem,3.5vw,3.15rem); line-height:1.06; letter-spacing:-.032em; text-wrap:balance; }
 .qct-segment-grid,.qct-segment-process { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
-.qct-segment-grid article,.qct-segment-process article { padding:clamp(1.5rem,3vw,2.1rem); border:1px solid rgba(73,53,49,.12); border-radius:22px; background:#fffaf5; box-shadow:0 16px 42px rgba(58,37,32,.06); }
+.qct-segment-grid article,.qct-segment-process article { padding:clamp(1.5rem,2.4vw,1.9rem); border:1px solid rgba(73,53,49,.12); border-radius:22px; background:#fffaf5; box-shadow:0 16px 42px rgba(58,37,32,.06); min-height:100%; }
 .qct-segment-grid h3,.qct-segment-process h3 { margin:0 0 .75rem; font-size:1.15rem; line-height:1.35; }
 .qct-segment-grid p,.qct-segment-process p { margin:0; color:#665e59; line-height:1.7; }
 .qct-segment-alt { background:linear-gradient(180deg,rgba(239,230,225,.52),rgba(248,243,239,.28)); border-block:1px solid rgba(23,21,20,.07); }
 .qct-segment-process { grid-template-columns:repeat(4,minmax(0,1fr)); }
 .qct-segment-process span { display:inline-grid; place-items:center; width:42px; height:42px; border-radius:14px; background:rgba(230,107,95,.11); color:#b9473e; font-weight:900; margin-bottom:1rem; }
-.qct-segment-cta { text-align:center; background:#171514; color:#fffaf5; }
-.qct-segment-cta h2 { color:#fffaf5; }
+.qct-segment-cta { text-align:center; background:#171514; color:#fffaf5; border-bottom:1px solid rgba(255,255,255,.07); padding-block:clamp(4rem,7vw,5.5rem); }
+.qct-segment-cta h2 { color:#fffaf5; max-width:15ch; margin-left:auto; margin-right:auto; }
 .qct-segment-cta p { color:rgba(255,250,245,.68); margin-bottom:1.75rem; }
 .qct-segment-cta .eyebrow { color:#ff8b78; }
-@media(max-width:900px){.qct-segment-grid{grid-template-columns:1fr}.qct-segment-process{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.qct-segment-process{grid-template-columns:1fr}.qct-segment-actions{align-items:stretch;flex-direction:column}.qct-segment-actions .button{width:100%}}
+.qct-segment-cta .button { min-height:48px; padding-inline:1.2rem; }
+@media(min-width:901px){
+  .qct-segment-hero .container,
+  .qct-segment-heading,
+  .qct-segment-grid,
+  .qct-segment-process { width:min(100% - 48px,1180px); margin-left:auto; margin-right:auto; }
+  .qct-segment-heading { margin-bottom:2rem; }
+  .qct-segment-grid article,
+  .qct-segment-process article { align-content:start; }
+}
+@media(max-width:900px){
+  .qct-segment-hero { padding-top:5rem; }
+  .qct-segment-hero h1 { max-width:16ch; font-size:clamp(2.8rem,9vw,4.8rem); }
+  .qct-segment-grid{grid-template-columns:1fr}
+  .qct-segment-process{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .qct-segment-hero { padding-top:4.5rem; padding-bottom:3.25rem; }
+  .qct-segment-hero h1 { font-size:clamp(2.45rem,12vw,3.6rem); max-width:13ch; }
+  .qct-segment-process{grid-template-columns:1fr}
+  .qct-segment-actions{align-items:stretch;flex-direction:column}
+  .qct-segment-actions .button{width:100%}
+}
 </style>
