@@ -121,35 +121,37 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
 
         {!isGeorgian && (
           <div class="qct-mobile-groups">
-            <div class:list={['qct-mobile-group', { 'is-open': isEnglish ? isEnglishServiceCurrent : isServiceCurrent }]}>
-              <button class="qct-mobile-group__toggle" type="button" aria-expanded={(isEnglish ? isEnglishServiceCurrent : isServiceCurrent) ? 'true' : 'false'} data-mobile-group-toggle>
-                <span class="qct-mobile-group__label">{isEnglish ? 'Solutions' : 'Hizmetler'}</span>
-                <small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small>
-                <span class="qct-mobile-group__icon" aria-hidden="true">+</span>
-              </button>
-              <div class="qct-mobile-group__grid" data-mobile-group-panel hidden={!(isEnglish ? isEnglishServiceCurrent : isServiceCurrent)}>
+            <section class="qct-mobile-section">
+              <div class="qct-mobile-section__head">
+                <div>
+                  <strong>{isEnglish ? 'Solutions' : 'Hizmetler'}</strong>
+                  <small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small>
+                </div>
+              </div>
+              <div class="qct-mobile-section__grid">
                 {serviceLinks.map(([label, href]) => (
                   <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
                     <span>{label}</span><span aria-hidden="true">↗</span>
                   </a>
                 ))}
               </div>
-            </div>
+            </section>
 
-            <div class:list={['qct-mobile-group', { 'is-open': audienceLinks.some(([, href]) => isCurrent(href)) }]}>
-              <button class="qct-mobile-group__toggle" type="button" aria-expanded={audienceLinks.some(([, href]) => isCurrent(href)) ? 'true' : 'false'} data-mobile-group-toggle>
-                <span class="qct-mobile-group__label">{isEnglish ? 'Who we help' : 'Kimler için'}</span>
-                <small>{isEnglish ? 'Choose your business context' : 'İşletme yapınıza göre başlayın'}</small>
-                <span class="qct-mobile-group__icon" aria-hidden="true">+</span>
-              </button>
-              <div class="qct-mobile-group__grid" data-mobile-group-panel hidden={!audienceLinks.some(([, href]) => isCurrent(href))}>
+            <section class="qct-mobile-section">
+              <div class="qct-mobile-section__head">
+                <div>
+                  <strong>{isEnglish ? 'Who we help' : 'Kimler için'}</strong>
+                  <small>{isEnglish ? 'Choose your business context' : 'İşletme yapınıza göre başlayın'}</small>
+                </div>
+              </div>
+              <div class="qct-mobile-section__grid">
                 {audienceLinks.map(([label, href]) => (
                   <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
                     <span>{label}</span><span aria-hidden="true">↗</span>
                   </a>
                 ))}
               </div>
-            </div>
+            </section>
           </div>
         )}
 
@@ -1180,6 +1182,77 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   .qct-mobile-group__grid[hidden]{display:none!important}
   .qct-mobile-group.is-open .qct-mobile-group__grid{
     display:grid!important;
+  }
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .qct-mobile-groups{
+    display:grid!important;
+    gap:12px!important;
+  }
+  .qct-mobile-section{
+    border:1px solid rgba(200,255,61,.12)!important;
+    border-radius:16px!important;
+    background:#151a16!important;
+    overflow:hidden!important;
+  }
+  .qct-mobile-section__head{
+    padding:13px 14px 10px!important;
+    border-bottom:1px solid rgba(200,255,61,.10)!important;
+  }
+  .qct-mobile-section__head strong{
+    display:block!important;
+    color:#f3eadf!important;
+    font-size:.95rem!important;
+    font-weight:900!important;
+    letter-spacing:-.02em!important;
+  }
+  .qct-mobile-section__head small{
+    display:block!important;
+    margin-top:3px!important;
+    color:rgba(243,234,223,.56)!important;
+    font-size:.64rem!important;
+  }
+  .qct-mobile-section__grid{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:1px!important;
+    background:rgba(200,255,61,.08)!important;
+  }
+  .qct-mobile-section__grid a{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:8px!important;
+    min-height:44px!important;
+    padding:10px 11px!important;
+    background:#101411!important;
+    color:#f3eadf!important;
+    text-decoration:none!important;
+    font-size:.72rem!important;
+    line-height:1.2!important;
+    font-weight:760!important;
+  }
+  .qct-mobile-section__grid a span:last-child{
+    color:#c8ff3d!important;
+    font-size:.72rem!important;
+  }
+  .qct-mobile-section__grid a[aria-current="page"]{
+    color:#c8ff3d!important;
+    background:#182016!important;
+  }
+
+  /* Disable obsolete accordion UI completely. */
+  .qct-mobile-group,
+  .qct-mobile-group__toggle,
+  .qct-mobile-group__grid{
+    display:none!important;
+  }
+
+  @media (max-width:420px){
+    .qct-mobile-section__grid{grid-template-columns:1fr!important}
   }
 }
 </style>
