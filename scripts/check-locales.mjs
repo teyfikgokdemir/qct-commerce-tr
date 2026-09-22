@@ -125,9 +125,13 @@ for (const [url, page] of pages) {
     } catch { fail(url, 'invalid JSON-LD'); }
   }
   for (const anchor of page.html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
-    const href = attr(`<a ${anchor[1]}>`, 'href');
+    const anchorTag = `<a ${anchor[1]}>`;
+    const href = attr(anchorTag, 'href');
     if (!href.startsWith('/') && !href.startsWith(SITE + '/')) continue;
     const target = new URL(href, url);
+    const anchorHreflang = attr(anchorTag, 'hreflang');
+    const alternateMatch = page.alternates.some(a => a.lang === anchorHreflang && new URL(a.href, SITE).pathname === target.pathname);
+    if (alternateMatch) continue;
     if (target.pathname.startsWith('/en/')) {
       if (!pages.has(target.origin + target.pathname) || redirectFor(target.href)) fail(url, `English link missing or redirected: ${href}`);
     } else if (!((target.pathname === '/' && ['TR', 'Türkiye'].includes(text(anchor[2]))) || (target.pathname === '/ka/georgia/' && text(anchor[2]) === 'KA'))) fail(url, `non-English internal content link: ${href}`);
