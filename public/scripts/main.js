@@ -5,6 +5,29 @@
 	var menuToggle = document.querySelector('[data-menu-toggle]');
 	var navigation = document.getElementById('site-navigation');
 	var submenuToggles = document.querySelectorAll('[data-submenu-toggle]');
+
+	var mobileAccordionToggles = document.querySelectorAll('[data-mobile-accordion-toggle]');
+	mobileAccordionToggles.forEach(function (toggle) {
+		toggle.addEventListener('click', function (event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+			var panel = toggle.nextElementSibling;
+			
+			if (isExpanded) {
+				toggle.setAttribute('aria-expanded', 'false');
+				if (panel && panel.hasAttribute('data-mobile-accordion-panel')) {
+					panel.hidden = true;
+				}
+			} else {
+				toggle.setAttribute('aria-expanded', 'true');
+				if (panel && panel.hasAttribute('data-mobile-accordion-panel')) {
+					panel.hidden = false;
+				}
+			}
+		});
+	});
+
 	var customSelects = document.querySelectorAll('[data-custom-select]');
 	var contactForms = document.querySelectorAll('.qct-contact-form');
 	var revealItems = document.querySelectorAll('[data-qct-reveal]');
