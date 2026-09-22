@@ -298,9 +298,19 @@ const faqSchema = {
 .qct-segment-related__links a:hover,.qct-segment-related__links a:focus-visible { border-color:rgba(185,71,62,.32); color:#b9473e; }
 @media(min-width:901px){
   .qct-segment-hero .container { width:min(100% - 64px,1680px); max-width:none; margin-left:auto; margin-right:auto; }
-  .qct-segment-heading,
+  .qct-segment-heading {
+    width:min(100% - 64px,1600px);
+    max-width:none;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+  }
   .qct-segment-grid,
-  .qct-segment-process { width:min(100% - 48px,1180px); margin-left:auto; margin-right:auto; }
+  .qct-segment-process {
+    width:min(100% - 64px,1500px);
+    margin-left:auto;
+    margin-right:auto;
+  }
   .qct-segment-hero h1 {
     white-space:nowrap;
     max-width:none;
@@ -313,6 +323,15 @@ const faqSchema = {
     font-size:clamp(.96rem,1.08vw,1.12rem);
   }
   .qct-segment-heading { margin-bottom:2rem; }
+  .qct-segment-heading .eyebrow { text-align:center; }
+  .qct-segment-heading h2 {
+    max-width:none;
+    margin-left:auto;
+    margin-right:auto;
+    white-space:nowrap;
+    font-size:clamp(1.95rem,2.55vw,2.85rem);
+    line-height:1.04;
+  }
   .qct-segment-grid article,
   .qct-segment-process article { align-content:start; }
   .qct-segment-cta .container { max-width:none; width:min(100% - 64px,1500px); }
