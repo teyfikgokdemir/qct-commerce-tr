@@ -24,3 +24,6 @@ jobs:
 
       - name: Run build and audits
         run: npm run build
+
+      - name: Check locale routing and SEO
+        run: npm run check:locales
