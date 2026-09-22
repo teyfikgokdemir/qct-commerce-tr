@@ -64,14 +64,32 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const backToTop = document.querySelector('[data-back-to-top]');
     if (backToTop) {
-      const update = () => {
-        const visible = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) > 200;
+      const mobile = window.matchMedia('(max-width: 720px)');
+      let scrollTimer;
+      const setVisible = (visible) => {
         backToTop.classList.toggle('is-visible', visible);
         backToTop.setAttribute('aria-hidden', String(!visible));
         backToTop.tabIndex = visible ? 0 : -1;
       };
-      update();
+      const update = () => {
+        const pastThreshold = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) > 200;
+
+        if (!mobile.matches) {
+          setVisible(pastThreshold);
+          return;
+        }
+
+        window.clearTimeout(scrollTimer);
+        setVisible(pastThreshold);
+        scrollTimer = window.setTimeout(() => setVisible(false), 700);
+      };
+      setVisible(false);
       window.addEventListener('scroll', update, { passive: true });
+      mobile.addEventListener?.('change', () => {
+        window.clearTimeout(scrollTimer);
+        if (mobile.matches) setVisible(false);
+        else update();
+      });
       backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: reduced.matches ? 'auto' : 'smooth' });
       });
