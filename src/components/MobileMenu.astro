@@ -189,6 +189,12 @@ const isCurrent = (path: string) => currentPath === path;
     border-radius:999px!important;
     box-shadow:0 0 8px rgba(200,255,61,.10)!important;
   }
+  body.qctm-lock .qctm-toggle{
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:scale(.92)!important;
+  }
   .qctm-backdrop{position:fixed!important;inset:0!important;z-index:159!important;background:rgba(3,7,4,.66)!important;backdrop-filter:blur(4px)!important}
   .qctm-backdrop[hidden]{display:none!important}
   .qctm-panel{
