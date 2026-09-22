@@ -92,30 +92,34 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
       if (banner) banner.hidden = false;
     };
 
-    window.addEventListener('load', () => {
+    let savedConsent = null;
+    try {
+      savedConsent = localStorage.getItem(storageKey);
+    } catch {
+      savedConsent = null;
+    }
+
+    if (savedConsent === 'granted') {
+      closeBanner();
       if (window.requestIdleCallback) {
         window.requestIdleCallback(loadAnalytics, { timeout: 2200 });
       } else {
         window.setTimeout(loadAnalytics, 1600);
       }
-    });
-
-    const savedConsent = localStorage.getItem(storageKey);
-
-    if (savedConsent === 'granted' || savedConsent === 'denied') {
+    } else if (savedConsent === 'denied') {
       closeBanner();
     } else {
       openBanner();
     }
 
     accept?.addEventListener('click', () => {
-      localStorage.setItem(storageKey, 'granted');
+      try { localStorage.setItem(storageKey, 'granted'); } catch {}
       loadAnalytics();
       closeBanner();
     });
 
     reject?.addEventListener('click', () => {
-      localStorage.setItem(storageKey, 'denied');
+      try { localStorage.setItem(storageKey, 'denied'); } catch {}
       closeBanner();
     });
   })();
