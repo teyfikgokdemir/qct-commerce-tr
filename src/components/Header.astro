@@ -1,4 +1,5 @@
 ---
+import MobileMenu from './MobileMenu.astro';
 interface Props { lang: string; }
 const { lang } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -99,9 +100,18 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
 <header id="masthead" class="site-header" data-site-header>
   <div class="site-header__inner container">
     <div class="site-branding"><a class="site-title" href={isGeorgian ? '/ka/georgia/' : isEnglish ? '/en/' : '/'} rel="home">QCT Commerce</a></div>
-    <button class="site-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
+    <button class="site-menu-toggle qct-legacy-mobile-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
       <span class="screen-reader-text">{isGeorgian ? 'მენიუს გახსნა' : isEnglish ? 'Open menu' : 'Menüyü aç'}</span><span class="site-menu-toggle__bar"></span><span class="site-menu-toggle__bar"></span>
     </button>
+    <MobileMenu
+      lang={lang}
+      currentPath={currentPath}
+      trHref={trHref}
+      enHref={enHref}
+      serviceLinks={serviceLinks}
+      audienceLinks={audienceLinks}
+      quickLinks={quickLinks}
+    />
     
     <nav id="site-navigation" class="main-navigation" aria-label={isGeorgian ? 'მთავარი მენიუ' : isEnglish ? 'Main menu' : 'Ana menü'} aria-hidden="true">
       <div class="mobile-nav-head">
@@ -1402,5 +1412,17 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   .qct-mobile-section--accordion > .qct-mobile-section__grid:not([hidden]) {
     display: grid !important;
   }
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .qct-legacy-mobile-toggle{display:none!important}
+  #site-navigation.main-navigation{display:none!important}
+  .mobile-menu-backdrop{display:none!important}
+  .site-header__inner{display:flex!important;align-items:center!important;justify-content:space-between!important}
+}
+@media (min-width:1000px){
+  .qctm-root{display:none!important}
 }
 </style>
