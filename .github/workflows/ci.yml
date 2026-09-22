@@ -27,3 +27,6 @@ jobs:
 
       - name: Check locale routing and SEO
         run: npm run check:locales
+
+      - name: Check performance regressions
+        run: npm run check:performance
