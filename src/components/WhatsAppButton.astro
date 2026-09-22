@@ -74,11 +74,6 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
       const update = () => {
         const pastThreshold = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) > 200;
 
-        if (!mobile.matches) {
-          setVisible(pastThreshold);
-          return;
-        }
-
         window.clearTimeout(scrollTimer);
         setVisible(pastThreshold);
         scrollTimer = window.setTimeout(() => setVisible(false), 700);
@@ -87,8 +82,7 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
       window.addEventListener('scroll', update, { passive: true });
       mobile.addEventListener?.('change', () => {
         window.clearTimeout(scrollTimer);
-        if (mobile.matches) setVisible(false);
-        else update();
+        setVisible(false);
       });
       backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: reduced.matches ? 'auto' : 'smooth' });
