@@ -223,7 +223,7 @@
   padding: 22px 0 26px;
 }
 
-:is(html[lang="en"], html[lang="ka"]) .site-main > .section:last-of-type .container {
+:is(html[lang="en"], html[lang="ka"]) .site-main > .section:last-of-type:not(.qct-segment-cta) .container {
   background: #fffaf5;
   border: 1px solid rgba(23, 21, 20, 0.1);
   border-radius: 28px;
@@ -231,8 +231,25 @@
   padding: clamp(34px, 6vw, 70px);
 }
 
-:is(html[lang="en"], html[lang="ka"]) .site-main > .section:last-of-type .section-heading {
+:is(html[lang="en"], html[lang="ka"]) .site-main > .section:last-of-type:not(.qct-segment-cta) .section-heading {
   margin-bottom: 0;
+}
+
+html[lang="en"] .site-main .qct-segment-cta .container {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+html[lang="en"] .site-main .qct-segment-cta h2 {
+  color: #fffaf5 !important;
+  -webkit-text-fill-color: #fffaf5 !important;
+}
+
+html[lang="en"] .site-main .qct-segment-cta p:not(.eyebrow) {
+  color: rgba(255, 250, 245, .72) !important;
 }
 
 :is(html[lang="en"], html[lang="ka"]) .site-footer :is(p, a) {
