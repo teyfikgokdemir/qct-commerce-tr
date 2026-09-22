@@ -36,13 +36,13 @@ const quickLinks = isGeorgian ? [
 ] : isEnglish ? [
   ['Home', '/en/'],
   ['Services', '/en/services/'],
-  ['Work', '/en/work/'],
+  ['Who we help', '/en/services/#who-we-help'],
   ['Pricing', '/en/pricing/'],
   ['Blog', '/en/blog/'],
   ['Contact', '/en/contact/']
 ] : [
   ['Ana Sayfa', '/'],
-  ['Çalışmalar', '/calismalar/'],
+  ['Kimler için', '/hizmetler/#kimler-icin'],
   ['Hakkımızda', '/hakkimizda/'],
   ['Fiyatlar', '/fiyatlar/'],
   ['Blog', '/blog/'],
@@ -50,7 +50,7 @@ const quickLinks = isGeorgian ? [
 ];
 
 const servicePaths = ['/hizmetler/', '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/'];
-const englishServicePaths = ['/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/'];
+const englishServicePaths = ['/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/', '/en/manufacturers/', '/en/exporters/', '/en/distributors-b2b/', '/en/ecommerce-brands/'];
 const isCurrent = (path: string) => currentPath === path;
 const isServiceCurrent = servicePaths.includes(currentPath);
 const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
@@ -120,14 +120,14 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
                 <li><a href="/en/services/">All services</a></li><li><a href="/en/ecommerce/">E-commerce</a></li><li><a href="/en/shopify-store-setup/">Shopify setup</a></li><li><a href="/en/ikas-store-setup/">ikas setup</a></li><li><a href="/en/web-design/">Web design</a></li><li><a href="/en/whatsapp-sales/">WhatsApp sales</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/meta-ads/">Meta ads</a></li><li><a href="/en/ai-automation/">AI automation</a></li>
               </ul>
             </li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Work</span></button><ul class="sub-menu"><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>View selected work</a></li><li><a href="/en/contact/">Start a project</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/georgia/" aria-current={isCurrent('/en/georgia/') ? 'page' : undefined}>Georgia</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Who we help</span></button><ul class="sub-menu"><li><a href="/en/manufacturers/">Manufacturers</a></li><li><a href="/en/exporters/">Exporters</a></li><li><a href="/en/distributors-b2b/">Distributors & B2B</a></li><li><a href="/en/ecommerce-brands/">E-commerce brands</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/georgia/" aria-current={isCurrent('/en/georgia/') ? 'page' : undefined}>Georgia</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
             {currentPath === '/en/georgia/' && <li><a href="/ka/georgia/" hreflang="ka">KA</a></li>}<li><a href="/" hreflang="tr-TR">TR</a></li>
           </ul>
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
             <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Çalışmalar</span></button><ul class="sub-menu"><li><a href="/calismalar/">Çalışmaları gör</a></li><li><a href="/iletisim/">Proje başlat</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/en/" hreflang="en">EN</a></li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/en/" hreflang="en">EN</a></li>
           </ul>
         )}
       </div>
