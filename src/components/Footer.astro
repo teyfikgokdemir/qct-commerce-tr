@@ -136,32 +136,42 @@ const legalLinks = isGeorgian ? [
             <a href="/en/meta-ads/">Meta ads</a>
             <a href="/en/ai-automation/">AI automation</a>
           </nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Company and markets">
-            <h2>Explore</h2>
-            <a href="/en/about/">About QCT Commerce</a>
+          <nav class="site-footer__group site-footer__audience" aria-label="Who we help">
+            <h2>Who we help</h2>
             <a href="/en/manufacturers/">Manufacturers</a>
             <a href="/en/exporters/">Exporters</a>
             <a href="/en/distributors-b2b/">Distributors &amp; B2B</a>
             <a href="/en/ecommerce-brands/">E-commerce brands</a>
+          </nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Company">
+            <h2>Company</h2>
+            <a href="/en/about/">About QCT Commerce</a>
             <a href="/en/how-we-work/">How we work</a>
-            <a href="/en/careers/">Careers</a>
-            <a href="/en/blog/">Blog</a>
             <a href="/en/pricing/">Pricing</a>
+            <a href="/en/blog/">Blog</a>
+            <a href="/en/careers/">Careers</a>
             <a href="/en/contact/">Contact</a>
-            <a href="/en/georgia/">Georgia</a>
-            <a href="/">Türkiye</a>
           </nav>
           <div class="site-footer__group site-footer__markets"><h2>Contact</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Türkiye</p></div>
         </>
       ) : (
         <>
           <nav class="site-footer__group site-footer__nav" aria-label="Hizmetler"><h2>Hizmetler</h2><a href="/e-ticaret/">E-ticaret altyapısı</a><a href="/web-tasarim/">Web tasarım</a><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a><a href="/meta-reklamlari/">Meta reklamları</a><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/hizmetler/">Hizmetler</a><a href="/ureticiler/">Üreticiler</a><a href="/ihracatcilar/">İhracatçılar</a><a href="/distributor-b2b/">Distribütör &amp; B2B</a><a href="/e-ticaret-markalari/">E-ticaret markaları</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a><a href="/gizlilik-politikasi/">Gizlilik politikası</a><a href="/kvkk/">KVKK aydınlatma metni</a><a href="/kullanim-kosullari/">Kullanım koşulları</a><a href="/cerez-politikasi/">Çerez politikası</a></nav>
+          <nav class="site-footer__group site-footer__audience" aria-label="Kimler için"><h2>Kimler için</h2><a href="/ureticiler/">Üreticiler</a><a href="/ihracatcilar/">İhracatçılar</a><a href="/distributor-b2b/">Distribütör &amp; B2B</a><a href="/e-ticaret-markalari/">E-ticaret markaları</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/hizmetler/">Hizmetler</a><a href="/fiyatlar/">Fiyatlar</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a></nav>
           <div class="site-footer__group site-footer__markets"><h2>İletişim</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Türkiye</p></div>
         </>
       )}
     </div>
-    <div class="site-footer__bottom"><div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div></div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div>
+      {!isGeorgian && <nav class="site-footer__legal-desktop" aria-label={isEnglish ? 'Legal' : 'Yasal'}>
+        <a href={isEnglish ? '/en/privacy-policy/' : '/gizlilik-politikasi/'}>{isEnglish ? 'Privacy' : 'Gizlilik'}</a>
+        <a href={isEnglish ? '/en/kvkk/' : '/kvkk/'}>KVKK</a>
+        <a href={isEnglish ? '/en/terms/' : '/kullanim-kosullari/'}>{isEnglish ? 'Terms' : 'Kullanım koşulları'}</a>
+        <a href={isEnglish ? '/en/cookie-policy/' : '/cerez-politikasi/'}>{isEnglish ? 'Cookies' : 'Çerezler'}</a>
+      </nav>}
+    </div>
   </div>
 
   <div class="site-footer__mobile" aria-label={isEnglish ? 'Footer' : 'Alt bilgi'}>
@@ -267,6 +277,124 @@ const legalLinks = isGeorgian ? [
     white-space: nowrap;
   }
   @keyframes qctCommerceMarquee { to { transform: translateX(calc(-25% - .75rem)); } }
+
+
+  @media (min-width:761px) {
+    .site-footer {
+      background:
+        radial-gradient(circle at 8% 0%, rgba(255,123,103,.055), transparent 26%),
+        radial-gradient(circle at 88% 12%, rgba(200,255,61,.035), transparent 24%),
+        #171412;
+      color:#f7f1e9;
+    }
+    .site-footer__marquee {
+      height:64px;
+      border-bottom:1px solid rgba(255,255,255,.07);
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+      mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+    }
+    .site-footer__marquee-track { gap:2rem; animation-duration:34s; }
+    .site-footer__marquee span {
+      font-size:clamp(2rem,3vw,3rem);
+      line-height:1;
+      letter-spacing:-.035em;
+    }
+    .site-footer__inner {
+      padding-top:88px;
+      padding-bottom:28px;
+    }
+    .site-footer__columns {
+      display:grid;
+      grid-template-columns:minmax(190px,1.15fr) minmax(150px,.95fr) minmax(150px,.9fr) minmax(150px,.9fr) minmax(190px,1fr) !important;
+      gap:clamp(28px,3.5vw,58px) !important;
+      align-items:start;
+    }
+    .site-footer__group { min-width:0; }
+    .site-footer__group h2 {
+      margin:0 0 16px;
+      color:#fffaf5;
+      font-size:.74rem;
+      line-height:1.2;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+    .site-footer__brand h2 {
+      font-size:1.45rem;
+      line-height:1.05;
+      letter-spacing:-.035em;
+      text-transform:none;
+    }
+    .site-footer__brand p {
+      max-width:29ch;
+      margin:.75rem 0 0;
+      color:rgba(247,241,233,.62);
+      font-size:.86rem;
+      line-height:1.65;
+    }
+    .site-footer__brand-relationship {
+      padding-top:.85rem;
+      margin-top:1rem !important;
+      border-top:1px solid rgba(255,255,255,.09);
+      color:rgba(247,241,233,.46) !important;
+      font-size:.76rem !important;
+    }
+    .site-footer__nav,
+    .site-footer__audience,
+    .site-footer__company,
+    .site-footer__markets {
+      display:grid;
+      align-content:start;
+      gap:8px;
+    }
+    .site-footer__group a,
+    .site-footer__markets p {
+      margin:0;
+      color:rgba(247,241,233,.72);
+      font-size:.82rem;
+      line-height:1.45;
+      text-decoration:none;
+    }
+    .site-footer__group a:hover,
+    .site-footer__group a:focus-visible {
+      color:#fff;
+      transform:none;
+      text-decoration:underline;
+      text-underline-offset:4px;
+      text-decoration-color:rgba(255,139,120,.65);
+    }
+    .site-footer__markets p + p { margin-top:10px; }
+    .site-footer__bottom {
+      margin-top:34px;
+      padding:16px 0 0;
+      border:0;
+      border-top:1px solid rgba(255,255,255,.09);
+      border-radius:0;
+      background:transparent;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .site-footer__copyright { justify-items:start; text-align:left; }
+    .site-footer__copyright p:first-child {
+      color:rgba(247,241,233,.5);
+      font-size:.74rem;
+      font-weight:700;
+    }
+    .site-footer__legal-desktop {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:14px;
+    }
+    .site-footer__legal-desktop a {
+      color:rgba(247,241,233,.46);
+      font-size:.72rem;
+      text-decoration:none;
+    }
+    .site-footer__legal-desktop a:hover,
+    .site-footer__legal-desktop a:focus-visible { color:#fff; }
+  }
 
   @media (max-width:760px) {
     .site-footer {
