@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+type SegmentKey = 'manufacturers' | 'exporters' | 'distributors' | 'ecommerce';
+
+interface Props {
+  lang: 'tr' | 'en';
+  segment: SegmentKey;
+}
+
+const { lang, segment } = Astro.props;
+const isEnglish = lang === 'en';
+
+const content = {
+  tr: {
+    manufacturers: {
+      title: 'Üreticiler için dijital satış ve talep sistemi',
+      description: 'Üreticiler için kurumsal web, B2B e-ticaret, ürün kataloğu, teklif akışı, çok dilli yapı ve arama görünürlüğü.',
+      eyebrow: 'ÜRETİCİLER İÇİN',
+      lead: 'Ürün kataloğunu yalnızca sergileyen bir web sitesi yerine, doğru alıcıyı ürüne, teknik bilgiye ve teklif talebine taşıyan bir sistem kurun.',
+      pains: [['Ürünler bulunuyor ama talep gelmiyor','Teknik ürün bilgisi, kategori yapısı ve CTA akışı ticari niyetle eşleşmediğinde ziyaretçi katalogda kalır.'],['Toptan ve perakende ihtiyaçları karışıyor','Bayi, distribütör, kurumsal alıcı ve son kullanıcı için farklı bilgi ve teklif yolları gerekir.'],['İhracat için içerik yetersiz kalıyor','Çok dilli ürün anlatımı, ülkeye göre güven sinyalleri ve teklif kanalları birlikte düşünülmelidir.']],
+      outcomes: [['B2B ürün mimarisi','Kategori, ürün, teknik özellik ve teklif akışının birlikte kurgulanması.'],['Nitelikli talep akışı','WhatsApp, e-posta veya form üzerinden bağlamlı teklif talebi.'],['Arama ve AI görünürlüğü','Ürün ve sektör bilgisinin Google ve yapay zekâ sistemleri tarafından daha açık anlaşılması.']],
+    },
+    exporters: {
+      title: 'İhracatçılar için çok dilli dijital talep altyapısı',
+      description: 'İhracatçılar için çok dilli web, hedef pazar landing page, B2B talep akışı, SEO, GEO, AEO ve dijital satış sistemleri.',
+      eyebrow: 'İHRACATÇILAR İÇİN',
+      lead: 'Yeni pazarlara açılırken yalnızca çeviri değil; teklif, güven, ürün bilgisi ve talep toplama akışını hedef ülkeye göre düzenleyin.',
+      pains: [['İngilizce site var ama talep yok','Genel bir çeviri, hedef pazarın satın alma sorularını ve güven beklentisini karşılamayabilir.'],['Ürün bilgisi ülkeye göre ayrışmıyor','Teknik detay, teslim modeli, minimum sipariş ve kullanım senaryoları pazara göre farklı önem taşır.'],['Lead geliyor ama niteliksiz kalıyor','Ülke, ürün, hacim ve hedef tarih gibi bilgiler ilk temasta toplanmadığında satış ekibi zaman kaybeder.']],
+      outcomes: [['Pazar odaklı landing page','Ülke veya segment bazlı teklif ve içerik yapısı.'],['Çok dilli SEO altyapısı','Canonical, hreflang, yerel içerik ve teknik görünürlük temeli.'],['Nitelikli ihracat talebi','İlk mesajda temel ticari bağlamı toplayan kısa brief akışı.']],
+    },
+    distributors: {
+      title: 'Distribütör ve B2B satıcılar için dijital sipariş sistemi',
+      description: 'Distribütör ve B2B şirketleri için ürün kataloğu, teklif akışı, bayi yapısı, WhatsApp satış ve e-ticaret sistemleri.',
+      eyebrow: 'DİSTRİBÜTÖR & B2B',
+      lead: 'Ürün portföyünü, bayi ilişkilerini ve teklif sürecini tek bir dijital yapıda daha düzenli hale getirin.',
+      pains: [['Katalog büyüdükçe ürün bulmak zorlaşıyor','B2B alıcı ürün kodu, kategori, teknik özellik veya kullanım alanına göre hızlı filtreleme bekler.'],['Teklifler WhatsApp içinde kayboluyor','Bağlamsız mesajlar satış takibini zorlaştırır ve aynı sorular tekrar tekrar sorulur.'],['Bayi ve son kullanıcı aynı akışta','Farklı fiyatlama, minimum sipariş ve destek ihtiyaçları tek deneyimde karışabilir.']],
+      outcomes: [['B2B katalog mimarisi','Ürün keşfini hızlandıran kategori ve teknik veri düzeni.'],['Teklif ve WhatsApp routing','Ürün bağlamını koruyan satış görüşmesi akışı.'],['Ölçülebilir talep','Hangi sayfa, ürün veya kanalın talep oluşturduğunu izleyebilecek ölçüm temeli.']],
+    },
+    ecommerce: {
+      title: 'Büyüyen e-ticaret markaları için dönüşüm ve altyapı sistemi',
+      description: 'Büyüyen e-ticaret markaları için Shopify, ikas, dönüşüm optimizasyonu, SEO, reklam landing page ve satış otomasyonu.',
+      eyebrow: 'E-TİCARET MARKALARI',
+      lead: 'Trafik artırmadan önce satın alma akışındaki kayıpları, platform sınırlarını ve ölçüm eksiklerini görün; büyümeyi daha kontrollü hale getirin.',
+      pains: [['Trafik var ama dönüşüm düşük','Mobil deneyim, ürün sayfası, güven, ödeme ve teklif yapısı birlikte değerlendirilmelidir.'],['Platform operasyonu yavaşlatıyor','Tema, uygulama, ürün verisi ve entegrasyon yükü büyüdükçe maliyet ve hata oranı artabilir.'],['Reklam verisi satışla bağlanmıyor','Kampanya, landing page ve gerçek dönüşüm sinyali aynı ölçüm yapısında buluşmalıdır.']],
+      outcomes: [['Dönüşüm odaklı mağaza','Ürün keşfi, sepet ve ödeme akışında gereksiz sürtünmenin azaltılması.'],['Platform uygunluğu','Shopify, ikas veya mevcut yapının ticari ihtiyaca göre değerlendirilmesi.'],['Büyüme ölçümü','Reklam, organik trafik, WhatsApp ve satış aksiyonlarının anlamlı eventlerle izlenmesi.']],
+    },
+  },
+  en: {
+    manufacturers: {
+      title: 'Digital demand systems for manufacturers',
+      description: 'B2B websites, product catalogues, enquiry flows, multilingual architecture and search visibility for manufacturers operating from Türkiye.',
+      eyebrow: 'FOR MANUFACTURERS',
+      lead: 'Move beyond a catalogue-only website and guide qualified buyers from product discovery to technical information and a structured enquiry.',
+      pains: [['Products are visible but enquiries stay weak','When technical content, category structure and CTAs do not match buying intent, visitors stop at the catalogue.'],['Wholesale and retail needs are mixed','Dealers, distributors, corporate buyers and end customers often need different information and conversion paths.'],['Export content lacks market context','Multilingual product content, trust signals and enquiry routes should work together.']],
+      outcomes: [['B2B product architecture','Categories, product detail, technical data and enquiry paths designed as one system.'],['Qualified enquiry flow','Context-rich WhatsApp, email or form enquiries.'],['Search and AI visibility','Clearer product and company information for search engines and AI systems.']],
+    },
+    exporters: {
+      title: 'Multilingual digital demand infrastructure for exporters',
+      description: 'Multilingual websites, target-market landing pages, B2B lead qualification, SEO and digital sales systems for exporters.',
+      eyebrow: 'FOR EXPORTERS',
+      lead: 'International growth needs more than translation. Align the offer, trust signals, product information and enquiry flow with each target market.',
+      pains: [['An English site exists but demand stays weak','Generic translation may not answer the commercial questions and trust requirements of a target market.'],['Product information is not market-specific','Technical detail, delivery model, MOQ and use cases can matter differently across markets.'],['Inbound leads are poorly qualified','If market, product, volume and timing are missing from the first contact, sales teams lose time.']],
+      outcomes: [['Market-specific landing pages','Country and buyer-segment pages built around a clear commercial offer.'],['Multilingual SEO foundation','Canonical, hreflang, localised content and technical discoverability.'],['Qualified export enquiries','A short brief flow that captures useful commercial context at first contact.']],
+    },
+    distributors: {
+      title: 'Digital sales systems for distributors and B2B sellers',
+      description: 'Product catalogues, enquiry routing, dealer journeys, WhatsApp sales and B2B commerce systems for distributors.',
+      eyebrow: 'FOR DISTRIBUTORS & B2B',
+      lead: 'Organise product discovery, dealer relationships and quotation workflows inside a clearer digital sales structure.',
+      pains: [['Large catalogues become hard to navigate','B2B buyers often search by SKU, technical attribute, category or application.'],['Enquiries disappear inside chat threads','Unstructured messages make follow-up slower and force teams to repeat the same questions.'],['Dealer and end-customer journeys overlap','Pricing, MOQ and support requirements may need separate paths.']],
+      outcomes: [['B2B catalogue architecture','Category and technical-data structures that make products easier to find.'],['Quotation and WhatsApp routing','Sales conversations that preserve product and page context.'],['Measurable demand','A tracking foundation for understanding which pages, products and channels generate enquiries.']],
+    },
+    ecommerce: {
+      title: 'Conversion and infrastructure systems for growing e-commerce brands',
+      description: 'Shopify, ikas, conversion optimisation, SEO, paid-traffic landing pages and sales automation for growing e-commerce brands.',
+      eyebrow: 'FOR E-COMMERCE BRANDS',
+      lead: 'Before buying more traffic, identify conversion loss, platform constraints and measurement gaps so growth becomes easier to control.',
+      pains: [['Traffic grows but conversion stays weak','Mobile UX, product pages, trust, checkout and offer structure need to be reviewed together.'],['Platform operations become expensive','Themes, apps, product data and integrations can create growing cost and maintenance friction.'],['Ad data is disconnected from sales','Campaigns, landing pages and real conversion signals should feed one measurement model.']],
+      outcomes: [['Conversion-focused storefront','Reduce avoidable friction across discovery, product, cart and checkout.'],['Platform fit','Evaluate Shopify, ikas or the current stack against the real commercial requirement.'],['Growth measurement','Track paid, organic, WhatsApp and sales actions with meaningful events.']],
+    },
+  },
+}[lang][segment];
+
+const contactUrl = isEnglish ? '/en/contact/' : '/iletisim/';
+const servicesUrl = isEnglish ? '/en/services/' : '/hizmetler/';
+const processTitle = isEnglish ? 'How we approach the first scope' : 'İlk kapsamı nasıl belirliyoruz?';
+const process = isEnglish
+  ? [['01','Commercial context','We clarify the buyer, market, offer and current sales path.'],['02','Constraint','We identify the highest-impact gap in discovery, conversion or operations.'],['03','System scope','We define the smallest practical combination of pages, platform work and measurement.'],['04','Execution','We implement, validate and measure before adding more complexity.']]
+  : [['01','Ticari bağlam','Alıcıyı, pazarı, teklifi ve mevcut satış yolunu netleştiririz.'],['02','Darboğaz','Keşif, dönüşüm veya operasyondaki en yüksek etkili açığı belirleriz.'],['03','Sistem kapsamı','Gerekli sayfa, platform ve ölçüm işlerini uygulanabilir bir kapsamda toplarız.'],['04','Uygulama','Yeni karmaşıklık eklemeden önce uygular, doğrular ve ölçeriz.']];
+---
+<BaseLayout title={content.title + ' | QCT Commerce'} description={content.description} lang={lang} breadcrumbLabel={content.eyebrow}>
+  <Header slot="header" lang={lang} />
+
+  <section class="qct-segment-hero">
+    <div class="container">
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h1>{content.title}</h1>
+      <p>{content.lead}</p>
+      <div class="qct-segment-actions">
+        <a class="button button--primary" href={contactUrl}>{isEnglish ? 'Discuss your current setup' : 'Mevcut yapınızı konuşalım'}</a>
+        <a class="button button--secondary" href={servicesUrl}>{isEnglish ? 'Explore services' : 'Hizmetleri inceleyin'}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="qct-segment-heading">
+        <p class="eyebrow">{isEnglish ? 'COMMON CONSTRAINTS' : 'SIK DARBOĞAZLAR'}</p>
+        <h2>{isEnglish ? 'The problem is rarely just the website.' : 'Sorun çoğu zaman sadece web sitesi değildir.'}</h2>
+      </div>
+      <div class="qct-segment-grid">
+        {content.pains.map(([title,text]) => <article><h3>{title}</h3><p>{text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-segment-alt">
+    <div class="container">
+      <div class="qct-segment-heading">
+        <p class="eyebrow">{isEnglish ? 'SYSTEM OUTCOMES' : 'SİSTEM ÇIKTILARI'}</p>
+        <h2>{isEnglish ? 'Build the parts around one commercial objective.' : 'Parçaları tek ticari hedef etrafında birleştirin.'}</h2>
+      </div>
+      <div class="qct-segment-grid">
+        {content.outcomes.map(([title,text]) => <article><h3>{title}</h3><p>{text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="qct-segment-heading">
+        <p class="eyebrow">{isEnglish ? 'PROCESS' : 'SÜREÇ'}</p>
+        <h2>{processTitle}</h2>
+      </div>
+      <div class="qct-segment-process">
+        {process.map(([no,title,text]) => <article><span>{no}</span><h3>{title}</h3><p>{text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-segment-cta">
+    <div class="container">
+      <p class="eyebrow">{isEnglish ? 'NEXT STEP' : 'SONRAKİ ADIM'}</p>
+      <h2>{isEnglish ? 'Start with the current commercial constraint.' : 'Önce mevcut ticari darboğazı netleştirelim.'}</h2>
+      <p>{isEnglish ? 'Share your current site, platform, target market and priority. We will identify the most practical first scope.' : 'Mevcut sitenizi, platformunuzu, hedef pazarınızı ve önceliğinizi paylaşın. En uygulanabilir ilk kapsamı birlikte belirleyelim.'}</p>
+      <a class="button button--primary" href={contactUrl}>{isEnglish ? 'Send a short project brief' : 'Kısa proje briefi gönderin'}</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+.qct-segment-hero { padding: clamp(6rem,10vw,9rem) 0 clamp(4rem,7vw,6rem); background: radial-gradient(circle at 50% 0,rgba(230,107,95,.09),transparent 36%),#f8f3ef; border-bottom:1px solid rgba(23,21,20,.08); }
+.qct-segment-hero .container,.qct-segment-cta .container { text-align:center; max-width:960px; }
+.qct-segment-hero h1 { margin:.6rem auto 1.2rem; max-width:18ch; font-size:clamp(3rem,7vw,6.5rem); line-height:.96; letter-spacing:-.055em; text-wrap:balance; }
+.qct-segment-hero p:not(.eyebrow),.qct-segment-cta p { max-width:760px; margin:0 auto; color:#665e59; font-size:clamp(1rem,1.5vw,1.18rem); line-height:1.7; }
+.qct-segment-actions { display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; margin-top:2rem; }
+.qct-segment-heading { max-width:760px; margin-bottom:2rem; }
+.qct-segment-heading h2,.qct-segment-cta h2 { margin:.45rem 0 1rem; font-size:clamp(2rem,4vw,3.5rem); line-height:1.05; letter-spacing:-.035em; text-wrap:balance; }
+.qct-segment-grid,.qct-segment-process { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.qct-segment-grid article,.qct-segment-process article { padding:clamp(1.5rem,3vw,2.1rem); border:1px solid rgba(73,53,49,.12); border-radius:22px; background:#fffaf5; box-shadow:0 16px 42px rgba(58,37,32,.06); }
+.qct-segment-grid h3,.qct-segment-process h3 { margin:0 0 .75rem; font-size:1.15rem; line-height:1.35; }
+.qct-segment-grid p,.qct-segment-process p { margin:0; color:#665e59; line-height:1.7; }
+.qct-segment-alt { background:linear-gradient(180deg,rgba(239,230,225,.52),rgba(248,243,239,.28)); border-block:1px solid rgba(23,21,20,.07); }
+.qct-segment-process { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.qct-segment-process span { display:inline-grid; place-items:center; width:42px; height:42px; border-radius:14px; background:rgba(230,107,95,.11); color:#b9473e; font-weight:900; margin-bottom:1rem; }
+.qct-segment-cta { text-align:center; background:#171514; color:#fffaf5; }
+.qct-segment-cta h2 { color:#fffaf5; }
+.qct-segment-cta p { color:rgba(255,250,245,.68); margin-bottom:1.75rem; }
+.qct-segment-cta .eyebrow { color:#ff8b78; }
+@media(max-width:900px){.qct-segment-grid{grid-template-columns:1fr}.qct-segment-process{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.qct-segment-process{grid-template-columns:1fr}.qct-segment-actions{align-items:stretch;flex-direction:column}.qct-segment-actions .button{width:100%}}
+</style>
