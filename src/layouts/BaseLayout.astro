@@ -54,6 +54,9 @@ const isEnglish = lang === 'en';
 const isGeorgian = lang === 'ka';
 const isInternational = isEnglish || isGeorgian;
 const locale = isGeorgian ? 'ka_GE' : isEnglish ? 'en_US' : 'tr_TR';
+const ogLocaleByLanguage: Record<string, string> = { 'tr-TR': 'tr_TR', en: 'en_US', 'ka-GE': 'ka_GE' };
+const alternateLocales = [...new Set(alternates.map((alternate) => ogLocaleByLanguage[alternate.lang]).filter((value) => value && value !== locale))];
+const imageAlt = isEnglish ? 'QCT Commerce — E-commerce and digital commerce systems' : 'QCT Commerce — E-ticaret ve dijital ticaret sistemleri';
 const languageTag = isGeorgian ? 'ka-GE' : isEnglish ? 'en-US' : 'tr-TR';
 const defaultDescription = isGeorgian
   ? 'QCT Commerce ქმნის მრავალენოვან B2B ვებსაიტებს, ციფრული გაყიდვებისა და ავტომატიზაციის სისტემებს საერთაშორისო ზრდისთვის.'
@@ -141,14 +144,14 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <meta property="og:image:type" content={ogImageType} />
   <meta property="og:image:width" content={String(imageWidth)} />
   <meta property="og:image:height" content={String(imageHeight)} />
-  <meta property="og:image:alt" content="QCT Commerce — E-ticaret ve dijital ticaret sistemleri" />
+  <meta property="og:image:alt" content={imageAlt} />
   <meta property="og:locale" content={locale} />
-  {alternates.filter((alternate) => alternate.lang !== languageTag && alternate.lang !== lang).map((alternate) => <meta property="og:locale:alternate" content={alternate.lang.replace('-', '_')} />)}
+  {alternateLocales.map((alternateLocale) => <meta property="og:locale:alternate" content={alternateLocale} />)}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={pageDescription} />
   <meta name="twitter:image" content={ogImageUrl} />
-  <meta name="twitter:image:alt" content="QCT Commerce — E-ticaret ve dijital ticaret sistemleri" />
+  <meta name="twitter:image:alt" content={imageAlt} />
   <script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
   <slot name="schema" />
   <link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
