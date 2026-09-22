@@ -87,6 +87,19 @@
 		}, submenuCloseDelay));
 	};
 
+	var mobileGroupSummaries = document.querySelectorAll('[data-mobile-group-summary]');
+
+	mobileGroupSummaries.forEach(function (summary) {
+		summary.addEventListener('click', function (event) {
+			if (desktopNavigation.matches) return;
+			event.preventDefault();
+			event.stopPropagation();
+			var details = summary.closest('details');
+			if (!details) return;
+			details.open = !details.open;
+		});
+	});
+
 	if (menuToggle && navigation) {
 		var closeButton = document.querySelector('[data-mobile-close]');
 		var previousFocus = null;
