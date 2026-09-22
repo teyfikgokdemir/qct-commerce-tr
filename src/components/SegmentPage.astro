@@ -88,10 +88,88 @@ const contactUrl = isEnglish ? '/en/contact/' : '/iletisim/';
 const servicesUrl = isEnglish ? '/en/services/' : '/hizmetler/';
 const processTitle = isEnglish ? 'How we approach the first scope' : 'İlk kapsamı nasıl belirliyoruz?';
 const process = isEnglish
-  ? [['01','Commercial context','We clarify the buyer, market, offer and current sales path.'],['02','Constraint','We identify the highest-impact gap in discovery, conversion or operations.'],['03','System scope','We define the smallest practical combination of pages, platform work and measurement.'],['04','Execution','We implement, validate and measure before adding more complexity.']]
-  : [['01','Ticari bağlam','Alıcıyı, pazarı, teklifi ve mevcut satış yolunu netleştiririz.'],['02','Darboğaz','Keşif, dönüşüm veya operasyondaki en yüksek etkili açığı belirleriz.'],['03','Sistem kapsamı','Gerekli sayfa, platform ve ölçüm işlerini uygulanabilir bir kapsamda toplarız.'],['04','Uygulama','Yeni karmaşıklık eklemeden önce uygular, doğrular ve ölçeriz.']];
+  ? [['Commercial context','We clarify the buyer, market, offer and current sales path.'],['Constraint','We identify the highest-impact gap in discovery, conversion or operations.'],['System scope','We define the smallest practical combination of pages, platform work and measurement.'],['Execution','We implement, validate and measure before adding more complexity.']]
+  : [['Ticari bağlam','Alıcıyı, pazarı, teklifi ve mevcut satış yolunu netleştiririz.'],['Darboğaz','Keşif, dönüşüm veya operasyondaki en yüksek etkili açığı belirleriz.'],['Sistem kapsamı','Gerekli sayfa, platform ve ölçüm işlerini uygulanabilir bir kapsamda toplarız.'],['Uygulama','Yeni karmaşıklık eklemeden önce uygular, doğrular ve ölçeriz.']];
+
+const segmentFaq = isEnglish ? {
+  manufacturers: [
+    ['What should a manufacturer website do beyond listing products?','It should help a buyer find the right product, understand technical fit, see commercial context and move into a qualified enquiry without losing product context.'],
+    ['Do manufacturers need e-commerce checkout?','Not always. For many B2B manufacturers, a structured catalogue and quotation flow can be more useful than direct checkout.'],
+    ['Can the same structure support export markets?','Yes. Product architecture can stay consistent while market-specific language, trust signals, delivery context and enquiry routes are adapted by country or buyer segment.'],
+  ],
+  exporters: [
+    ['Is translating a Turkish website enough for export demand?','Usually not. Export pages also need market-specific buying questions, delivery context, trust signals, product terminology and a clear enquiry path.'],
+    ['What information should an export enquiry collect?','At minimum, target market, product or product group, expected volume, timing and a reliable contact route should be clear before sales follow-up.'],
+    ['How does multilingual SEO support export visibility?','Language-specific URLs, reciprocal hreflang, clear product entities, localised copy and useful market pages help search engines and AI systems understand which content serves which audience.'],
+  ],
+  distributors: [
+    ['What makes a B2B catalogue useful?','Buyers should be able to reach products by category, SKU, technical attribute or application and then continue into a quotation or sales conversation with context preserved.'],
+    ['Should dealers and end customers use the same journey?','Only when their commercial needs are genuinely similar. MOQ, pricing, support and product information often justify separate paths.'],
+    ['Can WhatsApp be part of a measurable B2B flow?','Yes. Product and page context can be carried into the conversation while click and conversion events are measured without sending personal message content to analytics.'],
+  ],
+  ecommerce: [
+    ['What should be checked before increasing ad spend?','Mobile UX, product-page clarity, trust, checkout friction, platform limits and conversion measurement should be reviewed before buying more traffic.'],
+    ['When is a platform migration justified?','Migration is useful when the current platform creates material limits in operations, conversion, integrations, internationalisation or total cost.'],
+    ['How should an e-commerce growth stack be measured?','Paid traffic, organic discovery, product interactions, checkout actions and assisted channels such as WhatsApp should use a consistent event model tied to commercial outcomes.'],
+  ],
+}[segment] : {
+  manufacturers: [
+    ['Bir üretici web sitesi ürün listelemek dışında ne yapmalı?','Doğru alıcının doğru ürünü bulmasını, teknik uygunluğu anlamasını, ticari bağlamı görmesini ve ürün bağlamını kaybetmeden nitelikli talebe geçmesini sağlamalıdır.'],
+    ['Üreticiler için doğrudan e-ticaret şart mı?','Her zaman değil. Birçok B2B üretici için yapılandırılmış ürün kataloğu ve teklif akışı, doğrudan ödeme adımından daha işlevsel olabilir.'],
+    ['Aynı yapı ihracat pazarlarında kullanılabilir mi?','Evet. Ürün mimarisi korunurken dil, güven sinyalleri, teslim bağlamı ve teklif yolları ülke veya alıcı segmentine göre uyarlanabilir.'],
+  ],
+  exporters: [
+    ['Türkçe siteyi çevirmek ihracat talebi için yeterli mi?','Genellikle hayır. Hedef pazarın satın alma soruları, teslim bağlamı, güven sinyalleri, ürün terminolojisi ve net teklif akışı da yerelleştirilmelidir.'],
+    ['İhracat talebinde hangi bilgiler toplanmalı?','En azından hedef pazar, ürün veya ürün grubu, beklenen hacim, zamanlama ve güvenilir iletişim kanalı ilk temas sırasında netleşmelidir.'],
+    ['Çok dilli SEO ihracat görünürlüğünü nasıl destekler?','Dil bazlı URL yapısı, karşılıklı hreflang, net ürün entity’leri, yerelleştirilmiş içerik ve hedef pazar sayfaları arama ve AI sistemlerinin doğru içeriği doğru kitleyle eşleştirmesine yardımcı olur.'],
+  ],
+  distributors: [
+    ['B2B ürün kataloğunu kullanışlı yapan nedir?','Alıcı kategori, ürün kodu, teknik özellik veya kullanım alanına göre ürüne ulaşabilmeli ve ürün bağlamını kaybetmeden teklif ya da satış görüşmesine geçebilmelidir.'],
+    ['Bayi ve son kullanıcı aynı akışı kullanmalı mı?','Ticari ihtiyaçları gerçekten aynıysa olabilir. Minimum sipariş, fiyatlama, destek ve ürün bilgisi farkları çoğu zaman ayrı akışları daha doğru hale getirir.'],
+    ['WhatsApp ölçülebilir bir B2B satış akışının parçası olabilir mi?','Evet. Ürün ve sayfa bağlamı görüşmeye taşınabilir; tıklama ve dönüşüm sinyalleri kişisel mesaj içeriğini analytics’e göndermeden ölçülebilir.'],
+  ],
+  ecommerce: [
+    ['Reklam bütçesini artırmadan önce ne kontrol edilmeli?','Mobil deneyim, ürün sayfası açıklığı, güven, ödeme sürtünmesi, platform sınırları ve dönüşüm ölçümü birlikte kontrol edilmelidir.'],
+    ['Platform taşıma ne zaman mantıklıdır?','Mevcut platform operasyon, dönüşüm, entegrasyon, uluslararasılaşma veya toplam maliyet açısından belirgin sınırlar oluşturuyorsa taşıma değerlendirilmelidir.'],
+    ['E-ticaret büyümesi nasıl ölçülmeli?','Reklam, organik keşif, ürün etkileşimleri, ödeme adımları ve WhatsApp gibi destekleyici kanallar aynı ticari hedeflere bağlanan tutarlı event modeliyle izlenmelidir.'],
+  ],
+}[segment];
+
+const relatedLinks = isEnglish ? {
+  manufacturers: [['E-commerce systems','/en/ecommerce/'],['Search visibility','/en/search-visibility/'],['WhatsApp sales','/en/whatsapp-sales/'],['AI automation','/en/ai-automation/']],
+  exporters: [['Search visibility','/en/search-visibility/'],['Web design','/en/web-design/'],['WhatsApp sales','/en/whatsapp-sales/'],['E-commerce systems','/en/ecommerce/']],
+  distributors: [['E-commerce systems','/en/ecommerce/'],['WhatsApp sales','/en/whatsapp-sales/'],['AI automation','/en/ai-automation/'],['Web design','/en/web-design/']],
+  ecommerce: [['E-commerce systems','/en/ecommerce/'],['Meta ads','/en/meta-ads/'],['Search visibility','/en/search-visibility/'],['AI automation','/en/ai-automation/']],
+}[segment] : {
+  manufacturers: [['E-ticaret altyapısı','/e-ticaret/'],['SEO, GEO, AEO ve AIO','/seo-geo/'],['WhatsApp satış','/whatsapp-satis/'],['Yapay zekâ otomasyonları','/yapay-zeka-otomasyonlari/']],
+  exporters: [['SEO, GEO, AEO ve AIO','/seo-geo/'],['Web tasarım','/web-tasarim/'],['WhatsApp satış','/whatsapp-satis/'],['E-ticaret altyapısı','/e-ticaret/']],
+  distributors: [['E-ticaret altyapısı','/e-ticaret/'],['WhatsApp satış','/whatsapp-satis/'],['Yapay zekâ otomasyonları','/yapay-zeka-otomasyonlari/'],['Web tasarım','/web-tasarim/']],
+  ecommerce: [['E-ticaret altyapısı','/e-ticaret/'],['Meta reklamları','/meta-reklamlari/'],['SEO, GEO, AEO ve AIO','/seo-geo/'],['Yapay zekâ otomasyonları','/yapay-zeka-otomasyonlari/']],
+}[segment];
+
+const canonicalUrl = new URL(Astro.url.pathname, 'https://qctcommerce.com').toString();
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': canonicalUrl + '#faq',
+  url: canonicalUrl,
+  inLanguage: isEnglish ? 'en-US' : 'tr-TR',
+  mainEntity: segmentFaq.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
 ---
-<BaseLayout title={content.title + ' | QCT Commerce'} description={content.description} lang={lang} breadcrumbLabel={content.eyebrow}>
+<BaseLayout
+  title={content.title + ' | QCT Commerce'}
+  description={content.description}
+  lang={lang}
+  pageType="WebPage"
+  breadcrumbLabel={content.eyebrow}
+  service={{ name: content.title, description: content.description }}
+>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Header slot="header" lang={lang} />
 
   <section class="qct-segment-hero">
@@ -137,7 +215,38 @@ const process = isEnglish
         <h2>{processTitle}</h2>
       </div>
       <div class="qct-segment-process">
-        {process.map(([no,title,text]) => <article><span>{no}</span><h3>{title}</h3><p>{text}</p></article>)}
+        {process.map(([title,text]) => <article><h3>{title}</h3><p>{text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-segment-faq" aria-labelledby="segment-faq-title">
+    <div class="container">
+      <div class="qct-segment-heading">
+        <p class="eyebrow">{isEnglish ? 'DIRECT ANSWERS' : 'NET CEVAPLAR'}</p>
+        <h2 id="segment-faq-title">{isEnglish ? 'Questions buyers and teams ask before the project starts.' : 'Proje başlamadan önce en sık netleştirilen sorular.'}</h2>
+      </div>
+      <div class="qct-segment-faq__list">
+        {segmentFaq.map(([question, answer]) => (
+          <details>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section qct-segment-related" aria-labelledby="segment-related-title">
+    <div class="container">
+      <div class="qct-segment-related__head">
+        <div>
+          <p class="eyebrow">{isEnglish ? 'RELATED CAPABILITIES' : 'İLGİLİ YETKİNLİKLER'}</p>
+          <h2 id="segment-related-title">{isEnglish ? 'Connect the segment need to the right capability.' : 'Segment ihtiyacını doğru hizmetle eşleştirin.'}</h2>
+        </div>
+        <div class="qct-segment-related__links">
+          {relatedLinks.map(([label, href]) => <a href={href}>{label}<span aria-hidden="true">↗</span></a>)}
+        </div>
       </div>
     </div>
   </section>
@@ -168,12 +277,26 @@ const process = isEnglish
 .qct-segment-grid p,.qct-segment-process p { margin:0; color:#665e59; line-height:1.7; }
 .qct-segment-alt { background:linear-gradient(180deg,rgba(239,230,225,.52),rgba(248,243,239,.28)); border-block:1px solid rgba(23,21,20,.07); }
 .qct-segment-process { grid-template-columns:repeat(4,minmax(0,1fr)); }
-.qct-segment-process span { display:inline-grid; place-items:center; width:42px; height:42px; border-radius:14px; background:rgba(230,107,95,.11); color:#b9473e; font-weight:900; margin-bottom:1rem; }
+.qct-segment-process article { padding-top:clamp(1.7rem,2.6vw,2.2rem); }
 .qct-segment-cta { text-align:center; background:#171514; color:#fffaf5; border-bottom:1px solid rgba(255,255,255,.07); padding-block:clamp(4rem,7vw,5.5rem); }
 .qct-segment-cta h2 { color:#fffaf5; max-width:15ch; margin-left:auto; margin-right:auto; }
 .qct-segment-cta p { color:rgba(255,250,245,.68); margin-bottom:1.75rem; }
 .qct-segment-cta .eyebrow { color:#ff8b78; }
 .qct-segment-cta .button { min-height:48px; padding-inline:1.2rem; }
+.qct-segment-faq { background:#f8f3ef; border-top:1px solid rgba(23,21,20,.07); }
+.qct-segment-faq__list { max-width:900px; margin:0 auto; border-top:1px solid rgba(73,53,49,.16); }
+.qct-segment-faq details { border-bottom:1px solid rgba(73,53,49,.14); }
+.qct-segment-faq summary { cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 0; color:#171514; font-weight:800; }
+.qct-segment-faq summary::-webkit-details-marker { display:none; }
+.qct-segment-faq summary::after { content:'+'; color:#b9473e; font-size:1.35rem; font-weight:500; }
+.qct-segment-faq details[open] summary::after { content:'−'; }
+.qct-segment-faq details p { margin:0; padding:0 3rem 1.25rem 0; color:#665e59; line-height:1.75; max-width:78ch; }
+.qct-segment-related { background:linear-gradient(180deg,#efe6e1,#f8f3ef); border-top:1px solid rgba(23,21,20,.07); }
+.qct-segment-related__head { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(2rem,5vw,5rem); align-items:start; }
+.qct-segment-related__head h2 { margin:.45rem 0 0; font-size:clamp(2rem,3.4vw,3rem); line-height:1.08; letter-spacing:-.03em; }
+.qct-segment-related__links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+.qct-segment-related__links a { display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:58px; padding:.9rem 1rem; border:1px solid rgba(73,53,49,.12); border-radius:16px; background:#fffaf5; color:#171514; font-weight:800; text-decoration:none; }
+.qct-segment-related__links a:hover,.qct-segment-related__links a:focus-visible { border-color:rgba(185,71,62,.32); color:#b9473e; }
 @media(min-width:901px){
   .qct-segment-hero .container,
   .qct-segment-heading,
@@ -182,8 +305,22 @@ const process = isEnglish
   .qct-segment-heading { margin-bottom:2rem; }
   .qct-segment-grid article,
   .qct-segment-process article { align-content:start; }
+  .qct-segment-cta .container { max-width:none; width:min(100% - 64px,1500px); }
+  .qct-segment-cta h2 {
+    max-width:none;
+    white-space:nowrap;
+    font-size:clamp(2rem,2.65vw,3.2rem);
+    margin-bottom:.85rem;
+  }
+  .qct-segment-cta p {
+    max-width:none;
+    white-space:nowrap;
+    font-size:clamp(.96rem,1.05vw,1.1rem);
+  }
 }
 @media(max-width:900px){
+  .qct-segment-related__head { grid-template-columns:1fr; }
+  .qct-segment-related__links { grid-template-columns:1fr; }
   .qct-segment-hero { padding-top:5rem; }
   .qct-segment-hero h1 { max-width:16ch; font-size:clamp(2.8rem,9vw,4.8rem); }
   .qct-segment-grid{grid-template-columns:1fr}
@@ -195,5 +332,7 @@ const process = isEnglish
   .qct-segment-process{grid-template-columns:1fr}
   .qct-segment-actions{align-items:stretch;flex-direction:column}
   .qct-segment-actions .button{width:100%}
+  .qct-segment-faq details p { padding-right:0; }
+  .qct-segment-cta h2,.qct-segment-cta p { white-space:normal; }
 }
 </style>
