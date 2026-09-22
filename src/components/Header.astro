@@ -1044,3 +1044,92 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
   .qct-mobile-services{display:none!important}
 }
 </style>
+
+<style is:global>
+@media (max-width:999px){
+  .main-navigation{
+    background:#0f1210!important;
+    color:#f3eadf!important;
+  }
+  .mobile-nav-head{
+    background:linear-gradient(180deg,#0f1210 82%,rgba(15,18,16,0))!important;
+    border-bottom:1px solid rgba(200,255,61,.12)!important;
+  }
+  .mobile-nav-title{
+    color:#f3eadf!important;
+  }
+  .mobile-nav-close{
+    background:#151a16!important;
+    border-color:rgba(200,255,61,.16)!important;
+    color:#c8ff3d!important;
+  }
+
+  .qct-mobile-primary{
+    border-top:1px solid rgba(243,234,223,.10)!important;
+  }
+  .qct-mobile-primary__link{
+    color:#f3eadf!important;
+    border-bottom:1px solid rgba(243,234,223,.10)!important;
+  }
+  .qct-mobile-primary__link span:last-child{
+    color:#c8ff3d!important;
+  }
+
+  .qct-mobile-group{
+    background:#151a16!important;
+    border-color:rgba(200,255,61,.12)!important;
+  }
+  .qct-mobile-group>summary{
+    background:#151a16!important;
+  }
+  .qct-mobile-group>summary>span{
+    color:#f3eadf!important;
+  }
+  .qct-mobile-group>summary>small{
+    color:rgba(243,234,223,.58)!important;
+  }
+  .qct-mobile-group>summary::after{
+    color:#c8ff3d!important;
+  }
+  .qct-mobile-group[open]>summary{
+    border-bottom-color:rgba(200,255,61,.12)!important;
+  }
+
+  .qct-mobile-group__grid{
+    background:#101411!important;
+  }
+  .qct-mobile-group__grid a{
+    color:#f3eadf!important;
+    border-bottom-color:rgba(243,234,223,.08)!important;
+  }
+  .qct-mobile-group__grid a span:last-child{
+    color:#c8ff3d!important;
+  }
+  .qct-mobile-group__grid a[aria-current="page"]{
+    color:#c8ff3d!important;
+  }
+
+  .qct-mobile-bottom{
+    background:#0f1210!important;
+  }
+  .qct-mobile-languages a{
+    background:#151a16!important;
+    border-color:rgba(200,255,61,.16)!important;
+    color:#f3eadf!important;
+  }
+  .qct-mobile-languages a.active{
+    background:#c8ff3d!important;
+    border-color:#c8ff3d!important;
+    color:#0f1210!important;
+  }
+
+  .qct-mobile-project{
+    background:#c8ff3d!important;
+    color:#0f1210!important;
+    border-color:#c8ff3d!important;
+  }
+  .qct-mobile-project span:last-child{
+    color:#0f1210!important;
+  }
+}
+</style>
