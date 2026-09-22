@@ -1,0 +1,198 @@
+---
+interface Props {
+  lang: string;
+  currentPath: string;
+  trHref: string;
+  enHref: string;
+  serviceLinks: string[][];
+  audienceLinks: string[][];
+  quickLinks: string[][];
+}
+const { lang, currentPath, trHref, enHref, serviceLinks, audienceLinks, quickLinks } = Astro.props;
+const isEnglish = lang === 'en';
+const isGeorgian = lang === 'ka';
+const isCurrent = (path: string) => currentPath === path;
+---
+<div class="qctm-root" data-qctm-root>
+  <button class="qctm-toggle" type="button" aria-expanded="false" aria-controls="qctm-panel" aria-label={isGeorgian ? 'მენიუს გახსნა' : isEnglish ? 'Open menu' : 'Menüyü aç'} data-qctm-toggle>
+    <span></span><span></span>
+  </button>
+
+  <div class="qctm-backdrop" data-qctm-backdrop hidden></div>
+
+  <aside id="qctm-panel" class="qctm-panel" aria-hidden="true" data-qctm-panel>
+    <div class="qctm-head">
+      <a class="qctm-brand" href={isGeorgian ? '/ka/georgia/' : isEnglish ? '/en/' : '/'}>QCT COMMERCE</a>
+      <button class="qctm-close" type="button" aria-label={isEnglish ? 'Close menu' : 'Menüyü kapat'} data-qctm-close>×</button>
+    </div>
+
+    <nav class="qctm-primary" aria-label={isEnglish ? 'Mobile navigation' : 'Mobil navigasyon'}>
+      {quickLinks.map(([label, href]) => (
+        <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+          <span>{label}</span><i aria-hidden="true">↗</i>
+        </a>
+      ))}
+    </nav>
+
+    {!isGeorgian && (
+      <div class="qctm-groups">
+        <section class="qctm-group" data-qctm-group>
+          <button class="qctm-group-toggle" type="button" aria-expanded="false" data-qctm-group-toggle>
+            <span><strong>{isEnglish ? 'Solutions' : 'Hizmetler'}</strong><small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small></span>
+            <i aria-hidden="true">+</i>
+          </button>
+          <div class="qctm-group-panel" hidden data-qctm-group-panel>
+            {serviceLinks.map(([label, href]) => (
+              <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}><span>{label}</span><i aria-hidden="true">↗</i></a>
+            ))}
+          </div>
+        </section>
+
+        <section class="qctm-group" data-qctm-group>
+          <button class="qctm-group-toggle" type="button" aria-expanded="false" data-qctm-group-toggle>
+            <span><strong>{isEnglish ? 'Who we help' : 'Kimler için'}</strong><small>{isEnglish ? 'Choose your business context' : 'İşletme yapınıza göre başlayın'}</small></span>
+            <i aria-hidden="true">+</i>
+          </button>
+          <div class="qctm-group-panel" hidden data-qctm-group-panel>
+            {audienceLinks.map(([label, href]) => (
+              <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}><span>{label}</span><i aria-hidden="true">↗</i></a>
+            ))}
+          </div>
+        </section>
+      </div>
+    )}
+
+    <div class="qctm-bottom">
+      <div class="qctm-languages">
+        <a href={trHref} hreflang="tr-TR" class:list={[{ active: !isEnglish && !isGeorgian }]}>TR</a>
+        <a href={enHref} hreflang="en" class:list={[{ active: isEnglish }]}>EN</a>
+        <a href="/ka/georgia/" class:list={[{ active: isGeorgian }]}>KA</a>
+      </div>
+      <a class="qctm-project" href={isEnglish ? '/en/contact/' : '/iletisim/'}>
+        <span>{isEnglish ? 'Start a project' : 'Proje başlat'}</span><i aria-hidden="true">→</i>
+      </a>
+    </div>
+  </aside>
+</div>
+
+<script is:inline>
+(() => {
+  const root = document.querySelector('[data-qctm-root]');
+  if (!root || root.dataset.ready === 'true') return;
+  root.dataset.ready = 'true';
+
+  const toggle = root.querySelector('[data-qctm-toggle]');
+  const panel = root.querySelector('[data-qctm-panel]');
+  const close = root.querySelector('[data-qctm-close]');
+  const backdrop = root.querySelector('[data-qctm-backdrop]');
+  if (!toggle || !panel || !close || !backdrop) return;
+
+  let previousFocus = null;
+  let scrollY = 0;
+
+  const setOpen = (open) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    panel.classList.toggle('is-open', open);
+    panel.setAttribute('aria-hidden', String(!open));
+    backdrop.hidden = !open;
+    document.documentElement.classList.toggle('qctm-lock', open);
+    document.body.classList.toggle('qctm-lock', open);
+    if (open) {
+      scrollY = window.scrollY;
+      previousFocus = document.activeElement;
+      close.focus({ preventScroll: true });
+    } else {
+      window.scrollTo(0, scrollY);
+      previousFocus?.focus?.({ preventScroll: true });
+    }
+  };
+
+  toggle.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  close.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setOpen(false);
+  });
+
+  backdrop.addEventListener('click', () => setOpen(false));
+
+  panel.addEventListener('click', (event) => {
+    const groupToggle = event.target.closest('[data-qctm-group-toggle]');
+    if (groupToggle) {
+      event.preventDefault();
+      event.stopPropagation();
+      const group = groupToggle.closest('[data-qctm-group]');
+      const groupPanel = group?.querySelector('[data-qctm-group-panel]');
+      if (!group || !groupPanel) return;
+      const open = groupToggle.getAttribute('aria-expanded') === 'true';
+      groupToggle.setAttribute('aria-expanded', String(!open));
+      group.classList.toggle('is-open', !open);
+      groupPanel.hidden = open;
+      return;
+    }
+
+    const link = event.target.closest('a[href]');
+    if (link) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && panel.classList.contains('is-open')) setOpen(false);
+  });
+})();
+</script>
+
+<style is:global>
+@media (min-width:1000px){
+  .qctm-root{display:none!important}
+}
+@media (max-width:999px){
+  .qctm-root{display:block}
+  .qctm-toggle{
+    display:grid!important;place-items:center!important;gap:5px!important;width:44px!important;height:44px!important;
+    border:1px solid rgba(23,22,20,.14)!important;border-radius:12px!important;background:#fffaf5!important;padding:0!important;
+    position:relative!important;z-index:170!important;cursor:pointer!important;
+  }
+  .qctm-toggle span{display:block!important;width:18px!important;height:2px!important;background:#171614!important;border-radius:999px!important}
+  .qctm-backdrop{position:fixed!important;inset:0!important;z-index:159!important;background:rgba(3,7,4,.66)!important;backdrop-filter:blur(4px)!important}
+  .qctm-backdrop[hidden]{display:none!important}
+  .qctm-panel{
+    position:fixed!important;inset:0!important;z-index:160!important;display:flex!important;flex-direction:column!important;gap:16px!important;
+    width:100%!important;height:100dvh!important;overflow-y:auto!important;padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom))!important;
+    background:#0f1210!important;color:#f3eadf!important;transform:translateX(100%)!important;visibility:hidden!important;pointer-events:none!important;
+    transition:transform .22s ease,visibility .22s ease!important;overscroll-behavior:contain!important;
+  }
+  .qctm-panel.is-open{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important}
+  html.qctm-lock,body.qctm-lock{overflow:hidden!important;overscroll-behavior:none!important}
+  .qctm-head{display:flex!important;align-items:center!important;justify-content:space-between!important;padding-bottom:12px!important;border-bottom:1px solid rgba(200,255,61,.12)!important}
+  .qctm-brand{color:#f3eadf!important;text-decoration:none!important;font-size:.82rem!important;font-weight:900!important;letter-spacing:.12em!important}
+  .qctm-close{width:40px!important;height:40px!important;border-radius:999px!important;border:1px solid rgba(200,255,61,.18)!important;background:#151a16!important;color:#c8ff3d!important;font-size:20px!important;cursor:pointer!important}
+  .qctm-primary{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .qctm-primary a{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;min-height:54px!important;padding:12px 13px!important;border:1px solid rgba(243,234,223,.09)!important;border-radius:14px!important;background:#151a16!important;color:#f3eadf!important;text-decoration:none!important;font-weight:800!important;font-size:.96rem!important}
+  .qctm-primary a i,.qctm-group-panel a i{color:#c8ff3d!important;font-style:normal!important}
+  .qctm-groups{display:grid!important;gap:10px!important}
+  .qctm-group{border:1px solid rgba(200,255,61,.12)!important;border-radius:16px!important;background:#151a16!important;overflow:hidden!important}
+  .qctm-group-toggle{width:100%!important;min-height:76px!important;padding:14px 16px!important;border:0!important;background:#151a16!important;color:#f3eadf!important;display:grid!important;grid-template-columns:1fr auto!important;align-items:center!important;gap:14px!important;text-align:left!important;cursor:pointer!important}
+  .qctm-group-toggle>span{display:grid!important;gap:4px!important}
+  .qctm-group-toggle strong{color:#f3eadf!important;font-size:1.04rem!important;font-weight:900!important}
+  .qctm-group-toggle small{color:rgba(243,234,223,.55)!important;font-size:.67rem!important}
+  .qctm-group-toggle>i{color:#c8ff3d!important;font-style:normal!important;font-size:1.5rem!important;line-height:1!important}
+  .qctm-group.is-open .qctm-group-toggle>i{font-size:0!important}
+  .qctm-group.is-open .qctm-group-toggle>i::after{content:'−';font-size:1.5rem!important}
+  .qctm-group-panel{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:1px!important;background:rgba(200,255,61,.08)!important;border-top:1px solid rgba(200,255,61,.1)!important}
+  .qctm-group-panel[hidden]{display:none!important}
+  .qctm-group-panel a{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;min-height:46px!important;padding:10px 11px!important;background:#101411!important;color:#f3eadf!important;text-decoration:none!important;font-size:.74rem!important;font-weight:760!important;line-height:1.2!important}
+  .qctm-group-panel a[aria-current="page"]{color:#c8ff3d!important;background:#182016!important}
+  .qctm-bottom{margin-top:auto!important;position:sticky!important;bottom:0!important;display:grid!important;grid-template-columns:auto 1fr!important;align-items:center!important;gap:10px!important;padding:10px 0 0!important;background:linear-gradient(180deg,rgba(15,18,16,0),#0f1210 22%)!important}
+  .qctm-languages{display:flex!important;gap:6px!important}
+  .qctm-languages a{display:grid!important;place-items:center!important;width:36px!important;height:36px!important;border-radius:999px!important;border:1px solid rgba(200,255,61,.18)!important;background:#151a16!important;color:#f3eadf!important;text-decoration:none!important;font-size:.64rem!important;font-weight:900!important}
+  .qctm-languages a.active{background:#c8ff3d!important;border-color:#c8ff3d!important;color:#0f1210!important}
+  .qctm-project{display:flex!important;align-items:center!important;justify-content:space-between!important;min-height:48px!important;padding:0 15px!important;border-radius:12px!important;background:#c8ff3d!important;color:#0f1210!important;text-decoration:none!important;font-size:.84rem!important;font-weight:900!important}
+  .qctm-project i{font-style:normal!important}
+  @media(max-width:420px){.qctm-group-panel{grid-template-columns:1fr!important}}
+}
+</style>
