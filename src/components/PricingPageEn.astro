@@ -4,11 +4,11 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 
 const faqItems = [
-  { q: 'Website project pricing ne kadar?', a: 'QCT Commerce’te kişisel veya portföy sitesi 6.900 TL, kurumsal web sitesi 8.900 TL ve e-ticaret sitesi kurulumu 9.900 TL başlangıç fiyatıyla sunulur. Kapsam; sayfa, ürün, entegrasyon ve ek hizmetlere göre değişir.' },
-  { q: 'Mevcut web sitesi yenileme fiyatı nedir?', a: 'Temel site yenileme çalışmaları 4.900 TL’den başlar. Mobil düzen, tasarım, hız, teknik sorunlar ve SEO geçiş gereksinimi mevcut siteye göre değerlendirilir.' },
-  { q: 'SEO, GEO, AEO and AI visibility çalışması ne kadar?', a: 'Başlangıç görünürlük paketi 3.900 TL’den başlar. Technical SEO, arama niyeti, içerik yapısı, GEO ve AEO ihtiyaçları sitenin mevcut durumuna göre kapsamlanır.' },
-  { q: 'Site analizi yaptırabilir miyim?', a: 'Evet. Teknik, mobil, hız, görünürlük ve dönüşüm odaklı site analizi 1.490 TL’den başlar. Analiz sonunda önceliklendirilmiş iyileştirme planı sunulur.' },
-  { q: 'Platform, lisans ve üçüncü taraf ücretleri fiyatlara dahil mi?', a: 'Hayır. Aksi açıkça belirtilmedikçe ikas, Shopify, Ticimax veya diğer platformların abonelik/lisans bedelleri; ücretli tema ve uygulamalar; ödeme sağlayıcı komisyonları; alan adı, harici barındırma, reklam bütçesi ve üçüncü taraf servis ücretleri QCT Commerce hizmet bedeline dahil değildir.' },
+  { q: 'How much does a website project cost?', a: 'QCT Commerce starting prices are 6.900 TL for a personal or portfolio website, 8.900 TL for a corporate website and 9.900 TL for e-commerce setup. Scope varies by pages, products, integrations and additional services.' },
+  { q: 'How much does an existing website redesign cost?', a: 'Basic website redesign starts at 4.900 TL. Mobile layout, design, speed, technical issues and SEO migration requirements are assessed against the existing website.' },
+  { q: 'How much does SEO, GEO, AEO and AI visibility work cost?', a: 'The starter visibility package starts at 3.900 TL. Technical SEO, search intent, content structure, GEO and AEO needs are scoped according to the current state of the website.' },
+  { q: 'Can I request a website audit?', a: 'Yes. A website audit covering technical issues, mobile experience, speed, visibility and conversion starts at 1.490 TL. The audit provides a prioritised improvement plan.' },
+  { q: 'Are platform, licence and third-party fees included?', a: 'No. Unless explicitly stated otherwise, QCT Commerce service fees exclude subscriptions or licences for ikas, Shopify, Ticimax or other platforms; paid themes and apps; payment-provider commissions; domain names, external hosting, ad budgets and third-party service fees.' },
 ];
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -48,38 +48,38 @@ const faqSchema = {
         <div class="qct-price-category">
           <div><p class="qct-section-label">NEW WEBSITE</p><h2>Website project pricing</h2></div>
           <div class="qct-price-rows">
-            <article><span>Personal / portfolio website</span><strong>6.900 TL</strong><small>Starting price</small><p>Mobil uyumlu modern yapı, temel SEO, iletişim ve içerik sayfaları.</p></article>
-            <article><span>Corporate website</span><strong>8.900 TL</strong><small>Starting price</small><p>Şirket, hizmet, referans, iletişim ve dönüşüm odaklı profesyonel yapı.</p></article>
-            <article><span>E-commerce website</span><strong>9.900 TL</strong><small>Starting price</small><p>Shopify, ikas, WooCommerce, Ticimax veya IdeaSoft kurulum ve satışa hazırlık.</p></article>
+            <article><span>Personal / portfolio website</span><strong>6.900 TL</strong><small>Starting price</small><p>A modern mobile-friendly structure, basic SEO, contact and content pages.</p></article>
+            <article><span>Corporate website</span><strong>8.900 TL</strong><small>Starting price</small><p>A professional structure covering the company, services, references, contact and conversion.</p></article>
+            <article><span>E-commerce website</span><strong>9.900 TL</strong><small>Starting price</small><p>Shopify, ikas, WooCommerce, Ticimax or IdeaSoft setup and sales preparation.</p></article>
           </div>
         </div>
 
         <div class="qct-price-category">
           <div><p class="qct-section-label">EXISTING WEBSITE</p><h2>Redesign and improvement</h2></div>
           <div class="qct-price-rows">
-            <article><span>Website audit & roadmap</span><strong>1.490 TL</strong><small>Starting price</small><p>Teknik, mobil, hız, SEO, içerik ve dönüşüm sorunlarının önceliklendirilmesi.</p></article>
-            <article><span>Website redesign</span><strong>4.900 TL</strong><small>Starting price</small><p>Görsel kalite, mobil UX, CTA, sayfa yapısı ve temel teknik düzenlemeler.</p></article>
-            <article><span>Platform migration</span><strong>7.900 TL</strong><small>Starting price</small><p>İçerik, ürün, kategori, URL ve temel SEO yönlendirme planıyla geçiş.</p></article>
+            <article><span>Website audit & roadmap</span><strong>1.490 TL</strong><small>Starting price</small><p>Prioritisation of technical, mobile, speed, SEO, content and conversion issues.</p></article>
+            <article><span>Website redesign</span><strong>4.900 TL</strong><small>Starting price</small><p>Visual quality, mobile UX, CTAs, page structure and basic technical improvements.</p></article>
+            <article><span>Platform migration</span><strong>7.900 TL</strong><small>Starting price</small><p>Migration with a plan for content, products, categories, URLs and basic SEO redirects.</p></article>
           </div>
         </div>
 
         <div class="qct-price-category">
           <div><p class="qct-section-label">VISIBILITY</p><h2>SEO, GEO, AEO and AI visibility</h2></div>
           <div class="qct-price-rows">
-            <article><span>Technical SEO</span><strong>2.490 TL</strong><small>Starting price</small><p>Tarama, indeksleme, metadata, canonical, sitemap, mobil ve performans kontrolü.</p></article>
-            <article><span>SEO + GEO + AEO + AI görünürlük</span><strong>3.900 TL</strong><small>Starting price</small><p>Google ve üretken yapay zekâ aramalarında bulunabilirliği güçlendiren teknik ve içerik çalışması.</p></article>
-            <article><span>GA4 + Search Console</span><strong>990 TL</strong><small>Starting price</small><p>Temel ölçüm, doğrulama ve görünürlük verisinin takip edilmesi.</p></article>
+            <article><span>Technical SEO</span><strong>2.490 TL</strong><small>Starting price</small><p>Crawling, indexing, metadata, canonical, sitemap, mobile and performance checks.</p></article>
+            <article><span>SEO + GEO + AEO + AI visibility</span><strong>3.900 TL</strong><small>Starting price</small><p>Technical and content work to improve discoverability in Google and generative AI search.</p></article>
+            <article><span>GA4 + Search Console</span><strong>990 TL</strong><small>Starting price</small><p>Basic measurement, verification and visibility data tracking.</p></article>
           </div>
         </div>
 
         <div class="qct-price-category">
           <div><p class="qct-section-label">PRODUCT ENTRY</p><h2>E-commerce product entry</h2></div>
           <div class="qct-price-rows">
-            <article><span>1–25 ürün</span><strong>1.490 TL</strong><p>Product name, price, stock, SKU, category, image, variant and existing description.</p></article>
-            <article><span>26–50 ürün</span><strong>2.490 TL</strong><p>Standard product-entry scope.</p></article>
-            <article><span>51–100 ürün</span><strong>3.990 TL</strong><p>Standard product-entry scope.</p></article>
-            <article><span>101–250 ürün</span><strong>7.900 TL</strong><p>Standard product-entry scope.</p></article>
-            <article><span>251–500 ürün</span><strong>12.900 TL</strong><p>Standard product-entry scope.</p></article>
+            <article><span>1–25 products</span><strong>1.490 TL</strong><p>Product name, price, stock, SKU, category, image, variant and existing description.</p></article>
+            <article><span>26–50 products</span><strong>2.490 TL</strong><p>Standard product-entry scope.</p></article>
+            <article><span>51–100 products</span><strong>3.990 TL</strong><p>Standard product-entry scope.</p></article>
+            <article><span>101–250 products</span><strong>7.900 TL</strong><p>Standard product-entry scope.</p></article>
+            <article><span>251–500 products</span><strong>12.900 TL</strong><p>Standard product-entry scope.</p></article>
           </div>
         </div>
       </div>
