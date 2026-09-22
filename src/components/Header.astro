@@ -77,9 +77,10 @@ const quickLinks = isGeorgian ? [
   ['კონტაქტი', 'mailto:info@qctcommerce.com']
 ] : isEnglish ? [
   ['Home', '/en/'],
-  ['Services', '/en/services/'],
-  ['Pricing', '/en/pricing/'],
-  ['Blog', '/en/blog/'],
+  ['About', '/en/about/'],
+  ['Georgia', '/en/georgia/'],
+  ['How we work', '/en/how-we-work/'],
+  ['Audit', '/en/audit/'],
   ['Contact', '/en/contact/']
 ] : [
   ['Ana Sayfa', '/'],
@@ -119,32 +120,34 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
         </nav>
 
         {!isGeorgian && (
-          <div class="qct-mobile-audience">
-            <div class="qct-mobile-section-head">
-              <span>{isEnglish ? 'WHO WE HELP' : 'KİMLER İÇİN'}</span>
-              <small>{isEnglish ? 'Choose your business context' : 'İşletme yapınıza göre başlayın'}</small>
-            </div>
-            <div class="qct-mobile-audience__grid">
-              {audienceLinks.map(([label, href]) => (
-                <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
-                  <span>{label}</span><span aria-hidden="true">↗</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
+          <div class="qct-mobile-groups">
+            <details class="qct-mobile-group" open={isEnglish ? isEnglishServiceCurrent : isServiceCurrent}>
+              <summary>
+                <span>{isEnglish ? 'Solutions' : 'Hizmetler'}</span>
+                <small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small>
+              </summary>
+              <div class="qct-mobile-group__grid">
+                {serviceLinks.map(([label, href]) => (
+                  <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+                    <span>{label}</span><span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
+            </details>
 
-        {!isGeorgian && (
-          <div class="qct-mobile-services">
-            <div class="qct-mobile-section-head">
-              <span>{isEnglish ? 'SERVICES' : 'HİZMETLER'}</span>
-              <small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small>
-            </div>
-            <div class="qct-mobile-services__grid">
-              {serviceLinks.map(([label, href]) => (
-                <a href={href}>{label}</a>
-              ))}
-            </div>
+            <details class="qct-mobile-group" open={audienceLinks.some(([, href]) => isCurrent(href))}>
+              <summary>
+                <span>{isEnglish ? 'Who we help' : 'Kimler için'}</span>
+                <small>{isEnglish ? 'Choose your business context' : 'İşletme yapınıza göre başlayın'}</small>
+              </summary>
+              <div class="qct-mobile-group__grid">
+                {audienceLinks.map(([label, href]) => (
+                  <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+                    <span>{label}</span><span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
+            </details>
           </div>
         )}
 
@@ -957,5 +960,87 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
       min-height:40px!important;
     }
   }
+}
+</style>
+
+<style is:global>
+@media (max-width:999px){
+  .qct-mobile-groups{
+    display:grid!important;
+    gap:10px!important;
+  }
+  .qct-mobile-group{
+    border:1px solid rgba(23,22,20,.12)!important;
+    border-radius:16px!important;
+    background:#fffaf5!important;
+    overflow:hidden!important;
+  }
+  .qct-mobile-group>summary{
+    list-style:none!important;
+    display:grid!important;
+    grid-template-columns:1fr auto!important;
+    align-items:center!important;
+    gap:4px 14px!important;
+    min-height:64px!important;
+    padding:14px 16px!important;
+    cursor:pointer!important;
+  }
+  .qct-mobile-group>summary::-webkit-details-marker{display:none!important}
+  .qct-mobile-group>summary>span{
+    color:#171614!important;
+    font-size:1.05rem!important;
+    font-weight:900!important;
+    letter-spacing:-.02em!important;
+  }
+  .qct-mobile-group>summary>small{
+    color:#756e66!important;
+    font-size:.68rem!important;
+    grid-row:2!important;
+  }
+  .qct-mobile-group>summary::after{
+    content:'+'!important;
+    grid-column:2!important;
+    grid-row:1/3!important;
+    align-self:center!important;
+    color:#b24330!important;
+    font-size:1.35rem!important;
+    font-weight:500!important;
+  }
+  .qct-mobile-group[open]>summary::after{content:'−'!important}
+  .qct-mobile-group[open]>summary{
+    border-bottom:1px solid rgba(23,22,20,.1)!important;
+  }
+  .qct-mobile-group__grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
+    padding:4px 14px 10px!important;
+  }
+  .qct-mobile-group__grid a{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:12px!important;
+    min-height:46px!important;
+    padding:10px 2px!important;
+    border-bottom:1px solid rgba(23,22,20,.08)!important;
+    background:transparent!important;
+    color:#171614!important;
+    text-decoration:none!important;
+    font-size:.84rem!important;
+    font-weight:750!important;
+  }
+  .qct-mobile-group__grid a:last-child{border-bottom:0!important}
+  .qct-mobile-group__grid a[aria-current="page"]{
+    color:#b24330!important;
+  }
+  .qct-mobile-group__grid a span:last-child{
+    color:#b24330!important;
+    font-size:.82rem!important;
+  }
+
+  /* Old separated blocks are no longer used. */
+  .qct-mobile-audience,
+  .qct-mobile-services{display:none!important}
 }
 </style>
