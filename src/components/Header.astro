@@ -31,8 +31,9 @@ const localePairs: Record<string, string> = {
   '/e-ticaret-markalari/': '/en/ecommerce-brands/', '/en/ecommerce-brands/': '/e-ticaret-markalari/'
 };
 const pairedLocalePath = localePairs[currentPath];
-const trHref = isEnglish ? (pairedLocalePath || '/') : currentPath;
-const enHref = !isEnglish && !isGeorgian ? (pairedLocalePath || '/en/') : currentPath;
+const isErrorRoute = currentPath === '/404/' || currentPath === '/404';
+const trHref = isEnglish ? (pairedLocalePath || '/') : (isErrorRoute || isGeorgian ? '/' : currentPath);
+const enHref = !isEnglish && !isGeorgian ? (pairedLocalePath || '/en/') : (isErrorRoute || isGeorgian ? '/en/' : currentPath);
 
 const audienceLinks = isEnglish ? [
   ['Manufacturers', '/en/manufacturers/'],
