@@ -67,7 +67,10 @@ const companyLinks = isGeorgian ? [
 ] : isEnglish ? [
   ['About QCT Commerce','/en/about/'],
   ['Services','/en/services/'],
-  ['Selected work','/en/work/'],
+  ['Manufacturers','/en/manufacturers/'],
+  ['Exporters','/en/exporters/'],
+  ['Distributors & B2B','/en/distributors-b2b/'],
+  ['E-commerce brands','/en/ecommerce-brands/'],
   ['Pricing','/en/pricing/'],
   ['Blog','/en/blog/'],
   ['Careers','/en/careers/'],
@@ -75,7 +78,10 @@ const companyLinks = isGeorgian ? [
   ['Contact','/en/contact/'],
 ] : [
   ['Hakkımızda','/hakkimizda/'],
-  ['Çalışmalar','/calismalar/'],
+  ['Üreticiler','/ureticiler/'],
+  ['İhracatçılar','/ihracatcilar/'],
+  ['Distribütör & B2B','/distributor-b2b/'],
+  ['E-ticaret markaları','/e-ticaret-markalari/'],
   ['Blog','/blog/'],
   ['Fiyatlar','/fiyatlar/'],
   ['İletişim','/iletisim/'],
@@ -133,7 +139,10 @@ const legalLinks = isGeorgian ? [
           <nav class="site-footer__group site-footer__company" aria-label="Company and markets">
             <h2>Explore</h2>
             <a href="/en/about/">About QCT Commerce</a>
-            <a href="/en/work/">Selected work</a>
+            <a href="/en/manufacturers/">Manufacturers</a>
+            <a href="/en/exporters/">Exporters</a>
+            <a href="/en/distributors-b2b/">Distributors &amp; B2B</a>
+            <a href="/en/ecommerce-brands/">E-commerce brands</a>
             <a href="/en/how-we-work/">How we work</a>
             <a href="/en/careers/">Careers</a>
             <a href="/en/blog/">Blog</a>
@@ -147,7 +156,7 @@ const legalLinks = isGeorgian ? [
       ) : (
         <>
           <nav class="site-footer__group site-footer__nav" aria-label="Hizmetler"><h2>Hizmetler</h2><a href="/e-ticaret/">E-ticaret altyapısı</a><a href="/web-tasarim/">Web tasarım</a><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a><a href="/meta-reklamlari/">Meta reklamları</a><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/hizmetler/">Hizmetler</a><a href="/calismalar/">Çalışmalar</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a><a href="/gizlilik-politikasi/">Gizlilik politikası</a><a href="/kvkk/">KVKK aydınlatma metni</a><a href="/kullanim-kosullari/">Kullanım koşulları</a><a href="/cerez-politikasi/">Çerez politikası</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/hizmetler/">Hizmetler</a><a href="/ureticiler/">Üreticiler</a><a href="/ihracatcilar/">İhracatçılar</a><a href="/distributor-b2b/">Distribütör &amp; B2B</a><a href="/e-ticaret-markalari/">E-ticaret markaları</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a><a href="/gizlilik-politikasi/">Gizlilik politikası</a><a href="/kvkk/">KVKK aydınlatma metni</a><a href="/kullanim-kosullari/">Kullanım koşulları</a><a href="/cerez-politikasi/">Çerez politikası</a></nav>
           <div class="site-footer__group site-footer__markets"><h2>İletişim</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Türkiye</p></div>
         </>
       )}
