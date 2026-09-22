@@ -122,7 +122,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
         {!isGeorgian && (
           <div class="qct-mobile-groups">
             <details class="qct-mobile-group" open={isEnglish ? isEnglishServiceCurrent : isServiceCurrent}>
-              <summary>
+              <summary data-mobile-group-summary>
                 <span>{isEnglish ? 'Solutions' : 'Hizmetler'}</span>
                 <small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small>
               </summary>
@@ -136,7 +136,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
             </details>
 
             <details class="qct-mobile-group" open={audienceLinks.some(([, href]) => isCurrent(href))}>
-              <summary>
+              <summary data-mobile-group-summary>
                 <span>{isEnglish ? 'Who we help' : 'Kimler için'}</span>
                 <small>{isEnglish ? 'Choose your business context' : 'İşletme yapınıza göre başlayın'}</small>
               </summary>
