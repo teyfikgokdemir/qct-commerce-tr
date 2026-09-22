@@ -5,6 +5,35 @@ const currentPath = Astro.url.pathname;
 const isEnglish = lang === 'en';
 const isGeorgian = lang === 'ka';
 
+const localePairs: Record<string, string> = {
+  '/': '/en/', '/en/': '/',
+  '/hakkimizda/': '/en/about/', '/en/about/': '/hakkimizda/',
+  '/hizmetler/': '/en/services/', '/en/services/': '/hizmetler/',
+  '/iletisim/': '/en/contact/', '/en/contact/': '/iletisim/',
+  '/fiyatlar/': '/en/pricing/', '/en/pricing/': '/fiyatlar/',
+  '/e-ticaret/': '/en/ecommerce/', '/en/ecommerce/': '/e-ticaret/',
+  '/web-tasarim/': '/en/web-design/', '/en/web-design/': '/web-tasarim/',
+  '/whatsapp-satis/': '/en/whatsapp-sales/', '/en/whatsapp-sales/': '/whatsapp-satis/',
+  '/seo-geo/': '/en/search-visibility/', '/en/search-visibility/': '/seo-geo/',
+  '/meta-reklamlari/': '/en/meta-ads/', '/en/meta-ads/': '/meta-reklamlari/',
+  '/yapay-zeka-otomasyonlari/': '/en/ai-automation/', '/en/ai-automation/': '/yapay-zeka-otomasyonlari/',
+  '/shopify-magaza-kurulumu/': '/en/shopify-store-setup/', '/en/shopify-store-setup/': '/shopify-magaza-kurulumu/',
+  '/ikas-magaza-kurulumu/': '/en/ikas-store-setup/', '/en/ikas-store-setup/': '/ikas-magaza-kurulumu/',
+  '/blog/': '/en/blog/', '/en/blog/': '/blog/',
+  '/kariyer/': '/en/careers/', '/en/careers/': '/kariyer/',
+  '/gizlilik-politikasi/': '/en/privacy-policy/', '/en/privacy-policy/': '/gizlilik-politikasi/',
+  '/kvkk/': '/en/kvkk/', '/en/kvkk/': '/kvkk/',
+  '/kullanim-kosullari/': '/en/terms/', '/en/terms/': '/kullanim-kosullari/',
+  '/cerez-politikasi/': '/en/cookie-policy/', '/en/cookie-policy/': '/cerez-politikasi/',
+  '/ureticiler/': '/en/manufacturers/', '/en/manufacturers/': '/ureticiler/',
+  '/ihracatcilar/': '/en/exporters/', '/en/exporters/': '/ihracatcilar/',
+  '/distributor-b2b/': '/en/distributors-b2b/', '/en/distributors-b2b/': '/distributor-b2b/',
+  '/e-ticaret-markalari/': '/en/ecommerce-brands/', '/en/ecommerce-brands/': '/e-ticaret-markalari/'
+};
+const pairedLocalePath = localePairs[currentPath];
+const trHref = isEnglish ? (pairedLocalePath || '/') : currentPath;
+const enHref = !isEnglish && !isGeorgian ? (pairedLocalePath || '/en/') : currentPath;
+
 const audienceLinks = isEnglish ? [
   ['Manufacturers', '/en/manufacturers/'],
   ['Exporters', '/en/exporters/'],
@@ -120,8 +149,8 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
 
         <div class="qct-mobile-bottom">
           <div class="qct-mobile-languages" aria-label={isEnglish ? 'Language' : 'Dil seçimi'}>
-            <a href="/" class:list={[{ active: !isEnglish && !isGeorgian }]}>TR</a>
-            <a href="/en/" class:list={[{ active: isEnglish }]}>EN</a>
+            <a href={trHref} hreflang="tr-TR" class:list={[{ active: !isEnglish && !isGeorgian }]}>TR</a>
+            <a href={enHref} hreflang="en" class:list={[{ active: isEnglish }]}>EN</a>
             <a href="/ka/georgia/" class:list={[{ active: isGeorgian }]}>KA</a>
           </div>
           <a class="qct-mobile-project" href={isEnglish ? "/en/contact/" : "/iletisim/"}>
@@ -147,13 +176,13 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
               </ul>
             </li>
             <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Who we help</span></button><ul class="sub-menu"><li><a href="/en/manufacturers/">Manufacturers</a></li><li><a href="/en/exporters/">Exporters</a></li><li><a href="/en/distributors-b2b/">Distributors & B2B</a></li><li><a href="/en/ecommerce-brands/">E-commerce brands</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/georgia/" aria-current={isCurrent('/en/georgia/') ? 'page' : undefined}>Georgia</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
-            {currentPath === '/en/georgia/' && <li><a href="/ka/georgia/" hreflang="ka">KA</a></li>}<li><a href="/" hreflang="tr-TR">TR</a></li>
+            {currentPath === '/en/georgia/' && <li><a href="/ka/georgia/" hreflang="ka">KA</a></li>}<li><a href={trHref} hreflang="tr-TR">TR</a></li>
           </ul>
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
             <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/en/" hreflang="en">EN</a></li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/">Hakkımızda</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/blog/">Blog</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href={enHref} hreflang="en">EN</a></li>
           </ul>
         )}
       </div>
