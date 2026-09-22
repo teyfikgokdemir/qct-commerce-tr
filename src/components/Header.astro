@@ -36,20 +36,20 @@ const quickLinks = isGeorgian ? [
 ] : isEnglish ? [
   ['Home', '/en/'],
   ['Services', '/en/services/'],
-  ['Who we help', '/en/services/#who-we-help'],
+  ['Manufacturers', '/en/manufacturers/'],
   ['Pricing', '/en/pricing/'],
   ['Blog', '/en/blog/'],
   ['Contact', '/en/contact/']
 ] : [
   ['Ana Sayfa', '/'],
-  ['Kimler için', '/hizmetler/#kimler-icin'],
+  ['Üreticiler', '/ureticiler/'],
   ['Hakkımızda', '/hakkimizda/'],
   ['Fiyatlar', '/fiyatlar/'],
   ['Blog', '/blog/'],
   ['İletişim', '/iletisim/']
 ];
 
-const servicePaths = ['/hizmetler/', '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/'];
+const servicePaths = ['/hizmetler/', '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/', '/ureticiler/', '/ihracatcilar/', '/distributor-b2b/', '/e-ticaret-markalari/'];
 const englishServicePaths = ['/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/', '/en/manufacturers/', '/en/exporters/', '/en/distributors-b2b/', '/en/ecommerce-brands/'];
 const isCurrent = (path: string) => currentPath === path;
 const isServiceCurrent = servicePaths.includes(currentPath);
