@@ -167,7 +167,6 @@ const faqSchema = {
   lang={lang}
   pageType="WebPage"
   breadcrumbLabel={content.eyebrow}
-  service={{ name: content.title, description: content.description }}
 >
   <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Header slot="header" lang={lang} />
