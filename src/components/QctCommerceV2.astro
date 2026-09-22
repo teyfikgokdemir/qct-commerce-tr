@@ -286,6 +286,11 @@ const platforms = [
   const progress = [...root.querySelectorAll('.qct-builder-progress span')];
 
   const money = new Intl.NumberFormat('tr-TR');
+  const track = (name, params = {}) => {
+    if (typeof window.qctTrackEvent === 'function') window.qctTrackEvent(name, params);
+  };
+  let pricingStarted = false;
+  let lastPricingCompleteKey = '';
 
   function calculate() {
     const selectedService = service?.selectedOptions?.[0];
@@ -294,8 +299,22 @@ const platforms = [
     const productPrice = Number(products?.selectedOptions?.[0]?.dataset.price || 0);
     const addonPrice = addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
     const total = base + productPrice + addonPrice;
-    const completed = [Boolean(service?.value), Boolean(root.querySelector('[data-platform]')?.value), Boolean(products?.value)].filter(Boolean).length;
+    const platform = root.querySelector('[data-platform]');
+    const completed = [Boolean(service?.value), Boolean(platform?.value), Boolean(products?.value)].filter(Boolean).length;
     progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
+
+    if (hasService && completed === 3) {
+      const completeKey = [service?.value, platform?.value, products?.value, addonPrice].join('|');
+      if (completeKey !== lastPricingCompleteKey) {
+        track('pricing_complete', {
+          service: service?.value || undefined,
+          platform: platform?.value || undefined,
+          product_scope: products?.value || undefined,
+          pricing_value: total,
+        });
+        lastPricingCompleteKey = completeKey;
+      }
+    }
 
     if (totalNode) {
       const nextText = hasService ? (total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre') : 'Seçiminizi yapın';
@@ -319,10 +338,20 @@ const platforms = [
       whatsapp.href = hasService
         ? 'https://wa.me/905456782655?text=' + encodeURIComponent(message)
         : 'https://wa.me/905456782655';
+      whatsapp.dataset.analyticsService = service?.value || '';
+      whatsapp.dataset.analyticsPlatform = platform?.value || '';
+      whatsapp.dataset.analyticsProductScope = products?.value || '';
+      whatsapp.dataset.analyticsPricingValue = total > 0 ? String(total) : '';
     }
   }
 
-  form?.addEventListener('change', calculate);
+  form?.addEventListener('change', () => {
+    if (!pricingStarted) {
+      pricingStarted = true;
+      track('pricing_start');
+    }
+    calculate();
+  });
   whatsapp?.addEventListener('click', (event) => {
     if (whatsapp.getAttribute('aria-disabled') === 'true') event.preventDefault();
   });
