@@ -1,7 +1,7 @@
 /* Service cards are intentionally namespaced and loaded after all global layers. */
 .site-main .qct-svc-grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)) !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   gap: clamp(1rem, 2.5vw, 1.75rem) !important;
   align-items: stretch !important;
   width: 100% !important;
@@ -70,6 +70,12 @@
   transform: translateY(-5px) !important;
   border-color: rgba(185,71,62,.28) !important;
   box-shadow: 0 26px 60px rgba(58,37,32,.11), 0 6px 16px rgba(58,37,32,.06) !important;
+}
+
+@media (max-width: 760px) {
+  .site-main .qct-svc-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
 }
 
 @media (max-width: 640px) {
