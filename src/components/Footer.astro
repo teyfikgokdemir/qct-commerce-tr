@@ -66,6 +66,7 @@ const companyLinks = isGeorgian ? [
   ['Türkiye','/'],
 ] : isEnglish ? [
   ['About QCT Commerce','/en/about/'],
+  ['Work','/en/work/'],
   ['Services','/en/services/'],
   ['Manufacturers','/en/manufacturers/'],
   ['Exporters','/en/exporters/'],
@@ -78,6 +79,7 @@ const companyLinks = isGeorgian ? [
   ['Contact','/en/contact/'],
 ] : [
   ['Hakkımızda','/hakkimizda/'],
+  ['Çalışmalar','/calismalar/'],
   ['Üreticiler','/ureticiler/'],
   ['İhracatçılar','/ihracatcilar/'],
   ['Distribütör & B2B','/distributor-b2b/'],
@@ -114,7 +116,7 @@ const legalLinks = isGeorgian ? [
       <div class="site-footer__group site-footer__brand">
         <h2>QCT Commerce</h2>
         <p>{isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Websites, e-commerce and digital visibility for businesses and founders operating in Türkiye.' : 'Web, e-ticaret ve dijital görünürlük için uygulama ortağınız.'}</p>
-        <p class="site-footer__brand-relationship">{isGeorgian ? 'QCT ekosisteminin bir parçasıdır.' : isEnglish ? 'Part of the wider QCT ecosystem.' : 'QCT ekosisteminin web ve dijital ticaret odaklı yapısıdır.'}</p>
+        <p class="site-footer__brand-relationship">{isGeorgian ? 'QCT ekosisteminin bir parçasıdır.' : isEnglish ? 'QCT Commerce is the Türkiye-focused web, e-commerce and digital visibility brand within the QCT ecosystem.' : 'QCT Commerce, QCT ekosisteminin Türkiye odaklı web, e-ticaret ve dijital görünürlük markasıdır.'}</p>
       </div>
 
       {isGeorgian ? (
@@ -146,6 +148,7 @@ const legalLinks = isGeorgian ? [
           <nav class="site-footer__group site-footer__company" aria-label="Company">
             <h2>Company</h2>
             <a href="/en/about/">About QCT Commerce</a>
+            <a href="/en/work/">Work</a>
             <a href="/en/how-we-work/">How we work</a>
             <a href="/en/pricing/">Pricing</a>
             <a href="/en/blog/">Blog</a>
@@ -158,7 +161,7 @@ const legalLinks = isGeorgian ? [
         <>
           <nav class="site-footer__group site-footer__nav" aria-label="Hizmetler"><h2>Hizmetler</h2><a href="/e-ticaret/">E-ticaret altyapısı</a><a href="/web-tasarim/">Web tasarım</a><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a><a href="/meta-reklamlari/">Meta reklamları</a><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></nav>
           <nav class="site-footer__group site-footer__audience" aria-label="Kimler için"><h2>Kimler için</h2><a href="/ureticiler/">Üreticiler</a><a href="/ihracatcilar/">İhracatçılar</a><a href="/distributor-b2b/">Distribütör &amp; B2B</a><a href="/e-ticaret-markalari/">E-ticaret markaları</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/hizmetler/">Hizmetler</a><a href="/fiyatlar/">Fiyatlar</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/calismalar/">Çalışmalar</a><a href="/hizmetler/">Hizmetler</a><a href="/fiyatlar/">Fiyatlar</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a></nav>
           <div class="site-footer__group site-footer__markets"><h2>İletişim</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Türkiye</p></div>
         </>
       )}
