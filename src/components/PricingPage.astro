@@ -6,7 +6,7 @@ import Footer from './Footer.astro';
 const faqItems = [
   { q: 'Web sitesi yaptırma fiyatları ne kadar?', a: 'QCT Commerce’te kişisel veya portföy sitesi 6.900 TL, kurumsal web sitesi 8.900 TL ve e-ticaret sitesi kurulumu 9.900 TL başlangıç fiyatıyla sunulur. Kapsam; sayfa, ürün, entegrasyon ve ek hizmetlere göre değişir.' },
   { q: 'Mevcut web sitesi yenileme fiyatı nedir?', a: 'Temel site yenileme çalışmaları 4.900 TL’den başlar. Mobil düzen, tasarım, hız, teknik sorunlar ve SEO geçiş gereksinimi mevcut siteye göre değerlendirilir.' },
-  { q: 'SEO, GEO, AEO ve AI görünürlük çalışması ne kadar?', a: 'Başlangıç görünürlük paketi 3.900 TL’den başlar. Teknik SEO, arama niyeti, içerik yapısı, GEO ve AEO ihtiyaçları sitenin mevcut durumuna göre kapsamlanır.' },
+  { q: 'SEO, GEO, AEO ve AI görünürlük çalışması ne kadar?', a: 'Başlangıç görünürlük paketi 3.900 TL’den başlar ve temel teknik SEO kontrollerini içerir. 2.490 TL Teknik SEO hizmeti ise yalnızca teknik teşhis ve düzeltmeye ihtiyaç duyan projeler için bağımsız başlangıç paketidir; aynı kapsam için iki kalem birlikte ücretlendirilmez.' },
   { q: 'Site analizi yaptırabilir miyim?', a: 'Evet. Teknik, mobil, hız, görünürlük ve dönüşüm odaklı site analizi 1.490 TL’den başlar. Analiz sonunda önceliklendirilmiş iyileştirme planı sunulur.' },
   { q: 'Platform, lisans ve üçüncü taraf ücretleri fiyatlara dahil mi?', a: 'Hayır. Aksi açıkça belirtilmedikçe ikas, Shopify, Ticimax veya diğer platformların abonelik/lisans bedelleri; ücretli tema ve uygulamalar; ödeme sağlayıcı komisyonları; alan adı, harici barındırma, reklam bütçesi ve üçüncü taraf servis ücretleri QCT Commerce hizmet bedeline dahil değildir.' },
 ];
@@ -36,6 +36,7 @@ const faqSchema = {
         <h1>Ne alacağınızı bilin.<br/><em>Ne ödeyeceğinizi de.</em></h1>
         <p class="qct-lead">Web sitesi yaptırma, e-ticaret kurulumu, mevcut site yenileme, ürün girişi ve SEO–GEO–AEO görünürlük çalışmalarında başlangıç fiyatlarını açıkça yayınlıyoruz.</p>
         <p class="qct-pricing-disclaimer"><strong>Fiyat notu:</strong> Tutarlar QCT Commerce hizmet bedelidir. Platform aboneliği/lisansı, ücretli tema veya uygulama, ödeme sağlayıcı komisyonları, reklam bütçesi ve diğer üçüncü taraf maliyetleri aksi açıkça belirtilmedikçe dahil değildir.</p>
+        <p class="qct-pricing-disclaimer"><strong>Güncelleme:</strong> 23 Eylül 2026. Başlangıç fiyatları standart kapsam içindir ve dönemsel olarak güncellenebilir. KDV durumu, ödeme planı, kesin teslim aralığı ve revizyon hakkı proje teklifinde yazılı olarak netleştirilir.</p>
         <div class="qct-hero-actions">
           <a class="qct-btn qct-btn-primary" href="/#fiyat-hesapla">Canlı fiyatını hesapla <span>→</span></a>
           <a class="qct-text-link" href="/iletisim/">Projeyi konuşalım</a>
@@ -66,8 +67,8 @@ const faqSchema = {
         <div class="qct-price-category">
           <div><p class="qct-section-label">GÖRÜNÜRLÜK</p><h2>SEO, GEO, AEO ve AI görünürlük</h2></div>
           <div class="qct-price-rows">
-            <article><span>Teknik SEO</span><strong>2.490 TL</strong><small>Başlangıç fiyatı</small><p>Tarama, indeksleme, metadata, canonical, sitemap, mobil ve performans kontrolü.</p></article>
-            <article><span>SEO + GEO + AEO + AI görünürlük</span><strong>3.900 TL</strong><small>Başlangıç fiyatı</small><p>Google ve üretken yapay zekâ aramalarında bulunabilirliği güçlendiren teknik ve içerik çalışması.</p></article>
+            <article><span>Teknik SEO — bağımsız</span><strong>2.490 TL</strong><small>Başlangıç fiyatı</small><p>Tarama, indeksleme, metadata, canonical, sitemap, mobil ve performans odaklı teknik teşhis ve temel düzeltme. Görünürlük paketiyle aynı kapsam için ayrıca eklenmez.</p></article>
+            <article><span>SEO + GEO + AEO + AI görünürlük</span><strong>3.900 TL</strong><small>Başlangıç fiyatı</small><p>Temel teknik SEO kontrolü dahil; arama niyeti, sayfa yapısı ve Google ile üretken yapay zekâ ortamlarında bulunabilirliği güçlendiren başlangıç çalışması. Geniş içerik üretimi ve sürekli izleme ayrı kapsamlanır.</p></article>
             <article><span>GA4 + Search Console</span><strong>990 TL</strong><small>Başlangıç fiyatı</small><p>Temel ölçüm, doğrulama ve görünürlük verisinin takip edilmesi.</p></article>
           </div>
         </div>
@@ -81,6 +82,21 @@ const faqSchema = {
             <article><span>101–250 ürün</span><strong>7.900 TL</strong><p>Standart ürün giriş kapsamı.</p></article>
             <article><span>251–500 ürün</span><strong>12.900 TL</strong><p>Standart ürün giriş kapsamı.</p></article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-benefits" aria-labelledby="pricing-scope-title">
+      <div class="qct-shell">
+        <div class="qct-section-head">
+          <div><p class="qct-section-label">KAPSAM & TİCARİ KOŞULLAR</p><h2 id="pricing-scope-title">Başlangıç fiyatının ne anlama geldiği açık olsun.</h2></div>
+          <p>Kesin kapsam, teslim ve ödeme koşulları proje türüne göre teklif öncesinde yazılı olarak netleştirilir.</p>
+        </div>
+        <div class="qct-benefit-grid">
+          <article><h3>Kapsam</h3><p>Sayfa, ürün, entegrasyon, içerik ve özel geliştirme sınırları proje teklifinde tek tek belirtilir.</p></article>
+          <article><h3>Teslim & revizyon</h3><p>Yaklaşık teslim aralığı ve dahil revizyon hakkı, işin büyüklüğüne göre sözleşme veya teklif üzerinde yer alır.</p></article>
+          <article><h3>Ödeme & KDV</h3><p>Ödeme takvimi ve KDV’nin dahil veya hariç olduğu bilgisi, ödeme öncesinde açıkça gösterilir.</p></article>
+          <article><h3>Kurumsal / B2B</h3><p>Çok dilli yapı, özel entegrasyon, yüksek ürün hacmi, B2B lead generation ve ihracat projeleri standart paket yerine proje bazlı fiyatlandırılır.</p></article>
         </div>
       </div>
     </section>

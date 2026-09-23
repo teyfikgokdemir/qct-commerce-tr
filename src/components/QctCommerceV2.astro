@@ -1,4 +1,6 @@
 ---
+import { workCases } from '../data/work';
+
 const services = [
   { value: 'ecommerce', label: 'Yeni e-ticaret sitesi', base: 9900 },
   { value: 'corporate', label: 'Kurumsal web sitesi', base: 8900 },
@@ -45,14 +47,15 @@ const platforms = [
       <div class="qct-hero-copy">
         <p class="qct-eyebrow">DAHA AZ SORU İŞARETİ. DAHA NET PROJE.</p>
         <h1 id="qct-hero-title">Dijital varlığınız için <em>tek merkez.</em></h1>
-        <p class="qct-lead">Yeni bir web sitesi kuruyoruz; mevcut sitenizi analiz ediyor, yeniliyor, hızlandırıyor ve görünürlüğünü geliştiriyoruz. E-ticaret, kurumsal ve kişisel sitelerde SEO, GEO, AEO, AIO, ürün yönetimi ve platform çalışmalarını tek kapsamda çözüyoruz.</p>
+        <p class="qct-lead">Web sitesi, e-ticaret, görünürlük ve satış altyapısını birbirinden kopuk hizmetler yerine tek bir dijital sistem olarak ele alıyoruz. Yeni projeler kuruyor, mevcut siteleri analiz ediyor ve ihtiyaç olan katmanı geliştiriyoruz.</p>
         <div class="qct-hero-actions">
-          <a class="qct-btn qct-btn-primary" href="#fiyat-hesapla">Fiyatını Hesapla <span>→</span></a>
+          <a class="qct-btn qct-btn-primary" href="/iletisim/">Projenizi Başlatın <span>→</span></a>
+          <a class="qct-text-link" href="#fiyat-hesapla">Fiyatınızı Hesaplayın</a>
         </div>
         <div class="qct-proof-line">
           <span>Şeffaf fiyatlandırma</span>
           <span>Kurulum + geliştirme</span>
-          <span>SEO + GEO + AEO + AIO</span>
+          <span>Arama + AI görünürlüğü</span>
         </div>
       </div>
 
@@ -108,8 +111,8 @@ const platforms = [
           <fieldset>
             <legend>Projeyi güçlendirin <small>İhtiyacınız olanları ekleyin</small></legend>
             <div class="qct-addon-grid">
-              <label class="qct-check"><input type="checkbox" value="2490" data-addon /><span>Teknik SEO <small>+2.490 TL</small></span></label>
-              <label class="qct-check"><input type="checkbox" value="3900" data-addon /><span>SEO + GEO + AEO + AIO <small>+3.900 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="2490" data-addon data-addon-group="visibility" /><span>Teknik SEO — bağımsız çalışma <small>+2.490 TL</small></span></label>
+              <label class="qct-check"><input type="checkbox" value="3900" data-addon data-addon-group="visibility" /><span>SEO + GEO + AEO + AI görünürlük — temel teknik SEO dahil <small>+3.900 TL</small></span></label>
               <label class="qct-check"><input type="checkbox" value="1490" data-addon /><span>Merchant Center <small>+1.490 TL</small></span></label>
               <label class="qct-check"><input type="checkbox" value="990" data-addon /><span>GA4 + Search Console <small>+990 TL</small></span></label>
               <label class="qct-check"><input type="checkbox" value="2490" data-addon /><span>Ek dil <small>+2.490 TL</small></span></label>
@@ -204,6 +207,28 @@ const platforms = [
       <article><h3>Şeffaf fiyat</h3><p>Teklif almak için günlerce beklemeyin. Standart işler için fiyatları baştan bilin.</p></article>
       <article><h3>Mobil öncelik</h3><p>Siteyi masaüstünden küçültmüyoruz; mobil deneyimi ayrı bir ürün yüzeyi gibi tasarlıyoruz.</p></article>
       <article><h3>Sürekli geliştirilebilir</h3><p>Teslim sonrası SEO, GEO, AEO, AIO, hız, ürün ve dönüşüm ihtiyaçlarında aynı yapı üzerinden ilerleyebilirsiniz.</p></article>
+    </div>
+  </section>
+
+  <section class="qct-benefits" aria-labelledby="qct-home-work-title">
+    <div class="qct-shell">
+      <div class="qct-section-head">
+        <div>
+          <p class="qct-section-label">SEÇİLİ ÇALIŞMALAR</p>
+          <h2 id="qct-home-work-title">Söylediğimizi <em>canlı projelerle gösteriyoruz.</em></h2>
+        </div>
+        <p>Yalnızca doğrulanabilir kapsam ve çıktıları paylaşıyoruz. Her çalışma için problem, yaklaşım, uygulanan işler ve canlı proje bağlantısı bulunur.</p>
+      </div>
+      <div class="qct-benefit-grid">
+        {workCases.map((item) => (
+          <article>
+            <h3>{item.name}</h3>
+            <p>{item.summary}</p>
+            <a class="qct-text-link" href={`/calismalar/${item.slug}/`}>Vaka çalışmasını inceleyin →</a>
+          </article>
+        ))}
+      </div>
+      <p><a class="qct-text-link" href="/calismalar/">Tüm çalışmaları görün →</a></p>
     </div>
   </section>
 
@@ -345,7 +370,13 @@ const platforms = [
     }
   }
 
-  form?.addEventListener('change', () => {
+  form?.addEventListener('change', (event) => {
+    const changed = event.target;
+    if (changed instanceof HTMLInputElement && changed.matches('[data-addon-group="visibility"]') && changed.checked) {
+      addons
+        .filter((input) => input !== changed && input.dataset.addonGroup === 'visibility')
+        .forEach((input) => { input.checked = false; });
+    }
     if (!pricingStarted) {
       pricingStarted = true;
       track('pricing_start');

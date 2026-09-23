@@ -29,7 +29,7 @@ const {
   title,
   description,
   lang = 'tr',
-  image = '/og-image-square.png',
+  image = '/og-commerce-1200x630.jpg',
   imageWidth = 1200,
   imageHeight = 630,
   type = 'website',
@@ -98,7 +98,8 @@ const organizationSchema = {
   areaServed: areaServedSchema,
   knowsAbout,
   email: 'info@qctcommerce.com',
-  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@qctcommerce.com', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
+  telephone: '+90 545 678 26 55',
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', telephone: '+90 545 678 26 55', email: 'info@qctcommerce.com', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
   hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Digital commerce and international sales solutions', itemListElement: knowsAbout.map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })) },
   ...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };
