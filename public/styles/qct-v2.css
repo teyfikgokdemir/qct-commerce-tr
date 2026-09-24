@@ -360,3 +360,24 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
 @media(prefers-reduced-motion:reduce){
   .qct-visual-showcase img,.qct-image-story img,.qct-work-card__media img{transition:none}
 }
+
+/* Hero layout correction after visual showcase */
+.qct-v2 > .qct-hero{
+  display:block;
+  min-height:0;
+  align-items:initial;
+}
+.qct-v2 > .qct-hero > .qct-hero-grid{
+  width:min(1180px,calc(100% - 40px));
+  margin-inline:auto;
+}
+.qct-v2 > .qct-hero > .qct-visual-showcase{
+  width:min(1180px,calc(100% - 40px));
+  margin:34px auto 0;
+}
+@media(max-width:640px){
+  .qct-v2 > .qct-hero > .qct-hero-grid,
+  .qct-v2 > .qct-hero > .qct-visual-showcase{
+    width:min(100% - 28px,1180px);
+  }
+}
