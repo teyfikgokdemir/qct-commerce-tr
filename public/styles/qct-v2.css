@@ -395,3 +395,21 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
 @media(prefers-reduced-motion:reduce){
   .qct-brand-film__frame video{animation:none}
 }
+
+@media (min-width:961px){
+  .qct-calculator{padding:14px 16px 13px;border-radius:24px}
+  .qct-calculator-head{margin-bottom:9px}
+  .qct-calculator h2{font-size:24px}
+  .qct-builder-status{margin-bottom:6px}
+  .qct-builder-sub{font-size:11px}
+  .qct-calculator form{gap:6px}
+  .qct-calculator label>span,.qct-calculator legend{margin-bottom:4px}
+  .qct-calculator select{min-height:36px;font-size:13px}
+  .qct-addon-grid{gap:6px}
+  .qct-check{min-height:38px;padding:6px 7px}
+  .qct-check span{font-size:11px!important}
+  .qct-check small{font-size:10px}
+  .qct-price-result{padding-top:8px}
+  .qct-price-result strong{font-size:27px}
+  .qct-result-btn{min-height:40px;padding:0 16px}
+}
