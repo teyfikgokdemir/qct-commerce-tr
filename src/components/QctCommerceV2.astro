@@ -132,6 +132,22 @@ const platforms = [
         </form>
       </aside>
     </div>
+    <div class="qct-shell qct-visual-showcase" aria-label="QCT Commerce dijital ticaret görsel vitrini">
+      <figure class="qct-visual-showcase__main">
+        <img src="/images/qct-commerce-2026/qct-commerce-hero.webp" width="1376" height="768" alt="Masaüstü ve mobil cihazlarda premium e-ticaret deneyimi" loading="eager" fetchpriority="high" decoding="async" />
+        <figcaption><span>01</span><strong>E-ticaret deneyimi</strong><small>Masaüstünden mobile tek sistem.</small></figcaption>
+      </figure>
+      <div class="qct-visual-showcase__stack">
+        <figure>
+          <img src="/images/qct-commerce-2026/qct-commerce-responsive-development.webp" width="1376" height="768" alt="Farklı cihazlarda responsive e-ticaret arayüzü" loading="lazy" decoding="async" />
+          <figcaption><span>02</span><strong>Responsive geliştirme</strong></figcaption>
+        </figure>
+        <figure>
+          <img src="/images/qct-commerce-2026/qct-commerce-seo-geo-aeo-aio.webp" width="1376" height="768" alt="SEO GEO AEO ve AIO görünürlük altyapısını temsil eden dijital çalışma alanı" loading="lazy" decoding="async" />
+          <figcaption><span>03</span><strong>Arama + AI görünürlüğü</strong></figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 
   <section class="qct-platforms qct-ecosystem" aria-label="Desteklenen altyapılar ve entegrasyonlar">
@@ -210,6 +226,37 @@ const platforms = [
     </div>
   </section>
 
+
+  <section class="qct-image-story" aria-labelledby="qct-image-story-title">
+    <div class="qct-shell">
+      <div class="qct-section-head qct-image-story__head">
+        <div>
+          <p class="qct-section-label">SİSTEMİN İÇİNDE</p>
+          <h2 id="qct-image-story-title">Tasarım, veri ve operasyon.<br/><em>Aynı ticari akışta.</em></h2>
+        </div>
+        <p>İyi görünen ekran tek başına yeterli değil. Dönüşüm, ölçüm, operasyon ve platform mimarisini aynı müşteri yolculuğunda buluşturuyoruz.</p>
+      </div>
+      <div class="qct-image-story__grid">
+        <figure class="is-wide">
+          <img src="/images/qct-commerce-2026/qct-commerce-analytics-growth.webp" width="1376" height="768" alt="E-ticaret satış ve büyüme analitiği çalışma alanı" loading="lazy" decoding="async" />
+          <figcaption><b>Ölçüm</b><span>Satış, dönüşüm ve müşteri yolculuğunu görünür kılın.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="/images/qct-commerce-2026/qct-commerce-cro-conversion.webp" width="1376" height="768" alt="Dönüşüm optimizasyonu yapılan e-ticaret ürün sayfası" loading="lazy" decoding="async" />
+          <figcaption><b>Dönüşüm</b><span>Karar anındaki sürtünmeyi azaltın.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="/images/qct-commerce-2026/qct-commerce-operations-fulfillment.webp" width="1376" height="768" alt="E-ticaret sipariş ve fulfillment operasyonu" loading="lazy" decoding="async" />
+          <figcaption><b>Operasyon</b><span>Dijital siparişi gerçek iş akışına bağlayın.</span></figcaption>
+        </figure>
+        <figure class="is-wide">
+          <img src="/images/qct-commerce-2026/qct-commerce-platform-migration.webp" width="1376" height="768" alt="E-ticaret platform taşıma ve dönüşüm sürecini temsil eden çalışma alanı" loading="lazy" decoding="async" />
+          <figcaption><b>Platform dönüşümü</b><span>Ürün, içerik ve görünürlüğü kontrollü biçimde taşıyın.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="qct-benefits" aria-labelledby="qct-home-work-title">
     <div class="qct-shell">
       <div class="qct-section-head">
@@ -221,7 +268,10 @@ const platforms = [
       </div>
       <div class="qct-benefit-grid">
         {workCases.map((item) => (
-          <article>
+          <article class="qct-work-card">
+            <a class="qct-work-card__media" href={`/calismalar/${item.slug}/`} aria-label={`${item.name} vaka çalışmasını görüntüleyin`}>
+              <img src={item.image.src} width={item.image.width} height={item.image.height} alt={item.image.alt} loading="lazy" decoding="async" />
+            </a>
             <h3>{item.name}</h3>
             <p>{item.summary}</p>
             <a class="qct-text-link" href={`/calismalar/${item.slug}/`}>Vaka çalışmasını inceleyin →</a>
