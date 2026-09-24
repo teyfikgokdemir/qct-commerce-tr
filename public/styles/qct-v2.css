@@ -299,3 +299,64 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
     white-space:normal;
   }
 }
+
+
+/* 2026 visual showcase */
+.qct-visual-showcase{display:grid;grid-template-columns:minmax(0,1.72fr) minmax(280px,.72fr);gap:14px;margin-top:34px;padding-bottom:38px}
+.qct-visual-showcase figure,.qct-image-story figure{position:relative;margin:0;overflow:hidden;border-radius:26px;background:#ddd4c9;isolation:isolate}
+.qct-visual-showcase__main{min-height:520px}
+.qct-visual-showcase__stack{display:grid;grid-template-rows:1fr 1fr;gap:14px;min-width:0}
+.qct-visual-showcase__stack figure{min-height:253px}
+.qct-visual-showcase img,.qct-image-story img,.qct-work-card__media img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .45s ease}
+.qct-visual-showcase figure::after,.qct-image-story figure::after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(180deg,transparent,rgba(19,17,15,.72));z-index:1;pointer-events:none}
+.qct-visual-showcase figcaption{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;color:#fff;display:grid;grid-template-columns:auto 1fr;gap:3px 11px;align-items:end}
+.qct-visual-showcase figcaption span{grid-row:1/3;font-size:10px;letter-spacing:.14em;opacity:.72;align-self:center}
+.qct-visual-showcase figcaption strong{font-size:18px;letter-spacing:-.02em}
+.qct-visual-showcase figcaption small{font-size:11px;color:rgba(255,255,255,.76)}
+.qct-visual-showcase__stack figcaption{left:18px;right:18px;bottom:16px}
+.qct-visual-showcase__stack figcaption strong{font-size:15px}
+.qct-visual-showcase__stack figcaption small{display:none}
+.qct-image-story{padding:88px 0 96px;background:#191715;color:#f6efe7}
+.qct-image-story .qct-section-label{color:#d87866}
+.qct-image-story .qct-section-head h2{color:#f6efe7}
+.qct-image-story .qct-section-head h2 em{color:#e17c69}
+.qct-image-story .qct-section-head>p{color:#bdb3aa}
+.qct-image-story__head{margin-bottom:34px}
+.qct-image-story__grid{display:grid;grid-template-columns:1.18fr .82fr;grid-auto-rows:320px;gap:14px}
+.qct-image-story__grid figure.is-wide{grid-row:span 1}
+.qct-image-story figcaption{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:18px;color:#fff}
+.qct-image-story figcaption b{font-size:18px;letter-spacing:-.02em}
+.qct-image-story figcaption span{max-width:310px;text-align:right;color:rgba(255,255,255,.75);font-size:12px;line-height:1.45}
+.qct-work-card__media{display:block;height:220px;margin:-24px 0 22px;overflow:hidden;border-radius:18px;background:#ddd4c9}
+.qct-work-card__media img{transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+@media(hover:hover) and (pointer:fine){
+  .qct-visual-showcase figure:hover img,.qct-image-story figure:hover img,.qct-work-card__media:hover img{transform:scale(1.035)}
+  .qct-visual-showcase figure:hover img,.qct-image-story figure:hover img{filter:saturate(1.04) contrast(1.02)}
+}
+@media(max-width:960px){
+  .qct-visual-showcase{grid-template-columns:1fr;margin-top:26px}
+  .qct-visual-showcase__main{min-height:440px}
+  .qct-visual-showcase__stack{grid-template-columns:1fr 1fr;grid-template-rows:none}
+  .qct-visual-showcase__stack figure{min-height:230px}
+  .qct-image-story__grid{grid-template-columns:1fr 1fr;grid-auto-rows:280px}
+}
+@media(max-width:640px){
+  .qct-visual-showcase{gap:9px;padding-bottom:26px;margin-top:20px}
+  .qct-visual-showcase__main{min-height:0;aspect-ratio:1.08/1}
+  .qct-visual-showcase__stack{gap:9px}
+  .qct-visual-showcase__stack figure{min-height:0;aspect-ratio:1/1}
+  .qct-visual-showcase figcaption{left:16px;right:16px;bottom:15px}
+  .qct-visual-showcase figcaption strong{font-size:15px}
+  .qct-visual-showcase__main figcaption small{display:none}
+  .qct-image-story{padding:62px 0 68px}
+  .qct-image-story__head{margin-bottom:24px}
+  .qct-image-story__grid{grid-template-columns:1fr;grid-auto-rows:auto;gap:10px}
+  .qct-image-story__grid figure,.qct-image-story__grid figure.is-wide{aspect-ratio:1.24/1}
+  .qct-image-story figcaption{left:16px;right:16px;bottom:15px;display:block}
+  .qct-image-story figcaption b{display:block;margin-bottom:4px;font-size:16px}
+  .qct-image-story figcaption span{display:block;text-align:left;font-size:11px}
+  .qct-work-card__media{height:auto;aspect-ratio:16/10;margin:-18px 0 18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .qct-visual-showcase img,.qct-image-story img,.qct-work-card__media img{transition:none}
+}
