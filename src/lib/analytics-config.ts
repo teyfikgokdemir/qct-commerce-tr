@@ -1,0 +1,1 @@
+export const analyticsConfig = { hostname: 'qctcommerce.com', site: 'qct-commerce-tr', ga: 'G-ZGC820MP20', advanced: true, gtm: import.meta.env.PUBLIC_GTM_ID ?? 'GTM-W5JDHT9S', clarity: import.meta.env.PUBLIC_CLARITY_ID ?? 'yoad04yxmv' };

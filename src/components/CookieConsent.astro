@@ -1,4 +1,5 @@
 ---
+import { analyticsDisclosure } from "../lib/analytics-disclosure";
 interface Props {
   lang: string;
 }
@@ -46,7 +47,7 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
     <div>
       <div class="qct-cookie-consent__eyebrow">{lang === 'en' ? 'PRIVACY PREFERENCES' : 'GİZLİLİK TERCİHİ'}</div>
       <strong>{c.label}</strong>
-      <p>{c.text} <a href={policyUrl}>{c.policy}</a></p>
+      <p>{c.text} {analyticsDisclosure[lang] || analyticsDisclosure.en} <a href={policyUrl}>{c.policy}</a></p>
     </div>
   </div>
 
@@ -56,100 +57,32 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
   </div>
 </div>
 
-<script is:inline>
-  (() => {
-    const storageKey = 'qct-analytics-consent';
-    const measurementId = 'G-ZGC820MP20';
-    const banner = document.querySelector('[data-cookie-consent]');
-    const accept = document.querySelector('[data-cookie-accept]');
-    const reject = document.querySelector('[data-cookie-reject]');
+<button type="button" data-cookie-settings hidden style="position:fixed;bottom:8px;left:8px;z-index:9997">{c.label}</button>
 
-    let analyticsLoaded = false;
-
-    const ensureGtag = () => {
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function () {
-        window.dataLayer.push(arguments);
-      };
-    };
-
-    const setConsent = (state) => {
-      ensureGtag();
-      window.gtag('consent', 'update', {
-        analytics_storage: state,
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-      });
-    };
-
-    const loadAnalytics = (initialConsent = 'denied') => {
-      if (analyticsLoaded) return;
-      analyticsLoaded = true;
-
-      ensureGtag();
-      window.gtag('consent', 'default', {
-        analytics_storage: initialConsent,
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        wait_for_update: 500,
-      });
-      window.gtag('js', new Date());
-      window.gtag('config', measurementId, {
-        anonymize_ip: true,
-        allow_google_signals: false,
-        allow_ad_personalization_signals: false,
-      });
-
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-      document.head.appendChild(script);
-    };
-
-    const closeBanner = () => {
-      if (banner) banner.hidden = true;
-    };
-
-    const openBanner = () => {
-      if (banner) banner.hidden = false;
-    };
-
-    let savedConsent = null;
-    try {
-      savedConsent = localStorage.getItem(storageKey);
-    } catch {
-      savedConsent = null;
-    }
-
-    const initialConsent = savedConsent === 'granted' ? 'granted' : 'denied';
-    if (window.requestIdleCallback) {
-      window.requestIdleCallback(() => loadAnalytics(initialConsent), { timeout: 1200 });
-    } else {
-      window.setTimeout(() => loadAnalytics(initialConsent), 500);
-    }
-
-    if (savedConsent === 'granted' || savedConsent === 'denied') {
-      closeBanner();
-    } else {
-      openBanner();
-    }
-
-    accept?.addEventListener('click', () => {
-      try { localStorage.setItem(storageKey, 'granted'); } catch {}
-      loadAnalytics('granted');
-      setConsent('granted');
-      closeBanner();
-    });
-
-    reject?.addEventListener('click', () => {
-      try { localStorage.setItem(storageKey, 'denied'); } catch {}
-      loadAnalytics('denied');
-      setConsent('denied');
-      closeBanner();
-    });
-  })();
+<script>
+  import { createAnalytics } from '../lib/analytics-stack';
+  import { analyticsConfig } from '../lib/analytics-config';
+  const analytics = createAnalytics(analyticsConfig);
+  const w = window as any;
+  w.qctTrackEvent = analytics.track;
+  const key = 'qct-analytics-consent';
+  const banner = document.querySelector<HTMLElement>('[data-cookie-consent]');
+  const settings = document.querySelector<HTMLElement>('[data-cookie-settings]');
+  const show = (open: boolean) => { if (banner) banner.hidden = !open; if (settings) settings.hidden = open; };
+  let saved: string | null = null;
+  try { saved = localStorage.getItem(key); } catch {}
+  let recording = false;
+  try { recording = localStorage.getItem('qct-recording-consent-v1') === 'granted'; } catch {}
+  analytics.setConsent({ analytics: saved === 'granted', recording });
+  show(!['granted', 'denied'].includes(saved || '') || (saved === 'granted' && !!analyticsConfig.clarity && !recording));
+  const choose = (state: string) => {
+    try { localStorage.setItem(key, state); localStorage.setItem('qct-recording-consent-v1', state); } catch {}
+    analytics.setConsent({ analytics: state === 'granted', recording: state === 'granted' });
+    show(false);
+  };
+  document.querySelector('[data-cookie-accept]')?.addEventListener('click', () => choose('granted'));
+  document.querySelector('[data-cookie-reject]')?.addEventListener('click', () => choose('denied'));
+  settings?.addEventListener('click', () => show(true));
 </script>
 
 <style>
@@ -254,9 +187,7 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
     color: rgba(246,240,232,.58);
     font-size: .69rem;
     line-height: 1.35;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
   }
 
   .qct-cookie-consent a {

@@ -16,7 +16,8 @@
     "audit:redirects": "node scripts/audit-redirects.mjs",
     "check:locales": "node scripts/check-locales.mjs",
     "indexnow:submit": "node scripts/indexnow-submit.mjs",
-    "check:performance": "node scripts/check-performance.mjs"
+    "check:performance": "node scripts/check-performance.mjs",
+    "check:analytics": "node scripts/check-analytics.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
