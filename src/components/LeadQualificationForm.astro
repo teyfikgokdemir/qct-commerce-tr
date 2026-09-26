@@ -77,7 +77,7 @@ const copy = isEnglish ? {
       : 'Merhaba QCT Commerce, kısa proje briefini doldurdum:';
     const lines = keys.map((key, i) => values[key] ? labels[i] + ': ' + values[key] : '').filter(Boolean);
     const message = [intro, ...lines].join('\n');
-    track('form_submit');
+    track('whatsapp_click');
     window.open('https://wa.me/905456782655?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
   });
 })();

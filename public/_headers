@@ -5,7 +5,7 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://api.indexnow.org; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io;
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.clarity.ms https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://api.indexnow.org; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io;
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
