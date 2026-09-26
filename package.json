@@ -20,7 +20,7 @@
     "check:analytics": "node scripts/check-analytics.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.3.3"
   },
   "overrides": {
