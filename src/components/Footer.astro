@@ -167,6 +167,7 @@ const legalLinks = isGeorgian ? [
       )}
     </div>
     
+{(!isEnglish && !isGeorgian) && (
 <nav class="site-footer__locations" aria-label="Bölgeler" style="display:none;">
   <a href="/lokasyon/istanbul/">İstanbul</a>
   <a href="/lokasyon/ankara/">Ankara</a>
@@ -188,6 +189,7 @@ const legalLinks = isGeorgian ? [
   <a href="/lokasyon/azerbaycan/">Azerbaycan</a>
   <a href="/lokasyon/dubai/">Dubai</a>
 </nav>
+)}
 <div class="site-footer__bottom">
       <div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div>
       {!isGeorgian && <nav class="site-footer__legal-desktop" aria-label={isEnglish ? 'Legal' : 'Yasal'}>
