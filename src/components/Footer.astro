@@ -166,7 +166,29 @@ const legalLinks = isGeorgian ? [
         </>
       )}
     </div>
-    <div class="site-footer__bottom">
+    
+<nav class="site-footer__locations" aria-label="Bölgeler" style="display:none;">
+  <a href="/lokasyon/istanbul/">İstanbul</a>
+  <a href="/lokasyon/ankara/">Ankara</a>
+  <a href="/lokasyon/izmir/">İzmir</a>
+  <a href="/lokasyon/bursa/">Bursa</a>
+  <a href="/lokasyon/antalya/">Antalya</a>
+  <a href="/lokasyon/gaziantep/">Gaziantep</a>
+  <a href="/lokasyon/kocaeli/">Kocaeli</a>
+  <a href="/lokasyon/adana/">Adana</a>
+  <a href="/lokasyon/kayseri/">Kayseri</a>
+  <a href="/lokasyon/konya/">Konya</a>
+  <a href="/lokasyon/denizli/">Denizli</a>
+  <a href="/lokasyon/mersin/">Mersin</a>
+  <a href="/lokasyon/eskisehir/">Eskişehir</a>
+  <a href="/lokasyon/samsun/">Samsun</a>
+  <a href="/lokasyon/sakarya/">Sakarya</a>
+  <a href="/lokasyon/almanya/">Almanya</a>
+  <a href="/lokasyon/ingiltere/">İngiltere</a>
+  <a href="/lokasyon/azerbaycan/">Azerbaycan</a>
+  <a href="/lokasyon/dubai/">Dubai</a>
+</nav>
+<div class="site-footer__bottom">
       <div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div>
       {!isGeorgian && <nav class="site-footer__legal-desktop" aria-label={isEnglish ? 'Legal' : 'Yasal'}>
         <a href={isEnglish ? '/en/privacy-policy/' : '/gizlilik-politikasi/'}>{isEnglish ? 'Privacy' : 'Gizlilik'}</a>
