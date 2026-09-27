@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const sehirler = [
@@ -41,7 +41,7 @@ const title = `${sehirAdi} E-Ticaret ve Web Tasarım Ajansı | QCT Commerce`;
 const description = `${sehirAdi} merkezli işletmeniz veya e-ticaret markanız için Shopify, ikas kurulumu, web tasarım ve gelişmiş SEO hizmetleri. QCT Commerce ile ${bolgeMetni}nde dijital satışlarınızı artırın.`;
 ---
 
-<Layout title={title} description={description} lang="tr-TR">
+<BaseLayout title={title} description={description} lang="tr-TR">
   <div class="qct-v2" data-qct-v2>
     
     <section class="qct-hero">
@@ -99,4 +99,4 @@ const description = `${sehirAdi} merkezli işletmeniz veya e-ticaret markanız i
     </section>
 
   </div>
-</Layout>
+</BaseLayout>
