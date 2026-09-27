@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const locations = [
+    { id: "istanbul", name: "Istanbul" },
+    { id: "ankara", name: "Ankara" },
+    { id: "izmir", name: "Izmir" },
+    { id: "bursa", name: "Bursa" },
+    { id: "antalya", name: "Antalya" },
+    { id: "gaziantep", name: "Gaziantep" },
+    { id: "kocaeli", name: "Kocaeli" },
+    { id: "adana", name: "Adana" },
+    { id: "kayseri", name: "Kayseri" },
+    { id: "konya", name: "Konya" },
+    { id: "denizli", name: "Denizli" },
+    { id: "mersin", name: "Mersin" },
+    { id: "eskisehir", name: "Eskisehir" },
+    { id: "samsun", name: "Samsun" },
+    { id: "sakarya", name: "Sakarya" },
+    { id: "germany", name: "Germany", type: "country" },
+    { id: "uk", name: "United Kingdom", type: "country" },
+    { id: "azerbaijan", name: "Azerbaijan", type: "country" },
+    { id: "dubai", name: "Dubai", type: "city" },
+  ];
+
+  return locations.map((loc) => ({
+    params: { city: loc.id },
+    props: { cityName: loc.name, type: loc.type || "city" },
+  }));
+}
+
+const { city } = Astro.params;
+const { cityName, type } = Astro.props;
+
+const isCountry = type === "country";
+const regionText = isCountry ? `${cityName} Market` : `${cityName} Region`;
+const forText = isCountry ? `for businesses targeting ${cityName}` : `for businesses in ${cityName}`;
+
+const title = `${cityName} E-Commerce & Web Design Agency | QCT Commerce`;
+const description = `Shopify and ikas store setup, custom web design and advanced SEO ${forText}. QCT Commerce helps you grow digital sales across the ${regionText}.`;
+---
+
+<BaseLayout title={title} description={description} lang="en">
+  <div class="qct-v2" data-qct-v2>
+
+    <section class="qct-hero">
+      <div class="qct-shell qct-hero-grid">
+        <div class="qct-hero-copy">
+          <p class="qct-eyebrow">PROGRAMMATIC SEO & LOCAL AUTHORITY</p>
+          <h1 class="qct-hero-title">
+            Elite E-Commerce & Web Solutions <em>{forText}</em>
+          </h1>
+          <p class="qct-lead">
+            We build Shopify stores, ikas shops, and high-performance websites for brands operating in the <strong>{regionText}</strong>. Our SEO and AI-visibility (AIO) strategies put you in front of buyers — on Google, ChatGPT, and Perplexity alike.
+          </p>
+          <div class="qct-hero-actions">
+            <a class="qct-btn qct-btn-primary" href="/en/contact/">Get a Quote for {cityName} <span>→</span></a>
+          </div>
+          <div class="qct-proof-line">
+            <span>Shopify & ikas</span>
+            <span>Custom Web Design</span>
+            <span>Local & AI SEO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-benefits">
+      <div class="qct-shell qct-benefit-grid">
+        <article>
+          <h3>Market Analysis</h3>
+          <p>We study {regionText} search volumes, buyer intent and competitive landscape before writing a single line of code.</p>
+        </article>
+        <article>
+          <h3>Turnkey Store Setup</h3>
+          <p>From product import to payment gateway, we deliver a fully operational Shopify or ikas store ready to sell globally from day one.</p>
+        </article>
+        <article>
+          <h3>AI Visibility (AIO)</h3>
+          <p>Not just Google rankings — we structure your content so ChatGPT and Perplexity recommend your brand to {regionText} buyers.</p>
+        </article>
+        <article>
+          <h3>Transparent Pricing</h3>
+          <p>Fixed-scope projects. No surprise invoices. You know the full cost before we start.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="qct-close">
+      <div class="qct-shell qct-close-grid">
+        <div>
+          <p class="qct-section-label">TAILORED FOR {regionText.toUpperCase()}</p>
+          <h2>The next successful project in <em>{cityName} could be yours.</em></h2>
+          <p>Whether you need a brand-new store or a full site overhaul, QCT Commerce is your single point of contact for the {regionText}.</p>
+        </div>
+        <a class="qct-btn qct-btn-light" href="/en/contact/">Let's Talk <span>→</span></a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
