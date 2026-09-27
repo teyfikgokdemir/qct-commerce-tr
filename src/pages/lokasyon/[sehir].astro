@@ -1,0 +1,102 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const sehirler = [
+    { id: "istanbul", isim: "İstanbul", plaka: "34" },
+    { id: "ankara", isim: "Ankara", plaka: "06" },
+    { id: "izmir", isim: "İzmir", plaka: "35" },
+    { id: "bursa", isim: "Bursa", plaka: "16" },
+    { id: "antalya", isim: "Antalya", plaka: "07" },
+    { id: "gaziantep", isim: "Gaziantep", plaka: "27" },
+    { id: "kocaeli", isim: "Kocaeli", plaka: "41" },
+    { id: "adana", isim: "Adana", plaka: "01" },
+    { id: "kayseri", isim: "Kayseri", plaka: "38" },
+    { id: "konya", isim: "Konya", plaka: "42" },
+    { id: "denizli", isim: "Denizli", plaka: "20" },
+    { id: "mersin", isim: "Mersin", plaka: "33" },
+    { id: "eskişehir", isim: "Eskişehir", plaka: "26" },
+    { id: "samsun", isim: "Samsun", plaka: "55" },
+    { id: "sakarya", isim: "Sakarya", plaka: "54" },
+    { id: "almanya", isim: "Almanya", tip: "ulke" },
+    { id: "ingiltere", isim: "İngiltere", tip: "ulke" },
+    { id: "azerbaycan", isim: "Azerbaycan", tip: "ulke" },
+    { id: "dubai", isim: "Dubai", tip: "sehir" }
+  ];
+
+  return sehirler.map((s) => ({
+    params: { sehir: s.id },
+    props: { sehirAdi: s.isim, tip: s.tip || "sehir" },
+  }));
+}
+
+const { sehir } = Astro.params;
+const { sehirAdi, tip } = Astro.props;
+
+const isUlke = tip === "ulke";
+const bolgeMetni = isUlke ? `${sehirAdi} Pazarı` : `${sehirAdi} Bölgesi`;
+const hitapMetni = isUlke ? `${sehirAdi}'ndeki` : `${sehirAdi}'deki`;
+
+const title = `${sehirAdi} E-Ticaret ve Web Tasarım Ajansı | QCT Commerce`;
+const description = `${sehirAdi} merkezli işletmeniz veya e-ticaret markanız için Shopify, ikas kurulumu, web tasarım ve gelişmiş SEO hizmetleri. QCT Commerce ile ${bolgeMetni}nde dijital satışlarınızı artırın.`;
+---
+
+<Layout title={title} description={description} lang="tr-TR">
+  <div class="qct-v2" data-qct-v2>
+    
+    <section class="qct-hero">
+      <div class="qct-shell qct-hero-grid">
+        <div class="qct-hero-copy">
+          <p class="qct-eyebrow">PROGRAMATİK SEO & YEREL GÜCÜNÜZ</p>
+          <h1 class="qct-hero-title">
+            <em>{sehirAdi}</em> İçin Elit E-Ticaret ve Web Altyapıları
+          </h1>
+          <p class="qct-lead">
+            {hitapMetni} işletmeniz için lokal sınırları aşan, global standartlarda Shopify, ikas mağazaları, kurumsal web tasarım ve <strong>SEO / Yapay Zeka (AIO) görünürlüğü</strong> çözümleri üretiyoruz. {bolgeMetni} özelinde rakiplerinizin önüne geçin.
+          </p>
+          <div class="qct-hero-actions">
+            <a class="qct-btn qct-btn-primary" href="/iletisim/">{sehirAdi} İçin Teklif Alın <span>→</span></a>
+          </div>
+          <div class="qct-proof-line">
+            <span>Shopify & ikas</span>
+            <span>Özel Web Tasarım</span>
+            <span>Yerel SEO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-benefits">
+      <div class="qct-shell qct-benefit-grid">
+        <article>
+          <h3>Lokal Analiz</h3>
+          <p>{bolgeMetni} dinamiklerine ve hedef kitlenize uygun arama hacimlerini (GEO/SEO) analiz ederek sitenizi kurarız.</p>
+        </article>
+        <article>
+          <h3>Anahtar Teslim Mağaza</h3>
+          <p>{sehirAdi} merkezli deponuzdan/ofisinizden tüm dünyaya sorunsuz satış yapacağınız e-ticaret (Shopify/ikas) mimarisi.</p>
+        </article>
+        <article>
+          <h3>Yapay Zeka (AIO) Optimizasyonu</h3>
+          <p>Sadece Google'da değil, ChatGPT ve Perplexity'de de {hitapMetni} potansiyel müşterilere önerilmenizi sağlayan içerik yapısı.</p>
+        </article>
+        <article>
+          <h3>Şeffaf Maliyet</h3>
+          <p>İster yenileme, ister sıfırdan kurulum olsun. Sürpriz faturalar olmadan anahtar teslim operasyon.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="qct-close">
+      <div class="qct-shell qct-close-grid">
+        <div>
+          <p class="qct-section-label">{sehirAdi} BÖLGESİNE ÖZEL</p>
+          <h2>{sehirAdi}'nde sıradaki başarılı proje <em>sizin olabilir.</em></h2>
+          <p>Mevcut sitenizi iyileştirmek veya sıfırdan kurmak için tek merkez. QCT Commerce, {bolgeMetni} operasyonlarınızda yanınızda.</p>
+        </div>
+        <a class="qct-btn qct-btn-light" href="/iletisim/">Hemen Görüşelim <span>→</span></a>
+      </div>
+    </section>
+
+  </div>
+</Layout>
