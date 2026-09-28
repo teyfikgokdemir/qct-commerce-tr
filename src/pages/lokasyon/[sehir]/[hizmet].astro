@@ -27,7 +27,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} lang="tr" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
+<BaseLayout title={title} description={description} lang="tr" alternates={alternates} breadcrumbs={breadcrumbs} pageType="WebPage" areaServed={market.areaServed} service={{ name: `${market.name} ${service.trName}`, description }}>
   <Header slot="header" lang="tr" />
   <style is:inline>
 .qct-programmatic{background:#f3eee7;color:#171514}
