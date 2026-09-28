@@ -38,10 +38,10 @@ const trHref = isAzerbaijani ? '/lokasyon/azerbaycan/' : isEnglish ? (pairedLoca
 const enHref = isAzerbaijani ? '/en/location/azerbaijan/' : !isEnglish ? (pairedLocalePath || '/en/') : (isErrorRoute ? '/en/' : currentPath);
 
 const audienceLinks = isAzerbaijani ? [
-  ['İstehsalçılar', '/az/azerbaycan/#kimler-ucun'],
-  ['İxracatçılar', '/az/azerbaycan/#kimler-ucun'],
-  ['Distribütor və B2B', '/az/azerbaycan/#kimler-ucun'],
-  ['E-ticarət brendləri', '/az/azerbaycan/#kimler-ucun']
+  ['İstehsalçılar', '/az/#kimler-ucun'],
+  ['İxracatçılar', '/az/#kimler-ucun'],
+  ['Distribütor və B2B', '/az/#kimler-ucun'],
+  ['E-ticarət brendləri', '/az/#kimler-ucun']
 ] : isEnglish ? [
   ['Manufacturers', '/en/manufacturers/'],
   ['Exporters', '/en/exporters/'],
@@ -77,10 +77,10 @@ const serviceLinks = isAzerbaijani ? [
 ];
 
 const quickLinks = isAzerbaijani ? [
-  ['Ana səhifə', '/az/azerbaycan/'],
-  ['Kimlər üçün', '/az/azerbaycan/#kimler-ucun'],
-  ['Həllər', '/az/azerbaycan/#heller'],
-  ['Suallar', '/az/azerbaycan/#faq'],
+  ['Ana səhifə', '/az/'],
+  ['Kimlər üçün', '/az/#kimler-ucun'],
+  ['Həllər', '/az/#heller'],
+  ['Suallar', '/az/#faq'],
   ['Əlaqə', 'mailto:info@qctcommerce.com']
 ] : isEnglish ? [
   ['Home', '/en/'],
@@ -106,7 +106,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
 ---
 <header id="masthead" class="site-header" data-site-header>
   <div class="site-header__inner container">
-    <div class="site-branding"><a class="site-title" href={isAzerbaijani ? '/az/azerbaycan/' : isEnglish ? '/en/' : '/'} rel="home">QCT Commerce</a></div>
+    <div class="site-branding"><a class="site-title" href={isAzerbaijani ? '/az/' : isEnglish ? '/en/' : '/'} rel="home">QCT Commerce</a></div>
     <button class="site-menu-toggle qct-legacy-mobile-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
       <span class="screen-reader-text">{isAzerbaijani ? 'Menyunu aç' : isEnglish ? 'Open menu' : 'Menüyü aç'}</span><span class="site-menu-toggle__bar"></span><span class="site-menu-toggle__bar"></span>
     </button>
@@ -178,7 +178,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
           <div class="qct-mobile-languages" aria-label={isEnglish ? 'Language' : 'Dil seçimi'}>
             <a href={trHref} hreflang="tr-TR" class:list={[{ active: !isEnglish && !isAzerbaijani }]}>TR</a>
             <a href={enHref} hreflang="en" class:list={[{ active: isEnglish }]}>EN</a>
-            <a href="/az/azerbaycan/" class:list={[{ active: isAzerbaijani }]}>AZ</a>
+            <a href="/az/" class:list={[{ active: isAzerbaijani }]}>AZ</a>
           </div>
           <a class="qct-mobile-project" href={isAzerbaijani ? "mailto:info@qctcommerce.com?subject=Azerbaijan%20digital%20project" : isEnglish ? "/en/contact/" : "/iletisim/"}>
             <span>{isAzerbaijani ? 'Layihəyə başlayın' : isEnglish ? 'Start a project' : 'Proje başlat'}</span>
@@ -191,7 +191,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
       <div class="desktop-only-menu">
         {isAzerbaijani ? (
           <ul class="primary-menu">
-            <li><a href="/az/azerbaycan/" aria-current="page">Ana səhifə</a></li><li><a href="/az/azerbaycan/#kimler-ucun">Kimlər üçün</a></li><li><a href="/az/azerbaycan/#heller">Həllər</a></li><li><a href="/az/azerbaycan/#faq">Suallar</a></li><li><a href="mailto:info@qctcommerce.com">Əlaqə</a></li><li><a href="/" hreflang="tr-TR">TR</a></li><li><a href="/en/location/azerbaijan/" hreflang="en">EN</a></li>
+            <li><a href="/az/" aria-current="page">Ana səhifə</a></li><li><a href="/az/#kimler-ucun">Kimlər üçün</a></li><li><a href="/az/#heller">Həllər</a></li><li><a href="/az/#faq">Suallar</a></li><li><a href="mailto:info@qctcommerce.com">Əlaqə</a></li><li><a href="/" hreflang="tr-TR">TR</a></li><li><a href="/en/location/azerbaijan/" hreflang="en">EN</a></li>
           </ul>
         ) : isEnglish ? (
           <ul class="primary-menu">
@@ -203,13 +203,13 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
               </ul>
             </li>
             <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Who we help</span></button><ul class="sub-menu"><li><a href="/en/manufacturers/">Manufacturers</a></li><li><a href="/en/exporters/">Exporters</a></li><li><a href="/en/distributors-b2b/">Distributors & B2B</a></li><li><a href="/en/ecommerce-brands/">E-commerce brands</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>Work</a></li><li><a href="/en/location/azerbaijan/" aria-current={isCurrent('/en/location/azerbaijan/') ? 'page' : undefined}>Azerbaijan</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
-            <li><a href="/az/azerbaycan/" hreflang="az-AZ">AZ</a></li><li><a href={trHref} hreflang="tr-TR">TR</a></li>
+            <li><a href="/az/" hreflang="az-AZ">AZ</a></li><li><a href={trHref} hreflang="tr-TR">TR</a></li>
           </ul>
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
             <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li><li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/az/azerbaycan/" hreflang="az-AZ">AZ</a></li><li><a href={enHref} hreflang="en">EN</a></li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li><li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/az/" hreflang="az-AZ">AZ</a></li><li><a href={enHref} hreflang="en">EN</a></li>
           </ul>
         )}
       </div>
