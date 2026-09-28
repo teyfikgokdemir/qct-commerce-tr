@@ -1,9 +1,44 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro'; import Header from '../../../components/Header.astro'; import Footer from '../../../components/Footer.astro'; import { azBlogPosts } from '../../../data/az-blog';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { azBlogPosts } from '../../../data/az-blog';
 export function getStaticPaths(){return azBlogPosts.map(post=>({params:{slug:post.slug},props:{post}}));}
 const { post }=Astro.props;
 const SITE='https://qctcommerce.com';
 const canonical=new URL('/az/bloq/'+post.slug+'/',SITE).toString();
-const articleSchema={'@context':'https://schema.org','@type':'Article','@id':canonical+'#article',headline:post.title,description:post.description,datePublished:'2026-09-28',dateModified:'2026-09-28',inLanguage:'az-AZ',author:{'@id':SITE+'/#organization'},publisher:{'@id':SITE+'/#organization'},mainEntityOfPage:{'@id':canonical+'#webpage'}};
+const schema={'@context':'https://schema.org','@type':'Article','@id':canonical+'#article',headline:post.title,description:post.description,datePublished:post.published,dateModified:post.modified,inLanguage:'az-AZ',author:{'@id':SITE+'/#organization'},publisher:{'@id':SITE+'/#organization'},mainEntityOfPage:{'@id':canonical+'#webpage'}};
+const formatDate=(v:string)=>new Intl.DateTimeFormat('az-AZ',{day:'numeric',month:'long',year:'numeric'}).format(new Date(v+'T12:00:00+04:00'));
 ---
-<BaseLayout title={post.title+' | QCT Commerce'} description={post.description} lang="az" type="article" breadcrumbLabel={post.title}><script slot="schema" type="application/ld+json" set:html={JSON.stringify(articleSchema)} /><Header slot="header" lang="az" /><article><section class="page-hero section"><div class="container"><p class="eyebrow">BLOQ · AZƏRBAYCAN</p><h1>{post.title}</h1><p class="page-hero__lead">{post.description}</p></div></section>{post.sections.map(([title,text])=><section class="section"><div class="container"><div class="section-heading"><h2>{title}</h2><p>{text}</p></div></div></section>)}</article><Footer slot="footer" lang="az" /></BaseLayout>
+<BaseLayout title={post.title+' | QCT Commerce'} description={post.description} lang="az" type="article" breadcrumbLabel={post.title}>
+<script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
+<Header slot="header" lang="az" />
+<article class="qct-article az-blog-article">
+<header class="az-blog-hero"><div class="container">
+<nav class="qct-breadcrumb" aria-label="Səhifə yolu"><a href="/az/">Ana səhifə</a><span>/</span><a href="/az/bloq/">Bloq</a></nav>
+<p class="qct-section__eyebrow">BƏLƏDÇİ · AZƏRBAYCAN</p>
+<h1>{post.title}</h1><p class="lead">{post.intro}</p>
+<div class="meta"><span>QCT Commerce</span><span>Yayımlandı: <time datetime={post.published}>{formatDate(post.published)}</time></span><span>Yeniləndi: <time datetime={post.modified}>{formatDate(post.modified)}</time></span></div>
+</div></header>
+<div class="container layout">
+<aside class="summary"><h2>Qısa cavab</h2><ul>{post.summary.map(x=><li>{x}</li>)}</ul></aside>
+<main>{post.sections.map(s=><section><h2>{s.heading}</h2>{s.paragraphs.map(p=><p>{p}</p>)}{s.items&&<ul>{s.items.map(i=><li>{i}</li>)}</ul>}</section>)}
+<div class="related"><p class="qct-section__eyebrow">ƏLAQƏLİ XİDMƏT</p><h2>Bu mövzunu şirkətinizin sisteminə tətbiq edin.</h2><a href={post.relatedHref}>{post.relatedLabel} →</a></div>
+<nav class="more"><a href="/az/bloq/">Bütün bələdçilər</a><a href="/az/elaqe/">Bu mövzu üçün ilk addımı müəyyən edin</a></nav>
+</main></div>
+</article><Footer slot="footer" lang="az" /></BaseLayout>
+<style>
+.az-blog-hero{padding:calc(var(--qct-hero-clearance) + 46px) 0 62px;background:radial-gradient(circle at 78% 18%,rgba(230,107,95,.2),transparent 34%),linear-gradient(145deg,#171514,#28211f);color:#fffaf5}
+.az-blog-hero h1{color:#fffaf5!important;-webkit-text-fill-color:#fffaf5!important;font-size:clamp(2.5rem,4.5vw,4rem);max-width:22ch;line-height:1.05;letter-spacing:-.04em;margin:0 0 1.5rem;text-wrap:balance}
+.az-blog-hero .lead{font-size:1.15rem;line-height:1.75;max-width:820px;color:rgba(255,250,245,.74)!important}
+.az-blog-hero .qct-breadcrumb,.az-blog-hero .qct-breadcrumb a{color:rgba(255,250,245,.72)}
+.meta{border-top:1px solid rgba(255,255,255,.16);display:grid;grid-template-columns:repeat(3,max-content);gap:.55rem 1.5rem;margin-top:2rem;padding-top:1rem;color:rgba(255,250,245,.65);font-size:.9rem}
+.layout{display:grid;grid-template-columns:minmax(220px,.35fr) minmax(0,.9fr);gap:70px;padding:70px 20px}
+.summary{align-self:start;position:sticky;top:var(--qct-anchor-offset);border-top:3px solid var(--qct-color-accent);padding-top:18px}
+.summary li,.layout main p,.layout main li{color:var(--qct-color-muted);line-height:1.75}
+.layout main section{padding:30px 0;border-top:1px solid var(--qct-color-line)}
+.layout main section h2{color:var(--qct-color-ink);font-size:clamp(1.55rem,2.7vw,2.25rem);line-height:1.22}
+.related{padding:34px;background:var(--qct-color-ink);color:#fffaf5;margin-top:24px}.related h2,.related a{color:#fffaf5}
+.more{display:flex;flex-wrap:wrap;gap:18px 28px;border-top:1px solid var(--qct-color-line);padding-top:24px;margin-top:34px}.more a{font-weight:700;color:var(--qct-color-accent-strong)}
+@media(max-width:760px){.layout{grid-template-columns:1fr;gap:30px;padding-top:44px}.summary{position:static}.meta{grid-template-columns:1fr}.az-blog-hero h1{font-size:clamp(2.35rem,10vw,3rem)}}
+</style>
