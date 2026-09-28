@@ -5,6 +5,64 @@ export interface AzBlogPost {
   published: string; modified: string;
 }
 export const azBlogPosts: AzBlogPost[] = [
+
+  {
+    slug:"dinamik-seo-2026-seo-geo-aeo-aio",trSlug:"dinamik-seo-2026-seo-geo-aeo-aio",
+    title:"Dinamik SEO 2026: SEO, GEO, AEO və AIO niyə birlikdə işləməlidir?",
+    description:"Search Console sorğuları, texniki sağlamlıq, məzmun boşluqları və AI görünürlüyü ilə aylıq inkişaf edən dinamik SEO modelini öyrənin.",
+    intro:"Axtarış görünürlüyü artıq birdəfəlik keyword optimallaşdırması deyil. Texniki SEO, real sorğu məlumatı, məzmun arxitekturası, structured data, GEO, AEO və AIO birlikdə idarə olunmalıdır.",
+    summary:["Dinamik SEO aylıq inkişaf dövrüdür.","SEO crawl və intent-i, GEO generativ kəşfi, AEO birbaşa cavabları, AIO isə entity və məzmun kontekstini gücləndirir.","Search Console növbəti optimallaşdırma prioritetini göstərir.","Yalnız yeni blog yazmaq kifayət deyil; kommersiya səhifələri də inkişaf etdirilməlidir."],
+    sections:[
+      {heading:"Dinamik SEO nədir?",paragraphs:["Texniki sağlamlıq, indeksləmə, real sorğular, daxili linklər, schema və dönüşüm siqnallarının mütəmadi yoxlanıb sayta yeni inkişafların tətbiq edilməsidir."]},
+      {heading:"SEO, GEO, AEO və AIO necə birləşir?",paragraphs:["SEO klassik axtarış əsasını, GEO generativ sistemlər üçün mənbə aydınlığını, AEO birbaşa cavab quruluşunu, AIO isə biznes və xidmət kontekstinin AI tərəfindən düzgün anlaşılmasını dəstəkləyir."]},
+      {heading:"Aylıq iş dövrü necə olmalıdır?",paragraphs:["Texniki yoxlama, Search Console analizi, prioritet səhifə optimallaşdırması, yeni məzmun, daxili linklər və kommersiya nəticələrinin ölçülməsi birlikdə işləməlidir."]},
+      {heading:"QCT Commerce modeli",paragraphs:["SEO Care texniki baxıma, Dinamik SEO sorğu və məzmun inkişafına, SEO Growth isə daha intensiv məzmun və landing page böyüməsinə fokuslanır."]}
+    ],
+    relatedLabel:"Dinamik SEO, GEO, AEO və AIO xidmətinə baxın",relatedHref:"/az/seo-geo/",published:"2026-09-28",modified:"2026-09-28"
+  },
+  {
+    slug:"chatgpt-ads-2026-reklam",trSlug:"chatgpt-ads-2026-reklam-verme",
+    title:"ChatGPT Ads 2026: Ads Manager, CPC və Sponsored Agents nədir?",
+    description:"ChatGPT Ads, conversational intent, CPC modeli, Sponsored Agents və AI-native reklam üçün landing page strategiyasını öyrənin.",
+    intro:"ChatGPT Ads klassik keyword reklamından fərqli olaraq istifadəçinin qərar kontekstinə daha yaxın ola bilər. Buna görə reklam, təklif və landing page yalnız açar söz deyil, söhbət niyyəti əsasında qurulmalıdır.",
+    summary:["2026-da self-service Ads Manager və CPC imkanları genişləndi.","Sponsored Agents reklamdan sonra biznes sponsorlu söhbət təcrübəsinə keçid yarada bilər.","Kreativ mətn konkret fayda və uyğunluğu göstərməlidir.","Landing page sübut, scope, qiymət və aydın CTA ilə söhbəti davam etdirməlidir."],
+    sections:[
+      {heading:"ChatGPT Ads klassik reklamlardan nə ilə fərqlənir?",paragraphs:["İstifadəçi artıq problem, müqayisə və qərar kontekstini söhbətdə paylaşa bilər. Bu daha zəngin intent siqnalları yaradır."]},
+      {heading:"Ads Manager və CPC",paragraphs:["Self-service idarəetmə kampaniyanı daha əlçatan edir, lakin əsas ölçü klikdən çox keyfiyyətli sorğu və satış nəticəsi olmalıdır."]},
+      {heading:"Sponsored Agents nədir?",paragraphs:["Reklamla başlayan maraq biznes sponsorlu conversational agent təcrübəsinə davam edə bilər və bu, discovery ilə conversion arasında yeni mərhələ yaradır."]},
+      {heading:"Landing page necə hazırlanmalıdır?",paragraphs:["Səhifə reklamı təkrar etməməli, istifadəçinin qərarını sübut, scope, qiymət və növbəti addımla irəli aparmalıdır. SEO, GEO, AEO və AIO aydınlığı paid acquisition-a da dəstək verir."]}
+    ],
+    relatedLabel:"AI-native reklam və landing page yanaşmasına baxın",relatedHref:"/az/meta-reklamlari/",published:"2026-09-28",modified:"2026-09-28"
+  },
+  {
+    slug:"oai-searchbot-chatgpt-search-2026",trSlug:"oai-searchbot-chatgpt-search-gorunurlugu-2026",
+    title:"OAI-SearchBot və ChatGPT Search görünürlüyü 2026",
+    description:"robots.txt, OAI-SearchBot, canonical, CDN/firewall və çoxdilli texniki siqnalları AI search görünürlüyü üçün yoxlayın.",
+    intro:"AI search-də mənbə olmaq üçün səhifə əvvəlcə texniki olaraq əlçatan olmalıdır. robots.txt, firewall, response code və canonical buna görə ilk nəzarət nöqtələridir.",
+    summary:["Search crawling və model training icazələri eyni anlayış deyil.","Vacib səhifələr robots, CDN və firewall tərəfindən səhvən bloklanmamalıdır.","Texniki giriş yalnız eligibility yaradır; görünürlük zəmanəti deyil.","Çoxdilli saytlarda hreflang, canonical və crawler access uyğun olmalıdır."],
+    sections:[
+      {heading:"Crawler səhifəyə çata bilir?",paragraphs:["Vacib URL-lər düzgün status kodu qaytarmalı, robots.txt tərəfindən bloklanmamalı və təhlükəsizlik qatlarından keçə bilməlidir."]},
+      {heading:"Search və training icazələrini ayırın",paragraphs:["Fərqli AI botları fərqli məqsədlər daşıya bilər; hamısını eyni qayda ilə idarə etmək doğru deyil."]},
+      {heading:"Texniki giriş niyə kifayət deyil?",paragraphs:["Aydın xidmət izahı, orijinal sübut, entity uyğunluğu, faydalı cavablar və daxili linklər məzmunun mənbə kimi dəyərini artırır."]},
+      {heading:"Çoxdilli struktur",paragraphs:["Dil URL-ləri, hreflang, canonical, sitemap və lokal məzmun bir-birini təsdiqləməlidir."]}
+    ],
+    relatedLabel:"AI search texniki görünürlüyünü yoxlayın",relatedHref:"/az/seo-geo/",published:"2026-09-28",modified:"2026-09-28"
+  },
+  {
+    slug:"multimodal-axtaris-seo-2026",trSlug:"multimodal-arama-seo-2026-gorsel-ai",
+    title:"Multimodal axtarış SEO 2026: şəkillər, məhsul datası və AI kəşfi",
+    description:"Şəkil, alt text, surrounding copy, structured data və vizual sübutun multimodal axtarışda necə birlikdə işlədiyini öyrənin.",
+    intro:"Axtarış daha vizual olur. İstifadəçi mətn yazmaq əvəzinə foto və ya ekran görüntüsü ilə başlaya bilər; bu da şəkil konteksti və məhsul datasını daha vacib edir.",
+    summary:["Tək alt text vizual search strategiyası deyil.","Şəklin olduğu səhifədə məhsul və xidmət konteksti aydın olmalıdır.","E-commerce üçün orijinal şəkillər və doğru atributlar önəmlidir.","SEO, GEO, AEO və AIO vizual sübutu eyni entity kontekstinə bağlamalıdır."],
+    sections:[
+      {heading:"Multimodal axtarış nəyi dəyişir?",paragraphs:["Search sistemləri mətn, şəkil və konteksti birlikdə təhlil etdikcə vizual asset ilə səhifənin semantik məlumatı uyğun olmalıdır."]},
+      {heading:"E-commerce nə etməlidir?",paragraphs:["Orijinal məhsul şəkilləri, variant uyğunluğu, doğru atributlar, Product schema, aydın kateqoriya mətnləri və daxili linklər birlikdə işləməlidir."]},
+      {heading:"Xidmət biznesləri üçün",paragraphs:["Real layihə fotoşəkilləri, lokasiya konteksti və case study sübutları xidmətin nə olduğunu daha aydın göstərə bilər."]},
+      {heading:"Dinamik SEO ilə əlaqə",paragraphs:["Texniki giriş, structured data, birbaşa cavablar və vizual sübut eyni marka və xidmət kontekstini gücləndirdiyi üçün multimodal optimallaşdırma dinamik SEO sisteminə daxildir."]}
+    ],
+    relatedLabel:"Dinamik SEO və AI görünürlüyünə baxın",relatedHref:"/az/seo-geo/",published:"2026-09-28",modified:"2026-09-28"
+  },
+
   {
     "slug": "pazaryeri-komissiya-dereceleri-2026",
     "trSlug": "pazaryeri-komisyon-oranlari-2026",
