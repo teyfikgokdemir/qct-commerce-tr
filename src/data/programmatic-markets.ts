@@ -65,6 +65,26 @@ export const enMarkets: ProgrammaticMarket[] = trMarkets.map((m) => ({
     m.id === "azerbaycan" ? ["Corporate website","Multilingual content","Lead generation"] :
     m.id === "dubai" ? ["Premium web design","English landing pages","Lead generation"] :
     ["Web design","E-commerce","SEO / GEO"],
-  industries: m.industries,
+  industries: ({
+    "almanya":["B2B","Manufacturing","E-commerce"],
+    "ingiltere":["E-commerce","Professional services","B2B"],
+    "azerbaycan":["Services","Trade","E-commerce"],
+    "dubai":["Services","Trade","E-commerce"],
+    "istanbul":["E-commerce","B2B","Professional services"],
+    "ankara":["Technology","Consulting","B2B services"],
+    "izmir":["Export","Manufacturing","E-commerce"],
+    "bursa":["Manufacturing","Automotive supply","B2B"],
+    "antalya":["Tourism","Services","E-commerce"],
+    "gaziantep":["Food","Manufacturing","Export"],
+    "kocaeli":["Industry","Logistics","B2B"],
+    "adana":["Food","Manufacturing","Services"],
+    "kayseri":["Furniture","Manufacturing","Export"],
+    "konya":["Machinery","Agricultural equipment","Manufacturing"],
+    "denizli":["Textiles","Manufacturing","Export"],
+    "mersin":["Logistics","International trade","Food"],
+    "eskisehir":["Technology","Manufacturing","Services"],
+    "samsun":["Trade","Manufacturing","Services"],
+    "sakarya":["Industry","Automotive","Services"]
+  } as Record<string,string[]>)[m.id] ?? ["B2B","E-commerce","Services"],
   alternateId: m.id
 }));
