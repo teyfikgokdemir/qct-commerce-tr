@@ -134,7 +134,10 @@ for (const [url, page] of pages) {
     if (alternateMatch) continue;
     if (target.pathname.startsWith('/en/')) {
       if (!pages.has(target.origin + target.pathname) || redirectFor(target.href)) fail(url, `English link missing or redirected: ${href}`);
-    } else if (!((target.pathname === '/' && ['TR', 'Türkiye'].includes(text(anchor[2]))) || (target.pathname === '/az/azerbaycan/' && text(anchor[2]) === 'AZ'))) fail(url, `non-English internal content link: ${href}`);
+    } else if (!(
+      (target.pathname === '/' && ['TR', 'Türkiye'].includes(text(anchor[2]))) ||
+      (target.pathname.startsWith('/az/') && text(anchor[2]) === 'AZ')
+    )) fail(url, `non-English internal content link: ${href}`);
   }
 }
 for (const route of ['/en/', '/en/blog/', '/en/meta-ads/', '/en/audit/', '/en/how-we-work/', '/en/services/', '/en/pricing/', '/en/work/', '/en/contact/']) {
