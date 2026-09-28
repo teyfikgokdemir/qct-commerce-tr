@@ -81,7 +81,7 @@ const isIndexable = !noindex;
 const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : image.toLowerCase().endsWith('.webp') ? 'image/webp' : 'image/jpeg';
 const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
-const homePath = isAzerbaijani ? '/az/azerbaycan/' : isEnglish ? '/en/' : '/';
+const homePath = isAzerbaijani ? '/az/' : isEnglish ? '/en/' : '/';
 const homeUrl = new URL(homePath, SITE_URL).toString();
 const xDefaultHref = alternates.find((alternate) => alternate.lang === 'en' || alternate.lang === 'en-US')?.href ?? '/en/';
 const organizationId = `${SITE_URL}/#organization`;
