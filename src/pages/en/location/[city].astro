@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
 import { enMarkets, programmaticServices, internationalMarketEnIds, enServicePath } from "../../../data/programmatic-markets";
 
 export function getStaticPaths() {
@@ -35,6 +37,8 @@ const breadcrumbs = [
   pageType="CollectionPage"
   areaServed={market.areaServed}
 >
+  <Header slot="header" lang="en" />
+  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260928-1" />
   <div class="qct-v2" data-qct-v2>
     <section class="qct-hero">
       <div class="qct-shell qct-hero-grid">
@@ -159,4 +163,5 @@ const breadcrumbs = [
       </div>
     </section>
   </div>
+  <Footer slot="footer" lang="en" />
 </BaseLayout>
