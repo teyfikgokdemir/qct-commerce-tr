@@ -30,7 +30,8 @@ export const azBlogPosts: AzBlogPost[] = [
       {"heading":"ChatGPT Ads klassik reklamlardan nə ilə fərqlənir?","paragraphs":["İstifadəçi artıq problem, müqayisə və qərar kontekstini söhbətdə paylaşa bilər. Bu daha zəngin intent siqnalları yaradır."]},
       {"heading":"Ads Manager və CPC","paragraphs":["Self-service idarəetmə CPM, CPC və uyğun hesablarda oCPC məqsədləri ilə kampaniyanı daha çevik edir, lakin əsas ölçü klikdən çox keyfiyyətli sorğu və satış nəticəsi olmalıdır."]},
       {"heading":"Sponsored Agents nədir?","paragraphs":["Sponsored Agents hazırda seçilmiş reklamverənlərlə məhdud alpha mərhələsindədir; giriş olduqda reklamla başlayan maraq biznes sponsorlu conversational agent təcrübəsinə davam edə bilər və bu, discovery ilə conversion arasında yeni mərhələ yaradır."]},
-      {"heading":"Landing page necə hazırlanmalıdır?","paragraphs":["Səhifə reklamı təkrar etməməli, istifadəçinin qərarını sübut, scope, qiymət və növbəti addımla irəli aparmalıdır. SEO, GEO, AEO və AIO aydınlığı paid acquisition-a da dəstək verir."]}
+      {"heading":"Landing page necə hazırlanmalıdır?","paragraphs":["Səhifə reklamı təkrar etməməli, istifadəçinin qərarını sübut, scope, qiymət və növbəti addımla irəli aparmalıdır. SEO, GEO, AEO və AIO aydınlığı paid acquisition-a da dəstək verir."]},
+      {"heading":"Mövcudluq və uyğunluq qeydi","paragraphs":["ChatGPT Ads və Sponsored Agents bütün bazarlarda və bütün reklamverənlər üçün eyni şəkildə açıq deyil. Kampaniya planlamadan əvvəl Ads Manager uyğunluğu, mövcud formatlar və reklam siyasətləri cari hesab və ölkə üzrə yoxlanmalıdır."]}
     ],
     "relatedLabel":"AI-native reklam və landing page yanaşmasına baxın","relatedHref":"/az/meta-reklamlari/","published":"2026-09-28","modified":"2026-09-28"
   },
