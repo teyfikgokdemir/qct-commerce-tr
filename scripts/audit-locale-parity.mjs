@@ -6,7 +6,22 @@ const pageFile=p=>p==='/'?path.join(DIST,'index.html'):path.join(DIST,p.replace(
 const readPage=p=>fs.existsSync(pageFile(p))?fs.readFileSync(pageFile(p),'utf8'):null;
 const hrefs=h=>[...h.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
 const alts=h=>[...h.matchAll(/<link\b[^>]*rel=["']alternate["'][^>]*hreflang=["']([^"']+)["'][^>]*href=["']([^"']+)["'][^>]*>/gi)].map(m=>({lang:m[1],href:m[2]}));
-for(const cluster of localeParityClusters){for(const [lang,p] of Object.entries(cluster)){const h=readPage(p);if(!h){errors.push(`${p}: missing ${lang} parity page`);continue;}const a=alts(h);for(const [tl,tp] of Object.entries(cluster)){const hl=tl==='tr'?'tr-TR':tl==='en'?'en':'az-AZ',ex=new URL(tp,SITE).toString();if(!a.some(x=>x.lang===hl&&x.href===ex))errors.push(`${p}: missing ${hl} -> ${tp}`);const escaped=tp.replace(/[.*+?^${}()|[\]\\]/g,'\\for(const cluster of localeParityClusters){for(const [lang,p] of Object.entries(cluster)){const h=readPage(p);if(!h){errors.push(`${p}: missing ${lang} parity page`);continue;}const a=alts(h);for(const [tl,tp] of Object.entries(cluster)){const hl=tl==='tr'?'tr-TR':tl==='en'?'en':'az-AZ',ex=new URL(tp,SITE).toString();if(!a.some(x=>x.lang===hl&&x.href===ex))errors.push(`${p}: missing ${hl} -> ${tp}`);}}}');const switchRe=new RegExp('<a\\\\b[^>]*href=["\\\']'+escaped+'["\\\'][^>]*hreflang=["\\\']'+hl+'["\\\']','i');if(!switchRe.test(h))errors.push(`${p}: language switch does not link to same-page ${hl} counterpart ${tp}`);}}}
+const attr=(attrs,name)=>attrs.match(new RegExp(name+'=["\\\']([^"\\\']+)["\\\']','i'))?.[1]||null;
+const languageLinks=h=>[...h.matchAll(/<a\\b([^>]*)>/gi)].map(m=>({href:attr(m[1],'href'),lang:attr(m[1],'hreflang')})).filter(x=>x.href&&x.lang);
+for(const cluster of localeParityClusters){
+  for(const [lang,p] of Object.entries(cluster)){
+    const h=readPage(p);
+    if(!h){errors.push(`${p}: missing ${lang} parity page`);continue;}
+    const a=alts(h);
+    const switches=languageLinks(h);
+    for(const [tl,tp] of Object.entries(cluster)){
+      const hl=tl==='tr'?'tr-TR':tl==='en'?'en':'az-AZ';
+      const ex=new URL(tp,SITE).toString();
+      if(!a.some(x=>x.lang===hl&&x.href===ex)) errors.push(`${p}: missing ${hl} -> ${tp}`);
+      if(!switches.some(x=>x.lang===hl&&x.href===tp)) errors.push(`${p}: language switch does not link to same-page ${hl} counterpart ${tp}`);
+    }
+  }
+}
 for(const [lang,p] of Object.entries({tr:'/hizmetler/',en:'/en/services/',az:'/az/xidmetler/'})){const h=readPage(p);if(!h)continue;const links=new Set(hrefs(h));for(const r of canonicalServiceLinks[lang])if(!links.has(r))errors.push(`${p}: missing core service ${r}`);}
 for(const [lang,prefix] of Object.entries({tr:'/blog/',en:'/en/blog/',az:'/az/bloq/'})){const d=path.join(DIST,prefix.replace(/^\//,'').replace(/\/$/,''));const count=fs.existsSync(d)?fs.readdirSync(d,{withFileTypes:true}).filter(e=>e.isDirectory()).length:0;if(count!==13)errors.push(`${prefix}: expected 13 articles, found ${count}`);}
 if(blogLocaleClusters.length!==13)errors.push('blog parity map must contain 13 triplets');
