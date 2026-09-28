@@ -1,5 +1,6 @@
 ---
 import MobileMenu from './MobileMenu.astro';
+import { localeParityClusters } from '../data/locale-parity.js';
 interface Props { lang: string; }
 const { lang } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -33,22 +34,14 @@ const localePairs: Record<string, string> = {
   '/e-ticaret-markalari/': '/en/ecommerce-brands/', '/en/ecommerce-brands/': '/e-ticaret-markalari/'
 };
 const pairedLocalePath = localePairs[currentPath];
-const azPairs: Record<string, { tr: string; en: string; az: string }> = {
-  '/': { tr:'/', en:'/en/', az:'/az/' }, '/en/': { tr:'/', en:'/en/', az:'/az/' }, '/az/': { tr:'/', en:'/en/', az:'/az/' },
-  '/hakkimizda/': { tr:'/hakkimizda/', en:'/en/about/', az:'/az/haqqimizda/' }, '/en/about/': { tr:'/hakkimizda/', en:'/en/about/', az:'/az/haqqimizda/' }, '/az/haqqimizda/': { tr:'/hakkimizda/', en:'/en/about/', az:'/az/haqqimizda/' },
-  '/hizmetler/': { tr:'/hizmetler/', en:'/en/services/', az:'/az/xidmetler/' }, '/en/services/': { tr:'/hizmetler/', en:'/en/services/', az:'/az/xidmetler/' }, '/az/xidmetler/': { tr:'/hizmetler/', en:'/en/services/', az:'/az/xidmetler/' },
-  '/fiyatlar/': { tr:'/fiyatlar/', en:'/en/pricing/', az:'/az/qiymetler/' }, '/en/pricing/': { tr:'/fiyatlar/', en:'/en/pricing/', az:'/az/qiymetler/' }, '/az/qiymetler/': { tr:'/fiyatlar/', en:'/en/pricing/', az:'/az/qiymetler/' },
-  '/iletisim/': { tr:'/iletisim/', en:'/en/contact/', az:'/az/elaqe/' }, '/en/contact/': { tr:'/iletisim/', en:'/en/contact/', az:'/az/elaqe/' }, '/az/elaqe/': { tr:'/iletisim/', en:'/en/contact/', az:'/az/elaqe/' },
-  '/web-tasarim/': { tr:'/web-tasarim/', en:'/en/web-design/', az:'/az/veb-dizayn/' }, '/en/web-design/': { tr:'/web-tasarim/', en:'/en/web-design/', az:'/az/veb-dizayn/' }, '/az/veb-dizayn/': { tr:'/web-tasarim/', en:'/en/web-design/', az:'/az/veb-dizayn/' },
-  '/e-ticaret/': { tr:'/e-ticaret/', en:'/en/ecommerce/', az:'/az/e-ticaret/' }, '/en/ecommerce/': { tr:'/e-ticaret/', en:'/en/ecommerce/', az:'/az/e-ticaret/' }, '/az/e-ticaret/': { tr:'/e-ticaret/', en:'/en/ecommerce/', az:'/az/e-ticaret/' },
-  '/seo-geo/': { tr:'/seo-geo/', en:'/en/search-visibility/', az:'/az/seo-geo/' }, '/en/search-visibility/': { tr:'/seo-geo/', en:'/en/search-visibility/', az:'/az/seo-geo/' }, '/az/seo-geo/': { tr:'/seo-geo/', en:'/en/search-visibility/', az:'/az/seo-geo/' }
-};
-const azPair = azPairs[currentPath];
-const azHref = azPair?.az || '/az/';
-
+const parityCluster = localeParityClusters.find((cluster) =>
+  cluster.tr === currentPath || cluster.en === currentPath || cluster.az === currentPath
+);
 const isErrorRoute = currentPath === '/404/' || currentPath === '/404';
-const trHref = isAzerbaijani ? (azPair?.tr || '/') : isEnglish ? (pairedLocalePath || '/') : (isErrorRoute ? '/' : currentPath);
-const enHref = isAzerbaijani ? (azPair?.en || '/en/') : !isEnglish ? (pairedLocalePath || '/en/') : (isErrorRoute ? '/en/' : currentPath);
+const isAzerbaijanMarketRoute = currentPath === '/lokasyon/azerbaycan/' || currentPath === '/en/location/azerbaijan/';
+const trHref = parityCluster?.tr || (isEnglish ? (pairedLocalePath || '/') : isAzerbaijani ? '/' : (isErrorRoute ? '/' : currentPath));
+const enHref = parityCluster?.en || (!isEnglish ? (pairedLocalePath || '/en/') : isAzerbaijani ? '/en/' : (isErrorRoute ? '/en/' : currentPath));
+const azHref = parityCluster?.az || (isAzerbaijanMarketRoute ? '/az/' : '/az/');
 
 const audienceLinks = isAzerbaijani ? [
   ['İstehsalçılar', '/az/istehsalcilar/'],
@@ -140,6 +133,7 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
       currentPath={currentPath}
       trHref={trHref}
       enHref={enHref}
+      azHref={azHref}
       serviceLinks={serviceLinks}
       audienceLinks={audienceLinks}
       quickLinks={quickLinks}
@@ -203,7 +197,7 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
           <div class="qct-mobile-languages" aria-label={isEnglish ? 'Language' : 'Dil seçimi'}>
             <a href={trHref} hreflang="tr-TR" class:list={[{ active: !isEnglish && !isAzerbaijani }]}>TR</a>
             <a href={enHref} hreflang="en" class:list={[{ active: isEnglish }]}>EN</a>
-            <a href="/az/" class:list={[{ active: isAzerbaijani }]}>AZ</a>
+            <a href={azHref} hreflang="az-AZ" class:list={[{ active: isAzerbaijani }]}>AZ</a>
           </div>
           <a class="qct-mobile-project" href={isAzerbaijani ? "mailto:info@qctcommerce.com?subject=Azerbaijan%20digital%20project" : isEnglish ? "/en/contact/" : "/iletisim/"}>
             <span>{isAzerbaijani ? 'Layihəyə başlayın' : isEnglish ? 'Start a project' : 'Proje başlat'}</span>
