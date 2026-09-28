@@ -66,7 +66,6 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
   w.qctTrackEvent = analytics.track;
   const key = 'qct-analytics-consent';
   const banner = document.querySelector<HTMLElement>('[data-cookie-consent]');
-  const settingsTriggers = document.querySelectorAll<HTMLElement>('[data-cookie-settings-trigger]');
   const show = (open: boolean) => { if (banner) banner.hidden = !open; };
   let saved: string | null = null;
   try { saved = localStorage.getItem(key); } catch {}
@@ -81,7 +80,6 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
   };
   document.querySelector('[data-cookie-accept]')?.addEventListener('click', () => choose('granted'));
   document.querySelector('[data-cookie-reject]')?.addEventListener('click', () => choose('denied'));
-  settingsTriggers.forEach((trigger) => trigger.addEventListener('click', () => show(true)));
 </script>
 
 <style>
