@@ -2,19 +2,19 @@
 interface Props { lang: string; }
 const { lang } = Astro.props;
 const isEnglish = lang === 'en';
-const isGeorgian = lang === 'ka';
+const isAzerbaijani = lang === 'az';
 
-const mobileCopy = isGeorgian ? {
-  tagline: 'ვებსაიტი, e-commerce და ციფრული ხილვადობა ერთ სივრცეში.',
-  services: 'სერვისები',
-  company: 'კომპანია',
-  legal: 'იურიდიული',
-  talk: 'მოდით ვისაუბროთ თქვენს პროექტზე',
-  title: 'იდეა ერთად გადავაქციოთ რეალურ ციფრულ სისტემად.',
-  text: 'მოგვწერეთ WhatsApp-ზე და საჭიროება მოკლედ დავაზუსტოთ.',
-  whatsapp: 'WhatsApp-ზე დაწყება',
-  top: 'ზემოთ',
-  rights: 'ყველა უფლება დაცულია.'
+const mobileCopy = isAzerbaijani ? {
+  tagline: 'Veb sayt, e-ticarət və rəqəmsal görünürlük üçün vahid tərəfdaş.',
+  services: 'Xidmətlər',
+  company: 'Şirkət',
+  legal: 'Hüquqi',
+  talk: 'LAYİHƏNİZİ MÜZAKİRƏ EDƏK',
+  title: 'İdeyanızı işləyən rəqəmsal sistemə çevirək.',
+  text: 'WhatsApp-da ehtiyacınızı yazın; uyğun başlanğıc çərçivəsini birlikdə müəyyənləşdirək.',
+  whatsapp: 'WhatsApp-da başlayın',
+  top: 'Yuxarı',
+  rights: 'Bütün hüquqlar qorunur.'
 } : isEnglish ? {
   tagline: 'One place for websites, e-commerce and digital visibility.',
   services: 'Services',
@@ -39,11 +39,12 @@ const mobileCopy = isGeorgian ? {
   rights: 'Tüm hakları saklıdır.'
 };
 
-const serviceLinks = isGeorgian ? [
-  ['ციფრული კომერცია','/ka/georgia/#system'],
-  ['B2B გაყიდვების სისტემები','/ka/georgia/#system'],
-  ['მრავალენოვანი ვებსაიტები','/ka/georgia/#system'],
-  ['SEO, GEO, AEO და AIO','/ka/georgia/#system'],
+const serviceLinks = isAzerbaijani ? [
+  ['Veb dizayn','/az/veb-dizayn/'],
+  ['E-ticarət','/az/e-ticaret/'],
+  ['SEO, GEO, AEO və AIO','/az/seo-geo/'],
+  ['WhatsApp satış sistemləri','/az/whatsapp-satis/'],
+  ['AI avtomatlaşdırma','/az/ai-avtomatlasdirma/'],
 ] : isEnglish ? [
   ['E-commerce systems','/en/ecommerce/'],
   ['Shopify setup','/en/shopify-store-setup/'],
@@ -60,10 +61,16 @@ const serviceLinks = isGeorgian ? [
   ['SEO, GEO, AEO ve AIO','/seo-geo/'],
 ];
 
-const companyLinks = isGeorgian ? [
-  ['საქართველო','/ka/georgia/'],
-  ['English','/en/'],
-  ['Türkiye','/'],
+const companyLinks = isAzerbaijani ? [
+  ['Haqqımızda','/az/haqqimizda/'],
+  ['İşlərimiz','/az/isler/'],
+  ['Xidmətlər','/az/xidmetler/'],
+  ['Qiymətlər','/az/qiymetler/'],
+  ['Necə işləyirik','/az/nece-isleyirik/'],
+  ['Rəqəmsal audit','/az/reqemsal-audit/'],
+  ['Bloq','/az/bloq/'],
+  ['Karyera','/az/karyera/'],
+  ['Əlaqə','/az/elaqe/'],
 ] : isEnglish ? [
   ['About QCT Commerce','/en/about/'],
   ['Work','/en/work/'],
@@ -89,9 +96,10 @@ const companyLinks = isGeorgian ? [
   ['İletişim','/iletisim/'],
 ];
 
-const legalLinks = isGeorgian ? [
-  ['Privacy policy','/gizlilik-politikasi/'],
-  ['Cookie policy','/cerez-politikasi/'],
+const legalLinks = isAzerbaijani ? [
+  ['Məxfilik siyasəti','/az/mexfilik/'],
+  ['İstifadə şərtləri','/az/istifade-sertleri/'],
+  ['Kuki siyasəti','/az/kuki-siyaseti/'],
 ] : isEnglish ? [
   ['Privacy policy','/en/privacy-policy/'],
   ['KVKK notice','/en/kvkk/'],
@@ -120,15 +128,16 @@ const legalLinks = isGeorgian ? [
     <div class="site-footer__columns">
       <div class="site-footer__group site-footer__brand">
         <h2>QCT Commerce</h2>
-        <p>{isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Websites, e-commerce and digital visibility for businesses and founders operating in Türkiye.' : 'Web, e-ticaret ve dijital görünürlük için uygulama ortağınız.'}</p>
-        <p class="site-footer__brand-relationship">{isGeorgian ? 'QCT ekosisteminin bir parçasıdır.' : isEnglish ? 'QCT Commerce is the Türkiye-focused web, e-commerce and digital visibility brand within the QCT ecosystem.' : 'QCT Commerce, QCT ekosisteminin Türkiye odaklı web, e-ticaret ve dijital görünürlük markasıdır.'}</p>
+        <p>{isAzerbaijani ? 'Azərbaycan şirkətləri üçün veb sayt, e-ticarət və rəqəmsal görünürlük sistemləri.' : isEnglish ? 'Websites, e-commerce and digital visibility for businesses and founders operating in Türkiye.' : 'Web, e-ticaret ve dijital görünürlük için uygulama ortağınız.'}</p>
+        <p class="site-footer__brand-relationship">{isAzerbaijani ? 'QCT Commerce, Azərbaycan bazarı üçün yerli dildə rəqəmsal xidmətlər təqdim edir.' : isEnglish ? 'QCT Commerce is the Türkiye-focused web, e-commerce and digital visibility brand within the QCT ecosystem.' : 'QCT Commerce, QCT ekosisteminin Türkiye odaklı web, e-ticaret ve dijital görünürlük markasıdır.'}</p>
       </div>
 
-      {isGeorgian ? (
+      {isAzerbaijani ? (
         <>
-          <nav class="site-footer__group site-footer__nav" aria-label="გადაწყვეტილებები"><h2>გადაწყვეტილებები</h2><a href="/ka/georgia/#system">ციფრული კომერცია</a><a href="/ka/georgia/#system">B2B გაყიდვების სისტემები</a><a href="/ka/georgia/#system">მრავალენოვანი ვებსაიტები</a><a href="/ka/georgia/#system">SEO, GEO, AEO და AIO</a><a href="/ka/georgia/#system">AI და გაყიდვების ავტომატიზაცია</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="ბაზრები"><h2>ბაზრები</h2><a href="/ka/georgia/">საქართველო</a><a href="/en/">English</a><a href="/">თურქეთი</a></nav>
-          <div class="site-footer__group site-footer__markets"><h2>კონტაქტი</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>თურქეთი</p></div>
+          <nav class="site-footer__group site-footer__nav" aria-label="Xidmətlər"><h2>Xidmətlər</h2><a href="/az/veb-dizayn/">Veb dizayn</a><a href="/az/e-ticaret/">E-ticarət</a><a href="/az/seo-geo/">SEO, GEO, AEO və AIO</a><a href="/az/whatsapp-satis/">WhatsApp satış sistemləri</a><a href="/az/ai-avtomatlasdirma/">AI avtomatlaşdırma</a></nav>
+          <nav class="site-footer__group site-footer__audience" aria-label="Kimlər üçün"><h2>Kimlər üçün</h2><a href="/az/istehsalcilar/">İstehsalçılar</a><a href="/az/ixracatcilar/">İxracatçılar</a><a href="/az/distributor-b2b/">Distribütor &amp; B2B</a><a href="/az/e-ticaret-brendleri/">E-ticarət brendləri</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Şirkət"><h2>Şirkət</h2><a href="/az/haqqimizda/">Haqqımızda</a><a href="/az/isler/">İşlərimiz</a><a href="/az/qiymetler/">Qiymətlər</a><a href="/az/bloq/">Bloq</a><a href="/az/elaqe/">Əlaqə</a></nav>
+          <div class="site-footer__group site-footer__markets"><h2>Əlaqə</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Azərbaycan / Türkiyə</p></div>
         </>
       ) : isEnglish ? (
         <>
@@ -172,7 +181,7 @@ const legalLinks = isGeorgian ? [
       )}
     </div>
     
-{(!isEnglish && !isGeorgian) && (
+{(!isEnglish && !isAzerbaijani) && (
 <nav class="site-footer__locations" aria-label="Bölgeler" style="display:none;">
   <a href="/lokasyon/istanbul/">İstanbul</a>
   <a href="/lokasyon/ankara/">Ankara</a>
@@ -197,11 +206,14 @@ const legalLinks = isGeorgian ? [
 )}
 <div class="site-footer__bottom">
       <div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div>
-      {!isGeorgian && <nav class="site-footer__legal-desktop" aria-label={isEnglish ? 'Legal' : 'Yasal'}>
+      {!isAzerbaijani && <nav class="site-footer__legal-desktop" aria-label={isEnglish ? 'Legal' : 'Yasal'}>
         <a href={isEnglish ? '/en/privacy-policy/' : '/gizlilik-politikasi/'}>{isEnglish ? 'Privacy' : 'Gizlilik'}</a>
         <a href={isEnglish ? '/en/kvkk/' : '/kvkk/'}>KVKK</a>
         <a href={isEnglish ? '/en/terms/' : '/kullanim-kosullari/'}>{isEnglish ? 'Terms' : 'Kullanım koşulları'}</a>
         <a href={isEnglish ? '/en/cookie-policy/' : '/cerez-politikasi/'}>{isEnglish ? 'Cookies' : 'Çerezler'}</a>
+      </nav>}
+      {isAzerbaijani && <nav class="site-footer__legal-desktop" aria-label="Hüquqi">
+        <a href="/az/mexfilik/">Məxfilik</a><a href="/az/istifade-sertleri/">Şərtlər</a><a href="/az/kuki-siyaseti/">Kukilər</a>
       </nav>}
     </div>
   </div>

@@ -57,7 +57,7 @@ for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
   const canonical = expectedUrl(file);
   const pathname = new URL(canonical).pathname;
-  const expectedLang = pathname.startsWith('/ka/') ? 'ka' : pathname.startsWith('/en/') ? 'en' : 'tr';
+  const expectedLang = pathname.startsWith('/az/') ? 'az' : pathname.startsWith('/en/') ? 'en' : 'tr';
   const htmlLang = html.match(/<html\s+[^>]*lang=["']([^"']+)["']/i)?.[1] ?? null;
   if (htmlLang !== expectedLang) errors.push(`${file}: html lang ${htmlLang} does not match ${expectedLang}.`);
   const titleTags = html.match(/<title>([\s\S]*?)<\/title>/gi) ?? [];
@@ -71,14 +71,10 @@ for (const file of htmlFiles) {
   const robots = tags(html, 'meta').filter((tag) => attribute(tag, 'name')?.toLowerCase() === 'robots').map((tag) => attribute(tag, 'content') ?? '').join(',').toLowerCase();
   if (!robots.includes('noindex')) canonicals.add(canonical);
   const alternates = tags(html, 'link').filter((tag) => attribute(tag, 'rel')?.toLowerCase() === 'alternate' && attribute(tag, 'hreflang'));
-  const isPairedHome = pathname === '/' || pathname === '/en/';
-  const isGeorgiaPair = pathname === '/en/georgia/' || pathname === '/ka/georgia/';
+  const isPairedHome = pathname === '/' || pathname === '/en/' || pathname === '/az/';
   if (isPairedHome) {
     const langs = new Set(alternates.map((tag) => attribute(tag, 'hreflang')));
-    for (const required of ['tr-TR', 'en', 'x-default']) if (!langs.has(required)) errors.push(`${file}: multilingual home is missing ${required} hreflang.`);
-  } else if (isGeorgiaPair) {
-    const langs = new Set(alternates.map((tag) => attribute(tag, 'hreflang')));
-    for (const required of ['en', 'ka-GE', 'x-default']) if (!langs.has(required)) errors.push(`${file}: Georgia language pair is missing ${required} hreflang.`);
+    for (const required of ['tr-TR', 'en', 'az-AZ', 'x-default']) if (!langs.has(required)) errors.push(`${file}: multilingual home is missing ${required} hreflang.`);
   } else if (alternates.length) {
     const langs = new Set(alternates.map((tag) => attribute(tag, 'hreflang')));
     for (const required of ['tr-TR','en','x-default']) if (!langs.has(required)) errors.push(file + ': paired page is missing ' + required + ' hreflang.');

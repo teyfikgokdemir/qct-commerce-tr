@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'; import Header from '../../../components/Header.astro'; import Footer from '../../../components/Footer.astro'; import { azBlogPosts } from '../../../data/az-blog';
+export function getStaticPaths(){return azBlogPosts.map(post=>({params:{slug:post.slug},props:{post}}));}
+const { post }=Astro.props;
+---
+<BaseLayout title={post.title+' | QCT Commerce'} description={post.description} lang="az" type="article" breadcrumbLabel={post.title}><Header slot="header" lang="az" /><article><section class="page-hero section"><div class="container"><p class="eyebrow">BLOQ · AZƏRBAYCAN</p><h1>{post.title}</h1><p class="page-hero__lead">{post.description}</p></div></section>{post.sections.map(([title,text])=><section class="section"><div class="container"><div class="section-heading"><h2>{title}</h2><p>{text}</p></div></div></section>)}</article><Footer slot="footer" lang="az" /></BaseLayout>

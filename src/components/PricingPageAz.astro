@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+const faq=[
+ {q:'Korporativ veb sayt neçədən başlayır?',a:'Standart korporativ veb sayt 690 AZN-dən başlayır. Çoxdilli və xüsusi inteqrasiyalı layihələr 1.090 AZN və yuxarı əhatədə qiymətləndirilir.'},
+ {q:'E-ticarət qiyməti nə qədərdir?',a:'Standart e-ticarət layihələri 1.290 AZN-dən başlayır. Məhsul sayı, platforma və inteqrasiyalar qiyməti dəyişə bilər.'},
+ {q:'Aylıq SEO xidməti varmı?',a:'SEO, GEO, AEO və AIO başlanğıc işi 290 AZN-dən başlayır. Davamlı aylıq iş ayrıca əhatələndirilir.'}
+];
+const schema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(i=>({'@type':'Question',name:i.q,acceptedAnswer:{'@type':'Answer',text:i.a}}))};
+---
+<BaseLayout title="Azərbaycanda Veb Sayt və E-ticarət Qiymətləri 2026 | QCT" description="QCT Commerce Azərbaycan qiymətləri: landing 390 AZN, korporativ sayt 690 AZN, çoxdilli sayt 1.090 AZN, e-ticarət 1.290 AZN, SEO/GEO/AEO/AIO 290 AZN-dən." lang="az" breadcrumbLabel="Qiymətlər">
+<script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
+<Header slot="header" lang="az" /><link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-2" />
+<div class="qct-v2"><section class="qct-pricing-hero"><div class="qct-shell"><p class="qct-eyebrow">AZƏRBAYCAN ÜÇÜN QİYMƏTLƏR · 2026</p><h1>Nə alacağınızı bilin.<br/><em>Nə ödəyəcəyinizi də.</em></h1><p class="qct-lead">Ucuz paket bazarına girmədən, həddindən artıq premium qiymətə çıxmadan; standart layihələr üçün aydın başlanğıc qiymətləri.</p><div class="qct-hero-actions"><a class="qct-btn qct-btn-primary" href="/az/#qiymet-hesabla">Canlı qiyməti hesablayın <span>→</span></a><a class="qct-text-link" href="/az/elaqe/">Layihəni müzakirə edin</a></div></div></section>
+<section class="qct-pricing-list"><div class="qct-shell">
+<div class="qct-price-category"><div><p class="qct-section-label">VEB SAYT</p><h2>Yeni layihələr</h2></div><div class="qct-price-rows"><article><span>Landing / kampaniya səhifəsi</span><strong>390 AZN</strong><small>Başlanğıc qiymət</small><p>Bir məqsədə fokuslanan, mobil və dönüşüm yönümlü səhifə.</p></article><article><span>Korporativ veb sayt</span><strong>690 AZN</strong><small>Başlanğıc qiymət</small><p>Şirkət, xidmətlər, referanslar, əlaqə və əsas SEO strukturu.</p></article><article><span>Premium çoxdilli korporativ sayt</span><strong>1.090 AZN</strong><small>Başlanğıc qiymət</small><p>Çoxdilli struktur, geniş məlumat arxitekturası və bazar uyğunlaşdırması.</p></article></div></div>
+<div class="qct-price-category"><div><p class="qct-section-label">E-TİCARƏT</p><h2>Onlayn satış infrastrukturu</h2></div><div class="qct-price-rows"><article><span>E-ticarət saytı</span><strong>1.290 AZN</strong><small>Başlanğıc qiymət</small><p>Platforma qurulması, əsas satış axını və mağazanın işə hazırlanması.</p></article><article><span>Geniş e-ticarət / inteqrasiya</span><strong>1.890 AZN</strong><small>Başlanğıc qiymət</small><p>Daha böyük kataloq, xüsusi axın və inteqrasiya ehtiyacları üçün.</p></article></div></div>
+<div class="qct-price-category"><div><p class="qct-section-label">GÖRÜNÜRLÜK & SATIŞ</p><h2>SEO, AI və avtomatlaşdırma</h2></div><div class="qct-price-rows"><article><span>SEO + GEO + AEO + AIO</span><strong>290 AZN</strong><small>Başlanğıc qiymət</small><p>Texniki baza, axtarış niyyəti, entity və AI görünürlük siqnalları.</p></article><article><span>Texniki SEO + AI görünürlük auditi</span><strong>190 AZN</strong><small>Başlanğıc qiymət</small><p>Tarama, indeks, metadata, canonical, sitemap, performans və AI oxunaqlığı.</p></article><article><span>WhatsApp satış sistemi</span><strong>190 AZN</strong><small>Başlanğıc qiymət</small><p>Tələb qəbul etmə, yönləndirmə və satış axını.</p></article><article><span>AI / CRM avtomatlaşdırma</span><strong>390 AZN</strong><small>Başlanğıc qiymət</small><p>Lead qəbulu, təsnifat, follow-up və əməliyyat avtomatlaşdırması.</p></article></div></div>
+</div></section>
+<section class="qct-pricing-faq"><div class="qct-shell"><p class="qct-section-label">TEZ-TEZ VERİLƏN SUALLAR</p><h2>Qiymətləndirmə haqqında</h2><div class="qct-faq-grid">{faq.map(i=><details><summary>{i.q}</summary><p>{i.a}</p></details>)}</div></div></section>
+<section class="qct-close"><div class="qct-shell qct-close-grid"><div><p class="qct-section-label">60 SANİYƏDƏ BAŞLAYIN</p><h2>Ehtiyacınızı seçin.<br/><em>Qiyməti görün.</em></h2></div><a class="qct-btn qct-btn-light" href="/az/#qiymet-hesabla">Canlı hesablayın <span>→</span></a></div></section></div>
+<Footer slot="footer" lang="az" /></BaseLayout>

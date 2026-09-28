@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+interface Card { title: string; text: string; href?: string; }
+interface Faq { q: string; a: string; }
+interface Props {
+  title: string; description: string; h1: string; lead: string; eyebrow?: string;
+  cards?: Card[]; secondTitle?: string; secondText?: string; faq?: Faq[];
+  breadcrumbLabel?: string; ctaTitle?: string; ctaText?: string;
+}
+const { title, description, h1, lead, eyebrow='QCT COMMERCE AZƏRBAYCAN', cards=[], secondTitle, secondText, faq=[], breadcrumbLabel, ctaTitle='Layihənizi birlikdə dəqiqləşdirək.', ctaText='Ehtiyacınızı paylaşın; uyğun texniki və kommersiya çərçivəsini müəyyənləşdirək.' } = Astro.props;
+const faqSchema = faq.length ? { '@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(item=>({ '@type':'Question',name:item.q,acceptedAnswer:{'@type':'Answer',text:item.a} })) } : null;
+---
+<BaseLayout title={title} description={description} lang="az" breadcrumbLabel={breadcrumbLabel}>
+  {faqSchema && <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  <Header slot="header" lang="az" />
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{h1}</h1>
+      <p class="page-hero__lead">{lead}</p>
+      <div class="hero__actions"><a class="button button--primary" href="/az/elaqe/">Layihəni müzakirə edin</a><a class="button button--secondary" href="/az/qiymetler/">Qiymətlərə baxın</a></div>
+    </div>
+  </section>
+  {cards.length > 0 && <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">ƏSAS İSTİQAMƏTLƏR</p><h2>{secondTitle || 'Ehtiyaca görə qurulan rəqəmsal sistem.'}</h2>{secondText && <p>{secondText}</p>}</div><div class="service-grid">{cards.map(card => card.href ? <a class="service-card" href={card.href}><h3>{card.title}</h3><p>{card.text}</p><strong>Ətraflı →</strong></a> : <article class="service-card"><h3>{card.title}</h3><p>{card.text}</p></article>)}</div></div></section>}
+  {faq.length > 0 && <section class="section international-faq" id="faq"><div class="container"><div class="section-heading"><p class="eyebrow">TEZ-TEZ VERİLƏN SUALLAR</p><h2>Qısa və aydın cavablar.</h2></div><div class="faq-list">{faq.map(item=><details><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>}
+  <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">NÖVBƏTİ ADDIM</p><h2>{ctaTitle}</h2><p>{ctaText}</p><a class="button button--primary" href="/az/elaqe/">Əlaqə saxlayın</a></div></div></section>
+  <Footer slot="footer" lang="az" />
+</BaseLayout>
