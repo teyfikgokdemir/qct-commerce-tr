@@ -18,7 +18,6 @@ const description = `${market.name} için web tasarım, e-ticaret ve SEO/GEO ç�
 const alternates = [
   { lang: "tr-TR", href: `/lokasyon/${market.id}/` },
   { lang: "en", href: `/en/location/${market.alternateId}/` },
-  ...(market.id === "azerbaycan" ? [{ lang: "az-AZ", href: "/az/" }] : []),
 ];
 const marketServicePages = internationalMarketIds.has(market.id) ? programmaticServices : [];
 const breadcrumbs = [

@@ -16,11 +16,9 @@ export function getStaticPaths() {
 const { market, service } = Astro.props;
 const title = `${market.name} ${service.enName} Services | QCT Commerce`;
 const description = `${service.enName} for ${market.name}: ${service.enOutcome} Build a measurable, scalable digital growth system with QCT Commerce.`;
-const azSlug = ({ "web-design":"veb-dizayn", "ecommerce":"e-ticaret", "search-visibility":"seo-geo" } as Record<string,string>)[service.enSlug];
 const alternates = [
   { lang: "tr-TR", href: trServicePath(market.alternateId, service) },
   { lang: "en", href: enServicePath(market.id, service) },
-  ...(market.id === "azerbaijan" && azSlug ? [{ lang: "az-AZ", href: `/az/${azSlug}/` }] : []),
 ];
 const breadcrumbs = [
   { name: "Home", url: "/en/" },

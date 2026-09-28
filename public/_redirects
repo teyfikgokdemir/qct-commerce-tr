@@ -126,7 +126,6 @@
 # Retired Georgia/KA market layer -> Azerbaijan market layer
 /ka/georgia /az/ 301
 /ka/georgia/ /az/ 301
-/ka/* /az/ 301
 /en/georgia /en/location/azerbaijan/ 301
 /en/georgia/ /en/location/azerbaijan/ 301
 /az /az/ 301
