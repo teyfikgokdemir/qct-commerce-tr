@@ -10,11 +10,11 @@ interface Props {
 }
 const { lang, currentPath, trHref, enHref, serviceLinks, audienceLinks, quickLinks } = Astro.props;
 const isEnglish = lang === 'en';
-const isGeorgian = lang === 'ka';
+const isAzerbaijani = lang === 'az';
 const isCurrent = (path: string) => currentPath === path;
 ---
 <div class="qctm-root" data-qctm-root>
-  <button class="qctm-toggle" type="button" aria-expanded="false" aria-controls="qctm-panel" aria-label={isGeorgian ? 'მენიუს გახსნა' : isEnglish ? 'Open menu' : 'Menüyü aç'} data-qctm-toggle>
+  <button class="qctm-toggle" type="button" aria-expanded="false" aria-controls="qctm-panel" aria-label={isAzerbaijani ? 'Menyunu aç' : isEnglish ? 'Open menu' : 'Menüyü aç'} data-qctm-toggle>
     <span></span><span></span>
   </button>
 
@@ -22,11 +22,11 @@ const isCurrent = (path: string) => currentPath === path;
 
   <aside id="qctm-panel" class="qctm-panel" aria-hidden="true" data-qctm-panel>
     <div class="qctm-head">
-      <a class="qctm-brand" href={isGeorgian ? '/ka/georgia/' : isEnglish ? '/en/' : '/'}>QCT COMMERCE</a>
-      <button class="qctm-close" type="button" aria-label={isEnglish ? 'Close menu' : 'Menüyü kapat'} data-qctm-close>×</button>
+      <a class="qctm-brand" href={isAzerbaijani ? '/az/azerbaycan/' : isEnglish ? '/en/' : '/'}>QCT COMMERCE</a>
+      <button class="qctm-close" type="button" aria-label={isAzerbaijani ? 'Menyunu bağla' : isEnglish ? 'Close menu' : 'Menüyü kapat'} data-qctm-close>×</button>
     </div>
 
-    <nav class="qctm-primary" aria-label={isEnglish ? 'Mobile navigation' : 'Mobil navigasyon'}>
+    <nav class="qctm-primary" aria-label={isAzerbaijani ? 'Mobil naviqasiya' : isEnglish ? 'Mobile navigation' : 'Mobil navigasyon'}>
       {quickLinks.map(([label, href]) => (
         <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
           <span>{label}</span><i aria-hidden="true">↗</i>
@@ -34,11 +34,11 @@ const isCurrent = (path: string) => currentPath === path;
       ))}
     </nav>
 
-    {!isGeorgian && (
+    {!isAzerbaijani && (
       <div class="qctm-groups">
         <section class="qctm-group" data-qctm-group>
           <button class="qctm-group-toggle" type="button" aria-expanded="false" data-qctm-group-toggle>
-            <span><strong>{isEnglish ? 'Solutions' : 'Hizmetler'}</strong><small>{isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small></span>
+            <span><strong>{isAzerbaijani ? 'Xidmətlər' : isEnglish ? 'Solutions' : 'Hizmetler'}</strong><small>{isAzerbaijani ? 'Nə edirik' : isEnglish ? 'What we do' : 'Neler yapıyoruz'}</small></span>
             <i aria-hidden="true">+</i>
           </button>
           <div class="qctm-group-panel" hidden data-qctm-group-panel>
@@ -50,7 +50,7 @@ const isCurrent = (path: string) => currentPath === path;
 
         <section class="qctm-group" data-qctm-group>
           <button class="qctm-group-toggle" type="button" aria-expanded="false" data-qctm-group-toggle>
-            <span><strong>{isEnglish ? 'Who we help' : 'Kimler için'}</strong><small>{isEnglish ? 'Choose your business context' : 'İşletme yapınıza göre başlayın'}</small></span>
+            <span><strong>{isAzerbaijani ? 'Kimlər üçün' : isEnglish ? 'Who we help' : 'Kimler için'}</strong><small>{isAzerbaijani ? 'Biznes modelinizə görə başlayın' : isEnglish ? 'Choose your business context' : 'İşletme yapınıza göre başlayın'}</small></span>
             <i aria-hidden="true">+</i>
           </button>
           <div class="qctm-group-panel" hidden data-qctm-group-panel>
@@ -64,12 +64,12 @@ const isCurrent = (path: string) => currentPath === path;
 
     <div class="qctm-bottom">
       <div class="qctm-languages">
-        <a href={trHref} hreflang="tr-TR" class:list={[{ active: !isEnglish && !isGeorgian }]}>TR</a>
+        <a href={trHref} hreflang="tr-TR" class:list={[{ active: !isEnglish && !isAzerbaijani }]}>TR</a>
         <a href={enHref} hreflang="en" class:list={[{ active: isEnglish }]}>EN</a>
-        <a href="/ka/georgia/" class:list={[{ active: isGeorgian }]}>KA</a>
+        <a href="/az/azerbaycan/" class:list={[{ active: isAzerbaijani }]}>AZ</a>
       </div>
-      <a class="qctm-project" href={isEnglish ? '/en/contact/' : '/iletisim/'}>
-        <span>{isEnglish ? 'Start a project' : 'Proje başlat'}</span><i aria-hidden="true">→</i>
+      <a class="qctm-project" href={isAzerbaijani ? 'mailto:info@qctcommerce.com?subject=Azerbaijan%20digital%20project' : isEnglish ? '/en/contact/' : '/iletisim/'}>
+        <span>{isAzerbaijani ? 'Layihəyə başlayın' : isEnglish ? 'Start a project' : 'Proje başlat'}</span><i aria-hidden="true">→</i>
       </a>
     </div>
   </aside>
