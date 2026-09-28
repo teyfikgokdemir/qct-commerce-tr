@@ -46,7 +46,7 @@ const breadcrumbs = [
     <div class="container">
       <div class="section-heading">
         <p class="eyebrow">MARKET CONTEXT</p>
-        <h2>A commercial scenario for {market.name}, not a location-name swap.</h2>
+        <h2>Build digital demand around the commercial reality of {market.name}.</h2>
         <p>{market.commercialContext}</p>
       </div>
       <div class="service-grid">
@@ -64,12 +64,20 @@ const breadcrumbs = [
         <h2>We start with the areas most likely to improve commercial performance.</h2>
       </div>
       <div class="service-grid">
-        {market.priorityServices.map((service) => (
-          <article class="service-card">
-            <h3>{service}</h3>
-            <p>For {market.industries.join(", ")} businesses, this capability is designed as part of the complete acquisition and conversion journey.</p>
-          </article>
-        ))}
+        {market.priorityServices.map((service, index) => {
+          const sector = market.industries[index % market.industries.length];
+          const detail = index === 0
+            ? `For ${sector.toLowerCase()} businesses, ${service.toLowerCase()} is tied to the first trust and information layer a buyer sees.`
+            : index === 1
+              ? `In ${market.name}, ${service.toLowerCase()} is structured as part of the path from discovery to a qualified commercial enquiry.`
+              : `${service} supports the goal to ${market.marketAngle}; content, technical foundations and measurement are aligned to that priority.`;
+          return (
+            <article class="service-card">
+              <h3>{service}</h3>
+              <p>{detail}</p>
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
