@@ -2,22 +2,70 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
+
 const faq=[
- {q:'Korporativ veb sayt neçədən başlayır?',a:'Standart korporativ veb sayt 690 AZN-dən başlayır. Çoxdilli və xüsusi inteqrasiyalı layihələr 1.090 AZN və yuxarı əhatədə qiymətləndirilir.'},
- {q:'E-ticarət qiyməti nə qədərdir?',a:'Standart e-ticarət layihələri 1.290 AZN-dən başlayır. Məhsul sayı, platforma və inteqrasiyalar qiyməti dəyişə bilər.'},
- {q:'Aylıq SEO xidməti varmı?',a:'SEO, GEO, AEO və AIO başlanğıc işi 290 AZN-dən başlayır. Davamlı aylıq iş ayrıca əhatələndirilir.'}
+ {q:'Bazar giriş qiyməti nə deməkdir?',a:'Azərbaycan bazarı üçün məhdud başlanğıc qiymətidir. Uyğunluq və kontenjan layihə təklifi zamanı təsdiqlənir; normal siyahı qiyməti ayrıca göstərilir.'},
+ {q:'Korporativ veb sayt paketinə nə daxildir?',a:'690 AZN bazar giriş qiymətinə 5 əsas səhifəyə qədər, bir dil, mobil uyğunluq, əlaqə/WhatsApp axını və əsas texniki SEO daxildir. Xüsusi dizayn, mətn istehsalı və əlavə funksiya ayrıca hesablanır.'},
+ {q:'E-ticarət paketinə neçə məhsul daxildir?',a:'1.190 AZN bazar giriş paketinə məlumat və şəkillər hazır təqdim olunarsa 10 məhsula qədər standart məhsul girişi daxildir. Daha çox məhsul, mürəkkəb variantlar, təsvir yazılması və şəkil redaktəsi ayrıca qiymətləndirilir.'},
+ {q:'Çoxdilli sayt qiymətinə tərcümə daxildirmi?',a:'Xeyr. 1.190 AZN bazar giriş qiyməti 2 dil üçün texniki dil infrastrukturu, ayrıca URL və hreflang quruluşunu əhatə edir. Peşəkar tərcümə və lokalizasiya ayrıca hesablanır.'},
+ {q:'SEO + GEO + AEO + AIO aylıq xidmətdirmi?',a:'390–590 AZN başlanğıc işi birdəfəlikdir. Davamlı aylıq əsas paket 390 AZN/ay-dan, böyümə paketi 690 AZN/ay-dan başlayır. Görünürlük və sıralama zəmanəti verilmir.'}
 ];
 const schema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(i=>({'@type':'Question',name:i.q,acceptedAnswer:{'@type':'Answer',text:i.a}}))};
 ---
-<BaseLayout title="Azərbaycanda Veb Sayt və E-ticarət Qiymətləri 2026 | QCT" description="QCT Commerce Azərbaycan qiymətləri: landing 390 AZN, korporativ sayt 690 AZN, çoxdilli sayt 1.090 AZN, e-ticarət 1.290 AZN, SEO/GEO/AEO/AIO 290 AZN-dən." lang="az" breadcrumbLabel="Qiymətlər">
+<BaseLayout title="Azərbaycanda Veb Sayt və E-ticarət Qiymətləri 2026 | QCT" description="Azərbaycan bazar giriş qiymətləri: landing 390 AZN, korporativ sayt 690 AZN, çoxdilli sayt 1.190 AZN, e-ticarət 1.190 AZN. Normal qiymət və dəqiq əhatə açıq göstərilir." lang="az" breadcrumbLabel="Qiymətlər">
 <script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
-<Header slot="header" lang="az" /><link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-2" />
-<div class="qct-v2"><section class="qct-pricing-hero"><div class="qct-shell"><p class="qct-eyebrow">AZƏRBAYCAN ÜÇÜN QİYMƏTLƏR · 2026</p><h1>Nə alacağınızı bilin.<br/><em>Nə ödəyəcəyinizi də.</em></h1><p class="qct-lead">Ucuz paket bazarına girmədən, həddindən artıq premium qiymətə çıxmadan; standart layihələr üçün aydın başlanğıc qiymətləri.</p><div class="qct-hero-actions"><a class="qct-btn qct-btn-primary" href="/az/#qiymet-hesabla">Canlı qiyməti hesablayın <span>→</span></a><a class="qct-text-link" href="/az/elaqe/">Layihəni müzakirə edin</a></div></div></section>
-<section class="qct-pricing-list"><div class="qct-shell">
-<div class="qct-price-category"><div><p class="qct-section-label">VEB SAYT</p><h2>Yeni layihələr</h2></div><div class="qct-price-rows"><article><span>Landing / kampaniya səhifəsi</span><strong>390 AZN</strong><small>Başlanğıc qiymət</small><p>Bir məqsədə fokuslanan, mobil və dönüşüm yönümlü səhifə.</p></article><article><span>Korporativ veb sayt</span><strong>690 AZN</strong><small>Başlanğıc qiymət</small><p>Şirkət, xidmətlər, referanslar, əlaqə və əsas SEO strukturu.</p></article><article><span>Premium çoxdilli korporativ sayt</span><strong>1.090 AZN</strong><small>Başlanğıc qiymət</small><p>Çoxdilli struktur, geniş məlumat arxitekturası və bazar uyğunlaşdırması.</p></article></div></div>
-<div class="qct-price-category"><div><p class="qct-section-label">E-TİCARƏT</p><h2>Onlayn satış infrastrukturu</h2></div><div class="qct-price-rows"><article><span>E-ticarət saytı</span><strong>1.290 AZN</strong><small>Başlanğıc qiymət</small><p>Platforma qurulması, əsas satış axını və mağazanın işə hazırlanması.</p></article><article><span>Geniş e-ticarət / inteqrasiya</span><strong>1.890 AZN</strong><small>Başlanğıc qiymət</small><p>Daha böyük kataloq, xüsusi axın və inteqrasiya ehtiyacları üçün.</p></article></div></div>
-<div class="qct-price-category"><div><p class="qct-section-label">GÖRÜNÜRLÜK & SATIŞ</p><h2>SEO, AI və avtomatlaşdırma</h2></div><div class="qct-price-rows"><article><span>SEO + GEO + AEO + AIO</span><strong>290 AZN</strong><small>Başlanğıc qiymət</small><p>Texniki baza, axtarış niyyəti, entity və AI görünürlük siqnalları.</p></article><article><span>Texniki SEO + AI görünürlük auditi</span><strong>190 AZN</strong><small>Başlanğıc qiymət</small><p>Tarama, indeks, metadata, canonical, sitemap, performans və AI oxunaqlığı.</p></article><article><span>WhatsApp satış sistemi</span><strong>190 AZN</strong><small>Başlanğıc qiymət</small><p>Tələb qəbul etmə, yönləndirmə və satış axını.</p></article><article><span>AI / CRM avtomatlaşdırma</span><strong>390 AZN</strong><small>Başlanğıc qiymət</small><p>Lead qəbulu, təsnifat, follow-up və əməliyyat avtomatlaşdırması.</p></article></div></div>
+<Header slot="header" lang="az" />
+<link rel="stylesheet" href="/styles/qct-v2.css?v=20260928-5" />
+<div class="qct-v2">
+<section class="qct-pricing-hero"><div class="qct-shell">
+  <p class="qct-eyebrow">AZƏRBAYCAN BAZARINA GİRİŞ QİYMƏTLƏRİ · 2026</p>
+  <h1>Əlçatan başlanğıc.<br/><em>Aydın normal qiymət.</em></h1>
+  <p class="qct-lead">Ən ucuz provayder olmağa çalışmırıq. Azərbaycan bazarında ilk mərhələ üçün məhdud giriş qiyməti təqdim edir, normal layihə qiymətini və daxil olan əhatəni ayrıca göstəririk.</p>
+  <p class="qct-pricing-disclaimer"><strong>Bazar giriş qiyməti:</strong> Məhdud kontenjan üçündür; uyğunluq layihə təklifi zamanı təsdiqlənir. Xüsusi dizayn, əlavə səhifə, inteqrasiya və yüksək məhsul həcmi ayrıca qiymətləndirilir.</p>
+  <p class="qct-pricing-disclaimer"><strong>Xarici xərclər:</strong> Hosting, domen, platforma/lisenziya, ödəniş komissiyası, pullu tema və tətbiqlər, reklam büdcəsi və üçüncü tərəf xidmətləri daxil deyil. Vergi vəziyyəti yazılı təklifdə göstərilir.</p>
+  <div class="qct-hero-actions"><a class="qct-btn qct-btn-primary" href="/az/#qiymet-hesabla">Canlı hesablayın <span>→</span></a><a class="qct-text-link" href="/az/elaqe/">Layihəni müzakirə edin</a></div>
 </div></section>
+
+<section class="qct-pricing-list"><div class="qct-shell">
+  <div class="qct-price-category"><div><p class="qct-section-label">SAYT & E-TİCARƏT</p><h2>Layihə başına qiymətlər</h2></div><div class="qct-price-rows">
+    <article><span>Landing / kampaniya səhifəsi</span><strong>390 AZN</strong><small>Bazar giriş qiyməti · normal 490 AZN-dən</small><p>1 səhifə, mobil uyğunluq, form/WhatsApp, əsas texniki SEO və 2 reviziya turu.</p></article>
+    <article><span>Korporativ veb sayt</span><strong>690 AZN</strong><small>Bazar giriş qiyməti · normal 890 AZN-dən</small><p>5 əsas səhifəyə qədər, 1 dil, mobil uyğunluq, əlaqə axını və əsas texniki SEO. Mətn istehsalı ayrıca.</p></article>
+    <article><span>Şəxsi / portfel saytı</span><strong>490 AZN</strong><small>Bazar giriş qiyməti · normal 590 AZN-dən</small><p>4 əsas səhifəyə qədər, mobil quruluş və standart əlaqə axını.</p></article>
+    <article><span>Çoxdilli korporativ sayt</span><strong>1.190 AZN</strong><small>Bazar giriş qiyməti · normal 1.490 AZN-dən</small><p>5 əsas səhifə, 2 dil üçün texniki dil infrastrukturu, ayrıca URL və hreflang. Peşəkar tərcümə/lokalizasiya ayrıca.</p></article>
+    <article><span>E-ticarət qurulması</span><strong>1.190 AZN</strong><small>Bazar giriş qiyməti · normal 1.490 AZN-dən</small><p>Əsas mağaza qurulması, kateqoriya/menyu, ödəniş-kargo hazırlığı və məlumatlar hazırdırsa <strong>10 məhsula qədər standart giriş daxil.</strong></p></article>
+    <article><span>E-ticarət — geniş əhatə</span><strong>Təklif</strong><small>Normal qiymət 1.990 AZN-dən</small><p>Çox məhsul, xüsusi dizayn, B2B qiymətləndirmə, ERP/CRM, xüsusi checkout və əlavə inteqrasiyalar.</p></article>
+    <article><span>Mövcud saytın yenilənməsi</span><strong>390 AZN</strong><small>Bazar giriş qiyməti · normal 490 AZN-dən</small><p>5 prioritet səhifəyə qədər vizual/mobil düzəliş və əsas texniki yoxlama. Tam yenidən dizayn ayrıca.</p></article>
+    <article><span>Sayt analizi və inkişaf planı</span><strong>150 AZN</strong><small>Bazar giriş qiyməti · normal 190 AZN</small><p>Texniki, mobil, sürət, SEO və dönüşüm yoxlaması; prioritet fəaliyyət siyahısı. Kod tətbiqi daxil deyil.</p></article>
+    <article><span>Platforma köçürülməsi</span><strong>690 AZN-dən</strong><small>Normal qiymət 890 AZN-dən</small><p>25 məhsula və ya 10 məzmun səhifəsinə qədər əsas köçürmə və URL yönləndirmə planı. Böyük həcm ayrıca.</p></article>
+  </div></div>
+
+  <div class="qct-price-category"><div><p class="qct-section-label">GÖRÜNÜRLÜK & SATIŞ</p><h2>SEO, reklam və avtomatlaşdırma</h2></div><div class="qct-price-rows">
+    <article><span>Texniki SEO — birdəfəlik</span><strong>290–390 AZN</strong><p>Tarama, indeks, canonical, sitemap, metadata, mobil və performans yoxlaması; əhatəyə görə əsas düzəlişlər.</p></article>
+    <article><span>SEO + GEO + AEO + AIO başlanğıc işi</span><strong>390–590 AZN</strong><p>Texniki baza, axtarış niyyəti, entity siqnalları və ən çox 5 prioritet səhifədə AI/axtarış görünürlüyü optimallaşdırması.</p></article>
+    <article><span>Aylıq əsas görünürlük paketi</span><strong>390 AZN/ay-dan</strong><p>Ayda 4 prioritet səhifəyə qədər optimallaşdırma, texniki izləmə, Search Console nəzarəti və qısa aylıq hesabat.</p></article>
+    <article><span>Aylıq böyümə paketi</span><strong>690 AZN/ay-dan</strong><p>Daha geniş səhifə və məzmun əhatəsi, davamlı texniki nəzarət, GEO/AEO/AIO inkişafı və aylıq performans qiymətləndirməsi.</p></article>
+    <article><span>GA4 + Search Console qurulması</span><strong>100–150 AZN</strong><p>Əsas ölçüm, doğrulama və əsas dönüşüm hadisələrinin yoxlanması.</p></article>
+    <article><span>Merchant Center qurulması</span><strong>150–250 AZN</strong><p>Hesab, əsas feed hazırlığı və ilkin yoxlama; məhsul məlumatı müştəridən hazır gəlir.</p></article>
+    <article><span>Sürət optimallaşdırması</span><strong>190–290 AZN</strong><p>Əsas performans problemləri, şəkil/asset və front-end optimallaşdırması; server/platform limiti ayrıca qeyd olunur.</p></article>
+    <article><span>WhatsApp satış axını — əsas</span><strong>190–390 AZN</strong><p>Sayt CTA-ları, hazır mesaj konteksti, əsas sorğu yönləndirməsi və satış axını.</p></article>
+    <article><span>WhatsApp / CRM — inkişaf etmiş</span><strong>590 AZN-dən</strong><p>Çoxlu komanda, qayda əsaslı yönləndirmə, CRM/API və əlavə avtomatlaşdırma ehtiyacları.</p></article>
+    <article><span>Meta reklamı — hesab/kampaniya qurulması</span><strong>150–250 AZN</strong><p>Əsas kampaniya quruluşu, ölçüm və ilkin konfiqurasiya. Reklam büdcəsi daxil deyil.</p></article>
+    <article><span>Meta reklam idarəetməsi</span><strong>250–490 AZN/ay</strong><p>Davamlı kampaniya nəzarəti və optimallaşdırma; kreativ istehsalı və reklam büdcəsi ayrıca.</p></article>
+    <article><span>Sadə AI avtomatlaşdırması</span><strong>490 AZN-dən</strong><p>Bir aydın iş axını: lead təsnifatı, məlumat ötürülməsi və ya standart əməliyyat addımı.</p></article>
+    <article><span>İnteqrasiyalı AI avtomatlaşdırması</span><strong>990 AZN-dən</strong><p>CRM/API, çox mərhələli workflow və daha geniş əməliyyat inteqrasiyası.</p></article>
+    <article><span>Avtomatlaşdırma baxımı</span><strong>120–250 AZN/ay</strong><p>Mövcud workflow-ların izlənməsi, kiçik qayda düzəlişləri və texniki dəstək.</p></article>
+  </div></div>
+</div></section>
+
+<section class="qct-benefits"><div class="qct-shell"><div class="qct-section-head"><div><p class="qct-section-label">ƏHATƏ QAYDALARI</p><h2>Qiymət ucuz görünmək üçün deyil, nə aldığınızı aydın etmək üçündür.</h2></div></div><div class="qct-benefit-grid">
+  <article><h3>Məhsul girişi</h3><p>1.190 AZN e-ticarət giriş paketinə 10 məhsula qədər standart giriş daxildir. Əlavə məhsul, kompleks variant, təsvir yazılması və şəkil redaktəsi ayrıca.</p></article>
+  <article><h3>Çox dil</h3><p>Çoxdilli paket texniki dil quruluşunu əhatə edir; peşəkar tərcümə və bazara uyğun lokalizasiya mətnləri daxil deyil.</p></article>
+  <article><h3>Reviziya</h3><p>Başlanğıc sayt paketlərində 2 reviziya turu daxildir. Yeni səhifə və yeni funksiya əlavə reviziya deyil, əhatə dəyişikliyidir.</p></article>
+  <article><h3>SEO və AI</h3><p>SEO/GEO/AEO/AIO görünürlük siqnallarını gücləndirir; Google, ChatGPT və digər platformalarda sıralama və görünürlük zəmanəti verilmir.</p></article>
+</div></div></section>
+
 <section class="qct-pricing-faq"><div class="qct-shell"><p class="qct-section-label">TEZ-TEZ VERİLƏN SUALLAR</p><h2>Qiymətləndirmə haqqında</h2><div class="qct-faq-grid">{faq.map(i=><details><summary>{i.q}</summary><p>{i.a}</p></details>)}</div></div></section>
-<section class="qct-close"><div class="qct-shell qct-close-grid"><div><p class="qct-section-label">60 SANİYƏDƏ BAŞLAYIN</p><h2>Ehtiyacınızı seçin.<br/><em>Qiyməti görün.</em></h2></div><a class="qct-btn qct-btn-light" href="/az/#qiymet-hesabla">Canlı hesablayın <span>→</span></a></div></section></div>
-<Footer slot="footer" lang="az" /></BaseLayout>
+<section class="qct-close"><div class="qct-shell qct-close-grid"><div><p class="qct-section-label">60 SANİYƏDƏ BAŞLAYIN</p><h2>Ehtiyacınızı seçin.<br/><em>Giriş qiymətini görün.</em></h2></div><a class="qct-btn qct-btn-light" href="/az/#qiymet-hesabla">Canlı hesablayın <span>→</span></a></div></section>
+</div>
+<Footer slot="footer" lang="az" />
+</BaseLayout>
