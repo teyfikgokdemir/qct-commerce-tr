@@ -15,9 +15,9 @@ const attr = (tag, key) => decode(tag.match(new RegExp(`\\b${key}=["']([^"']*)["
 const tags = (html, name) => html.match(new RegExp(`<${name}\\b[^>]*>`, 'gi')) ?? [];
 const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => entry.isDirectory() ? walk(path.join(dir, entry.name)) : [path.join(dir, entry.name)]);
 const locs = xml => [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => decode(m[1]));
-const locale = url => new URL(url).pathname.startsWith('/en/') ? 'en' : new URL(url).pathname.startsWith('/ka/') ? 'ka' : 'tr';
-const hrefLang = { tr: 'tr-TR', en: 'en', ka: 'ka-GE' };
-const ogLocale = { tr: 'tr_TR', en: 'en_US', ka: 'ka_GE' };
+const locale = url => new URL(url).pathname.startsWith('/en/') ? 'en' : new URL(url).pathname.startsWith('/az/') ? 'az' : 'tr';
+const hrefLang = { tr: 'tr-TR', en: 'en', az: 'az-AZ' };
+const ogLocale = { tr: 'tr_TR', en: 'en_US', az: 'az_AZ' };
 // Proper names remain unchanged in English. This is a regression heuristic,
 // not a general language detector; also catch common Turkish words without accents.
 const turkish = value => /[ıİşŞğĞçÇöÖüÜ]|\b(?:ne kadar|veya|fiyat|fiyatlar|hizmetler|sayfa|teklif al|hemen|nedir|gizlilik|urun|baslangic)\b/i.test(
@@ -134,7 +134,7 @@ for (const [url, page] of pages) {
     if (alternateMatch) continue;
     if (target.pathname.startsWith('/en/')) {
       if (!pages.has(target.origin + target.pathname) || redirectFor(target.href)) fail(url, `English link missing or redirected: ${href}`);
-    } else if (!((target.pathname === '/' && ['TR', 'Türkiye'].includes(text(anchor[2]))) || (target.pathname === '/ka/georgia/' && text(anchor[2]) === 'KA'))) fail(url, `non-English internal content link: ${href}`);
+    } else if (!((target.pathname === '/' && ['TR', 'Türkiye'].includes(text(anchor[2]))) || (target.pathname === '/az/azerbaycan/' && text(anchor[2]) === 'AZ'))) fail(url, `non-English internal content link: ${href}`);
   }
 }
 for (const route of ['/en/', '/en/blog/', '/en/meta-ads/', '/en/audit/', '/en/how-we-work/', '/en/services/', '/en/pricing/', '/en/work/', '/en/contact/']) {
