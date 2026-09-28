@@ -98,3 +98,75 @@ export const enMarkets: ProgrammaticMarket[] = trMarkets.map((m) => {
     alternateId: m.id
   };
 });
+
+
+export type ProgrammaticService = {
+  trSlug: string;
+  enSlug: string;
+  trName: string;
+  enName: string;
+  trIntent: string;
+  enIntent: string;
+  trOutcome: string;
+  enOutcome: string;
+  trDeliverables: string[];
+  enDeliverables: string[];
+  trCorePath: string;
+  enCorePath: string;
+};
+
+export const programmaticServices: ProgrammaticService[] = [
+  {
+    trSlug: "web-tasarim",
+    enSlug: "web-design",
+    trName: "Web Tasarım",
+    enName: "Web Design",
+    trIntent: "kurumsal güveni, mobil performansı ve nitelikli talep akışını aynı yapıda kurmak",
+    enIntent: "combine credibility, mobile performance and qualified enquiry flow in one website",
+    trOutcome: "Hızlı açılan, karar vericinin aradığı bilgiyi net sunan ve teklif talebine yönlendiren bir web deneyimi.",
+    enOutcome: "A fast website that answers buyer questions clearly and moves qualified visitors toward an enquiry.",
+    trDeliverables: ["Bilgi mimarisi ve dönüşüm akışı","Mobil öncelikli arayüz","Teknik SEO ve yapılandırılmış veri"],
+    enDeliverables: ["Information architecture and conversion flow","Mobile-first interface","Technical SEO and structured data"],
+    trCorePath: "/web-tasarim/",
+    enCorePath: "/en/web-design/"
+  },
+  {
+    trSlug: "e-ticaret",
+    enSlug: "ecommerce",
+    trName: "E-Ticaret",
+    enName: "E-Commerce",
+    trIntent: "ürün keşfi, ödeme ve satış operasyonunu hedef pazar beklentilerine göre sadeleştirmek",
+    enIntent: "simplify product discovery, checkout and commerce operations for the target market",
+    trOutcome: "Ürün keşfinden ödeme ve satış sonrası akışa kadar daha az sürtünme yaratan ölçeklenebilir mağaza mimarisi.",
+    enOutcome: "A scalable store architecture that reduces friction from product discovery through checkout and post-purchase flows.",
+    trDeliverables: ["Mağaza ve kategori mimarisi","Ödeme / dönüşüm akışı","Analitik ve performans ölçümü"],
+    enDeliverables: ["Store and category architecture","Checkout and conversion flow","Analytics and performance measurement"],
+    trCorePath: "/e-ticaret/",
+    enCorePath: "/en/ecommerce/"
+  },
+  {
+    trSlug: "seo-geo",
+    enSlug: "search-visibility",
+    trName: "SEO / GEO",
+    enName: "SEO / GEO",
+    trIntent: "Google aramaları ile yapay zekâ destekli keşif kanallarında aynı marka ve hizmet sinyallerini güçlendirmek",
+    enIntent: "strengthen consistent brand and service signals across Google and AI-assisted discovery",
+    trOutcome: "Arama niyetine göre yapılandırılmış içerik, teknik temel ve dahili bağlantılarla sürdürülebilir görünürlük sistemi.",
+    enOutcome: "A sustainable visibility system built on search intent, technical foundations and deliberate internal linking.",
+    trDeliverables: ["Arama niyeti ve içerik kümeleri","Teknik SEO / schema","GEO, AEO ve AIO uyumlu içerik yapısı"],
+    enDeliverables: ["Search-intent content clusters","Technical SEO and schema","GEO, AEO and AIO-ready content structure"],
+    trCorePath: "/seo-geo/",
+    enCorePath: "/en/search-visibility/"
+  }
+];
+
+export const internationalMarketIds = new Set(["almanya","ingiltere","azerbaycan","dubai"]);
+export const internationalMarketEnIds = new Set(["germany","uk","azerbaijan","dubai"]);
+
+export function trServicePath(marketId: string, service: ProgrammaticService) {
+  return `/lokasyon/${marketId}/${service.trSlug}/`;
+}
+
+export function enServicePath(marketId: string, service: ProgrammaticService) {
+  return `/en/location/${marketId}/${service.enSlug}/`;
+}
