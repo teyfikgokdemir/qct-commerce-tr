@@ -25,11 +25,11 @@ export const azBlogPosts: AzBlogPost[] = [
     title:"ChatGPT Ads 2026: Ads Manager, CPC və Sponsored Agents nədir?",
     description:"ChatGPT Ads, conversational intent, CPC modeli, Sponsored Agents və AI-native reklam üçün landing page strategiyasını öyrənin.",
     intro:"ChatGPT Ads klassik keyword reklamından fərqli olaraq istifadəçinin qərar kontekstinə daha yaxın ola bilər. Buna görə reklam, təklif və landing page yalnız açar söz deyil, söhbət niyyəti əsasında qurulmalıdır.",
-    summary:["2026-da self-service Ads Manager və CPC imkanları genişləndi.","Sponsored Agents reklamdan sonra biznes sponsorlu söhbət təcrübəsinə keçid yarada bilər.","Kreativ mətn konkret fayda və uyğunluğu göstərməlidir.","Landing page sübut, scope, qiymət və aydın CTA ilə söhbəti davam etdirməlidir."],
+    summary:["2026-da self-service Ads Manager CPM, CPC və uyğun hesablarda oCPC məqsədlərini dəstəkləyir.","Sponsored Agents hazırda seçilmiş reklamverənlərlə məhdud alpha mərhələsindədir və reklamdan sonra biznes sponsorlu söhbət təcrübəsinə keçid yarada bilər.","Kreativ mətn konkret fayda və uyğunluğu göstərməlidir.","Landing page sübut, scope, qiymət və aydın CTA ilə söhbəti davam etdirməlidir."],
     sections:[
       {heading:"ChatGPT Ads klassik reklamlardan nə ilə fərqlənir?",paragraphs:["İstifadəçi artıq problem, müqayisə və qərar kontekstini söhbətdə paylaşa bilər. Bu daha zəngin intent siqnalları yaradır."]},
-      {heading:"Ads Manager və CPC",paragraphs:["Self-service idarəetmə kampaniyanı daha əlçatan edir, lakin əsas ölçü klikdən çox keyfiyyətli sorğu və satış nəticəsi olmalıdır."]},
-      {heading:"Sponsored Agents nədir?",paragraphs:["Reklamla başlayan maraq biznes sponsorlu conversational agent təcrübəsinə davam edə bilər və bu, discovery ilə conversion arasında yeni mərhələ yaradır."]},
+      {heading:"Ads Manager və CPC",paragraphs:["Self-service idarəetmə CPM, CPC və uyğun hesablarda oCPC məqsədləri ilə kampaniyanı daha çevik edir, lakin əsas ölçü klikdən çox keyfiyyətli sorğu və satış nəticəsi olmalıdır."]},
+      {heading:"Sponsored Agents nədir?",paragraphs:["Sponsored Agents hazırda seçilmiş reklamverənlərlə məhdud alpha mərhələsindədir; giriş olduqda reklamla başlayan maraq biznes sponsorlu conversational agent təcrübəsinə davam edə bilər və bu, discovery ilə conversion arasında yeni mərhələ yaradır."]},
       {heading:"Landing page necə hazırlanmalıdır?",paragraphs:["Səhifə reklamı təkrar etməməli, istifadəçinin qərarını sübut, scope, qiymət və növbəti addımla irəli aparmalıdır. SEO, GEO, AEO və AIO aydınlığı paid acquisition-a da dəstək verir."]}
     ],
     relatedLabel:"AI-native reklam və landing page yanaşmasına baxın",relatedHref:"/az/meta-reklamlari/",published:"2026-09-28",modified:"2026-09-28"
