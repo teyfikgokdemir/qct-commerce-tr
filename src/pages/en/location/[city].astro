@@ -34,7 +34,7 @@ const breadcrumbs = [
     <div class="container">
       <p class="eyebrow">{isCountry ? "INTERNATIONAL MARKET" : "LOCAL GROWTH"} · {market.name.toUpperCase()}</p>
       <h1>Digital growth infrastructure for {market.name}.</h1>
-      <p class="page-hero__lead">For {market.audience.toLowerCase()}, we connect web, e-commerce and search visibility into one commercial journey. The goal is to {market.marketAngle}.</p>
+      <p class="page-hero__lead">For {market.audience.charAt(0).toLowerCase() + market.audience.slice(1)}, we connect web, e-commerce and search visibility into one commercial journey. The goal is to {market.marketAngle}.</p>
       <div class="hero__actions">
         <a class="button button--primary" href="/en/contact/">Discuss a {market.name} project</a>
         <a class="button button--secondary" href="/en/work/">View selected work</a>
