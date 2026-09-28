@@ -72,7 +72,7 @@ const breadcrumbs = [
     <div class="container">
       <div class="section-heading">
         <p class="eyebrow">PAZAR BAĞLAMI</p>
-        <h2>{market.name} için kopya lokasyon sayfası değil, ayrı ticari senaryo.</h2>
+        <h2>{market.name} pazarında dijital talebi ticari bağlama göre kuruyoruz.</h2>
         <p>{market.commercialContext}</p>
       </div>
       <div class="service-grid">
@@ -90,12 +90,20 @@ const breadcrumbs = [
         <h2>{market.name} için önce ticari etki üreten alanlara odaklanıyoruz.</h2>
       </div>
       <div class="service-grid">
-        {market.priorityServices.map((service) => (
-          <article class="service-card">
-            <h3>{service}</h3>
-            <p>{market.industries.join(", ")} odaklı şirketlerde bu alanı satış ve talep sürecinin diğer parçalarıyla birlikte kurguluyoruz.</p>
-          </article>
-        ))}
+        {market.priorityServices.map((service, index) => {
+          const sector = market.industries[index % market.industries.length];
+          const detail = index === 0
+            ? `${sector} odaklı şirketlerde ${service.toLowerCase()} tarafını karar vericinin ilk temas ettiği bilgi ve güven katmanıyla bağlıyoruz.`
+            : index === 1
+              ? `${market.name} pazarında ${service.toLowerCase()} kapsamını ürün/hizmet keşfinden nitelikli talebe uzanan akışın bir parçası olarak kuruyoruz.`
+              : `${service}, ${market.marketAngle}; içerik, teknik temel ve ölçümü bu ticari önceliğe göre birlikte ele alıyoruz.`;
+          return (
+            <article class="service-card">
+              <h3>{service}</h3>
+              <p>{detail}</p>
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
