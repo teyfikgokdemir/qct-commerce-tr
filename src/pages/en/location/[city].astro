@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { enMarkets } from "../../../data/programmatic-markets";
+import { enMarkets, programmaticServices, internationalMarketEnIds, enServicePath } from "../../../data/programmatic-markets";
 
 export function getStaticPaths() {
   return enMarkets.map((market) => ({
@@ -18,6 +18,7 @@ const alternates = [
   { lang: "tr-TR", href: `/lokasyon/${market.alternateId}/` },
   { lang: "en", href: `/en/location/${market.id}/` },
 ];
+const marketServicePages = internationalMarketEnIds.has(market.id) ? programmaticServices : [];
 const breadcrumbs = [
   { name: "Home", url: "/en/" },
   { name: "Services", url: "/en/services/" },
@@ -98,6 +99,25 @@ const breadcrumbs = [
         ))}
       </div>
     </section>
+
+    {marketServicePages.length > 0 && (
+      <section class="qct-shell">
+        <div class="qct-section-head">
+          <p class="qct-section-label">MARKET × SERVICE PAGES</p>
+          <h2>High-intent services for {market.name}</h2>
+          <p>The general market page is supported by focused pages that answer service-specific commercial intent.</p>
+        </div>
+        <div class="qct-benefit-grid">
+          {marketServicePages.map((service) => (
+            <article>
+              <h3>{market.name} {service.enName}</h3>
+              <p>{service.enOutcome}</p>
+              <a href={enServicePath(market.id, service)}>Explore {service.enName} for {market.name} →</a>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
 
     <section class="qct-shell">
       <div class="qct-section-head">

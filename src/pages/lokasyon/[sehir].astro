@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { trMarkets } from "../../data/programmatic-markets";
+import { trMarkets, programmaticServices, internationalMarketIds, trServicePath } from "../../data/programmatic-markets";
 
 export function getStaticPaths() {
   return trMarkets.map((market) => ({
@@ -18,6 +18,7 @@ const alternates = [
   { lang: "tr-TR", href: `/lokasyon/${market.id}/` },
   { lang: "en", href: `/en/location/${market.alternateId}/` },
 ];
+const marketServicePages = internationalMarketIds.has(market.id) ? programmaticServices : [];
 const breadcrumbs = [
   { name: "Ana sayfa", url: "/" },
   { name: "Hizmetler", url: "/hizmetler/" },
@@ -98,6 +99,25 @@ const breadcrumbs = [
         ))}
       </div>
     </section>
+
+    {marketServicePages.length > 0 && (
+      <section class="qct-shell">
+        <div class="qct-section-head">
+          <p class="qct-section-label">PAZAR × HİZMET SAYFALARI</p>
+          <h2>{market.name} için yüksek niyetli hizmet sayfaları</h2>
+          <p>Genel pazar sayfasını, belirli hizmet aramalarına cevap veren daha odaklı sayfalarla destekliyoruz.</p>
+        </div>
+        <div class="qct-benefit-grid">
+          {marketServicePages.map((service) => (
+            <article>
+              <h3>{market.name} {service.trName}</h3>
+              <p>{service.trOutcome}</p>
+              <a href={trServicePath(market.id, service)}>{service.trName} sayfasını inceleyin →</a>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
 
     <section class="qct-shell">
       <div class="qct-section-head">
