@@ -55,6 +55,19 @@ if(!enMatch||!azMatch){errors.push('blog depth audit: could not parse EN/AZ arti
   }
 }
 
+const stripHtml=(html)=>html.replace(/<script[\s\S]*?<\/script>/gi,' ').replace(/<style[\s\S]*?<\/style>/gi,' ').replace(/<[^>]+>/g,' ').replace(/&[a-z#0-9]+;/gi,' ').replace(/\s+/g,' ').trim();
+for(const cluster of blogLocaleClusters){
+  for(const [lang,p] of Object.entries(cluster)){
+    const html=readPage(p);
+    if(!html){errors.push(`${p}: missing rendered blog article for completeness audit`);continue;}
+    const article=html.match(/<article\b[\s\S]*?<\/article>/i)?.[0] || html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] || '';
+    const text=stripHtml(article);
+    const h2Count=(article.match(/<h2\b/gi)||[]).length;
+    if(text.length<1200) errors.push(`${p}: blog article appears too shallow (${text.length} visible chars; minimum 1200)`);
+    if(h2Count<3) errors.push(`${p}: blog article has only ${h2Count} H2 sections; minimum 3`);
+    if(/\b(?:lorem ipsum|todo|tbd|placeholder|coming soon)\b/i.test(text)) errors.push(`${p}: placeholder content detected`);
+  }
+}
 const blogIndexTr=fs.readFileSync(path.join('src','components','BlogIndex.astro'),'utf8');
 const blogIndexEn=fs.readFileSync(path.join('src','components','BlogIndexEn.astro'),'utf8');
 const blogArticleTr=fs.readFileSync(path.join('src','components','BlogArticle.astro'),'utf8');
