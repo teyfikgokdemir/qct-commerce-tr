@@ -107,7 +107,12 @@ const legalLinks = isGeorgian ? [
 <footer id="colophon" class="site-footer">
   <div class="site-footer__marquee" aria-hidden="true">
     <div class="site-footer__marquee-track">
-      <span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span>
+      <div class="site-footer__marquee-group">
+        <span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span>
+      </div>
+      <div class="site-footer__marquee-group" aria-hidden="true">
+        <span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span>
+      </div>
     </div>
   </div>
 
@@ -307,12 +312,18 @@ const legalLinks = isGeorgian ? [
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
   .site-footer__marquee-track {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    gap: clamp(1.5rem, 3vw, 3.5rem);
-    animation: qctCommerceMarquee 26s linear infinite;
-    will-change: transform;
+    display:flex;
+    align-items:center;
+    width:max-content;
+    animation:qctCommerceMarquee 26s linear infinite;
+    will-change:transform;
+  }
+  .site-footer__marquee-group{
+    display:flex;
+    align-items:center;
+    flex:0 0 auto;
+    gap:clamp(1.5rem,3vw,3.5rem);
+    padding-right:clamp(1.5rem,3vw,3.5rem);
   }
   .site-footer__marquee span {
     color: transparent;
@@ -327,7 +338,7 @@ const legalLinks = isGeorgian ? [
     letter-spacing: -.045em;
     white-space: nowrap;
   }
-  @keyframes qctCommerceMarquee { to { transform: translateX(calc(-25% - .75rem)); } }
+  @keyframes qctCommerceMarquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 
 
   @media (min-width:761px) {
@@ -344,7 +355,8 @@ const legalLinks = isGeorgian ? [
       -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
       mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
     }
-    .site-footer__marquee-track { gap:2rem; animation-duration:34s; }
+    .site-footer__marquee-track { animation-duration:34s; }
+    .site-footer__marquee-group { gap:2rem; padding-right:2rem; }
     .site-footer__marquee span {
       font-size:clamp(2rem,3vw,3rem);
       line-height:1;
