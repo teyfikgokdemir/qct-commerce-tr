@@ -27,7 +27,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} lang="en" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
+<BaseLayout title={title} description={description} lang="en" alternates={alternates} breadcrumbs={breadcrumbs} pageType="WebPage" areaServed={market.areaServed} service={{ name: `${market.name} ${service.enName}`, description }}>
   <Header slot="header" lang="en" />
 
   <section class="page-hero section">
