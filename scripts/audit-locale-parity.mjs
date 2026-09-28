@@ -77,7 +77,8 @@ const requiredHomeSections=['qct-hero','qct-platforms qct-ecosystem','qct-pathwa
 for(const [lang,source] of Object.entries(homeSources)){
   for(const cls of requiredHomeSections) if(!source.includes(`<section class="${cls}`)) errors.push(`${lang} homepage structural parity: missing ${cls}`);
   if(source.includes('qct-intro-overlay') || source.includes('data-intro-banner')) errors.push(`${lang} homepage UX regression: blocking intro overlay must stay removed`);
-  if(!source.includes('data-price-form')) errors.push(`${lang} homepage structural parity: missing price calculator`);
+  const hasPriceCalculator = lang === 'az' ? source.includes('data-az-price-form') : source.includes('data-price-form');
+  if(!hasPriceCalculator) errors.push(`${lang} homepage structural parity: missing price calculator`);
   if(!source.includes('qct-brand-film')) errors.push(`${lang} homepage structural parity: missing brand film`);
 }
 if(!homeSources.en.includes("base: 6900")||homeSources.en.includes("base: 4900")) errors.push('EN homepage pricing parity: redesign must use 6900 TL');
