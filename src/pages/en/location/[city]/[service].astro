@@ -29,76 +29,59 @@ const breadcrumbs = [
 
 <BaseLayout title={title} description={description} lang="en" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
   <Header slot="header" lang="en" />
-  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260928-1" />
-  <div class="qct-v2" data-qct-v2>
-    <section class="qct-hero">
-      <div class="qct-shell qct-hero-grid">
-        <div class="qct-hero-copy">
-          <p class="qct-eyebrow">{market.name.toUpperCase()} · {service.enName.toUpperCase()}</p>
-          <h1 class="qct-hero-title"><em>{market.name}</em> {service.enName}</h1>
-          <p class="qct-lead">
-            This is not a location-name swap. For {market.name}, the objective is to <strong>{service.enIntent}</strong>.
-          </p>
-          <div class="qct-hero-actions">
-            <a class="qct-btn qct-btn-primary" href="/en/contact/">Discuss a {market.name} project <span>→</span></a>
-            <a class="qct-btn qct-btn-secondary" href={service.enCorePath}>Explore the core service</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="qct-benefits">
-      <div class="qct-shell qct-benefit-grid">
-        <article>
-          <p class="qct-section-label">TARGET MARKET</p>
-          <h3>{market.name} context</h3>
-          <p>{market.commercialContext}</p>
-        </article>
-        <article>
-          <p class="qct-section-label">SERVICE FOCUS</p>
-          <h3>What should {service.enName.toLowerCase()} deliver?</h3>
-          <p>{service.enOutcome}</p>
-        </article>
-        <article>
-          <p class="qct-section-label">DELIVERY SCOPE</p>
-          <h3>Core components</h3>
-          <p>{service.enDeliverables.join(" · ")}</p>
-        </article>
-        <article>
-          <p class="qct-section-label">MEASUREMENT</p>
-          <h3>More than traffic</h3>
-          <p>Organic visibility, qualified enquiries, conversion paths and technical performance are measured together.</p>
-        </article>
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">{market.name.toUpperCase()} · {service.enName.toUpperCase()}</p>
+      <h1>{service.enName} for {market.name}.</h1>
+      <p class="page-hero__lead">For {market.name}, the objective is to {service.enIntent}. This is not a repeated location template; it is a service-specific commercial scope built around buyer intent.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="/en/contact/">Discuss a {market.name} project</a>
+        <a class="button button--secondary" href={service.enCorePath}>Explore the core service</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="qct-shell">
-      <div class="qct-section-head">
-        <p class="qct-section-label">IMPLEMENTATION PRINCIPLE</p>
-        <h2>How {service.enName.toLowerCase()} changes for {market.name}</h2>
-        <p>The market objective is to {market.marketAngle}; content, information architecture and calls to action are built around that context.</p>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">COMMERCIAL CONTEXT</p>
+        <h2>What should {service.enName.toLowerCase()} solve for {market.name}?</h2>
+        <p>{market.commercialContext}</p>
       </div>
-      <div class="qct-benefit-grid">
-        {service.enDeliverables.map((item, index) => (
-          <article>
-            <span class="qct-card-kicker">0{index + 1}</span>
-            <h3>{item}</h3>
-            <p>For {market.industries.join(", ")} businesses, this component is designed as part of the route to a qualified commercial conversation.</p>
-          </article>
+      <div class="service-grid">
+        <article class="service-card"><h3>Outcome</h3><p>{service.enOutcome}</p></article>
+        <article class="service-card"><h3>Market fit</h3><p>The objective is to {market.marketAngle}; scope and messaging are built around that priority.</p></article>
+        <article class="service-card"><h3>Measurement</h3><p>Organic visibility, qualified enquiries, conversion paths and technical performance are measured together.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">SCOPE</p>
+        <h2>Core delivery components.</h2>
+        <p>For {market.industries.join(", ")} businesses, these components are treated as parts of one commercial system rather than isolated tasks.</p>
+      </div>
+      <div class="service-grid">
+        {service.enDeliverables.map((item) => (
+          <article class="service-card"><h3>{item}</h3><p>Included as a measurable, sustainable implementation component for the {market.name} market.</p></article>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="qct-close">
-      <div class="qct-shell qct-close-grid">
-        <div>
-          <p class="qct-section-label">{market.name.toUpperCase()} · {service.enName.toUpperCase()}</p>
-          <h2>Build a market-specific, <em>measurable</em> system.</h2>
-          <p>We can review the current website and target queries, then define the first practical implementation scope.</p>
-        </div>
-        <a class="qct-btn qct-btn-light" href="/en/contact/">Start a project discussion <span>→</span></a>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">NEXT STEP</p>
+        <h2>Define the right {service.enName.toLowerCase()} scope for {market.name}.</h2>
+        <p>We review the current structure and target queries, then define the first practical implementation scope.</p>
+        <a class="button button--primary" href="/en/contact/">Start a project discussion</a>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
   <Footer slot="footer" lang="en" />
 </BaseLayout>

@@ -13,7 +13,6 @@ export function getStaticPaths() {
 
 const { market } = Astro.props;
 const isCountry = market.type === "country";
-const regionLabel = isCountry ? `${market.name} market` : `${market.name} region`;
 const title = `${market.name} Web Design & E-Commerce Agency | QCT Commerce`;
 const description = `Web design, e-commerce and SEO/GEO for ${market.name}. We ${market.marketAngle} with a measurable digital demand system built by QCT Commerce.`;
 const alternates = [
@@ -28,140 +27,99 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  lang="en"
-  alternates={alternates}
-  breadcrumbs={breadcrumbs}
-  pageType="CollectionPage"
-  areaServed={market.areaServed}
->
+<BaseLayout title={title} description={description} lang="en" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
   <Header slot="header" lang="en" />
-  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260928-1" />
-  <div class="qct-v2" data-qct-v2>
-    <section class="qct-hero">
-      <div class="qct-shell qct-hero-grid">
-        <div class="qct-hero-copy">
-          <p class="qct-eyebrow">{isCountry ? "INTERNATIONAL MARKET" : "LOCAL GROWTH"} · WEB · E-COMMERCE · SEO/GEO</p>
-          <h1 class="qct-hero-title">
-            A digital growth system built for <em>{market.name}</em>
-          </h1>
-          <p class="qct-lead">
-            For {market.audience.toLowerCase()}, we connect search intent, credibility, mobile performance and enquiry flow instead of shipping another generic location page.
-            <strong> The goal is to {market.marketAngle}.</strong>
-          </p>
-          <div class="qct-hero-actions">
-            <a class="qct-btn qct-btn-primary" href="/en/contact/">Discuss a {market.name} project <span>→</span></a>
-            <a class="qct-btn qct-btn-secondary" href="/en/work/">View selected work</a>
-          </div>
-          <div class="qct-proof-line">
-            {market.priorityServices.map((service) => <span>{service}</span>)}
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="qct-benefits">
-      <div class="qct-shell qct-benefit-grid">
-        <article>
-          <p class="qct-section-label">MARKET CONTEXT</p>
-          <h3>A commercial scenario, not a city-name swap</h3>
-          <p>{market.commercialContext}</p>
-        </article>
-        <article>
-          <p class="qct-section-label">SEARCH VISIBILITY</p>
-          <h3>SEO + GEO + AEO + AIO</h3>
-          <p>We structure services, sectors and proof so the site is understandable to conventional search engines and AI-assisted discovery systems without relying on keyword stuffing.</p>
-        </article>
-        <article>
-          <p class="qct-section-label">CONVERSION</p>
-          <h3>From visit to qualified enquiry</h3>
-          <p>Calls to action, WhatsApp, forms, case studies and trust signals are placed around buyer intent. The objective is qualified demand, not page-view volume.</p>
-        </article>
-        <article>
-          <p class="qct-section-label">TECHNICAL BASE</p>
-          <h3>Fast, measurable and expandable</h3>
-          <p>Mobile performance, analytics, technical SEO, structured data and multilingual expansion share the same technical foundation.</p>
-        </article>
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">{isCountry ? "INTERNATIONAL MARKET" : "LOCAL GROWTH"} · {market.name.toUpperCase()}</p>
+      <h1>Digital growth infrastructure for {market.name}.</h1>
+      <p class="page-hero__lead">For {market.audience.toLowerCase()}, we connect web, e-commerce and search visibility into one commercial journey. The goal is to {market.marketAngle}.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="/en/contact/">Discuss a {market.name} project</a>
+        <a class="button button--secondary" href="/en/work/">View selected work</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="qct-shell">
-      <div class="qct-section-head">
-        <p class="qct-section-label">PRIORITIES FOR {regionLabel.toUpperCase()}</p>
-        <h2>What we improve first</h2>
-        <p>Each programmatic page is tied to a real service architecture, search intent and internal-link path. We do not publish pages whose only unique element is the place name.</p>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">MARKET CONTEXT</p>
+        <h2>A commercial scenario for {market.name}, not a location-name swap.</h2>
+        <p>{market.commercialContext}</p>
       </div>
-      <div class="qct-benefit-grid">
-        {market.priorityServices.map((service, index) => (
-          <article>
-            <span class="qct-card-kicker">0{index + 1}</span>
+      <div class="service-grid">
+        <article class="service-card"><h3>Search visibility</h3><p>SEO, GEO, AEO and AIO signals are connected to services, sectors and content architecture.</p></article>
+        <article class="service-card"><h3>Conversion flow</h3><p>Forms, WhatsApp, proof and enquiry paths are positioned around buyer intent.</p></article>
+        <article class="service-card"><h3>Technical foundation</h3><p>Mobile performance, analytics, structured data and multilingual expansion share the same system.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">PRIORITY AREAS</p>
+        <h2>We start with the areas most likely to improve commercial performance.</h2>
+      </div>
+      <div class="service-grid">
+        {market.priorityServices.map((service) => (
+          <article class="service-card">
             <h3>{service}</h3>
-            <p>For {market.industries.join(", ")} businesses, this capability is designed as part of the full acquisition and conversion journey.</p>
+            <p>For {market.industries.join(", ")} businesses, this capability is designed as part of the complete acquisition and conversion journey.</p>
           </article>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    {marketServicePages.length > 0 && (
-      <section class="qct-shell">
-        <div class="qct-section-head">
-          <p class="qct-section-label">MARKET × SERVICE PAGES</p>
-          <h2>High-intent services for {market.name}</h2>
-          <p>The general market page is supported by focused pages that answer service-specific commercial intent.</p>
+  {marketServicePages.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">MARKET × SERVICE</p>
+          <h2>Focused service pages for {market.name}.</h2>
+          <p>The general market page is supported by service-specific commercial scopes for higher-intent searches.</p>
         </div>
-        <div class="qct-benefit-grid">
+        <div class="service-grid">
           {marketServicePages.map((service) => (
-            <article>
-              <h3>{market.name} {service.enName}</h3>
+            <a class="service-card" href={enServicePath(market.id, service)}>
+              <h3>{service.enName}</h3>
               <p>{service.enOutcome}</p>
-              <a href={enServicePath(market.id, service)}>Explore {service.enName} for {market.name} →</a>
-            </article>
+              <strong>Explore →</strong>
+            </a>
           ))}
         </div>
-      </section>
-    )}
+      </div>
+    </section>
+  )}
 
-    <section class="qct-shell">
-      <div class="qct-section-head">
-        <p class="qct-section-label">RELATED SOLUTIONS</p>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">RELATED SOLUTIONS</p>
         <h2>A {market.name} project should not depend on one landing page.</h2>
       </div>
-      <div class="qct-benefit-grid">
-        <article>
-          <h3>Web Design</h3>
-          <p>High-trust, fast and conversion-focused websites.</p>
-          <a href="/en/web-design/">Explore web design →</a>
-        </article>
-        <article>
-          <h3>E-Commerce</h3>
-          <p>Store architecture and commerce journeys built around the operating model.</p>
-          <a href="/en/ecommerce/">Explore e-commerce →</a>
-        </article>
-        <article>
-          <h3>SEO / GEO</h3>
-          <p>Search visibility for conventional and AI-assisted discovery.</p>
-          <a href="/en/search-visibility/">Explore search visibility →</a>
-        </article>
-        <article>
-          <h3>{isCountry ? "Exporters" : "B2B & manufacturers"}</h3>
-          <p>{isCountry ? "Multilingual demand architecture for selected target markets." : "Product, service and enquiry paths designed for business buyers."}</p>
-          <a href={isCountry ? "/en/exporters/" : "/en/manufacturers/"}>Explore the segment solution →</a>
-        </article>
+      <div class="service-grid">
+        <a class="service-card" href="/en/web-design/"><h3>Web Design</h3><p>High-trust, fast and conversion-focused websites.</p><strong>Explore →</strong></a>
+        <a class="service-card" href="/en/ecommerce/"><h3>E-Commerce</h3><p>Store architecture and commerce journeys built around the operating model.</p><strong>Explore →</strong></a>
+        <a class="service-card" href="/en/search-visibility/"><h3>SEO / GEO</h3><p>Search visibility for conventional and AI-assisted discovery.</p><strong>Explore →</strong></a>
+        <a class="service-card" href={isCountry ? "/en/exporters/" : "/en/manufacturers/"}><h3>{isCountry ? "Exporters" : "B2B & manufacturers"}</h3><p>{isCountry ? "Multilingual demand architecture for selected target markets." : "Product, service and enquiry paths designed for business buyers."}</p><strong>Explore →</strong></a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="qct-close">
-      <div class="qct-shell qct-close-grid">
-        <div>
-          <p class="qct-section-label">A PLAN FOR {market.name.toUpperCase()}</p>
-          <h2>Build for <em>commercial outcomes</em>, not location-page volume.</h2>
-          <p>We can review the existing website, target queries and conversion path, then define the first practical growth implementation.</p>
-        </div>
-        <a class="qct-btn qct-btn-light" href="/en/contact/">Discuss your project <span>→</span></a>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">NEXT STEP</p>
+        <h2>Define a measurable growth plan for {market.name}.</h2>
+        <p>We review the current website, target queries and conversion path, then define the first practical implementation scope.</p>
+        <a class="button button--primary" href="/en/contact/">Start a project discussion</a>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
   <Footer slot="footer" lang="en" />
 </BaseLayout>
