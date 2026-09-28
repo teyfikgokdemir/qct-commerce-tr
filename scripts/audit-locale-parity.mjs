@@ -17,9 +17,6 @@ const trSvc=files.filter(f=>/dist[\\/]lokasyon[\\/][^\\/]+[\\/](web-tasarim|e-ti
 if(trParents!==19||enParents!==19)errors.push(`programmatic parents expected 19/19, found ${trParents}/${enParents}`);
 if(trSvc!==12||enSvc!==12)errors.push(`programmatic service pages expected 12/12, found ${trSvc}/${enSvc}`);
 if(readPage('/az/azerbaycan/'))errors.push('duplicate AZ market route exists; /az/ must remain canonical');
-console.log(`Locale parity audit: ${localeParityClusters.length} triplets; blogs 13/13/13; programmatic parents ${trParents}/${enParents}; service pages ${trSvc}/${enSvc}.`);
-if(errors.length){console.error([...new Set(errors)].join('\n'));process.exitCode=1}else console.log('PASS: locale parity, services, blogs, llms and programmatic SEO.');
-
 const css=fs.readFileSync(path.join('public','styles','international.css'),'utf8');
 if(/\.site-main h1\s*\{[^}]*color:\s*#fffaf5/is.test(css)) errors.push('international.css: unsafe global white H1 rule returned; white headings must be scoped to dark hero containers');
 const enSource=fs.readFileSync(path.join('src','data','blog-en.ts'),'utf8');
@@ -37,3 +34,6 @@ if(!enMatch||!azMatch){errors.push('blog depth audit: could not parse EN/AZ arti
     if(azChars<enChars*.72) errors.push(az.slug+': AZ article body is materially shorter than EN counterpart');
   }
 }
+
+console.log(`Locale parity audit: ${localeParityClusters.length} triplets; blogs 13/13/13; programmatic parents ${trParents}/${enParents}; service pages ${trSvc}/${enSvc}.`);
+if(errors.length){console.error([...new Set(errors)].join('\n'));process.exitCode=1}else console.log('PASS: locale parity, heading contrast, blog depth, llms and programmatic SEO.');
