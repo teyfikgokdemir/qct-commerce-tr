@@ -45,7 +45,7 @@ export const enMarkets: ProgrammaticMarket[] = trMarkets.map((m) => ({
   audience: ({
     "almanya":"Companies selling into Germany or building demand in the German market",
     "ingiltere":"Companies targeting customers in the United Kingdom",
-    "azerbaycan":"Companies building digital sales across the Türkiye–Azerbaijan corridor",
+    "azerbaycan":"Companies building digital sales across the Turkey–Azerbaijan corridor",
     "dubai":"Companies targeting buyers and decision-makers in Dubai and the UAE"
   } as Record<string,string>)[m.id] ?? `Businesses operating in or targeting ${m.name}`,
   marketAngle: ({
