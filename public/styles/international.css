@@ -413,7 +413,8 @@ html[lang="ka"] .main-navigation button {
     padding: 78px 0 62px;
   }
 
-  :is(html[lang="en"], html[lang="az"]) .site-main h1 {
+  :is(html[lang="en"], html[lang="az"]) .site-main .hero h1,
+  :is(html[lang="en"], html[lang="az"]) .site-main .page-hero h1 {
     font-size: clamp(2.35rem, 10.5vw, 3.35rem);
     line-height: 1.08;
   }

@@ -413,3 +413,11 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
   .qct-price-result strong{font-size:27px}
   .qct-result-btn{min-height:40px;padding:0 16px}
 }
+
+/* Shared light-hero contrast contract: TR / EN / AZ */
+.qct-v2 .qct-hero{color:var(--qct-ink)!important}
+.qct-v2 .qct-hero h1{color:var(--qct-ink)!important;-webkit-text-fill-color:var(--qct-ink)!important}
+.qct-v2 .qct-hero h1 em{color:var(--qct-accent)!important;-webkit-text-fill-color:var(--qct-accent)!important}
+.qct-v2 .qct-hero .qct-eyebrow{color:var(--qct-muted)!important}
+.qct-v2 .qct-hero .qct-lead{color:#4f4b45!important}
+.qct-v2 .qct-hero-copy>*,.qct-v2 .qct-calculator{opacity:1!important;transform:none!important;animation:none!important}
