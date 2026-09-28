@@ -16,14 +16,54 @@ export const articlesEn:BlogArticleEn[]=[
       "An owned e-commerce store can complement marketplaces by improving margin and customer-relationship control."
     ],
     "sections": [
-      {"heading":"Why marketplace margin matters in 2026","paragraphs":["Türkiye's Ministry of Trade reported 2025 e-commerce volume above 4.57 trillion TL and more than 634,000 businesses active in e-commerce. Growth creates opportunity, but it also increases price, campaign and advertising competition."]},
-      {"heading":"Trendyol and Hepsiburada: use the current seller terms","paragraphs":["Commission and commercial terms can change by category, campaign and seller agreement. Use the current seller panel as the source of truth and compare total deductions, logistics, advertising and payment timing for the same SKU."]},
-      {"heading":"Amazon Türkiye commission rates","paragraphs":["Amazon Türkiye's official pricing page states that sales commissions generally range from 6% to 20% depending on category. Logistics and programme-specific charges may be additional."]},
-      {"heading":"n11 commission and service fees","paragraphs":["n11 publishes category-level commission tables. Its official support documentation also describes marketing service and marketplace service fees that can apply in addition to commission, so the visible commission percentage may not equal the total deduction."]},
-      {"heading":"Pazarama and ÇiçekSepeti","paragraphs":["Current category rates and commercial terms should be verified directly in each seller panel. Do not use a static third-party rate list as a permanent pricing assumption."]},
-      {"heading":"How to calculate marketplace contribution margin","paragraphs":["A practical operating formula is order revenue minus product cost, marketplace commission and service fees, logistics, advertising allocation, expected return/cancellation cost and other order-linked expenses. The remainder is contribution before fixed overhead and taxes."]},
-      {"heading":"Should you leave marketplaces for your own store?","paragraphs":["Usually not completely. Marketplaces can provide ready demand and discovery; an owned store gives more control over brand experience, customer relationship, SEO and AI-search visibility. A hybrid channel model is often more resilient."]},
-      {"heading":"Where to verify current data","paragraphs":["This guide was reviewed on 22 September 2026 using official sources from Türkiye's Ministry of Trade, Amazon Türkiye and n11. Marketplace terms can change, so current seller panels remain the final source for commercial decisions."]}
+      {
+        "heading": "Why marketplace margin matters in 2026",
+        "paragraphs": [
+          "Türkiye's Ministry of Trade reported 2025 e-commerce volume above 4.57 trillion TL and more than 634,000 businesses active in e-commerce. Growth creates opportunity, but it also increases price, campaign and advertising competition."
+        ]
+      },
+      {
+        "heading": "Trendyol and Hepsiburada: use the current seller terms",
+        "paragraphs": [
+          "Commission and commercial terms can change by category, campaign and seller agreement. Use the current seller panel as the source of truth and compare total deductions, logistics, advertising and payment timing for the same SKU."
+        ]
+      },
+      {
+        "heading": "Amazon Türkiye commission rates",
+        "paragraphs": [
+          "Amazon Türkiye's official pricing page states that sales commissions generally range from 6% to 20% depending on category. Logistics and programme-specific charges may be additional."
+        ]
+      },
+      {
+        "heading": "n11 commission and service fees",
+        "paragraphs": [
+          "n11 publishes category-level commission tables. Its official support documentation also describes marketing service and marketplace service fees that can apply in addition to commission, so the visible commission percentage may not equal the total deduction."
+        ]
+      },
+      {
+        "heading": "Pazarama and ÇiçekSepeti",
+        "paragraphs": [
+          "Current category rates and commercial terms should be verified directly in each seller panel. Do not use a static third-party rate list as a permanent pricing assumption."
+        ]
+      },
+      {
+        "heading": "How to calculate marketplace contribution margin",
+        "paragraphs": [
+          "A practical operating formula is order revenue minus product cost, marketplace commission and service fees, logistics, advertising allocation, expected return/cancellation cost and other order-linked expenses. The remainder is contribution before fixed overhead and taxes."
+        ]
+      },
+      {
+        "heading": "Should you leave marketplaces for your own store?",
+        "paragraphs": [
+          "Usually not completely. Marketplaces can provide ready demand and discovery; an owned store gives more control over brand experience, customer relationship, SEO and AI-search visibility. A hybrid channel model is often more resilient."
+        ]
+      },
+      {
+        "heading": "Where to verify current data",
+        "paragraphs": [
+          "This guide was reviewed on 22 September 2026 using official sources from Türkiye's Ministry of Trade, Amazon Türkiye and n11. Marketplace terms can change, so current seller panels remain the final source for commercial decisions."
+        ]
+      }
     ],
     "relatedLabel": "Explore e-commerce and marketplace strategy",
     "relatedHref": "/en/ecommerce/"
@@ -107,6 +147,13 @@ export const articlesEn:BlogArticleEn[]=[
         "paragraphs": [
           "Company name, services, contact data, service area and structured data should not contradict each other."
         ]
+      },
+      {
+        "heading": "A practical indexing and ranking workflow",
+        "paragraphs": [
+          "Start with the exact URL rather than a broad site diagnosis. Confirm that the page returns 200, is not blocked by robots or a noindex directive, declares the intended canonical URL, appears in the XML sitemap, and is reachable through internal links. Then use Search Console URL inspection to separate discovery and indexing problems from ranking problems. A page that is indexed but rarely shown needs a different response from a page Google has not selected for indexing.",
+          "After the technical checks, compare the page with the search intent it is supposed to satisfy. The title, H1, opening answer, supporting evidence, internal links and structured data should all reinforce one clear topic. Avoid creating several near-identical pages for the same query. If multiple URLs compete for the same intent, consolidate or differentiate them before publishing more content."
+        ]
       }
     ],
     "relatedLabel": "Explore SEO, GEO, AEO and AI visibility",
@@ -149,6 +196,13 @@ export const articlesEn:BlogArticleEn[]=[
         "heading": "Is schema enough?",
         "paragraphs": [
           "No. Structured data describes visible information; it does not replace strong content or external trust signals."
+        ]
+      },
+      {
+        "heading": "Build verifiable company signals, not AI-specific tricks",
+        "paragraphs": [
+          "There is no single submission form that guarantees a company will be mentioned by ChatGPT or another generative system. The durable work is to make the company easy to verify across the open web: use a consistent legal or trading name, clear service descriptions, stable contact details, expert pages, real project evidence, structured data and third-party references that agree with one another.",
+          "Measure progress with signals you can actually observe. Track branded searches, non-branded long-tail queries, referral traffic from AI interfaces when it is available, citations or mentions discovered manually, and the quality of enquiries generated by those visits. Treat AI visibility as an extension of search and entity quality, not as a channel where a ranking position can be promised."
         ]
       }
     ],
@@ -193,6 +247,13 @@ export const articlesEn:BlogArticleEn[]=[
         "paragraphs": [
           "A proposal should separate the base scope, starting price, extras, licences and excluded work."
         ]
+      },
+      {
+        "heading": "Compare proposals by scope, not only by the headline price",
+        "paragraphs": [
+          "A useful proposal should state the number of page templates, content responsibilities, revision limits, migration work, analytics setup, technical SEO, integrations, testing and launch support. It should also separate recurring third-party costs such as hosting, platform subscriptions, premium apps, payment fees and paid media from the agency or implementation fee. Without those boundaries, two prices that look comparable may describe very different projects.",
+          "For e-commerce, ask how many products and variants are included, whether product copy and image preparation are included, what payment and shipping connections are covered, and how redirects will be handled if an existing store is moved. For multilingual sites, clarify whether the price covers only technical locale infrastructure or also professional translation and local market adaptation."
+        ]
       }
     ],
     "relatedLabel": "View transparent starting prices",
@@ -235,6 +296,13 @@ export const articlesEn:BlogArticleEn[]=[
         "heading": "Which is better for SEO?",
         "paragraphs": [
           "Neither platform produces SEO results automatically; architecture, content, schema and performance matter more."
+        ]
+      },
+      {
+        "heading": "Use a 12-month operating model before choosing",
+        "paragraphs": [
+          "Do not compare ikas and Shopify only by the monthly subscription. Build a 12-month model that includes the base plan, theme work, apps, payment processing, local integrations, product operations, developer support, internationalisation and the staff time needed to run the store. A platform with a lower licence fee can still be more expensive if it requires manual work or custom integrations for everyday operations.",
+          "Also test the business-critical flows before committing: payment providers, shipping, invoicing, returns, stock sync, product feeds, analytics, consent management and marketplace connections. If international expansion matters, check currencies, languages, tax handling and the availability of local payment methods in each target market rather than assuming the platform name alone solves cross-border commerce."
         ]
       }
     ],
@@ -279,6 +347,13 @@ export const articlesEn:BlogArticleEn[]=[
         "paragraphs": [
           "Unexpected shipping, forced accounts, long forms and unclear errors can increase abandonment."
         ]
+      },
+      {
+        "heading": "Diagnose mobile conversion with the full funnel",
+        "paragraphs": [
+          "A slow page is only one possible cause of weak mobile sales. Review the entire funnel from landing page to successful payment: traffic source, search or category navigation, product discovery, variant selection, delivery information, add-to-cart, cart editing, checkout, payment errors and the confirmation step. One broken or confusing stage can erase the benefit of a fast visual design.",
+          "Segment analytics by device and traffic source instead of reading a single site-wide conversion rate. Compare product-view to add-to-cart, add-to-cart to checkout, and checkout to purchase. Then reproduce the biggest drop on real phones and slower mobile networks. This turns redesign decisions into testable hypotheses instead of subjective visual changes."
+        ]
       }
     ],
     "relatedLabel": "Explore e-commerce and mobile improvements",
@@ -315,6 +390,13 @@ export const articlesEn:BlogArticleEn[]=[
         "heading": "Payment, shipping and launch tests",
         "paragraphs": [
           "Verify provider compatibility and test purchase, failed payment, notifications, redirects and indexing before launch."
+        ]
+      },
+      {
+        "heading": "Launch with an operational checklist, not only a design checklist",
+        "paragraphs": [
+          "Before launch, place real test orders through every important payment and delivery path. Verify taxes, shipping thresholds, discount rules, inventory changes, confirmation emails, failed-payment recovery, refund handling and the data sent to analytics. A visually finished store is not commercially ready if the team cannot reliably fulfil, cancel or refund an order.",
+          "Protect search visibility during launch as well. Check indexability, canonical URLs, product and collection metadata, internal links, structured data, sitemap output and redirects from any previous platform. If the store replaces an existing site, preserving useful URLs and mapping retired pages is usually more important than launching every new design element on day one."
         ]
       }
     ],
@@ -353,6 +435,13 @@ export const articlesEn:BlogArticleEn[]=[
         "paragraphs": [
           "Without product-view, add-to-cart, checkout and purchase data, changes create more uncertainty."
         ]
+      },
+      {
+        "heading": "Turn the audit into a prioritised conversion plan",
+        "paragraphs": [
+          "Do not fix every e-commerce issue at the same time. Separate blockers from improvements. Payment failures, broken mobile navigation, missing delivery information, unavailable variants and incorrect tracking are blockers because they directly prevent a purchase or hide what is happening. Cosmetic changes and optional features should come later unless data shows that they address a major customer objection.",
+          "For each change, define the metric that should move and the segment that should be affected. A better filter may improve category-to-product progression, clearer delivery information may improve add-to-cart, and a shorter checkout may improve checkout-to-purchase. This makes the improvement programme measurable and prevents endless redesign without commercial evidence."
+        ]
       }
     ],
     "relatedLabel": "Explore our e-commerce approach",
@@ -389,6 +478,13 @@ export const articlesEn:BlogArticleEn[]=[
         "heading": "Lower-risk transition plan",
         "paragraphs": [
           "Start with a limited product range and validate payment, shipping, stock and notifications before scaling traffic."
+        ]
+      },
+      {
+        "heading": "Run marketplaces and your own store as a portfolio",
+        "paragraphs": [
+          "The transition does not have to be a binary decision. Marketplaces can remain acquisition and demand-discovery channels while the owned store handles richer product education, bundles, repeat purchase, first-party measurement and brand experience. Assign each channel a role and compare contribution margin after all variable costs instead of judging channels only by gross revenue.",
+          "Move operational complexity gradually. Start with a controlled product range, synchronise stock, validate payment and fulfilment, test customer service workflows and confirm that returns can be processed cleanly. Only then increase paid media and direct traffic. A phased migration protects cash flow and exposes operational gaps before they affect the full catalogue."
         ]
       }
     ],
@@ -433,6 +529,13 @@ export const articlesEn:BlogArticleEn[]=[
         "paragraphs": [
           "Combine clicks and rankings with branded searches, long-tail visibility, qualified enquiries and AI referrals where measurable."
         ]
+      },
+      {
+        "heading": "Create evidence that both search engines and people can verify",
+        "paragraphs": [
+          "Strong AI-search visibility depends on the same fundamentals that make a business understandable to a careful buyer. Keep company identity, services, locations, contact details and expertise consistent across the site. Support claims with case studies, named processes, pricing or scope where appropriate, author information and external references. Structured data should describe that visible evidence rather than invent information that users cannot see.",
+          "For content, answer the primary question early and then add the conditions, exceptions, examples and decision criteria that make the answer useful. Internal links should connect related entities and services naturally. This gives crawlers a clearer model of the site and gives generative systems more context to decide when the page is relevant to a specific question."
+        ]
       }
     ],
     "relatedLabel": "Explore SEO, GEO, AEO and AIO",
@@ -476,6 +579,13 @@ export const articlesEn:BlogArticleEn[]=[
         "paragraphs": [
           "Verify technical accuracy, readability, internal links, mobile display and conversion elements before publishing."
         ]
+      },
+      {
+        "heading": "Use a governed content workflow at catalogue scale",
+        "paragraphs": [
+          "For a large catalogue, separate product facts from generated marketing copy. Keep verified attributes such as material, dimensions, compatibility, ingredients, warranty and care instructions in structured fields. The generation step should read only approved facts and category-specific rules. This reduces hallucination risk and makes it possible to update one source field without manually rewriting hundreds of pages.",
+          "Add human review where the cost of an error is high. Regulated claims, safety information, medical or nutritional language, technical compatibility and legal guarantees should never be published solely because a model generated them. Quality control should also check duplicate phrasing, internal links, title and meta consistency, readability and whether the final text actually helps the shopper choose."
+        ]
       }
     ],
     "relatedLabel": "Explore e-commerce content and product architecture",
@@ -518,6 +628,13 @@ export const articlesEn:BlogArticleEn[]=[
         "heading": "Which metrics matter?",
         "paragraphs": [
           "Track first-response time, qualified enquiry rate, quotation, conversion and unanswered conversations."
+        ]
+      },
+      {
+        "heading": "Design the handoff and failure paths before automating",
+        "paragraphs": [
+          "A WhatsApp automation is only useful if the customer can reach a person when the situation no longer fits the scripted flow. Define clear handoff rules for qualified opportunities, complaints, payment questions, custom quotations and messages the system cannot classify. The sales team should receive the conversation context, source page and captured fields so the customer does not have to repeat everything.",
+          "Plan failure handling as carefully as the happy path. Decide what happens when an API is unavailable, a CRM write fails, a message is duplicated or no sales representative responds within the target time. Logging, alerts and manual recovery steps turn an automation from a demo into an operational sales system."
         ]
       }
     ],
