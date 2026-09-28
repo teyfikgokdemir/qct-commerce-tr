@@ -2,11 +2,10 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
-import { trMarkets, programmaticServices, internationalMarketIds, trServicePath, enServicePath } from "../../../data/programmatic-markets";
+import { trMarkets, programmaticServices, trServicePath, enServicePath } from "../../../data/programmatic-markets";
 
 export function getStaticPaths() {
   return trMarkets
-    .filter((market) => internationalMarketIds.has(market.id))
     .flatMap((market) => programmaticServices.map((service) => ({
       params: { sehir: market.id, hizmet: service.trSlug },
       props: { market, service },
