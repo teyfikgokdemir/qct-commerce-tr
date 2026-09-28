@@ -57,7 +57,6 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
   </div>
 </div>
 
-<button type="button" data-cookie-settings hidden style="position:fixed;bottom:8px;left:8px;z-index:9997">{c.label}</button>
 
 <script>
   import { createAnalytics } from '../lib/analytics-stack';
@@ -67,8 +66,7 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
   w.qctTrackEvent = analytics.track;
   const key = 'qct-analytics-consent';
   const banner = document.querySelector<HTMLElement>('[data-cookie-consent]');
-  const settings = document.querySelector<HTMLElement>('[data-cookie-settings]');
-  const show = (open: boolean) => { if (banner) banner.hidden = !open; if (settings) settings.hidden = open; };
+  const show = (open: boolean) => { if (banner) banner.hidden = !open; };
   let saved: string | null = null;
   try { saved = localStorage.getItem(key); } catch {}
   let recording = false;
@@ -82,7 +80,6 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
   };
   document.querySelector('[data-cookie-accept]')?.addEventListener('click', () => choose('granted'));
   document.querySelector('[data-cookie-reject]')?.addEventListener('click', () => choose('denied'));
-  settings?.addEventListener('click', () => show(true));
 </script>
 
 <style>
