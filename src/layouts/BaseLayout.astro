@@ -1,6 +1,7 @@
 ---
 import CookieConsent from '../components/CookieConsent.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { localeParityClusters } from '../data/locale-parity.js';
 
 const SITE_URL = 'https://qctcommerce.com';
 
@@ -84,6 +85,7 @@ addLocaleCluster('/e-ticaret-markalari/', '/en/ecommerce-brands/', '/az/e-ticare
 addLocaleCluster('/gizlilik-politikasi/', '/en/privacy-policy/', '/az/mexfilik/');
 addLocaleCluster('/kullanim-kosullari/', '/en/terms/', '/az/istifade-sertleri/');
 addLocaleCluster('/cerez-politikasi/', '/en/cookie-policy/', '/az/kuki-siyaseti/');
+for (const item of localeParityClusters) addLocaleCluster(item.tr, item.en, item.az);
 
 const currentPath = Astro.url.pathname;
 const pairedPath = parityRoutes[currentPath];

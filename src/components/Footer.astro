@@ -44,6 +44,7 @@ const serviceLinks = isAzerbaijani ? [
   ['E-ticarət','/az/e-ticaret/'],
   ['SEO, GEO, AEO və AIO','/az/seo-geo/'],
   ['WhatsApp satış sistemləri','/az/whatsapp-satis/'],
+  ['Meta reklamları','/az/meta-reklamlari/'],
   ['AI avtomatlaşdırma','/az/ai-avtomatlasdirma/'],
 ] : isEnglish ? [
   ['E-commerce systems','/en/ecommerce/'],
@@ -59,6 +60,8 @@ const serviceLinks = isAzerbaijani ? [
   ['Web tasarım','/web-tasarim/'],
   ['WhatsApp satış sistemleri','/whatsapp-satis/'],
   ['SEO, GEO, AEO ve AIO','/seo-geo/'],
+  ['Meta reklamları','/meta-reklamlari/'],
+  ['Yapay zekâ otomasyonları','/yapay-zeka-otomasyonlari/'],
 ];
 
 const companyLinks = isAzerbaijani ? [
@@ -93,11 +96,14 @@ const companyLinks = isAzerbaijani ? [
   ['E-ticaret markaları','/e-ticaret-markalari/'],
   ['Blog','/blog/'],
   ['Fiyatlar','/fiyatlar/'],
+  ['Nasıl çalışıyoruz','/nasil-calisiyoruz/'],
+  ['Dijital audit','/audit/'],
   ['İletişim','/iletisim/'],
 ];
 
 const legalLinks = isAzerbaijani ? [
   ['Məxfilik siyasəti','/az/mexfilik/'],
+  ['KVKK məlumatlandırması','/az/kvkk/'],
   ['İstifadə şərtləri','/az/istifade-sertleri/'],
   ['Kuki siyasəti','/az/kuki-siyaseti/'],
 ] : isEnglish ? [
@@ -136,7 +142,7 @@ const legalLinks = isAzerbaijani ? [
         <>
           <nav class="site-footer__group site-footer__nav" aria-label="Xidmətlər"><h2>Xidmətlər</h2><a href="/az/veb-dizayn/">Veb dizayn</a><a href="/az/e-ticaret/">E-ticarət</a><a href="/az/seo-geo/">SEO, GEO, AEO və AIO</a><a href="/az/whatsapp-satis/">WhatsApp satış sistemləri</a><a href="/az/ai-avtomatlasdirma/">AI avtomatlaşdırma</a></nav>
           <nav class="site-footer__group site-footer__audience" aria-label="Kimlər üçün"><h2>Kimlər üçün</h2><a href="/az/istehsalcilar/">İstehsalçılar</a><a href="/az/ixracatcilar/">İxracatçılar</a><a href="/az/distributor-b2b/">Distribütor &amp; B2B</a><a href="/az/e-ticaret-brendleri/">E-ticarət brendləri</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Şirkət"><h2>Şirkət</h2><a href="/az/haqqimizda/">Haqqımızda</a><a href="/az/isler/">İşlərimiz</a><a href="/az/qiymetler/">Qiymətlər</a><a href="/az/bloq/">Bloq</a><a href="/az/elaqe/">Əlaqə</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Şirkət"><h2>Şirkət</h2><a href="/az/haqqimizda/">Haqqımızda</a><a href="/az/isler/">İşlərimiz</a><a href="/az/nece-isleyirik/">Necə işləyirik</a><a href="/az/reqemsal-audit/">Rəqəmsal audit</a><a href="/az/qiymetler/">Qiymətlər</a><a href="/az/bloq/">Bloq</a><a href="/az/elaqe/">Əlaqə</a></nav>
           <div class="site-footer__group site-footer__markets"><h2>Əlaqə</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Azərbaycan / Türkiyə</p></div>
         </>
       ) : isEnglish ? (
@@ -175,7 +181,7 @@ const legalLinks = isAzerbaijani ? [
         <>
           <nav class="site-footer__group site-footer__nav" aria-label="Hizmetler"><h2>Hizmetler</h2><a href="/e-ticaret/">E-ticaret altyapısı</a><a href="/web-tasarim/">Web tasarım</a><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a><a href="/meta-reklamlari/">Meta reklamları</a><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></nav>
           <nav class="site-footer__group site-footer__audience" aria-label="Kimler için"><h2>Kimler için</h2><a href="/ureticiler/">Üreticiler</a><a href="/ihracatcilar/">İhracatçılar</a><a href="/distributor-b2b/">Distribütör &amp; B2B</a><a href="/e-ticaret-markalari/">E-ticaret markaları</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/calismalar/">Çalışmalar</a><a href="/hizmetler/">Hizmetler</a><a href="/fiyatlar/">Fiyatlar</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/calismalar/">Çalışmalar</a><a href="/hizmetler/">Hizmetler</a><a href="/nasil-calisiyoruz/">Nasıl çalışıyoruz</a><a href="/audit/">Dijital audit</a><a href="/fiyatlar/">Fiyatlar</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a></nav>
           <div class="site-footer__group site-footer__markets"><h2>İletişim</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Türkiye</p></div>
         </>
       )}
@@ -213,7 +219,7 @@ const legalLinks = isAzerbaijani ? [
         <a href={isEnglish ? '/en/cookie-policy/' : '/cerez-politikasi/'}>{isEnglish ? 'Cookies' : 'Çerezler'}</a>
       </nav>}
       {isAzerbaijani && <nav class="site-footer__legal-desktop" aria-label="Hüquqi">
-        <a href="/az/mexfilik/">Məxfilik</a><a href="/az/istifade-sertleri/">Şərtlər</a><a href="/az/kuki-siyaseti/">Kukilər</a>
+        <a href="/az/mexfilik/">Məxfilik</a><a href="/az/kvkk/">KVKK</a><a href="/az/istifade-sertleri/">Şərtlər</a><a href="/az/kuki-siyaseti/">Kukilər</a>
       </nav>}
     </div>
   </div>

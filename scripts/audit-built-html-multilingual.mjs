@@ -42,10 +42,12 @@ walk(DIST);
 const servicePaths = new Set([
   '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/',
   '/en/ecommerce/', '/en/web-design/', '/en/whatsapp-sales/', '/en/search-visibility/', '/en/meta-ads/', '/en/ai-automation/',
+  '/az/e-ticaret/', '/az/veb-dizayn/', '/az/whatsapp-satis/', '/az/seo-geo/', '/az/meta-reklamlari/', '/az/ai-avtomatlasdirma/',
 ]);
 const caseStudyPaths = new Set([
   '/calismalar/headwear/', '/calismalar/misima/', '/calismalar/artman/',
   '/en/work/headwear/', '/en/work/misima/', '/en/work/artman/',
+  '/az/isler/headwear/', '/az/isler/misima/', '/az/isler/artman/',
 ]);
 const requiredPaths = new Set(['/en/audit/', ...caseStudyPaths]);
 
@@ -86,7 +88,7 @@ for (const file of htmlFiles) {
   for (const required of ['Organization', 'WebSite']) if (!nodes.some((node) => node['@type'] === required)) errors.push(`${file}: JSON-LD is missing ${required}.`);
   if (!nodes.some((node) => ['WebPage', 'AboutPage', 'ContactPage', 'CollectionPage'].includes(node['@type']))) errors.push(`${file}: JSON-LD is missing a WebPage-compatible node.`);
   const articleNodes = nodes.filter((node) => node['@type'] === 'Article');
-  const isArticle = (pathname.startsWith('/blog/') && pathname !== '/blog/') || (pathname.startsWith('/en/blog/') && pathname !== '/en/blog/');
+  const isArticle = (pathname.startsWith('/blog/') && pathname !== '/blog/') || (pathname.startsWith('/en/blog/') && pathname !== '/en/blog/') || (pathname.startsWith('/az/bloq/') && pathname !== '/az/bloq/');
   if (isArticle && articleNodes.length !== 1) errors.push(`${file}: blog article must emit exactly one Article node.`);
   if (!isArticle && articleNodes.length) errors.push(`${file}: Article schema is only allowed on blog articles.`);
   const serviceNodes = nodes.filter((node) => node['@type'] === 'Service');

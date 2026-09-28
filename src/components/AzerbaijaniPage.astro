@@ -8,12 +8,15 @@ interface Props {
   title: string; description: string; h1: string; lead: string; eyebrow?: string;
   cards?: Card[]; secondTitle?: string; secondText?: string; faq?: Faq[];
   breadcrumbLabel?: string; ctaTitle?: string; ctaText?: string;
+  serviceName?: string; creativeWorkName?: string; pageType?: string;
 }
-const { title, description, h1, lead, eyebrow='QCT COMMERCE AZƏRBAYCAN', cards=[], secondTitle, secondText, faq=[], breadcrumbLabel, ctaTitle='Layihənizi birlikdə dəqiqləşdirək.', ctaText='Ehtiyacınızı paylaşın; uyğun texniki və kommersiya çərçivəsini müəyyənləşdirək.' } = Astro.props;
+const { title, description, h1, lead, eyebrow='QCT COMMERCE AZƏRBAYCAN', cards=[], secondTitle, secondText, faq=[], breadcrumbLabel, ctaTitle='Layihənizi birlikdə dəqiqləşdirək.', ctaText='Ehtiyacınızı paylaşın; uyğun texniki və kommersiya çərçivəsini müəyyənləşdirək.', serviceName, creativeWorkName, pageType='WebPage' } = Astro.props;
 const faqSchema = faq.length ? { '@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(item=>({ '@type':'Question',name:item.q,acceptedAnswer:{'@type':'Answer',text:item.a} })) } : null;
+const creativeWorkSchema = creativeWorkName ? { '@context':'https://schema.org','@type':'CreativeWork',name:creativeWorkName,description,url:new URL(Astro.url.pathname,'https://qctcommerce.com').toString(),inLanguage:'az-AZ',creator:{'@id':'https://qctcommerce.com/#organization'} } : null;
 ---
-<BaseLayout title={title} description={description} lang="az" breadcrumbLabel={breadcrumbLabel}>
+<BaseLayout title={title} description={description} lang="az" breadcrumbLabel={breadcrumbLabel} pageType={pageType} service={serviceName ? { name: serviceName, description } : undefined}>
   {faqSchema && <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  {creativeWorkSchema && <script slot="schema" type="application/ld+json" set:html={JSON.stringify(creativeWorkSchema)} />}
   <Header slot="header" lang="az" />
 
   <div class="az-standard-page">
