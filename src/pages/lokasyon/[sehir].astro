@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import { trMarkets, programmaticServices, internationalMarketIds, trServicePath } from "../../data/programmatic-markets";
+import { trMarkets, programmaticServices, trServicePath } from "../../data/programmatic-markets";
 
 export function getStaticPaths() {
   return trMarkets.map((market) => ({
@@ -19,7 +19,7 @@ const alternates = [
   { lang: "tr-TR", href: `/lokasyon/${market.id}/` },
   { lang: "en", href: `/en/location/${market.alternateId}/` },
 ];
-const marketServicePages = internationalMarketIds.has(market.id) ? programmaticServices : [];
+const marketServicePages = programmaticServices;
 const breadcrumbs = [
   { name: "Ana sayfa", url: "/" },
   { name: "Hizmetler", url: "/hizmetler/" },
