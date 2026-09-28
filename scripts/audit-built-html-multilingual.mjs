@@ -118,7 +118,7 @@ const programmaticServicePages = htmlFiles.filter((file) => {
   return /^\/lokasyon\/[^/]+\/[^/]+\/$/.test(pathname) || /^\/en\/location\/[^/]+\/[^/]+\/$/.test(pathname);
 });
 if (programmaticMarketPages.length < 30) errors.push('programmatic location layer is missing or unexpectedly small.');
-if (programmaticServicePages.length < 20) errors.push('programmatic market-service layer is missing or unexpectedly small.');
+if (programmaticServicePages.length < 100) errors.push('programmatic market-service layer is missing or unexpectedly small; expected full city/country × service coverage.');
 
 for (const canonical of canonicals) {
   const pathname = new URL(canonical).pathname;
