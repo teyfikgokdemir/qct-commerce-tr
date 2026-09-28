@@ -18,6 +18,7 @@ const description = `Web design, e-commerce and SEO/GEO for ${market.name}. We $
 const alternates = [
   { lang: "tr-TR", href: `/lokasyon/${market.alternateId}/` },
   { lang: "en", href: `/en/location/${market.id}/` },
+  ...(market.id === "azerbaijan" ? [{ lang: "az-AZ", href: "/az/" }] : []),
 ];
 const marketServicePages = internationalMarketEnIds.has(market.id) ? programmaticServices : [];
 const breadcrumbs = [

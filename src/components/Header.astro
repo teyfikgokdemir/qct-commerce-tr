@@ -33,9 +33,22 @@ const localePairs: Record<string, string> = {
   '/e-ticaret-markalari/': '/en/ecommerce-brands/', '/en/ecommerce-brands/': '/e-ticaret-markalari/'
 };
 const pairedLocalePath = localePairs[currentPath];
+const azPairs: Record<string, { tr: string; en: string; az: string }> = {
+  '/': { tr:'/', en:'/en/', az:'/az/' }, '/en/': { tr:'/', en:'/en/', az:'/az/' }, '/az/': { tr:'/', en:'/en/', az:'/az/' },
+  '/hakkimizda/': { tr:'/hakkimizda/', en:'/en/about/', az:'/az/haqqimizda/' }, '/en/about/': { tr:'/hakkimizda/', en:'/en/about/', az:'/az/haqqimizda/' }, '/az/haqqimizda/': { tr:'/hakkimizda/', en:'/en/about/', az:'/az/haqqimizda/' },
+  '/hizmetler/': { tr:'/hizmetler/', en:'/en/services/', az:'/az/xidmetler/' }, '/en/services/': { tr:'/hizmetler/', en:'/en/services/', az:'/az/xidmetler/' }, '/az/xidmetler/': { tr:'/hizmetler/', en:'/en/services/', az:'/az/xidmetler/' },
+  '/fiyatlar/': { tr:'/fiyatlar/', en:'/en/pricing/', az:'/az/qiymetler/' }, '/en/pricing/': { tr:'/fiyatlar/', en:'/en/pricing/', az:'/az/qiymetler/' }, '/az/qiymetler/': { tr:'/fiyatlar/', en:'/en/pricing/', az:'/az/qiymetler/' },
+  '/iletisim/': { tr:'/iletisim/', en:'/en/contact/', az:'/az/elaqe/' }, '/en/contact/': { tr:'/iletisim/', en:'/en/contact/', az:'/az/elaqe/' }, '/az/elaqe/': { tr:'/iletisim/', en:'/en/contact/', az:'/az/elaqe/' },
+  '/web-tasarim/': { tr:'/web-tasarim/', en:'/en/web-design/', az:'/az/veb-dizayn/' }, '/en/web-design/': { tr:'/web-tasarim/', en:'/en/web-design/', az:'/az/veb-dizayn/' }, '/az/veb-dizayn/': { tr:'/web-tasarim/', en:'/en/web-design/', az:'/az/veb-dizayn/' },
+  '/e-ticaret/': { tr:'/e-ticaret/', en:'/en/ecommerce/', az:'/az/e-ticaret/' }, '/en/ecommerce/': { tr:'/e-ticaret/', en:'/en/ecommerce/', az:'/az/e-ticaret/' }, '/az/e-ticaret/': { tr:'/e-ticaret/', en:'/en/ecommerce/', az:'/az/e-ticaret/' },
+  '/seo-geo/': { tr:'/seo-geo/', en:'/en/search-visibility/', az:'/az/seo-geo/' }, '/en/search-visibility/': { tr:'/seo-geo/', en:'/en/search-visibility/', az:'/az/seo-geo/' }, '/az/seo-geo/': { tr:'/seo-geo/', en:'/en/search-visibility/', az:'/az/seo-geo/' }
+};
+const azPair = azPairs[currentPath];
+const azHref = azPair?.az || '/az/';
+
 const isErrorRoute = currentPath === '/404/' || currentPath === '/404';
-const trHref = isAzerbaijani ? '/lokasyon/azerbaycan/' : isEnglish ? (pairedLocalePath || '/') : (isErrorRoute ? '/' : currentPath);
-const enHref = isAzerbaijani ? '/en/location/azerbaijan/' : !isEnglish ? (pairedLocalePath || '/en/') : (isErrorRoute ? '/en/' : currentPath);
+const trHref = isAzerbaijani ? (azPair?.tr || '/') : isEnglish ? (pairedLocalePath || '/') : (isErrorRoute ? '/' : currentPath);
+const enHref = isAzerbaijani ? (azPair?.en || '/en/') : !isEnglish ? (pairedLocalePath || '/en/') : (isErrorRoute ? '/en/' : currentPath);
 
 const audienceLinks = isAzerbaijani ? [
   ['İstehsalçılar', '/az/#kimler-ucun'],
@@ -55,6 +68,16 @@ const audienceLinks = isAzerbaijani ? [
 ];
 
 const serviceLinks = isAzerbaijani ? [
+  ['Bütün xidmətlər', '/az/xidmetler/'],
+  ['E-ticarət', '/az/e-ticaret/'],
+  ['Shopify qurulması', '/az/shopify-magaza-qurulmasi/'],
+  ['ikas qurulması', '/az/ikas-magaza-qurulmasi/'],
+  ['Veb dizayn', '/az/veb-dizayn/'],
+  ['WhatsApp satış', '/az/whatsapp-satis/'],
+  ['SEO, GEO, AEO & AIO', '/az/seo-geo/'],
+  ['Meta reklamları', '/az/meta-reklamlari/'],
+  ['AI avtomatlaşdırma', '/az/ai-avtomatlaşdırma/']
+] : isEnglish ? [
   ['All Services', '/en/services/'],
   ['E-commerce', '/en/ecommerce/'],
   ['Shopify Setup', '/en/shopify-store-setup/'],
@@ -203,13 +226,13 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
               </ul>
             </li>
             <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Who we help</span></button><ul class="sub-menu"><li><a href="/en/manufacturers/">Manufacturers</a></li><li><a href="/en/exporters/">Exporters</a></li><li><a href="/en/distributors-b2b/">Distributors & B2B</a></li><li><a href="/en/ecommerce-brands/">E-commerce brands</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>Work</a></li><li><a href="/en/location/azerbaijan/" aria-current={isCurrent('/en/location/azerbaijan/') ? 'page' : undefined}>Azerbaijan</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
-            <li><a href="/az/" hreflang="az-AZ">AZ</a></li><li><a href={trHref} hreflang="tr-TR">TR</a></li>
+            <li><a href={azHref} hreflang="az-AZ">AZ</a></li><li><a href={trHref} hreflang="tr-TR">TR</a></li>
           </ul>
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
             <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li><li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href="/az/" hreflang="az-AZ">AZ</a></li><li><a href={enHref} hreflang="en">EN</a></li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li><li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href={azHref} hreflang="az-AZ">AZ</a></li><li><a href={enHref} hreflang="en">EN</a></li>
           </ul>
         )}
       </div>

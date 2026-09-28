@@ -58,9 +58,42 @@ Object.assign(parityRoutes, {
   '/en/ecommerce-brands/': '/e-ticaret-markalari/',
 });
 
+const localeClusters: Record<string, { tr: string; en: string; az: string }> = {};
+const addLocaleCluster = (tr: string, en: string, az: string) => {
+  const cluster = { tr, en, az };
+  localeClusters[tr] = cluster; localeClusters[en] = cluster; localeClusters[az] = cluster;
+};
+addLocaleCluster('/', '/en/', '/az/');
+addLocaleCluster('/hakkimizda/', '/en/about/', '/az/haqqimizda/');
+addLocaleCluster('/hizmetler/', '/en/services/', '/az/xidmetler/');
+addLocaleCluster('/calismalar/', '/en/work/', '/az/isler/');
+addLocaleCluster('/iletisim/', '/en/contact/', '/az/elaqe/');
+addLocaleCluster('/fiyatlar/', '/en/pricing/', '/az/qiymetler/');
+addLocaleCluster('/e-ticaret/', '/en/ecommerce/', '/az/e-ticaret/');
+addLocaleCluster('/web-tasarim/', '/en/web-design/', '/az/veb-dizayn/');
+addLocaleCluster('/whatsapp-satis/', '/en/whatsapp-sales/', '/az/whatsapp-satis/');
+addLocaleCluster('/seo-geo/', '/en/search-visibility/', '/az/seo-geo/');
+addLocaleCluster('/meta-reklamlari/', '/en/meta-ads/', '/az/meta-reklamlari/');
+addLocaleCluster('/yapay-zeka-otomasyonlari/', '/en/ai-automation/', '/az/ai-avtomatlaşdırma/');
+addLocaleCluster('/shopify-magaza-kurulumu/', '/en/shopify-store-setup/', '/az/shopify-magaza-qurulmasi/');
+addLocaleCluster('/ikas-magaza-kurulumu/', '/en/ikas-store-setup/', '/az/ikas-magaza-qurulmasi/');
+addLocaleCluster('/ureticiler/', '/en/manufacturers/', '/az/istehsalcilar/');
+addLocaleCluster('/ihracatcilar/', '/en/exporters/', '/az/ixracatcilar/');
+addLocaleCluster('/distributor-b2b/', '/en/distributors-b2b/', '/az/distributor-b2b/');
+addLocaleCluster('/e-ticaret-markalari/', '/en/ecommerce-brands/', '/az/e-ticaret-brendleri/');
+addLocaleCluster('/gizlilik-politikasi/', '/en/privacy-policy/', '/az/mexfilik/');
+addLocaleCluster('/kullanim-kosullari/', '/en/terms/', '/az/istifade-sertleri/');
+addLocaleCluster('/cerez-politikasi/', '/en/cookie-policy/', '/az/kuki-siyaseti/');
+
 const currentPath = Astro.url.pathname;
 const pairedPath = parityRoutes[currentPath];
-const alternates = providedAlternates.length ? providedAlternates : pairedPath ? (currentPath.startsWith('/en/') ? [{ lang: 'tr-TR', href: pairedPath }, { lang: 'en', href: currentPath }] : [{ lang: 'tr-TR', href: currentPath }, { lang: 'en', href: pairedPath }]) : [];
+const cluster = localeClusters[currentPath];
+const clusterAlternates = cluster ? [
+  { lang: 'tr-TR', href: cluster.tr },
+  { lang: 'en', href: cluster.en },
+  { lang: 'az-AZ', href: cluster.az },
+] : [];
+const alternates = clusterAlternates.length ? clusterAlternates : providedAlternates.length ? providedAlternates : pairedPath ? (currentPath.startsWith('/en/') ? [{ lang: 'tr-TR', href: pairedPath }, { lang: 'en', href: currentPath }] : [{ lang: 'tr-TR', href: currentPath }, { lang: 'en', href: pairedPath }]) : [];
 const isEnglish = lang === 'en';
 const isAzerbaijani = lang === 'az';
 const isInternational = isEnglish || isAzerbaijani;
