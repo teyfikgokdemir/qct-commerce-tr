@@ -1,6 +1,6 @@
 ---
 import MobileMenu from './MobileMenu.astro';
-import { localeParityClusters } from '../data/locale-parity.js';
+import { getLocaleSwitchTargets } from '../data/locale-routing.js';
 interface Props { lang: string; }
 const { lang } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -34,14 +34,12 @@ const localePairs: Record<string, string> = {
   '/e-ticaret-markalari/': '/en/ecommerce-brands/', '/en/ecommerce-brands/': '/e-ticaret-markalari/'
 };
 const pairedLocalePath = localePairs[currentPath];
-const parityCluster = localeParityClusters.find((cluster) =>
-  cluster.tr === currentPath || cluster.en === currentPath || cluster.az === currentPath
-);
+const localeTargets = getLocaleSwitchTargets(currentPath);
 const isErrorRoute = currentPath === '/404/' || currentPath === '/404';
 const isAzerbaijanMarketRoute = currentPath === '/lokasyon/azerbaycan/' || currentPath === '/en/location/azerbaijan/';
-const trHref = parityCluster?.tr || (isEnglish ? (pairedLocalePath || '/') : isAzerbaijani ? '/' : (isErrorRoute ? '/' : currentPath));
-const enHref = parityCluster?.en || (!isEnglish ? (pairedLocalePath || '/en/') : isAzerbaijani ? '/en/' : (isErrorRoute ? '/en/' : currentPath));
-const azHref = parityCluster?.az || (isAzerbaijanMarketRoute ? '/az/' : '/az/');
+const trHref = localeTargets?.tr || (isEnglish ? (pairedLocalePath || '/') : isAzerbaijani ? '/' : (isErrorRoute ? '/' : currentPath));
+const enHref = localeTargets?.en || (!isEnglish ? (pairedLocalePath || '/en/') : isAzerbaijani ? '/en/' : (isErrorRoute ? '/en/' : currentPath));
+const azHref = localeTargets?.az || (isAzerbaijanMarketRoute ? '/az/' : '/az/');
 
 const audienceLinks = isAzerbaijani ? [
   ['İstehsalçılar', '/az/istehsalcilar/'],

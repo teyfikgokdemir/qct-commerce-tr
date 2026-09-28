@@ -1,24 +1,25 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { localeParityClusters, blogLocaleClusters, canonicalServiceLinks } from '../src/data/locale-parity.js';
+import { getLocaleSwitchTargets } from '../src/data/locale-routing.js';
 const DIST='dist',SITE='https://qctcommerce.com',errors=[];
 const pageFile=p=>p==='/'?path.join(DIST,'index.html'):path.join(DIST,p.replace(/^\//,'').replace(/\/$/,''),'index.html');
 const readPage=p=>fs.existsSync(pageFile(p))?fs.readFileSync(pageFile(p),'utf8'):null;
 const hrefs=h=>[...h.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
 const alts=h=>[...h.matchAll(/<link\b[^>]*rel=["']alternate["'][^>]*hreflang=["']([^"']+)["'][^>]*href=["']([^"']+)["'][^>]*>/gi)].map(m=>({lang:m[1],href:m[2]}));
-const attr=(attrs,name)=>attrs.match(new RegExp(name+'=["\\\']([^"\\\']+)["\\\']','i'))?.[1]||null;
-const languageLinks=h=>[...h.matchAll(/<a\\b([^>]*)>/gi)].map(m=>({href:attr(m[1],'href'),lang:attr(m[1],'hreflang')})).filter(x=>x.href&&x.lang);
 for(const cluster of localeParityClusters){
   for(const [lang,p] of Object.entries(cluster)){
     const h=readPage(p);
     if(!h){errors.push(`${p}: missing ${lang} parity page`);continue;}
     const a=alts(h);
-    const switches=languageLinks(h);
+    const resolved=getLocaleSwitchTargets(p);
+    if(!resolved || resolved.tr!==cluster.tr || resolved.en!==cluster.en || resolved.az!==cluster.az){
+      errors.push(`${p}: locale switch resolver does not preserve same-page TR/EN/AZ targets`);
+    }
     for(const [tl,tp] of Object.entries(cluster)){
       const hl=tl==='tr'?'tr-TR':tl==='en'?'en':'az-AZ';
       const ex=new URL(tp,SITE).toString();
       if(!a.some(x=>x.lang===hl&&x.href===ex)) errors.push(`${p}: missing ${hl} -> ${tp}`);
-      if(!switches.some(x=>x.lang===hl&&x.href===tp)) errors.push(`${p}: language switch does not link to same-page ${hl} counterpart ${tp}`);
     }
   }
 }
@@ -54,7 +55,18 @@ if(!enMatch||!azMatch){errors.push('blog depth audit: could not parse EN/AZ arti
   }
 }
 
-for(const p of ['/blog/','/en/blog/']){const h=readPage(p);if(h&&!/qct-blog-hero h1[^}]*color:\s*var\(--qct-color-(?:ink|text)\)/is.test(h))errors.push(`${p}: light blog hero lacks explicit dark H1 contrast`);}
-for(const cluster of blogLocaleClusters.slice(0,1)){for(const p of [cluster.tr,cluster.en]){const h=readPage(p);if(h&&!/(qct-article(?:__hero)?[^<]*|<style[^>]*>)[\s\S]*h1[^}]*color:\s*var\(--qct-color-(?:ink|text)\)/i.test(h))errors.push(`${p}: light article hero lacks explicit dark H1 contrast`);}}
+const blogIndexTr=fs.readFileSync(path.join('src','components','BlogIndex.astro'),'utf8');
+const blogIndexEn=fs.readFileSync(path.join('src','components','BlogIndexEn.astro'),'utf8');
+const blogArticleTr=fs.readFileSync(path.join('src','components','BlogArticle.astro'),'utf8');
+const blogArticleEn=fs.readFileSync(path.join('src','components','BlogArticleEn.astro'),'utf8');
+for(const [name,source] of [['TR blog index',blogIndexTr],['EN blog index',blogIndexEn],['TR blog article',blogArticleTr],['EN blog article',blogArticleEn]]){
+  if(!/h1\s*\{[^}]*color:\s*var\(--qct-color-(?:ink|text)\)/is.test(source)) errors.push(name+': light-background H1 contrast is not explicitly dark');
+}
+const headerSource=fs.readFileSync(path.join('src','components','Header.astro'),'utf8');
+const mobileSource=fs.readFileSync(path.join('src','components','MobileMenu.astro'),'utf8');
+if(!headerSource.includes('getLocaleSwitchTargets(currentPath)')) errors.push('Header must use central same-page locale resolver');
+if(!headerSource.includes('azHref={azHref}')) errors.push('Header must pass resolved AZ target to mobile menu');
+if(!mobileSource.includes('href={azHref}')) errors.push('Mobile language switch must use resolved AZ target');
+
 console.log(`Locale parity audit: ${localeParityClusters.length} triplets; blogs 13/13/13; programmatic parents ${trParents}/${enParents}; service pages ${trSvc}/${enSvc}.`);
 if(errors.length){console.error([...new Set(errors)].join('\n'));process.exitCode=1}else console.log('PASS: locale parity, heading contrast, blog depth, llms and programmatic SEO.');
