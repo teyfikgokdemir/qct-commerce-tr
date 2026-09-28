@@ -24,8 +24,8 @@ for(const cluster of localeParityClusters){
   }
 }
 for(const [lang,p] of Object.entries({tr:'/hizmetler/',en:'/en/services/',az:'/az/xidmetler/'})){const h=readPage(p);if(!h)continue;const links=new Set(hrefs(h));for(const r of canonicalServiceLinks[lang])if(!links.has(r))errors.push(`${p}: missing core service ${r}`);}
-for(const [lang,prefix] of Object.entries({tr:'/blog/',en:'/en/blog/',az:'/az/bloq/'})){const d=path.join(DIST,prefix.replace(/^\//,'').replace(/\/$/,''));const count=fs.existsSync(d)?fs.readdirSync(d,{withFileTypes:true}).filter(e=>e.isDirectory()).length:0;if(count!==13)errors.push(`${prefix}: expected 13 articles, found ${count}`);}
-if(blogLocaleClusters.length!==13)errors.push('blog parity map must contain 13 triplets');
+for(const [lang,prefix] of Object.entries({tr:'/blog/',en:'/en/blog/',az:'/az/bloq/'})){const d=path.join(DIST,prefix.replace(/^\//,'').replace(/\/$/,''));const count=fs.existsSync(d)?fs.readdirSync(d,{withFileTypes:true}).filter(e=>e.isDirectory()).length:0;if(count!==17)errors.push(`${prefix}: expected 17 articles, found ${count}`);}
+if(blogLocaleClusters.length!==17)errors.push('blog parity map must contain 13 triplets');
 const llms=fs.readFileSync(path.join(DIST,'llms.txt'),'utf8');if(/Georgia|\/ka\//i.test(llms))errors.push('llms.txt contains retired Georgia/KA');for(const n of ['/az/','/az/xidmetler/','/lokasyon/','/en/location/'])if(!llms.includes(n))errors.push(`llms.txt missing ${n}`);
 const files=[];const walk=d=>{for(const e of fs.readdirSync(d,{withFileTypes:true})){const f=path.join(d,e.name);if(e.isDirectory())walk(f);else if(e.name.endsWith('.html'))files.push(f)}};walk(DIST);
 const trParents=files.filter(f=>/dist[\\/]lokasyon[\\/][^\\/]+[\\/]index\.html$/.test(f)).length,enParents=files.filter(f=>/dist[\\/]en[\\/]location[\\/][^\\/]+[\\/]index\.html$/.test(f)).length;
@@ -95,5 +95,5 @@ if(!headerSource.includes('getLocaleSwitchTargets(currentPath)')) errors.push('H
 if(!headerSource.includes('azHref={azHref}')) errors.push('Header must pass resolved AZ target to mobile menu');
 if(!mobileSource.includes('href={azHref}')) errors.push('Mobile language switch must use resolved AZ target');
 
-console.log(`Locale parity audit: ${localeParityClusters.length} triplets; blogs 13/13/13; programmatic parents ${trParents}/${enParents}; service pages ${trSvc}/${enSvc}.`);
+console.log(`Locale parity audit: ${localeParityClusters.length} triplets; blogs 17/17/17; programmatic parents ${trParents}/${enParents}; service pages ${trSvc}/${enSvc}.`);
 if(errors.length){console.error([...new Set(errors)].join('\n'));process.exitCode=1}else console.log('PASS: locale parity, heading contrast, blog depth, llms and programmatic SEO.');

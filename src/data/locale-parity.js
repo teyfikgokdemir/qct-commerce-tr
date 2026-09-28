@@ -12,6 +12,10 @@ export const blogLocaleClusters = [
   { tr:'/blog/ai-overviews-geo-aio-seo-rehberi/', en:'/en/blog/ai-overviews-geo-aeo-aio-seo-guide/', az:'/az/bloq/seo-geo-aeo-aio-beledci/' },
   { tr:'/blog/yapay-zeka-ile-urun-aciklamasi-hazirlama/', en:'/en/blog/ai-product-descriptions-for-seo-and-sales/', az:'/az/bloq/mehsul-tesvirlerini-ai-ile-hazirlamaq/' },
   { tr:'/blog/whatsapp-satis-otomasyonu-rehberi/', en:'/en/blog/whatsapp-sales-automation-guide/', az:'/az/bloq/whatsapp-satis-avtomatlasdirma/' },
+  { tr:'/blog/dinamik-seo-2026-seo-geo-aeo-aio/', en:'/en/blog/dynamic-seo-2026-seo-geo-aeo-aio/', az:'/az/bloq/dinamik-seo-2026-seo-geo-aeo-aio/' },
+  { tr:'/blog/chatgpt-ads-2026-reklam-verme/', en:'/en/blog/chatgpt-ads-2026-advertising-guide/', az:'/az/bloq/chatgpt-ads-2026-reklam/' },
+  { tr:'/blog/oai-searchbot-chatgpt-search-gorunurlugu-2026/', en:'/en/blog/oai-searchbot-chatgpt-search-visibility-2026/', az:'/az/bloq/oai-searchbot-chatgpt-search-2026/' },
+  { tr:'/blog/multimodal-arama-seo-2026-gorsel-ai/', en:'/en/blog/multimodal-search-seo-2026-visual-ai/', az:'/az/bloq/multimodal-axtaris-seo-2026/' },
 ];
 export const localeParityClusters = [
   {tr:'/',en:'/en/',az:'/az/'},{tr:'/hakkimizda/',en:'/en/about/',az:'/az/haqqimizda/'},{tr:'/hizmetler/',en:'/en/services/',az:'/az/xidmetler/'},

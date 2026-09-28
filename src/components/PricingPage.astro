@@ -6,7 +6,7 @@ import Footer from './Footer.astro';
 const faqItems = [
   { q: 'Kurumsal web sitesi ne kadar?', a: 'Sınırlı kapsamlı başlangıç paketi 8.900 TL’dir. Standart kurumsal projeler çoğunlukla 12.900–16.900 TL bandında kapsamlanır. Başlangıç paketinde en fazla 5 temel sayfa, tek dil, iletişim akışı ve temel teknik SEO bulunur.' },
   { q: 'E-ticaret sitesi ne kadar?', a: 'Dar kapsamlı e-ticaret başlangıç paketi 9.900 TL’dir ve 10 ürüne kadar standart ürün girişi içerir. Standart projeler 14.900–19.900 TL’den, özel tasarım veya entegrasyon gerektiren kapsamlı projeler 25.000 TL’den başlar.' },
-  { q: 'SEO + GEO + AEO + AIO fiyatı aylık mı?', a: '3.900 TL fiyat tek seferlik başlangıç çalışmasıdır. Sürekli teknik takip, içerik iyileştirme ve raporlama içeren aylık çalışma 7.900 TL/ay’dan başlar; daha geniş büyüme kapsamı 12.900 TL/ay’dan başlar.' },
+  { q: 'Dinamik SEO aylık mı?', a: 'Evet. SEO Care 3.990 TL/ay, Dinamik SEO 5.990 TL/ay ve SEO Growth 7.990 TL/ay olarak sunulur. Teknik SEO, Search Console, içerik ve GEO/AEO/AIO geliştirmeleri pakete göre sürekli yürütülür.' },
   { q: 'Ürün girişi e-ticaret paketine dahil mi?', a: 'E-ticaret başlangıç paketinde, metin ve görseller müşteri tarafından hazır sağlanmak şartıyla 10 ürüne kadar standart ürün girişi dahildir. Daha fazla ürün, varyant, veri temizliği, açıklama yazımı ve görsel düzenleme ayrı fiyatlandırılır.' },
   { q: 'Platform, lisans ve üçüncü taraf ücretleri dahil mi?', a: 'Hayır. Aksi açıkça belirtilmedikçe platform aboneliği, ücretli tema/uygulama, ödeme komisyonu, alan adı, harici hosting, reklam bütçesi ve üçüncü taraf servis ücretleri QCT Commerce hizmet bedeline dahil değildir.' },
 ];
@@ -14,7 +14,7 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
 ---
 <BaseLayout
   title="Web Sitesi Fiyatları 2026 | E-Ticaret, SEO & Site Yenileme | QCT"
-  description="2026 başlangıç fiyatları: kurumsal web 8.900 TL, e-ticaret 9.900 TL, SEO/GEO/AEO/AIO 3.900 TL. Kapsam, ürün adedi ve normal proje aralıklarını inceleyin."
+  description="2026 başlangıç fiyatları: kurumsal web 8.900 TL, e-ticaret 9.900 TL, Dinamik SEO 5.990 TL/ay. Kapsam, ürün adedi ve normal proje aralıklarını inceleyin."
   lang="tr"
   breadcrumbLabel="Fiyatlar"
 >
@@ -52,9 +52,9 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
   </div></div>
 
   <div class="qct-price-category"><div><p class="qct-section-label">SEO · GEO · AEO · AIO</p><h2>Başlangıç çalışması ve aylık büyüme</h2></div><div class="qct-price-rows">
-    <article><span>SEO + GEO + AEO + AIO başlangıç</span><strong>3.900 TL</strong><small>Tek seferlik</small><p>Temel teknik kontrol, arama niyeti ve entity yapısı; en fazla 5 öncelikli sayfada başlık, açıklama, içerik yapısı ve AI okunabilirliği iyileştirmesi. Yeni uzun içerik üretimi dahil değildir.</p></article>
-    <article><span>Aylık temel görünürlük</span><strong>7.900 TL/ay’dan</strong><small>Sürekli çalışma</small><p>Ayda en fazla 4 öncelikli sayfa iyileştirmesi, teknik takip, Search Console kontrolü ve aylık rapor. Yeni makale üretimi ve backlink çalışması ayrıca.</p></article>
-    <article><span>Aylık büyüme paketi</span><strong>12.900 TL/ay’dan</strong><small>Genişletilmiş kapsam</small><p>Daha fazla sayfa, içerik briefleri, teknik takip, entity/AEO/GEO geliştirmeleri ve düzenli performans değerlendirmesi.</p></article>
+    <article><span>SEO Care</span><strong>3.990 TL/ay</strong><small>Teknik görünürlük bakımı</small><p>Teknik SEO takibi, Search Console kontrolü, sitemap/index ve temel metadata iyileştirmeleri. Küçük siteler için sürdürülebilir bakım paketi.</p></article>
+    <article><span>Dinamik SEO</span><strong>5.990 TL/ay</strong><small>Önerilen · sürekli büyüme</small><p>SEO Care + sorgu analizi, schema, iç linkleme, öncelikli sayfa optimizasyonları, GEO/AEO/AIO geliştirmeleri ve ayda 1 özgün SEO içeriği.</p></article>
+    <article><span>SEO Growth</span><strong>7.990 TL/ay</strong><small>İçerik + landing page büyümesi</small><p>Dinamik SEO + ayda 2 özgün içerik, landing page geliştirmeleri, rakip/sorgu analizi ve daha geniş teknik-içerik optimizasyonu.</p></article>
     <article><span>GA4 + Search Console</span><strong>990 TL</strong><small>Projeye ek hizmet · bağımsız 1.490 TL’den</small><p>Temel kurulum, doğrulama ve ana dönüşüm olaylarının kontrolü. Gelişmiş e-ticaret ölçümü ayrıca.</p></article>
   </div></div>
 

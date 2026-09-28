@@ -7,6 +7,69 @@ export interface BlogArticle {
 }
 
 export const articles: BlogArticle[] = [
+
+  {
+    slug: 'dinamik-seo-2026-seo-geo-aeo-aio', seoKey: 'blog-dynamic-seo-2026',
+    title: 'Dinamik SEO 2026: SEO, GEO, AEO ve AIO neden artık birlikte çalışmalı?',
+    excerpt: 'Tek seferlik SEO yerine Search Console sorguları, teknik sağlık, içerik boşlukları ve AI görünürlüğüyle her ay gelişen dinamik SEO modelini inceleyin.',
+    published: '2026-09-28', modified: '2026-09-28',
+    intro: 'Arama görünürlüğü artık yalnızca birkaç anahtar kelimeyi optimize etmekten ibaret değil. Teknik SEO, gerçek kullanıcı sorguları, içerik mimarisi, yapılandırılmış veri, GEO, AEO ve AIO birlikte yönetildiğinde site değişen arama davranışına daha hızlı uyum sağlar.',
+    summary: ['Dinamik SEO tek seferlik kurulum değil, aylık iyileştirme döngüsüdür.','SEO teknik erişilebilirliği ve arama niyetini; GEO üretken aramayı; AEO doğrudan cevapları; AIO ise marka ve içerik bağlamını güçlendirir.','Search Console verisi hangi sayfanın ve sorgunun geliştirilmesi gerektiğini belirlemede temel kaynaktır.','Aylık içerik üretimi tek başına yeterli değildir; mevcut sayfalar da sürekli geliştirilmelidir.'],
+    sections: [
+      { heading: 'Dinamik SEO nedir?', paragraphs: ['Dinamik SEO; teknik sağlık, indeksleme, sorgu verisi, içerik boşlukları, iç bağlantılar, schema ve dönüşüm verisinin düzenli olarak kontrol edilip siteye yeni iyileştirmeler uygulanmasıdır. Amaç bir defa “SEO yapmak” değil, değişen talebe göre siteyi sürekli geliştirmektir.'] },
+      { heading: 'SEO, GEO, AEO ve AIO nasıl birlikte çalışır?', paragraphs: ['SEO sayfaların taranmasını ve ilgili aramalarda değerlendirilmesini destekler. GEO içeriğin üretken arama sistemleri tarafından anlaşılmasını, AEO önemli sorulara açık cevaplar verilmesini, AIO ise işletme, hizmet, uzmanlık ve içerik ilişkilerinin yapay zekâ sistemleri tarafından tutarlı biçimde yorumlanmasını hedefler.'] },
+      { heading: 'Aylık çalışma döngüsü nasıl olmalı?', paragraphs: ['Sağlıklı bir aylık döngü teknik kontrol, Search Console sorgu analizi, öncelikli sayfa optimizasyonu, yeni içerik, iç link geliştirmesi ve dönüşüm ölçümünü birlikte ele alır. Sadece yeni blog eklemek, zayıf hizmet ve kategori sayfalarını kendi kendine güçlendirmez.'] },
+      { heading: 'QCT Commerce dinamik SEO modeli', paragraphs: ['SEO Care teknik görünürlük bakımına, Dinamik SEO teknik + içerik büyümesine, SEO Growth ise daha yoğun içerik ve landing page geliştirmesine odaklanır. Her üç modelde de Google ve AI görünürlüğü aynı sistem içinde değerlendirilir.'] },
+    ],
+    relatedService: { label: 'Dinamik SEO, GEO, AEO ve AIO hizmetini inceleyin', href: '/seo-geo/' },
+  },
+  {
+    slug: 'chatgpt-ads-2026-reklam-verme', seoKey: 'blog-chatgpt-ads-2026',
+    title: 'ChatGPT Ads 2026: reklam verme, CPC, Ads Manager ve Sponsored Agents',
+    excerpt: 'ChatGPT Ads’in klasik arama reklamlarından farkını, conversational intent yaklaşımını, CPC teklif modelini, Sponsored Agents yapısını ve landing page gereksinimlerini inceleyin.',
+    published: '2026-09-28', modified: '2026-09-28',
+    intro: 'ChatGPT Ads, kullanıcının yalnızca tek bir anahtar kelime yazdığı klasik arama reklamcılığından farklı bir bağlam sunuyor. Kullanıcı çoğu zaman bir ürünü karşılaştırırken, bir hizmet ararken veya karar verirken reklamla karşılaşıyor. Bu nedenle reklam metni, teklif ve landing page yapısı konuşma niyetine uyumlu olmalı.',
+    summary: ['ChatGPT Ads 2026’da self-servis Ads Manager ile CPM, CPC ve uygun hesaplarda oCPC hedeflerini destekliyor.','Sponsored Agents, seçili reklamverenlerle sınırlı alpha aşamasında; reklama tıklayan kullanıcının işletme sponsorlu bir ajanla konuşmaya devam etmesini sağlayan yeni bir format.','Başarılı kreatifler slogan yerine kime, ne fayda sağladığını ve hangi durumda ilgili olduğunu açık anlatmalı.','Landing page, reklamın başladığı konuşmayı kanıt, kapsam, fiyat veya net sonraki adımla devam ettirmeli.'],
+    sections: [
+      { heading: 'ChatGPT Ads nasıl çalışıyor?', paragraphs: ['ChatGPT reklamları konuşma bağlamındaki niyet ve uygunluk sinyallerine göre gösterilebiliyor. Bu nedenle yalnız keyword listesi hazırlamak yerine teklif, kullanıcı problemi, ürün/hizmet faydası ve karar anı birlikte düşünülmeli.'] },
+      { heading: 'Ads Manager ve CPC modeli ne değiştiriyor?', paragraphs: ['Self-servis Ads Manager; CPM, CPC ve uygun hesaplarda oCPC hedefleriyle kampanya yönetimini daha esnek hale getiriyor. Reklamveren açısından temel konu yalnız tıklama almak değil, hangi konuşma niyetinin nitelikli talebe dönüştüğünü anlamaktır.'] },
+      { heading: 'Sponsored Agents neden önemli?', paragraphs: ['Sponsored Agents şu anda seçili reklamverenlerle sınırlı alpha testinde; erişim olduğunda reklam sonrası etkileşimi işletme sponsorlu konuşma deneyimine taşıyabilir. Bu yapı özellikle ürün danışmanlığı, yazılım, finansal olmayan profesyonel hizmetler ve karmaşık karşılaştırma gerektiren satın alma süreçlerinde yeni bir reklam katmanı oluşturabilir.'] },
+      { heading: 'ChatGPT Ads için landing page nasıl hazırlanmalı?', paragraphs: ['Sayfa reklam metnini tekrar etmek yerine konuşmayı ilerletmeli: teklifin kime uygun olduğu, kapsam, kanıt, sık sorular, fiyat veya teklif mantığı, mobil hız ve net CTA aynı akışta görünmeli. SEO, GEO, AEO ve AIO yapısı burada paid kampanyayı da destekler; çünkü aynı açıklık hem organik hem ücretli keşfi güçlendirir.'] },
+      { heading: 'Kaynak ve erişilebilirlik notu', paragraphs: ['ChatGPT Ads erişimi ve formatları ülkeye göre değişebilir. Kampanya planlamadan önce OpenAI Ads Manager üzerindeki güncel reklamveren erişimini ve politika koşullarını doğrulamak gerekir.'] },
+    ],
+    relatedService: { label: 'AI-native reklam ve landing page çalışmalarımızı konuşun', href: '/meta-reklamlari/' },
+  },
+  {
+    slug: 'oai-searchbot-chatgpt-search-gorunurlugu-2026', seoKey: 'blog-chatgpt-searchbot-2026',
+    title: 'OAI-SearchBot ve ChatGPT Search görünürlüğü 2026: teknik kontrol listesi',
+    excerpt: 'robots.txt, OAI-SearchBot, canonical, CDN/firewall, indekslenebilirlik ve AI arama görünürlüğü için teknik kontrolleri öğrenin.',
+    published: '2026-09-28', modified: '2026-09-28',
+    intro: 'Bir sayfanın ChatGPT Search veya başka bir AI destekli arama deneyiminde kaynak olabilmesi için önce teknik olarak erişilebilir olması gerekir. robots.txt, CDN ve firewall kuralları, canonical yapısı ve gerçek sayfa erişimi bu nedenle temel kontroldür.',
+    summary: ['Arama crawler erişimi ile model eğitimi tercihleri aynı şey değildir.','robots.txt, CDN/firewall ve durum kodları önemli sayfaların erişimini engellememeli.','Teknik erişim yalnızca uygunluk sağlar; görünürlük garantisi değildir.','Çok dilli sitelerde crawler erişimi, hreflang ve canonical yapısı birbiriyle tutarlı olmalı.'],
+    sections: [
+      { heading: 'İlk kontrol: crawler sayfaya ulaşabiliyor mu?', paragraphs: ['Önemli URL’lerin 200 durum koduyla açılması, robots.txt tarafından engellenmemesi, CDN veya güvenlik katmanının bot erişimini yanlışlıkla kesmemesi ve canonical URL’nin doğru sayfayı göstermesi gerekir.'] },
+      { heading: 'Search erişimi ve eğitim tercihlerini ayırın', paragraphs: ['AI şirketleri arama erişimi ile model eğitimi izinlerini farklı mekanizmalarla yönetebilir. Bu nedenle tüm AI botlarını tek kural altında değerlendirmek yerine hangi botun hangi amaçla kullanıldığını kontrol etmek daha doğrudur.'] },
+      { heading: 'Teknik erişim neden tek başına yeterli değil?', paragraphs: ['Arama sistemi sayfaya ulaşabilse bile içerik genel, kanıtsız veya bağlamsızsa kaynak olma ihtimali düşer. Açık hizmet tanımları, özgün içerik, entity tutarlılığı, sık sorular, iç linkler ve doğrulanabilir bilgiler birlikte çalışmalıdır.'] },
+      { heading: 'Çok dilli sitelerde dikkat edilmesi gerekenler', paragraphs: ['Dil klasörleri, hreflang, canonical, sitemap ve yerel içerik aynı hedefi göstermelidir. Bir dil sayfası başka dil canonical’ına gidiyor veya içerik eşdeğerliği zayıfsa AI ve klasik arama sistemleri çelişkili sinyaller alabilir.'] },
+    ],
+    relatedService: { label: 'AI arama görünürlüğü teknik denetimini inceleyin', href: '/seo-geo/' },
+  },
+  {
+    slug: 'multimodal-arama-seo-2026-gorsel-ai', seoKey: 'blog-multimodal-search-2026',
+    title: 'Multimodal arama SEO 2026: görseller, ürün verisi ve AI arama',
+    excerpt: 'Görsel ve multimodal aramada ürün fotoğrafları, alt metin, çevreleyen içerik, schema ve ürün verisinin nasıl birlikte çalıştığını öğrenin.',
+    published: '2026-09-28', modified: '2026-09-28',
+    intro: 'Arama giderek daha görsel hale geliyor. Kullanıcı bir ürün adını yazmak yerine fotoğraf, ekran görüntüsü veya sahne üzerinden aramaya başlayabiliyor. Bu değişim görsel optimizasyonunu yalnız alt metin yazma işi olmaktan çıkarıyor.',
+    summary: ['Görsel arama için yalnız alt metin yeterli değildir.','Görselin bulunduğu sayfadaki ürün/hizmet bağlamı da açık olmalıdır.','E-ticarette özgün ürün görselleri ve doğru ürün attribute’ları daha önemli hale gelir.','SEO, GEO, AEO ve AIO görsel kanıt ve makine okunabilir veriyi aynı entity hikâyesinde birleştirmelidir.'],
+    sections: [
+      { heading: 'Multimodal arama neyi değiştiriyor?', paragraphs: ['Kullanıcılar artık metin, görsel ve bağlamı aynı arama akışında kullanabiliyor. Bu nedenle arama sistemlerinin hem görsel asset’i hem sayfadaki metinsel ve yapısal bağlamı birlikte anlaması gerekir.'] },
+      { heading: 'E-ticaret siteleri ne yapmalı?', paragraphs: ['Özgün ürün fotoğrafları, tutarlı varyant görselleri, doğru ürün özellikleri, açıklayıcı kategori sayfaları, Product schema ve güçlü iç bağlantılar birlikte yönetilmeli. Görseller yalnız estetik öğe değil, ürün keşfinin bir parçası olarak düşünülmeli.'] },
+      { heading: 'Hizmet şirketleri için görsel arama', paragraphs: ['Proje fotoğrafları, gerçek uygulama görüntüleri, lokasyon bağlamı ve vaka çalışmaları hizmet şirketleri için güçlü kanıt üretir. Stok görseller yerine gerçek iş çıktıları, işletmenin ne yaptığını arama sistemlerine ve kullanıcılara daha açık anlatır.'] },
+      { heading: 'SEO + GEO + AEO + AIO bağlantısı', paragraphs: ['Teknik erişilebilirlik, schema, açık cevaplar ve güçlü görsel kanıt aynı marka ve hizmet bağlamını destekler. Bu nedenle multimodal görünürlük ayrı bir taktik değil, dinamik SEO sisteminin yeni bir bileşenidir.'] },
+    ],
+    relatedService: { label: 'Dinamik SEO ve AI görünürlük hizmetini inceleyin', href: '/seo-geo/' },
+  },
+
   {
     slug: 'pazaryeri-komisyon-oranlari-2026', seoKey: 'blog-marketplace-commission-2026',
     title: 'Pazaryeri komisyon oranları 2026: Trendyol, Hepsiburada, Amazon, n11 ve Pazarama’da kâr marjı nasıl korunur?',

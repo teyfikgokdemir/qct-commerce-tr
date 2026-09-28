@@ -1,0 +1,6 @@
+---
+import BlogArticle from '../../../components/BlogArticle.astro';
+import { getArticle } from '../../../data/blog';
+const article = getArticle('multimodal-arama-seo-2026-gorsel-ai');
+---
+<BlogArticle article={article} />
