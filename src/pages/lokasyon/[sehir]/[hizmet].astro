@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { trMarkets, programmaticServices, internationalMarketIds, trServicePath, enServicePath } from "../../../data/programmatic-markets";
+
+export function getStaticPaths() {
+  return trMarkets
+    .filter((market) => internationalMarketIds.has(market.id))
+    .flatMap((market) => programmaticServices.map((service) => ({
+      params: { sehir: market.id, hizmet: service.trSlug },
+      props: { market, service },
+    })));
+}
+
+const { market, service } = Astro.props;
+const title = `${market.name} ${service.trName} Hizmeti | QCT Commerce`;
+const description = `${market.name} için ${service.trName.toLowerCase()} çözümü: ${service.trOutcome} QCT Commerce ile ölçülebilir ve ölçeklenebilir dijital büyüme altyapısı.`;
+const alternates = [
+  { lang: "tr-TR", href: trServicePath(market.id, service) },
+  { lang: "en", href: enServicePath(market.alternateId, service) },
+];
+const breadcrumbs = [
+  { name: "Ana sayfa", url: "/" },
+  { name: market.name, url: `/lokasyon/${market.id}/` },
+  { name: service.trName, url: trServicePath(market.id, service) },
+];
+---
+
+<BaseLayout title={title} description={description} lang="tr" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
+  <div class="qct-v2" data-qct-v2>
+    <section class="qct-hero">
+      <div class="qct-shell qct-hero-grid">
+        <div class="qct-hero-copy">
+          <p class="qct-eyebrow">{market.name.toUpperCase()} · {service.trName.toUpperCase()}</p>
+          <h1 class="qct-hero-title"><em>{market.name}</em> için {service.trName}</h1>
+          <p class="qct-lead">
+            Bu sayfa yalnızca lokasyon adı değiştirilmiş bir şablon değildir. {market.name} pazarında amaç, <strong>{service.trIntent}</strong>.
+          </p>
+          <div class="qct-hero-actions">
+            <a class="qct-btn qct-btn-primary" href="/iletisim/">{market.name} projesi için görüşme <span>→</span></a>
+            <a class="qct-btn qct-btn-secondary" href={service.trCorePath}>Ana hizmeti inceleyin</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qct-benefits">
+      <div class="qct-shell qct-benefit-grid">
+        <article>
+          <p class="qct-section-label">HEDEF PAZAR</p>
+          <h3>{market.name} bağlamı</h3>
+          <p>{market.commercialContext}</p>
+        </article>
+        <article>
+          <p class="qct-section-label">HİZMET ODAĞI</p>
+          <h3>{service.trName} ne üretmeli?</h3>
+          <p>{service.trOutcome}</p>
+        </article>
+        <article>
+          <p class="qct-section-label">TESLİM KAPSAMI</p>
+          <h3>Çekirdek bileşenler</h3>
+          <p>{service.trDeliverables.join(" · ")}</p>
+        </article>
+        <article>
+          <p class="qct-section-label">ÖLÇÜM</p>
+          <h3>Trafikten daha fazlası</h3>
+          <p>Organik görünürlük, nitelikli form/WhatsApp talebi, dönüşüm yolları ve teknik performans birlikte izlenir.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="qct-shell">
+      <div class="qct-section-head">
+        <p class="qct-section-label">UYGULAMA PRENSİBİ</p>
+        <h2>{market.name} için {service.trName.toLowerCase()} nasıl farklılaşır?</h2>
+        <p>{market.marketAngle}; bu nedenle içerik, bilgi mimarisi ve CTA yapısı hedef pazar bağlamına göre kurgulanır.</p>
+      </div>
+      <div class="qct-benefit-grid">
+        {service.trDeliverables.map((item, index) => (
+          <article>
+            <span class="qct-card-kicker">0{index + 1}</span>
+            <h3>{item}</h3>
+            <p>{market.industries.join(", ")} odaklı firmalar için bu bileşen, ticari görüşmeye giden yolun bir parçası olarak tasarlanır.</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="qct-close">
+      <div class="qct-shell qct-close-grid">
+        <div>
+          <p class="qct-section-label">{market.name.toUpperCase()} · {service.trName.toUpperCase()}</p>
+          <h2>Hedef pazara uygun, <em>ölçülebilir</em> bir sistem kurun.</h2>
+          <p>Mevcut sitenizi ve hedef sorguları değerlendirip ilk uygulanabilir kapsamı birlikte netleştirebiliriz.</p>
+        </div>
+        <a class="qct-btn qct-btn-light" href="/iletisim/">Proje görüşmesi başlatın <span>→</span></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
