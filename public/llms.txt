@@ -1,99 +1,52 @@
 # QCT Commerce
 
-> QCT Commerce builds and improves websites, e-commerce systems, search visibility and AI-supported digital growth infrastructure for businesses in Türkiye and selected international markets.
+> QCT Commerce builds websites, e-commerce systems, search visibility and AI-supported digital sales infrastructure for businesses in Türkiye and Azerbaijan.
 
-QCT Commerce provides corporate and personal websites, e-commerce setup and migration, website redesign, product operations, conversion-focused landing pages, SEO, GEO, AEO, AIO, analytics, WhatsApp sales systems and AI-supported business automation.
+Verified contact: info@qctcommerce.com · WhatsApp: +90 545 678 26 55.
 
-The primary market is Türkiye. The English section mirrors the Türkiye-focused service and knowledge scope for English-speaking residents, founders and teams operating in Türkiye. Dedicated international market-entry pages, such as Georgia, remain separate.
+## Canonical language structure
+- Turkish: https://qctcommerce.com/
+- English: https://qctcommerce.com/en/
+- Azerbaijani: https://qctcommerce.com/az/
+
+TR, EN and AZ core commercial pages are reciprocal hreflang clusters. Azerbaijani is a full local-language site.
+
+## Six core services
+TR: /e-ticaret/ · /web-tasarim/ · /whatsapp-satis/ · /seo-geo/ · /meta-reklamlari/ · /yapay-zeka-otomasyonlari/
+EN: /en/ecommerce/ · /en/web-design/ · /en/whatsapp-sales/ · /en/search-visibility/ · /en/meta-ads/ · /en/ai-automation/
+AZ: /az/e-ticaret/ · /az/veb-dizayn/ · /az/whatsapp-satis/ · /az/seo-geo/ · /az/meta-reklamlari/ · /az/ai-avtomatlasdirma/
+
+## Core commercial pages
+Services: /hizmetler/ · /en/services/ · /az/xidmetler/
+Pricing: /fiyatlar/ · /en/pricing/ · /az/qiymetler/
+Work: /calismalar/ · /en/work/ · /az/isler/
+How we work: /nasil-calisiyoruz/ · /en/how-we-work/ · /az/nece-isleyirik/
+Digital audit: /audit/ · /en/audit/ · /az/reqemsal-audit/
+Contact: /iletisim/ · /en/contact/ · /az/elaqe/
+
+## Audiences
+All three locales cover manufacturers, exporters, distributors/B2B and e-commerce brands.
+
+## Knowledge base
+TR, EN and AZ each publish 13 matched guide topics: marketplace economics, ikas pricing, Google visibility, ChatGPT/AI visibility, website pricing, ikas vs Shopify, mobile conversion, Shopify setup, e-commerce mistakes, marketplace-to-owned-store migration, SEO/GEO/AEO/AIO, AI product descriptions and WhatsApp sales automation.
+Turkish: https://qctcommerce.com/blog/
+English: https://qctcommerce.com/en/blog/
+Azerbaijani: https://qctcommerce.com/az/bloq/
+
+## Programmatic SEO
+Turkish market/location hubs: https://qctcommerce.com/lokasyon/
+English market/location hubs: https://qctcommerce.com/en/location/
+Both generate 19 parent market/location pages. Selected international markets generate 3 service-intent children (web design, e-commerce, SEO/GEO), producing 12 service pages per TR/EN locale.
+
+The Azerbaijani locale intentionally does not duplicate the same Azerbaijan intent under /az/azerbaycan/. https://qctcommerce.com/az/ and its local service pages are the canonical Azerbaijan-market targets, preventing keyword cannibalization.
+
+## Search and AI discovery
+Pages use self-canonical URLs, reciprocal hreflang where translations exist, XML sitemap discovery, structured data and internal links. Core service pages use Service schema, blog articles use Article schema, and work examples use CreativeWork schema.
+
+Sitemap: https://qctcommerce.com/sitemap-index.xml
+Robots: https://qctcommerce.com/robots.txt
+
+## Legal
+Privacy, KVKK information, terms and cookie information are available in TR, EN and AZ. The AZ KVKK page is an informational translation/summary of the applicable Turkish notice; Turkish law and the Turkish notice govern formal interpretation.
 
 QCT Commerce is part of the wider QCT ecosystem. QCT Studio is a separate sister brand.
-
-Verified contact information: info@qctcommerce.com; WhatsApp only: +90 545 678 26 55.
-
-## English pages for Türkiye
-
-The English section mirrors the Türkiye service scope for English-speaking residents, founders and teams operating in Türkiye. Prices remain in Turkish lira and local platform context is preserved.
-
-- [English home](https://qctcommerce.com/en/): Same website, e-commerce, redesign, audit, migration and visibility scope with transparent TL pricing.
-- [English services](https://qctcommerce.com/en/services/): Same core service scope as the Turkish section.
-- [English pricing](https://qctcommerce.com/en/pricing/): Website, e-commerce, redesign, product entry and SEO/GEO/AEO/AIO prices in TL.
-- [Shopify store setup](https://qctcommerce.com/en/shopify-store-setup/): Shopify setup and redesign for businesses in Türkiye.
-- [ikas store setup](https://qctcommerce.com/en/ikas-store-setup/): ikas setup, redesign and migration.
-- [WhatsApp sales systems](https://qctcommerce.com/en/whatsapp-sales/): Contextual enquiry, routing and follow-up systems.
-- [Meta ads and landing pages](https://qctcommerce.com/en/meta-ads/): Campaign-to-conversion systems.
-- [English blog](https://qctcommerce.com/en/blog/): English versions of QCT Commerce guides for Türkiye.
-
-## Dedicated international market-entry pages
-
-- [Georgia market page in English](https://qctcommerce.com/en/georgia/): Multilingual B2B websites, export catalogues, SEO, GEO and sales automation for Georgian companies.
-- [Georgia market page in Georgian](https://qctcommerce.com/ka/georgia/): ქართული კომპანიებისთვის მრავალენოვანი B2B ვებსაიტები, საექსპორტო კატალოგები და გაყიდვების ავტომატიზაცია.
-
-## Core pages
-
-- [Ana sayfa](https://qctcommerce.com/): Türkiye-focused e-commerce and measurable digital growth services.
-- [Hakkımızda](https://qctcommerce.com/hakkimizda/): Brand positioning, working approach and QCT Studio relationship.
-- [Hizmetler](https://qctcommerce.com/hizmetler/): Overview of digital commerce and growth services.
-- [Çalışmalar](https://qctcommerce.com/calismalar/): Selected project and implementation examples.
-- [İletişim](https://qctcommerce.com/iletisim/): Verified email and WhatsApp details.
-
-## Services
-
-- [E-ticaret altyapısı](https://qctcommerce.com/e-ticaret/): Product discovery, cart, checkout and store operations planned as one system.
-- [Web tasarımı](https://qctcommerce.com/web-tasarim/): Corporate websites aligned with commercial goals and user needs.
-- [WhatsApp satış sistemleri](https://qctcommerce.com/whatsapp-satis/): Messaging, lead handling and customer follow-up systems.
-- [SEO, GEO, AEO ve AIO](https://qctcommerce.com/seo-geo/): Search-engine, generative-engine, answer-engine and AI visibility foundations.
-- [Meta reklamları](https://qctcommerce.com/meta-reklamlari/): Meta campaigns and conversion-focused landing pages.
-- [Yapay zekâ otomasyonları](https://qctcommerce.com/yapay-zeka-otomasyonlari/): Workflow automation for repeated business operations.
-
-## Selected work
-
-- [Headwear](https://qctcommerce.com/calismalar/headwear/): Project and digital solution summary.
-- [Misima](https://qctcommerce.com/calismalar/misima/): Project and digital solution summary.
-- [Artman](https://qctcommerce.com/calismalar/artman/): Project and digital solution summary.
-
-## Guides
-
-- [Blog](https://qctcommerce.com/blog/): Guides for e-commerce, digital sales and operational decisions.
-- [Shopify mağaza kurma rehberi](https://qctcommerce.com/blog/shopify-magaza-kurma-rehberi/): Decisions to plan before launching an online store in Türkiye.
-- [E-ticarette yapılan hatalar](https://qctcommerce.com/blog/e-ticarette-yapilan-hatalar/): Common issues that weaken sales experience and operations.
-- [Pazaryerinden kendi sitenize geçiş](https://qctcommerce.com/blog/pazaryerinden-kendi-sitene-gecis/): Scope and planning for moving from marketplaces to an independent store.
-- [AI Overviews, GEO ve AIO rehberi](https://qctcommerce.com/blog/ai-overviews-geo-aio-seo-rehberi/): AI search engines, generative engine optimization and modern SEO foundations.
-- [WhatsApp satış otomasyonu rehberi](https://qctcommerce.com/blog/whatsapp-satis-otomasyonu-rehberi/): Order taking, customer communication and sales automation through WhatsApp.
-- [Yapay zekâ ile ürün açıklaması hazırlama](https://qctcommerce.com/blog/yapay-zeka-ile-urun-aciklamasi-hazirlama/): Systematic and conversion-oriented product description workflows using AI.
-- [Web sitem Google’da neden çıkmıyor?](https://qctcommerce.com/blog/web-sitem-google-da-neden-cikmiyor/): Technical and content checks for websites that are not visible in Google.
-- [ChatGPT’de firmam nasıl görünür?](https://qctcommerce.com/blog/chatgpt-de-firmam-nasil-gorunur/): Practical AI visibility, GEO and entity guidance for businesses.
-- [Web sitesi yaptırma fiyatları 2026](https://qctcommerce.com/blog/web-sitesi-yaptirma-fiyatlari-2026/): Transparent scope and pricing factors for web projects.
-- [ikas mı Shopify mı?](https://qctcommerce.com/blog/ikas-mi-shopify-mi-2026/): Türkiye-focused platform comparison for e-commerce decisions.
-- [ikas fiyatları 2026](https://qctcommerce.com/blog/ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri/): Platform license, setup, theme, product entry, SEO, integrations and third-party cost planning for ikas stores.
-- [Mobil e-ticaret sitesi neden satış yapmıyor?](https://qctcommerce.com/blog/mobil-e-ticaret-sitesi-neden-satis-yapmiyor/): Mobile UX and conversion checks for online stores.
-
-## Legal and company information
-
-- [Kariyer](https://qctcommerce.com/kariyer/): Working and application information.
-- [Gizlilik politikası](https://qctcommerce.com/gizlilik-politikasi/): Personal-data processing information.
-- [KVKK aydınlatma metni](https://qctcommerce.com/kvkk/): Information notice under Turkish Personal Data Protection Law.
-- [Kullanım koşulları](https://qctcommerce.com/kullanim-kosullari/): Website terms of use.
-- [Çerez politikası](https://qctcommerce.com/cerez-politikasi/): Cookie policy and consent preferences.
-
-## English AI and search guides for Türkiye
-- [How can my company appear in ChatGPT?](https://qctcommerce.com/en/blog/how-can-my-company-appear-in-chatgpt/)
-- [Why is my website not showing on Google?](https://qctcommerce.com/en/blog/why-is-my-website-not-showing-on-google/)
-- [Google AI Overviews, GEO, AEO and AIO guide](https://qctcommerce.com/en/blog/ai-overviews-geo-aeo-aio-seo-guide/)
-- [Website pricing 2026](https://qctcommerce.com/en/blog/website-pricing-2026-what-changes-the-cost/)
-- [ikas vs Shopify for Türkiye](https://qctcommerce.com/en/blog/ikas-vs-shopify-2026-turkiye/)
-- [Mobile e-commerce conversion guide](https://qctcommerce.com/en/blog/why-mobile-ecommerce-sites-do-not-convert/)
-- [Shopify setup guide for Türkiye](https://qctcommerce.com/en/blog/shopify-store-setup-guide-turkiye/)
-- [WhatsApp sales automation guide](https://qctcommerce.com/en/blog/whatsapp-sales-automation-guide/)
-
-
-## English company and legal pages
-
-- [English careers](https://qctcommerce.com/en/careers/): Career and collaboration information for QCT Commerce.
-- [English privacy policy](https://qctcommerce.com/en/privacy-policy/): Privacy information for English-speaking users.
-- [English KVKK notice](https://qctcommerce.com/en/kvkk/): English summary of Türkiye's personal-data information notice.
-- [English terms of use](https://qctcommerce.com/en/terms/): Website terms and pricing/third-party-service scope.
-- [English cookie policy](https://qctcommerce.com/en/cookie-policy/): Cookie preferences and optional analytics information.
-
-
-- [Pazaryeri komisyon oranları 2026](https://qctcommerce.com/blog/pazaryeri-komisyon-oranlari-2026/): Trendyol, Hepsiburada, Amazon Türkiye, n11, Pazarama ve ÇiçekSepeti satışlarında komisyon, hizmet bedeli, reklam, lojistik ve gerçek katkı marjı hesabı.
-- [Marketplace commission rates in Türkiye 2026](https://qctcommerce.com/en/blog/marketplace-commission-rates-turkiye-2026/): English guide to total marketplace costs and contribution margin in Türkiye.
