@@ -1,5 +1,68 @@
 export interface BlogArticleEn{slug:string;trSlug:string;title:string;description:string;published:string;modified:string;intro:string;summary:string[];sections:{heading:string;paragraphs:string[];items?:string[]}[];relatedLabel:string;relatedHref:string}
 export const articlesEn:BlogArticleEn[]=[
+
+  {
+    slug:"dynamic-seo-2026-seo-geo-aeo-aio",trSlug:"dinamik-seo-2026-seo-geo-aeo-aio",
+    title:"Dynamic SEO 2026: why SEO, GEO, AEO and AIO now work together",
+    description:"Move beyond one-off SEO with a monthly system driven by Search Console queries, technical health, content gaps and AI-search visibility.",
+    published:"2026-09-28",modified:"2026-09-28",
+    intro:"Search visibility is no longer a one-time keyword exercise. Technical SEO, real query data, content architecture, structured data, GEO, AEO and AIO work better as one continuous system.",
+    summary:["Dynamic SEO is a monthly improvement cycle, not a one-off setup.","SEO supports crawlability and intent; GEO supports generative discovery; AEO supports direct answers; AIO strengthens entity and content context.","Search Console data helps prioritise the next page or query to improve.","Publishing new articles alone is not enough; existing commercial pages must also improve."],
+    sections:[
+      {heading:"What is dynamic SEO?",paragraphs:["Dynamic SEO continuously reviews technical health, indexing, query data, content gaps, internal links, schema and conversion signals, then turns those findings into site improvements."]},
+      {heading:"How do SEO, GEO, AEO and AIO connect?",paragraphs:["SEO helps search engines crawl and evaluate pages. GEO improves source clarity for generative systems, AEO structures direct answers, and AIO keeps the business, services, evidence and machine-readable context consistent."]},
+      {heading:"What should happen every month?",paragraphs:["A useful cycle combines technical checks, Search Console analysis, priority-page optimisation, new evidence-led content, internal linking and conversion measurement."]},
+      {heading:"QCT Commerce dynamic SEO model",paragraphs:["SEO Care focuses on technical maintenance, Dynamic SEO adds content and query-led optimisation, and SEO Growth adds a stronger publishing and landing-page layer."]}
+    ],
+    relatedLabel:"Explore Dynamic SEO, GEO, AEO and AIO",relatedHref:"/en/search-visibility/"
+  },
+  {
+    slug:"chatgpt-ads-2026-advertising-guide",trSlug:"chatgpt-ads-2026-reklam-verme",
+    title:"ChatGPT Ads 2026: Ads Manager, CPC, conversational intent and Sponsored Agents",
+    description:"Understand ChatGPT Ads, CPC buying, conversational intent, Sponsored Agents and the landing-page strategy required for AI-native advertising.",
+    published:"2026-09-28",modified:"2026-09-28",
+    intro:"ChatGPT Ads creates a different advertising context from classic keyword search. Users may already be comparing options or making a decision, so the ad and landing page need to match conversational intent rather than only a keyword.",
+    summary:["ChatGPT Ads expanded self-serve Ads Manager and CPC buying in 2026.","Sponsored Agents can extend an ad interaction into a business-sponsored conversational experience.","Specific benefit-led creative is more useful than generic slogans.","The landing page should continue the conversation with evidence, scope, qualification logic and a direct next step."],
+    sections:[
+      {heading:"How is ChatGPT Ads different?",paragraphs:["The surrounding conversation can provide richer intent than a simple keyword. Advertisers should think in terms of customer problems, decision context, offer fit and practical value."]},
+      {heading:"Ads Manager and CPC",paragraphs:["Self-serve campaign management and CPC bidding make the channel easier to operate, but qualified enquiries and downstream value matter more than raw clicks."]},
+      {heading:"What are Sponsored Agents?",paragraphs:["Sponsored Agents allow a user to continue into a business-sponsored conversational experience after engaging with an ad, creating a new layer between discovery and conversion."]},
+      {heading:"How should landing pages adapt?",paragraphs:["The page should continue the user's decision process with proof, clear scope, pricing or qualification logic, fast mobile UX and a strong CTA. SEO, GEO, AEO and AIO clarity also supports paid acquisition."]},
+      {heading:"Availability note",paragraphs:["Advertiser access and formats can evolve by market, so current Ads Manager eligibility and policy requirements should be verified before planning spend."]}
+    ],
+    relatedLabel:"Discuss AI-native advertising and landing pages",relatedHref:"/en/meta-ads/"
+  },
+  {
+    slug:"oai-searchbot-chatgpt-search-visibility-2026",trSlug:"oai-searchbot-chatgpt-search-gorunurlugu-2026",
+    title:"OAI-SearchBot and ChatGPT Search visibility 2026: a technical checklist",
+    description:"Review robots.txt, OAI-SearchBot access, canonicals, CDN/firewall rules, indexing and multilingual signals for AI-search visibility.",
+    published:"2026-09-28",modified:"2026-09-28",
+    intro:"A page cannot become a useful AI-search source if the relevant crawler cannot reliably fetch it. robots.txt, firewall rules, response codes and canonical structure are therefore foundational checks.",
+    summary:["Search crawling and model-training preferences are separate concepts.","robots.txt, CDN/firewall and response codes should not block important public pages.","Technical access creates eligibility, not a visibility guarantee.","Multilingual sites need consistent crawler access, hreflang and canonical rules."],
+    sections:[
+      {heading:"Can the crawler reach the page?",paragraphs:["Important URLs should return usable responses, avoid accidental robots blocks and remain accessible through CDN and security layers."]},
+      {heading:"Separate search access from training preferences",paragraphs:["Different AI crawlers may serve different purposes. Website owners should manage those purposes intentionally instead of treating every AI bot as the same system."]},
+      {heading:"Why technical access is not enough",paragraphs:["Clear service definitions, original evidence, entity consistency, useful answers, internal links and trustworthy source pages still determine whether content is useful enough to surface."]},
+      {heading:"Multilingual technical consistency",paragraphs:["Language folders, hreflang, canonicals, sitemaps and localised content should point in the same direction rather than send conflicting signals."]}
+    ],
+    relatedLabel:"Explore AI-search technical visibility",relatedHref:"/en/search-visibility/"
+  },
+  {
+    slug:"multimodal-search-seo-2026-visual-ai",trSlug:"multimodal-arama-seo-2026-gorsel-ai",
+    title:"Multimodal search SEO 2026: images, product data and AI discovery",
+    description:"Learn how product imagery, alt text, surrounding copy, structured data and visual evidence work together in multimodal search.",
+    published:"2026-09-28",modified:"2026-09-28",
+    intro:"Search is increasingly visual. A customer can begin with a photo, screenshot or scene rather than a typed query, which makes image context and structured product data more important.",
+    summary:["Alt text alone is not a complete visual-search strategy.","The page around the image needs clear product, service or use-case context.","Original product imagery and accurate attributes matter more for e-commerce discovery.","SEO, GEO, AEO and AIO should connect visual evidence with the same business entity story."],
+    sections:[
+      {heading:"What changes with multimodal search?",paragraphs:["Search systems increasingly combine text, images and context, so they need both the visual asset and the semantic page around it to agree."]},
+      {heading:"What should e-commerce teams do?",paragraphs:["Use original product imagery, consistent variants, accurate product attributes, descriptive categories, Product schema and clean internal links."]},
+      {heading:"Visual search for service businesses",paragraphs:["Original project photography, genuine location context and case-study evidence can make services easier for both users and search systems to understand."]},
+      {heading:"Why this belongs inside dynamic SEO",paragraphs:["Technical access, structured data, direct answers and visual evidence reinforce the same brand and service context, so multimodal optimisation is better treated as part of the wider SEO/GEO/AEO/AIO system."]}
+    ],
+    relatedLabel:"Explore Dynamic SEO and AI visibility",relatedHref:"/en/search-visibility/"
+  },
+
   {
     "slug": "marketplace-commission-rates-turkiye-2026",
     "trSlug": "pazaryeri-komisyon-oranlari-2026",
