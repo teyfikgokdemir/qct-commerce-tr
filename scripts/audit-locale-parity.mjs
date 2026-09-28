@@ -1,12 +1,28 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { localeParityClusters, blogLocaleClusters, canonicalServiceLinks } from '../src/data/locale-parity.js';
+import { getLocaleSwitchTargets } from '../src/data/locale-routing.js';
 const DIST='dist',SITE='https://qctcommerce.com',errors=[];
 const pageFile=p=>p==='/'?path.join(DIST,'index.html'):path.join(DIST,p.replace(/^\//,'').replace(/\/$/,''),'index.html');
 const readPage=p=>fs.existsSync(pageFile(p))?fs.readFileSync(pageFile(p),'utf8'):null;
 const hrefs=h=>[...h.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
 const alts=h=>[...h.matchAll(/<link\b[^>]*rel=["']alternate["'][^>]*hreflang=["']([^"']+)["'][^>]*href=["']([^"']+)["'][^>]*>/gi)].map(m=>({lang:m[1],href:m[2]}));
-for(const cluster of localeParityClusters){for(const [lang,p] of Object.entries(cluster)){const h=readPage(p);if(!h){errors.push(`${p}: missing ${lang} parity page`);continue;}const a=alts(h);for(const [tl,tp] of Object.entries(cluster)){const hl=tl==='tr'?'tr-TR':tl==='en'?'en':'az-AZ',ex=new URL(tp,SITE).toString();if(!a.some(x=>x.lang===hl&&x.href===ex))errors.push(`${p}: missing ${hl} -> ${tp}`);}}}
+for(const cluster of localeParityClusters){
+  for(const [lang,p] of Object.entries(cluster)){
+    const h=readPage(p);
+    if(!h){errors.push(`${p}: missing ${lang} parity page`);continue;}
+    const a=alts(h);
+    const resolved=getLocaleSwitchTargets(p);
+    if(!resolved || resolved.tr!==cluster.tr || resolved.en!==cluster.en || resolved.az!==cluster.az){
+      errors.push(`${p}: locale switch resolver does not preserve same-page TR/EN/AZ targets`);
+    }
+    for(const [tl,tp] of Object.entries(cluster)){
+      const hl=tl==='tr'?'tr-TR':tl==='en'?'en':'az-AZ';
+      const ex=new URL(tp,SITE).toString();
+      if(!a.some(x=>x.lang===hl&&x.href===ex)) errors.push(`${p}: missing ${hl} -> ${tp}`);
+    }
+  }
+}
 for(const [lang,p] of Object.entries({tr:'/hizmetler/',en:'/en/services/',az:'/az/xidmetler/'})){const h=readPage(p);if(!h)continue;const links=new Set(hrefs(h));for(const r of canonicalServiceLinks[lang])if(!links.has(r))errors.push(`${p}: missing core service ${r}`);}
 for(const [lang,prefix] of Object.entries({tr:'/blog/',en:'/en/blog/',az:'/az/bloq/'})){const d=path.join(DIST,prefix.replace(/^\//,'').replace(/\/$/,''));const count=fs.existsSync(d)?fs.readdirSync(d,{withFileTypes:true}).filter(e=>e.isDirectory()).length:0;if(count!==13)errors.push(`${prefix}: expected 13 articles, found ${count}`);}
 if(blogLocaleClusters.length!==13)errors.push('blog parity map must contain 13 triplets');
@@ -38,6 +54,19 @@ if(!enMatch||!azMatch){errors.push('blog depth audit: could not parse EN/AZ arti
     if(azChars<enChars*.72) errors.push(az.slug+': AZ article body is materially shorter than EN counterpart');
   }
 }
+
+const blogIndexTr=fs.readFileSync(path.join('src','components','BlogIndex.astro'),'utf8');
+const blogIndexEn=fs.readFileSync(path.join('src','components','BlogIndexEn.astro'),'utf8');
+const blogArticleTr=fs.readFileSync(path.join('src','components','BlogArticle.astro'),'utf8');
+const blogArticleEn=fs.readFileSync(path.join('src','components','BlogArticleEn.astro'),'utf8');
+for(const [name,source] of [['TR blog index',blogIndexTr],['EN blog index',blogIndexEn],['TR blog article',blogArticleTr],['EN blog article',blogArticleEn]]){
+  if(!/h1\s*\{[^}]*color:\s*var\(--qct-color-(?:ink|text)\)/is.test(source)) errors.push(name+': light-background H1 contrast is not explicitly dark');
+}
+const headerSource=fs.readFileSync(path.join('src','components','Header.astro'),'utf8');
+const mobileSource=fs.readFileSync(path.join('src','components','MobileMenu.astro'),'utf8');
+if(!headerSource.includes('getLocaleSwitchTargets(currentPath)')) errors.push('Header must use central same-page locale resolver');
+if(!headerSource.includes('azHref={azHref}')) errors.push('Header must pass resolved AZ target to mobile menu');
+if(!mobileSource.includes('href={azHref}')) errors.push('Mobile language switch must use resolved AZ target');
 
 console.log(`Locale parity audit: ${localeParityClusters.length} triplets; blogs 13/13/13; programmatic parents ${trParents}/${enParents}; service pages ${trSvc}/${enSvc}.`);
 if(errors.length){console.error([...new Set(errors)].join('\n'));process.exitCode=1}else console.log('PASS: locale parity, heading contrast, blog depth, llms and programmatic SEO.');

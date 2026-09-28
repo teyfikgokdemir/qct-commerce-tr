@@ -4,11 +4,12 @@ interface Props {
   currentPath: string;
   trHref: string;
   enHref: string;
+  azHref: string;
   serviceLinks: string[][];
   audienceLinks: string[][];
   quickLinks: string[][];
 }
-const { lang, currentPath, trHref, enHref, serviceLinks, audienceLinks, quickLinks } = Astro.props;
+const { lang, currentPath, trHref, enHref, azHref, serviceLinks, audienceLinks, quickLinks } = Astro.props;
 const isEnglish = lang === 'en';
 const isAzerbaijani = lang === 'az';
 const isCurrent = (path: string) => currentPath === path;
@@ -66,7 +67,7 @@ const isCurrent = (path: string) => currentPath === path;
       <div class="qctm-languages">
         <a href={trHref} hreflang="tr-TR" class:list={[{ active: !isEnglish && !isAzerbaijani }]}>TR</a>
         <a href={enHref} hreflang="en" class:list={[{ active: isEnglish }]}>EN</a>
-        <a href="/az/" class:list={[{ active: isAzerbaijani }]}>AZ</a>
+        <a href={azHref} hreflang="az-AZ" class:list={[{ active: isAzerbaijani }]}>AZ</a>
       </div>
       <a class="qctm-project" href={isAzerbaijani ? 'mailto:info@qctcommerce.com?subject=Azerbaijan%20digital%20project' : isEnglish ? '/en/contact/' : '/iletisim/'}>
         <span>{isAzerbaijani ? 'Layihəyə başlayın' : isEnglish ? 'Start a project' : 'Proje başlat'}</span><i aria-hidden="true">→</i>
