@@ -13,7 +13,6 @@ export function getStaticPaths() {
 
 const { market } = Astro.props;
 const isCountry = market.type === "country";
-const regionLabel = isCountry ? `${market.name} pazarı` : `${market.name} bölgesi`;
 const title = `${market.name} Web Tasarım ve E-Ticaret Ajansı | QCT Commerce`;
 const description = `${market.name} için web tasarım, e-ticaret ve SEO/GEO çözümleri. ${market.marketAngle}; QCT Commerce ile ölçülebilir dijital talep altyapısı kurun.`;
 const alternates = [
@@ -28,140 +27,99 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  lang="tr"
-  alternates={alternates}
-  breadcrumbs={breadcrumbs}
-  pageType="CollectionPage"
-  areaServed={market.areaServed}
->
+<BaseLayout title={title} description={description} lang="tr" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
   <Header slot="header" lang="tr" />
-  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260928-1" />
-  <div class="qct-v2" data-qct-v2>
-    <section class="qct-hero">
-      <div class="qct-shell qct-hero-grid">
-        <div class="qct-hero-copy">
-          <p class="qct-eyebrow">{isCountry ? "ULUSLARARASI PAZAR" : "YEREL BÜYÜME"} · WEB · E-TİCARET · SEO/GEO</p>
-          <h1 class="qct-hero-title">
-            <em>{market.name}</em> için satışa çalışan dijital altyapı
-          </h1>
-          <p class="qct-lead">
-            {market.audience} için yalnızca bir web sitesi değil; arama niyeti, güven, mobil performans ve teklif akışını birlikte çalışan bir sisteme dönüştürüyoruz.
-            <strong> Hedef: {market.marketAngle}.</strong>
-          </p>
-          <div class="qct-hero-actions">
-            <a class="qct-btn qct-btn-primary" href="/iletisim/">{market.name} için proje görüşmesi <span>→</span></a>
-            <a class="qct-btn qct-btn-secondary" href="/calismalar/">Çalışmaları inceleyin</a>
-          </div>
-          <div class="qct-proof-line">
-            {market.priorityServices.map((service) => <span>{service}</span>)}
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="qct-benefits">
-      <div class="qct-shell qct-benefit-grid">
-        <article>
-          <p class="qct-section-label">PAZAR BAĞLAMI</p>
-          <h3>{market.name} için kopya sayfa değil, ayrı ticari senaryo</h3>
-          <p>{market.commercialContext}</p>
-        </article>
-        <article>
-          <p class="qct-section-label">ARAMA GÖRÜNÜRLÜĞÜ</p>
-          <h3>SEO + GEO + AEO + AIO birlikte</h3>
-          <p>Sayfa mimarisini klasik Google sorguları kadar yapay zekâ destekli arama ve cevap motorlarının okuyabileceği açık hizmet, sektör ve kapsam sinyalleriyle kuruyoruz.</p>
-        </article>
-        <article>
-          <p class="qct-section-label">DÖNÜŞÜM</p>
-          <h3>Ziyaretten ticari görüşmeye</h3>
-          <p>CTA, WhatsApp, teklif formu, vaka çalışması ve güven unsurlarını kullanıcının karar aşamasına göre yerleştiriyoruz; amaç yalnızca trafik değil nitelikli talep.</p>
-        </article>
-        <article>
-          <p class="qct-section-label">TEKNİK TEMEL</p>
-          <h3>Hızlı, ölçülebilir ve genişleyebilir</h3>
-          <p>Mobil performans, analitik ölçüm, teknik SEO, yapılandırılmış veri ve çok dilli genişleme aynı teknik temel üzerinde ilerler.</p>
-        </article>
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">{isCountry ? "ULUSLARARASI PAZAR" : "YEREL BÜYÜME"} · {market.name.toUpperCase()}</p>
+      <h1>{market.name} için dijital büyüme altyapısı.</h1>
+      <p class="page-hero__lead">{market.audience} için web, e-ticaret ve arama görünürlüğünü tek ticari akışta kurguluyoruz. Hedef: {market.marketAngle}.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="/iletisim/">{market.name} için proje görüşmesi</a>
+        <a class="button button--secondary" href="/calismalar/">Çalışmaları inceleyin</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="qct-shell">
-      <div class="qct-section-head">
-        <p class="qct-section-label">{regionLabel.toUpperCase()} İÇİN ÖNCELİKLİ ALANLAR</p>
-        <h2>İlk etapta neyi iyileştiriyoruz?</h2>
-        <p>{market.name} için programatik sayfa üretimini gerçek bir hizmet mimarisine bağlıyoruz. Her sayfanın arama niyeti, ticari amacı ve dahili bağlantı rotası belirli.</p>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">PAZAR BAĞLAMI</p>
+        <h2>{market.name} için kopya lokasyon sayfası değil, ayrı ticari senaryo.</h2>
+        <p>{market.commercialContext}</p>
       </div>
-      <div class="qct-benefit-grid">
-        {market.priorityServices.map((service, index) => (
-          <article>
-            <span class="qct-card-kicker">0{index + 1}</span>
+      <div class="service-grid">
+        <article class="service-card"><h3>Arama görünürlüğü</h3><p>SEO, GEO, AEO ve AIO sinyallerini hizmet, sektör ve içerik mimarisine bağlıyoruz.</p></article>
+        <article class="service-card"><h3>Dönüşüm akışı</h3><p>Form, WhatsApp, teklif ve güven unsurlarını karar aşamasına göre konumlandırıyoruz.</p></article>
+        <article class="service-card"><h3>Teknik temel</h3><p>Mobil performans, analitik ölçüm, yapılandırılmış veri ve çok dilli genişleme aynı sistemde ilerler.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">ÖNCELİKLİ ALANLAR</p>
+        <h2>{market.name} için önce ticari etki üreten alanlara odaklanıyoruz.</h2>
+      </div>
+      <div class="service-grid">
+        {market.priorityServices.map((service) => (
+          <article class="service-card">
             <h3>{service}</h3>
-            <p>{market.industries.join(", ")} odaklı şirketlerde bu hizmeti satış sürecinin diğer parçalarıyla birlikte kurguluyoruz.</p>
+            <p>{market.industries.join(", ")} odaklı şirketlerde bu alanı satış ve talep sürecinin diğer parçalarıyla birlikte kurguluyoruz.</p>
           </article>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    {marketServicePages.length > 0 && (
-      <section class="qct-shell">
-        <div class="qct-section-head">
-          <p class="qct-section-label">PAZAR × HİZMET SAYFALARI</p>
-          <h2>{market.name} için yüksek niyetli hizmet sayfaları</h2>
-          <p>Genel pazar sayfasını, belirli hizmet aramalarına cevap veren daha odaklı sayfalarla destekliyoruz.</p>
+  {marketServicePages.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">PAZAR × HİZMET</p>
+          <h2>{market.name} için odaklanmış hizmet sayfaları.</h2>
+          <p>Genel pazar sayfasını, belirli hizmet aramalarına cevap veren daha net ticari kapsamlarla destekliyoruz.</p>
         </div>
-        <div class="qct-benefit-grid">
+        <div class="service-grid">
           {marketServicePages.map((service) => (
-            <article>
-              <h3>{market.name} {service.trName}</h3>
+            <a class="service-card" href={trServicePath(market.id, service)}>
+              <h3>{service.trName}</h3>
               <p>{service.trOutcome}</p>
-              <a href={trServicePath(market.id, service)}>{service.trName} sayfasını inceleyin →</a>
-            </article>
+              <strong>Detayı inceleyin →</strong>
+            </a>
           ))}
         </div>
-      </section>
-    )}
-
-    <section class="qct-shell">
-      <div class="qct-section-head">
-        <p class="qct-section-label">İLGİLİ ÇÖZÜMLER</p>
-        <h2>{market.name} projesini tek sayfaya sıkıştırmıyoruz.</h2>
-      </div>
-      <div class="qct-benefit-grid">
-        <article>
-          <h3>Web Tasarım</h3>
-          <p>Kurumsal güven, hız ve dönüşüm odaklı web mimarisi.</p>
-          <a href="/web-tasarim/">Web tasarım hizmeti →</a>
-        </article>
-        <article>
-          <h3>E-Ticaret</h3>
-          <p>Shopify, ikas ve ihtiyaca uygun satış altyapıları.</p>
-          <a href="/e-ticaret/">E-ticaret çözümleri →</a>
-        </article>
-        <article>
-          <h3>SEO / GEO</h3>
-          <p>Arama motorları ve yapay zekâ destekli keşif kanalları için görünürlük.</p>
-          <a href="/seo-geo/">SEO / GEO hizmeti →</a>
-        </article>
-        <article>
-          <h3>{isCountry ? "İhracatçılar" : "B2B ve üreticiler"}</h3>
-          <p>{isCountry ? "Hedef pazara özel çok dilli talep ve landing page mimarisi." : "Ürün, hizmet ve teklif akışını karar verici odaklı yapılandırma."}</p>
-          <a href={isCountry ? "/ihracatcilar/" : "/ureticiler/"}>Segment çözümünü inceleyin →</a>
-        </article>
       </div>
     </section>
+  )}
 
-    <section class="qct-close">
-      <div class="qct-shell qct-close-grid">
-        <div>
-          <p class="qct-section-label">{market.name.toUpperCase()} İÇİN PROJE PLANI</p>
-          <h2>Trafik değil, <em>ticari sonuç üreten</em> bir yapı kuralım.</h2>
-          <p>Mevcut sitenizi, hedef sorgularınızı ve dönüşüm akışınızı birlikte değerlendirip ilk uygulanabilir büyüme planını çıkaralım.</p>
-        </div>
-        <a class="qct-btn qct-btn-light" href="/iletisim/">Proje görüşmesi başlatın <span>→</span></a>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">İLGİLİ ÇÖZÜMLER</p>
+        <h2>{market.name} projesini tek bir landing page'e sıkıştırmıyoruz.</h2>
       </div>
-    </section>
-  </div>
+      <div class="service-grid">
+        <a class="service-card" href="/web-tasarim/"><h3>Web Tasarım</h3><p>Kurumsal güven, hız ve dönüşüm odaklı web mimarisi.</p><strong>İnceleyin →</strong></a>
+        <a class="service-card" href="/e-ticaret/"><h3>E-Ticaret</h3><p>Shopify, ikas ve ihtiyaca uygun satış altyapıları.</p><strong>İnceleyin →</strong></a>
+        <a class="service-card" href="/seo-geo/"><h3>SEO / GEO</h3><p>Arama motorları ve yapay zekâ destekli keşif kanalları için görünürlük.</p><strong>İnceleyin →</strong></a>
+        <a class="service-card" href={isCountry ? "/ihracatcilar/" : "/ureticiler/"}><h3>{isCountry ? "İhracatçılar" : "B2B ve üreticiler"}</h3><p>{isCountry ? "Hedef pazara özel çok dilli talep ve landing page mimarisi." : "Ürün, hizmet ve teklif akışını karar verici odaklı yapılandırma."}</p><strong>İnceleyin →</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">SONRAKİ ADIM</p>
+        <h2>{market.name} için ölçülebilir bir büyüme planı çıkaralım.</h2>
+        <p>Mevcut sitenizi, hedef sorguları ve dönüşüm akışını değerlendirip ilk uygulanabilir kapsamı netleştiriyoruz.</p>
+        <a class="button button--primary" href="/iletisim/">Proje görüşmesi başlatın</a>
+      </div>
+    </div>
+  </section>
+
   <Footer slot="footer" lang="tr" />
 </BaseLayout>

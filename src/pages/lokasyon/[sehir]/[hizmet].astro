@@ -29,76 +29,59 @@ const breadcrumbs = [
 
 <BaseLayout title={title} description={description} lang="tr" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
   <Header slot="header" lang="tr" />
-  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260928-1" />
-  <div class="qct-v2" data-qct-v2>
-    <section class="qct-hero">
-      <div class="qct-shell qct-hero-grid">
-        <div class="qct-hero-copy">
-          <p class="qct-eyebrow">{market.name.toUpperCase()} · {service.trName.toUpperCase()}</p>
-          <h1 class="qct-hero-title"><em>{market.name}</em> için {service.trName}</h1>
-          <p class="qct-lead">
-            Bu sayfa yalnızca lokasyon adı değiştirilmiş bir şablon değildir. {market.name} pazarında amaç, <strong>{service.trIntent}</strong>.
-          </p>
-          <div class="qct-hero-actions">
-            <a class="qct-btn qct-btn-primary" href="/iletisim/">{market.name} projesi için görüşme <span>→</span></a>
-            <a class="qct-btn qct-btn-secondary" href={service.trCorePath}>Ana hizmeti inceleyin</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="qct-benefits">
-      <div class="qct-shell qct-benefit-grid">
-        <article>
-          <p class="qct-section-label">HEDEF PAZAR</p>
-          <h3>{market.name} bağlamı</h3>
-          <p>{market.commercialContext}</p>
-        </article>
-        <article>
-          <p class="qct-section-label">HİZMET ODAĞI</p>
-          <h3>{service.trName} ne üretmeli?</h3>
-          <p>{service.trOutcome}</p>
-        </article>
-        <article>
-          <p class="qct-section-label">TESLİM KAPSAMI</p>
-          <h3>Çekirdek bileşenler</h3>
-          <p>{service.trDeliverables.join(" · ")}</p>
-        </article>
-        <article>
-          <p class="qct-section-label">ÖLÇÜM</p>
-          <h3>Trafikten daha fazlası</h3>
-          <p>Organik görünürlük, nitelikli form/WhatsApp talebi, dönüşüm yolları ve teknik performans birlikte izlenir.</p>
-        </article>
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">{market.name.toUpperCase()} · {service.trName.toUpperCase()}</p>
+      <h1>{market.name} için {service.trName}.</h1>
+      <p class="page-hero__lead">{market.name} pazarında amaç, {service.trIntent}. Bu sayfa genel lokasyon içeriğinin tekrarı değil; belirli hizmet niyetine göre hazırlanmış ticari kapsamdır.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="/iletisim/">{market.name} projesi için görüşme</a>
+        <a class="button button--secondary" href={service.trCorePath}>Ana hizmeti inceleyin</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="qct-shell">
-      <div class="qct-section-head">
-        <p class="qct-section-label">UYGULAMA PRENSİBİ</p>
-        <h2>{market.name} için {service.trName.toLowerCase()} nasıl farklılaşır?</h2>
-        <p>{market.marketAngle}; bu nedenle içerik, bilgi mimarisi ve CTA yapısı hedef pazar bağlamına göre kurgulanır.</p>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">TİCARİ BAĞLAM</p>
+        <h2>{service.trName}, {market.name} için hangi ticari problemi çözmeli?</h2>
+        <p>{market.commercialContext}</p>
       </div>
-      <div class="qct-benefit-grid">
-        {service.trDeliverables.map((item, index) => (
-          <article>
-            <span class="qct-card-kicker">0{index + 1}</span>
-            <h3>{item}</h3>
-            <p>{market.industries.join(", ")} odaklı firmalar için bu bileşen, ticari görüşmeye giden yolun bir parçası olarak tasarlanır.</p>
-          </article>
+      <div class="service-grid">
+        <article class="service-card"><h3>Hedef</h3><p>{service.trOutcome}</p></article>
+        <article class="service-card"><h3>Pazar uyumu</h3><p>{market.marketAngle}; hizmet kapsamı bu önceliğe göre şekillenir.</p></article>
+        <article class="service-card"><h3>Ölçüm</h3><p>Organik görünürlük, nitelikli talep, dönüşüm yolları ve teknik performans birlikte izlenir.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">KAPSAM</p>
+        <h2>Temel teslim bileşenleri.</h2>
+        <p>{market.industries.join(", ")} odaklı şirketlerde bu bileşenleri birbirinden kopuk işler olarak değil, aynı ticari sistemin parçaları olarak ele alıyoruz.</p>
+      </div>
+      <div class="service-grid">
+        {service.trDeliverables.map((item) => (
+          <article class="service-card"><h3>{item}</h3><p>{market.name} hedefiyle uyumlu, ölçülebilir ve sürdürülebilir uygulama kapsamına dahil edilir.</p></article>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="qct-close">
-      <div class="qct-shell qct-close-grid">
-        <div>
-          <p class="qct-section-label">{market.name.toUpperCase()} · {service.trName.toUpperCase()}</p>
-          <h2>Hedef pazara uygun, <em>ölçülebilir</em> bir sistem kurun.</h2>
-          <p>Mevcut sitenizi ve hedef sorguları değerlendirip ilk uygulanabilir kapsamı birlikte netleştirebiliriz.</p>
-        </div>
-        <a class="qct-btn qct-btn-light" href="/iletisim/">Proje görüşmesi başlatın <span>→</span></a>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">SONRAKİ ADIM</p>
+        <h2>{market.name} için {service.trName.toLowerCase()} kapsamını netleştirelim.</h2>
+        <p>Mevcut yapıyı ve hedef sorguları değerlendirip ilk uygulanabilir kapsamı belirliyoruz.</p>
+        <a class="button button--primary" href="/iletisim/">Proje görüşmesi başlatın</a>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
   <Footer slot="footer" lang="tr" />
 </BaseLayout>
