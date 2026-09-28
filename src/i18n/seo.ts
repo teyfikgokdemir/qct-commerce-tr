@@ -3,7 +3,7 @@ export type SeoPage =
   | 'seo-performance' | 'whatsapp-commerce' | 'meta-ads' | 'careers' | 'contact' | 'blog'
   | 'blog-shopify' | 'blog-mistakes' | 'blog-marketplace' | 'blog-ai-search'
   | 'blog-ai-product-content' | 'blog-whatsapp-automation'
-  | 'blog-google-not-visible' | 'blog-chatgpt-visibility' | 'blog-web-pricing-2026'
+  | 'blog-google-not-visible' | 'blog-chatgpt-visibility' | 'blog-dynamic-seo-2026' | 'blog-chatgpt-ads-2026' | 'blog-chatgpt-searchbot-2026' | 'blog-multimodal-search-2026' | 'blog-web-pricing-2026'
   | 'blog-ikas-shopify-2026' | 'blog-mobile-ecommerce-conversion' | 'blog-ikas-cost-2026' | 'blog-marketplace-commission-2026'
   | 'work' | 'work-headwear' | 'work-misima' | 'work-artman';
 
@@ -30,6 +30,10 @@ const seo: Record<SeoPage, SeoEntry> = {
   'blog-whatsapp-automation': { title: 'WhatsApp Satış Otomasyonu Nasıl Kurulur?', description: 'B2B işletmeler için web ve reklam taleplerini toplayan, doğru ekibe yönlendiren ve insan kontrollü takip sağlayan WhatsApp satış otomasyonu rehberi.' },
   'blog-google-not-visible': { title: 'Web Sitem Google’da Neden Çıkmıyor? 2026 Kontrol Rehberi', description: 'Web siteniz Google’da görünmüyorsa indeksleme, Search Console, robots, canonical, içerik, yerel SEO ve teknik sorunları adım adım kontrol edin.' },
   'blog-chatgpt-visibility': { title: 'ChatGPT’de Firmam Nasıl Görünür? AI Görünürlük Rehberi', description: 'Firmanızın ChatGPT, Gemini ve diğer yapay zekâ sistemlerinde doğru anlaşılması için marka varlığı, içerik, schema, kaynak ve GEO/AEO adımlarını inceleyin.' },
+  'blog-dynamic-seo-2026': { title: 'Dinamik SEO Nedir? SEO, GEO, AEO ve AIO 2026 Rehberi', description: 'Tek seferlik SEO yerine Search Console verisi, teknik takip, içerik ve GEO/AEO/AIO optimizasyonuyla çalışan dinamik SEO modelini inceleyin.' },
+  'blog-chatgpt-ads-2026': { title: 'ChatGPT Ads 2026: Reklam Verme, CPC ve Sponsored Agents', description: 'ChatGPT Ads, Ads Manager, CPC teklif, conversational intent, Sponsored Agents ve AI-native reklam landing page stratejisini inceleyin.' },
+  'blog-chatgpt-searchbot-2026': { title: 'OAI-SearchBot ve ChatGPT Search Görünürlüğü 2026', description: 'robots.txt, OAI-SearchBot, canonical, crawl erişimi, GEO/AEO/AIO ve ChatGPT Search görünürlüğü için teknik kontrol listesi.' },
+  'blog-multimodal-search-2026': { title: 'Multimodal Arama SEO 2026: Görseller ve AI Arama', description: 'Görsel arama, multimodal keşif, ürün görselleri, alt metin, schema ve içerik bağlamını SEO/GEO/AIO yapısında nasıl planlayacağınızı öğrenin.' },
   'blog-web-pricing-2026': { title: 'Web Sitesi Yaptırma Fiyatları 2026: Neye Göre Değişir?', description: 'Kurumsal web, e-ticaret, site yenileme ve SEO projelerinde fiyatı belirleyen kapsam, sayfa, ürün, entegrasyon ve bakım kalemlerini şeffaf biçimde öğrenin.' },
   'blog-ikas-shopify-2026': { title: 'ikas mı Shopify mı? Türkiye için 2026 Karşılaştırması', description: 'ikas ve Shopify’ı Türkiye pazarı için ödeme, entegrasyon, yönetim, uluslararası satış, SEO ve toplam sahip olma maliyeti açısından karşılaştırın.' },
   'blog-mobile-ecommerce-conversion': { title: 'Mobil E-Ticaret Sitesi Neden Satış Yapmıyor? 2026 Rehberi', description: 'Mobil e-ticaret dönüşümünü düşüren hız, menü, filtre, ürün sayfası, sepet ve ödeme sorunlarını tespit etmek için uygulamalı kontrol listesi.' },
