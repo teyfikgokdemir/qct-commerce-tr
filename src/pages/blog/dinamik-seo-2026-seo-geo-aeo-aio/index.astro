@@ -1,0 +1,6 @@
+---
+import BlogArticle from '../../../components/BlogArticle.astro';
+import { getArticle } from '../../../data/blog';
+const article = getArticle('dinamik-seo-2026-seo-geo-aeo-aio');
+---
+<BlogArticle article={article} />
