@@ -62,31 +62,31 @@ const currentPath = Astro.url.pathname;
 const pairedPath = parityRoutes[currentPath];
 const alternates = providedAlternates.length ? providedAlternates : pairedPath ? (currentPath.startsWith('/en/') ? [{ lang: 'tr-TR', href: pairedPath }, { lang: 'en', href: currentPath }] : [{ lang: 'tr-TR', href: currentPath }, { lang: 'en', href: pairedPath }]) : [];
 const isEnglish = lang === 'en';
-const isGeorgian = lang === 'ka';
-const isInternational = isEnglish || isGeorgian;
-const locale = isGeorgian ? 'ka_GE' : isEnglish ? 'en_US' : 'tr_TR';
-const ogLocaleByLanguage: Record<string, string> = { 'tr-TR': 'tr_TR', en: 'en_US', 'ka-GE': 'ka_GE' };
+const isAzerbaijani = lang === 'az';
+const isInternational = isEnglish || isAzerbaijani;
+const locale = isAzerbaijani ? 'az_AZ' : isEnglish ? 'en_US' : 'tr_TR';
+const ogLocaleByLanguage: Record<string, string> = { 'tr-TR': 'tr_TR', en: 'en_US', 'az-AZ': 'az_AZ' };
 const alternateLocales = [...new Set(alternates.map((alternate) => ogLocaleByLanguage[alternate.lang]).filter((value) => value && value !== locale))];
-const imageAlt = isEnglish ? 'QCT Commerce — E-commerce and digital commerce systems' : 'QCT Commerce — E-ticaret ve dijital ticaret sistemleri';
-const languageTag = isGeorgian ? 'ka-GE' : isEnglish ? 'en-US' : 'tr-TR';
-const defaultDescription = isGeorgian
-  ? 'QCT Commerce ქმნის მრავალენოვან B2B ვებსაიტებს, ციფრული გაყიდვებისა და ავტომატიზაციის სისტემებს საერთაშორისო ზრდისთვის.'
+const imageAlt = isAzerbaijani ? 'QCT Commerce — veb sayt, e-ticarət və rəqəmsal satış sistemləri' : isEnglish ? 'QCT Commerce — E-commerce and digital commerce systems' : 'QCT Commerce — E-ticaret ve dijital ticaret sistemleri';
+const languageTag = isAzerbaijani ? 'az-AZ' : isEnglish ? 'en-US' : 'tr-TR';
+const defaultDescription = isAzerbaijani
+  ? 'QCT Commerce Azərbaycan şirkətləri üçün veb sayt, e-ticarət, SEO, GEO, AEO, AIO və rəqəmsal satış sistemləri qurur.'
   : isEnglish
     ? 'QCT Commerce provides website, e-commerce, search visibility and AI-supported digital services for English-speaking businesses and founders operating in Türkiye.'
     : 'QCT Commerce, Türkiye’de işletmeler için e-ticaret altyapıları ve ölçülebilir dijital büyüme sistemleri kurar.';
 const pageDescription = description ?? defaultDescription;
-const servedMarkets = areaServed ?? (isGeorgian ? ['Georgia', 'Türkiye', 'Europe', 'Gulf countries'] : ['Türkiye']);
+const servedMarkets = areaServed ?? (isAzerbaijani ? ['Azerbaijan', 'Türkiye'] : ['Türkiye']);
 const areaServedSchema = servedMarkets.map((name) => ({ '@type': 'Country', name }));
 const isIndexable = !noindex;
 const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : image.toLowerCase().endsWith('.webp') ? 'image/webp' : 'image/jpeg';
 const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
-const homePath = isGeorgian ? '/ka/georgia/' : isEnglish ? '/en/' : '/';
+const homePath = isAzerbaijani ? '/az/azerbaycan/' : isEnglish ? '/en/' : '/';
 const homeUrl = new URL(homePath, SITE_URL).toString();
 const xDefaultHref = alternates.find((alternate) => alternate.lang === 'en' || alternate.lang === 'en-US')?.href ?? '/en/';
 const organizationId = `${SITE_URL}/#organization`;
 const founderId = `${SITE_URL}/hakkimizda/#teyfik-gokdemir`;
-const websiteId = `${SITE_URL}/${isGeorgian ? 'ka/' : isEnglish ? 'en/' : ''}#website`;
+const websiteId = `${SITE_URL}/${isAzerbaijani ? 'az/' : isEnglish ? 'en/' : ''}#website`;
 const webpageId = `${canonicalUrl}#webpage`;
 const knowsAbout = ['E-commerce architecture','Web design and website improvement','Digital sales systems','Multilingual websites','Conversion optimization','Technical SEO','Generative engine optimization','Answer engine optimization','AI visibility optimization','CRM integration','AI sales automation'];
 
@@ -94,12 +94,12 @@ const organizationSchema = {
   '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
   logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/logo.png', SITE_URL).toString(), contentUrl: new URL('/logo.png', SITE_URL).toString(), width: 600, height: 180, caption: 'QCT Commerce' },
   image: { '@type': 'ImageObject', url: ogImageUrl, width: imageWidth, height: imageHeight },
-  description: isGeorgian ? 'ციფრული კომერციისა და საერთაშორისო გაყიდვების სისტემები მზარდი კომპანიებისთვის.' : isEnglish ? 'Website, e-commerce, search visibility and AI-supported digital services for English-speaking businesses and founders operating in Türkiye.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
+  description: isAzerbaijani ? 'Azərbaycan şirkətləri üçün veb sayt, e-ticarət, SEO, GEO, AEO, AIO və rəqəmsal satış sistemləri.' : isEnglish ? 'Website, e-commerce, search visibility and AI-supported digital services for English-speaking businesses and founders operating in Türkiye.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
   areaServed: areaServedSchema,
   knowsAbout,
   email: 'info@qctcommerce.com',
   telephone: '+90 545 678 26 55',
-  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', telephone: '+90 545 678 26 55', email: 'info@qctcommerce.com', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Georgian'] }],
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', telephone: '+90 545 678 26 55', email: 'info@qctcommerce.com', areaServed: servedMarkets, availableLanguage: ['Turkish', 'English', 'Azerbaijani'] }],
   hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Digital commerce and international sales solutions', itemListElement: knowsAbout.map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })) },
   ...(includeFounder ? { founder: { '@id': founderId } } : {}),
 };
@@ -121,7 +121,7 @@ if (breadcrumbs?.length) {
   webpageSchema.breadcrumb = { '@id': breadcrumbId };
 } else if (breadcrumbLabel) {
   const breadcrumbId = `${canonicalUrl}#breadcrumb`;
-  const homeLabel = isGeorgian ? 'მთავარი' : isEnglish ? 'Home' : 'Ana sayfa';
+  const homeLabel = isAzerbaijani ? 'Ana səhifə' : isEnglish ? 'Home' : 'Ana sayfa';
   breadcrumbSchema = { '@type': 'BreadcrumbList', '@id': breadcrumbId, itemListElement: [{ '@type': 'ListItem', position: 1, name: homeLabel, item: homeUrl }, { '@type': 'ListItem', position: 2, name: breadcrumbLabel, item: canonicalUrl }] };
   webpageSchema.breadcrumb = { '@id': breadcrumbId };
 }
@@ -178,7 +178,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
 </head>
 <body>
   <div id="page" class="site">
-    <a class="skip-link screen-reader-text" href="#primary">{isGeorgian ? 'შინაარსზე გადასვლა' : isEnglish ? 'Skip to content' : 'İçeriğe geç'}</a>
+    <a class="skip-link screen-reader-text" href="#primary">{isAzerbaijani ? 'Məzmuna keç' : isEnglish ? 'Skip to content' : 'İçeriğe geç'}</a>
     <slot name="header" />
     <main id="primary" class="site-main"><slot /></main>
     <slot name="footer" />
