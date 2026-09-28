@@ -1,4 +1,17 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro'; import Header from '../../../components/Header.astro'; import Footer from '../../../components/Footer.astro'; import { azBlogPosts } from '../../../data/az-blog';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { azBlogPosts } from '../../../data/az-blog';
 ---
-<BaseLayout title="Bloq | QCT Commerce Azərbaycan" description="Veb sayt, e-ticarət, SEO, GEO, AEO, AIO, AI görünürlük və rəqəmsal satış haqqında Azərbaycan dilində praktik məqalələr." lang="az" breadcrumbLabel="Bloq"><Header slot="header" lang="az" /><section class="page-hero section"><div class="container"><p class="eyebrow">QCT COMMERCE BLOQ</p><h1>Rəqəmsal ticarət haqqında praktik məqalələr.</h1><p class="page-hero__lead">Qərar verməyə kömək edən texniki və kommersiya izahları.</p></div></section><section class="section"><div class="container"><div class="service-grid">{azBlogPosts.map(p=><a class="service-card" href={'/az/bloq/'+p.slug+'/'}><h3>{p.title}</h3><p>{p.description}</p><strong>Oxuyun →</strong></a>)}</div></div></section><Footer slot="footer" lang="az" /></BaseLayout>
+<BaseLayout title="Bloq | QCT Commerce Azərbaycan" description="Veb sayt, e-ticarət, SEO, GEO, AEO, AIO, AI görünürlük və rəqəmsal satış haqqında Azərbaycan dilində 13 ətraflı praktik bələdçi." lang="az" pageType="CollectionPage" breadcrumbLabel="Bloq">
+<Header slot="header" lang="az" />
+<section class="az-blog-index-hero"><div class="container"><p class="eyebrow">QCT COMMERCE BLOQ</p><h1>Rəqəmsal ticarət haqqında praktik bələdçilər.</h1><p>Azərbaycan şirkətləri üçün veb sayt, e-ticarət, görünürlük və satış sistemləri barədə qərar verməyə kömək edən ətraflı məqalələr.</p></div></section>
+<section class="section az-blog-list"><div class="container"><div class="service-grid">{azBlogPosts.map(p=><a class="service-card" href={'/az/bloq/'+p.slug+'/'}><h3>{p.title}</h3><p>{p.description}</p><strong>Oxuyun →</strong></a>)}</div></div></section>
+<Footer slot="footer" lang="az" /></BaseLayout>
+<style>
+.az-blog-index-hero{padding:calc(var(--qct-hero-clearance) + 46px) 0 64px;background:radial-gradient(circle at 78% 18%,rgba(230,107,95,.2),transparent 34%),linear-gradient(145deg,#171514,#28211f);color:#fffaf5}
+.az-blog-index-hero h1{color:#fffaf5!important;-webkit-text-fill-color:#fffaf5!important;font-size:clamp(2.75rem,5vw,4.75rem);max-width:18ch;line-height:1.04;letter-spacing:-.05em;margin:0 0 1.3rem;text-wrap:balance}
+.az-blog-index-hero>div>p:last-child{color:rgba(255,250,245,.72)!important;max-width:780px;line-height:1.7;font-size:1.08rem}
+.az-blog-list{background:#f3eee7}
+</style>

@@ -68,7 +68,7 @@
 }
 
 :is(html[lang="en"], html[lang="az"]) .site-main h1 {
-  color: #fffaf5;
+  color: #171514;
   font-size: clamp(2.9rem, 4.2vw, 4.15rem);
   line-height: 1.04;
   letter-spacing: -0.04em;
@@ -76,7 +76,8 @@
   margin: 0;
 }
 
-:is(html[lang="en"], html[lang="az"]) .site-main .page-hero h1 {
+:is(html[lang="en"], html[lang="az"]) .site-main :is(.hero, .page-hero) h1 {
+  color: #fffaf5;
   max-width: 1080px;
   text-wrap: balance;
 }
