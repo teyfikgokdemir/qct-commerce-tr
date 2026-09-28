@@ -1,4 +1,5 @@
 export const analyticsDisclosure: Record<string, string> = {
+  "az": "Razılığınızla Google Tag Manager və Microsoft Clarity istifadə olunur; Clarity maskalanmış sessiya qeydləri və istilik xəritələri yaradır. Kuki seçimlərinizi sonradan dəyişə bilərsiniz.",
   "tr": "Onayınızla Google Tag Manager ve Microsoft Clarity kullanılır; Clarity maskelenmiş oturum kayıtları ve ısı haritaları oluşturur. Çerez tercihlerinizi daha sonra değiştirebilirsiniz.",
   "en": "With your consent, we use Google Tag Manager and Microsoft Clarity for masked session recordings and heatmaps. You can change your cookie preferences later.",
   "sq": "Me pëlqimin tuaj përdorim Google Tag Manager dhe Microsoft Clarity për regjistrime të maskuara të sesioneve dhe harta nxehtësie. Preferencat mund t’i ndryshoni më vonë.",

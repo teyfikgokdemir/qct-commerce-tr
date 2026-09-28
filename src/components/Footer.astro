@@ -310,9 +310,14 @@ const legalLinks = isAzerbaijani ? [
   <a href="/en/location/dubai/">Dubai</a>
 </nav>
 )}
+  <div class="site-footer__consent">
+    <button type="button" data-cookie-settings>{isAzerbaijani ? 'Kuki seçimləri' : isEnglish ? 'Cookie preferences' : 'Çerez tercihleri'}</button>
+  </div>
 </footer>
 
 <style>
+  .site-footer__consent { text-align: center; padding: 12px 20px 24px; }
+  .site-footer__consent button { background: transparent; border: 0; color: #fffaf5; font: inherit; font-size: .8rem; text-decoration: underline; cursor: pointer; min-height: 44px; padding: 8px 12px; }
   .site-footer { position: relative; overflow: hidden; isolation: isolate; }
   .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(3.9rem, 5.4vw, 5rem); }
   .site-footer__mobile { display: none; }

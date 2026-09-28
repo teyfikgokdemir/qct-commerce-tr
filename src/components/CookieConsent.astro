@@ -80,6 +80,12 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : '/cerez-politikasi/';
   };
   document.querySelector('[data-cookie-accept]')?.addEventListener('click', () => choose('granted'));
   document.querySelector('[data-cookie-reject]')?.addEventListener('click', () => choose('denied'));
+  document.querySelectorAll('[data-cookie-settings]').forEach((button) => {
+    button.addEventListener('click', () => {
+      show(true);
+      banner?.querySelector<HTMLButtonElement>('[data-cookie-reject]')?.focus();
+    });
+  });
 </script>
 
 <style>
