@@ -15,16 +15,134 @@ const faqSchema = faq.length ? { '@context':'https://schema.org','@type':'FAQPag
 <BaseLayout title={title} description={description} lang="az" breadcrumbLabel={breadcrumbLabel}>
   {faqSchema && <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   <Header slot="header" lang="az" />
-  <section class="page-hero section">
-    <div class="container">
-      <p class="eyebrow">{eyebrow}</p>
-      <h1>{h1}</h1>
-      <p class="page-hero__lead">{lead}</p>
-      <div class="hero__actions"><a class="button button--primary" href="/az/elaqe/">Layihəni müzakirə edin</a><a class="button button--secondary" href="/az/qiymetler/">Qiymətlərə baxın</a></div>
-    </div>
-  </section>
-  {cards.length > 0 && <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">ƏSAS İSTİQAMƏTLƏR</p><h2>{secondTitle || 'Ehtiyaca görə qurulan rəqəmsal sistem.'}</h2>{secondText && <p>{secondText}</p>}</div><div class="service-grid">{cards.map(card => card.href ? <a class="service-card" href={card.href}><h3>{card.title}</h3><p>{card.text}</p><strong>Ətraflı →</strong></a> : <article class="service-card"><h3>{card.title}</h3><p>{card.text}</p></article>)}</div></div></section>}
-  {faq.length > 0 && <section class="section international-faq" id="faq"><div class="container"><div class="section-heading"><p class="eyebrow">TEZ-TEZ VERİLƏN SUALLAR</p><h2>Qısa və aydın cavablar.</h2></div><div class="faq-list">{faq.map(item=><details><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>}
-  <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">NÖVBƏTİ ADDIM</p><h2>{ctaTitle}</h2><p>{ctaText}</p><a class="button button--primary" href="/az/elaqe/">Əlaqə saxlayın</a></div></div></section>
+
+  <div class="az-standard-page">
+    <section class="az-page-hero">
+      <div class="container">
+        <p class="eyebrow">{eyebrow}</p>
+        <h1>{h1}</h1>
+        <p class="az-page-lead">{lead}</p>
+        <div class="az-page-actions">
+          <a class="button button--primary" href="/az/elaqe/">Layihəni müzakirə edin</a>
+          <a class="button button--secondary" href="/az/qiymetler/">Qiymətlərə baxın</a>
+        </div>
+      </div>
+    </section>
+
+    {cards.length > 0 && (
+      <section class="az-page-section">
+        <div class="container">
+          <div class="az-page-heading">
+            <p class="eyebrow">ƏSAS İSTİQAMƏTLƏR</p>
+            <h2>{secondTitle || 'Ehtiyaca görə qurulan rəqəmsal sistem.'}</h2>
+            {secondText && <p>{secondText}</p>}
+          </div>
+          <div class="az-page-grid">
+            {cards.map(card => card.href
+              ? <a class="az-page-card" href={card.href}><h3>{card.title}</h3><p>{card.text}</p><strong>Ətraflı <span aria-hidden="true">↗</span></strong></a>
+              : <article class="az-page-card"><h3>{card.title}</h3><p>{card.text}</p></article>
+            )}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {faq.length > 0 && (
+      <section class="az-page-section az-page-faq" id="faq">
+        <div class="container">
+          <div class="az-page-heading">
+            <p class="eyebrow">TEZ-TEZ VERİLƏN SUALLAR</p>
+            <h2>Qısa və aydın cavablar.</h2>
+          </div>
+          <div class="az-faq-list">
+            {faq.map(item=><details><summary>{item.q}</summary><p>{item.a}</p></details>)}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="az-page-cta">
+      <div class="container">
+        <p class="eyebrow">NÖVBƏTİ ADDIM</p>
+        <h2>{ctaTitle}</h2>
+        <p>{ctaText}</p>
+        <a class="button button--primary" href="/az/elaqe/">Əlaqə saxlayın</a>
+      </div>
+    </section>
+  </div>
+
   <Footer slot="footer" lang="az" />
 </BaseLayout>
+
+<style>
+.az-standard-page{background:#f3eee7;color:#171514}
+.az-page-hero{
+  padding:clamp(5.2rem,8vw,7.2rem) 0 clamp(4.2rem,6.5vw,5.8rem);
+  background:radial-gradient(circle at 78% 18%,rgba(230,107,95,.20),transparent 34%),linear-gradient(145deg,#171514,#28211f);
+  color:#fffaf5;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.az-page-hero .container{text-align:center;max-width:1120px}
+.az-page-hero .eyebrow,.az-page-cta .eyebrow{color:#ff8b78;text-align:center}
+.az-page-hero h1{
+  color:#fffaf5!important;
+  max-width:1100px;
+  margin:.6rem auto 1.2rem;
+  font-size:clamp(2.8rem,5vw,4.9rem);
+  line-height:1.02;
+  letter-spacing:-.045em;
+  text-wrap:balance;
+}
+.az-page-lead{max-width:780px;margin:0 auto;color:rgba(255,250,245,.72);font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.7}
+.az-page-actions{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+.az-page-hero .button--secondary{border-color:rgba(255,255,255,.26)!important;color:#fffaf5!important;background:rgba(255,255,255,.04)!important}
+.az-page-section{padding:clamp(4.5rem,7vw,6.5rem) 0}
+.az-page-section:nth-of-type(odd){background:#ebe4dc}
+.az-page-heading{max-width:900px;margin:0 auto 2.4rem;text-align:center}
+.az-page-heading .eyebrow{text-align:center}
+.az-page-heading h2{margin:.45rem auto 0;font-size:clamp(2.1rem,3.5vw,3.5rem);line-height:1.04;letter-spacing:-.04em;text-wrap:balance}
+.az-page-heading>p:not(.eyebrow){max-width:760px;margin:1rem auto 0;color:#655d58;line-height:1.75}
+.az-page-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1180px;margin-inline:auto}
+.az-page-card{
+  min-height:220px;
+  padding:clamp(1.6rem,2.5vw,2.2rem);
+  border:1px solid rgba(23,21,20,.1);
+  border-radius:22px;
+  background:#fffaf5;
+  box-shadow:0 18px 50px rgba(23,21,20,.06);
+  color:#171514;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+a.az-page-card:hover,a.az-page-card:focus-visible{transform:translateY(-4px);border-color:rgba(230,107,95,.4);box-shadow:0 24px 62px rgba(23,21,20,.1)}
+.az-page-card h3{margin:0 0 .8rem;font-size:clamp(1.18rem,1.5vw,1.45rem);line-height:1.25}
+.az-page-card p{margin:0;color:#655d58;line-height:1.7}
+.az-page-card strong{margin-top:auto;padding-top:1.5rem;color:#b9473e;font-size:.9rem}
+.az-faq-list{display:grid;gap:12px;max-width:920px;margin-inline:auto}
+.az-faq-list details{background:#fffaf5;border:1px solid rgba(23,21,20,.1);border-radius:17px;padding:0 22px}
+.az-faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 0;font-weight:800}
+.az-faq-list summary::after{content:'+';color:#b9473e;font-size:1.35rem}
+.az-faq-list details[open] summary::after{content:'−'}
+.az-faq-list details p{margin:0;padding:0 0 1.3rem;color:#655d58;line-height:1.7}
+.az-page-cta{padding:clamp(4.5rem,7vw,6rem) 0;background:#171514;color:#fffaf5;text-align:center}
+.az-page-cta .container{max-width:1050px}
+.az-page-cta h2{color:#fffaf5!important;margin:.45rem auto 1rem;font-size:clamp(2.3rem,4vw,4.2rem);line-height:1.03;letter-spacing:-.045em;text-wrap:balance}
+.az-page-cta>div>p:not(.eyebrow){max-width:760px;margin:0 auto 1.7rem;color:rgba(255,250,245,.7);font-size:1.06rem;line-height:1.7}
+@media(max-width:980px){.az-page-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){
+  .az-page-hero{padding:4.4rem 0 3.5rem}
+  .az-page-hero .container{text-align:left}
+  .az-page-hero .eyebrow{text-align:left}
+  .az-page-hero h1{font-size:clamp(2.45rem,11vw,3.7rem);margin-left:0}
+  .az-page-lead{margin-left:0}
+  .az-page-actions{justify-content:flex-start;align-items:stretch;flex-direction:column}
+  .az-page-actions .button{width:100%}
+  .az-page-grid{grid-template-columns:1fr}
+  .az-page-heading{text-align:left}
+  .az-page-heading .eyebrow{text-align:left}
+  .az-page-card{min-height:0}
+  .az-page-cta h2{font-size:clamp(2.2rem,10vw,3.4rem)}
+}
+</style>
