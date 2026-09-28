@@ -121,3 +121,12 @@
 /sr/work/headwear/ /calismalar/headwear/ 301
 /sr/work/misima/ /calismalar/misima/ 301
 /sr/work/artman/ /calismalar/artman/ 301
+
+
+# Retired Georgia/KA market layer -> Azerbaijan market layer
+/ka/georgia /az/azerbaycan/ 301
+/ka/georgia/ /az/azerbaycan/ 301
+/ka/* /az/azerbaycan/ 301
+/en/georgia /en/location/azerbaijan/ 301
+/en/georgia/ /en/location/azerbaijan/ 301
+/az /az/azerbaycan/ 301
