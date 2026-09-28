@@ -45,6 +45,12 @@ export const enMarkets: ProgrammaticMarket[] = trMarkets.map((m) => {
     ...m,
     id: m.alternateId,
     name: enName,
+    areaServed: m.areaServed.map((area) => ({
+      "İstanbul":"Istanbul",
+      "İzmir":"Izmir",
+      "Eskişehir":"Eskisehir",
+      "Türkiye":"Turkey"
+    } as Record<string,string>)[area] ?? area),
     audience: ({
       "almanya":"Companies selling into Germany or building demand in the German market",
       "ingiltere":"Companies targeting customers in the United Kingdom",
