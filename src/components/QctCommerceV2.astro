@@ -28,18 +28,6 @@ const platforms = [
 ---
 
 <div class="qct-v2" data-qct-v2>
-  <div class="qct-intro-overlay" data-intro-banner hidden>
-    <div class="qct-intro-card" role="dialog" aria-modal="false" aria-label="QCT Commerce yenilik duyurusu">
-      <button type="button" class="qct-intro-close" aria-label="Duyuruyu kapat" data-intro-close>×</button>
-      <div class="qct-intro-brand">QCT Commerce</div>
-      <p class="qct-intro-kicker">WEB SİTESİ FİYATLARI · ŞEFFAF BAŞLANGIÇ</p>
-      <h2>Web sitesi yaptırma fiyatınızı 60 saniyede öğrenin.</h2>
-      <p>Kurumsal site, e-ticaret, site yenileme ve görünürlük çalışmalarında başlangıç fiyatını anında hesaplayın.</p>
-      <div class="qct-intro-line"></div>
-      <span class="qct-intro-foot">Başlangıç fiyatları · Net kapsam · Hızlı teklif</span>
-    </div>
-  </div>
-
   <section class="qct-hero" aria-labelledby="qct-hero-title">
     <div class="qct-shell qct-hero-grid">
       <div class="qct-hero-copy">
@@ -414,27 +402,5 @@ const platforms = [
   });
   calculate();
 
-  const banner = root.querySelector('[data-intro-banner]');
-  const close = root.querySelector('[data-intro-close]');
-  const key = 'qct-v2-intro-seen';
-
-  try {
-    if (banner && !localStorage.getItem(key)) {
-      window.setTimeout(() => {
-        banner.hidden = false;
-        requestAnimationFrame(() => banner.classList.add('is-visible'));
-        localStorage.setItem(key, '1');
-        window.setTimeout(() => {
-          banner.classList.remove('is-visible');
-          window.setTimeout(() => { banner.hidden = true; }, 420);
-        }, 3000);
-      }, 450);
-    }
-  } catch {}
-
-  close?.addEventListener('click', () => {
-    banner?.classList.remove('is-visible');
-    window.setTimeout(() => { if (banner) banner.hidden = true; }, 250);
-  });
 })();
 </script>
