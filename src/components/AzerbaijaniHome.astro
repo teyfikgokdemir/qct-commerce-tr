@@ -25,8 +25,18 @@ const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
 <BaseLayout title="Azərbaycanda Veb Sayt, E-ticarət, SEO, GEO, AEO & AIO | QCT Commerce" description="Azərbaycan şirkətləri üçün korporativ veb sayt, e-ticarət, SEO, GEO, AEO, AIO, WhatsApp satış və AI avtomatlaşdırma xidmətləri. Şəffaf AZN qiymətləri." lang="az" isHome={true} areaServed={['Azerbaijan','Türkiye']}>
 <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <Header slot="header" lang="az" />
-<link rel="stylesheet" href="/styles/qct-v2.css?v=20260924-4" />
+<link rel="stylesheet" href="/styles/qct-v2.css?v=20260928-6" />
 <div class="qct-v2" data-qct-az>
+<style is:inline>
+[data-qct-az] .qct-hero-copy > *,
+[data-qct-az] .qct-calculator{opacity:1!important;transform:none!important;animation:none!important}
+[data-qct-az] .qct-close-grid{grid-template-columns:1fr!important;text-align:center!important;justify-items:center!important;align-items:center!important;gap:26px!important}
+[data-qct-az] .qct-close-grid>div{display:grid;justify-items:center}
+[data-qct-az] .qct-close h2{max-width:1050px!important;margin-inline:auto!important;text-wrap:balance}
+[data-qct-az] .qct-close .qct-section-label{text-align:center}
+[data-qct-az] .qct-close .qct-btn{justify-self:center}
+@media(max-width:760px){[data-qct-az] .qct-close h2{font-size:clamp(2.3rem,11vw,3.5rem)!important}}
+</style>
 <section class="qct-hero" aria-labelledby="az-hero-title"><div class="qct-shell qct-hero-grid">
 <div class="qct-hero-copy"><p class="qct-eyebrow">AZƏRBAYCAN ÜÇÜN RƏQƏMSAL TİCARƏT SİSTEMLƏRİ</p><h1 id="az-hero-title">Rəqəmsal böyümə üçün <em>vahid sistem.</em></h1><p class="qct-lead">Veb sayt, e-ticarət, SEO, GEO, AEO, AIO, analitika və satış avtomatlaşdırmasını ayrı-ayrı xidmətlər kimi deyil, eyni kommersiya sisteminin hissələri kimi qururuq.</p><div class="qct-hero-actions"><a class="qct-btn qct-btn-primary" href="/az/elaqe/">Layihəyə başlayın <span>→</span></a><a class="qct-text-link" href="#qiymet-hesabla">Qiyməti hesablayın</a></div><div class="qct-proof-line"><span>Şəffaf AZN qiymətləri</span><span>Yerli dildə xidmət</span><span>Axtarış + AI görünürlüyü</span></div></div>
 <aside class="qct-calculator" id="qiymet-hesabla" aria-labelledby="az-calc-title"><div class="qct-calculator-head"><div><div class="qct-builder-status"><span class="qct-live-dot"></span> CANLI LAYİHƏ HESABLAYICISI</div><h2 id="az-calc-title">Layihənizi seçin</h2><p class="qct-builder-sub">Seçim etdikcə başlanğıc qiyməti dərhal görün.</p></div><div class="qct-builder-progress" aria-hidden="true"><span class="is-active"></span><span></span><span></span></div></div>

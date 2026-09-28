@@ -51,10 +51,10 @@ const trHref = isAzerbaijani ? (azPair?.tr || '/') : isEnglish ? (pairedLocalePa
 const enHref = isAzerbaijani ? (azPair?.en || '/en/') : !isEnglish ? (pairedLocalePath || '/en/') : (isErrorRoute ? '/en/' : currentPath);
 
 const audienceLinks = isAzerbaijani ? [
-  ['İstehsalçılar', '/az/#kimler-ucun'],
-  ['İxracatçılar', '/az/#kimler-ucun'],
-  ['Distribütor və B2B', '/az/#kimler-ucun'],
-  ['E-ticarət brendləri', '/az/#kimler-ucun']
+  ['İstehsalçılar', '/az/istehsalcilar/'],
+  ['İxracatçılar', '/az/ixracatcilar/'],
+  ['Distribütor və B2B', '/az/distributor-b2b/'],
+  ['E-ticarət brendləri', '/az/e-ticaret-brendleri/']
 ] : isEnglish ? [
   ['Manufacturers', '/en/manufacturers/'],
   ['Exporters', '/en/exporters/'],
@@ -101,11 +101,10 @@ const serviceLinks = isAzerbaijani ? [
 
 const quickLinks = isAzerbaijani ? [
   ['Ana səhifə', '/az/'],
-  ['Kimlər üçün', '/az/#kimler-ucun'],
-  ['Həllər', '/az/#heller'],
-  ['Necə işləyirik', '/az/nece-isleyirik/'],
-  ['Audit', '/az/reqemsal-audit/'],
-  ['Əlaqə', 'mailto:info@qctcommerce.com']
+  ['Haqqımızda', '/az/haqqimizda/'],
+  ['İşlərimiz', '/az/isler/'],
+  ['Qiymətlər', '/az/qiymetler/'],
+  ['Əlaqə', '/az/elaqe/']
 ] : isEnglish ? [
   ['Home', '/en/'],
   ['About', '/en/about/'],
@@ -124,9 +123,11 @@ const quickLinks = isAzerbaijani ? [
 
 const servicePaths = ['/hizmetler/', '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/', '/ureticiler/', '/ihracatcilar/', '/distributor-b2b/', '/e-ticaret-markalari/'];
 const englishServicePaths = ['/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/', '/en/manufacturers/', '/en/exporters/', '/en/distributors-b2b/', '/en/ecommerce-brands/'];
+const azerbaijaniServicePaths = ['/az/xidmetler/', '/az/e-ticaret/', '/az/shopify-magaza-qurulmasi/', '/az/ikas-magaza-qurulmasi/', '/az/veb-dizayn/', '/az/whatsapp-satis/', '/az/seo-geo/', '/az/meta-reklamlari/', '/az/ai-avtomatlasdirma/'];
 const isCurrent = (path: string) => currentPath === path;
 const isServiceCurrent = servicePaths.includes(currentPath);
 const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
+const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath);
 ---
 <header id="masthead" class="site-header" data-site-header>
   <div class="site-header__inner container">
@@ -160,7 +161,7 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
           ))}
         </nav>
 
-        {!isAzerbaijani && (
+        {true && (
           <div class="qct-mobile-groups">
             <section class="qct-mobile-section qct-mobile-section--accordion">
               <button class="qct-mobile-accordion-toggle" type="button" aria-expanded={isEnglish ? (isEnglishServiceCurrent ? 'true' : 'false') : (isServiceCurrent ? 'true' : 'false')} data-mobile-accordion-toggle>
@@ -215,7 +216,36 @@ const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
       <div class="desktop-only-menu">
         {isAzerbaijani ? (
           <ul class="primary-menu">
-            <li><a href="/az/" aria-current="page">Ana səhifə</a></li><li><a href="/az/#kimler-ucun">Kimlər üçün</a></li><li><a href="/az/#heller">Həllər</a></li><li><a href="/az/#faq">Suallar</a></li><li><a href="mailto:info@qctcommerce.com">Əlaqə</a></li><li><a href="/" hreflang="tr-TR">TR</a></li><li><a href="/en/location/azerbaijan/" hreflang="en">EN</a></li>
+            <li><a href="/az/" aria-current={isCurrent('/az/') ? 'page' : undefined}>Ana səhifə</a></li>
+            <li class:list={['menu-item-has-children', { 'is-current': isAzerbaijaniServiceCurrent }]}>
+              <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Xidmətlər</span></button>
+              <ul class="sub-menu">
+                <li><a href="/az/xidmetler/">Bütün xidmətlər</a></li>
+                <li><a href="/az/e-ticaret/">E-ticarət</a></li>
+                <li><a href="/az/shopify-magaza-qurulmasi/">Shopify qurulması</a></li>
+                <li><a href="/az/ikas-magaza-qurulmasi/">ikas qurulması</a></li>
+                <li><a href="/az/veb-dizayn/">Veb dizayn</a></li>
+                <li><a href="/az/whatsapp-satis/">WhatsApp satış</a></li>
+                <li><a href="/az/seo-geo/">SEO, GEO, AEO & AIO</a></li>
+                <li><a href="/az/meta-reklamlari/">Meta reklamları</a></li>
+                <li><a href="/az/ai-avtomatlasdirma/">AI avtomatlaşdırma</a></li>
+              </ul>
+            </li>
+            <li class="menu-item-has-children">
+              <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimlər üçün</span></button>
+              <ul class="sub-menu">
+                <li><a href="/az/istehsalcilar/">İstehsalçılar</a></li>
+                <li><a href="/az/ixracatcilar/">İxracatçılar</a></li>
+                <li><a href="/az/distributor-b2b/">Distribütor &amp; B2B</a></li>
+                <li><a href="/az/e-ticaret-brendleri/">E-ticarət brendləri</a></li>
+              </ul>
+            </li>
+            <li><a href="/az/haqqimizda/" aria-current={isCurrent('/az/haqqimizda/') ? 'page' : undefined}>Haqqımızda</a></li>
+            <li><a href="/az/isler/" aria-current={isCurrent('/az/isler/') ? 'page' : undefined}>İşlərimiz</a></li>
+            <li><a href="/az/qiymetler/" aria-current={isCurrent('/az/qiymetler/') ? 'page' : undefined}>Qiymətlər</a></li>
+            <li><a href="/az/elaqe/" aria-current={isCurrent('/az/elaqe/') ? 'page' : undefined}>Əlaqə</a></li>
+            <li><a href={trHref} hreflang="tr-TR">TR</a></li>
+            <li><a href={enHref} hreflang="en">EN</a></li>
           </ul>
         ) : isEnglish ? (
           <ul class="primary-menu">
