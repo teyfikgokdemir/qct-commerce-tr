@@ -208,7 +208,8 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
     .qct-back-to-top {
       right: max(14px, env(safe-area-inset-right)) !important;
     }
-    body.is-menu-open .qct-floating-action {
+    body.is-menu-open .qct-floating-action,
+    body.qctm-lock .qct-floating-action {
       display: none !important;
     }
   }
