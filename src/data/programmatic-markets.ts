@@ -33,58 +33,62 @@ export const trMarkets: ProgrammaticMarket[] = [
   { id:"dubai", name:"Dubai", type:"city", areaServed:["Dubai","United Arab Emirates","Türkiye"], audience:"Dubai ve BAE’de müşteri kazanmak isteyen şirketler", marketAngle:"premium marka algısını hızlı, çok dilli ve dönüşüm odaklı deneyimle destekleme", commercialContext:"Dubai hedefli projelerde güçlü ilk izlenim, İngilizce öncelikli içerik, mobil hız ve WhatsApp/teklif akışı birlikte optimize edilmelidir.", priorityServices:["Premium web tasarım","İngilizce landing page","Lead generation"], industries:["Hizmet","Ticaret","E-ticaret"], alternateId:"dubai" }
 ];
 
-export const enMarkets: ProgrammaticMarket[] = trMarkets.map((m) => ({
-  ...m,
-  id: m.alternateId,
-  name: ({
+export const enMarkets: ProgrammaticMarket[] = trMarkets.map((m) => {
+  const enName = ({
     "almanya":"Germany","ingiltere":"United Kingdom","azerbaycan":"Azerbaijan","dubai":"Dubai",
     "istanbul":"Istanbul","ankara":"Ankara","izmir":"Izmir","bursa":"Bursa","antalya":"Antalya",
     "gaziantep":"Gaziantep","kocaeli":"Kocaeli","adana":"Adana","kayseri":"Kayseri","konya":"Konya",
     "denizli":"Denizli","mersin":"Mersin","eskisehir":"Eskisehir","samsun":"Samsun","sakarya":"Sakarya"
-  } as Record<string,string>)[m.id] ?? m.name,
-  audience: ({
-    "almanya":"Companies selling into Germany or building demand in the German market",
-    "ingiltere":"Companies targeting customers in the United Kingdom",
-    "azerbaycan":"Companies building digital sales across the Turkey–Azerbaijan corridor",
-    "dubai":"Companies targeting buyers and decision-makers in Dubai and the UAE"
-  } as Record<string,string>)[m.id] ?? `Businesses operating in or targeting ${m.name}`,
-  marketAngle: ({
-    "almanya":"combine multilingual trust, technical credibility and search intent",
-    "ingiltere":"turn a clear value proposition and proof into qualified enquiries",
-    "azerbaycan":"support close commercial ties with a professional digital buying journey",
-    "dubai":"support premium positioning with a fast, multilingual conversion journey"
-  } as Record<string,string>)[m.id] ?? "connect local relevance with measurable digital demand",
-  commercialContext: ({
-    "almanya":"For Germany, translation alone is not enough. German-language search intent, trust signals, proof of capability and clear contact paths need to work as one system.",
-    "ingiltere":"For the UK, buyers should understand the offer quickly. Case studies, clear scope and a friction-light mobile enquiry flow matter more than decorative complexity.",
-    "azerbaycan":"For Azerbaijan, clear service scope, fast contact paths and language consistency help move visitors from interest to a commercial conversation.",
-    "dubai":"For Dubai and the UAE, premium first impression, English-first content, mobile speed and direct enquiry or WhatsApp flows should be designed together."
-  } as Record<string,string>)[m.id] ?? `For ${m.name}, we align information architecture, search intent, mobile performance and conversion paths instead of treating the page as a simple location swap.`,
-  priorityServices: m.id === "almanya" ? ["German landing pages","B2B web design","SEO / GEO"] :
-    m.id === "ingiltere" ? ["English website","E-commerce","SEO / GEO"] :
-    m.id === "azerbaycan" ? ["Corporate website","Multilingual content","Lead generation"] :
-    m.id === "dubai" ? ["Premium web design","English landing pages","Lead generation"] :
-    ["Web design","E-commerce","SEO / GEO"],
-  industries: ({
-    "almanya":["B2B","Manufacturing","E-commerce"],
-    "ingiltere":["E-commerce","Professional services","B2B"],
-    "azerbaycan":["Services","Trade","E-commerce"],
-    "dubai":["Services","Trade","E-commerce"],
-    "istanbul":["E-commerce","B2B","Professional services"],
-    "ankara":["Technology","Consulting","B2B services"],
-    "izmir":["Export","Manufacturing","E-commerce"],
-    "bursa":["Manufacturing","Automotive supply","B2B"],
-    "antalya":["Tourism","Services","E-commerce"],
-    "gaziantep":["Food","Manufacturing","Export"],
-    "kocaeli":["Industry","Logistics","B2B"],
-    "adana":["Food","Manufacturing","Services"],
-    "kayseri":["Furniture","Manufacturing","Export"],
-    "konya":["Machinery","Agricultural equipment","Manufacturing"],
-    "denizli":["Textiles","Manufacturing","Export"],
-    "mersin":["Logistics","International trade","Food"],
-    "eskisehir":["Technology","Manufacturing","Services"],
-    "samsun":["Trade","Manufacturing","Services"],
-    "sakarya":["Industry","Automotive","Services"]
-  } as Record<string,string[]>)[m.id] ?? ["B2B","E-commerce","Services"],
-  alternateId: m.id
-}));
+  } as Record<string,string>)[m.id] ?? m.name;
+
+  return {
+    ...m,
+    id: m.alternateId,
+    name: enName,
+    audience: ({
+      "almanya":"Companies selling into Germany or building demand in the German market",
+      "ingiltere":"Companies targeting customers in the United Kingdom",
+      "azerbaycan":"Companies building digital sales across the Turkey–Azerbaijan corridor",
+      "dubai":"Companies targeting buyers and decision-makers in Dubai and the UAE"
+    } as Record<string,string>)[m.id] ?? `Businesses operating in or targeting ${enName}`,
+    marketAngle: ({
+      "almanya":"combine multilingual trust, technical credibility and search intent",
+      "ingiltere":"turn a clear value proposition and proof into qualified enquiries",
+      "azerbaycan":"support close commercial ties with a professional digital buying journey",
+      "dubai":"support premium positioning with a fast, multilingual conversion journey"
+    } as Record<string,string>)[m.id] ?? "connect local relevance with measurable digital demand",
+    commercialContext: ({
+      "almanya":"For Germany, translation alone is not enough. German-language search intent, trust signals, proof of capability and clear contact paths need to work as one system.",
+      "ingiltere":"For the UK, buyers should understand the offer quickly. Case studies, clear scope and a friction-light mobile enquiry flow matter more than decorative complexity.",
+      "azerbaycan":"For Azerbaijan, clear service scope, fast contact paths and language consistency help move visitors from interest to a commercial conversation.",
+      "dubai":"For Dubai and the UAE, premium first impression, English-first content, mobile speed and direct enquiry or WhatsApp flows should be designed together."
+    } as Record<string,string>)[m.id] ?? `For ${enName}, we align information architecture, search intent, mobile performance and conversion paths instead of treating the page as a simple location swap.`,
+    priorityServices: m.id === "almanya" ? ["German landing pages","B2B web design","SEO / GEO"] :
+      m.id === "ingiltere" ? ["English website","E-commerce","SEO / GEO"] :
+      m.id === "azerbaycan" ? ["Corporate website","Multilingual content","Lead generation"] :
+      m.id === "dubai" ? ["Premium web design","English landing pages","Lead generation"] :
+      ["Web design","E-commerce","SEO / GEO"],
+    industries: ({
+      "almanya":["B2B","Manufacturing","E-commerce"],
+      "ingiltere":["E-commerce","Professional services","B2B"],
+      "azerbaycan":["Services","Trade","E-commerce"],
+      "dubai":["Services","Trade","E-commerce"],
+      "istanbul":["E-commerce","B2B","Professional services"],
+      "ankara":["Technology","Consulting","B2B services"],
+      "izmir":["Export","Manufacturing","E-commerce"],
+      "bursa":["Manufacturing","Automotive supply","B2B"],
+      "antalya":["Tourism","Services","E-commerce"],
+      "gaziantep":["Food","Manufacturing","Export"],
+      "kocaeli":["Industry","Logistics","B2B"],
+      "adana":["Food","Manufacturing","Services"],
+      "kayseri":["Furniture","Manufacturing","Export"],
+      "konya":["Machinery","Agricultural equipment","Manufacturing"],
+      "denizli":["Textiles","Manufacturing","Export"],
+      "mersin":["Logistics","International trade","Food"],
+      "eskisehir":["Technology","Manufacturing","Services"],
+      "samsun":["Trade","Manufacturing","Services"],
+      "sakarya":["Industry","Automotive","Services"]
+    } as Record<string,string[]>)[m.id] ?? ["B2B","E-commerce","Services"],
+    alternateId: m.id
+  };
+});
