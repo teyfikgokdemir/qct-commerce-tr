@@ -1,66 +1,58 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { enMarkets, programmaticServices, internationalMarketEnIds, enServicePath } from "../../../data/programmatic-markets";
 
-export async function getStaticPaths() {
-  const locations = [
-    { id: "istanbul", name: "Istanbul" },
-    { id: "ankara", name: "Ankara" },
-    { id: "izmir", name: "Izmir" },
-    { id: "bursa", name: "Bursa" },
-    { id: "antalya", name: "Antalya" },
-    { id: "gaziantep", name: "Gaziantep" },
-    { id: "kocaeli", name: "Kocaeli" },
-    { id: "adana", name: "Adana" },
-    { id: "kayseri", name: "Kayseri" },
-    { id: "konya", name: "Konya" },
-    { id: "denizli", name: "Denizli" },
-    { id: "mersin", name: "Mersin" },
-    { id: "eskisehir", name: "Eskisehir" },
-    { id: "samsun", name: "Samsun" },
-    { id: "sakarya", name: "Sakarya" },
-    { id: "germany", name: "Germany", type: "country" },
-    { id: "uk", name: "United Kingdom", type: "country" },
-    { id: "azerbaijan", name: "Azerbaijan", type: "country" },
-    { id: "dubai", name: "Dubai", type: "city" },
-  ];
-
-  return locations.map((loc) => ({
-    params: { city: loc.id },
-    props: { cityName: loc.name, type: loc.type || "city" },
+export function getStaticPaths() {
+  return enMarkets.map((market) => ({
+    params: { city: market.id },
+    props: { market },
   }));
 }
 
-const { city } = Astro.params;
-const { cityName, type } = Astro.props;
-
-const isCountry = type === "country";
-const regionText = isCountry ? `${cityName} Market` : `${cityName} Region`;
-const forText = isCountry ? `for businesses targeting ${cityName}` : `for businesses in ${cityName}`;
-
-const title = `${cityName} E-Commerce & Web Design Agency | QCT Commerce`;
-const description = `Shopify and ikas store setup, custom web design and advanced SEO ${forText}. QCT Commerce helps you grow digital sales across the ${regionText}.`;
+const { market } = Astro.props;
+const isCountry = market.type === "country";
+const regionLabel = isCountry ? `${market.name} market` : `${market.name} region`;
+const title = `${market.name} Web Design & E-Commerce Agency | QCT Commerce`;
+const description = `Web design, e-commerce and SEO/GEO for ${market.name}. We ${market.marketAngle} with a measurable digital demand system built by QCT Commerce.`;
+const alternates = [
+  { lang: "tr-TR", href: `/lokasyon/${market.alternateId}/` },
+  { lang: "en", href: `/en/location/${market.id}/` },
+];
+const marketServicePages = internationalMarketEnIds.has(market.id) ? programmaticServices : [];
+const breadcrumbs = [
+  { name: "Home", url: "/en/" },
+  { name: "Services", url: "/en/services/" },
+  { name: market.name, url: `/en/location/${market.id}/` },
+];
 ---
 
-<BaseLayout title={title} description={description} lang="en">
+<BaseLayout
+  title={title}
+  description={description}
+  lang="en"
+  alternates={alternates}
+  breadcrumbs={breadcrumbs}
+  pageType="CollectionPage"
+  areaServed={market.areaServed}
+>
   <div class="qct-v2" data-qct-v2>
-
     <section class="qct-hero">
       <div class="qct-shell qct-hero-grid">
         <div class="qct-hero-copy">
-          <p class="qct-eyebrow">PROGRAMMATIC SEO & LOCAL AUTHORITY</p>
+          <p class="qct-eyebrow">{isCountry ? "INTERNATIONAL MARKET" : "LOCAL GROWTH"} · WEB · E-COMMERCE · SEO/GEO</p>
           <h1 class="qct-hero-title">
-            Elite E-Commerce & Web Solutions <em>{forText}</em>
+            A digital growth system built for <em>{market.name}</em>
           </h1>
           <p class="qct-lead">
-            We build Shopify stores, ikas shops, and high-performance websites for brands operating in the <strong>{regionText}</strong>. Our SEO and AI-visibility (AIO) strategies put you in front of buyers — on Google, ChatGPT, and Perplexity alike.
+            For {market.audience.toLowerCase()}, we connect search intent, credibility, mobile performance and enquiry flow instead of shipping another generic location page.
+            <strong> The goal is to {market.marketAngle}.</strong>
           </p>
           <div class="qct-hero-actions">
-            <a class="qct-btn qct-btn-primary" href="/en/contact/">Get a Quote for {cityName} <span>→</span></a>
+            <a class="qct-btn qct-btn-primary" href="/en/contact/">Discuss a {market.name} project <span>→</span></a>
+            <a class="qct-btn qct-btn-secondary" href="/en/work/">View selected work</a>
           </div>
           <div class="qct-proof-line">
-            <span>Shopify & ikas</span>
-            <span>Custom Web Design</span>
-            <span>Local & AI SEO</span>
+            {market.priorityServices.map((service) => <span>{service}</span>)}
           </div>
         </div>
       </div>
@@ -69,20 +61,89 @@ const description = `Shopify and ikas store setup, custom web design and advance
     <section class="qct-benefits">
       <div class="qct-shell qct-benefit-grid">
         <article>
-          <h3>Market Analysis</h3>
-          <p>We study {regionText} search volumes, buyer intent and competitive landscape before writing a single line of code.</p>
+          <p class="qct-section-label">MARKET CONTEXT</p>
+          <h3>A commercial scenario, not a city-name swap</h3>
+          <p>{market.commercialContext}</p>
         </article>
         <article>
-          <h3>Turnkey Store Setup</h3>
-          <p>From product import to payment gateway, we deliver a fully operational Shopify or ikas store ready to sell globally from day one.</p>
+          <p class="qct-section-label">SEARCH VISIBILITY</p>
+          <h3>SEO + GEO + AEO + AIO</h3>
+          <p>We structure services, sectors and proof so the site is understandable to conventional search engines and AI-assisted discovery systems without relying on keyword stuffing.</p>
         </article>
         <article>
-          <h3>AI Visibility (AIO)</h3>
-          <p>Not just Google rankings — we structure your content so ChatGPT and Perplexity recommend your brand to {regionText} buyers.</p>
+          <p class="qct-section-label">CONVERSION</p>
+          <h3>From visit to qualified enquiry</h3>
+          <p>Calls to action, WhatsApp, forms, case studies and trust signals are placed around buyer intent. The objective is qualified demand, not page-view volume.</p>
         </article>
         <article>
-          <h3>Transparent Pricing</h3>
-          <p>Fixed-scope projects. No surprise invoices. You know the full cost before we start.</p>
+          <p class="qct-section-label">TECHNICAL BASE</p>
+          <h3>Fast, measurable and expandable</h3>
+          <p>Mobile performance, analytics, technical SEO, structured data and multilingual expansion share the same technical foundation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="qct-shell">
+      <div class="qct-section-head">
+        <p class="qct-section-label">PRIORITIES FOR {regionLabel.toUpperCase()}</p>
+        <h2>What we improve first</h2>
+        <p>Each programmatic page is tied to a real service architecture, search intent and internal-link path. We do not publish pages whose only unique element is the place name.</p>
+      </div>
+      <div class="qct-benefit-grid">
+        {market.priorityServices.map((service, index) => (
+          <article>
+            <span class="qct-card-kicker">0{index + 1}</span>
+            <h3>{service}</h3>
+            <p>For {market.industries.join(", ")} businesses, this capability is designed as part of the full acquisition and conversion journey.</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {marketServicePages.length > 0 && (
+      <section class="qct-shell">
+        <div class="qct-section-head">
+          <p class="qct-section-label">MARKET × SERVICE PAGES</p>
+          <h2>High-intent services for {market.name}</h2>
+          <p>The general market page is supported by focused pages that answer service-specific commercial intent.</p>
+        </div>
+        <div class="qct-benefit-grid">
+          {marketServicePages.map((service) => (
+            <article>
+              <h3>{market.name} {service.enName}</h3>
+              <p>{service.enOutcome}</p>
+              <a href={enServicePath(market.id, service)}>Explore {service.enName} for {market.name} →</a>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="qct-shell">
+      <div class="qct-section-head">
+        <p class="qct-section-label">RELATED SOLUTIONS</p>
+        <h2>A {market.name} project should not depend on one landing page.</h2>
+      </div>
+      <div class="qct-benefit-grid">
+        <article>
+          <h3>Web Design</h3>
+          <p>High-trust, fast and conversion-focused websites.</p>
+          <a href="/en/web-design/">Explore web design →</a>
+        </article>
+        <article>
+          <h3>E-Commerce</h3>
+          <p>Store architecture and commerce journeys built around the operating model.</p>
+          <a href="/en/ecommerce/">Explore e-commerce →</a>
+        </article>
+        <article>
+          <h3>SEO / GEO</h3>
+          <p>Search visibility for conventional and AI-assisted discovery.</p>
+          <a href="/en/search-visibility/">Explore search visibility →</a>
+        </article>
+        <article>
+          <h3>{isCountry ? "Exporters" : "B2B & manufacturers"}</h3>
+          <p>{isCountry ? "Multilingual demand architecture for selected target markets." : "Product, service and enquiry paths designed for business buyers."}</p>
+          <a href={isCountry ? "/en/exporters/" : "/en/manufacturers/"}>Explore the segment solution →</a>
         </article>
       </div>
     </section>
@@ -90,13 +151,12 @@ const description = `Shopify and ikas store setup, custom web design and advance
     <section class="qct-close">
       <div class="qct-shell qct-close-grid">
         <div>
-          <p class="qct-section-label">TAILORED FOR {regionText.toUpperCase()}</p>
-          <h2>The next successful project in <em>{cityName} could be yours.</em></h2>
-          <p>Whether you need a brand-new store or a full site overhaul, QCT Commerce is your single point of contact for the {regionText}.</p>
+          <p class="qct-section-label">A PLAN FOR {market.name.toUpperCase()}</p>
+          <h2>Build for <em>commercial outcomes</em>, not location-page volume.</h2>
+          <p>We can review the existing website, target queries and conversion path, then define the first practical growth implementation.</p>
         </div>
-        <a class="qct-btn qct-btn-light" href="/en/contact/">Let's Talk <span>→</span></a>
+        <a class="qct-btn qct-btn-light" href="/en/contact/">Discuss your project <span>→</span></a>
       </div>
     </section>
-
   </div>
 </BaseLayout>
