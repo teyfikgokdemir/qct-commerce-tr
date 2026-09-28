@@ -3,7 +3,7 @@ const services = [
   { value: 'ecommerce', label: 'New e-commerce website', base: 9900 },
   { value: 'corporate', label: 'Corporate website', base: 8900 },
   { value: 'personal', label: 'Personal / portfolio website', base: 6900 },
-  { value: 'refresh', label: 'Existing website redesign', base: 4900 },
+  { value: 'refresh', label: 'Existing website redesign', base: 6900 },
   { value: 'audit', label: 'Website audit & improvement plan', base: 1490 },
   { value: 'visibility', label: 'SEO + GEO + AEO + AIO', base: 3900 },
   { value: 'migration', label: 'Platform migration', base: 7900 },
@@ -47,7 +47,8 @@ const platforms = [
         <h1 id="qct-hero-title">One place for your <em>digital presence.</em></h1>
         <p class="qct-lead">We build new websites and improve existing ones through audits, redesign, performance and visibility work. For e-commerce, corporate and personal websites, we bring SEO, GEO, AEO, AIO, product operations and platform work into one scope.</p>
         <div class="qct-hero-actions">
-          <a class="qct-btn qct-btn-primary" href="#fiyat-hesapla">Calculate Your Price <span>→</span></a>
+          <a class="qct-btn qct-btn-primary" href="/en/contact/">Start Your Project <span>→</span></a>
+          <a class="qct-text-link" href="#fiyat-hesapla">Calculate Your Price</a>
         </div>
         <div class="qct-proof-line">
           <span>Transparent pricing</span>
@@ -97,7 +98,8 @@ const platforms = [
             <select name="products" data-products>
               <option value="" data-price="0" selected disabled>Select product scope</option>
               <option value="0" data-price="0">No product entry needed</option>
-              <option value="25" data-price="1490">1–25 products</option>
+              <option value="10" data-price="1490" data-ecommerce-price="0">1–10 products — included in the e-commerce entry package</option>
+              <option value="25" data-price="1490">11–25 products</option>
               <option value="50" data-price="2490">26–50 products</option>
               <option value="100" data-price="3990">51–100 products</option>
               <option value="250" data-price="7900">101–250 products</option>
@@ -265,9 +267,9 @@ const platforms = [
         <p>From new website setup to audits, visibility work and technical improvements, standard services are published with clear starting prices.</p>
       </div>
       <div class="qct-offer-grid">
-        <a href="#fiyat-hesapla"><span>Website redesign</span><div class="qct-offer-price"><strong>4.900 TL</strong><small>Starting price</small></div><small>Mobile UX, visual refinement, CTA and core technical checks</small></a>
-        <a href="#fiyat-hesapla"><span>Corporate web</span><div class="qct-offer-price"><strong>8.900 TL</strong><small>Starting price</small></div><small>Modern interface, responsive structure and core SEO</small></a>
-        <a href="#fiyat-hesapla"><span>E-commerce setup</span><div class="qct-offer-price"><strong>9.900 TL</strong><small>Starting price</small></div><small>Shopify, ikas, WooCommerce, Ticimax</small></a>
+        <a href="#fiyat-hesapla"><span>Website redesign</span><div class="qct-offer-price"><strong>6.900 TL</strong><small>Starting price</small></div><small>Up to 5 priority pages · mobile, visual and core technical renewal</small></a>
+        <a href="#fiyat-hesapla"><span>Corporate web</span><div class="qct-offer-price"><strong>8.900 TL</strong><small>Starting price</small></div><small>Up to 5 core pages · standard project 12.900–16.900 TL</small></a>
+        <a href="#fiyat-hesapla"><span>E-commerce setup</span><div class="qct-offer-price"><strong>9.900 TL</strong><small>Starting price</small></div><small>Up to 10 product entries included · normal 14.900–19.900 TL</small></a>
         <a href="#fiyat-hesapla"><span>SEO + GEO + AEO + AIO</span><div class="qct-offer-price"><strong>3.900 TL</strong><small>Starting price</small></div><small>Technical and content improvements for search and AI visibility</small></a>
         <a href="#fiyat-hesapla"><span>Website audit</span><div class="qct-offer-price"><strong>1.490 TL</strong><small>Starting price</small></div><small>Technical, mobile, speed, visibility and conversion review</small></a>
         <a href="#fiyat-hesapla"><span>Platform migration</span><div class="qct-offer-price"><strong>7.900 TL</strong><small>Starting price</small></div><small>Product, category and core redirect plan</small></a>
@@ -344,7 +346,10 @@ const platforms = [
     const selectedService = service?.selectedOptions?.[0];
     const hasService = Boolean(service?.value);
     const base = Number(selectedService?.dataset.base || 0);
-    const productPrice = Number(products?.selectedOptions?.[0]?.dataset.price || 0);
+    const productOption = products?.selectedOptions?.[0];
+    const productPrice = service?.value === 'ecommerce' && productOption?.dataset.ecommercePrice !== undefined
+      ? Number(productOption.dataset.ecommercePrice || 0)
+      : Number(productOption?.dataset.price || 0);
     const addonPrice = addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
     const total = base + productPrice + addonPrice;
     const platform = root.querySelector('[data-platform]');
