@@ -202,7 +202,6 @@ const legalLinks = isGeorgian ? [
         <a href={isEnglish ? '/en/kvkk/' : '/kvkk/'}>KVKK</a>
         <a href={isEnglish ? '/en/terms/' : '/kullanim-kosullari/'}>{isEnglish ? 'Terms' : 'Kullanım koşulları'}</a>
         <a href={isEnglish ? '/en/cookie-policy/' : '/cerez-politikasi/'}>{isEnglish ? 'Cookies' : 'Çerezler'}</a>
-        <button type="button" class="site-footer__cookie-settings" data-cookie-settings-trigger>{isEnglish ? 'Cookie preferences' : 'Çerez tercihleri'}</button>
       </nav>}
     </div>
   </div>
@@ -267,7 +266,6 @@ const legalLinks = isGeorgian ? [
 
     <div class="site-footer__mobile-bottom">
       <p>&copy; 2026 QCT Commerce. {mobileCopy.rights}</p>
-      <button type="button" class="site-footer__mobile-cookie-settings" data-cookie-settings-trigger>{isEnglish ? 'Cookie preferences' : isGeorgian ? 'ქუქიების პარამეტრები' : 'Çerez tercihleri'}</button>
     </div>
   </div>
 
@@ -452,23 +450,12 @@ const legalLinks = isGeorgian ? [
       justify-content:flex-end;
       gap:14px;
     }
-    .site-footer__legal-desktop a,
-    .site-footer__cookie-settings {
+    .site-footer__legal-desktop a {
       color:rgba(247,241,233,.46);
       font-size:.72rem;
       text-decoration:none;
     }
-    .site-footer__cookie-settings {
-      appearance:none;
-      border:0;
-      padding:0;
-      background:transparent;
-      font:inherit;
-      cursor:pointer;
-    }
     .site-footer__legal-desktop a:hover,
-    .site-footer__cookie-settings:hover,
-    .site-footer__cookie-settings:focus-visible,
     .site-footer__legal-desktop a:focus-visible { color:#fff; }
   }
 
@@ -718,11 +705,6 @@ const legalLinks = isGeorgian ? [
       text-align:center;
     }
 
-    .site-footer__mobile-bottom {
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
     .site-footer__mobile-bottom p {
       width:100%;
       margin:0;
@@ -730,19 +712,6 @@ const legalLinks = isGeorgian ? [
       font-size:.68rem;
       line-height:1.4;
       text-align:center;
-    }
-
-    .site-footer__mobile-cookie-settings {
-      appearance:none;
-      border:0;
-      padding:0;
-      background:transparent;
-      color:rgba(247,241,233,.55);
-      font:inherit;
-      font-size:.7rem;
-      text-decoration:underline;
-      text-underline-offset:3px;
-      cursor:pointer;
     }
 
   }
