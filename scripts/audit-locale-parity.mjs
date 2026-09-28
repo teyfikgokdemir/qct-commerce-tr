@@ -68,6 +68,20 @@ for(const cluster of blogLocaleClusters){
     if(/\b(?:lorem ipsum|todo|tbd|placeholder|coming soon)\b/i.test(text)) errors.push(`${p}: placeholder content detected`);
   }
 }
+const homeSources={
+  tr:fs.readFileSync(path.join('src','components','QctCommerceV2.astro'),'utf8'),
+  en:fs.readFileSync(path.join('src','components','QctCommerceV2En.astro'),'utf8'),
+  az:fs.readFileSync(path.join('src','components','AzerbaijaniHome.astro'),'utf8')
+};
+const requiredHomeSections=['qct-hero','qct-platforms qct-ecosystem','qct-pathways','qct-benefits','qct-image-story','qct-offers','qct-search-faq','qct-close'];
+for(const [lang,source] of Object.entries(homeSources)){
+  for(const cls of requiredHomeSections) if(!source.includes(`<section class="${cls}`)) errors.push(`${lang} homepage structural parity: missing ${cls}`);
+  if(!source.includes('qct-intro-overlay')) errors.push(`${lang} homepage structural parity: missing intro overlay`);
+  if(!source.includes('qct-brand-film')) errors.push(`${lang} homepage structural parity: missing brand film`);
+}
+if(!homeSources.en.includes("base: 6900")||homeSources.en.includes("base: 4900")) errors.push('EN homepage pricing parity: redesign must use 6900 TL');
+if(!homeSources.en.includes('data-ecommerce-price="0"')) errors.push('EN homepage pricing parity: 1–10 ecommerce product entry must be included');
+if(!homeSources.az.includes('1.190 AZN-dən başlayır')) errors.push('AZ homepage pricing parity: ecommerce FAQ must match 1.190 AZN entry price');
 const blogIndexTr=fs.readFileSync(path.join('src','components','BlogIndex.astro'),'utf8');
 const blogIndexEn=fs.readFileSync(path.join('src','components','BlogIndexEn.astro'),'utf8');
 const blogArticleTr=fs.readFileSync(path.join('src','components','BlogArticle.astro'),'utf8');
