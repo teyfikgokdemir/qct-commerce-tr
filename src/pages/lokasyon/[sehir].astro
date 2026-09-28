@@ -1,66 +1,61 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { trMarkets } from "../../data/programmatic-markets";
 
-export async function getStaticPaths() {
-  const sehirler = [
-    { id: "istanbul", isim: "İstanbul", plaka: "34" },
-    { id: "ankara", isim: "Ankara", plaka: "06" },
-    { id: "izmir", isim: "İzmir", plaka: "35" },
-    { id: "bursa", isim: "Bursa", plaka: "16" },
-    { id: "antalya", isim: "Antalya", plaka: "07" },
-    { id: "gaziantep", isim: "Gaziantep", plaka: "27" },
-    { id: "kocaeli", isim: "Kocaeli", plaka: "41" },
-    { id: "adana", isim: "Adana", plaka: "01" },
-    { id: "kayseri", isim: "Kayseri", plaka: "38" },
-    { id: "konya", isim: "Konya", plaka: "42" },
-    { id: "denizli", isim: "Denizli", plaka: "20" },
-    { id: "mersin", isim: "Mersin", plaka: "33" },
-    { id: "eskisehir", isim: "Eskişehir", plaka: "26" },
-    { id: "samsun", isim: "Samsun", plaka: "55" },
-    { id: "sakarya", isim: "Sakarya", plaka: "54" },
-    { id: "almanya", isim: "Almanya", tip: "ulke" },
-    { id: "ingiltere", isim: "İngiltere", tip: "ulke" },
-    { id: "azerbaycan", isim: "Azerbaycan", tip: "ulke" },
-    { id: "dubai", isim: "Dubai", tip: "sehir" }
-  ];
-
-  return sehirler.map((s) => ({
-    params: { sehir: s.id },
-    props: { sehirAdi: s.isim, tip: s.tip || "sehir" },
+export function getStaticPaths() {
+  return trMarkets.map((market) => ({
+    params: { sehir: market.id },
+    props: { market },
   }));
 }
 
-const { sehir } = Astro.params;
-const { sehirAdi, tip } = Astro.props;
-
-const isUlke = tip === "ulke";
-const bolgeMetni = isUlke ? `${sehirAdi} Pazarı` : `${sehirAdi} Bölgesi`;
-const hitapMetni = isUlke ? `${sehirAdi}'ndeki` : `${sehirAdi}'deki`;
-
-const title = `${sehirAdi} E-Ticaret ve Web Tasarım Ajansı | QCT Commerce`;
-const description = `${sehirAdi} merkezli işletmeniz veya e-ticaret markanız için Shopify, ikas kurulumu, web tasarım ve gelişmiş SEO hizmetleri. QCT Commerce ile ${bolgeMetni}nde dijital satışlarınızı artırın.`;
+const { market } = Astro.props;
+const isCountry = market.type === "country";
+const regionLabel = isCountry ? `${market.name} pazarı` : `${market.name} bölgesi`;
+const title = `${market.name} Web Tasarım ve E-Ticaret Ajansı | QCT Commerce`;
+const description = `${market.name} için web tasarım, e-ticaret ve SEO/GEO çözümleri. ${market.marketAngle}; QCT Commerce ile ölçülebilir dijital talep altyapısı kurun.`;
+const alternates = [
+  { lang: "tr-TR", href: `/lokasyon/${market.id}/` },
+  { lang: "en", href: `/en/location/${market.alternateId}/` },
+];
+const breadcrumbs = [
+  { name: "Ana sayfa", url: "/" },
+  { name: "Hizmetler", url: "/hizmetler/" },
+  { name: market.name, url: `/lokasyon/${market.id}/` },
+];
 ---
 
-<BaseLayout title={title} description={description} lang="tr">
+<BaseLayout
+  title={title}
+  description={description}
+  lang="tr"
+  alternates={alternates}
+  breadcrumbs={breadcrumbs}
+  pageType="CollectionPage"
+  service={{
+    name: `${market.name} Web Tasarım, E-Ticaret ve SEO/GEO`,
+    description,
+  }}
+  areaServed={market.areaServed}
+>
   <div class="qct-v2" data-qct-v2>
-    
     <section class="qct-hero">
       <div class="qct-shell qct-hero-grid">
         <div class="qct-hero-copy">
-          <p class="qct-eyebrow">PROGRAMATİK SEO & YEREL GÜCÜNÜZ</p>
+          <p class="qct-eyebrow">{isCountry ? "ULUSLARARASI PAZAR" : "YEREL BÜYÜME"} · WEB · E-TİCARET · SEO/GEO</p>
           <h1 class="qct-hero-title">
-            <em>{sehirAdi}</em> İçin Elit E-Ticaret ve Web Altyapıları
+            <em>{market.name}</em> için satışa çalışan dijital altyapı
           </h1>
           <p class="qct-lead">
-            {hitapMetni} işletmeniz için lokal sınırları aşan, global standartlarda Shopify, ikas mağazaları, kurumsal web tasarım ve <strong>SEO / Yapay Zeka (AIO) görünürlüğü</strong> çözümleri üretiyoruz. {bolgeMetni} özelinde rakiplerinizin önüne geçin.
+            {market.audience} için yalnızca bir web sitesi değil; arama niyeti, güven, mobil performans ve teklif akışını birlikte çalışan bir sisteme dönüştürüyoruz.
+            <strong> Hedef: {market.marketAngle}.</strong>
           </p>
           <div class="qct-hero-actions">
-            <a class="qct-btn qct-btn-primary" href="/iletisim/">{sehirAdi} İçin Teklif Alın <span>→</span></a>
+            <a class="qct-btn qct-btn-primary" href="/iletisim/">{market.name} için proje görüşmesi <span>→</span></a>
+            <a class="qct-btn qct-btn-secondary" href="/calismalar/">Çalışmaları inceleyin</a>
           </div>
           <div class="qct-proof-line">
-            <span>Shopify & ikas</span>
-            <span>Özel Web Tasarım</span>
-            <span>Yerel SEO</span>
+            {market.priorityServices.map((service) => <span>{service}</span>)}
           </div>
         </div>
       </div>
@@ -69,20 +64,70 @@ const description = `${sehirAdi} merkezli işletmeniz veya e-ticaret markanız i
     <section class="qct-benefits">
       <div class="qct-shell qct-benefit-grid">
         <article>
-          <h3>Lokal Analiz</h3>
-          <p>{bolgeMetni} dinamiklerine ve hedef kitlenize uygun arama hacimlerini (GEO/SEO) analiz ederek sitenizi kurarız.</p>
+          <p class="qct-section-label">PAZAR BAĞLAMI</p>
+          <h3>{market.name} için kopya sayfa değil, ayrı ticari senaryo</h3>
+          <p>{market.commercialContext}</p>
         </article>
         <article>
-          <h3>Anahtar Teslim Mağaza</h3>
-          <p>{sehirAdi} merkezli deponuzdan/ofisinizden tüm dünyaya sorunsuz satış yapacağınız e-ticaret (Shopify/ikas) mimarisi.</p>
+          <p class="qct-section-label">ARAMA GÖRÜNÜRLÜĞÜ</p>
+          <h3>SEO + GEO + AEO + AIO birlikte</h3>
+          <p>Sayfa mimarisini klasik Google sorguları kadar yapay zekâ destekli arama ve cevap motorlarının okuyabileceği açık hizmet, sektör ve kapsam sinyalleriyle kuruyoruz.</p>
         </article>
         <article>
-          <h3>Yapay Zeka (AIO) Optimizasyonu</h3>
-          <p>Sadece Google'da değil, ChatGPT ve Perplexity'de de {hitapMetni} potansiyel müşterilere önerilmenizi sağlayan içerik yapısı.</p>
+          <p class="qct-section-label">DÖNÜŞÜM</p>
+          <h3>Ziyaretten ticari görüşmeye</h3>
+          <p>CTA, WhatsApp, teklif formu, vaka çalışması ve güven unsurlarını kullanıcının karar aşamasına göre yerleştiriyoruz; amaç yalnızca trafik değil nitelikli talep.</p>
         </article>
         <article>
-          <h3>Şeffaf Maliyet</h3>
-          <p>İster yenileme, ister sıfırdan kurulum olsun. Sürpriz faturalar olmadan anahtar teslim operasyon.</p>
+          <p class="qct-section-label">TEKNİK TEMEL</p>
+          <h3>Hızlı, ölçülebilir ve genişleyebilir</h3>
+          <p>Mobil performans, analitik ölçüm, teknik SEO, yapılandırılmış veri ve çok dilli genişleme aynı teknik temel üzerinde ilerler.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="qct-shell">
+      <div class="qct-section-head">
+        <p class="qct-section-label">{regionLabel.toUpperCase()} İÇİN ÖNCELİKLİ ALANLAR</p>
+        <h2>İlk etapta neyi iyileştiriyoruz?</h2>
+        <p>{market.name} için programatik sayfa üretimini gerçek bir hizmet mimarisine bağlıyoruz. Her sayfanın arama niyeti, ticari amacı ve dahili bağlantı rotası belirli.</p>
+      </div>
+      <div class="qct-benefit-grid">
+        {market.priorityServices.map((service, index) => (
+          <article>
+            <span class="qct-card-kicker">0{index + 1}</span>
+            <h3>{service}</h3>
+            <p>{market.industries.join(", ")} odaklı şirketlerde bu hizmeti satış sürecinin diğer parçalarıyla birlikte kurguluyoruz.</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="qct-shell">
+      <div class="qct-section-head">
+        <p class="qct-section-label">İLGİLİ ÇÖZÜMLER</p>
+        <h2>{market.name} projesini tek sayfaya sıkıştırmıyoruz.</h2>
+      </div>
+      <div class="qct-benefit-grid">
+        <article>
+          <h3>Web Tasarım</h3>
+          <p>Kurumsal güven, hız ve dönüşüm odaklı web mimarisi.</p>
+          <a href="/web-tasarim/">Web tasarım hizmeti →</a>
+        </article>
+        <article>
+          <h3>E-Ticaret</h3>
+          <p>Shopify, ikas ve ihtiyaca uygun satış altyapıları.</p>
+          <a href="/e-ticaret/">E-ticaret çözümleri →</a>
+        </article>
+        <article>
+          <h3>SEO / GEO</h3>
+          <p>Arama motorları ve yapay zekâ destekli keşif kanalları için görünürlük.</p>
+          <a href="/seo-geo/">SEO / GEO hizmeti →</a>
+        </article>
+        <article>
+          <h3>{isCountry ? "İhracatçılar" : "B2B ve üreticiler"}</h3>
+          <p>{isCountry ? "Hedef pazara özel çok dilli talep ve landing page mimarisi." : "Ürün, hizmet ve teklif akışını karar verici odaklı yapılandırma."}</p>
+          <a href={isCountry ? "/ihracatcilar/" : "/ureticiler/"}>Segment çözümünü inceleyin →</a>
         </article>
       </div>
     </section>
@@ -90,13 +135,12 @@ const description = `${sehirAdi} merkezli işletmeniz veya e-ticaret markanız i
     <section class="qct-close">
       <div class="qct-shell qct-close-grid">
         <div>
-          <p class="qct-section-label">{sehirAdi} BÖLGESİNE ÖZEL</p>
-          <h2>{sehirAdi}'nde sıradaki başarılı proje <em>sizin olabilir.</em></h2>
-          <p>Mevcut sitenizi iyileştirmek veya sıfırdan kurmak için tek merkez. QCT Commerce, {bolgeMetni} operasyonlarınızda yanınızda.</p>
+          <p class="qct-section-label">{market.name.toUpperCase()} İÇİN PROJE PLANI</p>
+          <h2>Trafik değil, <em>ticari sonuç üreten</em> bir yapı kuralım.</h2>
+          <p>Mevcut sitenizi, hedef sorgularınızı ve dönüşüm akışınızı birlikte değerlendirip ilk uygulanabilir büyüme planını çıkaralım.</p>
         </div>
-        <a class="qct-btn qct-btn-light" href="/iletisim/">Hemen Görüşelim <span>→</span></a>
+        <a class="qct-btn qct-btn-light" href="/iletisim/">Projenizi anlatın <span>→</span></a>
       </div>
     </section>
-
   </div>
 </BaseLayout>
