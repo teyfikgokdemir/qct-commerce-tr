@@ -8,7 +8,7 @@ PUBLIC_GTM_ID and PUBLIC_CLARITY_ID override the public IDs at build time. An em
 
 ## Consent
 
-Existing qct-analytics-consent values and GA4 advanced Consent Mode are preserved. Default analytics/ad storage, ad user data and personalization are denied. GA4 may send cookieless page views before consent. GTM requires analytics consent; Clarity additionally requires the new recording disclosure to be accepted (qct-recording-consent-v1). Returning GA-only consent does not enable recording. All custom events and first-touch session storage require analytics consent. Revoking consent clears analytics cookies/attribution and reloads to stop loaded scripts.
+Existing qct-analytics-consent values and GA4 advanced Consent Mode are preserved. Default analytics/ad storage, ad user data and personalization are denied. At the owner’s explicit request on 2026-09-28, GA4 page views and allowlisted events run in advanced mode before acceptance and after rejection. Clarity also loads in limited cookieless mode via clarityCookieless, with consentv2 denied sent before loading. GTM and first-touch session storage still require analytics consent. Acceptance of the recording disclosure permits Clarity cookies; no-consent mode cannot persist sessions across pages. Revoking consent clears analytics cookies/attribution and reloads; cookieless measurement resumes after reload. The Clarity project must require consent globally (not only in EEA/UK/CH).
 
 Clarity uses consentv2, body text masking and strict project masking. Recording is skipped on query/hash URLs. Google signals and ad personalization are disabled in this reference site.
 

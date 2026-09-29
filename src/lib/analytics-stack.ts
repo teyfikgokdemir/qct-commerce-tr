@@ -1,7 +1,7 @@
 /** QCT reference analytics runtime. GA remains site-owned; GTM must not duplicate GA/Clarity. */
 export type Params = Record<string, unknown>;
 type Consent = { analytics: boolean; marketing?: boolean; recording?: boolean };
-type Config = { hostname?: string; site: string; ga: string; gtm?: string; clarity?: string; advanced?: boolean };
+type Config = { hostname?: string; site: string; ga: string; gtm?: string; clarity?: string; advanced?: boolean; clarityCookieless?: boolean };
 const names = new Set(('whatsapp_click phone_click email_click cta_click contact_click contact_cta_click outbound_click language_change service_view reference_view blog_view scroll_depth form_start form_submit contact_form_start contact_intent_toggle form_fallback_download contact_form_submit_attempt contact_form_success contact_form_error generate_lead email_draft_open pricing_start pricing_complete profit_calculator_complete product_quote_click catalog_download how_we_work_cta_click case_scenario_cta_click trade_intent_click direct_contact_click fa_landing_referral_click case_study_click service_detail_click').split(' '));
 const keys = new Set(('intent cta_type cta_location service platform product_scope form_name form_type trade_intent support_need trade_direction product_family contact_channel catalog_language target_locale page_type lead_source destination percent_scrolled pricing_value').split(' '));
 export function safeText(value: unknown): string {
@@ -78,7 +78,7 @@ function build(config: Config) {
       loadGa();
       w.gtag('event', 'page_view', context());
     }
-    if (consent.analytics && path !== classifiedPage) {
+    if ((consent.analytics || config.advanced) && path !== classifiedPage) {
       classifiedPage = path;
       if (/\/(blog|insights|icgoruler)\/.+/.test(path)) track('blog_view');
       else if (/\/(work|calismalar|referanslar|references|case-studies|referenzen|realisations|temsili-calisma-senaryolari)(\/|$)/.test(path)) track('reference_view');
@@ -86,18 +86,17 @@ function build(config: Config) {
     }
   }
   function extras() {
-    if (!consent.analytics) return;
-    if (!extrasLoaded && /^GTM-[A-Z0-9]+$/.test(config.gtm || '')) {
+    if (consent.analytics && !extrasLoaded && /^GTM-[A-Z0-9]+$/.test(config.gtm || '')) {
       extrasLoaded = true;
       w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
       load('qct-gtm', 'https://www.googletagmanager.com/gtm.js?id=' + config.gtm);
     }
     // Recording never starts on URLs containing potentially sensitive query/hash data.
-    if (!clarityLoaded && consent.recording === true && /^[a-z0-9]{5,20}$/.test(config.clarity || '') && !location.search && !location.hash) {
+    if (!clarityLoaded && (config.clarityCookieless || (consent.analytics && consent.recording === true)) && /^[a-z0-9]{5,20}$/.test(config.clarity || '') && !location.search && !location.hash) {
       clarityLoaded = true;
       w.clarity = w.clarity || function () { (w.clarity.q = w.clarity.q || []).push(arguments); };
       document.body.setAttribute('data-clarity-mask', 'true');
-      w.clarity('consentv2', { analytics_Storage: 'granted', ad_Storage: consent.marketing ? 'granted' : 'denied' });
+      w.clarity('consentv2', { analytics_Storage: consent.analytics && consent.recording ? 'granted' : 'denied', ad_Storage: consent.marketing ? 'granted' : 'denied' });
       load('qct-clarity', 'https://www.clarity.ms/tag/' + config.clarity);
     }
   }
@@ -105,7 +104,7 @@ function build(config: Config) {
     const revoked = consent.analytics && next.analytics !== true;
     consent = { analytics: next.analytics === true, marketing: next.marketing === true, recording: next.recording === true };
     googleConsent('update');
-    if (w.clarity) w.clarity('consentv2', { analytics_Storage: consent.analytics ? 'granted' : 'denied', ad_Storage: consent.marketing ? 'granted' : 'denied' });
+    if (w.clarity) w.clarity('consentv2', { analytics_Storage: consent.analytics && consent.recording ? 'granted' : 'denied', ad_Storage: consent.marketing ? 'granted' : 'denied' });
     if (revoked) {
       attribution = {}; w.__ctsegAttribution = {};
       try { sessionStorage.removeItem(config.site + '-analytics-attribution-v2'); } catch {}
@@ -122,10 +121,11 @@ function build(config: Config) {
     }
     if (consent.analytics) { captureAttribution(); w.__ctsegAttribution = { ...attribution }; loadGa(); extras(); }
     else if (config.advanced) loadGa();
+    extras();
     page();
   }
   function track(name: string, params: Params = {}) {
-    if (!consent.analytics || !names.has(name)) return false;
+    if ((!consent.analytics && !config.advanced) || !names.has(name)) return false;
     const clean: Params = {};
     for (const [key, value] of Object.entries(params || {})) {
       if (!keys.has(key)) continue;
@@ -154,7 +154,7 @@ function build(config: Config) {
     else if (link.matches('[data-cta], [data-qct-cta], .button, .qct-btn, .nav-cta, .v2-btn, .btn')) track('cta_click', { destination: safePath(url.href) });
   }
   function onScroll() {
-    if (!consent.analytics) return;
+    if (!consent.analytics && !config.advanced) return;
     const height = document.documentElement.scrollHeight - innerHeight;
     if (height <= 0) return;
     const percent = scrollY / height * 100;
