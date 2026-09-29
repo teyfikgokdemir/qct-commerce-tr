@@ -28,19 +28,8 @@ const platforms = [
 ---
 
 <div class="qct-v2" data-qct-v2>
-  <div class="qct-intro-overlay" data-intro-banner hidden>
-    <div class="qct-intro-card" role="dialog" aria-modal="false" aria-label="QCT Commerce update">
-      <button type="button" class="qct-intro-close" aria-label="Close announcement" data-intro-close>×</button>
-      <div class="qct-intro-brand">QCT Commerce</div>
-      <p class="qct-intro-kicker">WEBSITE PRICING · TRANSPARENT START</p>
-      <h2>See your website project starting price in 60 seconds.</h2>
-      <p>Instantly estimate starting prices for corporate websites, e-commerce, redesign and visibility work.</p>
-      <div class="qct-intro-line"></div>
-      <span class="qct-intro-foot">Starting prices · Clear scope · Fast quote</span>
-    </div>
-  </div>
-
-  <section class="qct-hero" aria-labelledby="qct-hero-title">
+  
+<section class="qct-hero" aria-labelledby="qct-hero-title">
     <div class="qct-shell qct-hero-grid">
       <div class="qct-hero-copy">
         <p class="qct-eyebrow">FEWER QUESTION MARKS. A CLEARER PROJECT.</p>
@@ -409,28 +398,5 @@ const platforms = [
     if (whatsapp.getAttribute('aria-disabled') === 'true') event.preventDefault();
   });
   calculate();
-
-  const banner = root.querySelector('[data-intro-banner]');
-  const close = root.querySelector('[data-intro-close]');
-  const key = 'qct-v2-intro-seen';
-
-  try {
-    if (banner && !localStorage.getItem(key)) {
-      window.setTimeout(() => {
-        banner.hidden = false;
-        requestAnimationFrame(() => banner.classList.add('is-visible'));
-        localStorage.setItem(key, '1');
-        window.setTimeout(() => {
-          banner.classList.remove('is-visible');
-          window.setTimeout(() => { banner.hidden = true; }, 420);
-        }, 3000);
-      }, 450);
-    }
-  } catch {}
-
-  close?.addEventListener('click', () => {
-    banner?.classList.remove('is-visible');
-    window.setTimeout(() => { if (banner) banner.hidden = true; }, 250);
-  });
 })();
 </script>

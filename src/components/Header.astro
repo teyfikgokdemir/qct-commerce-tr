@@ -1,6 +1,7 @@
 ---
 import MobileMenu from './MobileMenu.astro';
 import { getLocaleSwitchTargets } from '../data/locale-routing.js';
+import { trMarkets, enMarkets, programmaticServices, trServicePath, enServicePath } from '../data/programmatic-markets';
 interface Props { lang: string; }
 const { lang } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -34,7 +35,45 @@ const localePairs: Record<string, string> = {
   '/e-ticaret-markalari/': '/en/ecommerce-brands/', '/en/ecommerce-brands/': '/e-ticaret-markalari/'
 };
 const pairedLocalePath = localePairs[currentPath];
-const localeTargets = getLocaleSwitchTargets(currentPath);
+
+const azServicePath = (service: (typeof programmaticServices)[number]) => {
+  if (service.trSlug === 'web-tasarim') return '/az/veb-dizayn/';
+  if (service.trSlug === 'e-ticaret') return '/az/e-ticaret/';
+  if (service.trSlug === 'seo-geo') return '/az/seo-geo/';
+  return '/az/xidmetler/';
+};
+
+const getProgrammaticLocaleTargets = () => {
+  for (const market of trMarkets) {
+    const trParent = `/lokasyon/${market.id}/`;
+    const enParent = `/en/location/${market.alternateId}/`;
+    if (currentPath === trParent) {
+      return { tr: trParent, en: enParent, az: market.id === 'azerbaycan' ? '/az/' : '/az/xidmetler/' };
+    }
+    for (const service of programmaticServices) {
+      const trPath = trServicePath(market.id, service);
+      if (currentPath === trPath) {
+        return { tr: trPath, en: enServicePath(market.alternateId, service), az: azServicePath(service) };
+      }
+    }
+  }
+  for (const market of enMarkets) {
+    const enParent = `/en/location/${market.id}/`;
+    const trParent = `/lokasyon/${market.alternateId}/`;
+    if (currentPath === enParent) {
+      return { tr: trParent, en: enParent, az: market.id === 'azerbaijan' ? '/az/' : '/az/xidmetler/' };
+    }
+    for (const service of programmaticServices) {
+      const enPath = enServicePath(market.id, service);
+      if (currentPath === enPath) {
+        return { tr: trServicePath(market.alternateId, service), en: enPath, az: azServicePath(service) };
+      }
+    }
+  }
+  return null;
+};
+
+const localeTargets = getLocaleSwitchTargets(currentPath) || getProgrammaticLocaleTargets();
 const isErrorRoute = currentPath === '/404/' || currentPath === '/404';
 const isAzerbaijanMarketRoute = currentPath === '/lokasyon/azerbaycan/' || currentPath === '/en/location/azerbaijan/';
 const trHref = localeTargets?.tr || (isEnglish ? (pairedLocalePath || '/') : isAzerbaijani ? '/' : (isErrorRoute ? '/' : currentPath));

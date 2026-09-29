@@ -92,8 +92,10 @@ for (const file of htmlFiles) {
   if (isArticle && articleNodes.length !== 1) errors.push(`${file}: blog article must emit exactly one Article node.`);
   if (!isArticle && articleNodes.length) errors.push(`${file}: Article schema is only allowed on blog articles.`);
   const serviceNodes = nodes.filter((node) => node['@type'] === 'Service');
-  if (servicePaths.has(pathname) && serviceNodes.length !== 1) errors.push(`${file}: service page must emit exactly one Service node.`);
-  if (!servicePaths.has(pathname) && serviceNodes.length) errors.push(`${file}: Service schema is only allowed on service detail pages.`);
+  const isProgrammaticService = /^\/lokasyon\/[^/]+\/[^/]+\/$/.test(pathname) || /^\/en\/location\/[^/]+\/[^/]+\/$/.test(pathname);
+  const isServiceDetail = servicePaths.has(pathname) || isProgrammaticService;
+  if (isServiceDetail && serviceNodes.length !== 1) errors.push(`${file}: service page must emit exactly one Service node.`);
+  if (!isServiceDetail && serviceNodes.length) errors.push(`${file}: Service schema is only allowed on service detail pages.`);
   const creativeWorkNodes = nodes.filter((node) => node['@type'] === 'CreativeWork');
   if (caseStudyPaths.has(pathname) && creativeWorkNodes.length !== 1) errors.push(`${file}: case study must emit exactly one CreativeWork node.`);
   if (!caseStudyPaths.has(pathname) && creativeWorkNodes.length) errors.push(`${file}: CreativeWork schema is only allowed on published case studies.`);
@@ -107,6 +109,17 @@ for (const file of htmlFiles) {
     else incoming.set(url.pathname, (incoming.get(url.pathname) ?? 0) + 1);
   }
 }
+const programmaticMarketPages = htmlFiles.filter((file) => {
+  const pathname = new URL(expectedUrl(file)).pathname;
+  return /^\/lokasyon\/[^/]+\/$/.test(pathname) || /^\/en\/location\/[^/]+\/$/.test(pathname);
+});
+const programmaticServicePages = htmlFiles.filter((file) => {
+  const pathname = new URL(expectedUrl(file)).pathname;
+  return /^\/lokasyon\/[^/]+\/[^/]+\/$/.test(pathname) || /^\/en\/location\/[^/]+\/[^/]+\/$/.test(pathname);
+});
+if (programmaticMarketPages.length < 30) errors.push('programmatic location layer is missing or unexpectedly small.');
+if (programmaticServicePages.length < 100) errors.push('programmatic market-service layer is missing or unexpectedly small; expected full city/country × service coverage.');
+
 for (const canonical of canonicals) {
   const pathname = new URL(canonical).pathname;
   if (pathname !== '/' && !incoming.get(pathname)) errors.push(`${pathname}: indexable page has no incoming internal link.`);

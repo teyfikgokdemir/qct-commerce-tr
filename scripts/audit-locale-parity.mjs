@@ -31,7 +31,7 @@ const files=[];const walk=d=>{for(const e of fs.readdirSync(d,{withFileTypes:tru
 const trParents=files.filter(f=>/dist[\\/]lokasyon[\\/][^\\/]+[\\/]index\.html$/.test(f)).length,enParents=files.filter(f=>/dist[\\/]en[\\/]location[\\/][^\\/]+[\\/]index\.html$/.test(f)).length;
 const trSvc=files.filter(f=>/dist[\\/]lokasyon[\\/][^\\/]+[\\/](web-tasarim|e-ticaret|seo-geo)[\\/]index\.html$/.test(f)).length,enSvc=files.filter(f=>/dist[\\/]en[\\/]location[\\/][^\\/]+[\\/](web-design|ecommerce|search-visibility)[\\/]index\.html$/.test(f)).length;
 if(trParents!==19||enParents!==19)errors.push(`programmatic parents expected 19/19, found ${trParents}/${enParents}`);
-if(trSvc!==12||enSvc!==12)errors.push(`programmatic service pages expected 12/12, found ${trSvc}/${enSvc}`);
+if(trSvc!==57||enSvc!==57)errors.push(`programmatic service pages expected 57/57, found ${trSvc}/${enSvc}`);
 if(readPage('/az/azerbaycan/'))errors.push('duplicate AZ market route exists; /az/ must remain canonical');
 const internationalCss=fs.readFileSync(path.join(DIST,'styles','international.css'),'utf8');
 const qctV2Css=fs.readFileSync(path.join(DIST,'styles','qct-v2.css'),'utf8');
@@ -76,7 +76,9 @@ const homeSources={
 const requiredHomeSections=['qct-hero','qct-platforms qct-ecosystem','qct-pathways','qct-benefits','qct-image-story','qct-offers','qct-search-faq','qct-close'];
 for(const [lang,source] of Object.entries(homeSources)){
   for(const cls of requiredHomeSections) if(!source.includes(`<section class="${cls}`)) errors.push(`${lang} homepage structural parity: missing ${cls}`);
-  if(!source.includes('qct-intro-overlay')) errors.push(`${lang} homepage structural parity: missing intro overlay`);
+  if(source.includes('qct-intro-overlay') || source.includes('data-intro-banner')) errors.push(`${lang} homepage UX regression: blocking intro overlay must stay removed`);
+  const hasPriceCalculator = lang === 'az' ? source.includes('data-az-price-form') : source.includes('data-price-form');
+  if(!hasPriceCalculator) errors.push(`${lang} homepage structural parity: missing price calculator`);
   if(!source.includes('qct-brand-film')) errors.push(`${lang} homepage structural parity: missing brand film`);
 }
 if(!homeSources.en.includes("base: 6900")||homeSources.en.includes("base: 4900")) errors.push('EN homepage pricing parity: redesign must use 6900 TL');

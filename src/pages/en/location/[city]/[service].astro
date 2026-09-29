@@ -2,11 +2,10 @@
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Header from "../../../../components/Header.astro";
 import Footer from "../../../../components/Footer.astro";
-import { enMarkets, programmaticServices, internationalMarketEnIds, trServicePath, enServicePath } from "../../../../data/programmatic-markets";
+import { enMarkets, programmaticServices, trServicePath, enServicePath } from "../../../../data/programmatic-markets";
 
 export function getStaticPaths() {
   return enMarkets
-    .filter((market) => internationalMarketEnIds.has(market.id))
     .flatMap((market) => programmaticServices.map((service) => ({
       params: { city: market.id, service: service.enSlug },
       props: { market, service },
@@ -27,14 +26,14 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} lang="en" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
+<BaseLayout title={title} description={description} lang="en" alternates={alternates} breadcrumbs={breadcrumbs} pageType="WebPage" areaServed={market.areaServed} service={{ name: `${market.name} ${service.enName}`, description }}>
   <Header slot="header" lang="en" />
 
   <section class="page-hero section">
     <div class="container">
       <p class="eyebrow">{market.name.toUpperCase()} · {service.enName.toUpperCase()}</p>
       <h1>{service.enName} for {market.name}.</h1>
-      <p class="page-hero__lead">For {market.name}, the objective is to {service.enIntent}. This is not a repeated location template; it is a service-specific commercial scope built around buyer intent.</p>
+      <p class="page-hero__lead">For {market.name}, the objective is to {service.enIntent}. Scope is shaped around how {market.industries.slice(0, 2).join(" and ").toLowerCase()} businesses in this market build trust and capture demand.</p>
       <div class="hero__actions">
         <a class="button button--primary" href="/en/contact/">Discuss a {market.name} project</a>
         <a class="button button--secondary" href={service.enCorePath}>Explore the core service</a>
@@ -65,9 +64,14 @@ const breadcrumbs = [
         <p>For {market.industries.join(", ")} businesses, these components are treated as parts of one commercial system rather than isolated tasks.</p>
       </div>
       <div class="service-grid">
-        {service.enDeliverables.map((item) => (
-          <article class="service-card"><h3>{item}</h3><p>Included as a measurable, sustainable implementation component for the {market.name} market.</p></article>
-        ))}
+        {service.enDeliverables.map((item, index) => {
+          const detail = index === 0
+            ? `${item} is structured around the information and trust expectations of ${market.industries[0].toLowerCase()} buyers in ${market.name}.`
+            : index === 1
+              ? `${item} shortens the mobile path from discovery to a qualified product, service or project enquiry.`
+              : `${item} supports the goal to ${market.marketAngle} with measurable technical signals and reporting.`;
+          return <article class="service-card"><h3>{item}</h3><p>{detail}</p></article>;
+        })}
       </div>
     </div>
   </section>

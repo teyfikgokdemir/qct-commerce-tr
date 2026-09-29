@@ -2,11 +2,10 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
-import { trMarkets, programmaticServices, internationalMarketIds, trServicePath, enServicePath } from "../../../data/programmatic-markets";
+import { trMarkets, programmaticServices, trServicePath, enServicePath } from "../../../data/programmatic-markets";
 
 export function getStaticPaths() {
   return trMarkets
-    .filter((market) => internationalMarketIds.has(market.id))
     .flatMap((market) => programmaticServices.map((service) => ({
       params: { sehir: market.id, hizmet: service.trSlug },
       props: { market, service },
@@ -27,7 +26,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} lang="tr" alternates={alternates} breadcrumbs={breadcrumbs} pageType="CollectionPage" areaServed={market.areaServed}>
+<BaseLayout title={title} description={description} lang="tr" alternates={alternates} breadcrumbs={breadcrumbs} pageType="WebPage" areaServed={market.areaServed} service={{ name: `${market.name} ${service.trName}`, description }}>
   <Header slot="header" lang="tr" />
   <style is:inline>
 .qct-programmatic{background:#f3eee7;color:#171514}
@@ -60,7 +59,7 @@ const breadcrumbs = [
     <div class="container">
       <p class="eyebrow">{market.name.toUpperCase()} · {service.trName.toUpperCase()}</p>
       <h1>{market.name} için {service.trName}.</h1>
-      <p class="page-hero__lead">{market.name} pazarında amaç, {service.trIntent}. Bu sayfa genel lokasyon içeriğinin tekrarı değil; belirli hizmet niyetine göre hazırlanmış ticari kapsamdır.</p>
+      <p class="page-hero__lead">{market.name} pazarında amaç, {service.trIntent}. Kapsamı {market.industries.slice(0, 2).join(" ve ").toLowerCase()} şirketlerinin karar ve talep akışına göre şekillendiriyoruz.</p>
       <div class="hero__actions">
         <a class="button button--primary" href="/iletisim/">{market.name} projesi için görüşme</a>
         <a class="button button--secondary" href={service.trCorePath}>Ana hizmeti inceleyin</a>
@@ -91,9 +90,14 @@ const breadcrumbs = [
         <p>{market.industries.join(", ")} odaklı şirketlerde bu bileşenleri birbirinden kopuk işler olarak değil, aynı ticari sistemin parçaları olarak ele alıyoruz.</p>
       </div>
       <div class="service-grid">
-        {service.trDeliverables.map((item) => (
-          <article class="service-card"><h3>{item}</h3><p>{market.name} hedefiyle uyumlu, ölçülebilir ve sürdürülebilir uygulama kapsamına dahil edilir.</p></article>
-        ))}
+        {service.trDeliverables.map((item, index) => {
+          const detail = index === 0
+            ? `${item}, ${market.name} pazarındaki ${market.industries[0].toLowerCase()} alıcılarının bilgi ve güven beklentilerine göre yapılandırılır.`
+            : index === 1
+              ? `${item}, mobil kullanıcıyı ürün veya hizmet keşfinden nitelikli talebe daha kısa bir akışla taşımaya odaklanır.`
+              : `${item}, ${market.marketAngle} hedefini ölçülebilir teknik sinyaller ve raporlama ile destekler.`;
+          return <article class="service-card"><h3>{item}</h3><p>{detail}</p></article>;
+        })}
       </div>
     </div>
   </section>
