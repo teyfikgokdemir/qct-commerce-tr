@@ -26,7 +26,7 @@ const faqSchema = {
 <BaseLayout title={title} description={description} lang="en" breadcrumbLabel={platform + ' store setup'}>
   <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Header slot="header" lang="en" />
-  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260921-3" />
+  <link rel="stylesheet" href="/styles/qct-v2.css?v=20260929-1" />
   <div class="qct-v2">
     <section class="qct-platform-hero">
       <div class="qct-shell qct-platform-hero-grid">
@@ -62,7 +62,7 @@ const faqSchema = {
           <p>{platform} store is planned around product discovery, mobile usability, trust, measurement and the sales journey rather than simply installing a theme.</p>
         </div>
         <div class="qct-benefit-grid">
-          {strengths.map((item, i) => <article><span class="qct-index">0{i+1}</span><h3>{item}</h3><p>We configure this area around your product structure and commercial requirements during setup.</p></article>)}
+          {strengths.map((item) => <article><h3>{item}</h3><p>We configure this area around your product structure and commercial requirements during setup.</p></article>)}
         </div>
       </div>
     </section>
