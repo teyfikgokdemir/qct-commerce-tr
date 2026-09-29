@@ -71,10 +71,10 @@ import Footer from '../../../components/Footer.astro';
         <p>Our public site describes observable scope, live outputs and verified capabilities. It does not use invented performance figures, unverified certifications or unsupported partner badges.</p>
       </div>
       <div class="qct-about-principles__grid">
-        <article><span>01</span><h3>Commercial need first</h3><p>Buyer questions, positioning and sales routes are defined before the technology stack.</p></article>
-        <article><span>02</span><h3>Connected systems</h3><p>Website, commerce, search visibility and lead handling are planned as one operating structure.</p></article>
-        <article><span>03</span><h3>Measured scope</h3><p>Recommendations are tied to a visible constraint rather than a generic list of agency deliverables.</p></article>
-        <article><span>04</span><h3>Transparent proof</h3><p>Live project links and verifiable project facts are preferred over speculative mock-ups or unsupported growth claims.</p></article>
+        <article><h3>Commercial need first</h3><p>Buyer questions, positioning and sales routes are defined before the technology stack.</p></article>
+        <article><h3>Connected systems</h3><p>Website, commerce, search visibility and lead handling are planned as one operating structure.</p></article>
+        <article><h3>Measured scope</h3><p>Recommendations are tied to a visible constraint rather than a generic list of agency deliverables.</p></article>
+        <article><h3>Transparent proof</h3><p>Live project links and verifiable project facts are preferred over speculative mock-ups or unsupported growth claims.</p></article>
       </div>
     </div>
   </section>
@@ -128,10 +128,9 @@ import Footer from '../../../components/Footer.astro';
   .qct-about-founder__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
   .qct-about-principles { background: #ebe4dc; }
   .qct-about-principles__grid { display: grid; gap: 18px; grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .qct-about-principles__grid article { background: #fffaf5; border: 1px solid rgba(23,21,20,.1); border-radius: 24px; padding: clamp(26px,3vw,38px); }
-  .qct-about-principles__grid span { color: #e66b5f; display: block; font-size: .78rem; font-weight: 900; letter-spacing: .14em; margin-bottom: 28px; }
-  .qct-about-principles__grid h3 { color: #171514; font-size: clamp(1.35rem,2vw,1.8rem); margin: 0 0 12px; }
-  .qct-about-principles__grid p { color: #655d58; line-height: 1.7; margin: 0; }
+  .qct-about-principles__grid article { align-content: center; background: #fffaf5; border: 1px solid rgba(23,21,20,.1); border-radius: 20px; display: grid; min-height: 190px; padding: clamp(24px,3vw,34px); text-align: center; }
+  .qct-about-principles__grid h3 { color: #171514; font-size: clamp(1.35rem,2vw,1.8rem); margin: 0 0 10px; }
+  .qct-about-principles__grid p { color: #655d58; line-height: 1.65; margin: 0 auto; max-width: 48ch; }
   .qct-about-markets__card { align-items: start; background: #171514; border-radius: 30px; color: #fffaf5; display: grid; gap: clamp(36px,7vw,90px); grid-template-columns: minmax(0,1.1fr) minmax(320px,.9fr); padding: clamp(38px,7vw,82px); }
   .qct-about-markets__card .section-heading { margin: 0; }
   .qct-about-markets__card .section-heading h2 { color: #fffaf5; }
