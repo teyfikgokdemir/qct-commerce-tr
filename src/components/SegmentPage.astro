@@ -244,7 +244,7 @@ const faqSchema = {
           <h2 id="segment-related-title">{isEnglish ? 'Connect the segment need to the right capability.' : 'Segment ihtiyacını doğru hizmetle eşleştirin.'}</h2>
         </div>
         <div class="qct-segment-related__links">
-          {relatedLinks.map(([label, href]) => <a href={href}>{label}<span aria-hidden="true">↗</span></a>)}
+          {relatedLinks.map(([label, href]) => <a href={href}><span class="qct-segment-related__label">{label}</span><span aria-hidden="true">↗</span></a>)}
         </div>
       </div>
     </div>
@@ -298,7 +298,7 @@ const faqSchema = {
 .qct-segment-related__links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.85rem; align-self:center; }
 .qct-segment-related__links a { display:grid; grid-template-columns:1fr auto; align-items:center; gap:.8rem; min-height:62px; padding:1rem 1.15rem; border:1px solid rgba(73,53,49,.11); border-radius:18px; background:rgba(255,250,245,.9); box-shadow:0 10px 30px rgba(58,37,32,.05); color:#171514; font-weight:800; text-align:center; text-decoration:none; transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease; }
 .qct-segment-related__links a:hover { transform:translateY(-2px); border-color:rgba(185,71,62,.25); box-shadow:0 16px 36px rgba(58,37,32,.08); }
-.qct-segment-related__links a span:first-child { justify-self:center; }
+.qct-segment-related__label { justify-self:center; }
 .qct-segment-related__links a:hover,.qct-segment-related__links a:focus-visible { border-color:rgba(185,71,62,.32); color:#b9473e; }
 @media(min-width:901px){
   .qct-segment-hero .container { width:min(100% - 64px,1680px); max-width:none; margin-left:auto; margin-right:auto; }
