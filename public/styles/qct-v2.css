@@ -421,3 +421,58 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
 .qct-v2 .qct-hero .qct-eyebrow{color:var(--qct-muted)!important}
 .qct-v2 .qct-hero .qct-lead{color:#4f4b45!important}
 .qct-v2 .qct-hero-copy>*,.qct-v2 .qct-calculator{opacity:1!important;transform:none!important;animation:none!important}
+
+
+/* QCT live QA refinements — 2026-09-29 round 2 */
+.qct-pricing-hero{
+  padding-top:calc(var(--qct-header-height, 76px) + 34px);
+}
+.qct-pricing-hero .qct-eyebrow{
+  position:relative;
+  z-index:1;
+  margin-bottom:16px;
+}
+
+.qct-platform-process{
+  padding:34px 0 70px;
+}
+.qct-platform-process .qct-section-label{
+  text-align:center;
+}
+.qct-platform-process .qct-offer-grid{
+  width:min(100%, 1120px);
+  margin-inline:auto;
+}
+.qct-platform-process .qct-offer-grid>div{
+  min-height:124px;
+  align-content:center;
+  justify-items:center;
+  text-align:center;
+  padding:22px 28px !important;
+}
+.qct-platform-process .qct-offer-grid>div:nth-child(odd){
+  border-right:1px solid var(--qct-line);
+}
+.qct-platform-process span,
+.qct-platform-process small{
+  text-align:center;
+}
+.qct-platform-process small{
+  max-width:48ch;
+  line-height:1.55;
+}
+
+@media(max-width:760px){
+  .qct-pricing-hero{
+    padding-top:calc(var(--qct-header-height, 68px) + 24px);
+  }
+  .qct-platform-process{
+    padding:28px 0 54px;
+  }
+  .qct-platform-process .qct-offer-grid>div,
+  .qct-platform-process .qct-offer-grid>div:nth-child(odd){
+    min-height:0;
+    border-right:0;
+    padding:18px 12px !important;
+  }
+}
