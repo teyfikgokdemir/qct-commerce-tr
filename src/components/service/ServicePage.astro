@@ -393,6 +393,9 @@ const faqId = `${canonicalUrl}#faq`;
   gap: clamp(1rem, 2.5vw, 1.75rem);
   align-items: stretch;
 }
+.qct-svc-grid:has(> :nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .qct-svc-card,
 .qct-svc-step,
 .qct-svc-answers dl > div,
@@ -486,10 +489,12 @@ const faqId = `${canonicalUrl}#faq`;
 .qct-btn--secondary { border: 1px solid rgba(23,21,26,.2); color: var(--qct-color-text, #17151a); }
 
 @media (max-width: 900px) {
+  .qct-svc-grid:has(> :nth-child(3):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .qct-svc-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
-  .qct-svc-grid { grid-template-columns: minmax(0, 1fr); }
+  .qct-svc-grid,
+  .qct-svc-grid:has(> :nth-child(3):last-child) { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 640px) {
   .qct-svc-hero {
