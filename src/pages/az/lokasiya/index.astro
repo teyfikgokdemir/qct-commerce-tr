@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { azMarkets, azMarketServices, azMarketPath, azMarketServicePath } from '../../../data/az-markets';
+---
+<BaseLayout title="Azərbaycan üzrə Veb Dizayn, E-ticarət və SEO Xidmətləri | QCT Commerce" description="Bakı, Gəncə, Sumqayıt, Naxçıvan, Mingəçevir və Lənkəran üçün veb dizayn, e-ticarət və SEO/GEO xidmət səhifələri." lang="az" breadcrumbLabel="Lokasiyalar" areaServed={['Azerbaijan']}>
+  <Header slot="header" lang="az" />
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">AZƏRBAYCAN · LOKAL RƏQƏMSAL XİDMƏTLƏR</p>
+      <h1>Şəhərə görə deyil, real biznes ehtiyacına görə qurulan rəqəmsal sistemlər.</h1>
+      <p class="page-hero__lead">Hər lokasiya səhifəsi eyni mətni şəhər adı ilə təkrarlamır. Sektor, alıcı davranışı, mobil istifadə və kommersiya məqsədi nəzərə alınaraq fərqləndirilir.</p>
+    </div>
+  </section>
+  <section class="section"><div class="container">
+    <div class="section-heading"><p class="eyebrow">LOKASİYALAR</p><h2>Azərbaycan üzrə prioritet şəhərlər.</h2></div>
+    <div class="service-grid">
+      {azMarkets.map(market => <article class="service-card"><h3><a href={azMarketPath(market.id)}>{market.name}</a></h3><p>{market.commercialContext}</p><p><a href={azMarketPath(market.id)}>Şəhər səhifəsinə bax →</a></p></article>)}
+    </div>
+  </div></section>
+  <section class="section"><div class="container">
+    <div class="section-heading"><p class="eyebrow">XİDMƏTLƏR</p><h2>Hər şəhərdə üç əsas kommersiya istiqaməti.</h2></div>
+    <div class="service-grid">
+      {azMarketServices.map(service => <article class="service-card"><h3>{service.name}</h3><p>{service.outcome}</p></article>)}
+    </div>
+  </div></section>
+  <Footer slot="footer" lang="az" />
+</BaseLayout>
