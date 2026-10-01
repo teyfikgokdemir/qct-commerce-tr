@@ -467,3 +467,24 @@
 		}
 	}
 })();
+
+
+/* Lazy brand-film playback: avoid downloading the hero film during initial render. */
+(function(){
+  var videos=[].slice.call(document.querySelectorAll('[data-qct-brand-film]'));
+  if(!videos.length)return;
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced)return;
+  var play=function(video){video.play().catch(function(){});};
+  if('IntersectionObserver' in window){
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var video=entry.target;
+        if(entry.isIntersecting)play(video);else video.pause();
+      });
+    },{rootMargin:'160px 0px'});
+    videos.forEach(function(video){observer.observe(video);});
+  }else{
+    videos.forEach(play);
+  }
+})();
