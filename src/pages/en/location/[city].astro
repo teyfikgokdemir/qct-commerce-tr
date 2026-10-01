@@ -67,10 +67,10 @@ const breadcrumbs = [
         {market.priorityServices.map((service, index) => {
           const sector = market.industries[index % market.industries.length];
           const detail = index === 0
-            ? `For ${sector.toLowerCase()} businesses, ${service.toLowerCase()} is tied to the first trust and information layer a buyer sees.`
+            ? `For ${sector.toLowerCase()} businesses, ${service.toLowerCase()} shapes the first trust and information layer a buyer sees.`
             : index === 1
-              ? `In ${market.name}, ${service.toLowerCase()} is structured as part of the path from discovery to a qualified commercial enquiry.`
-              : `${service} supports the goal to ${market.marketAngle}; content, technical foundations and measurement are aligned to that priority.`;
+              ? `In ${market.name}, we position ${service.toLowerCase()} within the path from discovery to a qualified commercial enquiry.`
+              : `We use ${service.toLowerCase()} to support the priority of ${market.marketAngle}; content, technical foundations and measurement are aligned to that objective.`;
           return (
             <article class="service-card">
               <h3>{service}</h3>
