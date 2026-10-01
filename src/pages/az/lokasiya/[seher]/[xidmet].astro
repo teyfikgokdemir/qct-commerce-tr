@@ -14,7 +14,7 @@ const { market, service } = Astro.props;
 const title = `${market.name} ${service.name} Xidməti | QCT Commerce`;
 const description = `${market.name} üçün ${service.name.toLowerCase()}: ${service.outcome} QCT Commerce ilə ölçülə bilən və aydın əhatə.`;
 ---
-<BaseLayout title={title} description={description} lang="az" breadcrumbLabel={service.name} areaServed={market.areaServed} service={{name:`${market.name} ${service.name}`,description}}>
+<BaseLayout title={title} description={description} lang="az" breadcrumbLabel={service.name} areaServed={market.areaServed}>
   <Header slot="header" lang="az" />
   <section class="page-hero section"><div class="container">
     <p class="eyebrow">{market.name.toUpperCase()} · {service.name.toUpperCase()}</p>
