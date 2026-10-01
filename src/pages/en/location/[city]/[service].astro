@@ -66,10 +66,10 @@ const breadcrumbs = [
       <div class="service-grid">
         {service.enDeliverables.map((item, index) => {
           const detail = index === 0
-            ? `${item} is structured around the information and trust expectations of ${market.industries[0].toLowerCase()} buyers in ${market.name}.`
+            ? `We structure ${item.toLowerCase()} around the information and trust expectations of ${market.industries[0].toLowerCase()} buyers in ${market.name}.`
             : index === 1
               ? `${item} shortens the mobile path from discovery to a qualified product, service or project enquiry.`
-              : `${item} supports the goal to ${market.marketAngle} with measurable technical signals and reporting.`;
+              : `We use ${item.toLowerCase()} to support the priority of ${market.marketAngle}. Progress is tracked through clear technical signals and reporting.`;
           return <article class="service-card"><h3>{item}</h3><p>{detail}</p></article>;
         })}
       </div>
