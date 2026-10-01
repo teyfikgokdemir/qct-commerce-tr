@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { azMarkets, azMarketServices, azMarketPath, azMarketServicePath } from '../../../../data/az-markets';
+
+export function getStaticPaths(){
+  return azMarkets.map(market => ({ params:{seher:market.id}, props:{market} }));
+}
+const { market } = Astro.props;
+const title = `${market.name} Veb Dizayn, E-ticarət və SEO | QCT Commerce`;
+const description = `${market.name} üçün veb dizayn, e-ticarət, SEO, GEO, AEO və AIO xidmətləri. ${market.commercialContext}`;
+---
+<BaseLayout title={title} description={description} lang="az" breadcrumbLabel={market.name} areaServed={market.areaServed}>
+  <Header slot="header" lang="az" />
+  <section class="page-hero section"><div class="container">
+    <p class="eyebrow">{market.name.toUpperCase()} · QCT COMMERCE</p>
+    <h1>{market.name} üçün rəqəmsal satış və görünürlük sistemi.</h1>
+    <p class="page-hero__lead">{market.commercialContext}</p>
+    <div class="hero__actions"><a class="button button--primary" href="/az/elaqe/">Layihəni müzakirə edək</a><a class="button button--secondary" href="/az/qiymetler/">Qiymətlərə baxın</a></div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="section-heading"><p class="eyebrow">YERLİ KONTEKST</p><h2>{market.name} bazarında nəyi həll edirik?</h2><p>{market.audience} üçün əsas məqsəd {market.marketAngle}.</p></div>
+    <div class="service-grid">
+      <article class="service-card"><h3>Biznes konteksti</h3><p>{market.commercialContext}</p></article>
+      <article class="service-card"><h3>Prioritet sektorlar</h3><p>{market.industries.join(', ')}.</p></article>
+      <article class="service-card"><h3>Ölçüm</h3><p>Görünürlük, keyfiyyətli müraciət, mobil dönüşüm və texniki performans birlikdə izlənir.</p></article>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="section-heading"><p class="eyebrow">XİDMƏTLƏR</p><h2>{market.name} üçün əsas rəqəmsal xidmətlər.</h2></div>
+    <div class="service-grid">
+      {azMarketServices.map(service => <article class="service-card"><h3><a href={azMarketServicePath(market.id,service)}>{service.name}</a></h3><p>{service.outcome}</p><p><a href={azMarketServicePath(market.id,service)}>Detallara bax →</a></p></article>)}
+    </div>
+  </div></section>
+
+  <section class="section"><div class="container"><div class="section-heading">
+    <p class="eyebrow">NÖVBƏTİ ADDIM</p><h2>{market.name} üçün uyğun ilk mərhələni müəyyənləşdirək.</h2>
+    <p>Mövcud saytınızı, satış modelinizi və prioritet müştəri qrupunu paylaşın; ən kiçik faydalı tətbiq sahəsini birlikdə seçək.</p>
+    <a class="button button--primary" href="/az/elaqe/">Layihəyə başlayın</a>
+  </div></div></section>
+  <Footer slot="footer" lang="az" />
+</BaseLayout>
