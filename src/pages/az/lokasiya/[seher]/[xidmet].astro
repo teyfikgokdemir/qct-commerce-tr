@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Header from '../../../../../components/Header.astro';
+import Footer from '../../../../../components/Footer.astro';
+import { azMarkets, azMarketServices, azMarketPath, azMarketServicePath } from '../../../../../data/az-markets';
+
+export function getStaticPaths(){
+  return azMarkets.flatMap(market => azMarketServices.map(service => ({
+    params:{seher:market.id,xidmet:service.slug},
+    props:{market,service}
+  })));
+}
+const { market, service } = Astro.props;
+const title = `${market.name} ${service.name} Xidməti | QCT Commerce`;
+const description = `${market.name} üçün ${service.name.toLowerCase()}: ${service.outcome} QCT Commerce ilə ölçülə bilən və aydın əhatə.`;
+---
+<BaseLayout title={title} description={description} lang="az" breadcrumbLabel={service.name} areaServed={market.areaServed} service={{name:`${market.name} ${service.name}`,description}}>
+  <Header slot="header" lang="az" />
+  <section class="page-hero section"><div class="container">
+    <p class="eyebrow">{market.name.toUpperCase()} · {service.name.toUpperCase()}</p>
+    <h1>{market.name} üçün {service.name.toLowerCase()}.</h1>
+    <p class="page-hero__lead">Məqsəd {service.intent}. Əhatə {market.industries.slice(0,2).join(' və ').toLowerCase()} bizneslərinin güvən, kəşf və müraciət davranışına uyğun qurulur.</p>
+    <div class="hero__actions"><a class="button button--primary" href="/az/elaqe/">Layihəni müzakirə edək</a><a class="button button--secondary" href={service.corePath}>Əsas xidmət səhifəsi</a></div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="section-heading"><p class="eyebrow">KOMMERSİYA KONTEKSTİ</p><h2>{service.name} {market.name} üçün nəyi həll etməlidir?</h2><p>{market.commercialContext}</p></div>
+    <div class="service-grid">
+      <article class="service-card"><h3>Nəticə</h3><p>{service.outcome}</p></article>
+      <article class="service-card"><h3>Bazar uyğunluğu</h3><p>Əsas prioritet {market.marketAngle}; mesaj, interfeys və ölçüm bu məqsədə uyğunlaşdırılır.</p></article>
+      <article class="service-card"><h3>Ölçüm</h3><p>Görünürlük, müraciət keyfiyyəti, dönüşüm yolları və texniki performans birlikdə ölçülür.</p></article>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="section-heading"><p class="eyebrow">ƏHATƏ</p><h2>Əsas tətbiq komponentləri.</h2><p>{market.industries.join(', ')} sektorlarında bu komponentlər ayrı işlər deyil, eyni kommersiya sisteminin hissələri kimi planlanır.</p></div>
+    <div class="service-grid">
+      {service.deliverables.map((item,index) => {
+        const detail = index===0
+          ? `${item} ${market.name} bazarında alıcının ilk gördüyü məlumat və güvən qatına uyğun qurulur.`
+          : index===1
+            ? `${item} mobil kəşfdən məhsul, xidmət və ya layihə müraciətinə qədər yolu qısaldır.`
+            : `${item} ${market.marketAngle} prioritetini texniki siqnallar və aydın hesabatla dəstəkləyir.`;
+        return <article class="service-card"><h3>{item}</h3><p>{detail}</p></article>
+      })}
+    </div>
+  </div></section>
+
+  <section class="section"><div class="container"><div class="section-heading">
+    <p class="eyebrow">NÖVBƏTİ ADDIM</p><h2>{market.name} üçün doğru {service.name.toLowerCase()} əhatəsini müəyyənləşdirək.</h2>
+    <p>Mövcud struktur, hədəf sorğular və satış məqsədi birlikdə qiymətləndirilərək ilk tətbiq mərhələsi müəyyən edilir.</p>
+    <a class="button button--primary" href="/az/elaqe/">Layihəyə başlayın</a>
+  </div></div></section>
+  <Footer slot="footer" lang="az" />
+</BaseLayout>
