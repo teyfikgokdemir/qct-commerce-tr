@@ -38,7 +38,7 @@ const checks = [
       !body.includes('targeting kayseri') &&
       body.includes('href="/lokasyon/kayseri/"'),
     label: 'English Kayseri native casing and reciprocal locale mapping',
-  },,
+  },
   {
     url: 'https://qctcommerce.com/en/pricing/',
     verify: async (response, body) =>
