@@ -71,11 +71,12 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : lang === 'az' ? '/az/ku
   try { saved = localStorage.getItem(key); } catch {}
   let recording = false;
   try { recording = localStorage.getItem('qct-recording-consent-v1') === 'granted'; } catch {}
-  analytics.setConsent({ analytics: saved === 'granted', recording });
+  const ANALYTICS_TEST_MODE = true;
+  analytics.setConsent({ analytics: ANALYTICS_TEST_MODE ? true : saved === 'granted', recording: ANALYTICS_TEST_MODE ? true : recording });
   show(!['granted', 'denied'].includes(saved || '') || (saved === 'granted' && !!analyticsConfig.clarity && !recording));
   const choose = (state: string) => {
     try { localStorage.setItem(key, state); localStorage.setItem('qct-recording-consent-v1', state); } catch {}
-    analytics.setConsent({ analytics: state === 'granted', recording: state === 'granted' });
+    analytics.setConsent({ analytics: ANALYTICS_TEST_MODE ? true : state === 'granted', recording: ANALYTICS_TEST_MODE ? true : state === 'granted' });
     show(false);
   };
   document.querySelector('[data-cookie-accept]')?.addEventListener('click', () => choose('granted'));
