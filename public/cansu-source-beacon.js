@@ -1,5 +1,5 @@
 (() => {
-  const endpoint = 'https://teyfikgokdemir.com/api/sources';
+  const endpoint = 'https://cansu.teyfikgokdemir.com/api/sources';
   const site = document.currentScript?.dataset.site;
   if (!site || sessionStorage.getItem('cansu-source-sent-v1')) return;
   try {
