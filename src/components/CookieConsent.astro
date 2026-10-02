@@ -41,14 +41,8 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : lang === 'az' ? '/az/ku
   hidden
 >
   <div class="qct-cookie-consent__content">
-    <div class="qct-cookie-consent__icon" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </div>
-    <div>
-      <div class="qct-cookie-consent__eyebrow">{lang === 'az' ? 'MƏXFİLİK SEÇİMLƏRİ' : lang === 'en' ? 'PRIVACY PREFERENCES' : 'GİZLİLİK TERCİHİ'}</div>
-      <strong>{c.label}</strong>
-      <p>{c.text} {analyticsDisclosure[lang] || analyticsDisclosure.en} <a href={policyUrl}>{c.policy}</a></p>
-    </div>
+    <strong>{c.label}</strong>
+    <p>{c.text} <a href={policyUrl}>{c.policy}</a></p>
   </div>
 
   <div class="qct-cookie-consent__actions">
@@ -92,197 +86,86 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : lang === 'az' ? '/az/ku
 <style>
   .qct-cookie-consent {
     position: fixed;
-    left: 50%;
-    bottom: .9rem;
-    transform: translateX(-50%);
     z-index: 9998;
-    width: min(1320px, calc(100vw - 2rem));
-    min-height: 58px;
-    padding: .48rem .56rem .48rem .7rem;
-    color: #f6f0e8;
-    background: rgba(22,21,19,.96);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 14px;
-    box-shadow: 0 12px 34px rgba(0,0,0,.18);
-    backdrop-filter: blur(16px);
-    display: grid;
-    grid-template-columns: minmax(0,1fr) auto;
-    gap: .7rem;
-    align-items: center;
-  }
-
-  .qct-cookie-consent::before {
-    content: "";
-    position: absolute;
-    left: 14px;
-    right: 14px;
-    top: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,123,103,.48), rgba(200,255,61,.36), transparent);
-    pointer-events: none;
-  }
-
-  .qct-cookie-consent[hidden] { display: none; }
-
-  .qct-cookie-consent__content {
-    min-width: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
     align-items: center;
-    gap: .55rem;
-  }
-
-  .qct-cookie-consent__icon {
-    position: relative;
-    flex: 0 0 28px;
-    width: 28px;
-    height: 28px;
-    border-radius: 9px;
-    background: #c8ff3d;
-  }
-
-  .qct-cookie-consent__icon::before {
-    content: "";
-    position: absolute;
-    inset: 7px;
-    border: 1.7px solid #171614;
-    border-radius: 50%;
-    border-right-color: transparent;
-  }
-
-  .qct-cookie-consent__icon span {
-    position: absolute;
-    width: 2.5px;
-    height: 2.5px;
-    border-radius: 50%;
-    background: #171614;
-  }
-
-  .qct-cookie-consent__icon span:nth-child(1) { left: 8px; top: 13px; }
-  .qct-cookie-consent__icon span:nth-child(2) { left: 13px; top: 8px; }
-  .qct-cookie-consent__icon span:nth-child(3) { left: 14px; top: 17px; }
-
-  .qct-cookie-consent__content > div:last-child {
-    min-width: 0;
-    display: flex;
-    align-items: baseline;
-    gap: .5rem;
-    flex-wrap: nowrap;
-  }
-
-  .qct-cookie-consent__eyebrow {
-    color: #ff8b78;
-    font-size: .52rem;
-    font-weight: 700;
-    letter-spacing: .14em;
-    white-space: nowrap;
-    opacity: .9;
-  }
-
-  .qct-cookie-consent strong {
-    color: #fff;
-    font-size: .8rem;
-    line-height: 1.2;
-    font-weight: 750;
-    white-space: nowrap;
-  }
-
-  .qct-cookie-consent p {
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
     margin: 0;
-    color: rgba(246,240,232,.58);
-    font-size: .69rem;
-    line-height: 1.35;
-    white-space: normal;
+    padding: .48rem clamp(1rem,3vw,2rem);
+    color: #f6f0e8;
+    background: rgba(22,21,19,.98);
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,.12);
+    border-radius: 0;
+    box-shadow: 0 -10px 30px rgba(0,0,0,.22);
+    backdrop-filter: blur(14px);
   }
-
+  .qct-cookie-consent[hidden] { display:none; }
+  .qct-cookie-consent__content {
+    min-width:0;
+    display:flex;
+    align-items:baseline;
+    gap:.85rem;
+    white-space:nowrap;
+  }
+  .qct-cookie-consent strong {
+    flex:0 0 auto;
+    color:#fff;
+    font-size:.76rem;
+    line-height:1.2;
+    font-weight:800;
+  }
+  .qct-cookie-consent p {
+    min-width:0;
+    margin:0;
+    color:rgba(246,240,232,.72);
+    font-size:.75rem;
+    line-height:1.25;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
   .qct-cookie-consent a {
-    color: rgba(246,240,232,.9);
-    text-decoration-color: rgba(255,139,120,.7);
-    text-underline-offset: 3px;
+    color:#ff9a87;
+    text-decoration:underline;
+    text-underline-offset:3px;
   }
-
   .qct-cookie-consent__actions {
-    display: flex;
-    align-items: center;
-    gap: .35rem;
+    display:flex;
+    flex:0 0 auto;
+    align-items:center;
+    gap:.5rem;
   }
-
   .qct-cookie-consent button {
-    min-height: 34px;
-    padding: .38rem .72rem;
-    font: inherit;
-    font-size: .68rem;
-    font-weight: 750;
-    cursor: pointer;
-    color: rgba(246,240,232,.82);
-    background: transparent;
-    border: 1px solid rgba(255,255,255,.11);
-    border-radius: 9px;
-    transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
-    white-space: nowrap;
+    min-height:32px;
+    padding:.38rem .78rem;
+    font:inherit;
+    font-size:.8rem;
+    font-weight:800;
+    cursor:pointer;
+    color:#f6f0e8;
+    background:transparent;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
   }
-
-  .qct-cookie-consent button:hover {
-    transform: translateY(-1px);
-    background: rgba(255,255,255,.05);
-    border-color: rgba(255,255,255,.20);
-  }
-
   .qct-cookie-consent button.is-primary {
-    color: #171614;
-    background: #d2ff59;
-    border-color: #d2ff59;
-    box-shadow: none;
+    color:#171614;
+    background:#d2ff59;
+    border-color:#d2ff59;
   }
-
-  .qct-cookie-consent button.is-primary:hover {
-    background: #dcff78;
-    border-color: #dcff78;
-  }
-
+  .qct-cookie-consent button:hover { border-color:#ff9a87; }
   .qct-cookie-consent button:focus-visible,
-  .qct-cookie-consent a:focus-visible {
-    outline: 2px solid rgba(255,139,120,.48);
-    outline-offset: 2px;
-  }
-
-  @media (max-width: 1100px) {
-    .qct-cookie-consent {
-      width: min(900px, calc(100vw - 1.5rem));
-    }
-    .qct-cookie-consent__content > div:last-child { flex-wrap: wrap; }
-    .qct-cookie-consent p { white-space: normal; }
-  }
-
-  @media (max-width: 760px) {
-    .qct-cookie-consent {
-      left: .55rem;
-      right: .55rem;
-      bottom: .55rem;
-      transform: none;
-      width: auto;
-      min-height: 0;
-      grid-template-columns: 1fr;
-      padding: .58rem .62rem;
-      gap: .42rem;
-      border-radius: 12px;
-    }
-    .qct-cookie-consent__content { align-items: flex-start; gap:.4rem; }
-    .qct-cookie-consent__content > div:last-child { display: block; }
-    .qct-cookie-consent__icon { flex-basis:22px; width:22px; height:22px; border-radius:7px; }
-    .qct-cookie-consent__icon::before { inset:5px; }
-    .qct-cookie-consent__eyebrow { display:none; }
-    .qct-cookie-consent strong { display:block; margin-bottom:.12rem; font-size:.74rem; white-space:normal; }
-    .qct-cookie-consent p { font-size:.62rem; line-height:1.32; white-space:normal; }
-    .qct-cookie-consent__actions { display:grid; grid-template-columns:1fr 1fr; gap:.35rem; }
-    .qct-cookie-consent button { width:100%; min-height:36px; padding:.4rem .55rem; font-size:.64rem; }
-  }
-
-  @media (max-width: 390px) {
-    .qct-cookie-consent__icon { display:none; }
-    .qct-cookie-consent__content { display:block; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .qct-cookie-consent button { transition:none; }
+  .qct-cookie-consent a:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+  @media(max-width:720px){
+    .qct-cookie-consent{align-items:stretch;flex-direction:column;gap:.55rem;padding:.58rem .7rem}
+    .qct-cookie-consent__content{display:block;white-space:normal}
+    .qct-cookie-consent strong{display:block;margin-bottom:.18rem;font-size:.86rem}
+    .qct-cookie-consent p{overflow:visible;text-overflow:clip;font-size:.76rem;line-height:1.35}
+    .qct-cookie-consent__actions{width:100%;gap:.45rem}
+    .qct-cookie-consent button{flex:1;min-height:34px;padding:.42rem .65rem;font-size:.8rem}
   }
 </style>
