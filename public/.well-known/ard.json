@@ -1,0 +1,39 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "QCT Commerce",
+    "identifier": "did:web:qctcommerce.com",
+    "documentationUrl": "https://qctcommerce.com/llms.txt"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:qctcommerce.com:resource:llms",
+      "displayName": "QCT Commerce LLM Information",
+      "type": "text/plain",
+      "url": "https://qctcommerce.com/llms.txt",
+      "description": "Canonical machine-readable overview of QCT Commerce services, locales, commercial pages and discovery resources.",
+      "tags": [
+        "ecommerce",
+        "web-design",
+        "seo",
+        "geo",
+        "aeo",
+        "aio",
+        "digital-sales",
+        "turkiye",
+        "azerbaijan"
+      ],
+      "capabilities": [
+        "SiteDiscovery",
+        "ServiceCatalog",
+        "CanonicalLinks"
+      ],
+      "representativeQueries": [
+        "What services does QCT Commerce provide?",
+        "What are the canonical Turkish, English and Azerbaijani pages for QCT Commerce?"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-02T18:40:00Z"
+    }
+  ]
+}
