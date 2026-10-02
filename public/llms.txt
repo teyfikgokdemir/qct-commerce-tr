@@ -5,9 +5,9 @@
 Verified contact: info@qctcommerce.com · WhatsApp: +90 545 678 26 55.
 
 ## Canonical language structure
-- Turkish: https://qctcommerce.com/
-- English: https://qctcommerce.com/en/
-- Azerbaijani: https://qctcommerce.com/az/
+- [Turkish](https://qctcommerce.com/)
+- [English](https://qctcommerce.com/en/)
+- [Azerbaijani](https://qctcommerce.com/az/)
 
 TR, EN and AZ core commercial pages are reciprocal hreflang clusters. Azerbaijani is a full local-language site.
 
@@ -29,13 +29,13 @@ All three locales cover manufacturers, exporters, distributors/B2B and e-commerc
 
 ## Knowledge base
 TR, EN and AZ each publish 13 matched guide topics: marketplace economics, ikas pricing, Google visibility, ChatGPT/AI visibility, website pricing, ikas vs Shopify, mobile conversion, Shopify setup, e-commerce mistakes, marketplace-to-owned-store migration, SEO/GEO/AEO/AIO, AI product descriptions and WhatsApp sales automation.
-Turkish: https://qctcommerce.com/blog/
-English: https://qctcommerce.com/en/blog/
-Azerbaijani: https://qctcommerce.com/az/bloq/
+[Turkish blog](https://qctcommerce.com/blog/)
+[English blog](https://qctcommerce.com/en/blog/)
+[Azerbaijani blog](https://qctcommerce.com/az/bloq/)
 
 ## Programmatic SEO
-Turkish market/location hubs: https://qctcommerce.com/lokasyon/
-English market/location hubs: https://qctcommerce.com/en/location/
+Turkish market/location hubs: [Location hub](https://qctcommerce.com/lokasyon/)
+English market/location hubs: [Location hub](https://qctcommerce.com/en/location/)
 Both generate 19 parent market/location pages. Selected international markets generate 3 service-intent children (web design, e-commerce, SEO/GEO), producing 12 service pages per TR/EN locale.
 
 The Azerbaijani locale intentionally does not duplicate the same Azerbaijan intent under /az/azerbaycan/. https://qctcommerce.com/az/ and its local service pages are the canonical Azerbaijan-market targets, preventing keyword cannibalization.
@@ -43,10 +43,15 @@ The Azerbaijani locale intentionally does not duplicate the same Azerbaijan inte
 ## Search and AI discovery
 Pages use self-canonical URLs, reciprocal hreflang where translations exist, XML sitemap discovery, structured data and internal links. Core service pages use Service schema, blog articles use Article schema, and work examples use CreativeWork schema.
 
-Sitemap: https://qctcommerce.com/sitemap-index.xml
-Robots: https://qctcommerce.com/robots.txt
+[Sitemap](https://qctcommerce.com/sitemap-index.xml)
+[Robots](https://qctcommerce.com/robots.txt)
 
 ## Legal
 Privacy, KVKK information, terms and cookie information are available in TR, EN and AZ. The AZ KVKK page is an informational translation/summary of the applicable Turkish notice; Turkish law and the Turkish notice govern formal interpretation.
 
 QCT Commerce is part of the wider QCT ecosystem. QCT Studio is a separate sister brand.
+
+
+## Machine-readable discovery
+- [ARD manifest](https://qctcommerce.com/.well-known/ard.json)
+- [AI catalog compatibility manifest](https://qctcommerce.com/.well-known/ai-catalog.json)
