@@ -1171,3 +1171,23 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
 		transition: none !important;
 	}
 }
+
+
+/* Mobile inner-page clearance: keep breadcrumbs fully below the sticky header. */
+@media (max-width: 760px) {
+  .site-main .qct-breadcrumb {
+    margin-top: 38px;
+    position: relative;
+    z-index: 2;
+  }
+  .qct-svc-hero,
+  .qct-legal-hero,
+  .qct-error-page,
+  .qct-blog-hero,
+  .az-blog-hero,
+  .en-info-hero,
+  .qct-article > header,
+  .page-hero {
+    padding-top: calc(var(--qct-hero-clearance) + 54px) !important;
+  }
+}
