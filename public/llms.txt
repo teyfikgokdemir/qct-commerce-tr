@@ -28,10 +28,21 @@ Contact: /iletisim/ · /en/contact/ · /az/elaqe/
 All three locales cover manufacturers, exporters, distributors/B2B and e-commerce brands.
 
 ## Knowledge base
-TR, EN and AZ each publish 13 matched guide topics: marketplace economics, ikas pricing, Google visibility, ChatGPT/AI visibility, website pricing, ikas vs Shopify, mobile conversion, Shopify setup, e-commerce mistakes, marketplace-to-owned-store migration, SEO/GEO/AEO/AIO, AI product descriptions and WhatsApp sales automation.
+The blog covers platform conditions, setup, search visibility and operational migration in TR, EN and AZ. The Turkish decision guides below have separate purposes; translations are linked only when real equivalents exist.
 [Turkish blog](https://qctcommerce.com/blog/)
 [English blog](https://qctcommerce.com/en/blog/)
 [Azerbaijani blog](https://qctcommerce.com/az/bloq/)
+
+## Turkish guides and free tools
+- [Decision guide hub](https://qctcommerce.com/rehberler/): offer scope, channel economics, technical ownership and AI search checks.
+- [Free calculator hub](https://qctcommerce.com/tr/araclar/): marketplace commission, website project range and e-commerce cost scenarios. Results depend on user inputs and stated assumptions.
+- [Sector solutions hub](https://qctcommerce.com/sektorler/): eight industry-specific user journeys and website requirements.
+
+## Selected topic clusters
+- [Total marketplace sales cost](https://qctcommerce.com/rehberler/pazaryeri-komisyonlari-gercekten-ne-kadara-mal-oluyor/): SKU costs; complements the blog's platform-rate sources.
+- [SEO, GEO, AEO and AIO definitions](https://qctcommerce.com/rehberler/ai-seo-geo-aeo-aio-nedir/): terms and practical responsibilities; no visibility guarantee.
+- [Website offer comparison](https://qctcommerce.com/rehberler/2026-web-sitesi-fiyatlari/): scope checklist; current QCT service prices remain on /fiyatlar/.
+- [Multilingual URL checks](https://qctcommerce.com/rehberler/cok-dilli-web-sitesi-seo/): real equivalents, canonical and hreflang; connects B2C e-export preparation with B2B export catalog needs.
 
 ## Programmatic SEO
 Turkish market/location hubs: [Location hub](https://qctcommerce.com/lokasyon/)
