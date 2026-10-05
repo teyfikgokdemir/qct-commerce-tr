@@ -402,7 +402,13 @@ const legalLinks = isAzerbaijani ? [
       row-gap:44px !important;
       padding-top:38px;
     }
-    .site-footer--resources .site-footer__brand { grid-area:brand; }
+    .site-footer--resources .site-footer__brand {
+      grid-area:brand;
+      display:grid;
+      justify-items:center;
+      align-content:center;
+      text-align:center;
+    }
     .site-footer--resources .site-footer__nav { grid-area:services; }
     .site-footer--resources .site-footer__audience { grid-area:audience; }
     .site-footer--resources .site-footer__company { grid-area:company; }
@@ -415,9 +421,17 @@ const legalLinks = isAzerbaijani ? [
       gap:5px;
     }
     .site-footer--resources .site-footer__brand h2 { font-size:1.9rem; margin-bottom:16px; }
-    .site-footer--resources .site-footer__brand p { max-width:47ch; font-size:.98rem; }
+    .site-footer--resources .site-footer__brand p {
+      max-width:47ch;
+      margin-left:auto;
+      margin-right:auto;
+      font-size:.98rem;
+      text-align:center;
+    }
     .site-footer--resources .site-footer__brand-relationship {
       max-width:65ch;
+      margin-left:auto !important;
+      margin-right:auto !important;
       border-top:0;
       padding-top:0;
       margin-top:12px !important;
