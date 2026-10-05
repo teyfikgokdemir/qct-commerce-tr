@@ -1,11 +1,14 @@
 name: Cloudflare Pages Build Verification
 
 on:
-  push:
-    branches: [ main, master ]
+  workflow_run:
+    workflows: [ "CI" ]
+    types: [ completed ]
+  workflow_dispatch:
 
 jobs:
   validate:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -13,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -27,4 +32,4 @@ jobs:
         run: npm run build
 
       # Production deployment is handled by Cloudflare Pages' native GitHub integration.
-      # Keeping deployment in this workflow would create duplicate and conflicting deploys.
+      # This workflow verifies the exact CI commit after CI succeeds.
