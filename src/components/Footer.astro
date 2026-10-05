@@ -95,13 +95,11 @@ const companyLinks = isAzerbaijani ? [
   ['Distribütör & B2B','/distributor-b2b/'],
   ['E-ticaret markaları','/e-ticaret-markalari/'],
   ['Blog','/blog/'],
-  ['Fiyatlar','/fiyatlar/'],
   ['Nasıl çalışıyoruz','/nasil-calisiyoruz/'],
-  ['Dijital audit','/audit/'],
-  ['Rehberler','/rehberler/'],
-  ['Ücretsiz araçlar','/tr/araclar/'],
   ['İletişim','/iletisim/'],
 ];
+
+const resourceLinks = [['Hizmetler','/hizmetler/'], ['Dijital audit','/audit/'], ['Fiyatlar','/fiyatlar/'], ['Rehberler','/rehberler/'], ['Ücretsiz araçlar','/tr/araclar/']];
 
 const legalLinks = isAzerbaijani ? [
   ['Məxfilik siyasəti','/az/mexfilik/'],
@@ -120,7 +118,7 @@ const legalLinks = isAzerbaijani ? [
   ['Çerez politikası','/cerez-politikasi/'],
 ];
 ---
-<footer id="colophon" class="site-footer">
+<footer id="colophon" class:list={['site-footer', { 'site-footer--resources': !isEnglish && !isAzerbaijani }]}>
   <div class="site-footer__marquee" aria-hidden="true">
     <div class="site-footer__marquee-track">
       <div class="site-footer__marquee-group">
@@ -183,7 +181,8 @@ const legalLinks = isAzerbaijani ? [
         <>
           <nav class="site-footer__group site-footer__nav" aria-label="Hizmetler"><h2>Hizmetler</h2><a href="/e-ticaret/">E-ticaret altyapısı</a><a href="/web-tasarim/">Web tasarım</a><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a><a href="/meta-reklamlari/">Meta reklamları</a><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></nav>
           <nav class="site-footer__group site-footer__audience" aria-label="Kimler için"><h2>Kimler için</h2><a href="/ureticiler/">Üreticiler</a><a href="/ihracatcilar/">İhracatçılar</a><a href="/distributor-b2b/">Distribütör &amp; B2B</a><a href="/e-ticaret-markalari/">E-ticaret markaları</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/calismalar/">Çalışmalar</a><a href="/hizmetler/">Hizmetler</a><a href="/nasil-calisiyoruz/">Nasıl çalışıyoruz</a><a href="/audit/">Dijital audit</a><a href="/fiyatlar/">Fiyatlar</a><a href="/blog/">Blog</a><a href="/rehberler/">Rehberler</a><a href="/tr/araclar/">Ücretsiz araçlar</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a></nav>
+          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/calismalar/">Çalışmalar</a><a href="/nasil-calisiyoruz/">Nasıl çalışıyoruz</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a></nav>
+          <nav class="site-footer__group site-footer__resources" aria-label="Kaynaklar ve araçlar"><h2>Kaynaklar ve araçlar</h2>{resourceLinks.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
           <div class="site-footer__group site-footer__markets"><h2>İletişim</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Türkiye</p></div>
         </>
       )}
@@ -266,6 +265,10 @@ const legalLinks = isAzerbaijani ? [
           {legalLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
         </div>
       </details>
+      {!isEnglish && !isAzerbaijani && <details>
+        <summary><span class="site-footer__round-icon" aria-hidden="true"><i></i></span><strong>Kaynaklar ve araçlar</strong><span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span></summary>
+        <div class="site-footer__accordion-body">{resourceLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}</div>
+      </details>}
     </div>
 
     <section class="site-footer__cta" aria-label={mobileCopy.talk}>
@@ -312,14 +315,9 @@ const legalLinks = isAzerbaijani ? [
   <a href="/en/location/dubai/">Dubai</a>
 </nav>
 )}
-  <div class="site-footer__consent">
-    <button type="button" data-cookie-settings>{isAzerbaijani ? 'Kuki seçimləri' : isEnglish ? 'Cookie preferences' : 'Çerez tercihleri'}</button>
-  </div>
 </footer>
 
 <style>
-  .site-footer__consent { text-align: center; padding: 12px 20px 24px; }
-  .site-footer__consent button { background: transparent; border: 0; color: #fffaf5; font: inherit; font-size: .8rem; text-decoration: underline; cursor: pointer; min-height: 44px; padding: 8px 12px; }
   .site-footer { position: relative; overflow: hidden; isolation: isolate; }
   .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(3.9rem, 5.4vw, 5rem); }
   .site-footer__mobile { display: none; }
@@ -397,6 +395,7 @@ const legalLinks = isAzerbaijani ? [
       gap:clamp(28px,3.5vw,58px) !important;
       align-items:start;
     }
+    .site-footer--resources .site-footer__columns { grid-template-columns:minmax(180px,1.15fr) repeat(4,minmax(0,1fr)) minmax(170px,1fr) !important; gap:clamp(18px,2vw,32px) !important; }
     .site-footer__group { min-width:0; }
     .site-footer__group h2 {
       margin:0 0 16px;
@@ -429,7 +428,8 @@ const legalLinks = isAzerbaijani ? [
     .site-footer__nav,
     .site-footer__audience,
     .site-footer__company,
-    .site-footer__markets {
+    .site-footer__markets,
+    .site-footer__resources {
       display:grid;
       align-content:start;
       gap:8px;
@@ -483,6 +483,10 @@ const legalLinks = isAzerbaijani ? [
     }
     .site-footer__legal-desktop a:hover,
     .site-footer__legal-desktop a:focus-visible { color:#fff; }
+  }
+
+  @media (min-width:761px) and (max-width:1100px) {
+    .site-footer--resources .site-footer__columns { grid-template-columns:repeat(3,minmax(0,1fr)) !important; row-gap:32px !important; }
   }
 
   @media (max-width:760px) {
