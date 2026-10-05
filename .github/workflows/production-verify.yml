@@ -1,18 +1,35 @@
 name: Production Verification
 
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: [ "Cloudflare Pages Build Verification" ]
+    types: [ completed ]
   workflow_dispatch:
 
 jobs:
   verify-production:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout verified commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Verify deployed production
         run: node scripts/verify-production.mjs
+
+      - name: Run security dependency audit
+        run: node .github/scripts/npm-audit-with-temporary-exception.mjs
