@@ -88,12 +88,13 @@ for (const file of htmlFiles) {
   for (const required of ['Organization', 'WebSite']) if (!nodes.some((node) => node['@type'] === required)) errors.push(`${file}: JSON-LD is missing ${required}.`);
   if (!nodes.some((node) => ['WebPage', 'AboutPage', 'ContactPage', 'CollectionPage'].includes(node['@type']))) errors.push(`${file}: JSON-LD is missing a WebPage-compatible node.`);
   const articleNodes = nodes.filter((node) => node['@type'] === 'Article');
-  const isArticle = (pathname.startsWith('/blog/') && pathname !== '/blog/') || (pathname.startsWith('/en/blog/') && pathname !== '/en/blog/') || (pathname.startsWith('/az/bloq/') && pathname !== '/az/bloq/');
+  const isArticle = (pathname.startsWith('/blog/') && pathname !== '/blog/') || (pathname.startsWith('/en/blog/') && pathname !== '/en/blog/') || (pathname.startsWith('/az/bloq/') && pathname !== '/az/bloq/') || (pathname.startsWith('/rehberler/') && pathname !== '/rehberler/');
   if (isArticle && articleNodes.length !== 1) errors.push(`${file}: blog article must emit exactly one Article node.`);
   if (!isArticle && articleNodes.length) errors.push(`${file}: Article schema is only allowed on blog articles.`);
   const serviceNodes = nodes.filter((node) => node['@type'] === 'Service');
   const isProgrammaticService = /^\/lokasyon\/[^/]+\/[^/]+\/$/.test(pathname) || /^\/en\/location\/[^/]+\/[^/]+\/$/.test(pathname);
-  const isServiceDetail = servicePaths.has(pathname) || isProgrammaticService;
+  const isSectorService = /^\/sektorler\/[^/]+\/$/.test(pathname);
+  const isServiceDetail = servicePaths.has(pathname) || isProgrammaticService || isSectorService;
   if (isServiceDetail && serviceNodes.length !== 1) errors.push(`${file}: service page must emit exactly one Service node.`);
   if (!isServiceDetail && serviceNodes.length) errors.push(`${file}: Service schema is only allowed on service detail pages.`);
   const creativeWorkNodes = nodes.filter((node) => node['@type'] === 'CreativeWork');

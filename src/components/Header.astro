@@ -74,11 +74,14 @@ const getProgrammaticLocaleTargets = () => {
 };
 
 const localeTargets = getLocaleSwitchTargets(currentPath) || getProgrammaticLocaleTargets();
+// These Turkish resource routes deliberately have no published EN/AZ equivalent yet.
+// Keep the language control visible but non-navigable instead of sending readers to an unrelated homepage.
+const hasPublishedLocaleEquivalent = !currentPath.startsWith('/rehberler/') && !currentPath.startsWith('/sektorler/') && !currentPath.startsWith('/tr/araclar/');
 const isErrorRoute = currentPath === '/404/' || currentPath === '/404';
 const isAzerbaijanMarketRoute = currentPath === '/lokasyon/azerbaycan/' || currentPath === '/en/location/azerbaijan/';
 const trHref = localeTargets?.tr || (isEnglish ? (pairedLocalePath || '/') : isAzerbaijani ? '/' : (isErrorRoute ? '/' : currentPath));
-const enHref = localeTargets?.en || (!isEnglish ? (pairedLocalePath || '/en/') : isAzerbaijani ? '/en/' : (isErrorRoute ? '/en/' : currentPath));
-const azHref = localeTargets?.az || (isAzerbaijanMarketRoute ? '/az/' : '/az/');
+const enHref = hasPublishedLocaleEquivalent ? (localeTargets?.en || (!isEnglish ? (pairedLocalePath || '/en/') : isAzerbaijani ? '/en/' : (isErrorRoute ? '/en/' : currentPath))) : undefined;
+const azHref = hasPublishedLocaleEquivalent ? (localeTargets?.az || (isAzerbaijanMarketRoute ? '/az/' : '/az/')) : undefined;
 
 const audienceLinks = isAzerbaijani ? [
   ['İstehsalçılar', '/az/istehsalcilar/'],

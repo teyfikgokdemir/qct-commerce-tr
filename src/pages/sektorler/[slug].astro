@@ -1,0 +1,5 @@
+---
+import SectorLanding from '../../components/SectorLanding.astro'; import { sectors } from '../../data/resources';
+export function getStaticPaths(){return sectors.map((sector)=>({params:{slug:sector[0]},props:{sector}}));}const {sector}=Astro.props;
+---
+<SectorLanding sector={sector}/>
