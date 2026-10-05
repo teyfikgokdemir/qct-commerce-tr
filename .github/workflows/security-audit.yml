@@ -1,22 +1,26 @@
 name: Advanced Security & Dependency Audit
 
 on:
-  push:
-    branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_run:
+    workflows: [ "CI" ]
+    types: [ completed ]
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch:
 
 jobs:
   security-audit:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
