@@ -397,7 +397,7 @@ const legalLinks = isAzerbaijani ? [
     }
     .site-footer--resources .site-footer__columns {
       grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-      grid-template-areas:"brand brand contact contact" "services audience company resources";
+      grid-template-areas:"brand brand brand contact" "services audience company resources";
       column-gap:clamp(28px,4vw,64px) !important;
       row-gap:44px !important;
       padding-top:38px;
@@ -422,16 +422,20 @@ const legalLinks = isAzerbaijani ? [
     }
     .site-footer--resources .site-footer__brand h2 { font-size:1.9rem; margin-bottom:16px; }
     .site-footer--resources .site-footer__brand p {
-      max-width:47ch;
+      max-width:none;
+      width:100%;
       margin-left:auto;
       margin-right:auto;
       font-size:.98rem;
       text-align:center;
+      white-space:nowrap;
     }
     .site-footer--resources .site-footer__brand-relationship {
-      max-width:65ch;
+      max-width:none;
+      width:100%;
       margin-left:auto !important;
       margin-right:auto !important;
+      white-space:nowrap;
       border-top:0;
       padding-top:0;
       margin-top:12px !important;
