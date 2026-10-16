@@ -207,7 +207,7 @@ export const articles: BlogArticle[] = [
       { heading: 'Shopify kimler için uygundur?', paragraphs: ['Shopify; teknik bakım yükünü azaltmak, ürün ve sipariş yönetimini tek panelde toplamak isteyen işletmeler için güçlü bir seçenek olabilir. Platform kararı ürün sayısı, varyant yapısı, entegrasyonlar, hedef ülkeler ve toplam işletme maliyetiyle birlikte verilmelidir.'] },
       { heading: 'Ürün ve kategori yapısı nasıl hazırlanır?', paragraphs: ['Kategori, filtre ve koleksiyon yapısı işletmenin iç stok mantığına değil müşterinin arama biçimine göre kurulmalıdır. Ürün sayfası ölçü, malzeme, kullanım, teslimat ve iade gibi karar bilgilerini açıkça sunmalıdır.'] },
       { heading: 'Ödeme, kargo ve yayın testleri', paragraphs: ['Ödeme kuruluşu uyumluluğu ve kargo koşulları doğrudan sağlayıcılardan doğrulanmalıdır. Yayından önce mobil ve masaüstü satın alma, başarısız ödeme, sipariş bildirimi, yönlendirme, canonical ve indeksleme senaryoları test edilmelidir.'] },
-    ], relatedService: { label: 'E-ticaret altyapısı hizmetini inceleyin', href: '/e-ticaret/' },
+    ], relatedService: { label: 'Shopify mağaza kurulumu için fiyat ve hizmet kapsamını inceleyin', href: '/shopify-magaza-kurulumu/' },
   },
   {
     slug: 'e-ticarette-yapilan-hatalar', seoKey: 'blog-mistakes',
