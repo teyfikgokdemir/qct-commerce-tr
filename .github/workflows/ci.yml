@@ -33,3 +33,9 @@ jobs:
 
       - name: Check performance regressions
         run: npm run check:performance
+
+      - name: Install Chromium for regression tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Run browser regression tests
+        run: npm test

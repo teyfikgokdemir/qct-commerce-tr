@@ -469,22 +469,69 @@
 })();
 
 
-/* Lazy brand-film playback: avoid downloading the hero film during initial render. */
+/* User-controlled motion; keep the brand film lazy and respect reduced motion. */
 (function(){
-  var videos=[].slice.call(document.querySelectorAll('[data-qct-brand-film]'));
-  if(!videos.length)return;
-  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduced)return;
-  var play=function(video){video.play().catch(function(){});};
-  if('IntersectionObserver' in window){
-    var observer=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        var video=entry.target;
-        if(entry.isIntersecting)play(video);else video.pause();
-      });
-    },{rootMargin:'160px 0px'});
-    videos.forEach(function(video){observer.observe(video);});
-  }else{
-    videos.forEach(play);
+  var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var language=document.documentElement.lang.split('-')[0];
+  var copy={
+    tr:{pause:'Duraklat',resume:'Devam et',strip:'Ekosistem şeridi',film:'Marka videosu'},
+    en:{pause:'Pause',resume:'Resume',strip:'Ecosystem strip',film:'Brand video'},
+    az:{pause:'Dayandır',resume:'Davam et',strip:'Ekosistem zolağı',film:'Brend videosu'}
+  }[language] || {pause:'Pause',resume:'Resume',strip:'Ecosystem strip',film:'Brand video'};
+  function control(target,kind,index){
+    if(!target.id)target.id='qct-motion-'+kind+'-'+index;
+    var button=document.createElement('button');
+    button.type='button';
+    button.className='qct-motion-control qct-'+kind+'-toggle';
+    button.setAttribute('aria-controls',target.id);
+    button.setAttribute('data-'+kind+'-toggle','');
+    return button;
   }
+  function label(button,paused,kind){
+    button.textContent=paused?copy.resume:copy.pause;
+    button.setAttribute('aria-label',copy[kind]+': '+button.textContent);
+    button.setAttribute('aria-pressed',String(paused));
+  }
+  document.querySelectorAll('[data-marquee]').forEach(function(marquee,index){
+    var button=control(marquee,'marquee',index);
+    var paused=motion.matches;
+    function sync(){
+      marquee.classList.toggle('is-paused',paused);
+      label(button,paused,'strip');
+      button.disabled=motion.matches;
+    }
+    button.addEventListener('click',function(){paused=!paused;sync();});
+    motion.addEventListener('change',function(event){if(event.matches)paused=true;sync();});
+    marquee.before(button);
+    sync();
+  });
+  document.querySelectorAll('[data-qct-brand-film]').forEach(function(video,index){
+    var button=control(video,'film',index);
+    var userPaused=motion.matches;
+    var visible=false;
+    function sync(){label(button,video.paused,'film');}
+    function play(){video.play().then(sync).catch(sync);}
+    button.addEventListener('click',function(){
+      userPaused=!video.paused;
+      if(userPaused)video.pause();else play();
+      sync();
+    });
+    video.addEventListener('play',sync);
+    video.addEventListener('pause',sync);
+    motion.addEventListener('change',function(event){
+      if(event.matches){userPaused=true;video.pause();}
+      sync();
+    });
+    video.after(button);
+    sync();
+    if('IntersectionObserver' in window){
+      var observer=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          visible=entry.isIntersecting;
+          if(visible&&!userPaused&&!motion.matches)play();else video.pause();
+        });
+      },{rootMargin:'160px 0px'});
+      observer.observe(video);
+    }else if(!userPaused&&!motion.matches){play();}
+  });
 })();
