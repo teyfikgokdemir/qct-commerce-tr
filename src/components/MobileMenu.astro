@@ -21,7 +21,7 @@ const isCurrent = (path: string) => currentPath === path;
 
   <div class="qctm-backdrop" data-qctm-backdrop hidden></div>
 
-  <aside id="qctm-panel" class="qctm-panel" aria-hidden="true" data-qctm-panel>
+  <aside id="qctm-panel" class="qctm-panel" role="dialog" aria-label={isAzerbaijani ? 'Mobil menyu' : isEnglish ? 'Mobile menu' : 'Mobil menü'} aria-hidden="true" inert data-qctm-panel>
     <div class="qctm-head">
       <a class="qctm-brand" href={isAzerbaijani ? '/az/' : isEnglish ? '/en/' : '/'}>QCT COMMERCE</a>
       <button class="qctm-close" type="button" aria-label={isAzerbaijani ? 'Menyunu bağla' : isEnglish ? 'Close menu' : 'Menüyü kapat'} data-qctm-close>×</button>
@@ -88,10 +88,26 @@ const isCurrent = (path: string) => currentPath === path;
   const backdrop = root.querySelector('[data-qctm-backdrop]');
   if (!toggle || !panel || !close || !backdrop) return;
 
-  let previousFocus = null;
+  const background = new Map();
+  const desktop = window.matchMedia('(min-width: 1000px)');
+  const focusable = () => [...panel.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]')]
+    .filter((element) => !element.closest('[hidden], [inert]') && element.getClientRects().length);
+  const isolateBackground = () => {
+    // Isolate sibling branches up to body without making the panel's ancestors inert.
+    for (let branch = root; branch.parentElement && branch !== document.body; branch = branch.parentElement) {
+      for (const sibling of branch.parentElement.children) {
+        if (sibling === branch) continue;
+        background.set(sibling, sibling.inert);
+        sibling.inert = true;
+      }
+    }
+  };
   let scrollY = 0;
 
   const setOpen = (open) => {
+    if (open === panel.classList.contains('is-open')) return;
+    if (open) scrollY = window.scrollY;
+    panel.inert = !open;
     toggle.setAttribute('aria-expanded', String(open));
     panel.classList.toggle('is-open', open);
     panel.setAttribute('aria-hidden', String(!open));
@@ -99,12 +115,15 @@ const isCurrent = (path: string) => currentPath === path;
     document.documentElement.classList.toggle('qctm-lock', open);
     document.body.classList.toggle('qctm-lock', open);
     if (open) {
-      scrollY = window.scrollY;
-      previousFocus = document.activeElement;
+      panel.setAttribute('aria-modal', 'true');
+      isolateBackground();
       close.focus({ preventScroll: true });
     } else {
+      panel.removeAttribute('aria-modal');
+      background.forEach((inert, element) => { element.inert = inert; });
+      background.clear();
       window.scrollTo(0, scrollY);
-      previousFocus?.focus?.({ preventScroll: true });
+      toggle.focus({ preventScroll: true });
     }
   };
 
@@ -142,8 +161,24 @@ const isCurrent = (path: string) => currentPath === path;
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && panel.classList.contains('is-open')) setOpen(false);
+    if (!panel.classList.contains('is-open')) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === 'Tab') {
+      const items = focusable();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) {
+        event.preventDefault();
+        first?.focus();
+      }
+    }
   });
+  desktop.addEventListener('change', (event) => { if (event.matches) setOpen(false); });
 })();
 </script>
 
@@ -152,6 +187,7 @@ const isCurrent = (path: string) => currentPath === path;
   .qctm-root{display:none!important}
 }
 @media (max-width:999px){
+  body.qctm-lock .site-header{z-index:10000!important}
   .qctm-root{display:block}
   .qctm-toggle{
     display:grid!important;
@@ -202,9 +238,9 @@ const isCurrent = (path: string) => currentPath === path;
     position:fixed!important;inset:0!important;z-index:160!important;display:flex!important;flex-direction:column!important;gap:16px!important;
     width:100%!important;height:100dvh!important;overflow-y:auto!important;padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom))!important;
     background:#0f1210!important;color:#f3eadf!important;transform:translateX(100%)!important;visibility:hidden!important;pointer-events:none!important;
-    transition:transform .22s ease,visibility .22s ease!important;overscroll-behavior:contain!important;
+    transition:transform .22s ease,visibility 0s .22s!important;overscroll-behavior:contain!important;
   }
-  .qctm-panel.is-open{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important}
+  .qctm-panel.is-open{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important;transition-delay:0s!important}
   html.qctm-lock,body.qctm-lock{overflow:hidden!important;overscroll-behavior:none!important}
   .qctm-head{display:flex!important;align-items:center!important;justify-content:space-between!important;padding-bottom:12px!important;border-bottom:1px solid rgba(200,255,61,.12)!important}
   .qctm-brand{color:#f3eadf!important;text-decoration:none!important;font-size:.82rem!important;font-weight:900!important;letter-spacing:.12em!important}

@@ -370,7 +370,14 @@ const platforms = [
 
     const serviceText = hasService ? (selectedService?.textContent?.trim() || 'Web projesi') : '';
     const productText = products?.value ? (products?.selectedOptions?.[0]?.textContent?.trim() || '') : '';
-    const message = 'Merhaba, QCT Commerce fiyat hesaplayıcıdan geldim. ' + serviceText + (productText ? ', ' + productText : '') + '. Başlangıç fiyatı: ' + (total > 0 ? money.format(total) + ' TL’den' : 'kapsama göre') + '. Detayları görüşmek istiyorum.';
+    const platformText = platform?.value ? platform.selectedOptions[0].textContent.trim() : 'Henüz seçilmedi';
+    const addonText = addons.filter((input) => input.checked)
+      .map((input) => input.closest('label').querySelector('span').textContent.trim().replace(/\s+/g, ' '))
+      .join('; ') || 'Yok';
+    const message = 'Merhaba, QCT Commerce fiyat hesaplayıcıdan geldim. Hizmet: ' + serviceText
+      + '. Altyapı: ' + platformText + '. Ürün kapsamı: ' + (productText || 'Henüz seçilmedi')
+      + '. Ek hizmetler: ' + addonText + '. Başlangıç fiyatı: '
+      + (total > 0 ? money.format(total) + ' TL’den' : 'kapsama göre') + '. Detayları görüşmek istiyorum.';
     if (whatsapp) {
       whatsapp.classList.toggle('is-disabled', !hasService);
       whatsapp.setAttribute('aria-disabled', String(!hasService));
