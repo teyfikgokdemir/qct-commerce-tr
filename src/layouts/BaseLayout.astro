@@ -127,7 +127,7 @@ const knowsAbout = ['E-commerce architecture','Web design and website improvemen
 
 const organizationSchema = {
   '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
-  logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/logo.png', SITE_URL).toString(), contentUrl: new URL('/logo.png', SITE_URL).toString(), width: 600, height: 180, caption: 'QCT Commerce' },
+  logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/qct-commerce-logo.svg', SITE_URL).toString(), contentUrl: new URL('/qct-commerce-logo.svg', SITE_URL).toString(), width: 600, height: 180, caption: 'QCT Commerce' },
   image: { '@type': 'ImageObject', url: ogImageUrl, width: imageWidth, height: imageHeight },
   description: isAzerbaijani ? 'Azərbaycan şirkətləri üçün veb sayt, e-ticarət, SEO, GEO, AEO, AIO və rəqəmsal satış sistemləri.' : isEnglish ? 'Website, e-commerce, search visibility and AI-supported digital services for English-speaking businesses and founders operating in Türkiye.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
   areaServed: areaServedSchema,
