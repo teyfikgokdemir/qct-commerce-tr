@@ -8,6 +8,7 @@ const services = [
   { value: 'visibility', label: 'Dinamik SEO · SEO + GEO + AEO + AIO', base: 3990 },
   { value: 'migration', label: 'Platform taşıma', base: 7900 },
   { value: 'products', label: 'Sadece ürün ekleme', base: 0 },
+  { value: 'marketplace', label: 'Pazaryeri mağaza kurulumu — özel teklif', base: 0 },
 ];
 
 const platforms = [
@@ -67,7 +68,7 @@ const platforms = [
           </label>
 
           <label class="qct-field">
-            <span><b>Altyapı</b><small>Kullandığınız veya tercih ettiğiniz platform</small></span>
+            <span><b data-platform-label>Altyapı</b><small data-platform-help>Kullandığınız veya tercih ettiğiniz platform</small></span>
             <select name="platform" data-platform>
               <option value="" selected disabled>Altyapınızı seçin</option>
               <option value="shopify">Shopify</option>
@@ -78,6 +79,13 @@ const platforms = [
               <option value="ideasoft">IdeaSoft</option>
               <option value="kararsiz">Henüz karar vermedim</option>
               <option value="diger">Diğer / mevcut altyapım</option>
+              <option value="amazon-tr" data-market-option>Amazon Türkiye</option>
+              <option value="amazon-us" data-market-option>Amazon Amerika (Amazon.com)</option>
+              <option value="trendyol" data-market-option>Trendyol</option>
+              <option value="hepsiburada" data-market-option>Hepsiburada</option>
+              <option value="n11" data-market-option>n11</option>
+              <option value="etsy" data-market-option>Etsy</option>
+              <option value="multi-marketplace" data-market-option>Birden fazla pazaryeri</option>
             </select>
           </label>
 
@@ -95,7 +103,7 @@ const platforms = [
             </select>
           </label>
 
-          <fieldset>
+          <fieldset data-addons-fieldset>
             <legend>Projeyi güçlendirin <small>İhtiyacınız olanları ekleyin</small></legend>
             <div class="qct-addon-grid">
               <label class="qct-check"><input type="checkbox" value="2490" data-addon data-addon-group="visibility" /><span>Teknik SEO — bağımsız çalışma <small>+2.490 TL</small></span></label>
@@ -109,7 +117,7 @@ const platforms = [
 
           <div class="qct-price-result" aria-live="polite">
             <div>
-              <span class="qct-price-label">PROJENİZİN BAŞLANGIÇ FİYATI</span>
+              <span class="qct-price-label" data-price-label>PROJENİZİN BAŞLANGIÇ FİYATI</span>
               <strong data-total>Seçiminizi yapın</strong>
               <small data-result-note>İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.</small>
               <small class="qct-external-cost-note">QCT hizmet bedelidir; platform/lisans, ücretli tema veya uygulama, ödeme komisyonu ve reklam bütçesi dahil değildir.</small>
@@ -317,6 +325,12 @@ const platforms = [
   const form = root.querySelector('[data-price-form]');
   const service = root.querySelector('[data-service]');
   const products = root.querySelector('[data-products]');
+  const platform = root.querySelector('[data-platform]');
+  const platformLabel = root.querySelector('[data-platform-label]');
+  const platformHelp = root.querySelector('[data-platform-help]');
+  const priceLabel = root.querySelector('[data-price-label]');
+  const addonFieldset = root.querySelector('[data-addons-fieldset]');
+  const marketOptions = [...root.querySelectorAll('[data-market-option]')];
   const addons = [...root.querySelectorAll('[data-addon]')];
   const totalNode = root.querySelector('[data-total]');
   const noteNode = root.querySelector('[data-result-note]');
@@ -333,16 +347,23 @@ const platforms = [
   function calculate() {
     const selectedService = service?.selectedOptions?.[0];
     const hasService = Boolean(service?.value);
+    const isMarketplace = service?.value === 'marketplace';
     const base = Number(selectedService?.dataset.base || 0);
+    marketOptions.forEach((option) => { option.hidden = !isMarketplace; option.disabled = !isMarketplace; });
+    [...platform.options].filter((option) => option.value && !option.hasAttribute('data-market-option')).forEach((option) => { option.hidden = isMarketplace; option.disabled = isMarketplace; });
+    if (platform.selectedOptions[0]?.disabled) platform.value = '';
+    if (platformLabel) platformLabel.textContent = isMarketplace ? 'Pazaryeri' : 'Altyapı';
+    if (platformHelp) platformHelp.textContent = isMarketplace ? 'Mağaza kurulacak satış kanalını seçin' : 'Kullandığınız veya tercih ettiğiniz platform';
+    if (priceLabel) priceLabel.textContent = isMarketplace ? 'PROJENİZE ÖZEL TEKLİF' : 'PROJENİZİN BAŞLANGIÇ FİYATI';
+    if (addonFieldset) addonFieldset.hidden = isMarketplace;
     const productOption = products?.selectedOptions?.[0];
-    const productPrice = service?.value === 'ecommerce' && productOption?.dataset.ecommercePrice !== undefined ? Number(productOption.dataset.ecommercePrice || 0) : Number(productOption?.dataset.price || 0);
-    const addonPrice = addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
+    const productPrice = isMarketplace ? 0 : service?.value === 'ecommerce' && productOption?.dataset.ecommercePrice !== undefined ? Number(productOption.dataset.ecommercePrice || 0) : Number(productOption?.dataset.price || 0);
+    const addonPrice = isMarketplace ? 0 : addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
     const total = base + productPrice + addonPrice;
-    const platform = root.querySelector('[data-platform]');
     const completed = [Boolean(service?.value), Boolean(platform?.value), Boolean(products?.value)].filter(Boolean).length;
     progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
 
-    if (hasService && completed === 3) {
+    if (hasService && completed === 3 && !isMarketplace) {
       const completeKey = [service?.value, platform?.value, products?.value, addonPrice].join('|');
       if (completeKey !== lastPricingCompleteKey) {
         track('pricing_complete', {
@@ -356,7 +377,7 @@ const platforms = [
     }
 
     if (totalNode) {
-      const nextText = hasService ? (total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre') : 'Seçiminizi yapın';
+      const nextText = hasService ? (isMarketplace ? 'Özel teklif' : total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre') : 'Seçiminizi yapın';
       if (totalNode.textContent !== nextText) {
         totalNode.textContent = nextText;
         totalNode.classList.remove('is-updating');
@@ -365,19 +386,19 @@ const platforms = [
       }
     }
     if (noteNode) noteNode.textContent = hasService
-      ? 'Gösterilen tutar standart kapsam için başlangıç fiyatıdır; proje detayına göre değişebilir.'
+      ? (isMarketplace ? 'Pazaryeri, ürün adedi ve entegrasyon ihtiyacına göre teklif hazırlanır. Platform masrafları dahil değildir.' : 'Gösterilen tutar standart kapsam için başlangıç fiyatıdır; proje detayına göre değişebilir.')
       : 'İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.';
 
     const serviceText = hasService ? (selectedService?.textContent?.trim() || 'Web projesi') : '';
     const productText = products?.value ? (products?.selectedOptions?.[0]?.textContent?.trim() || '') : '';
     const platformText = platform?.value ? platform.selectedOptions[0].textContent.trim() : 'Henüz seçilmedi';
-    const addonText = addons.filter((input) => input.checked)
+    const addonText = (isMarketplace ? [] : addons.filter((input) => input.checked))
       .map((input) => input.closest('label').querySelector('span').textContent.trim().replace(/\s+/g, ' '))
       .join('; ') || 'Yok';
     const message = 'Merhaba, QCT Commerce fiyat hesaplayıcıdan geldim. Hizmet: ' + serviceText
       + '. Altyapı: ' + platformText + '. Ürün kapsamı: ' + (productText || 'Henüz seçilmedi')
       + '. Ek hizmetler: ' + addonText + '. Başlangıç fiyatı: '
-      + (total > 0 ? money.format(total) + ' TL’den' : 'kapsama göre') + '. Detayları görüşmek istiyorum.';
+      + (isMarketplace ? 'özel teklif talep ediyorum' : total > 0 ? money.format(total) + ' TL’den' : 'kapsama göre') + '. Detayları görüşmek istiyorum.';
     if (whatsapp) {
       whatsapp.classList.toggle('is-disabled', !hasService);
       whatsapp.setAttribute('aria-disabled', String(!hasService));
@@ -387,11 +408,15 @@ const platforms = [
       whatsapp.dataset.analyticsService = service?.value || '';
       whatsapp.dataset.analyticsPlatform = platform?.value || '';
       whatsapp.dataset.analyticsProductScope = products?.value || '';
-      whatsapp.dataset.analyticsPricingValue = total > 0 ? String(total) : '';
+      whatsapp.dataset.analyticsPricingValue = !isMarketplace && total > 0 ? String(total) : '';
     }
   }
 
   form?.addEventListener('change', (event) => {
+    if (event.target === service) {
+      platform.value = '';
+      lastPricingCompleteKey = '';
+    }
     const changed = event.target;
     if (changed instanceof HTMLInputElement && changed.matches('[data-addon-group="visibility"]') && changed.checked) {
       addons
