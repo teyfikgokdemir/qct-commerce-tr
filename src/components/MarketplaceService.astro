@@ -6,7 +6,7 @@ interface Props { market: 'all' | 'tr' | 'us'; }
 const { market } = Astro.props;
 const us = market === 'us';
 const tr = market === 'tr';
-const title = us ? 'Amazon Amerika Mağaza Kurulumu | QCT Commerce' : tr ? 'Amazon Türkiye Mağaza Kurulumu | QCT Commerce' : 'Pazaryeri Mağaza Kurulumu | QCT Commerce';
+const title = us ? 'Amazon Amerika Mağaza Açma ve Kurulum Danışmanlığı | QCT Commerce' : tr ? 'Amazon Türkiye Mağaza Açma ve Kurulum Danışmanlığı | QCT Commerce' : 'Pazaryeri Mağaza Kurulumu ve Entegrasyon | QCT Commerce';
 const heading = us ? 'Amazon Amerika Kurulumu' : tr ? 'Amazon Türkiye Kurulumu' : 'Pazaryeri Mağaza Kurulumu';
 const lead = us
   ? 'Amazon.com üzerinden ABD pazarına açılmak isteyen markalar için hesap başvurusu, ürün listeleme ve FBA/FBM operasyon hazırlığını tek plan altında ele alıyoruz.'
@@ -78,8 +78,10 @@ const faq = us ? [
   ['Kurulum ücreti sabit mi?','Hayır. Pazar, mağaza sayısı, ürün adedi, entegrasyonlar ve uluslararası operasyon ihtiyaçlarına göre yazılı teklif hazırlanır.'],
 ];
 const contact = '/iletisim/';
+const breadcrumbName = us ? 'Amazon Amerika Mağaza Kurulumu' : tr ? 'Amazon Türkiye Mağaza Kurulumu' : 'Pazaryeri Mağaza Kurulumu';
+const breadcrumbs = [{name:'Ana sayfa',url:'/'},{name:'Hizmetler',url:'/hizmetler/'},{name:breadcrumbName,url:Astro.url.pathname}];
 ---
-<BaseLayout title={title} description={lead} lang="tr" includeServiceCardStyles breadcrumbs={[{name:'Ana sayfa',url:'/'},{name:'Pazaryeri Kurulumu',url:'/pazaryeri-kurulumu/'}]}>
+<BaseLayout title={title} description={lead} lang="tr" includeServiceCardStyles breadcrumbs={breadcrumbs}>
   <Header slot="header" lang="tr"/>
   <main class="marketplace">
     <section class="marketplace-hero container">
