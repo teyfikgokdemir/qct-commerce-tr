@@ -77,7 +77,18 @@ const faq = us ? [
   ['Birden fazla mağazanın stoku birlikte yönetilir mi?','Evet; uygun entegrasyon araçları veya API’ler üzerinden ürün, stok, fiyat ve sipariş senkronizasyonu proje kapsamında tasarlanabilir.'],
   ['Kurulum ücreti sabit mi?','Hayır. Pazar, mağaza sayısı, ürün adedi, entegrasyonlar ve uluslararası operasyon ihtiyaçlarına göre yazılı teklif hazırlanır.'],
 ];
-const contact = '/iletisim/';
+const serviceName = us ? 'Amazon Amerika mağaza kurulumu' : tr ? 'Amazon Türkiye mağaza kurulumu' : 'Pazaryeri mağaza kurulumu';
+const targetMarket = us ? 'ABD / Amazon.com' : tr ? 'Türkiye / Amazon.com.tr' : 'Pazaryeri seçimi için değerlendirme';
+const sourceUrl = 'https://qctcommerce.com' + Astro.url.pathname;
+const quoteMessage = [
+  'QCT Commerce — Pazaryeri kurulum teklifi',
+  'İlgilendiğim hizmet: ' + serviceName,
+  'Hedef pazar: ' + targetMarket,
+  'Kaynak sayfa: ' + sourceUrl,
+  '',
+  'Merhaba, ürün kategorim ve yaklaşık ürün sayım için kurulum teklifi almak istiyorum.',
+].join('\\n');
+const contact = 'https://wa.me/905456782655?text=' + encodeURIComponent(quoteMessage);
 const breadcrumbName = us ? 'Amazon Amerika Mağaza Kurulumu' : tr ? 'Amazon Türkiye Mağaza Kurulumu' : 'Pazaryeri Mağaza Kurulumu';
 const breadcrumbs = [{name:'Ana sayfa',url:'/'},{name:'Hizmetler',url:'/hizmetler/'},{name:breadcrumbName,url:Astro.url.pathname}];
 ---
@@ -88,7 +99,7 @@ const breadcrumbs = [{name:'Ana sayfa',url:'/'},{name:'Hizmetler',url:'/hizmetle
       
       <h1>{heading}</h1>
       <p class="marketplace-lead">{lead}</p>
-      <div class="marketplace-actions"><a class="marketplace-primary" href={contact}>Pazaryeri teklifinizi hazırlayalım <span aria-hidden="true">↗</span></a><a class="marketplace-secondary" href="/e-ticaret/">E-ticaret çözümleri</a></div>
+      <div class="marketplace-actions"><a class="marketplace-primary" href={contact} target="_blank" rel="noopener noreferrer">Pazaryeri teklifinizi hazırlayalım <span aria-hidden="true">↗</span></a><a class="marketplace-secondary" href="/e-ticaret/">E-ticaret çözümleri</a></div>
       <p class="marketplace-note">Satıcı onayı ve satış performansı garanti edilmez. Platform ücretleri teklifimizden ayrıdır.</p>
       <div class="marketplace-channels" aria-label="Pazaryeri logoları">
         <p class="marketplace-eyebrow">PAZARYERİ KANALLARI</p>
@@ -113,7 +124,7 @@ const breadcrumbs = [{name:'Ana sayfa',url:'/'},{name:'Hizmetler',url:'/hizmetle
     </section>
     <section class="marketplace-section marketplace-alt" aria-labelledby="options-heading"><div class="container"><div class="marketplace-intro"><p class="marketplace-eyebrow">İLGİLİ HİZMETLER</p><h2 id="options-heading">Doğru pazarı seçin</h2></div><div class="marketplace-grid marketplace-links">{related.map(([href,name,description]) => <a class="marketplace-card marketplace-link" href={href}><h3>{name} <span aria-hidden="true">↗</span></h3><p>{description}</p></a>)}</div></div></section>
     <section class="marketplace-section container" aria-labelledby="faq-heading"><div class="marketplace-intro"><p class="marketplace-eyebrow">SIK SORULANLAR</p><h2 id="faq-heading">Merak edilenler</h2></div><div class="marketplace-faq">{faq.map(([q,a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
-    <section class="marketplace-bottom container"><div><p class="marketplace-eyebrow">SONRAKİ ADIM</p><h2>Satış planınızı netleştirelim</h2><p>Ürün kategoriniz, hedef pazarınız ve yaklaşık ürün adedinizle iletişime geçin. Kapsamı ve hizmet ücretini ayrı, şeffaf bir teklif olarak hazırlayalım.</p></div><a class="marketplace-primary" href={contact}>Teklif görüşmesi <span aria-hidden="true">↗</span></a></section>
+    <section class="marketplace-bottom container"><div><p class="marketplace-eyebrow">SONRAKİ ADIM</p><h2>Satış planınızı netleştirelim</h2><p>Ürün kategoriniz, hedef pazarınız ve yaklaşık ürün adedinizle iletişime geçin. Kapsamı ve hizmet ücretini ayrı, şeffaf bir teklif olarak hazırlayalım.</p></div><a class="marketplace-primary" href={contact} target="_blank" rel="noopener noreferrer">Teklif görüşmesi <span aria-hidden="true">↗</span></a></section>
   </main>
   <Footer slot="footer" lang="tr"/>
 </BaseLayout>
