@@ -166,3 +166,33 @@ test('desktop layout stays within viewport with usable motion controls', async t
   await page.locator('[data-film-toggle]').scrollIntoViewIfNeeded();
   await screenshot(page, 'qct-p2-motion-controls');
 });
+
+test('marketplace quote keeps selected channel and never invents a fixed price', async t => {
+  const page = await pageFor(t);
+  await page.locator('[data-service]').selectOption('marketplace');
+  await page.locator('[data-platform]').selectOption('amazon-us');
+  await page.locator('[data-products]').selectOption('25');
+  assert.equal(await page.locator('[data-total]').textContent(), 'Özel teklif');
+  const quote = await message(page);
+  assert.ok(quote.includes('Amazon Amerika'));
+  assert.ok(quote.includes('11–25 ürün'));
+  assert.ok(quote.includes('özel teklif talep ediyorum'));
+  assert.ok(!quote.includes('TL’den'));
+  assert.equal(await page.locator('[data-whatsapp]').getAttribute('aria-disabled'), 'false');
+});
+
+for (const path of ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/', '/amazon-amerika-magaza-kurulumu/']) {
+  test(`marketplace logo strip and navigation stay visible: ${path}`, async t => {
+    const page = await pageFor(t, path, { viewport: { width: 390, height: 844 } });
+    assert.equal(await page.locator('.marketplace-channel-viewport').count(), 1);
+    assert.equal(await page.locator('.marketplace-channel-set').count(), 2);
+    assert.equal(await page.locator('.marketplace-channel-set').first().locator('.marketplace-channel').count(), 5);
+    assert.equal(await page.locator('.marketplace-channel-track').evaluate(el => getComputedStyle(el).animationName), 'marketplace-marquee');
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await page.locator('[data-qctm-toggle]').click();
+    await page.getByRole('button', { name: /Hizmetler/ }).click();
+    assert.equal(await page.locator('[data-qctm-group-panel] a[href="/pazaryeri-kurulumu/"]').count(), 1);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    assert.equal(await page.locator('.marketplace-channel-track').evaluate(el => getComputedStyle(el).animationName), 'none');
+  });
+}
