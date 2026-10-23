@@ -24,6 +24,12 @@ How we work: /nasil-calisiyoruz/ · /en/how-we-work/ · /az/nece-isleyirik/
 Digital audit: /audit/ · /en/audit/ · /az/reqemsal-audit/
 Contact: /iletisim/ · /en/contact/ · /az/elaqe/
 
+## Marketplace setup (Turkish service pages)
+- [Marketplace store setup](https://qctcommerce.com/pazaryeri-kurulumu/): Marketplace channel selection, seller-account preparation, product catalog, stock/order synchronization and quote-based project scope for Trendyol, Hepsiburada, n11, Etsy and Amazon.
+- [Amazon Türkiye store setup](https://qctcommerce.com/amazon-turkiye-magaza-kurulumu/): Amazon.com.tr seller application preparation, listings, catalog quality and domestic operational readiness.
+- [Amazon US store setup](https://qctcommerce.com/amazon-amerika-magaza-kurulumu/): Amazon.com onboarding, US-market suitability checks, FBA/FBM planning, product catalog and international logistics preparation.
+These routes currently have Turkish content only; no unpublished English or Azerbaijani counterparts are implied. Seller approval, sales outcomes and platform fees are not included as guaranteed deliverables. Marketplace setup is priced by written project scope rather than a fixed public starting price.
+
 ## Audiences
 All three locales cover manufacturers, exporters, distributors/B2B and e-commerce brands.
 
