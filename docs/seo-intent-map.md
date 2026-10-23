@@ -29,3 +29,21 @@ Her indekslenebilir sayfa tek bir birincil konuya sahiptir. Alt konular, sayfan�
 - Blog makaleleri hizmet sayfalarının ticari niyetini kopyalamaz; karar öncesi bilgi ve uygulama rehberi sunar.
 - Yasal sayfalar ticari anahtar kelime hedeflemez.
 - Yeni dijital hizmet kapsamı dışında kalan üretim hizmetleri bu haritaya dahil değildir.
+
+## Ticari sorgu kümeleri — 23 Ekim 2026
+
+Öncelikler hacim verisi değil, satın alma niyeti hipotezidir. Kopya sayfalar yerine mevcut ana rotaları güçlendirin.
+
+| Hedef rota | Birincil sorgu | Destekleyici aramalar | Dönüşüm |
+| --- | --- | --- | --- |
+| `/e-ticaret/` | e-ticaret sitesi kurma | e-ticaret sitesi yaptırma, WooCommerce site kurulumu, toptan perakende e-ticaret | Fiyat hesaplayıcı |
+| `/fiyatlar/` | e-ticaret sitesi fiyatları | web sitesi fiyatları, e-ticaret kurulum maliyeti, bayi sistemi fiyatları | Fiyat hesaplayıcı |
+| `/web-tasarim/` | kurumsal web sitesi yaptırma | profesyonel web sitesi, web tasarım fiyatları | Teklif |
+
+### AI arama ilkeleri
+
+- Gerçek sorulara doğrulanabilir, kısa ve açık cevaplar ver; uydurma referans ve sıralama iddiası ekleme.
+- İndekslenebilir HTML, canonical, semantik başlıklar, metin ve iç bağlantıları koru.
+- Schema, görünür metinle aynı olmalı; `llms.txt` sıralama garantisi değildir.
+- Search Console gösterim/tıklama/CTR ve hesaplayıcı → WhatsApp dönüşümünü ayrı izle.
+- Tek satır hassasiyeti için kısa başlık kullan, yatay taşmayı zorlama.
