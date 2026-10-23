@@ -328,17 +328,17 @@ const legalLinks = isAzerbaijani ? [
   .site-footer { position: relative; overflow: hidden; isolation: isolate; }
   .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(3.9rem, 5.4vw, 5rem); }
   .site-footer__mobile { display: none; }
-  /* The original dark navy wordmark needs a light surface against the dark footer. */
+  /* Display the transparent original logo directly on the dark footer. */
   .site-footer__brand-logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: fit-content;
     max-width: 100%;
-    padding: 5px 10px;
-    border: 1px solid rgba(255,255,255,.16);
-    border-radius: 10px;
-    background: #f8f4ef;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     text-decoration: none;
   }
   .site-footer__brand-logo img {
