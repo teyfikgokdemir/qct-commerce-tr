@@ -1191,3 +1191,9 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
     padding-top: calc(var(--qct-hero-clearance) + 54px) !important;
   }
 }
+
+/* Branded wordmark stays readable without changing the mobile header height. */
+.site-title--logo::before{display:none!important}
+.site-title--logo{display:inline-flex;align-items:center;max-width:min(46vw,232px);text-decoration:none}
+.site-title--logo img{display:block;width:100%;max-width:232px;height:auto;max-height:64px;object-fit:contain;object-position:left center}
+@media(max-width:600px){.site-title--logo{max-width:min(49vw,190px)}.site-title--logo img{max-height:58px}}
