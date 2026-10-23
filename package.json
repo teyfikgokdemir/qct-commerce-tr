@@ -31,6 +31,6 @@
     "vite": "^8.1.6"
   },
   "devDependencies": {
-    "playwright": "1.62.1"
+    "playwright": "1.64.1"
   }
 }
