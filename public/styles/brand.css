@@ -1192,8 +1192,27 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
   }
 }
 
-/* Branded wordmark stays readable without changing the mobile header height. */
-.site-title--logo::before{display:none!important}
-.site-title--logo{display:inline-flex;align-items:center;max-width:min(46vw,232px);text-decoration:none}
-.site-title--logo img{display:block;width:100%;max-width:232px;height:auto;max-height:64px;object-fit:contain;object-position:left center}
-@media(max-width:600px){.site-title--logo{max-width:min(49vw,190px)}.site-title--logo img{max-height:58px}}
+/* Keep the original QCT logo proportional inside the 68px navigation bar. */
+.site-header .site-title--logo::before { display: none !important; }
+.site-header .site-title--logo {
+  display: inline-flex;
+  align-items: center;
+  width: 172px;
+  max-width: 100%;
+  min-height: 0;
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+.site-header .site-title--logo img {
+  display: block;
+  width: 100%;
+  max-width: 172px;
+  height: auto;
+  max-height: 63px;
+  object-fit: contain;
+  object-position: left center;
+}
+@media (max-width: 999px) {
+  .site-header .site-title--logo { width: 136px; }
+  .site-header .site-title--logo img { max-width: 136px; max-height: 50px; }
+}

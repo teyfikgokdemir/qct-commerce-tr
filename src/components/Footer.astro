@@ -3,6 +3,8 @@ interface Props { lang: string; }
 const { lang } = Astro.props;
 const isEnglish = lang === 'en';
 const isAzerbaijani = lang === 'az';
+const homeHref = isAzerbaijani ? '/az/' : isEnglish ? '/en/' : '/';
+const homeLabel = isAzerbaijani ? 'QCT Commerce — ana səhifə' : isEnglish ? 'QCT Commerce — home' : 'QCT Commerce — ana sayfa';
 
 const mobileCopy = isAzerbaijani ? {
   tagline: 'Veb sayt, e-ticarət və rəqəmsal görünürlük üçün vahid tərəfdaş.',
@@ -133,7 +135,11 @@ const legalLinks = isAzerbaijani ? [
   <div class="site-footer__inner container site-footer__desktop">
     <div class="site-footer__columns">
       <div class="site-footer__group site-footer__brand">
-        <h2>QCT Commerce</h2>
+        <h2 class="site-footer__brand-heading">
+          <a class="site-footer__brand-logo" href={homeHref} aria-label={homeLabel}>
+            <img src="/QCT-Commerce-Premium-Logo-Transparent.webp" width="900" height="329" alt="QCT Commerce" loading="lazy" decoding="async" />
+          </a>
+        </h2>
         <p>{isAzerbaijani ? 'Azərbaycan şirkətləri üçün veb sayt, e-ticarət və rəqəmsal görünürlük sistemləri.' : isEnglish ? 'Websites, e-commerce and digital visibility for businesses and founders operating in Türkiye.' : 'Web, e-ticaret ve dijital görünürlük için uygulama ortağınız.'}</p>
         <p class="site-footer__brand-relationship">{isAzerbaijani ? 'QCT Commerce, Azərbaycan bazarı üçün yerli dildə rəqəmsal xidmətlər təqdim edir.' : isEnglish ? 'QCT Commerce is the Türkiye-focused web, e-commerce and digital visibility brand within the QCT ecosystem.' : 'QCT Commerce, QCT ekosisteminin Türkiye odaklı web, e-ticaret ve dijital görünürlük markasıdır.'}</p>
       </div>
@@ -227,8 +233,9 @@ const legalLinks = isAzerbaijani ? [
 
   <div class="site-footer__mobile" aria-label={isEnglish ? 'Footer' : 'Alt bilgi'}>
     <div class="site-footer__mobile-brand">
-      <span class="site-footer__mobile-mark"></span>
-      <strong>QCT COMMERCE</strong>
+      <a class="site-footer__brand-logo" href={homeHref} aria-label={homeLabel}>
+        <img src="/QCT-Commerce-Premium-Logo-Transparent.webp" width="900" height="329" alt="QCT Commerce" loading="lazy" decoding="async" />
+      </a>
       <p>{mobileCopy.tagline}</p>
     </div>
 
@@ -321,6 +328,29 @@ const legalLinks = isAzerbaijani ? [
   .site-footer { position: relative; overflow: hidden; isolation: isolate; }
   .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(3.9rem, 5.4vw, 5rem); }
   .site-footer__mobile { display: none; }
+  /* The original dark navy wordmark needs a light surface against the dark footer. */
+  .site-footer__brand-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 10px;
+    background: #f8f4ef;
+    text-decoration: none;
+  }
+  .site-footer__brand-logo img {
+    display: block;
+    width: 174px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .site-footer__brand-heading { margin: 0 0 10px; }
+  .site-footer__mobile-brand .site-footer__brand-logo { margin-bottom: 8px; }
+  .site-footer__mobile-brand .site-footer__brand-logo img { width: 145px; }
   .site-footer__marquee {
     position: absolute;
     inset: 0 0 auto;
