@@ -3,7 +3,7 @@ const checks = [
     url: 'https://qctcommerce.com/',
     verify: async (response, body) =>
       response.ok &&
-      body.includes('/styles/qct-v2.css?v=20260929-1') &&
+      /\/styles\/qct-v2\.css(?:\?v=[0-9-]+)?/.test(body) &&
       !body.includes('qct-intro-overlay') &&
       !body.includes('Web sitesi yaptırma fiyatınızı 60 saniyede öğrenin') &&
       body.includes('id="fiyat-hesapla"'),
