@@ -167,7 +167,7 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
 ---
 <header id="masthead" class="site-header" data-site-header>
   <div class="site-header__inner container">
-    <div class="site-branding"><a class="site-title" href={isAzerbaijani ? '/az/' : isEnglish ? '/en/' : '/'} rel="home">QCT Commerce</a></div>
+    <div class="site-branding"><a class="site-title site-title--logo" href={isAzerbaijani ? '/az/' : isEnglish ? '/en/' : '/'} rel="home" aria-label="QCT Commerce — Ana sayfa"><img src="/qct-commerce-logo.svg" alt="QCT Commerce" width="600" height="180" decoding="async" fetchpriority="high" /></a></div>
     <button class="site-menu-toggle qct-legacy-mobile-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
       <span class="screen-reader-text">{isAzerbaijani ? 'Menyunu aç' : isEnglish ? 'Open menu' : 'Menüyü aç'}</span><span class="site-menu-toggle__bar"></span><span class="site-menu-toggle__bar"></span>
     </button>
