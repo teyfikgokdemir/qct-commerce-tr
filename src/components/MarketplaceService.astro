@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+interface Props { market: 'all' | 'tr' | 'us'; }
+const { market } = Astro.props;
+const us = market === 'us';
+const tr = market === 'tr';
+const title = us ? 'Amazon Amerika Mağaza Kurulumu | QCT Commerce' : tr ? 'Amazon Türkiye Mağaza Kurulumu | QCT Commerce' : 'Pazaryeri Mağaza Kurulumu | QCT Commerce';
+const heading = us ? 'Amazon Amerika Kurulumu' : tr ? 'Amazon Türkiye Kurulumu' : 'Pazaryeri Mağaza Kurulumu';
+const lead = us
+  ? 'Amazon.com üzerinden ABD pazarına açılmak isteyen markalar için hesap başvurusu, ürün listeleme ve FBA/FBM operasyon hazırlığını tek plan altında ele alıyoruz.'
+  : tr ? 'Amazon.com.tr üzerinden satışa başlamak için satıcı hesabı hazırlığı, ürün kataloğu, marka sunumu ve operasyon adımlarını planlıyoruz.'
+  : 'Trendyol, Hepsiburada, Amazon Türkiye, Amazon Amerika, n11 ve Etsy için mağaza kurulumunu; ürün, entegrasyon ve operasyon ihtiyaçlarınıza göre tasarlıyoruz.';
+const steps = us
+  ? [['Pazar uygunluğu','Ürün kategorisi, ABD ürün mevzuatı, ithalat, vergi ve lojistik gereklilikleri değerlendirilir.'],['Satıcı hesabı','Amazon.com kayıt sürecinde şirket ve kimlik belgeleri hazırlanır; kabul kararı Amazon’a aittir.'],['Katalog ve lojistik','Ürün sayfaları, görseller, varyasyonlar ve FBA veya FBM modeli yapılandırılır.'],['Yayına hazırlık','Listeleme, maliyet, stok ve sipariş akışı kontrol listesiyle gözden geçirilir.']]
+  : tr ? [['Ön değerlendirme','Ürün grubu, şirket bilgileri ve kategori koşulları belirlenir.'],['Hesap hazırlığı','Satıcı hesabı başvurusu ve mağaza profilinin kurulumu desteklenir.'],['Ürün kataloğu','Başlık, görsel, varyasyon ve kategori eşleşmeleri düzenlenir.'],['Operasyon kontrolü','Stok, fiyat, teslimat ve sipariş süreçleri yayından önce gözden geçirilir.']]
+  : [['Kanal seçimi','Hedef müşteri, kategori ve komisyon yapısına göre uygun kanallar belirlenir.'],['Mağaza kurulumu','Başvuru evrakları, mağaza profili ve katalog düzeni hazırlanır.'],['Entegrasyon planı','Birden fazla kanalda ürün, stok, fiyat ve sipariş akışı tasarlanır.'],['Satışa hazırlık','Operasyon sorumlulukları ve yayına geçiş kontrol listesi netleştirilir.']];
+const related = [
+  ['/amazon-turkiye-magaza-kurulumu/','Amazon Türkiye','Türkiye pazarında satıcı hesabı ve katalog hazırlığı.'],
+  ['/amazon-amerika-magaza-kurulumu/','Amazon Amerika','ABD pazarı, FBA/FBM ve uluslararası satış hazırlığı.'],
+  ['/pazaryeri-kurulumu/','Tüm pazaryerleri','Trendyol, Hepsiburada, n11, Etsy ve entegrasyonlar.'],
+].filter(([href]) => href !== Astro.url.pathname);
+const faq = us ? [
+  ['Amazon Amerika için ABD şirketi şart mı?','ABD şirketi her başvuru için otomatik zorunluluk değildir. Uygunluk, güncel satıcı kayıt koşulları ve işletmenin hukuki/vergi durumuna göre doğrulanır.'],
+  ['FBA ile FBM arasındaki fark nedir?','FBA modelinde Amazon lojistik hizmetleri kullanılır; FBM modelinde sipariş karşılama satıcı tarafından yönetilir. Ücretler, iadeler ve ürün uygunluğu modele göre değişir.'],
+  ['Amazon komisyonları hizmet fiyatına dahil mi?','Hayır. Amazon satıcı aboneliği, kategori komisyonu, lojistik, depolama, vergi ve diğer üçüncü taraf giderler ayrıca değerlendirilir.'],
+] : tr ? [
+  ['Amazon Türkiye satıcı hesabı hemen açılır mı?','Hesap başvurusu için gereken bilgiler hazırlanır. Doğrulama, kategori kabulü ve aktivasyon süreleri Amazon’un değerlendirmesine bağlıdır.'],
+  ['Ürün girişleri dahil mi?','Ürün sayısı, varyasyonlar ve içerik kalitesi proje kapsamına göre ayrıca tekliflendirilir.'],
+  ['Amazon komisyonları kurulum ücretine dahil mi?','Hayır. Amazon’un kendi ücretleri ve satış komisyonları QCT Commerce hizmet bedelinden ayrıdır.'],
+] : [
+  ['Hangi pazaryerleriyle çalışıyorsunuz?','Trendyol, Hepsiburada, Amazon Türkiye, Amazon.com, n11 ve uygun ürün kategorileri için Etsy başvuru ve katalog süreçleri değerlendirilebilir.'],
+  ['Birden fazla mağazanın stoku birlikte yönetilir mi?','Evet; uygun entegrasyon araçları veya API’ler üzerinden ürün, stok, fiyat ve sipariş senkronizasyonu proje kapsamında tasarlanabilir.'],
+  ['Kurulum ücreti sabit mi?','Hayır. Pazar, mağaza sayısı, ürün adedi, entegrasyonlar ve uluslararası operasyon ihtiyaçlarına göre yazılı teklif hazırlanır.'],
+];
+const contact = '/iletisim/';
+---
+<BaseLayout title={title} description={lead} lang="tr" includeServiceCardStyles breadcrumbs={[{name:'Ana sayfa',url:'/'},{name:'Pazaryeri Kurulumu',url:'/pazaryeri-kurulumu/'}]}>
+  <Header slot="header" lang="tr"/>
+  <main class="marketplace">
+    <section class="marketplace-hero container">
+      <p class="marketplace-eyebrow">QCT COMMERCE / ÇOK KANALLI SATIŞ</p>
+      <h1>{heading}</h1>
+      <p class="marketplace-lead">{lead}</p>
+      <div class="marketplace-actions"><a class="marketplace-primary" href={contact}>Projenizi konuşalım <span aria-hidden="true">↗</span></a><a class="marketplace-secondary" href="/e-ticaret/">E-ticaret çözümleri</a></div>
+      <p class="marketplace-note">Satıcı onayı ve satış performansı garanti edilmez. Platform ücretleri teklifimizden ayrıdır.</p>
+    </section>
+    <section class="marketplace-section container" aria-labelledby="scope-heading">
+      <div class="marketplace-intro"><p class="marketplace-eyebrow">YAKLAŞIMIMIZ</p><h2 id="scope-heading">Kurulumdan satışa</h2><p>Mağaza açmak yalnızca ilk adımdır. Ürün yapısını, operasyonu ve hedef pazarı birlikte ele alıyor; gereksiz entegrasyon ve belirsiz maliyetlerden kaçınıyoruz.</p></div>
+      <div class="marketplace-grid">{steps.map(([name,description],i) => <article class="marketplace-card"><span class="marketplace-number">0{i+1}</span><h3>{name}</h3><p>{description}</p></article>)}</div>
+    </section>
+    <section class="marketplace-section marketplace-alt" aria-labelledby="options-heading"><div class="container"><div class="marketplace-intro"><p class="marketplace-eyebrow">İLGİLİ HİZMETLER</p><h2 id="options-heading">Doğru pazarı seçin</h2></div><div class="marketplace-grid marketplace-links">{related.map(([href,name,description]) => <a class="marketplace-card marketplace-link" href={href}><h3>{name} <span aria-hidden="true">↗</span></h3><p>{description}</p></a>)}</div></div></section>
+    <section class="marketplace-section container" aria-labelledby="faq-heading"><div class="marketplace-intro"><p class="marketplace-eyebrow">SIK SORULANLAR</p><h2 id="faq-heading">Merak edilenler</h2></div><div class="marketplace-faq">{faq.map(([q,a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+    <section class="marketplace-bottom container"><div><p class="marketplace-eyebrow">SONRAKİ ADIM</p><h2>Satış planınızı netleştirelim</h2><p>Ürün kategoriniz, hedef pazarınız ve yaklaşık ürün adedinizle iletişime geçin. Kapsamı ve hizmet ücretini ayrı, şeffaf bir teklif olarak hazırlayalım.</p></div><a class="marketplace-primary" href={contact}>Teklif görüşmesi <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <Footer slot="footer" lang="tr"/>
+</BaseLayout>
+<style>
+.marketplace{color:var(--text-primary,#182029)}.marketplace-hero{padding-top:clamp(4rem,9vw,8rem);padding-bottom:clamp(4rem,8vw,7rem);max-width:1100px}.marketplace-eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:.73rem;font-weight:700;color:var(--color-accent,#ba9461);margin:0 0 1.25rem}.marketplace-hero h1{font-size:clamp(2.1rem,5.5vw,4.5rem);line-height:1.08;letter-spacing:-.045em;max-width:100%;margin:0 0 1.5rem;text-wrap:balance}.marketplace-lead{font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.75;max-width:760px;opacity:.82}.marketplace-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.1rem;margin-top:2.25rem}.marketplace-primary,.marketplace-secondary{display:inline-flex;justify-content:center;align-items:center;gap:1rem;padding:1rem 1.45rem;border-radius:8px;font-weight:650;text-decoration:none;transition:transform .2s ease,opacity .2s ease}.marketplace-primary{background:#14252f;color:#fff}.marketplace-secondary{border:1px solid currentColor;color:inherit}.marketplace-primary:hover,.marketplace-secondary:hover{transform:translateY(-2px)}.marketplace-note{font-size:.85rem;opacity:.65;margin-top:1.4rem}.marketplace-section{padding-top:clamp(3.5rem,7vw,6rem);padding-bottom:clamp(3.5rem,7vw,6rem)}.marketplace-alt{background:rgba(140,143,145,.06)}.marketplace-intro{max-width:750px;margin-bottom:2.5rem}.marketplace-intro h2,.marketplace-bottom h2{font-size:clamp(1.8rem,3vw,2.9rem);letter-spacing:-.035em;line-height:1.15;margin:0 0 1rem}.marketplace-intro>p:last-child,.marketplace-bottom p:last-child{line-height:1.8;opacity:.75}.marketplace-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.marketplace-card{border:1px solid rgba(126,135,143,.2);border-radius:12px;padding:1.8rem 1.45rem;background:rgba(255,255,255,.025);min-width:0}.marketplace-number{font-size:.75rem;letter-spacing:.17em;color:#aa8967}.marketplace-card h3{font-size:1.12rem;line-height:1.35;margin:2rem 0 .75rem}.marketplace-card p{font-size:.94rem;line-height:1.7;opacity:.76;margin:0}.marketplace-links{grid-template-columns:repeat(2,minmax(0,1fr))}.marketplace-link{display:block;text-decoration:none;color:inherit}.marketplace-link h3{margin-top:0;display:flex;justify-content:space-between}.marketplace-link:hover{border-color:#aa8967}.marketplace-faq{max-width:900px}.marketplace-faq details{border-bottom:1px solid rgba(126,135,143,.25);padding:1.2rem 0}.marketplace-faq summary{cursor:pointer;font-weight:650;line-height:1.5}.marketplace-faq details p{line-height:1.75;opacity:.78;max-width:790px}.marketplace-bottom{padding-top:4rem;padding-bottom:5rem;display:flex;justify-content:space-between;gap:2rem;align-items:center}.marketplace-bottom>div{max-width:710px}@media(max-width:850px){.marketplace-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.marketplace-hero{padding-top:4rem}.marketplace-grid,.marketplace-links{grid-template-columns:1fr}.marketplace-card h3{margin-top:1.2rem}.marketplace-bottom{flex-direction:column;align-items:flex-start}.marketplace-primary{width:auto}}@media(prefers-reduced-motion:reduce){.marketplace-primary,.marketplace-secondary{transition:none}}
+</style>
