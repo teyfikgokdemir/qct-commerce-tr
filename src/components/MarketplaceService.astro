@@ -53,14 +53,12 @@ const details = us ? {
     ['Yönetim ve raporlama', 'Satış kanallarının sorumluları, günlük sipariş kontrolü, iptal/iade süreçleri ve takip edilecek göstergeler tanımlanır.'],
   ],
 };
-const channelLogos = us || tr
-  ? [{ name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' }]
-  : [
-      { name: 'Trendyol', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Trendyol_logo.svg' },
-      { name: 'Hepsiburada', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Hepsiburada_logo_official.svg' },
-      { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
-      { name: 'n11', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/N11_Logo_2025.svg' },
-    ];
+const channelLogos = [
+  { name: 'Trendyol', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Trendyol_logo.svg' },
+  { name: 'Hepsiburada', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Hepsiburada_logo_official.svg' },
+  { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+  { name: 'n11', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/N11_Logo_2025.svg' },
+];
 const related = [
   ['/amazon-turkiye-magaza-kurulumu/','Amazon Türkiye','Türkiye pazarında satıcı hesabı ve katalog hazırlığı.'],
   ['/amazon-amerika-magaza-kurulumu/','Amazon Amerika','ABD pazarı, FBA/FBM ve uluslararası satış hazırlığı.'],
@@ -91,12 +89,12 @@ const contact = '/iletisim/';
       <div class="marketplace-actions"><a class="marketplace-primary" href={contact}>Pazaryeri teklifinizi hazırlayalım <span aria-hidden="true">↗</span></a><a class="marketplace-secondary" href="/e-ticaret/">E-ticaret çözümleri</a></div>
       <p class="marketplace-note">Satıcı onayı ve satış performansı garanti edilmez. Platform ücretleri teklifimizden ayrıdır.</p>
       <div class="marketplace-channels" aria-label="Pazaryeri logoları">
-        <p class="marketplace-eyebrow">{us || tr ? 'AMAZON PAZARYERİ' : 'PAZARYERİ KANALLARI'}</p>
-        <div class:list={['marketplace-channel-viewport', { 'marketplace-channel-viewport--single': us || tr }]} role="group" aria-label="Pazaryeri markaları">
+        <p class="marketplace-eyebrow">PAZARYERİ KANALLARI</p>
+        <div class="marketplace-channel-viewport" role="group" aria-label="Pazaryeri markaları">
           <div class="marketplace-channel-track">
             {[0, 1].map((repeat) => <div class="marketplace-channel-set" aria-hidden={repeat === 1 ? 'true' : undefined}>
               {channelLogos.map((item) => <div class="marketplace-channel" title={item.name}><img src={item.src} alt={repeat === 1 ? '' : item.name + ' logosu'} loading="lazy" decoding="async" /><span>{item.name}</span></div>)}
-              {!us && !tr && <div class="marketplace-channel marketplace-channel--text"><strong>Etsy</strong><span>Etsy</span></div>}
+              {<div class="marketplace-channel marketplace-channel--text"><strong>Etsy</strong><span>Etsy</span></div>}
             </div>)}
           </div>
         </div>
