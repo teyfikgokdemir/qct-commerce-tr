@@ -1524,3 +1524,143 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
   .qctm-root{display:none!important}
 }
 </style>
+
+<!-- QCT Studio-inspired floating navigation; commerce content/routes and mobile drawer remain unchanged. -->
+<style is:global>
+  /* Keep the original fixed-header geometry, but replace the full-width cream bar with a dark glass dock. */
+  #masthead.site-header,
+  #masthead.site-header.is-scrolled,
+  #masthead.site-header:focus-within {
+    top: 10px !important;
+    padding-inline: 14px;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    pointer-events: none;
+  }
+
+  #masthead .site-header__inner.container {
+    width: 100%;
+    max-width: 1320px;
+    min-height: 66px;
+    padding: 0 clamp(16px, 1.6vw, 24px);
+    gap: clamp(14px, 1.5vw, 22px);
+    background: rgba(9, 17, 30, .97) !important;
+    border: 1px solid rgba(100, 171, 243, .24);
+    border-radius: 999px;
+    box-shadow: 0 17px 42px rgba(8, 16, 30, .24), inset 0 1px 0 rgba(255,255,255,.12);
+    pointer-events: auto;
+  }
+
+  #masthead .site-title--logo:focus-visible,
+  #masthead .main-navigation a:focus-visible,
+  #masthead .submenu-toggle:focus-visible,
+  #masthead .qctm-toggle:focus-visible {
+    outline: 2px solid #38cfff !important;
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 1000px) {
+    #masthead .site-header__inner.container {
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+    }
+
+    #masthead .main-navigation {
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      gap: 0;
+    }
+
+    #masthead .primary-menu > li > a,
+    #masthead .primary-menu > li > .submenu-toggle,
+    #masthead .primary-menu > li > .submenu-toggle span {
+      color: #dce9fb !important;
+      font-size: .81rem !important;
+      font-weight: 650 !important;
+      letter-spacing: 0 !important;
+    }
+
+    #masthead .primary-menu > li > a,
+    #masthead .primary-menu > li > .submenu-toggle {
+      min-height: 42px;
+      padding-inline: clamp(5px, .6vw, 9px) !important;
+      border-radius: 999px;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    #masthead .primary-menu > li > a:hover,
+    #masthead .primary-menu > li > a:focus-visible,
+    #masthead .primary-menu > li > .submenu-toggle:hover,
+    #masthead .primary-menu > li > .submenu-toggle:focus-visible,
+    #masthead .primary-menu > li > .submenu-toggle[aria-expanded="true"] {
+      background: rgba(67, 159, 255, .13) !important;
+      color: #fff !important;
+    }
+
+    #masthead .primary-menu > li > .submenu-toggle:hover span,
+    #masthead .primary-menu > li > .submenu-toggle:focus-visible span,
+    #masthead .primary-menu > li > .submenu-toggle[aria-expanded="true"] span {
+      color: #fff !important;
+    }
+
+    #masthead .primary-menu > li > a::after,
+    #masthead .primary-menu > li > .submenu-toggle::after {
+      background: #38cfff !important;
+    }
+
+    #masthead .primary-menu > li > a[aria-current="page"] {
+      color: #fff !important;
+    }
+
+    #masthead .primary-menu > li > a[hreflang] {
+      color: #85d4ff !important;
+      font-weight: 750 !important;
+    }
+
+    /* Existing accessible dropdown remains above the floating dock. */
+    #masthead .menu-item-has-children .sub-menu {
+      background: #101b2b !important;
+      border-color: rgba(117,180,239,.22) !important;
+    }
+  }
+
+  @media (min-width: 1000px) and (max-width: 1160px) {
+    #masthead .site-title--logo { width: 168px; }
+    #masthead .site-title--logo img { max-width: 168px; }
+    #masthead .primary-menu > li > a,
+    #masthead .primary-menu > li > .submenu-toggle,
+    #masthead .primary-menu > li > .submenu-toggle span {
+      font-size: .72rem !important;
+    }
+    #masthead .primary-menu > li > a,
+    #masthead .primary-menu > li > .submenu-toggle { padding-inline: 5px !important; }
+  }
+
+  @media (max-width: 999px) {
+    /* Solid navy on mobile: avoids a transformed containing block around the fixed navigation drawer. */
+    #masthead.site-header { top: 8px !important; padding-inline: 12px; }
+    #masthead .site-header__inner.container {
+      min-height: 62px;
+      padding-inline: 18px;
+      background: #0c1727 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border-color: rgba(100,171,243,.23);
+    }
+    #masthead .qctm-toggle {
+      background: rgba(61,145,235,.14) !important;
+      border-color: rgba(119,182,242,.28) !important;
+      color: #fff !important;
+      border-radius: 999px !important;
+    }
+    #masthead .qctm-toggle span { background: #ecf6ff !important; }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    #masthead .site-header__inner.container { background: #0c1727 !important; }
+  }
+</style>
