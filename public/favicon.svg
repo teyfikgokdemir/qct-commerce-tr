@@ -1,6 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="QCT Commerce">
-  <rect width="64" height="64" rx="16" fill="#171514"/>
-  <path d="M43.5 18.5A19 19 0 1 0 46 43" fill="none" stroke="#E66B5F" stroke-width="7" stroke-linecap="round"/>
-  <path d="M39 39l9 9" fill="none" stroke="#F8F3EE" stroke-width="6" stroke-linecap="round"/>
-  <rect x="42" y="14" width="8" height="8" rx="2" fill="#F8F3EE"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="QCT Commerce">
+  <title>QCT Commerce</title>
+  <defs>
+    <linearGradient id="qBlue" x1="20%" y1="0%" x2="76%" y2="100%">
+      <stop offset="0%" stop-color="#52DDFB"/><stop offset="29%" stop-color="#1F97F7"/>
+      <stop offset="66%" stop-color="#1265E8"/><stop offset="100%" stop-color="#0742A7"/>
+    </linearGradient>
+    <linearGradient id="qSlash" x1="12%" y1="2%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A58CC"/><stop offset="48%" stop-color="#278EF7"/><stop offset="100%" stop-color="#4BD9FF"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#qBlue)" fill-rule="evenodd" d="M32 3 A29 29 0 1 1 32 61 A29 29 0 1 1 32 3 Z M32 15 A17 17 0 1 0 32 49 A17 17 0 1 0 32 15 Z"/>
+  <path fill="url(#qSlash)" d="M25 17 L37 15 L64 58 L48 58 Z"/>
 </svg>
