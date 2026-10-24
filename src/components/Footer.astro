@@ -569,8 +569,13 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
     .qcte-bottom { flex-direction: column; align-items: flex-start; }
   }
   @media(max-width: 410px) {
-    .qcte-grid { grid-template-columns: minmax(0,1fr); }
-    .qcte-contact__card { max-width: 100%; }
+    .qcte-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 2rem .85rem; }
+    .qcte-col > a { font-size: .82rem !important; }
+    .qcte-contact__card { padding: .7rem .6rem; max-width: 100%; }
+    .qcte-contact__value { font-size: .77rem; }
+  }
+  @media(max-width: 320px) {
+    .qcte-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media(prefers-reduced-motion:reduce) {
     .qcte-marquee__track { animation: none; transform: none; }
