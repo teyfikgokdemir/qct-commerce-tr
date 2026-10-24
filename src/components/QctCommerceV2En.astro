@@ -329,7 +329,7 @@ const platforms = [
     if (typeof window.qctTrackEvent === 'function') window.qctTrackEvent(name, params);
   };
   let pricingStarted = false;
-  let lastPricingCompleteKey = '';
+  let pricingCompleted = false;
 
   function calculate() {
     const selectedService = service?.selectedOptions?.[0];
@@ -345,17 +345,14 @@ const platforms = [
     const completed = [Boolean(service?.value), Boolean(platform?.value), Boolean(products?.value)].filter(Boolean).length;
     progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
 
-    if (hasService && completed === 3) {
-      const completeKey = [service?.value, platform?.value, products?.value, addonPrice].join('|');
-      if (completeKey !== lastPricingCompleteKey) {
-        track('pricing_complete', {
-          service: service?.value || undefined,
-          platform: platform?.value || undefined,
-          product_scope: products?.value || undefined,
-          pricing_value: total,
-        });
-        lastPricingCompleteKey = completeKey;
-      }
+    if (pricingStarted && !pricingCompleted && hasService && completed === 3) {
+      track('pricing_complete', {
+        service: service?.value || undefined,
+        platform: platform?.value || undefined,
+        product_scope: products?.value || undefined,
+        pricing_value: total,
+      });
+      pricingCompleted = true;
     }
 
     if (totalNode) {

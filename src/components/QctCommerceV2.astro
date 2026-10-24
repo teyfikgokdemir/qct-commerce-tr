@@ -342,7 +342,14 @@ const platforms = [
     if (typeof window.qctTrackEvent === 'function') window.qctTrackEvent(name, params);
   };
   let pricingStarted = false;
-  let lastPricingCompleteKey = '';
+  let pricingCompleted = false;
+
+  // Only recognised platform deep links may preselect a service; the visitor still chooses product scope.
+  const requestedPlatform = new URLSearchParams(window.location.search).get('platform');
+  if (['ikas', 'shopify'].includes(requestedPlatform) && service && platform) {
+    service.value = 'ecommerce';
+    platform.value = requestedPlatform;
+  }
 
   function calculate() {
     const selectedService = service?.selectedOptions?.[0];
@@ -363,17 +370,16 @@ const platforms = [
     const completed = [Boolean(service?.value), Boolean(platform?.value), Boolean(products?.value)].filter(Boolean).length;
     progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
 
-    if (hasService && completed === 3 && !isMarketplace) {
-      const completeKey = [service?.value, platform?.value, products?.value, addonPrice].join('|');
-      if (completeKey !== lastPricingCompleteKey) {
-        track('pricing_complete', {
-          service: service?.value || undefined,
-          platform: platform?.value || undefined,
-          product_scope: products?.value || undefined,
-          pricing_value: total,
-        });
-        lastPricingCompleteKey = completeKey;
-      }
+    // A completed pricing journey is a once-per-page interaction, not a lead.
+    // Avoid inflated GA4 counts when users tweak add-ons or revisit options.
+    if (pricingStarted && !pricingCompleted && hasService && completed === 3 && !isMarketplace) {
+      track('pricing_complete', {
+        service: service?.value || undefined,
+        platform: platform?.value || undefined,
+        product_scope: products?.value || undefined,
+        pricing_value: total,
+      });
+      pricingCompleted = true;
     }
 
     if (totalNode) {
@@ -415,7 +421,6 @@ const platforms = [
   form?.addEventListener('change', (event) => {
     if (event.target === service) {
       platform.value = '';
-      lastPricingCompleteKey = '';
     }
     const changed = event.target;
     if (changed instanceof HTMLInputElement && changed.matches('[data-addon-group="visibility"]') && changed.checked) {

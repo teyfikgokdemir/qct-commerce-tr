@@ -18,7 +18,7 @@ Clarity uses consentv2, body text masking and strict project masking. Recording 
 - cta_click, outbound_click, language_change: navigation intent.
 - scroll_depth: percent_scrolled 25/50/75/90, once per page.
 - service_view, reference_view, blog_view: recognized page families.
-- pricing_start/pricing_complete: calculator interaction, never a form conversion.
+- pricing_start/pricing_complete: calculator interaction, never a form conversion. pricing_complete fires at most once per page after the visitor completes the required selections; changes to options/add-ons must not inflate the count. Recognised platform deep links only preselect the service and platform; they do not count as engagement.
 - form_start: brief interaction. The brief opens WhatsApp, so its submit action is whatsapp_click. No generate_lead/form_submit is fabricated.
 - For sites with a real submission endpoint, form_submit/generate_lead requires a successful server response.
 
