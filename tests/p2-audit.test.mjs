@@ -41,6 +41,25 @@ async function screenshot(page, name) {
   if (process.env.P2_SCREENSHOT_DIR) await page.screenshot({ path: resolve(process.env.P2_SCREENSHOT_DIR, name + '.png'), animations: 'disabled' });
 }
 
+test('commercial SEO routes expose a connected, intent-specific internal link cluster', async t => {
+  const cases = [
+    { url: '/e-ticaret/', selector: '.qct-ecommerce-pathways__grid', links: ['/ikas-magaza-kurulumu/', '/shopify-magaza-kurulumu/', '/blog/ikas-mi-shopify-mi-2026/'] },
+    { url: '/fiyatlar/', selector: '.qct-pricing-list', links: ['/ikas-magaza-kurulumu/', '/shopify-magaza-kurulumu/', '/blog/ikas-mi-shopify-mi-2026/'] },
+    { url: '/ikas-magaza-kurulumu/', selector: '.qct-platform-checklist', links: ['/blog/ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri/', '/blog/ikas-mi-shopify-mi-2026/'] },
+    { url: '/shopify-magaza-kurulumu/', selector: '.qct-platform-checklist', links: ['/blog/shopify-magaza-kurma-rehberi/', '/blog/ikas-mi-shopify-mi-2026/'] },
+    { url: '/blog/ikas-mi-shopify-mi-2026/', selector: '.qct-article__topic-links', links: ['/blog/ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri/', '/blog/shopify-magaza-kurma-rehberi/'] },
+    { url: '/blog/ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri/', selector: '.qct-article__topic-links', links: ['/blog/ikas-mi-shopify-mi-2026/', '/fiyatlar/'] },
+    { url: '/blog/shopify-magaza-kurma-rehberi/', selector: '.qct-article__topic-links', links: ['/blog/ikas-mi-shopify-mi-2026/', '/shopify-magaza-kurulumu/'] },
+  ];
+  for (const { url, selector, links } of cases) {
+    const page = await pageFor(t, url);
+    const section = page.locator(selector);
+    assert.equal(await section.count(), 1, `Missing internal-link cluster on ${url}`);
+    for (const href of links) assert.equal(await section.locator(`a[href="${href}"]`).count(), 1, `Missing ${href} on ${url}`);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Horizontal overflow on ${url}`);
+  }
+});
+
 test('ikas and Shopify service pages link to platform-prefilled calculator', async t => {
   for (const name of ['ikas', 'shopify']) {
     const page = await pageFor(t, name === 'ikas' ? '/ikas-magaza-kurulumu/' : '/shopify-magaza-kurulumu/');

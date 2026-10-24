@@ -9,6 +9,22 @@ import { guideEditorial } from '../data/guide-editorial';
 interface Props { article: BlogArticle; }
 const { article } = Astro.props;
 const guideLinks = Object.entries(guideEditorial).filter(([, guide]) => guide.related.some(link => link.href === `/blog/${article.slug}/`));
+// Focused informational next steps; each destination answers a distinct search intent.
+const platformReading: Record<string, Array<{ href: string; label: string }>> = {
+  'ikas-mi-shopify-mi-2026': [
+    { href: '/blog/ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri/', label: 'ikas paket, kurulum ve tema maliyetleri' },
+    { href: '/blog/shopify-magaza-kurma-rehberi/', label: 'Shopify mağaza açmadan önce hazırlık rehberi' },
+  ],
+  'ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri': [
+    { href: '/blog/ikas-mi-shopify-mi-2026/', label: 'ikas mı Shopify mı? İş modeline göre karşılaştırma' },
+    { href: '/fiyatlar/', label: 'QCT Commerce e-ticaret kurulum fiyatları' },
+  ],
+  'shopify-magaza-kurma-rehberi': [
+    { href: '/blog/ikas-mi-shopify-mi-2026/', label: 'Shopify ve ikas farkları: hangisi uygun?' },
+    { href: '/shopify-magaza-kurulumu/', label: 'Profesyonel Shopify mağaza kurulum hizmeti' },
+  ],
+};
+const relatedPlatformReading = platformReading[article.slug] ?? [];
 const seo = getPageSeo(article.seoKey);
 const SITE_URL = 'https://qctcommerce.com';
 const canonicalUrl = new URL(`/blog/${article.slug}/`, SITE_URL).toString();
@@ -96,6 +112,15 @@ const articleSchema = {
           </section>
         ))}
 
+        {relatedPlatformReading.length > 0 && (
+          <nav class="qct-article__topic-links" aria-label="İlgili platform ve maliyet rehberleri">
+            <h2>Kararınızı netleştirecek diğer rehberler</h2>
+            <ul>
+              {relatedPlatformReading.map((link) => <li><a href={link.href}>{link.label} →</a></li>)}
+            </ul>
+          </nav>
+        )}
+
         <aside class="qct-article__related" aria-labelledby="qct-related-service-title">
           <p class="qct-section__eyebrow">İLGİLİ HİZMET</p>
           <h2 id="qct-related-service-title">Bu konuyu işletmenizin altyapısına uygulayın.</h2>
@@ -138,6 +163,10 @@ const articleSchema = {
   .qct-article__body p, .qct-article__body li { color: var(--qct-color-muted); font-size: 1rem; line-height: 1.78; }
   .qct-article__body p { margin: 0 0 1rem; }
   .qct-article__body ul { display: grid; gap: 0.55rem; margin: 1.25rem 0 0; padding-left: 1.25rem; }
+  .qct-article__topic-links { border-top: 1px solid var(--qct-color-line-strong); padding: 2rem 0 .5rem; }
+  .qct-article__topic-links ul { list-style: none; margin: 0; padding: 0; }
+  .qct-article__topic-links li { padding: .45rem 0; }
+  .qct-article__topic-links a { color: var(--qct-color-accent-strong); font-weight: 700; text-underline-offset: .25em; }
   .qct-article__related { background: var(--qct-color-ink); margin-top: 2rem; padding: clamp(28px, 5vw, 48px); }
   .qct-article__related .qct-section__eyebrow { color: var(--qct-color-coral-light); }
   .qct-article__related h2 { color: var(--qct-color-on-dark); max-width: 20ch; }
