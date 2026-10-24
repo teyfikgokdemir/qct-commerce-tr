@@ -1192,12 +1192,12 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
   }
 }
 
-/* Keep the original QCT logo proportional inside the 68px navigation bar. */
+/* Keep the horizontal QCT Commerce logo readable inside the 68px navigation bar. */
 .site-header .site-title--logo::before { display: none !important; }
 .site-header .site-title--logo {
   display: inline-flex;
   align-items: center;
-  width: 172px;
+  width: 208px;
   max-width: 100%;
   min-height: 0;
   flex: 0 0 auto;
@@ -1206,13 +1206,13 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
 .site-header .site-title--logo img {
   display: block;
   width: 100%;
-  max-width: 172px;
+  max-width: 208px;
   height: auto;
   max-height: 63px;
   object-fit: contain;
   object-position: left center;
 }
 @media (max-width: 999px) {
-  .site-header .site-title--logo { width: 136px; }
-  .site-header .site-title--logo img { max-width: 136px; max-height: 50px; }
+  .site-header .site-title--logo { width: 160px; }
+  .site-header .site-title--logo img { max-width: 160px; max-height: 50px; }
 }
