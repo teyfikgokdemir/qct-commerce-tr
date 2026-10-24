@@ -164,6 +164,12 @@ const isCurrent = (path: string) => currentPath === path;
 const isServiceCurrent = servicePaths.includes(currentPath);
 const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
 const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath);
+const desktopLanguageLinks = isAzerbaijani
+  ? [['TR', trHref, 'tr-TR'], ['EN', enHref, 'en']]
+  : isEnglish
+    ? [['AZ', azHref, 'az-AZ'], ['TR', trHref, 'tr-TR']]
+    : [['AZ', azHref, 'az-AZ'], ['EN', enHref, 'en']];
+const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Language selection' : 'Dil seçimi';
 ---
 <header id="masthead" class="site-header" data-site-header>
   <div class="site-header__inner container">
@@ -281,8 +287,6 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
             <li><a href="/az/isler/" aria-current={isCurrent('/az/isler/') ? 'page' : undefined}>İşlərimiz</a></li>
             <li><a href="/az/qiymetler/" aria-current={isCurrent('/az/qiymetler/') ? 'page' : undefined}>Qiymətlər</a></li>
             <li><a href="/az/elaqe/" aria-current={isCurrent('/az/elaqe/') ? 'page' : undefined}>Əlaqə</a></li>
-            <li><a href={trHref} hreflang="tr-TR">TR</a></li>
-            <li><a href={enHref} hreflang="en">EN</a></li>
           </ul>
         ) : isEnglish ? (
           <ul class="primary-menu">
@@ -294,16 +298,20 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
               </ul>
             </li>
             <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Who we help</span></button><ul class="sub-menu"><li><a href="/en/manufacturers/">Manufacturers</a></li><li><a href="/en/exporters/">Exporters</a></li><li><a href="/en/distributors-b2b/">Distributors & B2B</a></li><li><a href="/en/ecommerce-brands/">E-commerce brands</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>Work</a></li><li><a href="/en/location/azerbaijan/" aria-current={isCurrent('/en/location/azerbaijan/') ? 'page' : undefined}>Azerbaijan</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
-            <li><a href={azHref} hreflang="az-AZ">AZ</a></li><li><a href={trHref} hreflang="tr-TR">TR</a></li>
           </ul>
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
             <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/pazaryeri-kurulumu/">Pazaryeri kurulumu</a></li><li><a href="/amazon-turkiye-magaza-kurulumu/">Amazon Türkiye</a></li><li><a href="/amazon-amerika-magaza-kurulumu/">Amazon Amerika</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li><li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/iletisim/">İletişim</a></li><li><a href={azHref} hreflang="az-AZ">AZ</a></li><li><a href={enHref} hreflang="en">EN</a></li>
+            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li><li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/iletisim/">İletişim</a></li>
           </ul>
         )}
       </div>
+    </nav>
+    <nav class="qct-desktop-languages" aria-label={desktopLanguageLabel}>
+      {desktopLanguageLinks.map(([code, href, locale]) => (
+        <a href={href} hreflang={locale} lang={locale}>{code}</a>
+      ))}
     </nav>
   </div>
 </header>
@@ -1554,6 +1562,9 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
     pointer-events: auto;
   }
 
+  /* Language options occupy the right edge independently of the centered primary menu. */
+  #masthead .qct-desktop-languages { display: none; }
+
   #masthead .site-title--logo:focus-visible,
   #masthead .main-navigation a:focus-visible,
   #masthead .submenu-toggle:focus-visible,
@@ -1564,8 +1575,51 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
 
   @media (min-width: 1000px) {
     #masthead .site-header__inner.container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) max-content minmax(0, 1fr);
+      gap: clamp(10px, 1vw, 18px);
       backdrop-filter: blur(22px) saturate(140%);
       -webkit-backdrop-filter: blur(22px) saturate(140%);
+    }
+
+    #masthead .site-branding {
+      grid-column: 1;
+      justify-self: start;
+    }
+
+    #masthead .main-navigation {
+      grid-column: 2;
+      justify-self: center;
+      margin-left: 0 !important;
+    }
+
+    #masthead .qct-desktop-languages {
+      grid-column: 3;
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    #masthead .qct-desktop-languages a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      min-height: 44px;
+      padding: 0 5px;
+      border-radius: 999px;
+      color: #85d4ff;
+      font-size: .8rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: color 180ms ease, background 180ms ease;
+    }
+
+    #masthead .qct-desktop-languages a:hover,
+    #masthead .qct-desktop-languages a:focus-visible {
+      background: rgba(67, 159, 255, .13);
+      color: #fff;
     }
 
     #masthead .main-navigation {
@@ -1629,15 +1683,16 @@ const isAzerbaijaniServiceCurrent = azerbaijaniServicePaths.includes(currentPath
   }
 
   @media (min-width: 1000px) and (max-width: 1160px) {
-    #masthead .site-title--logo { width: 168px; }
-    #masthead .site-title--logo img { max-width: 168px; }
+    #masthead .site-title--logo { width: 146px; }
+    #masthead .site-title--logo img { max-width: 146px; }
     #masthead .primary-menu > li > a,
     #masthead .primary-menu > li > .submenu-toggle,
     #masthead .primary-menu > li > .submenu-toggle span {
       font-size: .72rem !important;
     }
     #masthead .primary-menu > li > a,
-    #masthead .primary-menu > li > .submenu-toggle { padding-inline: 5px !important; }
+    #masthead .primary-menu > li > .submenu-toggle { padding-inline: 4px !important; }
+    #masthead .qct-desktop-languages a { min-width: 31px; padding-inline: 3px; font-size: .72rem; }
   }
 
   @media (max-width: 999px) {
