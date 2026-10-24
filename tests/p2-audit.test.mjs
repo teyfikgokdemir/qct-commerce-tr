@@ -51,8 +51,14 @@ test('ikas and Shopify service pages link to platform-prefilled calculator', asy
 test('platform-prefilled quote records exactly one completed interaction without fake leads', async t => {
   const page = await pageFor(t, '/?platform=ikas#fiyat-hesapla');
   await page.waitForFunction(() => typeof window.qctTrackEvent === 'function');
+  // The production-only analytics runtime intentionally does not emit on localhost.
+  // Spy on UI dispatch without hitting GA4 or weakening hostname protection.
+  await page.evaluate(() => {
+    window.__pricingTestEvents = [];
+    window.qctTrackEvent = (name, params) => window.__pricingTestEvents.push({ name, params });
+  });
   const eventCount = (name) => page.evaluate((eventName) =>
-    (window.dataLayer || []).filter(item => item?.[0] === 'event' && item?.[1] === eventName).length, name);
+    (window.__pricingTestEvents || []).filter(item => item.name === eventName).length, name);
   assert.equal(await page.locator('[data-service]').inputValue(), 'ecommerce');
   assert.equal(await page.locator('[data-platform]').inputValue(), 'ikas');
   assert.equal(await eventCount('pricing_start'), 0);
