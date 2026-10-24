@@ -111,7 +111,12 @@ const faqSchema = {
           {platformPlan.steps.map((step) => <article><h3>{step.title}</h3><p>{step.text}</p></article>)}
         </div>
         <p class="qct-platform-checklist__cost">{platformPlan.costNote}</p>
-        <a class="qct-text-link" href="/blog/ikas-mi-shopify-mi-2026/">ikas mı Shopify mı? İki altyapıyı karşılaştırın →</a>
+        <nav class="qct-hero-actions" aria-label={`${platform} kurulumu için ilgili rehberler`}>
+          <a class="qct-text-link" href={platform === 'ikas' ? '/blog/ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri/' : '/blog/shopify-magaza-kurma-rehberi/'}>
+            {platform === 'ikas' ? 'ikas paket, kurulum ve tema maliyetleri →' : 'Shopify mağaza kurma rehberi →'}
+          </a>
+          <a class="qct-text-link" href="/blog/ikas-mi-shopify-mi-2026/">ikas mı Shopify mı? İki altyapıyı karşılaştırın →</a>
+        </nav>
       </div>
     </section>
 
