@@ -318,5 +318,45 @@ const serviceDescription = 'Shopify, ikas, WooCommerce, Ticimax ve IdeaSoft üze
       ctaSecondary: 'E-posta gönderin',
     }}
   />
+  {lang === 'tr' && (
+    <section class="qct-ecommerce-pathways" aria-labelledby="ecommerce-platform-path-title">
+      <div class="container">
+        <p class="qct-ecommerce-pathways__eyebrow">ALTYAPI SEÇİMİ</p>
+        <h2 id="ecommerce-platform-path-title">E-ticaret mağazanızı hangi altyapıyla kurmalısınız?</h2>
+        <p class="qct-ecommerce-pathways__lead">Kurulumdan önce hedef pazar, ürün ve varyant sayısı, ödeme-kargo koşulları ve toplam maliyeti karşılaştırın. Aşağıdaki yollar ihtiyacınıza göre ayrı hazırlanmıştır.</p>
+        <nav class="qct-ecommerce-pathways__grid" aria-label="Platform kurulumu ve karşılaştırma rehberleri">
+          <a href="/ikas-magaza-kurulumu/">
+            <h3>ikas mağaza kurulumu</h3>
+            <p>Türkiye odaklı satış, yerel operasyon ve ürün aktarımı için kurulum kapsamını ve başlangıç hizmet bedelini inceleyin.</p>
+            <span>ikas kurulum hizmeti →</span>
+          </a>
+          <a href="/shopify-magaza-kurulumu/">
+            <h3>Shopify mağaza kurulumu</h3>
+            <p>Uluslararası satış planı, tema, ürün koleksiyonları ve ödeme uygunluğu için kurulum sürecini değerlendirin.</p>
+            <span>Shopify kurulum hizmeti →</span>
+          </a>
+          <a href="/blog/ikas-mi-shopify-mi-2026/">
+            <h3>ikas mı Shopify mı?</h3>
+            <p>Henüz karar vermediyseniz iki altyapıyı entegrasyon, operasyon ve 12 aylık toplam maliyet açısından karşılaştırın.</p>
+            <span>Platform karşılaştırmasını okuyun →</span>
+          </a>
+        </nav>
+      </div>
+    </section>
+  )}
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
+
+<style>
+  .qct-ecommerce-pathways { background: var(--qct-color-background, #f7f4ef); padding: clamp(42px, 6vw, 80px) 0; color: var(--qct-color-text, #26211f); }
+  .qct-ecommerce-pathways h2 { color: var(--qct-color-ink, #171514); font-size: clamp(1.7rem, 3.6vw, 2.7rem); line-height: 1.16; max-width: 21ch; margin: .5rem 0 1rem; text-wrap: balance; }
+  .qct-ecommerce-pathways__eyebrow { color: var(--qct-color-accent-strong, #a94137); font-size: .82rem; letter-spacing: .12em; font-weight: 750; }
+  .qct-ecommerce-pathways__lead { color: var(--qct-color-muted, #655d58); line-height: 1.7; max-width: 760px; }
+  .qct-ecommerce-pathways__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 22px); margin-top: 2rem; }
+  .qct-ecommerce-pathways__grid a { display: block; min-width: 0; color: inherit; text-decoration: none; padding: clamp(20px, 3vw, 28px); border: 1px solid var(--qct-color-line-strong, #d6cbc4); border-radius: 18px; }
+  .qct-ecommerce-pathways__grid a:focus-visible { outline: 2px solid var(--qct-color-accent-strong, #a94137); outline-offset: 4px; }
+  .qct-ecommerce-pathways__grid h3 { color: var(--qct-color-ink, #171514); font-size: 1.22rem; margin: 0 0 1rem; }
+  .qct-ecommerce-pathways__grid p { color: var(--qct-color-muted, #655d58); line-height: 1.6; margin: 0 0 1.5rem; }
+  .qct-ecommerce-pathways__grid span { color: var(--qct-color-accent-strong, #a94137); font-weight: 750; text-decoration: underline; text-underline-offset: .25em; }
+  @media (max-width: 760px) { .qct-ecommerce-pathways__grid { grid-template-columns: minmax(0, 1fr); } }
+</style>
