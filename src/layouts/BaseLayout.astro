@@ -127,7 +127,7 @@ const knowsAbout = ['E-commerce architecture','Web design and website improvemen
 
 const organizationSchema = {
   '@type': 'Organization', '@id': organizationId, name: 'QCT Commerce', url: SITE_URL,
-  logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/QCT-Commerce-Premium-Logo-Transparent.webp', SITE_URL).toString(), contentUrl: new URL('/QCT-Commerce-Premium-Logo-Transparent.webp', SITE_URL).toString(), width: 900, height: 329, caption: 'QCT Commerce' },
+  logo: { '@type': 'ImageObject', '@id': `${organizationId}/logo`, url: new URL('/images/qct-commerce-primary-dark.webp', SITE_URL).toString(), contentUrl: new URL('/images/qct-commerce-primary-dark.webp', SITE_URL).toString(), width: 940, height: 490, caption: 'QCT Commerce' },
   image: { '@type': 'ImageObject', url: ogImageUrl, width: imageWidth, height: imageHeight },
   description: isAzerbaijani ? 'Azərbaycan şirkətləri üçün veb sayt, e-ticarət, SEO, GEO, AEO, AIO və rəqəmsal satış sistemləri.' : isEnglish ? 'Website, e-commerce, search visibility and AI-supported digital services for English-speaking businesses and founders operating in Türkiye.' : 'QCT Commerce, Türkiye’de e-ticaret ve ölçülebilir dijital büyüme sistemleri kurar.',
   areaServed: areaServedSchema,
@@ -176,7 +176,8 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <title>{title}</title>
   <meta name="description" content={pageDescription} />
   {isIndexable ? <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" /> : <meta name="robots" content="noindex, follow" />}
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260720-1" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261024-1" />
+  <link rel="icon" type="image/webp" sizes="32x32" href="/images/favicon-32.webp?v=20261024-1" />
   <link rel="canonical" href={canonicalUrl} />
   <link rel="describedby" href="/llms.txt" type="text/markdown" />
   <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/ai-catalog+json" />
