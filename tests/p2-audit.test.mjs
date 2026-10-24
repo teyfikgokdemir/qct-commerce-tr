@@ -74,6 +74,35 @@ test('platform-prefilled quote records exactly one completed interaction without
   assert.ok((await message(page)).includes('Shopify'));
 });
 
+test('Shopify and ikas pages explain the platform-specific setup steps and cost boundary', async t => {
+  const scenarios = [
+    {path:'/shopify-magaza-kurulumu/', title:'Shopify mağaza açma hazırlığı', faq:'Shopify mağaza kurulum süresi ne kadar?'},
+    {path:'/ikas-magaza-kurulumu/', title:'ikas mağaza açma hazırlığı', faq:'ikas mağaza açmak için hangi bilgiler gerekiyor?'},
+  ];
+  for (const scenario of scenarios) {
+    const page = await pageFor(t, scenario.path);
+    assert.equal(await page.getByRole('heading',{name:scenario.title}).count(),1);
+    assert.equal(await page.getByText(scenario.faq,{exact:true}).count(),1);
+    assert.equal(await page.locator('.qct-platform-checklist a[href="/blog/ikas-mi-shopify-mi-2026/"]').count(),1);
+    assert.equal(await page.locator('.qct-platform-checklist__cost').count(),1);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),true);
+  }
+});
+
+test('Kocaeli and Istanbul location pages have distinct task-oriented local content, not fictitious office claims', async t => {
+  for (const scenario of [
+    {path:'/lokasyon/kocaeli/',title:'Kocaeli için üç somut dijital iş senaryosu',link:'/sektorler/uretici-sanayi-firmasi-web-sitesi/'},
+    {path:'/lokasyon/istanbul/',title:'İstanbul işletmeleri için üç farklı başlangıç',link:'/blog/ikas-mi-shopify-mi-2026/'},
+  ]) {
+    const page = await pageFor(t, scenario.path);
+    const area = page.locator('.qct-market-focus');
+    assert.equal(await area.getByRole('heading',{name:scenario.title}).count(),1);
+    assert.equal(await area.locator(`a[href="${scenario.link}"]`).count(),1);
+    assert.equal(await area.locator('article').count(),3);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),true);
+  }
+});
+
 test('shopify deep link preselects the expected calculator option', async t => {
   const page = await pageFor(t, '/?platform=shopify#fiyat-hesapla');
   assert.equal(await page.locator('[data-service]').inputValue(), 'ecommerce');

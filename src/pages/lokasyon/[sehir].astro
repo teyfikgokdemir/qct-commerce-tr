@@ -13,8 +13,33 @@ export function getStaticPaths() {
 
 const { market } = Astro.props;
 const isCountry = market.type === "country";
-const title = `${market.name} Web Tasarım ve E-Ticaret Ajansı | QCT Commerce`;
-const description = `${market.name} için web tasarım, e-ticaret ve SEO/GEO çözümleri. ${market.marketAngle}; QCT Commerce ile ölçülebilir dijital talep altyapısı kurun.`;
+const cityFocus = market.id === 'kocaeli' ? {
+  title: 'Kocaeli web tasarım, B2B katalog ve e-ticaret çözümleri',
+  description: 'Kocaeli’deki üretici, lojistik ve ticaret işletmeleri için teknik ürün kataloğu, teklif akışı ve mobil web/e-ticaret projeleri.',
+  heading: 'Kocaeli sanayi ve ticaret işletmeleri için web sitesi ve B2B satış altyapısı.',
+  introduction: 'İzmit, Çayırova veya Dilovası çevresindeki bir üretici için kurumsal web sitesi yalnızca tanıtım değildir: ürün özelliklerini açık sunmalı, doğru kişiden teklif almalı ve müşteriyi uygun satış kanalına yönlendirmelidir.',
+  label: 'SANAYİ VE B2B SENARYOLARI',
+  sectionTitle: 'Kocaeli için üç somut dijital iş senaryosu',
+  scenarios: [
+    {title:'Teknik ürün kataloğu ve teklif',text:'Üretim kapasitesi, ürün grupları, teknik dokümanlar ve miktar alanları ile alıcıya doğru RFQ akışı sunulur. Fiyatların herkese açık olmadığı B2B satışlarda teklif formu öne çıkar.',href:'/sektorler/uretici-sanayi-firmasi-web-sitesi/',link:'Üretici sitesi yaklaşımı →'},
+    {title:'Lojistik talep toplama',text:'Taşıma türü, rota, yük özellikleri ve istenen zaman gibi bilgileri ilk mesajda toplayan, eksik teklif görüşmelerini azaltan bir hizmet yapısı planlanır.',href:'/sektorler/lojistik-firmasi-web-sitesi/',link:'Lojistik firması için yapı →'},
+    {title:'Toptan satış ve e-ticaret',text:'Ürün, bayi, varyant ve sipariş akışı ayrı ihtiyaçlardır. Önce müşterinin perakende mi, toptan mı yoksa iki kanalda mı satış yapacağı netleştirilir.',href:'/e-ticaret/',link:'E-ticaret altyapısını inceleyin →'},
+  ],
+} : market.id === 'istanbul' ? {
+  title: 'İstanbul web tasarım ve e-ticaret sitesi kurulumu',
+  description: 'İstanbul’daki markalar için kurumsal web tasarım, ikas ve Shopify kurulumu, mobil alışveriş deneyimi ve satışa dönük iletişim akışları.',
+  heading: 'İstanbul markaları için kurumsal web tasarım ve e-ticaret kurulumu.',
+  introduction: 'İstanbul’un Anadolu ve Avrupa yakasındaki işletmeler için tek tip site yerine iş modeline uygun bir kurgu gerekiyor: kurumsal teklif toplama, doğrudan online satış veya mevcut mağaza iyileştirmesi.',
+  label: 'TİCARİ KULLANIM SENARYOLARI',
+  sectionTitle: 'İstanbul işletmeleri için üç farklı başlangıç',
+  scenarios: [
+    {title:'Kurumsal hizmet web sitesi',text:'Hizmet kapsamı, gerçek referanslar, sık sorulan sorular ve mobil iletişim formu ile ziyaretçinin neden ulaşması gerektiği açıklanır.',href:'/web-tasarim/',link:'Kurumsal web tasarımı →'},
+    {title:'ikas veya Shopify mağazası',text:'Satış ülkesi, ürün sayısı, entegrasyonlar ve 12 aylık maliyet karşılaştırılarak uygun e-ticaret altyapısı seçilir.',href:'/blog/ikas-mi-shopify-mi-2026/',link:'Platform karşılaştırması →'},
+    {title:'Mevcut mağazadan daha fazla talep',text:'Ürün keşfi, mobil sepet, hız ve WhatsApp iletişimi denetlenir; sorun görünürlükte mi yoksa ziyaretçinin karar adımında mı ayrıştırılır.',href:'/whatsapp-satis/',link:'WhatsApp satış akışları →'},
+  ],
+} : null;
+const title = cityFocus?.title ? `${cityFocus.title} | QCT Commerce` : `${market.name} Web Tasarım ve E-Ticaret Ajansı | QCT Commerce`;
+const description = cityFocus?.description ?? `${market.name} için web tasarım, e-ticaret ve SEO/GEO çözümleri. ${market.marketAngle}; QCT Commerce ile ölçülebilir dijital talep altyapısı kurun.`;
 const alternates = [
   { lang: "tr-TR", href: `/lokasyon/${market.id}/` },
   { lang: "en", href: `/en/location/${market.alternateId}/` },
@@ -49,6 +74,8 @@ const breadcrumbs = [
 .qct-programmatic .service-card h3{color:#171514;font-size:clamp(1.25rem,1.65vw,1.6rem);line-height:1.2;margin:0 0 14px}
 .qct-programmatic .service-card p{color:#655d58;line-height:1.7;margin:0}
 .qct-programmatic .service-card strong{display:block;color:#171514;font-size:.92rem;margin-top:22px}
+.qct-programmatic .qct-market-focus .service-card a{color:#171514;display:inline-block;text-underline-offset:.24em}
+.qct-programmatic .qct-market-focus .service-card a:focus-visible{outline:2px solid #b64236;outline-offset:4px}
 .qct-programmatic .section:nth-of-type(even){background:#ebe4dc}
 .qct-programmatic>.section:last-of-type .container{background:#fffaf5;border:1px solid rgba(23,21,20,.1);border-radius:28px;box-shadow:0 22px 60px rgba(23,21,20,.07);padding:clamp(34px,6vw,70px)}
 .qct-programmatic>.section:last-of-type .section-heading{margin-bottom:0}
@@ -59,8 +86,8 @@ const breadcrumbs = [
   <section class="page-hero section">
     <div class="container">
       <p class="eyebrow">{isCountry ? "ULUSLARARASI PAZAR" : "YEREL BÜYÜME"} · {market.name.toUpperCase()}</p>
-      <h1>{market.name} için dijital büyüme altyapısı.</h1>
-      <p class="page-hero__lead">{market.audience} için web, e-ticaret ve arama görünürlüğünü tek ticari akışta kurguluyoruz. Hedef: {market.marketAngle}.</p>
+      <h1>{cityFocus?.heading ?? `${market.name} için dijital büyüme altyapısı.`}</h1>
+      <p class="page-hero__lead">{cityFocus?.introduction ?? `${market.audience} için web, e-ticaret ve arama görünürlüğünü tek ticari akışta kurguluyoruz. Hedef: ${market.marketAngle}.`}</p>
       <div class="hero__actions">
         <a class="button button--primary" href="/iletisim/">{market.name} için proje görüşmesi</a>
         <a class="button button--secondary" href="/calismalar/">Çalışmaları inceleyin</a>
@@ -107,6 +134,27 @@ const breadcrumbs = [
       </div>
     </div>
   </section>
+
+  {cityFocus && (
+    <section class="section qct-market-focus" aria-labelledby="qct-market-focus-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">{cityFocus.label}</p>
+          <h2 id="qct-market-focus-title">{cityFocus.sectionTitle}</h2>
+          <p>Önce hedef müşterinin aradığı bilgiyi ve satın alma adımını belirleyerek gerekli sayfaları oluşturuyoruz. Her işletme için aynı şablonun uygun olduğunu varsaymıyoruz.</p>
+        </div>
+        <div class="service-grid">
+          {cityFocus.scenarios.map((scenario) => (
+            <article class="service-card">
+              <h3>{scenario.title}</h3>
+              <p>{scenario.text}</p>
+              <a href={scenario.href}><strong>{scenario.link}</strong></a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   {marketServicePages.length > 0 && (
     <section class="section">

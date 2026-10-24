@@ -20,6 +20,10 @@ Her indekslenebilir sayfa tek bir birincil konuya sahiptir. Alt konular, sayfan�
 | `/cerez-politikasi/` | Çerez ve analytics tercihleri | Zorunlu depolama, isteğe bağlı analiz, tercih yönetimi |
 | `/blog/` | E-ticaret ve dijital büyüme rehber merkezi | Üç özgün makaleye konu kümeli geçiş |
 | `/blog/shopify-magaza-kurma-rehberi/` | Türkiye’de Shopify mağazası hazırlama | Platform uygunluğu, ürün mimarisi, ödeme, kargo, test |
+| `/shopify-magaza-kurulumu/` | Shopify mağaza kurulum hizmeti | Tema, koleksiyon, ürün-varyant yapısı, ödeme uygunluğu, başlangıç fiyatı |
+| `/ikas-magaza-kurulumu/` | ikas mağaza kurulum hizmeti | Yerel operasyon, kategori-varyant, taşıma, sipariş/test akışı |
+| `/lokasyon/kocaeli/` | Kocaeli'de web tasarım ve B2B çözümü | Sanayi kataloğu, lojistik talepleri, toptan e-ticaret (yerel ofis iddiası yok) |
+| `/lokasyon/istanbul/` | İstanbul'da web tasarım ve e-ticaret | Hizmet sitesi, ikas/Shopify kararı, mobil satış akışı (yerel ofis iddiası yok) |
 | `/blog/e-ticarette-yapilan-hatalar/` | E-ticaret sitesindeki temel satış hataları | Ürün sayfası, mobil, ödeme, ölçüm, önceliklendirme |
 | `/blog/pazaryerinden-kendi-sitene-gecis/` | Pazaryerinden doğrudan satış kanalına kontrollü geçiş | Kanal maliyeti, veri, operasyon, aşamalı geçiş |
 

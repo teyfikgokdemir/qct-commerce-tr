@@ -14,6 +14,35 @@ interface Props {
 }
 const { platform, title, description, heading, lead, strengths, faqItems } = Astro.props;
 const calculatorHref = `/?platform=${platform.toLowerCase()}#fiyat-hesapla`;
+const platformPlan = platform === 'ikas' ? {
+  intro: 'Türkiye odaklı mağazalarda önce ürün yapısını, yerel ödeme-kargo gereksinimlerini ve mevcut operasyonu netleştiriyoruz. ikas paketinin sunduğu entegrasyonlar, işlem koşulları ve ücretler satın alma aşamasında ayrıca doğrulanır.',
+  strengths: [
+    'Kategori ağacı, ana sayfa ve ürün detay şablonunu markanın gerçek ürün sayısı ve varyantlarına göre düzenliyoruz.',
+    'SKU, beden-renk seçenekleri, stok ve görsellerin aktarım kapsamını belirleyip örnek ürünlerle doğruluyoruz.',
+    'Mobilde kategori keşfi, ürün seçimi ve teklif/satın alma çağrısını ilk ekrandan itibaren kontrol ediyoruz.',
+    'URL, metadata, taranabilirlik ve ölçüm kurulumunu yayına çıkmadan önce test ediyoruz.',
+  ],
+  steps: [
+    { title: 'ikas mağaza açma hazırlığı', text: 'Hesap ve paket seçimi, alan adı, marka varlıkları, kategori planı ve gerekli satış kanalları için kontrol listesi oluşturulur.' },
+    { title: 'Ürün ve varyasyon aktarımı', text: 'Ürün adı, SKU, varyant, stok ve görsellerin kaynak formatı incelenir; geçiş varsa URL eşleştirmeleri ve yönlendirmeler ayrıca planlanır.' },
+    { title: 'Ödeme, kargo ve canlı test', text: 'İşletmenin kullanabildiği ödeme ve kargo bağlantıları doğrulanır; mobil sepet, sipariş, e-posta bildirimleri ve ölçüm akışı test edilir.' },
+  ],
+  costNote: '9.900 TL, standart kurulum hizmetinin başlangıç bedelidir. ikas aboneliği, ücretli tema/uygulama, ürün sayısına göre veri çalışması veya özel entegrasyonlar kapsam dışı olabilir.',
+} : {
+  intro: 'Shopify mağaza kurulumunda öncelikle satış yapılacak ülke, para birimi, ödeme sağlayıcısı uygunluğu ve ürün operasyonlarını belirliyoruz. Uygulama ekosistemindeki seçenekleri ihtiyaç ve toplam aylık maliyet açısından değerlendiriyoruz.',
+  strengths: [
+    'Tema bölümleri, navigasyon, koleksiyonlar ve ürün detayları markanın alışveriş yolculuğuna göre uyarlanır.',
+    'Ürün varyantları, koleksiyonlar, görseller ve filtre ihtiyacı birlikte ele alınarak kategori keşfi sadeleştirilir.',
+    'Mobil ürün sayfası, sepet, ödeme yönlendirmeleri ve zorunlu bilgiler gerçek kullanıcı senaryolarıyla kontrol edilir.',
+    'Temel meta alanları, koleksiyon/ürün indeksleme sinyalleri, hız ve GA4 olayları yayına çıkmadan denetlenir.',
+  ],
+  steps: [
+    { title: 'Shopify mağaza açma hazırlığı', text: 'Alan adı, para birimi, dil, satış ülkesi ve uygun Shopify planı belirlenir; Türkiye merkezli işletmeler için ödeme sağlayıcılarının erişilebilirliği ayrıca kontrol edilir.' },
+    { title: 'Tema, koleksiyon ve ürün kurulumu', text: 'Menü, koleksiyon, ürün varyantları, görsel oranları, mobil ürün kartları ve stok mantığı gerçek katalog örneği üzerinden yapılandırılır.' },
+    { title: 'Entegrasyon ve yayın öncesi kontrol', text: 'Kargo, vergi, sipariş bildirimleri, yönlendirmeler, erişilebilirlik ve ölçüm test edilir; ücretli uygulamalar yalnız gerekliyse kapsama dahil edilir.' },
+  ],
+  costNote: '9.900 TL, standart kurulum hizmetinin başlangıç bedelidir. Shopify planı, ücretli tema/uygulamalar, ödeme komisyonları, özel entegrasyonlar ve kapsam dışı veri aktarımı ayrıca fiyatlandırılabilir.',
+};
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -64,8 +93,25 @@ const faqSchema = {
           <p>{platform} mağazanızı tema kurup bırakmak yerine ürün keşfi, mobil kullanım, güven, ölçüm ve satış akışıyla birlikte ele alıyoruz.</p>
         </div>
         <div class="qct-benefit-grid">
-          {strengths.map((item) => <article><h3>{item}</h3><p>Kurulum sırasında bu alanı mağazanızın ürün yapısı ve ticari ihtiyacına göre yapılandırıyoruz.</p></article>)}
+          {strengths.map((item, index) => <article><h3>{item}</h3><p>{platformPlan.strengths[index]}</p></article>)}
         </div>
+      </div>
+    </section>
+
+    <section class="qct-platform-detail qct-platform-checklist" aria-labelledby="qct-platform-checklist-title">
+      <div class="qct-shell">
+        <div class="qct-section-head">
+          <div>
+            <p class="qct-section-label">KURULUM REHBERİ</p>
+            <h2 id="qct-platform-checklist-title">{platform} mağaza kurulumu nasıl ilerler?</h2>
+          </div>
+          <p>{platformPlan.intro}</p>
+        </div>
+        <div class="qct-benefit-grid">
+          {platformPlan.steps.map((step) => <article><h3>{step.title}</h3><p>{step.text}</p></article>)}
+        </div>
+        <p class="qct-platform-checklist__cost">{platformPlan.costNote}</p>
+        <a class="qct-text-link" href="/blog/ikas-mi-shopify-mi-2026/">ikas mı Shopify mı? İki altyapıyı karşılaştırın →</a>
       </div>
     </section>
 
