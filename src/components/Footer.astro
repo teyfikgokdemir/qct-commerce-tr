@@ -262,12 +262,6 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
       <nav class="qcte-col" aria-label={editorial.company}>
         <h3 class="qcte-col__label">{editorial.company}</h3>
         {editorialCompanyLinks.map(([label, href]) => <a href={href}>{label}</a>)}
-        {(!isEnglish || isAzerbaijani) && (
-          <div class="qcte-col__extra">
-            <h4 class="qcte-col__label">{editorial.resources}</h4>
-            {(isAzerbaijani ? azLocationLinks : resourceLinks).map(([label, href]) => <a href={href}>{label}</a>)}
-          </div>
-        )}
       </nav>
       <div class="qcte-col qcte-contact">
         <h3 class="qcte-col__label">{editorial.contact}</h3>
@@ -282,6 +276,15 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
         <span class="qcte-contact__location">{editorial.region}</span>
       </div>
     </div>
+
+    {!isEnglish && (
+      <nav class="qcte-utility" aria-label={editorial.resources}>
+        <h3 class="qcte-col__label">{editorial.resources}</h3>
+        <div class="qcte-utility__links">
+          {(isAzerbaijani ? azLocationLinks : resourceLinks).map(([label, href]) => <a href={href}>{label}</a>)}
+        </div>
+      </nav>
+    )}
 
     <div class="qcte-bottom">
       <div class="qcte-bottom__brand">
@@ -480,6 +483,7 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
   }
   .qcte-desk__button:hover { background: #9ce7ff; transform: translateY(-2px); }
   .qcte-desk__button:focus-visible, .qcte-col a:focus-visible,
+  .qcte-utility a:focus-visible,
   .qcte-contact__card:focus-visible, .qcte-bottom__legal a:focus-visible,
   .qcte-logo:focus-visible { outline: 2px solid #56d9ff; outline-offset: 4px; }
   .qcte-rule {
@@ -500,17 +504,29 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
     color: #79c4ff !important; line-height: 1.5;
     text-transform: uppercase !important;
   }
-  .qcte-col > a, .qcte-col__extra a {
+  .qcte-col > a {
     display: inline-flex !important; color: rgba(229,239,252,.72) !important;
     font-size: .87rem !important; line-height: 1.5;
     font-weight: 510; text-decoration: none !important;
     transition: color 180ms ease, transform 180ms ease;
   }
-  .qcte-col > a:hover, .qcte-col__extra a:hover {
+  .qcte-col > a:hover {
     color: #fff !important; transform: translateX(3px);
   }
-  .qcte-col__extra { display: flex; flex-direction: column; align-items: flex-start; gap: .65rem; margin-top: 1.25rem; }
-  .qcte-col__extra .qcte-col__label { margin-bottom: .35rem !important; }
+  .qcte-utility {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .85rem 1.5rem;
+    margin-top: clamp(2rem, 4vw, 3.2rem);
+    padding-top: 1.25rem; border-top: 1px solid rgba(160,207,255,.1);
+  }
+  .qcte-utility .qcte-col__label { margin: 0 !important; flex: 0 0 auto; }
+  .qcte-utility__links { display: flex; flex-wrap: wrap; gap: .45rem .8rem; }
+  .qcte-utility__links a {
+    color: rgba(229,239,252,.58) !important;
+    font-size: .77rem !important; line-height: 1.4;
+    padding: .42rem .65rem; border: 1px solid rgba(145,204,252,.1);
+    border-radius: 999px; text-decoration: none !important;
+  }
+  .qcte-utility__links a:hover { color: #fff !important; border-color: rgba(90,195,255,.42); }
   .qcte-contact { gap: .62rem; }
   .qcte-contact__card {
     display: flex !important; flex-direction: column; gap: .28rem;
