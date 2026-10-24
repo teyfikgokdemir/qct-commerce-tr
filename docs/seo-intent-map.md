@@ -43,6 +43,11 @@ Her indekslenebilir sayfa tek bir birincil konuya sahiptir. Alt konular, sayfan�
 | `/e-ticaret/` | e-ticaret sitesi kurma | e-ticaret sitesi yaptırma, WooCommerce site kurulumu, toptan perakende e-ticaret | Fiyat hesaplayıcı |
 | `/fiyatlar/` | e-ticaret sitesi fiyatları | web sitesi fiyatları, e-ticaret kurulum maliyeti, bayi sistemi fiyatları | Fiyat hesaplayıcı |
 | `/web-tasarim/` | kurumsal web sitesi yaptırma | profesyonel web sitesi, web tasarım fiyatları | Teklif |
+| `/shopify-magaza-kurulumu/` | Shopify mağaza kurulumu (ticari) | shopify kurulum, shopify mağaza açma, profesyonel kurulum | Platformu seçilmiş fiyat hesabı |
+| `/ikas-magaza-kurulumu/` | ikas mağaza kurulumu (ticari) | ikas kurulum, ikas mağaza açma | Platformu seçilmiş fiyat hesabı |
+| `/blog/ikas-mi-shopify-mi-2026/` | ikas mı Shopify mı (karar öncesi bilgi) | ikas vs shopify, toplam sahip olma maliyeti | Her iki kurulum sayfasına yönlendirme |
+| `/blog/ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri/` | ikas maliyet kalemleri (bilgilendirici) | ikas fiyat, tema, kurulum ve üçüncü taraf giderleri | ikas hizmet sayfası |
+| `/blog/shopify-magaza-kurma-rehberi/` | Shopify mağaza açma hazırlığı (bilgilendirici) | shopify site kurma, ürün/kargo/ödeme hazırlığı | Shopify hizmet sayfası |
 
 ### AI arama ilkeleri
 
