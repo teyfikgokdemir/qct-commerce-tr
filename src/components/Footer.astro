@@ -137,7 +137,7 @@ const legalLinks = isAzerbaijani ? [
       <div class="site-footer__group site-footer__brand">
         <h2 class="site-footer__brand-heading">
           <a class="site-footer__brand-logo" href={homeHref} aria-label={homeLabel}>
-            <img src="/QCT-Commerce-Premium-Logo-Transparent.webp" width="900" height="329" alt="QCT Commerce" loading="lazy" decoding="async" />
+            <img src="/images/qct-commerce-primary-dark.webp" width="940" height="490" alt="QCT Commerce" loading="lazy" decoding="async" />
           </a>
         </h2>
         <p>{isAzerbaijani ? 'Azərbaycan şirkətləri üçün veb sayt, e-ticarət və rəqəmsal görünürlük sistemləri.' : isEnglish ? 'Websites, e-commerce and digital visibility for businesses and founders operating in Türkiye.' : 'Web, e-ticaret ve dijital görünürlük için uygulama ortağınız.'}</p>
@@ -234,7 +234,7 @@ const legalLinks = isAzerbaijani ? [
   <div class="site-footer__mobile" aria-label={isEnglish ? 'Footer' : 'Alt bilgi'}>
     <div class="site-footer__mobile-brand">
       <a class="site-footer__brand-logo" href={homeHref} aria-label={homeLabel}>
-        <img src="/QCT-Commerce-Premium-Logo-Transparent.webp" width="900" height="329" alt="QCT Commerce" loading="lazy" decoding="async" />
+        <img src="/images/qct-commerce-primary-dark.webp" width="940" height="490" alt="QCT Commerce" loading="lazy" decoding="async" />
       </a>
       <p>{mobileCopy.tagline}</p>
     </div>
@@ -328,7 +328,7 @@ const legalLinks = isAzerbaijani ? [
   .site-footer { position: relative; overflow: hidden; isolation: isolate; }
   .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(3.9rem, 5.4vw, 5rem); }
   .site-footer__mobile { display: none; }
-  /* Display the transparent original logo directly on the dark footer. */
+  /* The new QCT Commerce primary logo is transparent and designed for dark backgrounds. */
   .site-footer__brand-logo {
     display: inline-flex;
     align-items: center;
@@ -343,14 +343,14 @@ const legalLinks = isAzerbaijani ? [
   }
   .site-footer__brand-logo img {
     display: block;
-    width: 174px;
+    width: 234px;
     max-width: 100%;
     height: auto;
     object-fit: contain;
   }
-  .site-footer__brand-heading { margin: 0 0 10px; }
+  .site-footer__brand-heading { margin: 0 0 14px; text-align: center; }
   .site-footer__mobile-brand .site-footer__brand-logo { margin-bottom: 8px; }
-  .site-footer__mobile-brand .site-footer__brand-logo img { width: 145px; }
+  .site-footer__mobile-brand .site-footer__brand-logo img { width: 186px; }
   .site-footer__marquee {
     position: absolute;
     inset: 0 0 auto;
