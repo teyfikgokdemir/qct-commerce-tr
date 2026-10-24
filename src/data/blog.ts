@@ -168,7 +168,7 @@ export const articles: BlogArticle[] = [
     slug: 'ikas-mi-shopify-mi-2026', seoKey: 'blog-ikas-shopify-2026',
     title: 'ikas mı Shopify mı? Türkiye için 2026 karşılaştırması',
     excerpt: 'ikas ve Shopify’ı Türkiye’de ödeme, entegrasyon, operasyon, uluslararası satış, SEO ve toplam maliyet açısından hangi senaryoda daha uygun olduklarıyla karşılaştırın.',
-    published: '2026-09-21', modified: '2026-09-21',
+    published: '2026-09-21', modified: '2026-10-24',
     intro: 'ikas mı Shopify mı sorusunun tek doğru cevabı yoktur. Türkiye merkezli hızlı operasyon, yerel destek ve hazır entegrasyon önceliği olan bir işletmenin ihtiyacı ile uluslararası pazara açılmak, geniş uygulama ekosistemi kullanmak ve çok ülkeliliği büyütmek isteyen markanın ihtiyacı farklıdır.',
     summary: ['Önce satış ülkesi, ödeme ve operasyon gereksinimlerini belirleyin.','Yerel entegrasyon kolaylığı ile global uygulama ekosistemini ayrı değerlendirin.','SEO açısından iki platformda da içerik ve teknik uygulama kalitesi belirleyicidir.','Lisans ücretinden önce toplam sahip olma maliyetini hesaplayın.'],
     sections: [
