@@ -119,15 +119,20 @@ const legalLinks = isAzerbaijani ? [
   ['Kullanım koşulları','/kullanim-kosullari/'],
   ['Çerez politikası','/cerez-politikasi/'],
 ];
+const marqueePhrases = isAzerbaijani
+  ? ['VEB DİZAYN', 'E-TİCARƏT', 'RƏQƏMSAL GÖRÜNÜRLÜK', 'AI AVTOMATLAŞDIRMA']
+  : isEnglish
+    ? ['WEB DESIGN', 'E-COMMERCE', 'SEARCH VISIBILITY', 'AI AUTOMATION']
+    : ['WEB TASARIM', 'E-TİCARET', 'DİJİTAL GÖRÜNÜRLÜK', 'YAPAY ZEKÂ OTOMASYONU'];
 ---
 <footer id="colophon" class:list={['site-footer', { 'site-footer--resources': !isEnglish && !isAzerbaijani }]}>
   <div class="site-footer__marquee" aria-hidden="true">
     <div class="site-footer__marquee-track">
       <div class="site-footer__marquee-group">
-        <span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span>
+        {marqueePhrases.map((phrase) => <span>{phrase}</span>)}
       </div>
       <div class="site-footer__marquee-group" aria-hidden="true">
-        <span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span><span>QCT COMMERCE</span>
+        {marqueePhrases.map((phrase) => <span>{phrase}</span>)}
       </div>
     </div>
   </div>
@@ -380,11 +385,11 @@ const legalLinks = isAzerbaijani ? [
   }
   .site-footer__marquee span {
     color: transparent;
-    background: linear-gradient(90deg, #c8ff3d 0%, #dffb64 26%, #ff8b78 62%, #e66b5f 100%);
+    background: linear-gradient(90deg, #e6f6ff 0%, #62c9ff 34%, #2487ee 72%, #9de9ff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 24px rgba(230, 107, 95, .08);
+    text-shadow: 0 0 24px rgba(42, 152, 255, .13);
     font-size: clamp(2.2rem, 5.2vw, 4.7rem);
     font-weight: 800;
     line-height: .84;
