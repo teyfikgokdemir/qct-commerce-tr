@@ -41,6 +41,49 @@ async function screenshot(page, name) {
   if (process.env.P2_SCREENSHOT_DIR) await page.screenshot({ path: resolve(process.env.P2_SCREENSHOT_DIR, name + '.png'), animations: 'disabled' });
 }
 
+test('ikas and Shopify service pages link to platform-prefilled calculator', async t => {
+  for (const name of ['ikas', 'shopify']) {
+    const page = await pageFor(t, name === 'ikas' ? '/ikas-magaza-kurulumu/' : '/shopify-magaza-kurulumu/');
+    assert.equal(await page.locator(`a[href="/?platform=${name}#fiyat-hesapla"]`).count(), 2);
+  }
+});
+
+test('platform-prefilled quote records exactly one completed interaction without fake leads', async t => {
+  const page = await pageFor(t, '/?platform=ikas#fiyat-hesapla');
+  await page.waitForFunction(() => typeof window.qctTrackEvent === 'function');
+  const eventCount = (name) => page.evaluate((eventName) =>
+    (window.dataLayer || []).filter(item => item?.[0] === 'event' && item?.[1] === eventName).length, name);
+  assert.equal(await page.locator('[data-service]').inputValue(), 'ecommerce');
+  assert.equal(await page.locator('[data-platform]').inputValue(), 'ikas');
+  assert.equal(await eventCount('pricing_start'), 0);
+  assert.equal(await eventCount('pricing_complete'), 0);
+  await page.locator('[data-products]').selectOption('10');
+  assert.equal(await eventCount('pricing_start'), 1);
+  assert.equal(await eventCount('pricing_complete'), 1);
+  await page.getByRole('checkbox', { name: 'Ek dil', exact: false }).check();
+  await page.locator('[data-products]').selectOption('25');
+  await page.locator('[data-platform]').selectOption('shopify');
+  assert.equal(await eventCount('pricing_complete'), 1, 'Changes must not inflate completed pricing sessions');
+  assert.equal(await eventCount('generate_lead'), 0, 'Completing the calculator is not a submitted lead');
+  assert.ok((await message(page)).includes('Shopify'));
+});
+
+test('shopify deep link preselects the expected calculator option', async t => {
+  const page = await pageFor(t, '/?platform=shopify#fiyat-hesapla');
+  assert.equal(await page.locator('[data-service]').inputValue(), 'ecommerce');
+  assert.equal(await page.locator('[data-platform]').inputValue(), 'shopify');
+});
+
+test('platform comparison offers direct quote and service routes', async t => {
+  const page = await pageFor(t, '/blog/ikas-mi-shopify-mi-2026/');
+  const section = page.locator('.qct-article__platform-guide');
+  assert.equal(await section.count(), 1);
+  for (const path of ['/ikas-magaza-kurulumu/', '/shopify-magaza-kurulumu/', '/?platform=ikas#fiyat-hesapla', '/?platform=shopify#fiyat-hesapla']) {
+    assert.equal(await section.locator(`a[href="${path}"]`).count(), 1, `Missing link ${path}`);
+  }
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+});
+
 test('quote includes platform, product scope, every selected addon and unchanged price', async t => {
   const page = await pageFor(t);
   await page.locator('[data-service]').selectOption('ecommerce');
