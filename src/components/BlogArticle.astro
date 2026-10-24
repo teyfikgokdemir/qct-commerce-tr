@@ -72,18 +72,18 @@ const articleSchema = {
             <h2 id="qct-platform-choice-title">İşletmeniz için hangi altyapı daha uygun?</h2>
             <p>Satış yapacağınız ülkeleri, ödeme ve kargo süreçlerinizi, ürün kapsamını ve 12 aylık toplam maliyeti birlikte düşünün. İki platformun da her işletme için tek başına doğru cevap olması gerekmez.</p>
             <div class="qct-article__platform-grid">
-              <article>
+              <div>
                 <h3>Türkiye odaklı satış: ikas</h3>
                 <p>Yerel operasyon ve hazır entegrasyonlar önceliğinizse ihtiyaç duyduğunuz ödeme, kargo ve pazaryeri bağlantılarını pakete göre doğrulayın.</p>
                 <a href="/ikas-magaza-kurulumu/">ikas kurulum hizmeti →</a>
                 <a href="/?platform=ikas#fiyat-hesapla">ikas için başlangıç fiyatını hesapla →</a>
-              </article>
-              <article>
+              </div>
+              <div>
                 <h3>Uluslararası satış: Shopify</h3>
                 <p>Çok ülkeli büyüme ve geniş uygulama ekosistemi arıyorsanız Türkiye'deki ödeme uygunluğunu, ek uygulamaları ve toplam maliyeti inceleyin.</p>
                 <a href="/shopify-magaza-kurulumu/">Shopify kurulum hizmeti →</a>
                 <a href="/?platform=shopify#fiyat-hesapla">Shopify için başlangıç fiyatını hesapla →</a>
-              </article>
+              </div>
             </div>
             <p class="qct-article__platform-note">Kurulum fiyatları QCT Commerce hizmet bedelidir; platform aboneliği, tema ve üçüncü taraf uygulama ücretleri ayrıca değerlendirilir.</p>
           </section>
@@ -130,7 +130,7 @@ const articleSchema = {
   .qct-article__body { min-width: 0; }
   .qct-article__body > section { border-top: 1px solid var(--qct-color-line-strong); padding-block: clamp(28px, 4vw, 46px); }
   .qct-article__platform-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-  .qct-article__platform-grid article { border: 1px solid var(--qct-color-line-strong); border-radius: 12px; padding: clamp(18px, 3vw, 26px); min-width: 0; }
+  .qct-article__platform-grid > div { border: 1px solid var(--qct-color-line-strong); border-radius: 12px; padding: clamp(18px, 3vw, 26px); min-width: 0; }
   .qct-article__platform-grid h3 { color: var(--qct-color-ink); font-size: 1.16rem; line-height: 1.3; margin: 0 0 0.75rem; }
   .qct-article__platform-grid a { color: var(--qct-color-accent-strong); display: block; font-weight: 700; line-height: 1.5; margin-top: 0.9rem; text-underline-offset: 0.2em; overflow-wrap: anywhere; }
   .qct-article__body .qct-article__platform-note { font-size: 0.9rem; }
