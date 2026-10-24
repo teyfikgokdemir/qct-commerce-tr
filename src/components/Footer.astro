@@ -124,82 +124,179 @@ const marqueePhrases = isAzerbaijani
   : isEnglish
     ? ['WEB DESIGN', 'E-COMMERCE', 'SEARCH VISIBILITY', 'AI AUTOMATION']
     : ['WEB TASARIM', 'E-TİCARET', 'DİJİTAL GÖRÜNÜRLÜK', 'YAPAY ZEKÂ OTOMASYONU'];
+
+const audienceLinks = isAzerbaijani ? [
+  ['İstehsalçılar', '/az/istehsalcilar/'],
+  ['İxracatçılar', '/az/ixracatcilar/'],
+  ['Distribütor & B2B', '/az/distributor-b2b/'],
+  ['E-ticarət brendləri', '/az/e-ticaret-brendleri/'],
+] : isEnglish ? [
+  ['Manufacturers', '/en/manufacturers/'],
+  ['Exporters', '/en/exporters/'],
+  ['Distributors & B2B', '/en/distributors-b2b/'],
+  ['E-commerce brands', '/en/ecommerce-brands/'],
+] : [
+  ['Üreticiler', '/ureticiler/'],
+  ['İhracatçılar', '/ihracatcilar/'],
+  ['Distribütör & B2B', '/distributor-b2b/'],
+  ['E-ticaret markaları', '/e-ticaret-markalari/'],
+];
+const editorialCompanyLinks = isAzerbaijani ? [
+  ['Haqqımızda', '/az/haqqimizda/'],
+  ['İşlərimiz', '/az/isler/'],
+  ['Necə işləyirik', '/az/nece-isleyirik/'],
+  ['Qiymətlər', '/az/qiymetler/'],
+  ['Bloq', '/az/bloq/'],
+  ['Əlaqə', '/az/elaqe/'],
+] : isEnglish ? [
+  ['About', '/en/about/'],
+  ['Work', '/en/work/'],
+  ['How we work', '/en/how-we-work/'],
+  ['Pricing', '/en/pricing/'],
+  ['Blog', '/en/blog/'],
+  ['Careers', '/en/careers/'],
+  ['Contact', '/en/contact/'],
+] : [
+  ['Hakkımızda', '/hakkimizda/'],
+  ['Çalışmalar', '/calismalar/'],
+  ['Nasıl çalışıyoruz', '/nasil-calisiyoruz/'],
+  ['Fiyatlar', '/fiyatlar/'],
+  ['Blog', '/blog/'],
+  ['Kariyer', '/kariyer/'],
+  ['İletişim', '/iletisim/'],
+];
+const azLocationLinks = [
+  ['Bütün lokasiyalar', '/az/lokasiya/'],
+  ['Bakı', '/az/lokasiya/baki/'],
+  ['Gəncə', '/az/lokasiya/gence/'],
+  ['Sumqayıt', '/az/lokasiya/sumqayit/'],
+  ['Naxçıvan', '/az/lokasiya/naxcivan/'],
+  ['Mingəçevir', '/az/lokasiya/mingecevir/'],
+  ['Lənkəran', '/az/lokasiya/lenkeran/'],
+];
+const editorial = isAzerbaijani ? {
+  eyebrow: 'VEB · E-TİCARƏT · RƏQƏMSAL GÖRÜNÜRLÜK',
+  title: 'Rəqəmsal işinizi bir yerdən inkişaf etdirin.',
+  lead: 'Veb saytlar, e-ticarət və axtarış görünürlüğü üçün işinizə uyğun həllər hazırlayırıq.',
+  tag: 'VEBSAYT · E-TİCARƏT · SEO · AVTOMATLAŞDIRMA',
+  badge: 'LAYİHƏNİZ ÜÇÜN BİRBAŞA ƏLAQƏ',
+  cardTitle: 'Növbəti rəqəmsal layihənizi birlikdə planlaşdıraq.',
+  cardText: 'Ehtiyacınızı bildirin; uyğun iş həcmini və ilk addımları dəqiqləşdirək.',
+  action: 'Layihənizi paylaşın',
+  services: 'Xidmətlər', audiences: 'Kimlər üçün', company: 'Şirkət', contact: 'Əlaqə',
+  resources: 'Lokasiyalar', email: 'E-POÇT', whatsapp: 'WHATSAPP', region: 'TÜRKİYƏ',
+  rights: 'Bütün hüquqlar qorunur.',
+} : isEnglish ? {
+  eyebrow: 'WEB · E-COMMERCE · DIGITAL VISIBILITY',
+  title: 'Build a stronger digital presence in one place.',
+  lead: 'Websites, e-commerce and search visibility solutions shaped around your business needs.',
+  tag: 'WEB · E-COMMERCE · SEO · AUTOMATION',
+  badge: 'DIRECT PROJECT DESK',
+  cardTitle: 'Plan your next digital project with us.',
+  cardText: 'Tell us what you need so we can define a practical scope and the next steps.',
+  action: 'Discuss your project',
+  services: 'Services', audiences: 'Who we help', company: 'Company', contact: 'Contact',
+  resources: 'Resources', email: 'EMAIL', whatsapp: 'WHATSAPP', region: 'TÜRKİYE',
+  rights: 'All rights reserved.',
+} : {
+  eyebrow: 'WEB · E-TİCARET · DİJİTAL GÖRÜNÜRLÜK',
+  title: 'Dijital işinizi tek noktadan büyütün.',
+  lead: 'Web sitesi, e-ticaret ve arama görünürlüğü çözümlerini işletmenizin ihtiyaçlarına göre geliştiriyoruz.',
+  tag: 'WEB · E-TİCARET · SEO · OTOMASYON',
+  badge: 'PROJENİZ İÇİN DOĞRUDAN İLETİŞİM',
+  cardTitle: 'Bir sonraki dijital projenizi birlikte planlayalım.',
+  cardText: 'İhtiyacınızı paylaşın; uygun kapsamı ve başlangıç adımlarını netleştirelim.',
+  action: 'Proje detaylarını paylaşın',
+  services: 'Hizmetler', audiences: 'Kimler için', company: 'Kurumsal', contact: 'İletişim',
+  resources: 'Kaynaklar ve araçlar', email: 'E-POSTA', whatsapp: 'WHATSAPP', region: 'TÜRKİYE',
+  rights: 'Tüm hakları saklıdır.',
+};
+const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : '/iletisim/';
+
 ---
-<footer id="colophon" class:list={['site-footer', { 'site-footer--resources': !isEnglish && !isAzerbaijani }]}>
-  <div class="site-footer__marquee" aria-hidden="true">
-    <div class="site-footer__marquee-track">
-      <div class="site-footer__marquee-group">
+<footer id="colophon" class="site-footer site-footer--editorial">
+  <div class="qcte-marquee" aria-hidden="true">
+    <div class="qcte-marquee__track">
+      <div class="qcte-marquee__group">
         {marqueePhrases.map((phrase) => <span>{phrase}</span>)}
       </div>
-      <div class="site-footer__marquee-group" aria-hidden="true">
+      <div class="qcte-marquee__group" aria-hidden="true">
         {marqueePhrases.map((phrase) => <span>{phrase}</span>)}
       </div>
     </div>
   </div>
 
-  <div class="site-footer__inner container site-footer__desktop">
-    <div class="site-footer__columns">
-      <div class="site-footer__group site-footer__brand">
-        <h2 class="site-footer__brand-heading">
-          <a class="site-footer__brand-logo" href={homeHref} aria-label={homeLabel}>
-            <img src="/images/qct-commerce-primary-dark.webp" width="940" height="490" alt="QCT Commerce" loading="lazy" decoding="async" />
-          </a>
-        </h2>
-        <p>{isAzerbaijani ? 'Azərbaycan şirkətləri üçün veb sayt, e-ticarət və rəqəmsal görünürlük sistemləri.' : isEnglish ? 'Websites, e-commerce and digital visibility for businesses and founders operating in Türkiye.' : 'Web, e-ticaret ve dijital görünürlük için uygulama ortağınız.'}</p>
-        <p class="site-footer__brand-relationship">{isAzerbaijani ? 'QCT Commerce, Azərbaycan bazarı üçün yerli dildə rəqəmsal xidmətlər təqdim edir.' : isEnglish ? 'QCT Commerce is the Türkiye-focused web, e-commerce and digital visibility brand within the QCT ecosystem.' : 'QCT Commerce, QCT ekosisteminin Türkiye odaklı web, e-ticaret ve dijital görünürlük markasıdır.'}</p>
+  <div class="container qcte-editorial">
+    <div class="qcte-editorial__lead">
+      <div class="qcte-brand">
+        <a href={homeHref} class="qcte-logo" aria-label={homeLabel}>
+          <img src="/images/qct-commerce-primary-dark.webp" width="940" height="490" alt="QCT Commerce" loading="lazy" decoding="async" />
+        </a>
+        <p class="qcte-eyebrow">{editorial.eyebrow}</p>
+        <h2 class="qcte-brand__title">{editorial.title}</h2>
+        <p class="qcte-brand__text">{editorial.lead}</p>
+        <div class="qcte-status"><span class="qcte-status__dot" aria-hidden="true"></span>{editorial.tag}</div>
       </div>
 
-      {isAzerbaijani ? (
-        <>
-          <nav class="site-footer__group site-footer__nav" aria-label="Xidmətlər"><h2>Xidmətlər</h2><a href="/az/veb-dizayn/">Veb dizayn</a><a href="/az/e-ticaret/">E-ticarət</a><a href="/az/seo-geo/">SEO, GEO, AEO və AIO</a><a href="/az/whatsapp-satis/">WhatsApp satış sistemləri</a><a href="/az/ai-avtomatlasdirma/">AI avtomatlaşdırma</a></nav>
-          <nav class="site-footer__group site-footer__audience" aria-label="Kimlər üçün"><h2>Kimlər üçün</h2><a href="/az/istehsalcilar/">İstehsalçılar</a><a href="/az/ixracatcilar/">İxracatçılar</a><a href="/az/distributor-b2b/">Distribütor &amp; B2B</a><a href="/az/e-ticaret-brendleri/">E-ticarət brendləri</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Şirkət"><h2>Şirkət</h2><a href="/az/haqqimizda/">Haqqımızda</a><a href="/az/isler/">İşlərimiz</a><a href="/az/nece-isleyirik/">Necə işləyirik</a><a href="/az/reqemsal-audit/">Rəqəmsal audit</a><a href="/az/qiymetler/">Qiymətlər</a><a href="/az/bloq/">Bloq</a><a href="/az/elaqe/">Əlaqə</a></nav>
-          <nav class="site-footer__group site-footer__markets" aria-label="Lokasiyalar"><h2>Lokasiyalar</h2><a href="/az/lokasiya/">Bütün lokasiyalar</a><a href="/az/lokasiya/baki/">Bakı</a><a href="/az/lokasiya/gence/">Gəncə</a><a href="/az/lokasiya/sumqayit/">Sumqayıt</a><a href="/az/lokasiya/naxcivan/">Naxçıvan</a><a href="/az/lokasiya/mingecevir/">Mingəçevir</a><a href="/az/lokasiya/lenkeran/">Lənkəran</a></nav>
-        </>
-      ) : isEnglish ? (
-        <>
-          <nav class="site-footer__group site-footer__nav" aria-label="Solutions">
-            <h2>Solutions</h2>
-            <a href="/en/ecommerce/">E-commerce</a>
-            <a href="/en/shopify-store-setup/">Shopify setup</a>
-            <a href="/en/ikas-store-setup/">ikas setup</a>
-            <a href="/en/web-design/">Web design</a>
-            <a href="/en/whatsapp-sales/">WhatsApp sales</a>
-            <a href="/en/search-visibility/">SEO, GEO, AEO and AIO</a>
-            <a href="/en/meta-ads/">Meta ads</a>
-            <a href="/en/ai-automation/">AI automation</a>
-          </nav>
-          <nav class="site-footer__group site-footer__audience" aria-label="Who we help">
-            <h2>Who we help</h2>
-            <a href="/en/manufacturers/">Manufacturers</a>
-            <a href="/en/exporters/">Exporters</a>
-            <a href="/en/distributors-b2b/">Distributors &amp; B2B</a>
-            <a href="/en/ecommerce-brands/">E-commerce brands</a>
-          </nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Company">
-            <h2>Company</h2>
-            <a href="/en/about/">About QCT Commerce</a>
-            <a href="/en/work/">Work</a>
-            <a href="/en/how-we-work/">How we work</a>
-            <a href="/en/pricing/">Pricing</a>
-            <a href="/en/blog/">Blog</a>
-            <a href="/en/careers/">Careers</a>
-            <a href="/en/contact/">Contact</a>
-          </nav>
-          <div class="site-footer__group site-footer__markets"><h2>Contact</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Türkiye</p></div>
-        </>
-      ) : (
-        <>
-          <nav class="site-footer__group site-footer__nav" aria-label="Hizmetler"><h2>Hizmetler</h2><a href="/e-ticaret/">E-ticaret altyapısı</a><a href="/web-tasarim/">Web tasarım</a><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a><a href="/meta-reklamlari/">Meta reklamları</a><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></nav>
-          <nav class="site-footer__group site-footer__audience" aria-label="Kimler için"><h2>Kimler için</h2><a href="/ureticiler/">Üreticiler</a><a href="/ihracatcilar/">İhracatçılar</a><a href="/distributor-b2b/">Distribütör &amp; B2B</a><a href="/e-ticaret-markalari/">E-ticaret markaları</a></nav>
-          <nav class="site-footer__group site-footer__company" aria-label="Kurumsal"><h2>Kurumsal</h2><a href="/hakkimizda/">Hakkımızda</a><a href="/calismalar/">Çalışmalar</a><a href="/nasil-calisiyoruz/">Nasıl çalışıyoruz</a><a href="/blog/">Blog</a><a href="/kariyer/">Kariyer</a><a href="/iletisim/">İletişim</a></nav>
-          <nav class="site-footer__group site-footer__resources" aria-label="Kaynaklar ve araçlar"><h2>Kaynaklar ve araçlar</h2>{resourceLinks.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
-          <div class="site-footer__group site-footer__markets"><h2>İletişim</h2><p><a href="mailto:info@qctcommerce.com">info@qctcommerce.com</a></p><p><a href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">WhatsApp: +90 545 678 26 55</a></p><p>Türkiye</p></div>
-        </>
-      )}
+      <aside class="qcte-desk">
+        <p class="qcte-desk__badge">{editorial.badge}</p>
+        <h3 class="qcte-desk__title">{editorial.cardTitle}</h3>
+        <p class="qcte-desk__text">{editorial.cardText}</p>
+        <a class="qcte-desk__button" href={contactHref}>
+          <span>{editorial.action}</span><span aria-hidden="true">↗</span>
+        </a>
+      </aside>
     </div>
-    
-{(!isEnglish && !isAzerbaijani) && (
+
+    <div class="qcte-rule" aria-hidden="true"></div>
+
+    <div class="qcte-grid">
+      <nav class="qcte-col" aria-label={editorial.services}>
+        <h3 class="qcte-col__label">{editorial.services}</h3>
+        {serviceLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+      <nav class="qcte-col" aria-label={editorial.audiences}>
+        <h3 class="qcte-col__label">{editorial.audiences}</h3>
+        {audienceLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+      <nav class="qcte-col" aria-label={editorial.company}>
+        <h3 class="qcte-col__label">{editorial.company}</h3>
+        {editorialCompanyLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+      <div class="qcte-col qcte-contact">
+        <h3 class="qcte-col__label">{editorial.contact}</h3>
+        <a class="qcte-contact__card" href="mailto:info@qctcommerce.com">
+          <span class="qcte-contact__type">{editorial.email}</span>
+          <span class="qcte-contact__value">info@qctcommerce.com</span>
+        </a>
+        <a class="qcte-contact__card" href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">
+          <span class="qcte-contact__type">{editorial.whatsapp}</span>
+          <span class="qcte-contact__value">+90 545 678 26 55</span>
+        </a>
+        <span class="qcte-contact__location">{editorial.region}</span>
+      </div>
+    </div>
+
+    {!isEnglish && (
+      <nav class="qcte-utility" aria-label={editorial.resources}>
+        <h3 class="qcte-col__label">{editorial.resources}</h3>
+        <div class="qcte-utility__links">
+          {(isAzerbaijani ? azLocationLinks : resourceLinks).map(([label, href]) => <a href={href}>{label}</a>)}
+        </div>
+      </nav>
+    )}
+
+    <div class="qcte-bottom">
+      <div class="qcte-bottom__brand">
+        <span>&copy; 2026 QCT Commerce</span><span aria-hidden="true">·</span><span>{editorial.rights}</span>
+      </div>
+      <nav class="qcte-bottom__legal" aria-label={isAzerbaijani ? 'Hüquqi' : isEnglish ? 'Legal' : 'Yasal'}>
+        {legalLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+    </div>
+  </div>
+
+  {(!isEnglish && !isAzerbaijani) && (
 <nav class="site-footer__locations" aria-label="Bölgeler" style="display:none;">
   <a href="/lokasyon/istanbul/">İstanbul</a>
   <a href="/lokasyon/ankara/">Ankara</a>
@@ -221,90 +318,8 @@ const marqueePhrases = isAzerbaijani
   <a href="/lokasyon/azerbaycan/">Azerbaycan</a>
   <a href="/lokasyon/dubai/">Dubai</a>
 </nav>
-)}
-<div class="site-footer__bottom">
-      <div class="site-footer__copyright"><p>&copy; 2026 QCT Commerce</p></div>
-      {!isAzerbaijani && <nav class="site-footer__legal-desktop" aria-label={isEnglish ? 'Legal' : 'Yasal'}>
-        <a href={isEnglish ? '/en/privacy-policy/' : '/gizlilik-politikasi/'}>{isEnglish ? 'Privacy' : 'Gizlilik'}</a>
-        <a href={isEnglish ? '/en/kvkk/' : '/kvkk/'}>KVKK</a>
-        <a href={isEnglish ? '/en/terms/' : '/kullanim-kosullari/'}>{isEnglish ? 'Terms' : 'Kullanım koşulları'}</a>
-        <a href={isEnglish ? '/en/cookie-policy/' : '/cerez-politikasi/'}>{isEnglish ? 'Cookies' : 'Çerezler'}</a>
-      </nav>}
-      {isAzerbaijani && <nav class="site-footer__legal-desktop" aria-label="Hüquqi">
-        <a href="/az/mexfilik/">Məxfilik</a><a href="/az/kvkk/">KVKK</a><a href="/az/istifade-sertleri/">Şərtlər</a><a href="/az/kuki-siyaseti/">Kukilər</a>
-      </nav>}
-    </div>
-  </div>
-
-  <div class="site-footer__mobile" aria-label={isEnglish ? 'Footer' : 'Alt bilgi'}>
-    <div class="site-footer__mobile-brand">
-      <a class="site-footer__brand-logo" href={homeHref} aria-label={homeLabel}>
-        <img src="/images/qct-commerce-primary-dark.webp" width="940" height="490" alt="QCT Commerce" loading="lazy" decoding="async" />
-      </a>
-      <p>{mobileCopy.tagline}</p>
-    </div>
-
-    <div class="site-footer__accordions">
-      <details open>
-        <summary>
-          <span class="site-footer__round-icon" aria-hidden="true"><i></i></span>
-          <strong>{mobileCopy.services}</strong>
-          <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
-        </summary>
-        <div class="site-footer__accordion-body">
-          {serviceLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          <span class="site-footer__round-icon" aria-hidden="true"><i></i></span>
-          <strong>{mobileCopy.company}</strong>
-          <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
-        </summary>
-        <div class="site-footer__accordion-body">
-          {companyLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          <span class="site-footer__round-icon" aria-hidden="true"><i></i></span>
-          <strong>{mobileCopy.legal}</strong>
-          <span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span>
-        </summary>
-        <div class="site-footer__accordion-body">
-          {legalLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}
-        </div>
-      </details>
-      {!isEnglish && !isAzerbaijani && <details>
-        <summary><span class="site-footer__round-icon" aria-hidden="true"><i></i></span><strong>Kaynaklar ve araçlar</strong><span class="site-footer__chevron" aria-hidden="true"><i></i><i></i></span></summary>
-        <div class="site-footer__accordion-body">{resourceLinks.map(([label, href]) => <a href={href}><span>{label}</span><span aria-hidden="true">›</span></a>)}</div>
-      </details>}
-    </div>
-
-    <section class="site-footer__cta" aria-label={mobileCopy.talk}>
-      <div>
-        <p class="site-footer__cta-eyebrow">{mobileCopy.talk}</p>
-        <h2>{mobileCopy.title}</h2>
-        <p>{mobileCopy.text}</p>
-      </div>
-      <div class="site-footer__cta-actions">
-        <a class="site-footer__whatsapp" href="https://wa.me/905456782655" target="_blank" rel="noopener noreferrer">
-          <span aria-hidden="true">◉</span>
-          <strong>{mobileCopy.whatsapp}</strong>
-          <span aria-hidden="true">→</span>
-        </a>
-
-      </div>
-    </section>
-
-    <div class="site-footer__mobile-bottom">
-      <p>&copy; 2026 QCT Commerce. {mobileCopy.rights}</p>
-    </div>
-  </div>
-
-{isEnglish && (
+  )}
+  {isEnglish && (
 <nav class="site-footer__locations" aria-label="Locations" style="display:none;">
   <a href="/en/location/istanbul/">Istanbul</a>
   <a href="/en/location/ankara/">Ankara</a>
@@ -326,518 +341,244 @@ const marqueePhrases = isAzerbaijani
   <a href="/en/location/azerbaijan/">Azerbaijan</a>
   <a href="/en/location/dubai/">Dubai</a>
 </nav>
-)}
+  )}
 </footer>
 
 <style>
-  .site-footer { position: relative; overflow: hidden; isolation: isolate; }
-  .site-footer__inner { position: relative; z-index: 1; padding-top: clamp(3.9rem, 5.4vw, 5rem); }
-  .site-footer__mobile { display: none; }
-  /* The new QCT Commerce primary logo is transparent and designed for dark backgrounds. */
-  .site-footer__brand-logo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    max-width: 100%;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    text-decoration: none;
+  .site-footer--editorial {
+    background: #080d17 !important;
+    color: #f2f7ff;
+    border-top: 1px solid rgba(157, 207, 255, .12);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
   }
-  .site-footer__brand-logo img {
+  .site-footer--editorial::before {
     display: block;
-    width: 196px;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
-  .site-footer__brand-heading { margin: 0 0 14px; text-align: center; }
-  .site-footer__mobile-brand .site-footer__brand-logo { margin-bottom: 8px; }
-  .site-footer__mobile-brand .site-footer__brand-logo img { width: 160px; }
-  .site-footer__marquee {
+    content: "";
     position: absolute;
-    inset: 0 0 auto;
-    z-index: 0;
-    height: clamp(3.9rem, 5.4vw, 5rem);
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 55% 200px at 50% 0, rgba(44, 132, 236, .12), transparent 80%),
+      radial-gradient(circle at 13% 25%, rgba(30, 110, 220, .07), transparent 30%);
+  }
+  .qcte-marquee {
+    position: relative;
+    height: clamp(3.4rem, 5.2vw, 4.8rem);
     display: flex;
     align-items: center;
     overflow: hidden;
     pointer-events: none;
     user-select: none;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    border-bottom: 1px solid rgba(157, 207, 255, .12);
+    background: rgba(255,255,255,.012);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
   }
-  .site-footer__marquee-track {
-    display:flex;
-    align-items:center;
-    width:max-content;
-    animation:qctCommerceMarquee 26s linear infinite;
-    will-change:transform;
+  .qcte-marquee__track { display: flex; width: max-content; animation: qcte-scroll 40s linear infinite; }
+  .qcte-marquee__group {
+    display: flex; align-items: center; flex: 0 0 auto;
+    gap: clamp(1.8rem, 3vw, 3rem); padding-right: clamp(1.8rem, 3vw, 3rem);
   }
-  .site-footer__marquee-group{
-    display:flex;
-    align-items:center;
-    flex:0 0 auto;
-    gap:clamp(1.5rem,3vw,3.5rem);
-    padding-right:clamp(1.5rem,3vw,3.5rem);
-  }
-  .site-footer__marquee span {
-    color: transparent;
-    background: linear-gradient(90deg, #e6f6ff 0%, #62c9ff 34%, #2487ee 72%, #9de9ff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 24px rgba(42, 152, 255, .13);
-    font-size: clamp(2.2rem, 5.2vw, 4.7rem);
+  .qcte-marquee__group span {
+    display: block;
+    font-size: clamp(1.8rem, 3.8vw, 3.15rem);
+    line-height: 1;
     font-weight: 800;
-    line-height: .84;
-    letter-spacing: -.045em;
+    letter-spacing: -.04em;
     white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(109, 184, 255, .58);
+    opacity: .88;
   }
-  @keyframes qctCommerceMarquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-
-
-  @media (min-width:761px) {
-    .site-footer {
-      background:
-        radial-gradient(circle at 8% 0%, rgba(255,123,103,.055), transparent 26%),
-        radial-gradient(circle at 88% 12%, rgba(200,255,61,.035), transparent 24%),
-        #171412;
-      color:#f7f1e9;
-    }
-    .site-footer__marquee {
-      height:64px;
-      border-bottom:1px solid rgba(255,255,255,.07);
-      -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
-      mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
-    }
-    .site-footer__marquee-track { animation-duration:34s; }
-    .site-footer__marquee-group { gap:2rem; padding-right:2rem; }
-    .site-footer__marquee span {
-      font-size:clamp(2rem,3vw,3rem);
-      line-height:1;
-      letter-spacing:-.035em;
-    }
-    .site-footer__inner {
-      padding-top:88px;
-      padding-bottom:28px;
-    }
-    .site-footer__columns {
-      display:grid;
-      grid-template-columns:minmax(190px,1.15fr) minmax(150px,.95fr) minmax(150px,.9fr) minmax(150px,.9fr) minmax(190px,1fr) !important;
-      gap:clamp(28px,3.5vw,58px) !important;
-      align-items:start;
-    }
-    .site-footer--resources .site-footer__columns {
-      grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-      grid-template-areas:"brand brand brand contact" "services audience company resources";
-      column-gap:clamp(28px,4vw,64px) !important;
-      row-gap:44px !important;
-      padding-top:38px;
-    }
-    .site-footer--resources .site-footer__brand {
-      grid-area:brand;
-      display:grid;
-      justify-items:center;
-      align-content:center;
-      text-align:center;
-    }
-    .site-footer--resources .site-footer__nav { grid-area:services; }
-    .site-footer--resources .site-footer__audience { grid-area:audience; }
-    .site-footer--resources .site-footer__company { grid-area:company; }
-    .site-footer--resources .site-footer__resources { grid-area:resources; }
-    .site-footer--resources .site-footer__markets {
-      grid-area:contact;
-      justify-self:end;
-      border-left:1px solid rgba(255,255,255,.1) !important;
-      padding-left:32px !important;
-      gap:5px;
-    }
-    .site-footer--resources .site-footer__brand h2 { font-size:1.9rem; margin-bottom:16px; }
-    .site-footer--resources .site-footer__brand p {
-      max-width:none;
-      width:100%;
-      margin-left:auto;
-      margin-right:auto;
-      font-size:.98rem;
-      text-align:center;
-      white-space:nowrap;
-    }
-    .site-footer--resources .site-footer__brand-relationship {
-      max-width:none;
-      width:100%;
-      margin-left:auto !important;
-      margin-right:auto !important;
-      white-space:nowrap;
-      border-top:0;
-      padding-top:0;
-      margin-top:12px !important;
-      font-size:.8rem !important;
-    }
-    .site-footer--resources .site-footer__markets a { white-space:nowrap; }
-    .site-footer--resources .site-footer__markets p + p { margin-top:4px; }
-    .site-footer--resources .site-footer__markets p:first-of-type a { color:#fffaf5; font-size:1.05rem; }
-    .site-footer--resources .site-footer__resources h2 { letter-spacing:.1em; }
-    .site-footer__group { min-width:0; }
-    .site-footer__group h2 {
-      margin:0 0 16px;
-      color:#fffaf5;
-      font-size:.74rem;
-      line-height:1.2;
-      letter-spacing:.13em;
-      text-transform:uppercase;
-    }
-    .site-footer__brand h2 {
-      font-size:1.45rem;
-      line-height:1.05;
-      letter-spacing:-.035em;
-      text-transform:none;
-    }
-    .site-footer__brand p {
-      max-width:29ch;
-      margin:.75rem 0 0;
-      color:rgba(247,241,233,.62);
-      font-size:.86rem;
-      line-height:1.65;
-    }
-    .site-footer__brand-relationship {
-      padding-top:.85rem;
-      margin-top:1rem !important;
-      border-top:1px solid rgba(255,255,255,.09);
-      color:rgba(247,241,233,.46) !important;
-      font-size:.76rem !important;
-    }
-    .site-footer__nav,
-    .site-footer__audience,
-    .site-footer__company,
-    .site-footer__markets,
-    .site-footer__resources {
-      display:grid;
-      align-content:start;
-      gap:8px;
-    }
-    .site-footer__group a,
-    .site-footer__markets p {
-      margin:0;
-      color:rgba(247,241,233,.72);
-      font-size:.875rem;
-      line-height:1.5;
-      text-decoration:none;
-    }
-    .site-footer__group a:hover,
-    .site-footer__group a:focus-visible {
-      color:#fff;
-      transform:none;
-      text-decoration:underline;
-      text-underline-offset:4px;
-      text-decoration-color:rgba(255,139,120,.65);
-    }
-    .site-footer__markets p + p { margin-top:10px; }
-    .site-footer__bottom {
-      margin-top:34px;
-      padding:16px 0 0;
-      border:0;
-      border-top:1px solid rgba(255,255,255,.09);
-      border-radius:0;
-      background:transparent;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-    .site-footer__copyright { justify-items:start; text-align:left; }
-    .site-footer__copyright p:first-child {
-      color:rgba(247,241,233,.5);
-      font-size:.74rem;
-      font-weight:700;
-    }
-    .site-footer__legal-desktop {
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      gap:14px;
-    }
-    .site-footer__legal-desktop a {
-      color:rgba(247,241,233,.46);
-      font-size:.8125rem;
-      line-height:1.45;
-      text-decoration:none;
-    }
-    .site-footer__legal-desktop a:hover,
-    .site-footer__legal-desktop a:focus-visible { color:#fff; }
+  @keyframes qcte-scroll { to { transform: translateX(-50%); } }
+  .qcte-editorial {
+    position: relative;
+    z-index: 1;
+    padding-top: clamp(3.1rem, 5vw, 5rem);
+    padding-bottom: 2rem;
   }
-
-  @media (min-width:761px) and (max-width:1100px) {
-    .site-footer--resources .site-footer__columns {
-      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-      grid-template-areas:"brand contact" "services audience" "company resources";
-      column-gap:28px !important;
-      row-gap:36px !important;
-    }
-    .site-footer--resources .site-footer__markets { padding-left:20px !important; }
+  .qcte-editorial__lead {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, .92fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
   }
-
-  @media (max-width:760px) {
-    .site-footer {
-      background:
-        radial-gradient(circle at 88% 72%, rgba(200,255,61,.08), transparent 24%),
-        radial-gradient(circle at 10% 8%, rgba(255,123,103,.08), transparent 28%),
-        #171412;
-      color:#f7f1e9;
-      overflow:visible;
-    }
-
-    .site-footer__desktop,
-    .site-footer__marquee { display:none; }
-
-    .site-footer__mobile {
-      display:block;
-      padding:38px 18px calc(22px + env(safe-area-inset-bottom,0px));
-    }
-
-    .site-footer__mobile-brand {
-      padding:0 6px 24px;
-      border-bottom:1px solid rgba(255,255,255,.10);
-    }
-
-    .site-footer__mobile-mark {
-      display:block;
-      width:4px;
-      height:32px;
-      border-radius:999px;
-      background:linear-gradient(180deg,#ff7b67,#c8ff3d);
-      margin-bottom:14px;
-    }
-
-    .site-footer__mobile-brand strong {
-      display:block;
-      color:#f7f1e9;
-      font-size:1.02rem;
-      letter-spacing:.16em;
-      font-weight:900;
-    }
-
-    .site-footer__mobile-brand p {
-      margin:10px 0 0;
-      color:rgba(247,241,233,.64);
-      font-size:.9rem;
-      line-height:1.55;
-      max-width:32ch;
-    }
-
-    .site-footer__accordions details {
-      border-bottom:1px solid rgba(255,255,255,.10);
-    }
-
-    .site-footer__accordions summary {
-      list-style:none;
-      display:grid;
-      grid-template-columns:42px 1fr auto;
-      align-items:center;
-      gap:12px;
-      min-height:74px;
-      cursor:pointer;
-    }
-
-    .site-footer__accordions summary::-webkit-details-marker { display:none; }
-
-    .site-footer__round-icon {
-      position:relative;
-      width:38px;
-      height:38px;
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(255,123,103,.24);
-      border-radius:50%;
-      background:linear-gradient(145deg,rgba(255,123,103,.07),rgba(255,255,255,.01));
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
-    }
-
-    .site-footer__round-icon::before {
-      content:"";
-      position:absolute;
-      inset:6px;
-      border:1px solid rgba(255,123,103,.10);
-      border-radius:50%;
-    }
-
-    .site-footer__round-icon i {
-      width:7px;
-      height:7px;
-      border-radius:2px;
-      background:#ff634f;
-      box-shadow:0 0 14px rgba(255,99,79,.28);
-      transform:rotate(45deg);
-    }
-
-    .site-footer__accordions summary strong {
-      color:#f7f1e9;
-      font-size:1rem;
-      font-weight:800;
-      letter-spacing:-.01em;
-    }
-
-    .site-footer__chevron {
-      position:relative;
-      width:30px;
-      height:30px;
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(255,99,79,.22);
-      border-radius:50%;
-      background:linear-gradient(145deg,rgba(255,99,79,.08),rgba(255,255,255,.015));
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
-      transition:transform .24s cubic-bezier(.2,.7,.2,1),border-color .2s ease,background .2s ease;
-    }
-
-    .site-footer__chevron i {
-      position:absolute;
-      top:14px;
-      width:7px;
-      height:1.5px;
-      border-radius:999px;
-      background:#ff634f;
-      box-shadow:0 0 10px rgba(255,99,79,.22);
-    }
-
-    .site-footer__chevron i:first-child { left:8px; transform:rotate(42deg); }
-    .site-footer__chevron i:last-child { right:8px; transform:rotate(-42deg); }
-
-    .site-footer__accordions summary:active .site-footer__chevron {
-      border-color:rgba(200,255,61,.32);
-      background:rgba(200,255,61,.05);
-    }
-
-    .site-footer__accordions details[open] .site-footer__chevron {
-      transform:rotate(180deg);
-      border-color:rgba(255,99,79,.34);
-    }
-
-    .site-footer__accordion-body {
-      padding:0 4px 16px 54px;
-      display:grid;
-      gap:2px;
-    }
-
-    .site-footer__accordion-body a {
-      min-height:42px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      color:rgba(247,241,233,.78);
-      text-decoration:none;
-      font-size:.88rem;
-      border-bottom:1px solid rgba(255,255,255,.045);
-    }
-
-    .site-footer__accordion-body a span:last-child {
-      color:#c8ff3d;
-      font-size:1.05rem;
-    }
-
-    .site-footer__cta {
-      position:relative;
-      overflow:hidden;
-      margin-top:26px;
-      padding:24px 20px 20px;
-      border:1px solid rgba(255,123,103,.44);
-      border-radius:24px;
-      background:
-        linear-gradient(145deg,rgba(255,123,103,.12),rgba(255,255,255,.02) 54%,rgba(200,255,61,.06)),
-        #1d1917;
-      box-shadow:0 24px 60px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.04);
-    }
-
-    .site-footer__cta::after {
-      content:"";
-      position:absolute;
-      width:110px;
-      height:110px;
-      right:-38px;
-      top:-38px;
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(200,255,61,.14),transparent 68%);
-      pointer-events:none;
-    }
-
-    .site-footer__cta-eyebrow {
-      margin:0 0 12px;
-      color:#ff8b78!important;
-      font-size:.62rem!important;
-      letter-spacing:.18em;
-      font-weight:900;
-    }
-
-    .site-footer__cta h2 {
-      margin:0;
-      color:#fffaf5;
-      font-size:clamp(1.65rem,7.5vw,2.2rem);
-      line-height:1.02;
-      letter-spacing:-.04em;
-      max-width:11ch;
-    }
-
-    .site-footer__cta>div>p:last-child {
-      margin:14px 0 0;
-      color:rgba(247,241,233,.62);
-      font-size:.86rem;
-      line-height:1.55;
-      max-width:31ch;
-    }
-
-    .site-footer__cta-actions {
-      display:block;
-      margin-top:20px;
-    }
-
-    .site-footer__whatsapp {
-      min-height:52px;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:10px;
-      padding:0 15px;
-      border-radius:999px;
-      background:linear-gradient(90deg,#ff7b67 0%,#ff8b78 58%,#c8ff3d 135%);
-      color:#171412;
-      text-decoration:none;
-      box-shadow:0 12px 28px rgba(255,123,103,.16);
-    }
-
-    .site-footer__whatsapp strong {
-      font-size:.88rem;
-      font-weight:900;
-    }
-
-    .site-footer__whatsapp span:last-child { font-size:1rem; }
-
-
-    .site-footer__mobile-bottom {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-top:24px;
-      padding:18px 4px 0;
-      border-top:1px solid rgba(255,255,255,.10);
-      text-align:center;
-    }
-
-    .site-footer__mobile-bottom p {
-      width:100%;
-      margin:0;
-      color:rgba(247,241,233,.45);
-      font-size:.68rem;
-      line-height:1.4;
-      text-align:center;
-    }
-
+  .qcte-brand { min-width: 0; }
+  .qcte-logo { display: inline-flex; align-items: center; margin-bottom: 1.2rem; }
+  .qcte-logo img { width: 178px; height: auto; max-width: 100%; display: block; }
+  .qcte-eyebrow, .qcte-desk__badge, .qcte-col__label, .qcte-contact__type {
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-weight: 750; text-transform: uppercase; letter-spacing: .11em;
   }
+  .qcte-eyebrow {
+    margin: 0 0 .65rem !important; font-size: .68rem !important;
+    line-height: 1.5; color: #6dbeff !important;
+  }
+  .qcte-brand__title {
+    margin: 0 0 .85rem !important;
+    max-width: 660px;
+    font-size: clamp(1.65rem, 2.65vw, 2.4rem) !important;
+    line-height: 1.14; letter-spacing: -.04em;
+    font-weight: 780;
+    text-transform: none !important;
+    color: #fff !important;
+  }
+  .qcte-brand__text {
+    max-width: 540px;
+    margin: 0 0 1.25rem !important;
+    font-size: clamp(.93rem, 1.1vw, 1rem) !important;
+    line-height: 1.68; color: rgba(229,239,252,.70) !important;
+  }
+  .qcte-status {
+    width: fit-content; max-width: 100%;
+    display: inline-flex; align-items: center; flex-wrap: wrap; gap: .55rem;
+    padding: .55rem .85rem; border: 1px solid rgba(85,170,255,.22);
+    border-radius: 999px; background: rgba(31,110,221,.08);
+    color: #c6e7ff;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: .67rem; font-weight: 700; line-height: 1.4;
+    letter-spacing: .05em;
+  }
+  .qcte-status__dot {
+    width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%;
+    background: #38cfff; box-shadow: 0 0 12px rgba(56,207,255,.6);
+  }
+  .qcte-desk {
+    position: relative;
+    padding: clamp(1.45rem, 2.6vw, 2.25rem);
+    border: 1px solid rgba(134,190,245,.17);
+    border-radius: 18px;
+    background: linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    box-shadow: 0 24px 58px rgba(0,0,0,.2);
+    overflow: hidden;
+  }
+  .qcte-desk::before {
+    content: ""; height: 2px; position: absolute; inset: 0 0 auto;
+    background: linear-gradient(90deg, transparent, #2289ef, #40d7ff, transparent);
+  }
+  .qcte-desk__badge {
+    margin: 0 0 .85rem !important; font-size: .67rem !important;
+    color: #6dbeff !important;
+  }
+  .qcte-desk__title {
+    margin: 0 0 .75rem !important; color: #fff !important;
+    font-size: clamp(1.2rem, 1.6vw, 1.5rem) !important;
+    font-weight: 760; letter-spacing: -.025em; line-height: 1.3;
+    text-transform: none !important;
+  }
+  .qcte-desk__text {
+    margin: 0 0 1.5rem !important; font-size: .88rem !important;
+    color: rgba(229,239,252,.66) !important; line-height: 1.6;
+  }
+  .qcte-desk__button {
+    display: inline-flex !important;
+    align-items: center; justify-content: center; gap: .9rem;
+    min-height: 46px; padding: .75rem 1.15rem;
+    border-radius: 999px; background: #3ea5f5;
+    color: #041326 !important; text-decoration: none !important;
+    font-size: .9rem !important; font-weight: 800;
+    transition: transform 180ms ease, background 180ms ease;
+  }
+  .qcte-desk__button:hover { background: #9ce7ff; transform: translateY(-2px); }
+  .qcte-desk__button:focus-visible, .qcte-col a:focus-visible,
+  .qcte-utility a:focus-visible,
+  .qcte-contact__card:focus-visible, .qcte-bottom__legal a:focus-visible,
+  .qcte-logo:focus-visible { outline: 2px solid #56d9ff; outline-offset: 4px; }
+  .qcte-rule {
+    height: 1px;
+    margin: clamp(2.5rem,4.5vw,4rem) 0;
+    background: linear-gradient(90deg, transparent, rgba(127,184,242,.18) 22%, rgba(56,207,255,.33) 50%, rgba(127,184,242,.18) 78%,transparent);
+  }
+  .qcte-grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr 1fr 1.16fr;
+    align-items: start;
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+  .qcte-col { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; gap: .72rem; }
+  .qcte-col__label {
+    margin: 0 0 .55rem !important;
+    font-size: .7rem !important; font-weight: 800;
+    color: #79c4ff !important; line-height: 1.5;
+    text-transform: uppercase !important;
+  }
+  .qcte-col > a {
+    display: inline-flex !important; color: rgba(229,239,252,.72) !important;
+    font-size: .87rem !important; line-height: 1.5;
+    font-weight: 510; text-decoration: none !important;
+    transition: color 180ms ease, transform 180ms ease;
+  }
+  .qcte-col > a:hover {
+    color: #fff !important; transform: translateX(3px);
+  }
+  .qcte-utility {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .85rem 1.5rem;
+    margin-top: clamp(2rem, 4vw, 3.2rem);
+    padding-top: 1.25rem; border-top: 1px solid rgba(160,207,255,.1);
+  }
+  .qcte-utility .qcte-col__label { margin: 0 !important; flex: 0 0 auto; }
+  .qcte-utility__links { display: flex; flex-wrap: wrap; gap: .45rem .8rem; }
+  .qcte-utility__links a {
+    color: rgba(229,239,252,.58) !important;
+    font-size: .77rem !important; line-height: 1.4;
+    padding: .42rem .65rem; border: 1px solid rgba(145,204,252,.1);
+    border-radius: 999px; text-decoration: none !important;
+  }
+  .qcte-utility__links a:hover { color: #fff !important; border-color: rgba(90,195,255,.42); }
+  .qcte-contact { gap: .62rem; }
+  .qcte-contact__card {
+    display: flex !important; flex-direction: column; gap: .28rem;
+    width: 100%; max-width: 260px; padding: .8rem .9rem;
+    background: rgba(255,255,255,.032);
+    border: 1px solid rgba(155,205,255,.12);
+    border-radius: 10px;
+    text-decoration: none !important;
+    transition: border-color 180ms ease, background 180ms ease;
+  }
+  .qcte-contact__card:hover { border-color: rgba(62,165,245,.48); background: rgba(62,165,245,.08); }
+  .qcte-contact__type { color: #85b8e8; font-size: .62rem; }
+  .qcte-contact__value { color: #f0f6ff; font-size: .84rem; overflow-wrap: anywhere; font-weight: 650; }
+  .qcte-contact__location { color: rgba(229,239,252,.47); font-size: .71rem; font-weight: 650; letter-spacing: .1em; margin-top: .5rem; }
+  .qcte-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem 1.5rem;
+    padding-top: 1.45rem; margin-top: clamp(2.7rem, 5vw, 4rem);
+    border-top: 1px solid rgba(160,207,255,.12);
+  }
+  .qcte-bottom__brand, .qcte-bottom__legal { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; }
+  .qcte-bottom__brand { color: rgba(229,239,252,.48); font-size: .79rem; }
+  .qcte-bottom__legal a {
+    color: rgba(229,239,252,.51) !important;
+    font-size: .77rem !important; text-decoration: none !important;
+  }
+  .qcte-bottom__legal a:hover { color: #9de7ff !important; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .site-footer__marquee-track { animation:none; transform:translateX(-8%); }
-    .site-footer__chevron { transition:none; }
+  @media(max-width: 1060px) {
+    .qcte-editorial__lead { grid-template-columns: 1fr; gap: 2rem; }
+    .qcte-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 2.2rem; }
+  }
+  @media(max-width: 600px) {
+    .qcte-marquee { height: 3.1rem; }
+    .qcte-marquee__group span { font-size: 1.65rem; }
+    .qcte-editorial { padding-top: 2.4rem; }
+    .qcte-brand__title { font-size: clamp(1.65rem,7vw,2rem) !important; }
+    .qcte-desk { padding: 1.4rem; }
+    .qcte-grid { gap: 2rem 1rem; }
+    .qcte-bottom { flex-direction: column; align-items: flex-start; }
+  }
+  @media(max-width: 410px) {
+    .qcte-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 2rem .85rem; }
+    .qcte-col > a { font-size: .82rem !important; }
+    .qcte-contact__card { padding: .7rem .6rem; max-width: 100%; }
+    .qcte-contact__value { font-size: .77rem; }
+  }
+  @media(max-width: 320px) {
+    .qcte-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .qcte-marquee__track { animation: none; transform: none; }
+    .qcte-desk__button, .qcte-col a { transition: none; }
   }
 </style>
