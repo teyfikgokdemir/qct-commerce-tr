@@ -233,19 +233,17 @@ for (const path of ['/', '/en/', '/az/']) {
   });
   test(`video manual pause survives visibility changes and resume works: ${path}`, async t => {
     const page = await pageFor(t, path);
-    const control = page.locator('[data-film-toggle]');
-    assert.equal(await control.count(), 1, 'Missing keyboard-accessible video control');
-    assert.equal(await control.evaluate(el => getComputedStyle(el).opacity), '0', 'Video overlay must not be visible by default');
+    assert.equal(await page.locator('[data-film-toggle], .qct-film-toggle').count(), 0, 'Brand video must have no overlay button in the DOM');
     const video = page.locator('[data-qct-brand-film]');
+    assert.equal(await video.getAttribute('role'), 'button', 'Video itself must be keyboard operable');
     await video.scrollIntoViewIfNeeded();
     await page.waitForFunction(() => !document.querySelector('[data-qct-brand-film]').paused);
-    await control.focus();
-    await page.keyboard.press('Enter');
+    await video.click();
     assert.equal(await video.evaluate(el => el.paused), true);
     await page.locator('h1').scrollIntoViewIfNeeded();
     await video.scrollIntoViewIfNeeded();
     assert.equal(await video.evaluate(el => el.paused), true);
-    await control.focus();
+    await video.focus();
     await page.keyboard.press('Enter');
     await page.waitForFunction(() => !document.querySelector('[data-qct-brand-film]').paused);
     await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -255,7 +253,8 @@ for (const path of ['/', '/en/', '/az/']) {
     const page = await pageFor(t, path, { reducedMotion: 'reduce' });
     await page.locator('[data-qct-brand-film]').scrollIntoViewIfNeeded();
     assert.equal(await page.locator('[data-qct-brand-film]').evaluate(el => el.paused), true);
-    assert.equal(await page.locator('[data-film-toggle]').getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.locator('[data-film-toggle]').count(), 0);
+    assert.equal(await page.locator('[data-qct-brand-film]').getAttribute('aria-pressed'), 'false');
   });
 }
 
