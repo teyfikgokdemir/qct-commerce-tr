@@ -143,10 +143,20 @@ const faqId = `${canonicalUrl}#faq`;
       </div>
       <div class="qct-svc-grid">
         {problem.items.map((item) => (
-          <article class="qct-svc-card">
-            <h3>{item.href ? <a href={item.href}>{item.title}</a> : item.title}</h3>
-            <p>{item.text}</p>
-          </article>
+          item.href ? (
+            <a href={item.href} class="qct-svc-card qct-svc-card--link">
+              <div class="qct-svc-card__top">
+                <h3>{item.title}</h3>
+                <span class="qct-svc-card__arrow" aria-hidden="true">→</span>
+              </div>
+              <p>{item.text}</p>
+            </a>
+          ) : (
+            <article class="qct-svc-card">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          )
         ))}
       </div>
     </div>
@@ -163,10 +173,20 @@ const faqId = `${canonicalUrl}#faq`;
     {benefits.items.length > 0 && (
       <div class="qct-svc-grid">
         {benefits.items.map((item) => (
-          <article class="qct-svc-card">
-            <h3>{item.href ? <a href={item.href}>{item.title}</a> : item.title}</h3>
-            <p>{item.text}</p>
-          </article>
+          item.href ? (
+            <a href={item.href} class="qct-svc-card qct-svc-card--link">
+              <div class="qct-svc-card__top">
+                <h3>{item.title}</h3>
+                <span class="qct-svc-card__arrow" aria-hidden="true">→</span>
+              </div>
+              <p>{item.text}</p>
+            </a>
+          ) : (
+            <article class="qct-svc-card">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          )
         ))}
       </div>
     )}
@@ -183,10 +203,20 @@ const faqId = `${canonicalUrl}#faq`;
     {included.items.length > 0 && (
       <div class="qct-svc-grid">
         {included.items.map((item) => (
-          <article class="qct-svc-card">
-            <h3>{item.href ? <a href={item.href}>{item.title}</a> : item.title}</h3>
-            <p>{item.text}</p>
-          </article>
+          item.href ? (
+            <a href={item.href} class="qct-svc-card qct-svc-card--link">
+              <div class="qct-svc-card__top">
+                <h3>{item.title}</h3>
+                <span class="qct-svc-card__arrow" aria-hidden="true">→</span>
+              </div>
+              <p>{item.text}</p>
+            </a>
+          ) : (
+            <article class="qct-svc-card">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          )
         ))}
       </div>
     )}
@@ -238,7 +268,13 @@ const faqId = `${canonicalUrl}#faq`;
       </div>
       <div class="qct-svc-related__grid">
         {relatedLinks.map((item) => (
-          <article><h3><a href={item.href}>{item.title}</a></h3><p>{item.text}</p></article>
+          <a href={item.href} class="qct-svc-card qct-svc-card--link qct-svc-related__card">
+            <div class="qct-svc-card__top">
+              <h3>{item.title}</h3>
+              <span class="qct-svc-card__arrow" aria-hidden="true">→</span>
+            </div>
+            <p>{item.text}</p>
+          </a>
         ))}
       </div>
     </div>
@@ -432,7 +468,8 @@ const faqId = `${canonicalUrl}#faq`;
 .qct-svc-card,
 .qct-svc-step,
 .qct-svc-answers dl > div,
-.qct-svc-related__grid article {
+.qct-svc-related__grid article,
+.qct-svc-related__card {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -441,12 +478,15 @@ const faqId = `${canonicalUrl}#faq`;
   background: #ffffff;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px rgba(15, 23, 42, 0.02);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  color: inherit;
+  text-decoration: none;
 }
 
 .qct-svc-card::before,
 .qct-svc-step::before,
 .qct-svc-answers dl > div::before,
-.qct-svc-related__grid article::before {
+.qct-svc-related__grid article::before,
+.qct-svc-related__card::before {
   content: '';
   position: absolute;
   inset: 0 auto auto 0;
@@ -461,7 +501,8 @@ const faqId = `${canonicalUrl}#faq`;
 .qct-svc-card:hover,
 .qct-svc-step:hover,
 .qct-svc-answers dl > div:hover,
-.qct-svc-related__grid article:hover {
+.qct-svc-related__grid article:hover,
+.qct-svc-related__card:hover {
   transform: translateY(-4px);
   border-color: rgba(0, 47, 167, 0.28);
   box-shadow: 0 20px 40px -10px rgba(0, 47, 167, 0.12), 0 0 0 1px rgba(0, 47, 167, 0.08);
@@ -470,11 +511,13 @@ const faqId = `${canonicalUrl}#faq`;
 .qct-svc-card:hover::before,
 .qct-svc-step:hover::before,
 .qct-svc-answers dl > div:hover::before,
-.qct-svc-related__grid article:hover::before {
+.qct-svc-related__grid article:hover::before,
+.qct-svc-related__card:hover::before {
   opacity: 1;
 }
 
-.qct-svc-card {
+.qct-svc-card,
+.qct-svc-related__card {
   min-height: 0;
   padding: clamp(1.6rem, 2.5vw, 2.2rem);
   display: flex;
@@ -483,28 +526,63 @@ const faqId = `${canonicalUrl}#faq`;
   text-align: left;
 }
 
-.qct-svc-card h3 {
+.qct-svc-card--link {
+  cursor: pointer;
+}
+
+.qct-svc-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 .65rem;
+  width: 100%;
+}
+
+.qct-svc-card__top h3 {
+  margin: 0;
+}
+
+.qct-svc-card__arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  border-radius: 999px;
+  background: rgba(0, 47, 167, 0.06);
+  color: #002fa7;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform .25s ease, background-color .25s ease, color .25s ease;
+}
+
+.qct-svc-card--link:hover .qct-svc-card__arrow,
+.qct-svc-related__card:hover .qct-svc-card__arrow {
+  transform: translateX(4px);
+  background: #002fa7;
+  color: #ffffff;
+}
+
+.qct-svc-card h3,
+.qct-svc-related__card h3 {
   color: #0f172a;
   font-size: clamp(1.15rem, 1.4vw, 1.25rem);
   font-weight: 750;
   letter-spacing: -0.02em;
   line-height: 1.3;
   margin: 0 0 .65rem;
+  transition: color 180ms ease;
 }
 
-.qct-svc-card h3 a,
-.qct-svc-related__grid a {
-  color: #0f172a;
-  text-decoration: none;
-  transition: color 160ms ease;
-}
-
-.qct-svc-card h3 a:hover,
-.qct-svc-related__grid a:hover {
+.qct-svc-card--link:hover h3,
+.qct-svc-related__card:hover h3 {
   color: #002fa7;
 }
 
-.qct-svc-card p {
+.qct-svc-card p,
+.qct-svc-related__card p {
   color: #475569;
   font-size: .95rem;
   line-height: 1.65;
