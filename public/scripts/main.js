@@ -478,6 +478,11 @@
     en:{pause:'Pause',resume:'Resume',strip:'Ecosystem strip',film:'Brand video'},
     az:{pause:'Dayandır',resume:'Davam et',strip:'Ekosistem zolağı',film:'Brend videosu'}
   }[language] || {pause:'Pause',resume:'Resume',strip:'Ecosystem strip',film:'Brand video'};
+  var filmCopy={
+    tr:{pause:'QCT Commerce marka videosunu duraklatmak için Enter veya Boşluk tuşuna basın',resume:'QCT Commerce marka videosunu oynatmak için Enter veya Boşluk tuşuna basın'},
+    en:{pause:'Press Enter or Space to pause the QCT Commerce brand video',resume:'Press Enter or Space to play the QCT Commerce brand video'},
+    az:{pause:'QCT Commerce brend videosunu dayandırmaq üçün Enter və ya Boşluq düyməsini basın',resume:'QCT Commerce brend videosunu oynatmaq üçün Enter və ya Boşluq düyməsini basın'}
+  }[language] || {pause:'Press Enter or Space to pause the QCT Commerce brand video',resume:'Press Enter or Space to play the QCT Commerce brand video'};
   function control(target,kind,index){
     if(!target.id)target.id='qct-motion-'+kind+'-'+index;
     var button=document.createElement('button');
@@ -505,16 +510,33 @@
     marquee.before(button);
     sync();
   });
-  document.querySelectorAll('[data-qct-brand-film]').forEach(function(video,index){
-    var button=control(video,'film',index);
+  document.querySelectorAll('[data-qct-brand-film]').forEach(function(video){
+    // No film overlay button: the video surface itself is the pointer/keyboard control.
     var userPaused=motion.matches;
     var visible=false;
-    function sync(){label(button,video.paused,'film');}
+    video.setAttribute('role','button');
+    video.setAttribute('tabindex','0');
+    function sync(){
+      video.setAttribute('aria-pressed',String(!video.paused));
+      video.setAttribute('aria-label',video.paused?filmCopy.resume:filmCopy.pause);
+    }
     function play(){video.play().then(sync).catch(sync);}
-    button.addEventListener('click',function(){
-      userPaused=!video.paused;
-      if(userPaused)video.pause();else play();
+    function toggle(){
+      if(video.paused){
+        userPaused=false;
+        if(visible&&!motion.matches)play();
+      }else{
+        userPaused=true;
+        video.pause();
+      }
       sync();
+    }
+    video.addEventListener('click',toggle);
+    video.addEventListener('keydown',function(event){
+      if(event.key==='Enter'||event.key===' '){
+        event.preventDefault();
+        toggle();
+      }
     });
     video.addEventListener('play',sync);
     video.addEventListener('pause',sync);
@@ -522,7 +544,6 @@
       if(event.matches){userPaused=true;video.pause();}
       sync();
     });
-    video.after(button);
     sync();
     if('IntersectionObserver' in window){
       var observer=new IntersectionObserver(function(entries){
@@ -532,6 +553,9 @@
         });
       },{rootMargin:'160px 0px'});
       observer.observe(video);
-    }else if(!userPaused&&!motion.matches){play();}
+    }else{
+      visible=true;
+      if(!userPaused&&!motion.matches)play();
+    }
   });
 })();
