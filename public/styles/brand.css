@@ -186,9 +186,9 @@ body {
 .qct-button--primary,
 .qct-btn--primary,
 .qct-web-button--primary {
-	background: var(--qct-color-coral-dark) !important;
-	border-color: var(--qct-color-coral-dark) !important;
-	color: var(--qct-color-on-dark) !important;
+	background: var(--qct-color-coral) !important;
+	border-color: var(--qct-color-coral) !important;
+	color: #ffffff !important;
 }
 
 .qct-button--secondary,
@@ -666,8 +666,8 @@ body {
 .qct-final-cta .qct-section__eyebrow { color: var(--qct-color-coral-light); }
 .qct-final-cta .qct-section__title { color: var(--qct-color-on-dark); }
 .qct-final-cta .qct-section__lead { color: var(--qct-color-on-dark-muted); }
-.qct-final-cta .qct-button--primary { background: var(--qct-color-background) !important; border-color: var(--qct-color-background) !important; color: var(--qct-color-coral-dark) !important; }
-.qct-final-cta .qct-button--secondary { border-color: rgba(248, 243, 239, 0.42) !important; color: var(--qct-color-on-dark) !important; }
+.qct-final-cta .qct-button--primary { background: #002fa7 !important; border-color: #002fa7 !important; color: #ffffff !important; }
+.qct-final-cta .qct-button--secondary { background: rgba(255, 255, 255, 0.06) !important; border-color: rgba(255, 255, 255, 0.2) !important; color: #f8fafc !important; }
 
 .qct-final-cta__visual {
 	animation: none !important;
@@ -823,24 +823,7 @@ body {
 .qct-svc-faq summary { color: var(--qct-color-coral-dark) !important; min-height: 62px; }
 .qct-svc-faq details p { color: var(--qct-color-muted) !important; }
 
-.qct-svc-final {
-	background: var(--qct-color-ink) !important;
-	color: var(--qct-color-on-dark) !important;
-}
-
-.qct-svc-final__panel {
-	background: transparent !important;
-	border: 0 !important;
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	padding-inline: 0 !important;
-}
-
-.qct-svc-final .qct-section__eyebrow { color: var(--qct-color-coral-light); }
-.qct-svc-final .qct-section__title { color: var(--qct-color-on-dark) !important; }
-.qct-svc-final .qct-section__lead { color: var(--qct-color-on-dark-muted) !important; }
-.qct-svc-final .qct-btn--primary { background: var(--qct-color-background) !important; border-color: var(--qct-color-background) !important; color: var(--qct-color-coral-dark) !important; }
-.qct-svc-final .qct-btn--secondary { border-color: rgba(248, 243, 239, 0.42) !important; color: var(--qct-color-on-dark) !important; }
+/* Service final is styled component-side with luxury card styling */
 
 /* Legal, 404 and footer */
 .qct-legal-body { background: var(--qct-color-background) !important; }

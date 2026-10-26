@@ -24,9 +24,9 @@
 .qct-button--primary,
 .qct-btn--primary,
 .qct-web-button--primary {
-  background: var(--qct-color-coral-dark, #a63f36);
-  border-color: var(--qct-color-coral-dark, #a63f36);
-  color: var(--qct-color-on-dark, #f8f3ef);
+  background: var(--qct-color-coral, #002fa7);
+  border-color: var(--qct-color-coral, #002fa7);
+  color: #ffffff !important;
 }
 
 .button--secondary,
@@ -57,9 +57,10 @@
 .qct-btn--primary:focus-visible,
 .qct-web-button--primary:hover,
 .qct-web-button--primary:focus-visible {
-  background: var(--qct-color-coral, #e66b5f);
-  border-color: var(--qct-color-coral, #e66b5f);
-  box-shadow: 0 12px 30px rgba(166, 63, 54, 0.18);
+  background: var(--qct-color-coral-dark, #00227b);
+  border-color: var(--qct-color-coral-dark, #00227b);
+  color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(0, 47, 167, 0.28);
 }
 
 .button--secondary:hover,
