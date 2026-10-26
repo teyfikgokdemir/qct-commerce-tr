@@ -262,7 +262,8 @@ test('desktop layout stays within viewport with usable motion controls', async t
   const page = await pageFor(t, '/', { viewport: { width: 1440, height: 1000 } });
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await screenshot(page, 'qct-p2-desktop');
-  await page.locator('[data-film-toggle]').scrollIntoViewIfNeeded();
+  assert.equal(await page.locator('[data-film-toggle]').count(), 0, 'No video overlay control should exist');
+  await page.locator('[data-qct-brand-film]').scrollIntoViewIfNeeded();
   await screenshot(page, 'qct-p2-motion-controls');
 });
 
