@@ -389,7 +389,8 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
 .qct-motion-control:focus-visible{outline:2px solid var(--qct-accent);outline-offset:3px}
 .qct-motion-control:disabled{cursor:default;opacity:.7}
 .qct-marquee-toggle{display:block;margin:0 max(20px,calc((100% - 1180px)/2)) 12px auto}
-.qct-film-toggle{position:absolute;right:14px;bottom:14px;z-index:1;background:#171715;color:#f3f0e9;border-color:#bdb7ae}
+.qct-film-toggle{position:absolute;right:14px;bottom:14px;z-index:1;background:#171715;color:#f3f0e9;border-color:#bdb7ae;opacity:0;pointer-events:none}
+.qct-film-toggle:focus-visible{opacity:1;pointer-events:auto}
 .qct-brand-film{margin-top:34px}
 .qct-brand-film__frame{position:relative;overflow:hidden;border:1px solid rgba(20,19,18,.10);border-radius:28px;background:#171715;height:clamp(420px,calc(100svh - 190px),620px);box-shadow:0 28px 70px rgba(23,20,17,.14)}
 .qct-brand-film__frame::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.12);border-radius:inherit;pointer-events:none}
