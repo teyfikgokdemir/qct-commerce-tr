@@ -316,11 +316,78 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
 .qct-visual-showcase__stack figcaption{left:18px;right:18px;bottom:16px}
 .qct-visual-showcase__stack figcaption strong{font-size:15px}
 .qct-visual-showcase__stack figcaption small{display:none}
-.qct-image-story{padding:88px 0 96px;background:#090d16;color:#f8fafc}
-.qct-image-story .qct-section-label{color:#60a5fa}
-.qct-image-story .qct-section-head h2{color:#f8fafc}
-.qct-image-story .qct-section-head h2 em{color:#3b82f6}
-.qct-image-story .qct-section-head>p{color:#94a3b8}
+/* Image Story section: Swiss midnight with electric blue accents */
+.qct-image-story {
+  padding: clamp(72px, 8vw, 108px) 0 !important;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 47, 167, 0.32), transparent 70%),
+    radial-gradient(circle at 15% 100%, rgba(0, 47, 167, 0.14), transparent 45%),
+    #080c14 !important;
+  color: #f8fafc !important;
+  border-block: 1px solid rgba(255, 255, 255, 0.08) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.qct-image-story .qct-section-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 14px !important;
+  border-radius: 999px !important;
+  background: rgba(0, 47, 167, 0.22) !important;
+  border: 1px solid rgba(96, 165, 250, 0.32) !important;
+  color: #93c5fd !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  margin-bottom: 20px !important;
+  text-transform: uppercase !important;
+}
+
+.qct-image-story .qct-section-head h2 {
+  color: #ffffff !important;
+  font-size: clamp(40px, 5.2vw, 68px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.045em !important;
+}
+
+.qct-image-story .qct-section-head h2 em {
+  font-style: normal !important;
+  color: #3b82f6 !important;
+  background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.qct-image-story .qct-section-head > p {
+  color: #94a3b8 !important;
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+}
+
+.qct-image-story figure {
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: #0f172a !important;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 22px !important;
+}
+
+.qct-image-story figure::after {
+  background: linear-gradient(180deg, transparent 40%, rgba(8, 12, 20, 0.88) 100%) !important;
+}
+
+.qct-image-story figcaption {
+  color: #ffffff !important;
+}
+
+.qct-image-story figcaption b {
+  color: #ffffff !important;
+}
+
+.qct-image-story figcaption span {
+  color: #cbd5e1 !important;
+}
 .qct-image-story__head{margin-bottom:34px}
 .qct-image-story__grid{display:grid;grid-template-columns:1.18fr .82fr;grid-auto-rows:320px;gap:14px}
 .qct-image-story__grid figure.is-wide{grid-row:span 1}
