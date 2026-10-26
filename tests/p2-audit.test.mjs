@@ -234,16 +234,19 @@ for (const path of ['/', '/en/', '/az/']) {
   test(`video manual pause survives visibility changes and resume works: ${path}`, async t => {
     const page = await pageFor(t, path);
     const control = page.locator('[data-film-toggle]');
-    assert.equal(await control.count(), 1, 'Missing video control');
+    assert.equal(await control.count(), 1, 'Missing keyboard-accessible video control');
+    assert.equal(await control.evaluate(el => getComputedStyle(el).opacity), '0', 'Video overlay must not be visible by default');
     const video = page.locator('[data-qct-brand-film]');
     await video.scrollIntoViewIfNeeded();
     await page.waitForFunction(() => !document.querySelector('[data-qct-brand-film]').paused);
-    await control.click();
+    await control.focus();
+    await page.keyboard.press('Enter');
     assert.equal(await video.evaluate(el => el.paused), true);
     await page.locator('h1').scrollIntoViewIfNeeded();
     await video.scrollIntoViewIfNeeded();
     assert.equal(await video.evaluate(el => el.paused), true);
-    await control.click();
+    await control.focus();
+    await page.keyboard.press('Enter');
     await page.waitForFunction(() => !document.querySelector('[data-qct-brand-film]').paused);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.waitForFunction(() => document.querySelector('[data-qct-brand-film]').paused);
