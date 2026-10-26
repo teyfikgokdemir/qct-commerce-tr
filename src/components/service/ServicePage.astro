@@ -99,12 +99,10 @@ const faqId = `${canonicalUrl}#faq`;
 ---
 <section class="qct-svc-hero">
   <div class="container">
-    <nav class="qct-breadcrumb" aria-label="Sayfa yolu">
-      <a href={homeUrl}>Ana sayfa</a>
-      <span aria-hidden="true">/</span>
+    <div class="qct-svc-hero__kicker">
+      <span class="qct-svc-hero__kicker-dot" aria-hidden="true"></span>
       <span>{eyebrow}</span>
-    </nav>
-    <p class="qct-section__eyebrow">{eyebrow}</p>
+    </div>
     <h1 class="qct-svc-hero__title">{title}</h1>
     <p class="qct-svc-hero__lead">{lead}</p>
     <div class="qct-svc-hero__actions">
@@ -509,14 +507,14 @@ const faqId = `${canonicalUrl}#faq`;
 .qct-svc-faq details summary:focus-visible { outline: 2px solid var(--qct-color-accent-strong, #b9473e); outline-offset: 4px; }
 .qct-svc-faq p { font-size: 1rem; line-height: 1.65; margin: 0; max-width: 68ch; padding: 0 3.5rem 1.25rem 0; }
 
-/* Service Final CTA Section - Elite Redesign */
+/* Service Final CTA Section - Panoramic Elite Redesign */
 .qct-svc-final {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 47, 167, 0.38), transparent 75%),
-    radial-gradient(circle at 85% 100%, rgba(0, 47, 167, 0.16), transparent 50%),
+    radial-gradient(ellipse 90% 65% at 50% 0%, rgba(0, 47, 167, 0.32), transparent 75%),
+    radial-gradient(circle at 85% 100%, rgba(0, 47, 167, 0.14), transparent 50%),
     #080c14 !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  padding-block: clamp(4.5rem, 8vw, 7rem) !important;
+  padding-block: clamp(3.5rem, 5.5vw, 5rem) !important;
   position: relative;
   overflow: hidden;
   color: #f8fafc !important;
@@ -524,13 +522,14 @@ const faqId = `${canonicalUrl}#faq`;
 
 .qct-svc-final__panel {
   text-align: center;
-  max-width: 900px;
+  max-width: 1180px;
+  width: 100%;
   margin: 0 auto;
-  padding: clamp(3rem, 5.5vw, 4.75rem) clamp(1.75rem, 4.5vw, 3.5rem);
+  padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1.75rem, 4vw, 3.5rem);
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 28px !important;
+  border-radius: 26px !important;
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(8, 12, 20, 0.88) 100%) !important;
-  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 48px rgba(0, 47, 167, 0.1) !important;
+  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 54px rgba(0, 47, 167, 0.1) !important;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   position: relative;
@@ -541,10 +540,10 @@ const faqId = `${canonicalUrl}#faq`;
   content: "";
   position: absolute;
   top: 0;
-  left: 15%;
-  right: 15%;
+  left: 10%;
+  right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.6), transparent);
   pointer-events: none;
 }
 
@@ -561,7 +560,7 @@ const faqId = `${canonicalUrl}#faq`;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .qct-svc-final__badge-dot {
@@ -574,21 +573,21 @@ const faqId = `${canonicalUrl}#faq`;
 
 .qct-svc-final__title {
   color: #ffffff !important;
-  font-size: clamp(2.15rem, 4.4vw, 3.4rem);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
   font-weight: 750;
-  line-height: 1.1;
-  letter-spacing: -0.035em;
-  margin: 0 auto 1.25rem;
-  max-width: 24ch;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0 auto 1.15rem;
+  max-width: 32ch;
   text-wrap: balance;
 }
 
 .qct-svc-final__lead {
   color: #94a3b8 !important;
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
-  line-height: 1.65;
-  max-width: 660px;
-  margin: 0 auto 2.25rem;
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.62;
+  max-width: 680px;
+  margin: 0 auto 2rem;
 }
 
 .qct-svc-final__actions {
@@ -597,6 +596,29 @@ const faqId = `${canonicalUrl}#faq`;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.qct-svc-hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(0, 47, 167, 0.08);
+  border: 1px solid rgba(0, 47, 167, 0.18);
+  color: #002fa7 !important;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.qct-svc-hero__kicker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #002fa7;
 }
 
 .qct-btn {
@@ -667,10 +689,10 @@ const faqId = `${canonicalUrl}#faq`;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
-  margin-top: 2.25rem;
-  padding-top: 1.75rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -679,7 +701,7 @@ const faqId = `${canonicalUrl}#faq`;
   align-items: center;
   gap: 8px;
   color: #94a3b8;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 550;
   letter-spacing: -0.01em;
 }

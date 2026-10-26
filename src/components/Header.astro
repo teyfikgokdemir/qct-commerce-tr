@@ -308,11 +308,16 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
         )}
       </div>
     </nav>
-    <nav class="qct-desktop-languages" aria-label={desktopLanguageLabel}>
-      {desktopLanguageLinks.map(([code, href, locale]) => (
-        <a href={href} hreflang={locale} lang={locale}>{code}</a>
-      ))}
-    </nav>
+    <div class="qct-desktop-right">
+      <nav class="qct-desktop-languages" aria-label={desktopLanguageLabel}>
+        {desktopLanguageLinks.map(([code, href, locale]) => (
+          <a href={href} hreflang={locale} lang={locale}>{code}</a>
+        ))}
+      </nav>
+      <a class="qct-header-cta" href={isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : '/iletisim/'}>
+        <span>{isAzerbaijani ? 'Layihəyə başlayın' : isEnglish ? 'Start a project' : 'Teklif Alın'}</span>
+      </a>
+    </div>
   </div>
 </header>
 <div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
@@ -1533,117 +1538,106 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
 }
 </style>
 
-<!-- QCT Studio-inspired floating navigation; commerce content/routes and mobile drawer remain unchanged. -->
+<!-- Elite Swiss Precision Header -->
 <style is:global>
-  /* Keep the original fixed-header geometry, but replace the full-width cream bar with a dark glass dock. */
   #masthead.site-header,
   #masthead.site-header.is-scrolled,
   #masthead.site-header:focus-within {
-    top: 10px !important;
-    padding-inline: 14px;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    pointer-events: none;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03) !important;
+    pointer-events: auto !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   #masthead .site-header__inner.container {
     width: 100%;
-    max-width: 1320px;
-    min-height: 66px;
-    padding: 0 clamp(16px, 1.6vw, 24px);
-    gap: clamp(14px, 1.5vw, 22px);
-    background: rgba(9, 17, 30, .97) !important;
-    border: 1px solid rgba(100, 171, 243, .24);
-    border-radius: 999px;
-    box-shadow: 0 17px 42px rgba(8, 16, 30, .24), inset 0 1px 0 rgba(255,255,255,.12);
+    max-width: 1280px;
+    min-height: 72px;
+    padding: 0 clamp(16px, 2.5vw, 32px);
+    gap: clamp(16px, 2vw, 28px);
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     pointer-events: auto;
   }
 
-  /* Language options occupy the right edge independently of the centered primary menu. */
-  #masthead .qct-desktop-languages { display: none; }
+  #masthead .site-branding {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  #masthead .site-title--logo {
+    display: flex;
+    align-items: center;
+    width: clamp(140px, 11vw, 175px);
+    text-decoration: none;
+  }
+
+  #masthead .site-title--logo img {
+    width: 100%;
+    height: auto;
+    max-height: 42px;
+    display: block;
+    object-fit: contain;
+  }
 
   #masthead .site-title--logo:focus-visible,
   #masthead .main-navigation a:focus-visible,
   #masthead .submenu-toggle:focus-visible,
   #masthead .qctm-toggle:focus-visible {
-    outline: 2px solid #38cfff !important;
+    outline: 2px solid #002fa7 !important;
     outline-offset: 3px;
   }
 
   @media (min-width: 1000px) {
-    #masthead .site-header__inner.container {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) max-content minmax(0, 1fr);
-      gap: clamp(10px, 1vw, 18px);
-      backdrop-filter: blur(22px) saturate(140%);
-      -webkit-backdrop-filter: blur(22px) saturate(140%);
-    }
-
-    #masthead .site-branding {
-      grid-column: 1;
-      justify-self: start;
-    }
-
     #masthead .main-navigation {
-      grid-column: 2;
-      justify-self: center;
-      margin-left: 0 !important;
-    }
-
-    #masthead .qct-desktop-languages {
-      grid-column: 3;
-      justify-self: end;
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-
-    #masthead .qct-desktop-languages a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 36px;
-      min-height: 44px;
-      padding: 0 5px;
-      border-radius: 999px;
-      color: #85d4ff;
-      font-size: .8rem;
-      font-weight: 750;
-      text-decoration: none;
-      transition: color 180ms ease, background 180ms ease;
-    }
-
-    #masthead .qct-desktop-languages a:hover,
-    #masthead .qct-desktop-languages a:focus-visible {
-      background: rgba(67, 159, 255, .13);
-      color: #fff;
-    }
-
-    #masthead .main-navigation {
+      display: flex !important;
+      align-items: center !important;
       background: transparent !important;
       border: 0 !important;
       box-shadow: none !important;
-      gap: 0;
+      margin: 0 auto;
+    }
+
+    #masthead .primary-menu {
+      display: flex !important;
+      align-items: center !important;
+      gap: clamp(4px, 0.8vw, 14px) !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     #masthead .primary-menu > li > a,
     #masthead .primary-menu > li > .submenu-toggle,
     #masthead .primary-menu > li > .submenu-toggle span {
-      color: #dce9fb !important;
-      font-size: .81rem !important;
-      font-weight: 650 !important;
-      letter-spacing: 0 !important;
+      color: #1e293b !important;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.01em !important;
     }
 
     #masthead .primary-menu > li > a,
     #masthead .primary-menu > li > .submenu-toggle {
-      min-height: 42px;
-      padding-inline: clamp(5px, .6vw, 9px) !important;
-      border-radius: 999px;
-      transition: background 180ms ease, color 180ms ease;
+      min-height: 38px;
+      padding: 8px clamp(8px, 0.8vw, 13px) !important;
+      border-radius: 8px;
+      transition: background 160ms ease, color 160ms ease;
     }
 
     #masthead .primary-menu > li > a:hover,
@@ -1651,71 +1645,161 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
     #masthead .primary-menu > li > .submenu-toggle:hover,
     #masthead .primary-menu > li > .submenu-toggle:focus-visible,
     #masthead .primary-menu > li > .submenu-toggle[aria-expanded="true"] {
-      background: rgba(67, 159, 255, .13) !important;
-      color: #fff !important;
+      background: rgba(0, 47, 167, 0.06) !important;
+      color: #002fa7 !important;
     }
 
     #masthead .primary-menu > li > .submenu-toggle:hover span,
     #masthead .primary-menu > li > .submenu-toggle:focus-visible span,
     #masthead .primary-menu > li > .submenu-toggle[aria-expanded="true"] span {
-      color: #fff !important;
-    }
-
-    #masthead .primary-menu > li > a::after,
-    #masthead .primary-menu > li > .submenu-toggle::after {
-      background: #38cfff !important;
+      color: #002fa7 !important;
     }
 
     #masthead .primary-menu > li > a[aria-current="page"] {
-      color: #fff !important;
+      color: #002fa7 !important;
+      font-weight: 700 !important;
     }
 
-    #masthead .primary-menu > li > a[hreflang] {
-      color: #85d4ff !important;
-      font-weight: 750 !important;
-    }
-
-    /* Existing accessible dropdown remains above the floating dock. */
+    /* Submenu popover - Elite Glass */
     #masthead .menu-item-has-children .sub-menu {
-      background: #101b2b !important;
-      border-color: rgba(117,180,239,.22) !important;
+      position: absolute !important;
+      top: calc(100% + 10px) !important;
+      left: 0 !important;
+      width: 270px !important;
+      min-width: 270px !important;
+      background: #ffffff !important;
+      border: 1px solid rgba(15, 23, 42, 0.08) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(0, 47, 167, 0.04) !important;
+      padding: 8px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 3px !important;
+      z-index: 9999 !important;
     }
-  }
 
-  @media (min-width: 1000px) and (max-width: 1160px) {
-    #masthead .site-title--logo { width: 146px; }
-    #masthead .site-title--logo img { max-width: 146px; }
-    #masthead .primary-menu > li > a,
-    #masthead .primary-menu > li > .submenu-toggle,
-    #masthead .primary-menu > li > .submenu-toggle span {
-      font-size: .72rem !important;
+    #masthead .menu-item-has-children .sub-menu a {
+      background: transparent !important;
+      border: none !important;
+      color: #1e293b !important;
+      font-size: 0.86rem !important;
+      font-weight: 600 !important;
+      padding: 9px 12px !important;
+      border-radius: 8px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      transition: background 160ms ease, color 160ms ease !important;
     }
-    #masthead .primary-menu > li > a,
-    #masthead .primary-menu > li > .submenu-toggle { padding-inline: 4px !important; }
-    #masthead .qct-desktop-languages a { min-width: 31px; padding-inline: 3px; font-size: .72rem; }
+
+    #masthead .menu-item-has-children .sub-menu a:hover,
+    #masthead .menu-item-has-children .sub-menu a:focus-visible {
+      background: rgba(0, 47, 167, 0.06) !important;
+      color: #002fa7 !important;
+    }
+
+    #masthead .qct-desktop-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    #masthead .qct-desktop-languages {
+      display: flex !important;
+      align-items: center;
+      gap: 3px;
+      background: rgba(15, 23, 42, 0.04);
+      padding: 3px 5px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    #masthead .qct-desktop-languages a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      min-height: 28px;
+      padding: 0 8px;
+      border-radius: 999px;
+      color: #64748b;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 160ms ease;
+    }
+
+    #masthead .qct-desktop-languages a:hover,
+    #masthead .qct-desktop-languages a:focus-visible {
+      color: #002fa7;
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    #masthead .qct-header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #002fa7 !important;
+      color: #ffffff !important;
+      font-weight: 700;
+      font-size: 0.84rem;
+      padding: 9px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0, 47, 167, 0.28);
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    #masthead .qct-header-cta:hover {
+      background: #00227b !important;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 47, 167, 0.4);
+      color: #ffffff !important;
+    }
   }
 
   @media (max-width: 999px) {
-    /* Solid navy on mobile: avoids a transformed containing block around the fixed navigation drawer. */
-    #masthead.site-header { top: 8px !important; padding-inline: 12px; }
+    #masthead.site-header {
+      position: sticky !important;
+      top: 0 !important;
+      padding: 0 !important;
+      background: rgba(255, 255, 255, 0.94) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+    }
+
     #masthead .site-header__inner.container {
-      min-height: 62px;
+      min-height: 64px;
       padding-inline: 18px;
-      background: #0c1727 !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      border-color: rgba(100,171,243,.23);
+      background: transparent !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
     }
+
+    #masthead .qct-desktop-right {
+      display: none !important;
+    }
+
     #masthead .qctm-toggle {
-      background: rgba(61,145,235,.14) !important;
-      border-color: rgba(119,182,242,.28) !important;
-      color: #fff !important;
-      border-radius: 999px !important;
+      background: rgba(15, 23, 42, 0.05) !important;
+      border-color: rgba(15, 23, 42, 0.12) !important;
+      color: #0f172a !important;
+      border-radius: 12px !important;
     }
-    #masthead .qctm-toggle span { background: #ecf6ff !important; }
+
+    #masthead .qctm-toggle span {
+      background: #0f172a !important;
+    }
   }
 
   @media (prefers-reduced-transparency: reduce) {
-    #masthead .site-header__inner.container { background: #0c1727 !important; }
+    #masthead.site-header { background: #ffffff !important; }
   }
 </style>
