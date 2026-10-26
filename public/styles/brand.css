@@ -733,11 +733,21 @@ body {
 .qct-breadcrumb,
 .qct-breadcrumb a { color: var(--qct-color-muted) !important; }
 
-.qct-svc-hero__title,
 .qct-legal-hero__title {
 	color: var(--qct-color-ink) !important;
-	font-size: clamp(2.75rem, 5vw, 4.75rem) !important;
+	font-size: clamp(2.5rem, 4vw, 3.5rem) !important;
 	max-width: 18ch;
+}
+
+.qct-svc-hero__title {
+	color: var(--qct-color-ink) !important;
+	font-size: clamp(2rem, 3.2vw, 3.1rem) !important;
+	line-height: 1.15;
+	letter-spacing: -.035em;
+	font-weight: 750;
+	max-width: 32ch !important;
+	text-wrap: balance;
+	overflow-wrap: break-word;
 }
 
 .qct-svc-hero__lead {
@@ -1097,7 +1107,8 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
 	}
 
 	.qct-svc-hero { padding-top: calc(var(--qct-hero-clearance) + 26px); }
-	.qct-svc-hero__title, .qct-legal-hero__title { font-size: clamp(2.25rem, 10vw, 3rem) !important; }
+	.qct-svc-hero__title { font-size: clamp(1.85rem, 7vw, 2.5rem) !important; max-width: 24ch !important; }
+	.qct-legal-hero__title { font-size: clamp(2.25rem, 10vw, 3rem) !important; }
 
 	.qct-svc-grid { grid-template-columns: 1fr; }
 	.qct-svc-card,

@@ -370,18 +370,14 @@ const faqId = `${canonicalUrl}#faq`;
   letter-spacing: .14em;
 }
 .qct-svc-hero__title {
-  font-size: clamp(1.85rem, 2.75vw, 2.85rem);
-  line-height: 1.12;
+  font-size: clamp(2rem, 3.2vw, 3.1rem);
+  line-height: 1.15;
   letter-spacing: -.035em;
   font-weight: 750;
-  max-width: min(100%, 1240px);
+  max-width: 32ch;
   margin: .2rem auto 1.25rem;
   text-wrap: balance;
-}
-@media (min-width: 1200px) {
-  .qct-svc-hero__title {
-    white-space: nowrap;
-  }
+  overflow-wrap: break-word;
 }
 .qct-svc-hero__lead {
   color: var(--qct-color-muted, #686268);
