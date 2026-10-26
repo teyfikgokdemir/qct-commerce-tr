@@ -346,9 +346,9 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
 
 <style>
   .site-footer--editorial {
-    background: #171715 !important;
-    color: #f3f0e9;
-    border-top: 1px solid rgba(243, 240, 233, .12);
+    background: #090d16 !important;
+    color: #f8fafc;
+    border-top: 1px solid rgba(255, 255, 255, .08);
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -371,7 +371,7 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
     overflow: hidden;
     pointer-events: none;
     user-select: none;
-    border-bottom: 1px solid rgba(243, 240, 233, .12);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
     background: rgba(255,255,255,.012);
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
@@ -389,7 +389,7 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
     letter-spacing: -.04em;
     white-space: nowrap;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(109, 184, 255, .58);
+    -webkit-text-stroke: 1px rgba(0, 47, 167, .55);
     opacity: .88;
   }
   @keyframes qcte-scroll { to { transform: translateX(-50%); } }
@@ -414,7 +414,7 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
   }
   .qcte-eyebrow {
     margin: 0 0 .65rem !important; font-size: .68rem !important;
-    line-height: 1.5; color: #6dbeff !important;
+    line-height: 1.5; color: #60a5fa !important;
   }
   .qcte-brand__title {
     margin: 0 auto .85rem !important;
@@ -429,26 +429,26 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
     max-width: 540px;
     margin: 0 auto 1.25rem !important;
     font-size: clamp(.93rem, 1.1vw, 1rem) !important;
-    line-height: 1.68; color: rgba(243,240,233,.70) !important;
+    line-height: 1.68; color: rgba(248, 250, 252, .75) !important;
   }
   .qcte-status {
     width: fit-content; max-width: 100%; margin-inline: auto;
     display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .55rem;
-    padding: .55rem .85rem; border: 1px solid rgba(243,240,233,.14);
+    padding: .55rem .85rem; border: 1px solid rgba(255, 255, 255, .1);
     border-radius: 999px; background: rgba(255,255,255,.035);
-    color: #c6e7ff;
+    color: #93c5fd;
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     font-size: .67rem; font-weight: 700; line-height: 1.4;
     letter-spacing: .05em;
   }
   .qcte-status__dot {
     width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%;
-    background: #38cfff; box-shadow: 0 0 12px rgba(56,207,255,.6);
+    background: #002fa7; box-shadow: 0 0 12px rgba(0, 47, 167, .6);
   }
   .qcte-desk {
     position: relative;
     padding: clamp(1.45rem, 2.6vw, 2.25rem);
-    border: 1px solid rgba(243,240,233,.13);
+    border: 1px solid rgba(255, 255, 255, .08);
     border-radius: 18px;
     background: linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
     box-shadow: 0 24px 58px rgba(0,0,0,.2);
@@ -456,11 +456,11 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
   }
   .qcte-desk::before {
     content: ""; height: 2px; position: absolute; inset: 0 0 auto;
-    background: linear-gradient(90deg, transparent, #2289ef, #40d7ff, transparent);
+    background: linear-gradient(90deg, transparent, #002fa7, #60a5fa, transparent);
   }
   .qcte-desk__badge {
     margin: 0 0 .85rem !important; font-size: .67rem !important;
-    color: #6dbeff !important;
+    color: #60a5fa !important;
   }
   .qcte-desk__title {
     margin: 0 0 .75rem !important; color: #fff !important;
@@ -470,18 +470,15 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
   }
   .qcte-desk__text {
     margin: 0 0 1.5rem !important; font-size: .88rem !important;
-    color: rgba(243,240,233,.66) !important; line-height: 1.6;
+    color: rgba(248, 250, 252, .70) !important; line-height: 1.6;
   }
   .qcte-desk__button {
     display: inline-flex !important;
     align-items: center; justify-content: center; gap: .9rem;
     min-height: 46px; padding: .75rem 1.15rem;
-    border-radius: 999px; background: #3ea5f5;
-    color: #041326 !important; text-decoration: none !important;
-    font-size: .9rem !important; font-weight: 800;
-    transition: transform 180ms ease, background 180ms ease;
+    border-radius: 999px; background: #002fa7 !important; color: #ffffff !important; text-decoration: none !important; font-size: .9rem !important; font-weight: 800; box-shadow: 0 4px 16px rgba(0, 47, 167, .35); transition: transform 180ms ease, background 180ms ease;
   }
-  .qcte-desk__button:hover { background: #9ce7ff; transform: translateY(-2px); }
+  .qcte-desk__button:hover { background: #00227b; transform: translateY(-2px); }
   .qcte-desk__button:focus-visible, .qcte-col a:focus-visible,
   .qcte-utility a:focus-visible,
   .qcte-contact__card:focus-visible, .qcte-bottom__legal a:focus-visible,
@@ -501,11 +498,11 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
   .qcte-col__label {
     margin: 0 0 .55rem !important;
     font-size: .7rem !important; font-weight: 800;
-    color: #79c4ff !important; line-height: 1.5;
+    color: #60a5fa !important; line-height: 1.5;
     text-transform: uppercase !important;
   }
   .qcte-col > a {
-    display: inline-flex !important; color: rgba(243,240,233,.72) !important;
+    display: inline-flex !important; color: rgba(248, 250, 252, .75) !important;
     font-size: .87rem !important; line-height: 1.5;
     font-weight: 510; text-decoration: none !important;
     transition: color 180ms ease, transform 180ms ease;
@@ -516,14 +513,14 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
   .qcte-utility {
     display: flex; flex-wrap: wrap; align-items: center; gap: .85rem 1.5rem;
     margin-top: clamp(2rem, 4vw, 3.2rem);
-    padding-top: 1.25rem; border-top: 1px solid rgba(243,240,233,.1);
+    padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, .06);
   }
   .qcte-utility .qcte-col__label { margin: 0 !important; flex: 0 0 auto; }
   .qcte-utility__links { display: flex; flex-wrap: wrap; gap: .45rem .8rem; }
   .qcte-utility__links a {
-    color: rgba(243,240,233,.58) !important;
+    color: rgba(248, 250, 252, .60) !important;
     font-size: .77rem !important; line-height: 1.4;
-    padding: .42rem .65rem; border: 1px solid rgba(243,240,233,.1);
+    padding: .42rem .65rem; border: 1px solid rgba(255, 255, 255, .06);
     border-radius: 999px; text-decoration: none !important;
   }
   .qcte-utility__links a:hover { color: #fff !important; border-color: rgba(90,195,255,.42); }
@@ -532,28 +529,28 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
     display: flex !important; flex-direction: column; gap: .28rem;
     width: 100%; max-width: 260px; padding: .8rem .9rem;
     background: rgba(255,255,255,.032);
-    border: 1px solid rgba(243,240,233,.12);
+    border: 1px solid rgba(255, 255, 255, .08);
     border-radius: 10px;
     text-decoration: none !important;
     transition: border-color 180ms ease, background 180ms ease;
   }
-  .qcte-contact__card:hover { border-color: rgba(62,165,245,.48); background: rgba(62,165,245,.08); }
-  .qcte-contact__type { color: #85b8e8; font-size: .62rem; }
-  .qcte-contact__value { color: #f3f0e9; font-size: .84rem; overflow-wrap: anywhere; font-weight: 650; }
+  .qcte-contact__card:hover { border-color: #002fa7; background: rgba(0, 47, 167, .12); }
+  .qcte-contact__type { color: #60a5fa; font-size: .62rem; }
+  .qcte-contact__value { color: #f8fafc; font-size: .84rem; overflow-wrap: anywhere; font-weight: 650; }
   .qcte-contact__location { color: rgba(243,240,233,.47); font-size: .71rem; font-weight: 650; letter-spacing: .1em; margin-top: .5rem; }
   .qcte-bottom {
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem 1.5rem;
     padding-top: 1.45rem; margin-top: clamp(2.7rem, 5vw, 4rem);
-    border-top: 1px solid rgba(243,240,233,.12);
+    border-top: 1px solid rgba(255, 255, 255, .08);
   }
   .qcte-bottom__brand, .qcte-bottom__legal { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; }
-  .qcte-bottom__brand { color: rgba(243,240,233,.48); font-size: .79rem; }
+  .qcte-bottom__brand { color: rgba(248, 250, 252, .50); font-size: .79rem; }
   .qcte-bottom__legal a {
-    color: rgba(243,240,233,.51) !important;
+    color: rgba(248, 250, 252, .55) !important;
     font-size: .77rem !important; text-decoration: none !important;
   }
-  .qcte-bottom__legal a:hover { color: #9de7ff !important; }
+  .qcte-bottom__legal a:hover { color: #60a5fa !important; }
 
   @media(max-width: 1060px) {
     .qcte-editorial__lead { grid-template-columns: 1fr; gap: 2rem; }
