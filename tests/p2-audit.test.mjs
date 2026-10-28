@@ -235,7 +235,9 @@ for (const path of ['/', '/en/', '/az/']) {
     const page = await pageFor(t, path);
     assert.equal(await page.locator('[data-film-toggle], .qct-film-toggle').count(), 0, 'Brand video must have no overlay button in the DOM');
     const video = page.locator('[data-qct-brand-film]');
-    assert.equal(await video.getAttribute('role'), 'button', 'Video itself must be keyboard operable');
+    assert.equal(await video.getAttribute('role'), null, 'Keep native video semantics instead of an invalid button role');
+    assert.equal(await video.getAttribute('tabindex'), '0', 'Video must remain keyboard focusable');
+    assert.equal(await video.getAttribute('aria-pressed'), null, 'Non-button video must not expose aria-pressed');
     await video.scrollIntoViewIfNeeded();
     await page.waitForFunction(() => !document.querySelector('[data-qct-brand-film]').paused);
     await video.click();
@@ -254,7 +256,7 @@ for (const path of ['/', '/en/', '/az/']) {
     await page.locator('[data-qct-brand-film]').scrollIntoViewIfNeeded();
     assert.equal(await page.locator('[data-qct-brand-film]').evaluate(el => el.paused), true);
     assert.equal(await page.locator('[data-film-toggle]').count(), 0);
-    assert.equal(await page.locator('[data-qct-brand-film]').getAttribute('aria-pressed'), 'false');
+    assert.equal(await page.locator('[data-qct-brand-film]').getAttribute('aria-pressed'), null);
   });
 }
 
