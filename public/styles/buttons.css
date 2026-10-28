@@ -34,8 +34,8 @@
 .qct-btn--secondary,
 .qct-web-button--secondary {
   background: transparent;
-  border-color: var(--qct-color-line-strong, rgba(185, 71, 62, 0.42));
-  color: var(--qct-color-coral-dark, #a63f36);
+  border-color: var(--qct-color-line-strong, rgba(0, 47, 167, 0.32));
+  color: var(--qct-color-coral-dark, #00227b);
 }
 
 .button:hover,
@@ -71,8 +71,8 @@
 .qct-btn--secondary:focus-visible,
 .qct-web-button--secondary:hover,
 .qct-web-button--secondary:focus-visible {
-  background: rgba(230, 107, 95, 0.08);
-  border-color: var(--qct-color-coral, #e66b5f);
+  background: rgba(0, 47, 167, 0.08);
+  border-color: var(--qct-color-coral, #002fa7);
 }
 
 .page-hero .button--secondary,
