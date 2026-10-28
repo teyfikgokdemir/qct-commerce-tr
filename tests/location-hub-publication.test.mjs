@@ -54,3 +54,11 @@ test('market hubs appear in sitemap and market detail pages link to them', () =>
   const redirects = read('public/_redirects');
   assert.doesNotMatch(redirects, /^\/(?:en\/location|lokasyon)\/\s+\S+/gm);
 });
+
+test('Turkish hub has scoped header clearance and responsive market cards', () => {
+  const source = read('src/pages/lokasyon/index.astro');
+  assert.match(source, /class="qct-location"/);
+  assert.match(source, /\.qct-location \.page-hero\s*\{\s*padding: calc\(var\(--qct-hero-clearance/);
+  assert.match(source, /\.qct-location \.service-grid\s*\{\s*display: grid;/);
+  assert.match(source, /@media \(max-width: 640px\)/);
+});
