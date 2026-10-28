@@ -10,6 +10,28 @@ const checks = [
     label: 'Homepage non-blocking pricing experience and current CSS release',
   },
   {
+    url: 'https://qctcommerce.com/lokasyon/',
+    verify: async (response, body) =>
+      response.status === 200 &&
+      body.includes('Farklı pazarlarda doğru dijital satış altyapısını planlayın.') &&
+      body.includes('href="/lokasyon/istanbul/"') &&
+      body.includes('href="/lokasyon/azerbaycan/"') &&
+      body.includes('rel="canonical" href="https://qctcommerce.com/lokasyon/"') &&
+      body.includes('hreflang="en" href="https://qctcommerce.com/en/location/"'),
+    label: 'Turkish market hub real content, parent links and hreflang',
+  },
+  {
+    url: 'https://qctcommerce.com/en/location/',
+    verify: async (response, body) =>
+      response.status === 200 &&
+      body.includes('Plan a digital sales system around your target market.') &&
+      body.includes('href="/en/location/istanbul/"') &&
+      body.includes('href="/en/location/azerbaijan/"') &&
+      body.includes('rel="canonical" href="https://qctcommerce.com/en/location/"') &&
+      body.includes('hreflang="tr-TR" href="https://qctcommerce.com/lokasyon/"'),
+    label: 'English market hub real content, parent links and hreflang',
+  },
+  {
     url: 'https://qctcommerce.com/lokasyon/kayseri/',
     verify: async (response, body) =>
       response.ok &&
