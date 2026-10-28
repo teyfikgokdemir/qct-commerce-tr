@@ -7,6 +7,7 @@ const international = read('../public/styles/international.css');
 const programmatic = read('../public/styles/programmatic.css');
 const caseStudy = read('../public/styles/case-study-overrides.css');
 const layout = read('../src/layouts/BaseLayout.astro');
+const internationalCase = read('../src/components/InternationalWorkCase.astro');
 
 test('international page accents no longer render legacy coral', () => {
   for (const [name, source] of Object.entries({ international, programmatic, caseStudy })) {
@@ -14,7 +15,8 @@ test('international page accents no longer render legacy coral', () => {
   }
   assert.match(international, /\.site-main :is\(\.hero, \.page-hero\) \.eyebrow\s*\{\s*color: #93c5fd/);
   assert.match(programmatic, /\.page-hero \.eyebrow\{color:#93c5fd\}/);
-  assert.match(caseStudy, /qct-int-case__dark \.eyebrow\s*\{\s*color: #93c5fd !important/);
+  assert.match(caseStudy, /qct-int-case__dark \.eyebrow,[\s\S]*?qct-int-case__mobile \.eyebrow,[\s\S]*?qct-int-case__outcome \.eyebrow\s*\{\s*color: #93c5fd !important/);
+  assert.doesNotMatch(internationalCase, /#e66b5f\b|#b64137\b|rgba\(230,\s*107,\s*95/i);
 });
 
 test('shared layout requests fresh CSS versions for international pages', () => {
