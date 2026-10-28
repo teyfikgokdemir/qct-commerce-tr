@@ -9,7 +9,9 @@ html[lang="en"] .site-main .qct-int-case section.qct-int-case__dark li {
   color: #fffaf5 !important;
 }
 
-html[lang="en"] .site-main .qct-int-case section.qct-int-case__dark .eyebrow {
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__dark .eyebrow,
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__mobile .eyebrow,
+html[lang="en"] .site-main .qct-int-case section.qct-int-case__outcome .eyebrow {
   color: #93c5fd !important;
 }
 
