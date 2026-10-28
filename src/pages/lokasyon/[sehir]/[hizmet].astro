@@ -21,6 +21,7 @@ const alternates = [
 ];
 const breadcrumbs = [
   { name: "Ana sayfa", url: "/" },
+  { name: "Pazar ve lokasyonlar", url: "/lokasyon/" },
   { name: market.name, url: `/lokasyon/${market.id}/` },
   { name: service.trName, url: trServicePath(market.id, service) },
 ];
@@ -57,6 +58,7 @@ const breadcrumbs = [
 
   <section class="page-hero section">
     <div class="container">
+      <nav aria-label="Pazar navigasyonu" class="qct-location-parent"><a href="/lokasyon/">← Tüm pazarlar ve lokasyonlar</a></nav>
       <p class="eyebrow">{market.name.toUpperCase()} · {service.trName.toUpperCase()}</p>
       <h1>{market.name} için {service.trName}.</h1>
       <p class="page-hero__lead">{market.name} pazarında amaç, {service.trIntent}. Kapsamı {market.industries.slice(0, 2).join(" ve ").toLowerCase()} şirketlerinin karar ve talep akışına göre şekillendiriyoruz.</p>
@@ -116,3 +118,9 @@ const breadcrumbs = [
   </div>
   <Footer slot="footer" lang="tr" />
 </BaseLayout>
+
+<style>
+  .qct-location-parent { margin: 0 0 16px; font-size: .86rem; font-weight: 750; }
+  .qct-location-parent a { color: #93c5fd; text-underline-offset: 4px; }
+  .qct-location-parent a:focus-visible { outline: 2px solid #93c5fd; outline-offset: 4px; }
+</style>
