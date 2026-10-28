@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { enMarkets, internationalMarketEnIds, programmaticServices } from '../../../data/programmatic-markets';
+
+const domesticMarkets = enMarkets.filter((market) => !internationalMarketEnIds.has(market.id));
+const internationalMarkets = enMarkets.filter((market) => internationalMarketEnIds.has(market.id));
+const alternates = [
+  { lang: 'tr-TR', href: '/lokasyon/' },
+  { lang: 'en', href: '/en/location/' },
+];
+---
+
+<BaseLayout
+  title="Markets & Locations for Web Design, E-Commerce and SEO | QCT Commerce"
+  description="Explore market-specific website, e-commerce and search-visibility planning for Turkish cities and selected international target markets."
+  lang="en"
+  pageType="CollectionPage"
+  alternates={alternates}
+  breadcrumbs={[{ name: 'Home', url: '/en/' }, { name: 'Markets and locations', url: '/en/location/' }]}
+>
+  <Header slot="header" lang="en" />
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">MARKETS AND LOCATIONS</p>
+      <h1>Plan a digital sales system around your target market.</h1>
+      <p class="page-hero__lead">Manufacturers, exporters, service providers and e-commerce brands often need different customer journeys. These market pages outline relevant buyer questions, website structures and enquiry paths before a project scope is defined.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="/en/contact/">Discuss your project</a>
+        <a class="button button--secondary" href="/en/work/">Explore published work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="turkey-markets-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">TÜRKIYE</p>
+        <h2 id="turkey-markets-heading">Digital needs across Turkish cities</h2>
+        <p>Each page describes market context and potential project requirements, not a claim that QCT Commerce maintains a physical office or client base in that city.</p>
+      </div>
+      <div class="service-grid">
+        {domesticMarkets.map((market) => (
+          <a class="service-card" href={`/en/location/${market.id}/`}>
+            <h3>{market.name}</h3>
+            <p>{market.commercialContext}</p>
+            <strong>Explore {market.name} →</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="cross-border-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">CROSS-BORDER TARGET MARKETS</p>
+        <h2 id="cross-border-heading">Make international demand easier to qualify.</h2>
+        <p>Explore requirements for multilingual information, credible product or service content, and buyer enquiry flows tailored to the market you want to reach.</p>
+      </div>
+      <div class="service-grid">
+        {internationalMarkets.map((market) => (
+          <a class="service-card" href={`/en/location/${market.id}/`}>
+            <h3>{market.name}</h3>
+            <p>{market.commercialContext}</p>
+            <strong>Explore {market.name} →</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="market-services-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">CHOOSE BY BUSINESS NEED</p>
+        <h2 id="market-services-heading">Connect market context to an actual service scope.</h2>
+        <p>The market guides introduce use cases. The core service pages explain what can be planned and delivered.</p>
+      </div>
+      <div class="service-grid">
+        {programmaticServices.map((service) => (
+          <a class="service-card" href={service.enCorePath}>
+            <h3>{service.enName}</h3>
+            <p>{service.enOutcome}</p>
+            <strong>Explore the service →</strong>
+          </a>
+        ))}
+      </div>
+      <p class="qct-location-disclaimer">These pages describe target-market scenarios, not verified local offices, locally employed teams or completed client projects. Feasibility, scope and delivery arrangements are confirmed during project discussions.</p>
+    </div>
+  </section>
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .qct-location-disclaimer {
+    max-width: 900px;
+    margin: 32px 0 0;
+    color: var(--qct-color-muted);
+    font-size: .9rem;
+    line-height: 1.65;
+  }
+  .service-grid .service-card { display:flex; flex-direction:column; text-decoration:none; }
+  .service-grid .service-card strong { margin-top:auto; padding-top:1.2rem; }
+</style>
