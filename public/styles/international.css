@@ -10,7 +10,7 @@
 :is(html[lang="en"], html[lang="az"]) .site-main .hero,
 :is(html[lang="en"], html[lang="az"]) .site-main .page-hero {
   background:
-    radial-gradient(circle at 78% 20%, rgba(230, 107, 95, 0.22), transparent 34%),
+    radial-gradient(circle at 78% 20%, rgba(56, 189, 248, 0.18), transparent 34%),
     linear-gradient(145deg, #171514 0%, #26211f 100%);
   color: #f8f2eb;
   display: grid;
@@ -51,12 +51,17 @@
 }
 
 :is(html[lang="en"], html[lang="az"]) .site-main .eyebrow {
-  color: #e66b5f;
+  color: #002fa7;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   margin: 0 0 16px;
   text-transform: uppercase;
+}
+
+/* Light blue remains legible over the existing dark hero surfaces. */
+:is(html[lang="en"], html[lang="az"]) .site-main :is(.hero, .page-hero) .eyebrow {
+  color: #93c5fd;
 }
 
 :is(html[lang="en"], html[lang="az"]) .site-main h1,
@@ -156,7 +161,7 @@
 }
 
 :is(html[lang="en"], html[lang="az"]) .site-main .process-grid span {
-  color: #e66b5f;
+  color: #002fa7;
   display: block;
   font-size: 0.8rem;
   font-weight: 900;
@@ -202,7 +207,7 @@
 }
 
 :is(html[lang="en"], html[lang="az"]) :is(.faq-list, .qct-international-faq__grid) summary::after {
-  color: #e66b5f;
+  color: #002fa7;
   content: "+";
   flex: 0 0 auto;
   font-size: 1.6rem;
@@ -280,13 +285,13 @@ html[lang="en"] .qct-home-solutions .service-card {
 
 html[lang="en"] .qct-home-solutions .service-card:hover,
 html[lang="en"] .qct-home-solutions .service-card:focus-visible {
-  border-color: rgba(230, 107, 95, 0.45);
+  border-color: rgba(0, 47, 167, 0.35);
   box-shadow: 0 24px 64px rgba(23, 21, 20, 0.1);
   transform: translateY(-4px);
 }
 
 html[lang="en"] .qct-home-solutions .service-card > span {
-  color: #e66b5f;
+  color: #002fa7;
   font-size: .78rem;
   font-weight: 900;
   letter-spacing: .14em;
@@ -330,7 +335,7 @@ html[lang="en"] .qct-market-entry__meta {
 }
 
 html[lang="en"] .qct-market-entry__meta > span {
-  color: #e66b5f;
+  color: #93c5fd;
   display: block;
   font-size: .78rem;
   font-weight: 900;
@@ -346,7 +351,7 @@ html[lang="en"] .qct-market-entry__meta > strong {
 
 html[lang="en"] .qct-home-contact .container {
   background:
-    radial-gradient(circle at 84% 20%, rgba(230,107,95,.18), transparent 28%),
+    radial-gradient(circle at 84% 20%, rgba(0,47,167,.08), transparent 28%),
     #fffaf5;
 }
 
