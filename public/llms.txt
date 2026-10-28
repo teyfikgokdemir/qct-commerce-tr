@@ -53,7 +53,7 @@ The blog covers platform conditions, setup, search visibility and operational mi
 ## Programmatic SEO
 Turkish market/location hubs: [Location hub](https://qctcommerce.com/lokasyon/)
 English market/location hubs: [Location hub](https://qctcommerce.com/en/location/)
-Both generate 19 parent market/location pages. Selected international markets generate 3 service-intent children (web design, e-commerce, SEO/GEO), producing 12 service pages per TR/EN locale.
+Both hubs list 19 market/location parent pages per language. Each parent has 3 service-specific children (web design, e-commerce and SEO/GEO), producing 57 service pages per TR/EN locale. Market pages describe target-market use cases; they do not assert local offices or clients.
 
 The Azerbaijani locale intentionally does not duplicate the same Azerbaijan intent under /az/azerbaycan/. https://qctcommerce.com/az/ and its local service pages are the canonical Azerbaijan-market targets, preventing keyword cannibalization.
 
