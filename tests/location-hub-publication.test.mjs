@@ -19,7 +19,7 @@ test('both location hubs are built with reciprocal hreflang and self-canonical',
   ]) {
     assert.match(html, new RegExp(`<html\\b[^>]*lang="${lang}"`));
     assert.ok(html.includes(`rel="canonical" href="${canonical}"`), `self canonical missing: ${canonical}`);
-    assert.match(html, /<h1\\b[^>]*>/);
+    assert.match(html, /<h1\b[^>]*>/);
     assert.ok(html.includes('hreflang="tr-TR" href="https://qctcommerce.com/lokasyon/"'));
     assert.ok(html.includes('hreflang="en" href="https://qctcommerce.com/en/location/"'));
     assert.ok(!/<meta[^>]+name="robots"[^>]+noindex/i.test(html));
