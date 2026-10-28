@@ -1,9 +1,10 @@
 .qct-programmatic{background:#f3eee7;color:#171514}
 .qct-programmatic .section{padding:clamp(72px,9vw,124px) 0}
-.qct-programmatic .page-hero{background:radial-gradient(circle at 78% 20%,rgba(230,107,95,.22),transparent 34%),linear-gradient(145deg,#171514 0%,#26211f 100%);color:#f8f2eb;display:grid;align-items:center;min-height:clamp(450px,52svh,530px);overflow:hidden;position:relative}
+.qct-programmatic .page-hero{background:radial-gradient(circle at 78% 20%,rgba(56,189,248,.18),transparent 34%),linear-gradient(145deg,#171514 0%,#26211f 100%);color:#f8f2eb;display:grid;align-items:center;min-height:clamp(450px,52svh,530px);overflow:hidden;position:relative}
 .qct-programmatic .page-hero::after{background:linear-gradient(120deg,transparent 10%,rgba(255,255,255,.06),transparent 56%);content:"";inset:0;pointer-events:none;position:absolute;transform:translateX(38%)}
 .qct-programmatic .page-hero .container{position:relative;z-index:1}
-.qct-programmatic .eyebrow{color:#e66b5f;font-size:.78rem;font-weight:800;letter-spacing:.14em;margin:0 0 16px;text-transform:uppercase}
+.qct-programmatic .eyebrow{color:#002fa7;font-size:.78rem;font-weight:800;letter-spacing:.14em;margin:0 0 16px;text-transform:uppercase}
+.qct-programmatic .page-hero .eyebrow{color:#93c5fd}
 .qct-programmatic h1,.qct-programmatic h2,.qct-programmatic h3,.qct-programmatic p{opacity:1;visibility:visible}
 .qct-programmatic h1{color:#fffaf5;font-size:clamp(2.9rem,4.2vw,4.15rem);line-height:1.04;letter-spacing:-.04em;max-width:1080px;margin:0}
 .qct-programmatic .page-hero h1{max-width:1080px;text-wrap:balance}
