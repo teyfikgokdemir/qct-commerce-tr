@@ -511,13 +511,11 @@
     sync();
   });
   document.querySelectorAll('[data-qct-brand-film]').forEach(function(video){
-    // No film overlay button: the video surface itself is the pointer/keyboard control.
+    // Keep native video semantics; click and keyboard can still toggle playback without an overlay.
     var userPaused=motion.matches;
     var visible=false;
-    video.setAttribute('role','button');
     video.setAttribute('tabindex','0');
     function sync(){
-      video.setAttribute('aria-pressed',String(!video.paused));
       video.setAttribute('aria-label',video.paused?filmCopy.resume:filmCopy.pause);
     }
     function play(){video.play().then(sync).catch(sync);}
