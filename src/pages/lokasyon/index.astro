@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { trMarkets, internationalMarketIds, programmaticServices } from '../../data/programmatic-markets';
+
+const domesticMarkets = trMarkets.filter((market) => !internationalMarketIds.has(market.id));
+const internationalMarkets = trMarkets.filter((market) => internationalMarketIds.has(market.id));
+const alternates = [
+  { lang: 'tr-TR', href: '/lokasyon/' },
+  { lang: 'en', href: '/en/location/' },
+];
+---
+
+<BaseLayout
+  title="Pazar ve Lokasyonlara Göre Dijital Çözümler | QCT Commerce"
+  description="Türkiye'deki şehirler ve seçili uluslararası pazarlar için web tasarım, e-ticaret ve SEO planlama senaryoları. Tüm pazar ve hizmet sayfalarını inceleyin."
+  lang="tr"
+  pageType="CollectionPage"
+  alternates={alternates}
+  breadcrumbs={[{ name: 'Ana sayfa', url: '/' }, { name: 'Pazar ve lokasyonlar', url: '/lokasyon/' }]}
+>
+  <Header slot="header" lang="tr" />
+  <div class="qct-location">
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">PAZAR VE LOKASYON REHBERİ</p>
+      <h1>Farklı pazarlarda doğru dijital satış altyapısını planlayın.</h1>
+      <p class="page-hero__lead">Üretici, ihracatçı, hizmet işletmesi veya e-ticaret markası için aynı site kurgusu uygun olmayabilir. Aşağıdaki pazar sayfaları, hedef müşteri ve teklif/satış akışına göre değerlendirilebilecek başlangıç senaryolarını açıklar.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="/iletisim/">Projenizi değerlendirelim</a>
+        <a class="button button--secondary" href="/calismalar/">Yayınlanan çalışmaları görün</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="tr-markets-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">TÜRKİYE</p>
+        <h2 id="tr-markets-heading">Şehre ve iş modeline göre kullanım senaryoları</h2>
+        <p>Her bağlantı o pazardaki işletme tipleri, ticari ihtiyaçlar ve ilişkili hizmetler hakkında bilgi verir. Bunlar yerel ofis veya mevcut müşteri portföyü iddiası değildir.</p>
+      </div>
+      <div class="service-grid">
+        {domesticMarkets.map((market) => (
+          <a class="service-card" href={`/lokasyon/${market.id}/`}>
+            <h3>{market.name}</h3>
+            <p>{market.commercialContext}</p>
+            <strong>{market.name} pazarını inceleyin →</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="international-markets-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">ULUSLARARASI HEDEF PAZARLAR</p>
+        <h2 id="international-markets-heading">İhracat ve sınır ötesi satış için dijital hazırlık</h2>
+        <p>Çok dilli katalog, ürün/hizmet anlatımı, güven unsurları ve nitelikli teklif toplama ihtiyacını hedef pazar bağlamında ele alın.</p>
+      </div>
+      <div class="service-grid">
+        {internationalMarkets.map((market) => (
+          <a class="service-card" href={`/lokasyon/${market.id}/`}>
+            <h3>{market.name}</h3>
+            <p>{market.commercialContext}</p>
+            <strong>{market.name} pazarını inceleyin →</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">İHTİYACA GÖRE HİZMET</p>
+        <h2 id="services-heading">Önce iş ihtiyacını, ardından çözümü seçin.</h2>
+        <p>Lokasyon sayfaları olası ticari bağlamı açıklar. Hizmetlerin kapsamı ve teslimatlar için aşağıdaki ana sayfaları kullanın.</p>
+      </div>
+      <div class="service-grid">
+        {programmaticServices.map((service) => (
+          <a class="service-card" href={service.trCorePath}>
+            <h3>{service.trName}</h3>
+            <p>{service.trOutcome}</p>
+            <strong>Hizmeti inceleyin →</strong>
+          </a>
+        ))}
+      </div>
+      <p class="qct-location-disclaimer">QCT Commerce bu pazarlar için dijital proje senaryoları sunar; burada listelenen şehir ve ülkelerde fiziksel ofisi, yerel ekibi veya doğrulanmış müşteri çalışması bulunduğu iddia edilmez. Proje uygunluğu, kapsam ve çalışma modeli görüşmede netleştirilir.</p>
+    </div>
+  </section>
+  </div>
+  <Footer slot="footer" lang="tr" />
+</BaseLayout>
+
+<style>
+  .qct-location {
+    background: var(--qct-color-background);
+    color: var(--qct-color-text);
+  }
+  .qct-location .page-hero {
+    padding: calc(var(--qct-hero-clearance, 72px) + 64px) 0 76px;
+    background: radial-gradient(circle at 80% 12%, rgba(56,189,248,.17), transparent 34%), linear-gradient(145deg,#090d16,#122042);
+    color: #f8fafc;
+  }
+  .qct-location .page-hero .eyebrow {
+    color: #93c5fd;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+  }
+  .qct-location .page-hero h1 {
+    max-width: 1000px;
+    margin: 0;
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+    font-size: clamp(2.5rem, 5.5vw, 4.6rem);
+    letter-spacing: -.052em;
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+  .qct-location .page-hero__lead {
+    max-width: 820px;
+    margin: 22px 0 0;
+    color: #cbd5e1;
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    line-height: 1.7;
+  }
+  .qct-location .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .qct-location .section:not(.page-hero) {
+    padding: clamp(58px, 7vw, 100px) 0;
+  }
+  .qct-location .section:nth-of-type(odd):not(.page-hero) {
+    background: var(--qct-color-surface);
+  }
+  .qct-location .section-heading {
+    max-width: 960px;
+    margin-bottom: 34px;
+  }
+  .qct-location .section-heading .eyebrow {
+    color: var(--qct-color-accent-strong);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+  }
+  .qct-location .section-heading h2 {
+    max-width: 920px;
+    margin: 0 0 16px;
+    color: var(--qct-color-ink);
+    font-size: clamp(2rem, 4.3vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -.045em;
+    text-wrap: balance;
+  }
+  .qct-location .section-heading p:not(.eyebrow) {
+    color: var(--qct-color-muted);
+    line-height: 1.72;
+  }
+  .qct-location .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .qct-location .service-grid .service-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 240px;
+    padding: 26px;
+    border: 1px solid var(--qct-color-line-strong);
+    border-radius: 20px;
+    background: #ffffff;
+    color: var(--qct-color-text);
+    text-decoration: none;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .qct-location .service-grid .service-card:hover {
+    border-color: #002fa7;
+    transform: translateY(-3px);
+  }
+  .qct-location .service-grid .service-card:focus-visible {
+    outline: 2px solid #002fa7;
+    outline-offset: 3px;
+  }
+  .qct-location .service-grid .service-card h3 {
+    margin: 0 0 12px;
+    color: var(--qct-color-ink);
+    font-size: 1.4rem;
+    letter-spacing: -.02em;
+  }
+  .qct-location .service-grid .service-card p {
+    margin: 0;
+    color: var(--qct-color-muted);
+    font-size: .93rem;
+    line-height: 1.64;
+  }
+  .qct-location .service-grid .service-card strong {
+    margin-top: auto;
+    padding-top: 1.4rem;
+    color: var(--qct-color-accent-strong);
+    font-weight: 800;
+  }
+  .qct-location-disclaimer {
+    max-width: 900px;
+    margin: 32px 0 0;
+    color: var(--qct-color-muted);
+    font-size: .9rem;
+    line-height: 1.65;
+  }
+  @media (max-width: 1020px) {
+    .qct-location .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .qct-location .page-hero { padding: calc(var(--qct-hero-clearance, 64px) + 36px) 0 52px; }
+    .qct-location .service-grid { grid-template-columns: 1fr; }
+    .qct-location .service-grid .service-card { min-height: 0; }
+    .qct-location .hero__actions { flex-direction: column; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .qct-location .service-grid .service-card { transition: none; }
+  }
+</style>

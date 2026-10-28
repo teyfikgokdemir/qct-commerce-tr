@@ -22,7 +22,7 @@ const alternates = [
 const marketServicePages = programmaticServices;
 const breadcrumbs = [
   { name: "Home", url: "/en/" },
-  { name: "Services", url: "/en/services/" },
+  { name: "Markets and locations", url: "/en/location/" },
   { name: market.name, url: `/en/location/${market.id}/` },
 ];
 ---
@@ -32,6 +32,7 @@ const breadcrumbs = [
 
   <section class="page-hero section">
     <div class="container">
+      <nav aria-label="Market navigation" class="qct-location-parent"><a href="/en/location/">← All markets and locations</a></nav>
       <p class="eyebrow">{isCountry ? "INTERNATIONAL MARKET" : "LOCAL GROWTH"} · {market.name.toUpperCase()}</p>
       <h1>Digital growth infrastructure for {market.name}.</h1>
       <p class="page-hero__lead">For {market.audience.charAt(0).toLowerCase() + market.audience.slice(1)}, we connect web, e-commerce and search visibility into one commercial journey. The goal is to {market.marketAngle}.</p>
@@ -131,3 +132,9 @@ const breadcrumbs = [
 
   <Footer slot="footer" lang="en" />
 </BaseLayout>
+
+<style>
+  .qct-location-parent { margin: 0 0 16px; font-size: .86rem; font-weight: 750; }
+  .qct-location-parent a { color: #93c5fd; text-underline-offset: 4px; }
+  .qct-location-parent a:focus-visible { outline: 2px solid #93c5fd; outline-offset: 4px; }
+</style>
