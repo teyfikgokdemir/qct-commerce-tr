@@ -21,6 +21,7 @@ const alternates = [
 ];
 const breadcrumbs = [
   { name: "Home", url: "/en/" },
+  { name: "Markets and locations", url: "/en/location/" },
   { name: market.name, url: `/en/location/${market.id}/` },
   { name: service.enName, url: enServicePath(market.id, service) },
 ];
@@ -31,6 +32,7 @@ const breadcrumbs = [
 
   <section class="page-hero section">
     <div class="container">
+      <nav aria-label="Market navigation" class="qct-location-parent"><a href="/en/location/">← All markets and locations</a></nav>
       <p class="eyebrow">{market.name.toUpperCase()} · {service.enName.toUpperCase()}</p>
       <h1>{service.enName} for {market.name}.</h1>
       <p class="page-hero__lead">For {market.name}, the objective is to {service.enIntent}. Scope is shaped around how {market.industries.slice(0, 2).join(" and ").toLowerCase()} businesses in this market build trust and capture demand.</p>
@@ -89,3 +91,9 @@ const breadcrumbs = [
 
   <Footer slot="footer" lang="en" />
 </BaseLayout>
+
+<style>
+  .qct-location-parent { margin: 0 0 16px; font-size: .86rem; font-weight: 750; }
+  .qct-location-parent a { color: #93c5fd; text-underline-offset: 4px; }
+  .qct-location-parent a:focus-visible { outline: 2px solid #93c5fd; outline-offset: 4px; }
+</style>
