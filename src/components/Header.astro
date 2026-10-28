@@ -44,6 +44,10 @@ const azServicePath = (service: (typeof programmaticServices)[number]) => {
 };
 
 const getProgrammaticLocaleTargets = () => {
+  // True bilingual hub routes. AZ has no equivalent location hub.
+  if (currentPath === '/lokasyon/' || currentPath === '/en/location/') {
+    return { tr: '/lokasyon/', en: '/en/location/', az: '/az/' };
+  }
   for (const market of trMarkets) {
     const trParent = `/lokasyon/${market.id}/`;
     const enParent = `/en/location/${market.alternateId}/`;
