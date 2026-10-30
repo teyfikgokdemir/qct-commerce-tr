@@ -37,6 +37,18 @@ for (const [label, content] of [['llms.txt', short], ['llms-full.txt', full]]) {
 for (const route of ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/', '/amazon-amerika-magaza-kurulumu/']) {
   if (!full.includes(`${SITE}${route}`)) fail(`Detailed reference missing ${route}`);
 }
+// Prevent documents from advertising absent URLs even when the required core routes exist.
+const referencedUrls = new Set(
+  [short, full].flatMap((body) => body.match(/https:\/\/qctcommerce\.com\/[^\\s)<>\\]|]+/g) ?? [])
+    .map((url) => url.replace(/[.,;:!?]+$/, ''))
+);
+for (const textUrl of referencedUrls) {
+  let url;
+  try { url = new URL(textUrl); } catch { fail(`Invalid QCT discovery URL: ${textUrl}`); continue; }
+  if (url.search || url.hash) { fail(`Unexpected parameters in discovery URL: ${textUrl}`); continue; }
+  const name = url.pathname.endsWith('/') ? `${url.pathname.slice(1)}index.html` : url.pathname.slice(1);
+  if (!fs.existsSync(path.join(DIST, name))) fail(`Broken published discovery reference: ${textUrl}`);
+}
 if (!short.includes(`${SITE}/llms-full.txt`)) fail('llms.txt must link to llms-full.txt');
 if (!full.includes(`${SITE}/llms.txt`)) fail('llms-full.txt must link back to llms.txt');
 if (!robots.includes('Sitemap: https://qctcommerce.com/sitemap-index.xml')) fail('robots.txt missing sitemap link');
