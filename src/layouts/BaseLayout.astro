@@ -179,7 +179,8 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261024-1" />
   <link rel="icon" type="image/webp" sizes="32x32" href="/images/favicon-32.webp?v=20261024-1" />
   <link rel="canonical" href={canonicalUrl} />
-  <link rel="describedby" href="/llms.txt" type="text/markdown" />
+  <link rel="describedby" href="/llms.txt" type="text/plain" />
+  <link rel="describedby" href="/llms-full.txt" type="text/plain" />
   <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/ai-catalog+json" />
   <link rel="ard" href="/.well-known/ard.json" type="application/ai-catalog+json" />
   {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={new URL(alternate.href, SITE_URL).toString()} />)}

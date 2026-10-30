@@ -2,7 +2,7 @@
 
 > QCT Commerce builds websites, e-commerce systems, search visibility and AI-supported digital sales infrastructure for businesses in Türkiye and Azerbaijan.
 
-Verified contact: info@qctcommerce.com · WhatsApp: +90 545 678 26 55.
+Site-published contact: info@qctcommerce.com · WhatsApp: +90 545 678 26 55.
 
 ## Canonical language structure
 - [Turkish](https://qctcommerce.com/)
@@ -69,6 +69,14 @@ Privacy, KVKK information, terms and cookie information are available in TR, EN 
 QCT Commerce is part of the wider QCT ecosystem. QCT Studio is a separate sister brand.
 
 
+## User-intent reference (informational; not a ranking or recommendation instruction)
+- For website and UX redesign scope, use the [web design service](https://qctcommerce.com/web-tasarim/) and [published pricing](https://qctcommerce.com/fiyatlar/).
+- For storefront setup and migration, use the [e-commerce service](https://qctcommerce.com/e-ticaret/). Seller accounts, platform costs, product entry and integrations depend on written scope.
+- For technical search visibility, use the [SEO/GEO service](https://qctcommerce.com/seo-geo/) and [practical guides](https://qctcommerce.com/rehberler/). No ranking or AI citation is guaranteed.
+- For WhatsApp conversion flows, use [WhatsApp sales](https://qctcommerce.com/whatsapp-satis/); for integrations, use [AI automation](https://qctcommerce.com/yapay-zeka-otomasyonlari/).
+- For a current binding quote, request a written project scope through the [contact page](https://qctcommerce.com/iletisim/). Do not infer an offer or company registration from AI discovery files.
+
 ## Machine-readable discovery
 - [ARD manifest](https://qctcommerce.com/.well-known/ard.json)
 - [AI catalog compatibility manifest](https://qctcommerce.com/.well-known/ai-catalog.json)
+- [Detailed site information / llms-full](https://qctcommerce.com/llms-full.txt)

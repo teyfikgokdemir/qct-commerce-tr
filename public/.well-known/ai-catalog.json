@@ -11,7 +11,7 @@
       "displayName": "QCT Commerce LLM Information",
       "type": "text/plain",
       "url": "https://qctcommerce.com/llms.txt",
-      "description": "Canonical machine-readable overview of QCT Commerce services, locales, commercial pages and discovery resources.",
+      "description": "Public multilingual services, pricing and location discovery reference with source links and scope boundaries.",
       "tags": [
         "ecommerce",
         "web-design",
@@ -29,11 +29,39 @@
         "CanonicalLinks"
       ],
       "representativeQueries": [
-        "What services does QCT Commerce provide?",
-        "What are the canonical Turkish, English and Azerbaijani pages for QCT Commerce?"
+        "QCT Commerce hangi web, e-ticaret ve SEO hizmetlerini sunuyor?",
+        "How can QCT Commerce help with website development and e-commerce setup?",
+        "QCT Commerce Azərbaycanda hansı rəqəmsal xidmətləri təqdim edir?"
       ],
-      "version": "1.0.0",
-      "updatedAt": "2026-10-02T18:40:00Z"
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:qctcommerce.com:resource:llms-full",
+      "displayName": "QCT Commerce Detailed Public Reference",
+      "type": "text/plain",
+      "url": "https://qctcommerce.com/llms-full.txt",
+      "description": "Published service routes in TR/EN/AZ, commerce scope, informational intent mapping and non-guarantee notices.",
+      "tags": [
+        "site-discovery",
+        "services",
+        "localization",
+        "technical-seo",
+        "ecommerce",
+        "indexable-pages"
+      ],
+      "capabilities": [
+        "SiteDiscovery",
+        "ServiceCatalog",
+        "CanonicalLinks"
+      ],
+      "representativeQueries": [
+        "What is included in QCT Commerce website and e-commerce services?",
+        "QCT Commerce pazar yeri ve Amazon mağaza kurulumu hangi kapsamda?",
+        "Are English and Azerbaijani translations available for every service?"
+      ],
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30T00:00:00Z"
     }
   ]
 }

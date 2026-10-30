@@ -1,68 +1,29 @@
-## Development
+# QCT Commerce — repository agent instructions
 
-When starting the dev server, use background mode:
+## Current architecture (verified 2026-10-30)
+- Astro 7.4.x static marketing site, deployed by Cloudflare Pages from `main`. Production: https://qctcommerce.com.
+- **Three published locales:** Turkish at `/`, English at `/en/`, Azerbaijani at `/az/`. Treat all three as production features. Keep page-specific reciprocal hreflang only when genuine translations exist, canonical and x-default behavior, language switch routes, metadata and localized content intact.
+- Turkish marketplace and Amazon setup routes do **not** currently have English/Azerbaijani translations. Do not invent translated URLs.
+- Location/market hub programmatic pages exist in TR/EN; AZ is deliberately handled via the actual Azerbaijani pages. Do not invent offices, local clients or geographic presence.
+- Preserve the quote calculator, WhatsApp funnel, consent/analytics, accessibility, videos, keyboard navigation, responsive design, and the current brand color system.
 
-```
-astro dev --background
-```
+## Before modifying files
+Read README.md, package.json, affected source files, and relevant workflows. Check current default branch SHA, open PRs, tests and changed files. Documentation is context; confirm implementation in source.
+An audit or review request is read-only. For code changes, make the smallest reversible patch on a dedicated branch and open a PR. Do not push directly to `main` or deploy without an explicit instruction; do not merge your own PR by default.
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+## SEO, GEO, AEO and AI discovery
+Preserve self-canonicals, hreflang, schema.org JSON-LD, sitemap, robots.txt, internal links, OG previews, and per-locale meta descriptions. Validate content and HTML with the existing audits, not with assumptions.
+- Site machine-readable summaries: `public/llms.txt` and `public/llms-full.txt`.
+- Optional interoperability manifests: `public/.well-known/ard.json` and `public/.well-known/ai-catalog.json`. They are **not** a Google ranking feature or an AI recommendation guarantee.
+- Match all summaries and manifests to **published** pages and facts; never fabricate client references, certifications, seller approvals, results, company registration, physical offices, translated pages or guaranteed search rankings.
+- Google does not require llms.txt for AI Overviews; standard crawlable, helpful pages remain the primary discovery source. OpenAI Search uses OAI-SearchBot. Do not overengineer `robots.txt` with redundant bot-specific Allow rules.
+- IndexNow notifies participating search engines about recently changed URLs; acceptance is not indexing. Use targeted changed-page submission where possible and never bulk-resubmit by default.
 
-## Documentation
+## Development and verification
+Use supported commands defined in `package.json`: `npm ci`, `npm run build`, `npm run check:locales`, `npm run check:performance`, `npm run check:analytics`, `npm test`.
+`npm run build` includes source/content checks, Astro build, built HTML/link/schema/parity checks, and AI discovery audits.
+When launching a dev server, use `astro dev --background`; stop it with `astro dev stop`.
+Keep Node consistent with CI (22.23.4). Never expose credentials, customer or private analytics data.
+Report separately: changed files, local tests, CI, commit and push, PR, production deploy, live verification, failures and open risks.
 
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
-
-## Project-specific Codex guidance (2026-10-17)
-
-### Scope and architecture
-Turkish-only Astro marketing site. Preserve Turkish root routes, qctcommerce.com canonical/OG/sitemap, accessibility and conversion paths; do not invent multilingual requirements.
-Read the repository README, package scripts, CI workflows, existing project instructions and relevant source files before choosing commands or changes. Treat README claims as context, not as proof of current live behavior.
-
-### Change safety
-- For audit or review requests, inspect and report only; do not modify code, configuration, tracking, infrastructure or production.
-- For requested changes, keep patches minimal and reversible. Preserve existing design, mobile behavior, accessibility, localization and business-critical workflows.
-- Never push directly to the default branch or deploy without an explicit task requiring it. Prefer a focused branch and pull request; do not merge your own PR by default.
-- Never expose secrets or customer data in logs, source files or reports. Do not invent customer testimonials, vendor claims, pricing, certifications or legal/commercial facts.
-
-### Review priorities
-- Identify security, data-integrity and regression risks before style-only issues. Report findings with paths/lines, severity and reproducible evidence; clearly label unverified concerns.
-- For web-facing changes inspect applicable metadata, canonical URLs, robots/sitemap, structured data, internal links, Open Graph, mobile accessibility and performance. Do not assume SEO checks guarantee rankings.
-- Check translation parity, language tags, hreflang and RTL only where the project actually supports them; do not impose locales on single-language projects.
-- For forms, APIs and integrations inspect validation, authorization, error handling and privacy; do not silently alter analytics/consent.
-
-### Verification and reporting
-- Run only scripts confirmed in package.json or documented project tooling. Perform focused checks followed by build/tests when feasible; do not claim commands succeeded unless outputs confirm it.
-- Separately report: files changed, tests (pass/fail/not run), commit, push, PR, CI, deployment and live checks. State blockers, open decisions and next action.
-
-## Project-specific Codex instructions (2026-10-17)
-
-### Project context
-Turkish-only Astro marketing site: preserve root TR routes, qctcommerce.com canonical/OG/sitemap; do not impose other languages.
-
-### Read before acting
-Read README, package scripts, CI workflows, existing instructions and affected sources. Do not treat old documentation as proof of live state.
-
-### Safe execution
-- Audit/review is read-only: no edits, commits, tracking or infrastructure changes.
-- Requested changes must be small, reversible and scoped. Preserve design, mobile behavior, accessibility, content, routing and working integrations.
-- Do not deploy or push to the default branch unless explicitly requested; prefer reviewable feature branches and PRs.
-- Keep credentials, customer data and private analytics out of code and logs. Never invent business claims or credentials.
-
-### Review checklist
-- Prioritize security, broken functionality and data integrity over cosmetic style. Cite exact affected paths/lines and severity; distinguish observation from hypothesis.
-- Check applicable canonical, robots, sitemap, metadata, Open Graph, schema, links, accessibility and performance. SEO checks do not guarantee rankings.
-- Check hreflang and RTL only where supported; preserve actual locale architecture.
-- For forms and APIs check validation, rate limiting, errors and privacy; do not modify consent or analytics behavior without instruction.
-
-### Verification
-- Use only repository-supported checks; distinguish not run, failed and passed.
-- Report separately: changed files, tests, commits, pushes, PRs, CI, deployment and live verification. Note blockers and next step.
+Documentation: https://docs.astro.build
