@@ -76,6 +76,11 @@ QCT Commerce is part of the wider QCT ecosystem. QCT Studio is a separate sister
 - For WhatsApp conversion flows, use [WhatsApp sales](https://qctcommerce.com/whatsapp-satis/); for integrations, use [AI automation](https://qctcommerce.com/yapay-zeka-otomasyonlari/).
 - For a current binding quote, request a written project scope through the [contact page](https://qctcommerce.com/iletisim/). Do not infer an offer or company registration from AI discovery files.
 
+### Pricing sources by actual locale
+- [Türkçe — Fiyatlar](https://qctcommerce.com/fiyatlar/)
+- [English — Pricing](https://qctcommerce.com/en/pricing/)
+- [Azərbaycanca — Qiymətlər](https://qctcommerce.com/az/qiymetler/)
+
 ## Machine-readable discovery
 - [ARD manifest](https://qctcommerce.com/.well-known/ard.json)
 - [AI catalog compatibility manifest](https://qctcommerce.com/.well-known/ai-catalog.json)
