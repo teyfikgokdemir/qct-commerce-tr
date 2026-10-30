@@ -29,11 +29,39 @@
         "CanonicalLinks"
       ],
       "representativeQueries": [
-        "What services does QCT Commerce provide?",
-        "What are the canonical Turkish, English and Azerbaijani pages for QCT Commerce?"
+        "What website and e-commerce services does QCT Commerce provide in Türkiye?",
+        "QCT Commerce web sitesi, e-ticaret ve SEO hizmetleri nelerdir?",
+        "Where can I verify QCT Commerce pricing and available language pages?"
       ],
       "version": "1.0.0",
-      "updatedAt": "2026-10-02T18:40:00Z"
+      "updatedAt": "2026-10-30T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:qctcommerce.com:resource:llms-full",
+      "displayName": "QCT Commerce Extended Public Reference",
+      "type": "text/plain",
+      "url": "https://qctcommerce.com/llms-full.txt",
+      "description": "Extended verified company and service reference with canonical locale routes, source links and claim limitations.",
+      "tags": [
+        "website",
+        "ecommerce",
+        "technical-seo",
+        "geo",
+        "turkiye",
+        "azerbaijan",
+        "multilingual"
+      ],
+      "capabilities": [
+        "SiteDiscovery",
+        "ServiceCatalog",
+        "CanonicalLinks"
+      ],
+      "representativeQueries": [
+        "Which QCT Commerce services have real TR/EN/AZ equivalents?",
+        "QCT Commerce hangi hizmetleri sunuyor ve güncel fiyatları nereden doğrulayabilirim?"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-30T00:00:00Z"
     }
   ]
 }

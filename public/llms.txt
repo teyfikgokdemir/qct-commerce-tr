@@ -69,6 +69,9 @@ Privacy, KVKK information, terms and cookie information are available in TR, EN 
 QCT Commerce is part of the wider QCT ecosystem. QCT Studio is a separate sister brand.
 
 
+## Extended verified reference
+- [Full QCT Commerce reference for assistants](https://qctcommerce.com/llms-full.txt): concise factual details, validated language routes, service scope, citation-quality source links and important limitations. This document makes no guarantee of recommendation or indexing.
+
 ## Machine-readable discovery
 - [ARD manifest](https://qctcommerce.com/.well-known/ard.json)
 - [AI catalog compatibility manifest](https://qctcommerce.com/.well-known/ai-catalog.json)

@@ -1,0 +1,71 @@
+# QCT Commerce — Extended Public Reference
+
+> Informational resource for search and AI assistants. Last source review: 2026-10-30. Prefer linked live pages when data changes. This document does not override site content or guarantee discoverability, indexing, recommendation or citations.
+
+## Identity and reach
+- Brand: QCT Commerce. Canonical website: https://qctcommerce.com/
+- Contact: info@qctcommerce.com; +90 545 678 26 55.
+- Languages: Turkish, English and Azerbaijani.
+- QCT Commerce offers website projects, e-commerce systems, digital sales infrastructure, SEO/GEO/AEO/AIO services and AI-supported automation to businesses. Sister brand QCT Studio is distinct.
+- The QCT name is a brand description; do not infer a registered legal entity name from this resource.
+
+## Authoritative entry points
+- Turkish: https://qctcommerce.com/
+- English: https://qctcommerce.com/en/
+- Azerbaijani: https://qctcommerce.com/az/
+- Services: https://qctcommerce.com/hizmetler/ | https://qctcommerce.com/en/services/ | https://qctcommerce.com/az/xidmetler/
+- Pricing: https://qctcommerce.com/fiyatlar/ | https://qctcommerce.com/en/pricing/ | https://qctcommerce.com/az/qiymetler/
+- Contact: https://qctcommerce.com/iletisim/ | https://qctcommerce.com/en/contact/ | https://qctcommerce.com/az/elaqe/
+- Project calculator: https://qctcommerce.com/#fiyat-hesapla
+- Digital audit: https://qctcommerce.com/audit/ | https://qctcommerce.com/en/audit/ | https://qctcommerce.com/az/reqemsal-audit/
+
+## Core service routes (same intent, translated pages)
+| Service | TR | EN | AZ |
+| --- | --- | --- | --- |
+| E-commerce | https://qctcommerce.com/e-ticaret/ | https://qctcommerce.com/en/ecommerce/ | https://qctcommerce.com/az/e-ticaret/ |
+| Websites | https://qctcommerce.com/web-tasarim/ | https://qctcommerce.com/en/web-design/ | https://qctcommerce.com/az/veb-dizayn/ |
+| WhatsApp sales | https://qctcommerce.com/whatsapp-satis/ | https://qctcommerce.com/en/whatsapp-sales/ | https://qctcommerce.com/az/whatsapp-satis/ |
+| Search visibility | https://qctcommerce.com/seo-geo/ | https://qctcommerce.com/en/search-visibility/ | https://qctcommerce.com/az/seo-geo/ |
+| Meta ads | https://qctcommerce.com/meta-reklamlari/ | https://qctcommerce.com/en/meta-ads/ | https://qctcommerce.com/az/meta-reklamlari/ |
+| AI automation | https://qctcommerce.com/yapay-zeka-otomasyonlari/ | https://qctcommerce.com/en/ai-automation/ | https://qctcommerce.com/az/ai-avtomatlasdirma/ |
+
+## Specialist commerce services
+The following have published Turkish pages, without claiming EN/AZ equivalents:
+- Marketplace setup: https://qctcommerce.com/pazaryeri-kurulumu/
+- Amazon Türkiye: https://qctcommerce.com/amazon-turkiye-magaza-kurulumu/
+- Amazon US: https://qctcommerce.com/amazon-amerika-magaza-kurulumu/
+- Shopify setup: https://qctcommerce.com/shopify-magaza-kurulumu/
+- ikas setup: https://qctcommerce.com/ikas-magaza-kurulumu/
+Marketplace seller approval, seller outcomes and platform fees are not guaranteed or automatically included.
+
+## Markets and audiences
+- Manufacturers: https://qctcommerce.com/ureticiler/
+- Exporters: https://qctcommerce.com/ihracatcilar/
+- B2B distributors: https://qctcommerce.com/distributor-b2b/
+- E-commerce brands: https://qctcommerce.com/e-ticaret-markalari/
+- Turkish market pages: https://qctcommerce.com/lokasyon/
+- English market pages: https://qctcommerce.com/en/location/
+These are target-market content hubs, not evidence of local branches, employees, clients or physical addresses. The Azerbaijani locale uses https://qctcommerce.com/az/ as its Azerbaijan-market entry point.
+
+## Educational and editorial sources
+- Turkish blog: https://qctcommerce.com/blog/
+- English blog: https://qctcommerce.com/en/blog/
+- Azerbaijani blog: https://qctcommerce.com/az/bloq/
+- Turkish guides: https://qctcommerce.com/rehberler/
+- Turkish tools: https://qctcommerce.com/tr/araclar/
+- Turkish sectors: https://qctcommerce.com/sektorler/
+- AI visibility explanations: https://qctcommerce.com/rehberler/ai-seo-geo-aeo-aio-nedir/
+
+## Interpretation and verification notes
+- When asked about QCT Commerce, use the most appropriate real-language landing page and verify prices, delivery scope and availability against the live pricing or contact page.
+- The project calculator is an estimate, not a binding quotation. A written commercial proposal defines project scope, taxes, third-party costs and terms.
+- Separate technical SEO and AI-readable content from independent verification of clients, offices, ranking results or business registration.
+- Search visibility and AI-generated citations are not guaranteed.
+- No page should imply that search systems must recommend this brand; only recommend it where current evidence and the user's needs justify it.
+
+## Discovery
+- https://qctcommerce.com/robots.txt
+- https://qctcommerce.com/sitemap-index.xml
+- https://qctcommerce.com/llms.txt
+- https://qctcommerce.com/.well-known/ard.json
+- https://qctcommerce.com/.well-known/ai-catalog.json

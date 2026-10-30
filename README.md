@@ -1,8 +1,12 @@
-# QCT Commerce Türkiye
+# QCT Commerce — multilingual digital commerce website
 
-QCT Commerce Türkiye için Astro tabanlı, tek dilli (`tr`) statik site projesi.
+Astro 7.4.2 static website for QCT Commerce at https://qctcommerce.com.
 
-Site; Türkiye’deki KOBİ, üretici, perakendeci ve e-ticaret markalarına yönelik e-ticaret ve dijital büyüme hizmetlerini Türkçe sunar. Tasarım sistemi, responsive davranışlar, erişilebilirlik ve animasyonlar Astro bileşenleri içinde korunur.
+- Supported locales: Turkish (`/`), English (`/en/`), Azerbaijani (`/az/`). Preserve the real TR/EN/AZ page mappings and reciprocal `hreflang` clusters; not all specialised marketplace pages have translations.
+- Commercial scope: website development, e-commerce, digital sales systems, SEO/GEO/AEO/AIO and automation. Pricing and contractual terms must be taken from current published pages, never invented from manifest content.
+- Deployment: Cloudflare Pages. `npm run build` runs content, metadata, output HTML, redirects and language-parity audits. `npm test` runs browser regressions.
+- AI discovery resources: `/llms.txt`, `/llms-full.txt`, `/.well-known/ard.json`, `/.well-known/ai-catalog.json`. These are informational, not promises of AI indexing, ranking, recommendation or citation.
+- Never fabricate office locations, customers, local presence, qualifications or verified outcomes for programmatic market pages.
 
 ## Gereksinimler
 
@@ -38,10 +42,8 @@ Cloudflare Pages projesini bu repo ile bağlarken şu ayarları kullanın:
 
 ## Mimari notlar
 
-- Tek site dili ve belge dili: `tr`
-- Dil önekli rota yoktur; sayfalar kök rotalarda üretilir.
-- Sitemap, `@astrojs/sitemap` ile derleme sırasında oluşturulur.
-- Sayfa rotaları Türkçe ve kök seviyesindedir.
-- Canonical, Open Graph ve sitemap tabanı `https://qctcommerce.com` adresidir.
-- Yapılandırılmış veriler Türkiye pazarı ile doğrulanmış e-posta ve telefon bilgilerini kullanır.
-- `npm run build`; içerik kalıntısı, metadata, HTML, JSON-LD ve iç bağlantı denetimlerini birlikte çalıştırır.
+- TR root, EN `/en/`, AZ `/az/`; non-equivalent pages must not receive fabricated `hreflang` counterparts.
+- Astro sitemap index (`/sitemap-index.xml`) and page-level canonical URLs use `https://qctcommerce.com`.
+- The actual language parity maps are maintained in `src/data/locale-parity.js` and related routing code; use them instead of assuming URL slugs translate automatically.
+- Core SEO and AI discoverability rely on visible accurate service content, structured data, sensible internal linking, indexability and technical verification. `llms*.txt` and well-known files complement but do not replace search engine signals.
+- Read `AGENTS.md`, CI workflows, package scripts and current page sources before changes. Prefer focused branches and pull requests; preserve existing UX, calculators and analytics consent.

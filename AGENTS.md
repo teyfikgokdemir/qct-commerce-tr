@@ -24,7 +24,7 @@ Consult these guides before working on related tasks:
 ## Project-specific Codex guidance (2026-10-17)
 
 ### Scope and architecture
-Turkish-only Astro marketing site. Preserve Turkish root routes, qctcommerce.com canonical/OG/sitemap, accessibility and conversion paths; do not invent multilingual requirements.
+Multilingual Astro marketing site with Turkish root, English /en/ and Azerbaijani /az/ locales. Preserve all published locale routes, translated navigation, reciprocal hreflang where equivalents exist, qctcommerce.com canonical/OG/sitemap, accessibility and conversion paths. Do not fabricate translated pages or country-specific offices.
 Read the repository README, package scripts, CI workflows, existing project instructions and relevant source files before choosing commands or changes. Treat README claims as context, not as proof of current live behavior.
 
 ### Change safety
@@ -36,7 +36,7 @@ Read the repository README, package scripts, CI workflows, existing project inst
 ### Review priorities
 - Identify security, data-integrity and regression risks before style-only issues. Report findings with paths/lines, severity and reproducible evidence; clearly label unverified concerns.
 - For web-facing changes inspect applicable metadata, canonical URLs, robots/sitemap, structured data, internal links, Open Graph, mobile accessibility and performance. Do not assume SEO checks guarantee rankings.
-- Check translation parity, language tags, hreflang and RTL only where the project actually supports them; do not impose locales on single-language projects.
+- Check TR/EN/AZ translation parity, language tags and reciprocal hreflang for real equivalents; do not invent language variants or impose RTL where unnecessarys.
 - For forms, APIs and integrations inspect validation, authorization, error handling and privacy; do not silently alter analytics/consent.
 
 ### Verification and reporting

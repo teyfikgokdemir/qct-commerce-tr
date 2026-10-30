@@ -99,3 +99,22 @@ if(!mobileSource.includes('href={azHref}')) errors.push('Mobile language switch 
 
 console.log(`Locale parity audit: ${localeParityClusters.length} triplets; blogs 17/17/17; programmatic parents ${trParents}/${enParents}; service pages ${trSvc}/${enSvc}.`);
 if(errors.length){console.error([...new Set(errors)].join('\n'));process.exitCode=1}else console.log('PASS: locale parity, heading contrast, blog depth, llms and programmatic SEO.');
+
+// AI discovery is informational; ensure referenced files and manifests stay internally consistent.
+const llmsFullPath=path.join(DIST,'llms-full.txt');
+if(!fs.existsSync(llmsFullPath)) errors.push('llms-full.txt missing from built site');
+else {
+  const full=fs.readFileSync(llmsFullPath,'utf8');
+  for(const marker of ['https://qctcommerce.com/en/','https://qctcommerce.com/az/','https://qctcommerce.com/fiyatlar/','No page should imply'])
+    if(!full.includes(marker)) errors.push('llms-full.txt missing required marker: '+marker);
+}
+for(const filename of ['ard.json','ai-catalog.json']) {
+  const file=path.join(DIST,'.well-known',filename);
+  try {
+    const data=JSON.parse(fs.readFileSync(file,'utf8'));
+    if(!data.entries?.some(entry=>entry.url==='https://qctcommerce.com/llms-full.txt')) errors.push(filename+' missing full-reference entry');
+    if(!data.entries?.some(entry=>entry.url==='https://qctcommerce.com/llms.txt')) errors.push(filename+' missing short-reference entry');
+  } catch (error) { errors.push(filename+' invalid or missing: '+error.message); }
+}
+if(!llms.includes('https://qctcommerce.com/llms-full.txt')) errors.push('llms.txt missing extended reference link');
+if(errors.length) { console.error('AI discovery validation failed:',errors.join('; ')); process.exitCode=1; }
