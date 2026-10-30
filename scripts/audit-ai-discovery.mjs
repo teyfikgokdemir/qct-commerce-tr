@@ -39,7 +39,7 @@ for (const route of ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/',
 }
 // Prevent documents from advertising absent URLs even when the required core routes exist.
 const referencedUrls = new Set(
-  [short, full].flatMap((body) => body.match(/https:\/\/qctcommerce\.com\/[^\\s)<>\\]|]+/g) ?? [])
+  [short, full].flatMap((body) => body.match(/https:\/\/qctcommerce\.com\/[A-Za-z0-9/_.-]*/g) ?? [])
     .map((url) => url.replace(/[.,;:!?]+$/, ''))
 );
 for (const textUrl of referencedUrls) {
