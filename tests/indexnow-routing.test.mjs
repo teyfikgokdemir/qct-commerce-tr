@@ -33,7 +33,7 @@ test('IndexNow URL file dry run sends no network request and deduplicates', () =
   const dir = mkdtempSync(join(tmpdir(), 'qct-indexnow-test-'));
   try {
     const file = join(dir, 'urls.txt');
-    writeFileSync(file, '# changed pages\\nhttps://qctcommerce.com/en/pricing/\\nhttps://qctcommerce.com/en/pricing/\\n');
+    writeFileSync(file, '# changed pages\nhttps://qctcommerce.com/en/pricing/\nhttps://qctcommerce.com/en/pricing/\n');
     const result = spawnSync(process.execPath, ['scripts/indexnow-submit.mjs', `--urls-file=${file}`, '--dry-run'], { encoding: 'utf8' });
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /"urlCount":1/);
