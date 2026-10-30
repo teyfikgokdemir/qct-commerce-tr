@@ -11,7 +11,7 @@ const read = (name) => {
   if (!fs.existsSync(file)) { fail(`Missing built asset: ${name}`); return ''; }
   return fs.readFileSync(file, 'utf8');
 };
-const routeFile = (route) => route === '/' ? 'index.html' : `${route.replace(/^\\//, '')}index.html`;
+const routeFile = (route) => route === '/' ? 'index.html' : `${route.slice(1)}index.html`;
 const urls = [
   '/', '/en/', '/az/',
   '/hizmetler/', '/en/services/', '/az/xidmetler/',
@@ -40,7 +40,7 @@ for (const route of ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/',
 if (!short.includes(`${SITE}/llms-full.txt`)) fail('llms.txt must link to llms-full.txt');
 if (!full.includes(`${SITE}/llms.txt`)) fail('llms-full.txt must link back to llms.txt');
 if (!robots.includes('Sitemap: https://qctcommerce.com/sitemap-index.xml')) fail('robots.txt missing sitemap link');
-if (/Disallow:\\s*\\/\\s*$/mi.test(robots)) fail('robots.txt unexpectedly blocks root crawling');
+if (robots.split(/\r?\n/).some((line) => /^Disallow:\s*\/$/.test(line.trim()))) fail('robots.txt unexpectedly blocks root crawling');
 for (const asset of ['llms.txt', 'llms-full.txt']) {
   const block = headers.match(new RegExp(`^/${asset.replace('.', '\\.')}\\n((?:[ \\t]+[^\\n]*\\n)+)`, 'm'))?.[1] ?? '';
   if (!block.includes('Content-Type: text/plain; charset=utf-8') || !block.includes('Access-Control-Allow-Origin: *')) fail(`Missing compatible headers for ${asset}`);
@@ -59,5 +59,5 @@ for (const route of ['/', '/en/', '/az/']) {
   const html = read(routeFile(route));
   if (!html.includes('href="/llms.txt"') || !html.includes('href="/llms-full.txt"')) fail(`${route}: missing discovery links`);
 }
-if (errors.length) { console.error(errors.join('\\n')); process.exitCode = 1; }
+if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; }
 else console.log('PASS: AI discovery assets, 3 locale homepages, 24 advertised routes and 2 compatible manifests.');
