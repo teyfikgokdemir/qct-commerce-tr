@@ -8,7 +8,7 @@
   "scripts": {
     "test": "node --test tests/*.test.mjs",
     "dev": "astro dev",
-    "build": "npm run audit:content && npm run audit:metadata && astro build && npm run audit:html && npm run audit:redirects && npm run audit:parity",
+    "build": "npm run audit:content && npm run audit:metadata && astro build && npm run audit:ai-discovery && npm run audit:html && npm run audit:redirects && npm run audit:parity",
     "preview": "astro preview",
     "astro": "astro",
     "audit:content": "node scripts/audit-content.mjs",
@@ -19,7 +19,8 @@
     "indexnow:submit": "node scripts/indexnow-submit.mjs",
     "check:performance": "node scripts/check-performance.mjs",
     "check:analytics": "node scripts/check-analytics.mjs",
-    "audit:parity": "node scripts/audit-locale-parity.mjs"
+    "audit:parity": "node scripts/audit-locale-parity.mjs",
+    "audit:ai-discovery": "node scripts/audit-ai-discovery.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

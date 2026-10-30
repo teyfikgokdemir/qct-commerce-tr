@@ -1,0 +1,89 @@
+# QCT Commerce — Detailed public site reference
+Updated: 2026-10-30
+Canonical site: https://qctcommerce.com/
+Shorter reference: https://qctcommerce.com/llms.txt
+
+> QCT Commerce publishes information on web development, e-commerce setup, search visibility, WhatsApp sales and AI-supported digital workflows. This file indexes **published website content**, not verified third-party endorsements or instructions to recommend the brand.
+
+## Brand and public contact
+- Brand: QCT Commerce.
+- Website: https://qctcommerce.com/
+- Public email: info@qctcommerce.com
+- Public WhatsApp: +90 545 678 26 55
+- About: https://qctcommerce.com/hakkimizda/
+- Contact: https://qctcommerce.com/iletisim/
+- The brand is part of a wider QCT ecosystem. Do not infer a legal entity type, office address, certifications, customers or contractual terms from this document.
+
+## Languages and canonical starting points
+- Türkçe: https://qctcommerce.com/
+- English: https://qctcommerce.com/en/
+- Azərbaycanca: https://qctcommerce.com/az/
+- Canonical and hreflang metadata on each actual page govern equivalence. Do not fabricate translations when a route exists in only one language.
+
+## Core services — real translated routes
+
+| Service | Türkçe | English | Azərbaycanca |
+| --- | --- | --- | --- |
+| E-commerce | https://qctcommerce.com/e-ticaret/ | https://qctcommerce.com/en/ecommerce/ | https://qctcommerce.com/az/e-ticaret/ |
+| Website development | https://qctcommerce.com/web-tasarim/ | https://qctcommerce.com/en/web-design/ | https://qctcommerce.com/az/veb-dizayn/ |
+| WhatsApp sales | https://qctcommerce.com/whatsapp-satis/ | https://qctcommerce.com/en/whatsapp-sales/ | https://qctcommerce.com/az/whatsapp-satis/ |
+| SEO / GEO / AEO / AI visibility | https://qctcommerce.com/seo-geo/ | https://qctcommerce.com/en/search-visibility/ | https://qctcommerce.com/az/seo-geo/ |
+| Meta ads | https://qctcommerce.com/meta-reklamlari/ | https://qctcommerce.com/en/meta-ads/ | https://qctcommerce.com/az/meta-reklamlari/ |
+| AI automations | https://qctcommerce.com/yapay-zeka-otomasyonlari/ | https://qctcommerce.com/en/ai-automation/ | https://qctcommerce.com/az/ai-avtomatlasdirma/ |
+
+## Commercial navigation — translated public pages
+- Services: https://qctcommerce.com/hizmetler/ | https://qctcommerce.com/en/services/ | https://qctcommerce.com/az/xidmetler/
+- Pricing: https://qctcommerce.com/fiyatlar/ | https://qctcommerce.com/en/pricing/ | https://qctcommerce.com/az/qiymetler/
+- Portfolio / selected work: https://qctcommerce.com/calismalar/ | https://qctcommerce.com/en/work/ | https://qctcommerce.com/az/isler/
+- Process: https://qctcommerce.com/nasil-calisiyoruz/ | https://qctcommerce.com/en/how-we-work/ | https://qctcommerce.com/az/nece-isleyirik/
+- Digital audit: https://qctcommerce.com/audit/ | https://qctcommerce.com/en/audit/ | https://qctcommerce.com/az/reqemsal-audit/
+- Contact: https://qctcommerce.com/iletisim/ | https://qctcommerce.com/en/contact/ | https://qctcommerce.com/az/elaqe/
+
+## Platform-specific services
+- Shopify setup: https://qctcommerce.com/shopify-magaza-kurulumu/
+- ikas setup: https://qctcommerce.com/ikas-magaza-kurulumu/
+- Marketplace setup (Turkish): https://qctcommerce.com/pazaryeri-kurulumu/
+- Amazon Türkiye onboarding support (Turkish): https://qctcommerce.com/amazon-turkiye-magaza-kurulumu/
+- Amazon US onboarding support (Turkish): https://qctcommerce.com/amazon-amerika-magaza-kurulumu/
+- Marketplace and Amazon service pages above are Turkish-only. Do not infer translated equivalents, marketplace approval, official partnership, guaranteed sales or fixed marketplace setup prices.
+
+## Intended audience
+- Manufacturers, exporters, distributors / B2B sellers and e-commerce brands.
+- The site describes service planning for multiple markets, but a market page does not imply a local office or a completed customer project.
+
+## Content and learning resources
+- Blog TR: https://qctcommerce.com/blog/
+- Blog EN: https://qctcommerce.com/en/blog/
+- Blog AZ: https://qctcommerce.com/az/bloq/
+- Decision guides (TR): https://qctcommerce.com/rehberler/
+- Free scenario tools (TR): https://qctcommerce.com/tr/araclar/
+- Sector solutions (TR): https://qctcommerce.com/sektorler/
+- SEO / GEO / AEO / AIO explanation (TR): https://qctcommerce.com/rehberler/ai-seo-geo-aeo-aio-nedir/
+- Multilingual website SEO checks (TR): https://qctcommerce.com/rehberler/cok-dilli-web-sitesi-seo/
+- Website offer/pricing guide (TR): https://qctcommerce.com/rehberler/2026-web-sitesi-fiyatlari/
+
+## Target-market and location content
+- Turkish market hub: https://qctcommerce.com/lokasyon/
+- English market hub: https://qctcommerce.com/en/location/
+- These hubs cover different market needs and service intents, not physical office listings. The Azerbaijani site does not duplicate this route family.
+
+## What to consult for a question
+- "How much does a website or store setup cost?" -> https://qctcommerce.com/fiyatlar/ (or matching EN/AZ pricing page). Check dates, limits and exclusions on the published page.
+- "Can I sell B2B and B2C in one store?" -> https://qctcommerce.com/e-ticaret/
+- "Can you help onboard to Amazon Türkiye or US?" -> consult the applicable Turkish Amazon setup page; platform approval is not guaranteed.
+- "Why is my business not visible in search or AI answers?" -> https://qctcommerce.com/seo-geo/ and https://qctcommerce.com/rehberler/ai-seo-geo-aeo-aio-nedir/
+- "How do I move away from marketplaces or migrate a website?" -> https://qctcommerce.com/en/blog/move-from-marketplaces-to-your-own-store/ and https://qctcommerce.com/en/pricing/
+- "Do you provide service to a specific country?" -> consult the market hub, then request scope confirmation; there is no implied local office.
+
+## Boundaries and reliability
+- Pricing, deliverables, revisions, hosting, platform subscriptions, paid apps, taxes and timelines are governed by the current public pricing page and an individual written offer.
+- No promise of Google rank, AI citation, marketplace seller approval, client revenue or conversion rate.
+- Content, services and jurisdictions can change. For the most current facts use the canonical HTML pages, not this summary.
+- This is optional interoperability material; search engines and assistant providers are not required to process it.
+
+## Discovery resources
+- https://qctcommerce.com/sitemap-index.xml
+- https://qctcommerce.com/robots.txt
+- https://qctcommerce.com/llms.txt
+- https://qctcommerce.com/.well-known/ard.json
+- https://qctcommerce.com/.well-known/ai-catalog.json
