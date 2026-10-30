@@ -6,7 +6,8 @@ const checks = [
       /\/styles\/qct-v2\.css(?:\?v=[0-9-]+)?/.test(body) &&
       !body.includes('qct-intro-overlay') &&
       !body.includes('Web sitesi yaptırma fiyatınızı 60 saniyede öğrenin') &&
-      body.includes('id="fiyat-hesapla"'),
+      body.includes('id="fiyat-hesapla"') &&
+      body.includes('href="/llms-full.txt"'),
     label: 'Homepage non-blocking pricing experience and current CSS release',
   },
   {
@@ -113,6 +114,51 @@ const checks = [
       body.includes('User-agent: *') &&
       body.includes('Sitemap: https://qctcommerce.com/sitemap-index.xml'),
     label: 'robots sitemap discovery',
+  },
+  {
+    url: 'https://qctcommerce.com/llms.txt',
+    verify: async (response, body) =>
+      response.status === 200 &&
+      response.headers.get('content-type')?.includes('text/plain') &&
+      body.includes('Site-published contact:') &&
+      body.includes('https://qctcommerce.com/llms-full.txt'),
+    label: 'AI discovery summary is current and linked',
+  },
+  {
+    url: 'https://qctcommerce.com/llms-full.txt',
+    verify: async (response, body) =>
+      response.status === 200 &&
+      response.headers.get('content-type')?.includes('text/plain') &&
+      body.includes('QCT Commerce — Detailed public site reference') &&
+      body.includes('https://qctcommerce.com/en/pricing/') &&
+      body.includes('https://qctcommerce.com/az/qiymetler/'),
+    label: 'Detailed AI discovery source is published and multilingual',
+  },
+  {
+    url: 'https://qctcommerce.com/.well-known/ai-catalog.json',
+    verify: async (response, body) => {
+      if (response.status !== 200) return false;
+      try {
+        const manifest = JSON.parse(body);
+        return Array.isArray(manifest.entries) &&
+          manifest.entries.some((item) => item.url === 'https://qctcommerce.com/llms.txt') &&
+          manifest.entries.some((item) => item.url === 'https://qctcommerce.com/llms-full.txt');
+      } catch { return false; }
+    },
+    label: 'AI catalog references both published resources',
+  },
+  {
+    url: 'https://qctcommerce.com/.well-known/ard.json',
+    verify: async (response, body) => {
+      if (response.status !== 200) return false;
+      try {
+        const manifest = JSON.parse(body);
+        return Array.isArray(manifest.entries) &&
+          manifest.entries.some((item) => item.url === 'https://qctcommerce.com/llms-full.txt') &&
+          manifest.host?.identifier === 'did:web:qctcommerce.com';
+      } catch { return false; }
+    },
+    label: 'ARD manifest references the detailed published resource',
   }
 ];
 
