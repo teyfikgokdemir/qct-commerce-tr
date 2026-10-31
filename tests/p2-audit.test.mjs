@@ -152,6 +152,35 @@ test('QCT EDGE launch packages and gift terms are consistent across all publishe
   }
 });
 
+test('QCT EDGE editorial design keeps offer, value strip and service journey usable on mobile and desktop', async t => {
+  const routes = [
+    { home: '/', detail: '/yeni-nesil-web-altyapisi/' },
+    { home: '/en/', detail: '/en/next-generation-web-foundation/' },
+    { home: '/az/', detail: '/az/yeni-nesil-veb-infrastrukturu/' },
+  ];
+  for (const route of routes) {
+    const home = await pageFor(t, route.home);
+    assert.equal(await home.locator('.qct-edge-topline').count(), 1, route.home + ' editorial heading');
+    assert.equal(await home.locator('.qct-edge-grid > .qct-edge-story').count(), 1, route.home + ' text panel');
+    assert.equal(await home.locator('.qct-edge-grid > .qct-edge-launch').count(), 1, route.home + ' offer card');
+    assert.equal(await home.locator('.qct-edge > .qct-shell > .qct-edge-benefits article').count(), 3, route.home + ' value strip');
+    await assertNoHorizontalOverflow(home, route.home);
+
+    const page = await pageFor(t, route.detail);
+    assert.equal(await page.locator('h1#edge-detail-title').count(), 1);
+    assert.equal(await page.locator('.premium-hero__steps li').count(), 3);
+    assert.equal(await page.locator('.premium-grid article').count(), 4);
+    assert.equal(await page.locator('.premium-process__grid article').count(), 4);
+    assert.equal(await page.locator('.premium-launch__plan').count(), 3);
+    assert.equal(await page.locator('.premium-hero a[href="#packages"]').count(), 1);
+    assert.equal(await page.locator('.premium-final a[href^="https://wa.me/"]').count(), 1);
+    await assertNoHorizontalOverflow(page, route.detail);
+
+    const desktop = await pageFor(t, route.detail, { viewport: { width: 1440, height: 900 } });
+    await assertNoHorizontalOverflow(desktop, route.detail + ' desktop');
+  }
+});
+
 test('commercial SEO routes expose a connected, intent-specific internal link cluster', async t => {
   const cases = [
     { url: '/e-ticaret/', selector: '.qct-ecommerce-pathways__grid', links: ['/ikas-magaza-kurulumu/', '/shopify-magaza-kurulumu/', '/blog/ikas-mi-shopify-mi-2026/'] },
