@@ -109,9 +109,9 @@ const edgeUi = {
     processTitle: 'Fikirden yayına, yayından gelişime.',
     faqTitle: 'Karar vermeden önce.',
     steps: [
-      ['01', 'ALTYAPI', 'Hızlı ve sürdürülebilir web temeli'],
-      ['02', 'GÖRÜNÜRLÜK', 'Teknik SEO ve arama deneyimi'],
-      ['03', 'GELİŞİM', 'Veriyle beslenen sürekli iyileştirme'],
+      ['ALTYAPI', 'Hızlı ve sürdürülebilir web temeli'],
+      ['GÖRÜNÜRLÜK', 'Teknik SEO ve arama deneyimi'],
+      ['GELİŞİM', 'Veriyle beslenen sürekli iyileştirme'],
     ],
   },
   en: {
@@ -123,9 +123,9 @@ const edgeUi = {
     processTitle: 'From the idea to launch — and beyond.',
     faqTitle: 'Before you decide.',
     steps: [
-      ['01', 'FOUNDATION', 'Fast, maintainable web delivery'],
-      ['02', 'VISIBILITY', 'Technical SEO and search experience'],
-      ['03', 'EVOLUTION', 'Continuous, evidence-led improvements'],
+      ['FOUNDATION', 'Fast, maintainable web delivery'],
+      ['VISIBILITY', 'Technical SEO and search experience'],
+      ['EVOLUTION', 'Continuous, evidence-led improvements'],
     ],
   },
   az: {
@@ -137,9 +137,9 @@ const edgeUi = {
     processTitle: 'İdeyadan yayıma, yayımdan inkişafa.',
     faqTitle: 'Qərar verməzdən əvvəl.',
     steps: [
-      ['01', 'İNFRASTRUKTUR', 'Sürətli və dayanıqlı veb təməl'],
-      ['02', 'GÖRÜNÜRLÜK', 'Texniki SEO və axtarış təcrübəsi'],
-      ['03', 'İNKİŞAF', 'Məlumatlara əsaslanan davamlı təkmilləşdirmə'],
+      ['İNFRASTRUKTUR', 'Sürətli və dayanıqlı veb təməl'],
+      ['GÖRÜNÜRLÜK', 'Texniki SEO və axtarış təcrübəsi'],
+      ['İNKİŞAF', 'Məlumatlara əsaslanan davamlı təkmilləşdirmə'],
     ],
   },
 }[lang];
@@ -214,18 +214,18 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
       <div class="premium-hero__panel" aria-label={edgeUi.panelLabel}>
         <div class="premium-hero__panel-header"><strong>QCT <span>EDGE</span></strong><small>{edgeUi.panelVersion}</small></div>
         <p class="premium-hero__panel-title">{edgeUi.panelTitle}</p>
-        <ol class="premium-hero__steps">
-          {edgeUi.steps.map(([number, title, description]) => <li>
-            <span class="premium-hero__number">{number}</span>
+        <ul class="premium-hero__steps">
+          {edgeUi.steps.map(([title, description]) => <li>
+            <span class="premium-hero__marker" aria-hidden="true"></span>
             <div><strong>{title}</strong><small>{description}</small></div>
             <span aria-hidden="true" class="premium-hero__step-arrow">↗</span>
           </li>)}
-        </ol>
+        </ul>
       </div>
     </div>
   </section>
   <section class="section premium-problem"><div class="container premium-split"><div><p class="eyebrow">{copy.problemEyebrow}</p><h2>{copy.problemTitle}</h2></div><div class="premium-problem__copy"><p>{copy.problem}</p><a href="#packages" class="premium-problem__link">{edgeUi.viewPackages} <span aria-hidden="true">↗</span></a></div></div></section>
-  <section class="section premium-scope" id="scope"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.scope}</p><h2>{edgeUi.scopeTitle}</h2></div><div class="premium-grid">{copy.benefits.map(([title, text], index) => <article><span class="premium-card-index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+  <section class="section premium-scope" id="scope"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.scope}</p><h2>{edgeUi.scopeTitle}</h2></div><div class="premium-grid">{copy.benefits.map(([title, text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
   <section class="section premium-launch" id="packages" aria-labelledby="qct-edge-packages-title">
     <div class="container">
@@ -247,7 +247,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
       </div>
     </div>
   </section>
-  <section class="section premium-process"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.processEyebrow}</p><h2>{edgeUi.processTitle}</h2></div><div class="premium-process__grid">{copy.process.map(([title, text], index) => <article><span class="premium-process__number">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+  <section class="section premium-process"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.processEyebrow}</p><h2>{edgeUi.processTitle}</h2></div><div class="premium-process__grid">{copy.process.map(([title, text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
   <section class="section premium-faq-section"><div class="container premium-faq"><div class="premium-section-head"><p class="eyebrow">{copy.faqEyebrow}</p><h2>{edgeUi.faqTitle}</h2></div>{copy.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
   <section class="premium-final"><div class="container premium-final__grid"><div><p class="eyebrow">QCT EDGE</p><h2>{copy.final}</h2></div><div class="premium-final__action"><p>{copy.finalText}</p><div class="hero__actions"><a class="button button--primary" href={whatsapp} target="_blank" rel="noopener">{copy.primary}</a><a class="button button--secondary" href={`mailto:info@qctcommerce.com?subject=${encodeURIComponent(copy.name)}`}>{copy.email}</a></div></div></div></section>
   <Footer slot="footer" lang={lang} />
@@ -293,39 +293,39 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 .premium-hero__panel-header small{font-size:9px;letter-spacing:.09em;color:#92b1d0;text-align:right}
 .premium-hero__panel-title{max-width:22ch;margin:28px 0 30px;color:#f1f7ff;font-size:clamp(22px,2.3vw,30px);font-weight:700;line-height:1.22;letter-spacing:-.03em}
 .premium-hero__steps{list-style:none;padding:0;margin:0}
-.premium-hero__steps li{display:grid;grid-template-columns:35px minmax(0,1fr) 18px;align-items:start;gap:12px;border-top:1px solid rgba(179,210,245,.14);padding:18px 0}
+.premium-hero__steps li{display:grid;grid-template-columns:20px minmax(0,1fr) 18px;align-items:start;gap:12px;border-top:1px solid rgba(179,210,245,.14);padding:18px 0}
 .premium-hero__steps li:last-child{padding-bottom:0}
-.premium-hero__number{color:#8dbfff;font-size:12px;font-weight:800;letter-spacing:.1em}
+.premium-hero__marker{display:block;width:7px;height:7px;margin-top:5px;border-radius:50%;background:#79b6ff;box-shadow:0 0 0 4px rgba(121,182,255,.11)}
 .premium-hero__steps li strong{display:block;color:#fff;font-size:11px;letter-spacing:.12em;font-weight:800}
 .premium-hero__steps li small{display:block;margin-top:5px;color:#b4c7df;font-size:12px;line-height:1.55}
 .premium-hero__step-arrow{color:#668bb9}
-.premium-problem{padding:clamp(68px,7vw,112px) 0;background:#f6f9fd}
+.premium-problem{padding:clamp(40px,4vw,66px) 0;background:#f6f9fd}
 .premium-split{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.82fr);gap:clamp(30px,8vw,130px);align-items:center}
 .premium-split>*{min-width:0}
 .premium-problem .eyebrow,.premium-scope .eyebrow,.premium-faq-section .eyebrow{color:#002fa7;font-size:11px;letter-spacing:.15em;font-weight:800}
-.premium-problem h2,.premium-section-head h2{max-width:19ch;margin:16px 0 0;color:#0c2039;font-size:clamp(31px,3.8vw,53px);line-height:1.13;letter-spacing:-.048em;font-weight:760;text-wrap:balance;overflow-wrap:anywhere}
-.premium-problem__copy p{max-width:52ch;margin:0 0 25px;color:#475569;font-size:17px;line-height:1.78}
+.premium-problem h2,.premium-section-head h2{max-width:22ch;margin:10px 0 0;color:#0c2039;font-size:clamp(29px,3.3vw,45px);line-height:1.15;letter-spacing:-.045em;font-weight:760;text-wrap:balance;overflow-wrap:anywhere}
+.premium-problem__copy p{max-width:54ch;margin:0 0 18px;color:#475569;font-size:16px;line-height:1.68}
 .premium-problem__link{display:inline-flex;gap:12px;align-items:center;color:#002fa7;font-size:14px;font-weight:800;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:5px}
-.premium-scope{padding:clamp(64px,7vw,105px) 0;background:#fff}
-.premium-section-head{margin-bottom:clamp(30px,4vw,52px)}
-.premium-section-head h2{max-width:23ch}
+.premium-scope{padding:clamp(42px,4.2vw,66px) 0;background:#fff}
+.premium-section-head{margin-bottom:clamp(22px,2.6vw,34px)}
+.premium-section-head h2{max-width:24ch}
 .premium-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.premium-grid article{position:relative;min-width:0;min-height:230px;padding:clamp(25px,3vw,40px);background:#f7faff;border:1px solid #e1eaf5;border-radius:15px}
-.premium-card-index{display:block;margin-bottom:30px;color:#2260bc;font-size:12px;font-weight:800;letter-spacing:.12em}
-.premium-grid h3{margin:0 0 12px;color:#0e2848;font-size:clamp(19px,2vw,25px);line-height:1.25;letter-spacing:-.04em;overflow-wrap:anywhere}
+.premium-grid article{position:relative;min-width:0;min-height:0;padding:clamp(23px,2.6vw,34px);background:#f7faff;border:1px solid #e1eaf5;border-radius:15px}
+.premium-grid article:before{content:"";display:block;width:34px;height:2px;margin-bottom:20px;background:#2462bf;border-radius:2px}
+.premium-grid h3{margin:0 0 10px;color:#0e2848;font-size:clamp(19px,1.8vw,23px);line-height:1.27;letter-spacing:-.035em;overflow-wrap:anywhere}
 .premium-grid p{max-width:57ch;margin:0;color:#53637b;font-size:14px;line-height:1.75;overflow-wrap:anywhere}
-.premium-launch{padding:clamp(72px,7vw,112px) 0;background:#eaf2fc}
+.premium-launch{padding:clamp(54px,5vw,76px) 0;background:#eaf2fc}
 .premium-launch>.container{max-width:1160px}
 .premium-launch>.container>.eyebrow{color:#184dab;font-size:11px;letter-spacing:.13em;font-weight:800}
-.premium-launch h2{max-width:22ch;margin:14px 0 0;color:#0c2039;font-size:clamp(33px,4vw,55px);line-height:1.11;letter-spacing:-.048em;text-wrap:balance}
-.premium-launch__lead{max-width:62ch;margin:16px 0 36px;color:#52627b;font-size:16px;line-height:1.72}
+.premium-launch h2{max-width:24ch;margin:10px 0 0;color:#0c2039;font-size:clamp(31px,3.5vw,48px);line-height:1.14;letter-spacing:-.045em;text-wrap:balance}
+.premium-launch__lead{max-width:62ch;margin:12px 0 27px;color:#52627b;font-size:16px;line-height:1.68}
 .premium-launch__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
-.premium-launch__plan{min-width:0;display:flex;flex-direction:column;padding:clamp(25px,2.7vw,34px);border:1px solid #d7e2ef;border-radius:15px;background:#fff}
+.premium-launch__plan{min-width:0;display:flex;flex-direction:column;padding:clamp(23px,2.3vw,30px);border:1px solid #d7e2ef;border-radius:15px;background:#fff}
 .premium-launch__plan.is-featured{border-color:#173c72;background:#0d2747;box-shadow:0 22px 52px rgba(14,48,98,.13)}
-.premium-launch__plan h3{margin:0 0 24px;font-size:19px;font-weight:750;letter-spacing:-.035em;color:#112a47}
+.premium-launch__plan h3{margin:0 0 17px;font-size:19px;font-weight:750;letter-spacing:-.035em;color:#112a47}
 .premium-launch__starting{display:block;color:#63758d;font-size:10px;font-weight:800;line-height:1.6;letter-spacing:.09em;text-transform:uppercase}
-.premium-launch__price{display:block;margin:9px 0 21px;color:#002fa7;font-size:clamp(29px,2.55vw,40px);line-height:1.05;letter-spacing:-.045em;font-weight:800}
-.premium-launch__plan ul{display:grid;gap:14px;padding:22px 0 26px;margin:0;list-style:none;border-top:1px solid #e3eaf3;flex:1}
+.premium-launch__price{display:block;margin:8px 0 16px;color:#002fa7;font-size:clamp(29px,2.55vw,40px);line-height:1.05;letter-spacing:-.045em;font-weight:800}
+.premium-launch__plan ul{display:grid;gap:11px;padding:18px 0 21px;margin:0;list-style:none;border-top:1px solid #e3eaf3;flex:1}
 .premium-launch__plan li{position:relative;padding-left:18px;color:#52627a;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
 .premium-launch__plan li:before{content:"+";position:absolute;left:0;color:#154ec3;font-weight:800}
 .premium-launch__plan .button{display:flex;min-height:47px;align-items:center;justify-content:center;text-align:center;border-radius:9px;padding:12px 15px;font-size:13px;font-weight:750;line-height:1.4}
@@ -341,29 +341,29 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 .premium-launch__gift>strong{align-self:start;max-width:16ch;color:#002fa7;font-size:clamp(20px,2.25vw,28px);line-height:1.18;letter-spacing:-.035em}
 .premium-launch__gift h3{margin:0 0 10px;color:#162f4e;font-size:14px;font-weight:800}
 .premium-launch__gift p{margin:0;color:#536981;font-size:12px;line-height:1.75}
-.premium-process{padding:clamp(70px,7vw,112px) 0;background:#091b34;color:#fff}
+.premium-process{padding:clamp(50px,4.9vw,76px) 0;background:#091b34;color:#fff}
 .premium-process .eyebrow{color:#8fbfff;font-size:11px;letter-spacing:.15em;font-weight:800}
 .premium-process .premium-section-head h2{max-width:19ch;color:#fff}
 .premium-process__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid rgba(164,196,236,.21)}
-.premium-process__grid article{min-width:0;padding:30px clamp(13px,2.1vw,30px) 10px 0;margin-right:clamp(10px,2vw,22px)}
-.premium-process__number{display:block;margin-bottom:38px;color:#8fbfff;font-size:12px;font-weight:800;letter-spacing:.15em}
-.premium-process h3{margin:0 0 15px;color:#fff;font-size:20px;line-height:1.3;letter-spacing:-.035em;overflow-wrap:anywhere}
+.premium-process__grid article{min-width:0;padding:25px clamp(13px,2vw,27px) 8px 0;margin-right:clamp(10px,2vw,20px)}
+.premium-process__grid article:before{content:"";display:block;width:28px;height:2px;margin-bottom:19px;background:#8fbfff;border-radius:2px}
+.premium-process h3{margin:0 0 10px;color:#fff;font-size:19px;line-height:1.3;letter-spacing:-.035em;overflow-wrap:anywhere}
 .premium-process p{margin:0;color:#b9c9df;font-size:13px;line-height:1.75;overflow-wrap:anywhere}
-.premium-faq-section{padding:clamp(65px,7vw,107px) 0;background:#fff}
+.premium-faq-section{padding:clamp(48px,4.7vw,72px) 0;background:#fff}
 .premium-faq{max-width:900px}
-.premium-faq .premium-section-head{margin-bottom:25px}
+.premium-faq .premium-section-head{margin-bottom:19px}
 .premium-faq details{border-top:1px solid #dce6f1;padding:0}
 .premium-faq details:last-child{border-bottom:1px solid #dce6f1}
-.premium-faq summary{position:relative;list-style:none;cursor:pointer;padding:22px 38px 22px 0;color:#152d4c;font-size:clamp(16px,1.3vw,18px);font-weight:750;line-height:1.5;overflow-wrap:anywhere}
+.premium-faq summary{position:relative;list-style:none;cursor:pointer;padding:18px 38px 18px 0;color:#152d4c;font-size:clamp(16px,1.3vw,18px);font-weight:750;line-height:1.5;overflow-wrap:anywhere}
 .premium-faq summary::-webkit-details-marker{display:none}
-.premium-faq summary:after{content:"+";position:absolute;right:4px;top:19px;color:#225dbb;font-size:25px;font-weight:400}
+.premium-faq summary:after{content:"+";position:absolute;right:4px;top:15px;color:#225dbb;font-size:25px;font-weight:400}
 .premium-faq details[open] summary:after{content:"−"}
 .premium-faq details p{max-width:70ch;margin:0;padding:0 25px 25px 0;color:#55667d;font-size:14px;line-height:1.8}
-.premium-final{padding:clamp(72px,8vw,120px) 0;background:#102d52;color:#fff}
+.premium-final{padding:clamp(56px,5.5vw,86px) 0;background:#102d52;color:#fff}
 .premium-final__grid{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.85fr);gap:clamp(24px,6vw,100px);align-items:end}
 .premium-final__grid>*{min-width:0}
 .premium-final .eyebrow{color:#91c3ff;font-size:11px;letter-spacing:.18em}
-.premium-final h2{max-width:19ch;margin:18px 0 0;font-size:clamp(36px,4vw,57px);line-height:1.12;letter-spacing:-.048em;color:#fff;overflow-wrap:anywhere}
+.premium-final h2{max-width:21ch;margin:12px 0 0;font-size:clamp(33px,3.6vw,50px);line-height:1.14;letter-spacing:-.045em;color:#fff;overflow-wrap:anywhere}
 .premium-final p{max-width:46ch;color:#d0deef;font-size:16px;line-height:1.75}
 .premium-final .hero__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
 .premium-final .button{min-height:48px;padding:12px 20px;border-radius:9px;font-size:14px;font-weight:750;line-height:1.4}
@@ -392,7 +392,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 @media(max-width:480px){
   .premium-process__grid{grid-template-columns:1fr;gap:0}
   .premium-process__grid article{padding:23px 0 28px;margin:0;border-bottom:1px solid rgba(164,196,236,.16)}
-  .premium-process__number{margin-bottom:13px}
+  .premium-process__grid article:before{margin-bottom:15px}
   .premium-hero__panel-header small{font-size:8px}
   .premium-hero__panel-title{font-size:24px}
 }

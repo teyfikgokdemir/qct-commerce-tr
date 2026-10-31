@@ -171,6 +171,8 @@ test('QCT EDGE editorial design keeps offer, value strip and service journey usa
     assert.equal(await page.locator('.premium-hero__steps li').count(), 3);
     assert.equal(await page.locator('.premium-grid article').count(), 4);
     assert.equal(await page.locator('.premium-process__grid article').count(), 4);
+    assert.equal(await page.locator('.premium-card-index, .premium-process__number, .premium-hero__number').count(), 0,
+      route.detail + ' numbered cards must be absent');
     assert.equal(await page.locator('.premium-launch__plan').count(), 3);
     assert.equal(await page.locator('.premium-hero a[href="#packages"]').count(), 1);
     assert.equal(await page.locator('.premium-final a[href^="https://wa.me/"]').count(), 1);
@@ -179,6 +181,15 @@ test('QCT EDGE editorial design keeps offer, value strip and service journey usa
     const desktop = await pageFor(t, route.detail, { viewport: { width: 1440, height: 900 } });
     // The shared desktop header has its own unrelated overflow behavior in EN.
     // Guard the new EDGE content at desktop width without masking mobile page overflow above.
+    const sectionPaddings = await desktop.evaluate(() => {
+      const selectors = ['.premium-problem', '.premium-scope', '.premium-launch', '.premium-process', '.premium-faq-section'];
+      return selectors.map(selector => ({
+        selector,
+        top: parseFloat(getComputedStyle(document.querySelector(selector)).paddingTop),
+      }));
+    });
+    assert.ok(sectionPaddings.every(item => item.top <= 78),
+      route.detail + ' excessive section spacing: ' + JSON.stringify(sectionPaddings));
     const desktopBounds = await desktop.evaluate(() => {
       const selectors = ['.premium-hero__copy', '.premium-hero__panel', '.premium-launch__plan', '.premium-process__grid'];
       return selectors.flatMap(selector => [...document.querySelectorAll(selector)].map(element => {
