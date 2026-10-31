@@ -259,7 +259,10 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   position:relative;
   overflow:hidden;
   isolation:isolate;
-  padding:clamp(92px,9.5vw,138px) 0 clamp(58px,6.5vw,94px);
+  min-height:calc(100svh - 68px);
+  display:flex;
+  align-items:center;
+  padding:clamp(32px,4vw,56px) 0 clamp(32px,3.8vw,50px);
   background:
     radial-gradient(ellipse at 82% 16%,rgba(0,47,167,.26),transparent 46%),
     radial-gradient(ellipse at 18% 85%,rgba(14,165,233,.10),transparent 40%),
@@ -274,11 +277,11 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   background-size:54px 54px;
   pointer-events:none;
 }
-.premium-hero .container{max-width:1160px;position:relative;z-index:1}
+.premium-hero .container{max-width:1160px;width:100%;position:relative;z-index:1}
 .premium-hero__layout{
   display:grid;
-  grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
-  gap:clamp(36px,5.5vw,92px);
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(28px,4vw,64px);
   align-items:center;
 }
 .premium-hero__layout>*{min-width:0}
@@ -286,41 +289,41 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:6px 14px;
+  padding:5px 13px;
   border-radius:999px;
   background:rgba(0,47,167,.28);
   border:1px solid rgba(147,197,253,.32);
   color:#93c5fd;
-  font-size:11px;
+  font-size:10.5px;
   letter-spacing:.16em;
   font-weight:800;
   text-transform:uppercase;
-  margin:0 0 16px;
+  margin:0 0 12px;
 }
 .premium-hero h1{
-  margin:12px 0 22px;
+  margin:8px 0 16px;
   max-width:18ch;
   color:#fff;
-  font-size:clamp(40px,4.5vw,66px);
+  font-size:clamp(34px,3.8vw,56px);
   line-height:1.07;
-  letter-spacing:-.052em;
+  letter-spacing:-.05em;
   font-weight:760;
   text-wrap:balance;
   overflow-wrap:anywhere;
 }
 .premium-hero .page-hero__lead{
-  max-width:49ch;
-  margin:0 0 28px;
+  max-width:48ch;
+  margin:0 0 22px;
   color:#cbd5e1;
-  font-size:clamp(16px,1.3vw,18px);
-  line-height:1.72;
+  font-size:clamp(15px,1.2vw,17px);
+  line-height:1.65;
 }
-.premium-hero .hero__actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+.premium-hero .hero__actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
 .premium-hero .hero__actions .button{
-  min-height:50px;
-  padding:12px 24px;
-  border-radius:11px;
-  font-size:14.5px;
+  min-height:48px;
+  padding:11px 22px;
+  border-radius:10px;
+  font-size:14px;
   font-weight:750;
   line-height:1.4;
   display:inline-flex;
@@ -331,19 +334,19 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 }
 .premium-hero .button--primary{
   background:#002fa7;
-  color:#fff;
+  color:#fff !important;
   border:1px solid #3b82f6;
-  box-shadow:0 12px 32px rgba(0,47,167,.4);
+  box-shadow:0 10px 28px rgba(0,47,167,.4);
 }
 .premium-hero .button--primary:hover{
   background:#00227b;
   transform:translateY(-2px);
-  box-shadow:0 16px 40px rgba(0,47,167,.55);
+  box-shadow:0 14px 34px rgba(0,47,167,.55);
 }
 .premium-hero .button--secondary{
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.24);
-  color:#f8fafc;
+  color:#f8fafc !important;
   backdrop-filter:blur(8px);
 }
 .premium-hero .button--secondary:hover{
@@ -353,22 +356,22 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 }
 .premium-hero__footnote{
   display:block;
-  margin-top:34px;
+  margin-top:20px;
   color:#94a3b8;
-  font-size:10.5px;
+  font-size:10px;
   font-weight:800;
-  letter-spacing:.16em;
-  line-height:1.6;
+  letter-spacing:.15em;
+  line-height:1.5;
 }
 .premium-hero__panel{
   position:relative;
   overflow:hidden;
   isolation:isolate;
   border:1px solid rgba(147,197,253,.24);
-  border-radius:22px;
+  border-radius:20px;
   background:linear-gradient(155deg,rgba(16,38,74,.92),rgba(9,23,46,.98));
-  box-shadow:0 32px 76px rgba(0,7,20,.38);
-  padding:clamp(24px,3vw,38px);
+  box-shadow:0 24px 60px rgba(0,7,20,.38);
+  padding:clamp(20px,2.4vw,30px);
 }
 .premium-hero__panel:before{
   content:"";
@@ -381,18 +384,18 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  padding-bottom:24px;
+  padding-bottom:16px;
   border-bottom:1px solid rgba(179,210,245,.16);
 }
 .premium-hero__panel-header strong{
-  font-size:20px;
+  font-size:19px;
   font-weight:800;
   letter-spacing:-.05em;
   color:#fff;
 }
 .premium-hero__panel-header strong span{color:#60a5fa}
 .premium-hero__panel-header small{
-  font-size:9.5px;
+  font-size:9px;
   letter-spacing:.12em;
   font-weight:800;
   color:#93c5fd;
@@ -400,9 +403,9 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 }
 .premium-hero__panel-title{
   max-width:24ch;
-  margin:24px 0 26px;
+  margin:16px 0 18px;
   color:#f8fafc;
-  font-size:clamp(21px,2.2vw,28px);
+  font-size:clamp(18px,1.8vw,23px);
   font-weight:700;
   line-height:1.24;
   letter-spacing:-.03em;
@@ -410,18 +413,18 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 .premium-hero__steps{list-style:none;padding:0;margin:0}
 .premium-hero__steps li{
   display:grid;
-  grid-template-columns:22px minmax(0,1fr) 18px;
+  grid-template-columns:20px minmax(0,1fr) 16px;
   align-items:start;
-  gap:12px;
+  gap:10px;
   border-top:1px solid rgba(179,210,245,.14);
-  padding:17px 0;
+  padding:12px 0;
   transition:background .18s ease;
 }
 .premium-hero__steps li:last-child{padding-bottom:0}
 .premium-hero__marker{
   display:block;
-  width:8px;
-  height:8px;
+  width:7px;
+  height:7px;
   margin-top:5px;
   border-radius:50%;
   background:#38bdf8;
@@ -430,21 +433,21 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 .premium-hero__steps li strong{
   display:block;
   color:#fff;
-  font-size:11.5px;
+  font-size:11px;
   letter-spacing:.14em;
   font-weight:800;
 }
 .premium-hero__steps li small{
   display:block;
-  margin-top:4px;
+  margin-top:3px;
   color:#cbd5e1;
-  font-size:12.5px;
-  line-height:1.55;
+  font-size:12px;
+  line-height:1.5;
 }
 .premium-hero__step-arrow{color:#60a5fa}
 
 .premium-problem{
-  padding:clamp(46px,4.5vw,68px) 0;
+  padding:clamp(46px,4.5vw,66px) 0;
   background:#f8fafc;
   border-bottom:1px solid #e2e8f0;
 }
@@ -467,7 +470,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   max-width:24ch;
   margin:6px 0 0;
   color:#0f172a;
-  font-size:clamp(30px,3.3vw,46px);
+  font-size:clamp(28px,3.2vw,44px);
   line-height:1.14;
   letter-spacing:-.045em;
   font-weight:760;
@@ -495,17 +498,33 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 }
 .premium-problem__link:hover{gap:14px}
 
+/* 1. EKRAN GÖRÜNTÜSÜ: Scope başlığı ortalı ve geniş */
 .premium-scope{
-  padding:clamp(48px,4.5vw,68px) 0;
+  padding:clamp(46px,4.4vw,66px) 0;
   background:#fff;
   border-bottom:1px solid #e2e8f0;
 }
-.premium-section-head{margin-bottom:clamp(24px,2.8vw,36px)}
-.premium-section-head h2{max-width:25ch}
+.premium-scope .premium-section-head{
+  text-align:center;
+  margin-bottom:clamp(28px,3.2vw,42px);
+}
+.premium-scope .premium-section-head .eyebrow{
+  margin-inline:auto;
+}
+.premium-scope .premium-section-head h2{
+  max-width:960px;
+  margin:8px auto 0;
+  text-align:center;
+  font-size:clamp(30px,3.4vw,46px);
+  line-height:1.16;
+  letter-spacing:-.04em;
+  text-wrap:balance;
+}
 .premium-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:16px;
+  text-align:left;
 }
 .premium-grid article{
   position:relative;
@@ -548,14 +567,19 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   overflow-wrap:anywhere;
 }
 
+/* 2. EKRAN GÖRÜNTÜSÜ: Launch / Paketler başlığı ortalı, tek satır hedefli ve açıklaması ortalı */
 .premium-launch{
-  padding:clamp(50px,4.8vw,70px) 0;
+  padding:clamp(48px,4.5vw,66px) 0;
   background:#f1f5f9;
   border-bottom:1px solid #e2e8f0;
 }
-.premium-launch>.container{max-width:1160px}
+.premium-launch>.container{
+  max-width:1160px;
+  text-align:center;
+}
 .premium-launch>.container>.eyebrow{
   display:inline-block;
+  margin-inline:auto;
   color:#002fa7;
   font-size:11px;
   letter-spacing:.16em;
@@ -563,19 +587,21 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   margin-bottom:8px;
 }
 .premium-launch h2{
-  max-width:24ch;
-  margin:6px 0 0;
+  max-width:980px;
+  margin:8px auto 0;
+  text-align:center;
   color:#0f172a;
-  font-size:clamp(32px,3.5vw,48px);
-  line-height:1.12;
+  font-size:clamp(30px,3.4vw,46px);
+  line-height:1.15;
   letter-spacing:-.045em;
   text-wrap:balance;
 }
 .premium-launch__lead{
-  max-width:62ch;
-  margin:12px 0 28px;
+  max-width:70ch;
+  margin:12px auto 32px;
+  text-align:center;
   color:#475569;
-  font-size:16.5px;
+  font-size:16px;
   line-height:1.7;
 }
 .premium-launch__grid{
@@ -583,6 +609,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:16px;
   align-items:stretch;
+  text-align:left;
 }
 .premium-launch__plan{
   min-width:0;
@@ -666,7 +693,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   font-weight:750;
   line-height:1.4;
   background:#002fa7;
-  color:#fff;
+  color:#fff !important;
   border:1px solid #002fa7;
   text-decoration:none;
   transition:background .18s ease;
@@ -676,14 +703,20 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 .premium-launch__plan.is-featured .premium-launch__starting,.premium-launch__plan.is-featured li{color:#cbd5e1}
 .premium-launch__plan.is-featured ul{border-color:rgba(203,213,225,.20)}
 .premium-launch__plan.is-featured li:before{color:#60a5fa}
+
+/* 4. EKRAN GÖRÜNTÜSÜ: Featured kartın buton metnini kesinlikle görünür yapıyoruz (koyu renkli ve belirgin) */
 .premium-launch__plan.is-featured .button{
-  background:#fff;
-  color:#0a1f3d;
-  border-color:#fff;
+  background:#ffffff !important;
+  color:#06152b !important;
+  border:1px solid #ffffff !important;
+  font-weight:800 !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.22) !important;
 }
 .premium-launch__plan.is-featured .button:hover{
-  background:#f1f5f9;
+  background:#f1f5f9 !important;
+  color:#002fa7 !important;
 }
+
 .premium-launch__gift{
   display:grid;
   grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);
@@ -694,6 +727,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   border:1px solid #bfdbfe;
   border-radius:18px;
   box-shadow:0 12px 36px rgba(0,47,167,.06);
+  text-align:left;
 }
 .premium-launch__gift>strong{
   align-self:start;
@@ -717,13 +751,19 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   line-height:1.75;
 }
 
+/* 3. EKRAN GÖRÜNTÜSÜ: Süreç başlığı ortalı ve tek satır hedefli */
 .premium-process{
-  padding:clamp(50px,4.8vw,70px) 0;
+  padding:clamp(48px,4.5vw,66px) 0;
   background:#07162d;
   color:#fff;
 }
+.premium-process .premium-section-head{
+  text-align:center;
+  margin-bottom:clamp(28px,3.2vw,42px);
+}
 .premium-process .eyebrow{
   display:inline-block;
+  margin-inline:auto;
   color:#93c5fd;
   font-size:11px;
   letter-spacing:.16em;
@@ -731,14 +771,21 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   margin-bottom:8px;
 }
 .premium-process .premium-section-head h2{
-  max-width:20ch;
+  max-width:960px;
+  margin:8px auto 0;
+  text-align:center;
   color:#fff;
+  font-size:clamp(30px,3.4vw,46px);
+  line-height:1.15;
+  letter-spacing:-.04em;
+  text-wrap:balance;
 }
 .premium-process__grid{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:0;
   border-top:1px solid rgba(147,197,253,.2);
+  text-align:left;
 }
 .premium-process__grid article{
   min-width:0;
@@ -771,7 +818,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 }
 
 .premium-faq-section{
-  padding:clamp(48px,4.5vw,68px) 0;
+  padding:clamp(46px,4.4vw,66px) 0;
   background:#fff;
   border-bottom:1px solid #e2e8f0;
 }
@@ -816,7 +863,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 }
 
 .premium-final{
-  padding:clamp(54px,5.2vw,78px) 0;
+  padding:clamp(52px,5vw,76px) 0;
   background:linear-gradient(150deg,#0a1f3d 0%,#06152b 100%);
   color:#fff;
 }
@@ -838,7 +885,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 .premium-final h2{
   max-width:22ch;
   margin:10px 0 0;
-  font-size:clamp(32px,3.5vw,48px);
+  font-size:clamp(30px,3.4vw,46px);
   line-height:1.14;
   letter-spacing:-.045em;
   color:#fff;
@@ -857,7 +904,7 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   margin-top:24px;
 }
 .premium-final .button{
-  min-height:50px;
+  min-height:48px;
   padding:12px 22px;
   border-radius:10px;
   font-size:14px;
@@ -867,44 +914,49 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 }
 .premium-final .button--primary{
   background:#002fa7;
-  color:#fff;
+  color:#fff !important;
   border:1px solid #3b82f6;
   box-shadow:0 10px 28px rgba(0,47,167,.4);
 }
 .premium-final .button--primary:hover{background:#00227b}
 .premium-final .button--secondary{
   background:rgba(255,255,255,.06);
-  color:#fff;
+  color:#fff !important;
   border:1px solid rgba(255,255,255,.3);
 }
 .premium-final .button--secondary:hover{background:rgba(255,255,255,.14)}
 
 @media(max-width:950px){
-  .premium-hero__layout{grid-template-columns:1fr;gap:35px}
+  .premium-hero__layout{grid-template-columns:1fr;gap:32px}
   .premium-hero h1{max-width:23ch}
   .premium-hero__panel{max-width:740px}
   .premium-process__grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
 }
 @media(max-width:760px){
-  .premium-hero{padding:72px 0 54px}
-  .premium-hero h1{max-width:100%;font-size:clamp(34px,8.8vw,48px)}
-  .premium-hero .page-hero__lead{font-size:16px}
+  .premium-hero{padding:48px 0 42px;min-height:auto}
+  .premium-hero h1{max-width:100%;font-size:clamp(32px,8.5vw,46px)}
+  .premium-hero .page-hero__lead{font-size:15.5px}
   .premium-hero .hero__actions{align-items:stretch;flex-direction:column}
   .premium-hero .hero__actions .button{width:100%;justify-content:center;text-align:center}
-  .premium-hero__panel{padding:22px}
+  .premium-hero__panel{padding:20px}
   .premium-split,.premium-grid,.premium-launch__grid,.premium-final__grid{grid-template-columns:1fr}
   .premium-problem__copy p{font-size:16px}
   .premium-grid article{min-height:0}
   .premium-launch__gift{grid-template-columns:1fr}
   .premium-launch__plan .button{width:100%}
   .premium-final h2{max-width:100%}
+  .premium-scope .premium-section-head h2,
+  .premium-launch h2,
+  .premium-process .premium-section-head h2{
+    font-size:clamp(26px,7.5vw,36px);
+  }
 }
 @media(max-width:480px){
   .premium-process__grid{grid-template-columns:1fr;gap:0}
-  .premium-process__grid article{padding:22px 0 26px;margin:0;border-bottom:1px solid rgba(147,197,253,.16)}
+  .premium-process__grid article{padding:20px 0 24px;margin:0;border-bottom:1px solid rgba(147,197,253,.16)}
   .premium-process__grid article:before{margin-bottom:14px}
   .premium-hero__panel-header small{font-size:8.5px}
-  .premium-hero__panel-title{font-size:22px}
+  .premium-hero__panel-title{font-size:20px}
 }
 @media(prefers-reduced-motion:reduce){
   .premium-hero .button,.premium-launch__plan .button,.premium-final .button{transition:none}
