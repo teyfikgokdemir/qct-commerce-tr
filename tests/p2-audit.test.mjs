@@ -54,6 +54,33 @@ async function assertNoHorizontalOverflow(page, path) {
     }).filter(item => item.right > viewportWidth || item.left < 0 || item.scrollWidth > item.clientWidth).slice(0, 24);
     return { scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, viewportWidth, overflow };
   });
+  if (measurement.scrollWidth > measurement.viewportWidth) {
+    const isolation = await page.evaluate(() => {
+      const width = () => document.documentElement.scrollWidth;
+      const baseline = width();
+      const cases = [
+        ['az-main-platform-section', '.qct-v2 > .qct-ecosystem'],
+        ['az-platform-marquee', '.qct-v2 .qct-marquee'],
+        ['az-platform-track', '.qct-v2 .qct-marquee-track'],
+        ['az-new-edge-section', '.qct-v2 > .qct-edge'],
+        ['az-mobile-menu', '#qctm-panel'],
+      ];
+      const sections = [...document.querySelectorAll('.qct-v2 > section')];
+      const results = [];
+      const check = (label, element) => {
+        if (!element) return;
+        const before = element.style.display;
+        element.style.setProperty('display', 'none', 'important');
+        const after = width();
+        element.style.display = before;
+        results.push({ label, widthWithout: after, improvement: baseline - after });
+      };
+      for (const [label, selector] of cases) check(label, document.querySelector(selector));
+      for (let i = 0; i < sections.length; i++) check('section-' + i + ':' + sections[i].className, sections[i]);
+      return { baseline, results };
+    });
+    console.error('HORIZONTAL_OVERFLOW_ISOLATION ' + path + ' ' + JSON.stringify(isolation));
+  }
   assert.equal(measurement.scrollWidth <= measurement.viewportWidth, true, `Horizontal overflow on ${path}: ${JSON.stringify(measurement)}`);
 }
 

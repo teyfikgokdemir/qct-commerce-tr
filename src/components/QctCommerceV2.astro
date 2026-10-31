@@ -375,7 +375,7 @@ const platforms = [
 
     // A completed pricing journey is a once-per-page interaction, not a lead.
     // Avoid inflated GA4 counts when users tweak add-ons or revisit options.
-    if (pricingStarted && !pricingCompleted && hasService && completed === 3 && !isMarketplace) {
+    if (pricingStarted && !pricingCompleted && hasService && completed === 3 && !requiresQuote) {
       track('pricing_complete', {
         service: service?.value || undefined,
         platform: platform?.value || undefined,
