@@ -224,10 +224,10 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
       </div>
     </div>
   </section>
-  <section class="section premium-problem"><div class="container premium-split"><div><p class="eyebrow">{copy.problemEyebrow}</p><h2>{copy.problemTitle}</h2></div><div class="premium-problem__copy"><p>{copy.problem}</p><a href="#packages" class="premium-problem__link">{edgeUi.viewPackages} <span aria-hidden="true">↗</span></a></div></div></section>
-  <section class="section premium-scope" id="scope"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.scope}</p><h2>{edgeUi.scopeTitle}</h2></div><div class="premium-grid">{copy.benefits.map(([title, text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+  <section class="premium-problem"><div class="container premium-split"><div><p class="eyebrow">{copy.problemEyebrow}</p><h2>{copy.problemTitle}</h2></div><div class="premium-problem__copy"><p>{copy.problem}</p><a href="#packages" class="premium-problem__link">{edgeUi.viewPackages} <span aria-hidden="true">↗</span></a></div></div></section>
+  <section class="premium-scope" id="scope"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.scope}</p><h2>{edgeUi.scopeTitle}</h2></div><div class="premium-grid">{copy.benefits.map(([title, text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
-  <section class="section premium-launch" id="packages" aria-labelledby="qct-edge-packages-title">
+  <section class="premium-launch" id="packages" aria-labelledby="qct-edge-packages-title">
     <div class="container">
       <p class="eyebrow">{launch.eyebrow}</p>
       <h2 id="qct-edge-packages-title">{launch.title}</h2>
@@ -247,8 +247,8 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
       </div>
     </div>
   </section>
-  <section class="section premium-process"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.processEyebrow}</p><h2>{edgeUi.processTitle}</h2></div><div class="premium-process__grid">{copy.process.map(([title, text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
-  <section class="section premium-faq-section"><div class="container premium-faq"><div class="premium-section-head"><p class="eyebrow">{copy.faqEyebrow}</p><h2>{edgeUi.faqTitle}</h2></div>{copy.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+  <section class="premium-process"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.processEyebrow}</p><h2>{edgeUi.processTitle}</h2></div><div class="premium-process__grid">{copy.process.map(([title, text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+  <section class="premium-faq-section"><div class="container premium-faq"><div class="premium-section-head"><p class="eyebrow">{copy.faqEyebrow}</p><h2>{edgeUi.faqTitle}</h2></div>{copy.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
   <section class="premium-final"><div class="container premium-final__grid"><div><p class="eyebrow">QCT EDGE</p><h2>{copy.final}</h2></div><div class="premium-final__action"><p>{copy.finalText}</p><div class="hero__actions"><a class="button button--primary" href={whatsapp} target="_blank" rel="noopener">{copy.primary}</a><a class="button button--secondary" href={`mailto:info@qctcommerce.com?subject=${encodeURIComponent(copy.name)}`}>{copy.email}</a></div></div></div></section>
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
