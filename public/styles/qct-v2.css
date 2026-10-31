@@ -550,3 +550,12 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
   }
 }
 .qct-edge{background:#07172e;color:#fff;padding:clamp(3.5rem,7vw,6rem) 0}.qct-edge-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2rem,6vw,5rem);align-items:center}.qct-edge-grid>*,.qct-edge-benefits article{min-width:0}.qct-edge h2{max-width:13ch;color:#fff;font-size:clamp(2.25rem,4.4vw,4.4rem);line-height:1.02;letter-spacing:-.05em;overflow-wrap:anywhere}.qct-edge p{color:rgba(255,255,255,.8);line-height:1.7;max-width:58ch;overflow-wrap:anywhere}.qct-edge-benefits{display:grid;gap:clamp(1.25rem,2.4vw,2rem);padding:clamp(1.5rem,3vw,2.5rem);background:#0c2340}.qct-edge-benefits article{display:grid;gap:.35rem}.qct-edge-benefits b,.qct-edge-benefits span{display:block}.qct-edge-benefits b{color:#8ec5ff;font-size:.82rem;font-weight:800;letter-spacing:.1em}.qct-edge-benefits span{color:#fff;font-size:clamp(1rem,1.35vw,1.15rem);line-height:1.45;overflow-wrap:anywhere}@media(max-width:760px){.qct-edge-grid{grid-template-columns:1fr}.qct-edge h2{max-width:15ch}.qct-edge-benefits{padding:1.4rem}}
+
+/* QCT EDGE year-end launch: scoped to the premium homepage spotlight. */
+.qct-edge-launch{display:grid;gap:.45rem;max-width:32rem;margin-top:1.6rem;padding:1.35rem 1.5rem;border:1px solid rgba(142,197,255,.35);border-radius:18px;background:rgba(255,255,255,.045)}
+.qct-edge-launch__label{color:#a7cbff;font-size:.72rem;font-weight:750;letter-spacing:.12em}
+.qct-edge-launch__price{display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;font-size:clamp(1.9rem,3.4vw,2.8rem);line-height:1.1;letter-spacing:-.04em;color:#fff}
+.qct-edge-launch__price small{font-size:.8rem;letter-spacing:0;font-weight:600;color:#b1c7e3}
+.qct-edge-launch__gift{font-size:clamp(.87rem,1.3vw,1rem);font-weight:800;color:#8ec5ff;letter-spacing:.045em}
+.qct-edge-launch__terms{display:block;color:#bbcee6;font-size:.73rem;line-height:1.5}
+@media(max-width:760px){.qct-edge-launch{max-width:100%;padding:1.15rem 1.2rem}}

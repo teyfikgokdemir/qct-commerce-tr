@@ -124,6 +124,31 @@ test('premium infrastructure is discoverable in every service index and gets a s
   }
 });
 
+
+test('QCT EDGE launch packages and gift terms are consistent across all published locales', async t => {
+  const cases = [
+    {home:'/',detail:'/yeni-nesil-web-altyapisi/',gift:'3 AY DİNAMİK SEO HEDİYE',start:'24.900 TL'},
+    {home:'/en/',detail:'/en/next-generation-web-foundation/',gift:'3 MONTHS OF DYNAMIC SEO INCLUDED',start:'24,900 TL'},
+    {home:'/az/',detail:'/az/yeni-nesil-veb-infrastrukturu/',gift:'3 AY DİNAMİK SEO HƏDİYYƏ',start:'24.900 TL'},
+  ];
+  for (const item of cases) {
+    const home = await pageFor(t, item.home);
+    const banner = await home.locator('.qct-edge-launch').textContent();
+    assert.ok(banner.includes(item.start), item.home+' starting price');
+    assert.ok(banner.includes(item.gift), item.home+' gift');
+    const page = await pageFor(t, item.detail);
+    const cards = page.locator('.premium-launch__plan');
+    assert.equal(await cards.count(), 3, item.detail+' package count');
+    const offer = await page.locator('.premium-launch').textContent();
+    for (const name of ['QCT EDGE Start','QCT EDGE Pro','QCT EDGE Business']) assert.ok(offer.includes(name), item.detail+' '+name);
+    assert.ok(offer.includes(item.start), item.detail+' starting price');
+    assert.ok(offer.includes(item.gift), item.detail+' gift');
+    assert.match(offer, /2026/);
+    assert.equal(await page.locator('.premium-launch__plan a[href^="https://wa.me/"]').count(), 3);
+    await assertNoHorizontalOverflow(page, item.detail);
+  }
+});
+
 test('commercial SEO routes expose a connected, intent-specific internal link cluster', async t => {
   const cases = [
     { url: '/e-ticaret/', selector: '.qct-ecommerce-pathways__grid', links: ['/ikas-magaza-kurulumu/', '/shopify-magaza-kurulumu/', '/blog/ikas-mi-shopify-mi-2026/'] },
