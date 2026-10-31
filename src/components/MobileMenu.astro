@@ -237,7 +237,7 @@ const isCurrent = (path: string) => currentPath === path;
     position:fixed!important;inset:0!important;z-index:160!important;display:flex!important;flex-direction:column!important;gap:16px!important;
     width:100%!important;height:100dvh!important;overflow-y:auto!important;padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom))!important;
     background: #090d16 !important;color: #f8fafc !important;transform:translateX(100%)!important;visibility:hidden!important;pointer-events:none!important;
-    transition:transform .22s ease,visibility 0s .22s!important;overscroll-behavior:contain!important;
+    transition:transform .22s ease,visibility 0s .22s!important;overscroll-behavior:contain!important;contain:layout paint!important;
   }
   .qctm-panel.is-open{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important;transition-delay:0s!important}
   html.qctm-lock,body.qctm-lock{overflow:hidden!important;overscroll-behavior:none!important}
