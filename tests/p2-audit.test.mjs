@@ -144,7 +144,7 @@ test('QCT EDGE launch packages and gift terms are consistent across all publishe
     for (const name of ['QCT EDGE Start','QCT EDGE Pro','QCT EDGE Business']) assert.ok(offer.includes(name), item.detail+' '+name);
     assert.ok(offer.includes(item.start), item.detail+' starting price');
     for (const priceLabel of await page.locator('.premium-launch__starting').allTextContents()) assert.ok(priceLabel.includes(item.tax), item.detail+' VAT-inclusive package label');
-    assert.ok(offer.includes('20%'), item.detail+' Türkiye VAT rate in terms');
+    assert.match(offer, /(?:%20|20%)/, item.detail+' Türkiye VAT rate in terms');
     assert.ok(offer.includes(item.gift), item.detail+' gift');
     assert.match(offer, /2026/);
     assert.equal(await page.locator('.premium-launch__plan a[href^="https://wa.me/"]').count(), 3);
