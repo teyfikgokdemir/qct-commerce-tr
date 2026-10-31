@@ -125,7 +125,7 @@ test('premium infrastructure is discoverable in every service index and gets a s
 });
 
 
-test('QCT EDGE is accessible from both desktop Services dropdown and mobile service menu in every locale', async t => {
+test('QCT EDGE is accessible from primary top-level navigation and mobile menu across all locales, replacing About', async t => {
   const links = [
     ['/yeni-nesil-web-altyapisi/', 'QCT EDGE'],
     ['/en/next-generation-web-foundation/', 'QCT EDGE'],
@@ -133,13 +133,17 @@ test('QCT EDGE is accessible from both desktop Services dropdown and mobile serv
   ];
   for (const [route, label] of links) {
     const page = await pageFor(t, route);
-    const desktop = page.locator(`#masthead .desktop-only-menu .sub-menu a[href="${route}"]`);
-    const mobile = page.locator(`#qctm-panel .qctm-group-panel a[href="${route}"]`);
-    assert.equal(await desktop.count(), 1, route + ' desktop Services link');
-    assert.equal(await mobile.count(), 1, route + ' mobile Services link');
+    const desktop = page.locator(`#masthead .desktop-only-menu .primary-menu > li > a[href="${route}"]`);
+    const mobile = page.locator(`#qctm-panel .qctm-primary a[href="${route}"]`);
+    assert.equal(await desktop.count(), 1, route + ' desktop primary QCT EDGE link');
+    assert.equal(await mobile.count(), 1, route + ' mobile primary QCT EDGE link');
     assert.match(await desktop.textContent(), /QCT EDGE/);
     assert.equal(await desktop.getAttribute('aria-current'), 'page', route + ' desktop active state');
     assert.equal(await mobile.getAttribute('aria-current'), 'page', route + ' mobile active state');
+    const subLink = page.locator(`#masthead .desktop-only-menu .sub-menu a[href="${route}"]`);
+    assert.equal(await subLink.count(), 0, route + ' must not be in Services sub-menu');
+    const aboutInHeader = page.locator(`#masthead .desktop-only-menu .primary-menu a[href*="hakkimizda"], #masthead .desktop-only-menu .primary-menu a[href*="haqqimizda"], #masthead .desktop-only-menu .primary-menu a[href$="/about/"]`);
+    assert.equal(await aboutInHeader.count(), 0, route + ' About must be removed from header primary menu');
   }
 });
 
