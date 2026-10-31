@@ -106,6 +106,7 @@ const audienceLinks = isAzerbaijani ? [
 
 const serviceLinks = isAzerbaijani ? [
   ['Bütün xidmətlər', '/az/xidmetler/'],
+  ['QCT EDGE — Premium veb', '/az/yeni-nesil-veb-infrastrukturu/'],
   ['E-ticarət', '/az/e-ticaret/'],
   ['Shopify qurulması', '/az/shopify-magaza-qurulmasi/'],
   ['ikas qurulması', '/az/ikas-magaza-qurulmasi/'],
@@ -116,6 +117,7 @@ const serviceLinks = isAzerbaijani ? [
   ['AI avtomatlaşdırma', '/az/ai-avtomatlasdirma/']
 ] : isEnglish ? [
   ['All Services', '/en/services/'],
+  ['QCT EDGE — Premium web', '/en/next-generation-web-foundation/'],
   ['E-commerce', '/en/ecommerce/'],
   ['Shopify Setup', '/en/shopify-store-setup/'],
   ['ikas Setup', '/en/ikas-store-setup/'],
@@ -126,6 +128,7 @@ const serviceLinks = isAzerbaijani ? [
   ['AI Automation', '/en/ai-automation/']
 ] : [
   ['Tüm Hizmetler', '/hizmetler/'],
+  ['QCT EDGE — Premium altyapı', '/yeni-nesil-web-altyapisi/'],
   ['E-Ticaret Altyapısı', '/e-ticaret/'],
   ['Pazaryeri Kurulumu', '/pazaryeri-kurulumu/'],
   ['Amazon Türkiye', '/amazon-turkiye-magaza-kurulumu/'],
@@ -161,9 +164,9 @@ const quickLinks = isAzerbaijani ? [
   ['İletişim', '/iletisim/']
 ];
 
-const servicePaths = ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/', '/amazon-amerika-magaza-kurulumu/', '/hizmetler/', '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/', '/ureticiler/', '/ihracatcilar/', '/distributor-b2b/', '/e-ticaret-markalari/'];
-const englishServicePaths = ['/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/', '/en/manufacturers/', '/en/exporters/', '/en/distributors-b2b/', '/en/ecommerce-brands/'];
-const azerbaijaniServicePaths = ['/az/xidmetler/', '/az/e-ticaret/', '/az/shopify-magaza-qurulmasi/', '/az/ikas-magaza-qurulmasi/', '/az/veb-dizayn/', '/az/whatsapp-satis/', '/az/seo-geo/', '/az/meta-reklamlari/', '/az/ai-avtomatlasdirma/'];
+const servicePaths = ['/yeni-nesil-web-altyapisi/', '/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/', '/amazon-amerika-magaza-kurulumu/', '/hizmetler/', '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/', '/ureticiler/', '/ihracatcilar/', '/distributor-b2b/', '/e-ticaret-markalari/'];
+const englishServicePaths = ['/en/next-generation-web-foundation/', '/en/ecommerce/', '/en/web-design/', '/en/search-visibility/', '/en/ai-automation/', '/en/manufacturers/', '/en/exporters/', '/en/distributors-b2b/', '/en/ecommerce-brands/'];
+const azerbaijaniServicePaths = ['/az/yeni-nesil-veb-infrastrukturu/', '/az/xidmetler/', '/az/e-ticaret/', '/az/shopify-magaza-qurulmasi/', '/az/ikas-magaza-qurulmasi/', '/az/veb-dizayn/', '/az/whatsapp-satis/', '/az/seo-geo/', '/az/meta-reklamlari/', '/az/ai-avtomatlasdirma/'];
 const isCurrent = (path: string) => currentPath === path;
 const isServiceCurrent = servicePaths.includes(currentPath);
 const isEnglishServiceCurrent = englishServicePaths.includes(currentPath);
@@ -268,6 +271,7 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
               <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Xidmətlər</span></button>
               <ul class="sub-menu">
                 <li><a href="/az/xidmetler/">Bütün xidmətlər</a></li>
+                <li><a href="/az/yeni-nesil-veb-infrastrukturu/" aria-current={isCurrent('/az/yeni-nesil-veb-infrastrukturu/') ? 'page' : undefined}>QCT EDGE — Premium veb</a></li>
                 <li><a href="/az/e-ticaret/">E-ticarət</a></li>
                 <li><a href="/az/shopify-magaza-qurulmasi/">Shopify qurulması</a></li>
                 <li><a href="/az/ikas-magaza-qurulmasi/">ikas qurulması</a></li>
@@ -298,7 +302,7 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
             <li class:list={['menu-item-has-children', { 'is-current': isEnglishServiceCurrent }]}>
               <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Solutions</span></button>
               <ul class="sub-menu">
-                <li><a href="/en/services/">All services</a></li><li><a href="/en/ecommerce/">E-commerce</a></li><li><a href="/en/shopify-store-setup/">Shopify setup</a></li><li><a href="/en/ikas-store-setup/">ikas setup</a></li><li><a href="/en/web-design/">Web design</a></li><li><a href="/en/whatsapp-sales/">WhatsApp sales</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/meta-ads/">Meta ads</a></li><li><a href="/en/ai-automation/">AI automation</a></li>
+                <li><a href="/en/services/">All services</a></li><li><a href="/en/next-generation-web-foundation/" aria-current={isCurrent('/en/next-generation-web-foundation/') ? 'page' : undefined}>QCT EDGE — Premium web</a></li><li><a href="/en/ecommerce/">E-commerce</a></li><li><a href="/en/shopify-store-setup/">Shopify setup</a></li><li><a href="/en/ikas-store-setup/">ikas setup</a></li><li><a href="/en/web-design/">Web design</a></li><li><a href="/en/whatsapp-sales/">WhatsApp sales</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/meta-ads/">Meta ads</a></li><li><a href="/en/ai-automation/">AI automation</a></li>
               </ul>
             </li>
             <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Who we help</span></button><ul class="sub-menu"><li><a href="/en/manufacturers/">Manufacturers</a></li><li><a href="/en/exporters/">Exporters</a></li><li><a href="/en/distributors-b2b/">Distributors & B2B</a></li><li><a href="/en/ecommerce-brands/">E-commerce brands</a></li></ul></li><li><a href="/en/about/" aria-current={isCurrent('/en/about/') ? 'page' : undefined}>About</a></li><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>Work</a></li><li><a href="/en/location/azerbaijan/" aria-current={isCurrent('/en/location/azerbaijan/') ? 'page' : undefined}>Azerbaijan</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
@@ -306,7 +310,7 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
-            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/pazaryeri-kurulumu/">Pazaryeri kurulumu</a></li><li><a href="/amazon-turkiye-magaza-kurulumu/">Amazon Türkiye</a></li><li><a href="/amazon-amerika-magaza-kurulumu/">Amazon Amerika</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
+            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/yeni-nesil-web-altyapisi/" aria-current={isCurrent('/yeni-nesil-web-altyapisi/') ? 'page' : undefined}>QCT EDGE — Premium altyapı</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/pazaryeri-kurulumu/">Pazaryeri kurulumu</a></li><li><a href="/amazon-turkiye-magaza-kurulumu/">Amazon Türkiye</a></li><li><a href="/amazon-amerika-magaza-kurulumu/">Amazon Amerika</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
             <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li><a href="/hakkimizda/" aria-current={isCurrent('/hakkimizda/') ? 'page' : undefined}>Hakkımızda</a></li><li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/iletisim/">İletişim</a></li>
           </ul>
         )}

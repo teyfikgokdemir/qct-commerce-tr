@@ -102,7 +102,7 @@ test('premium infrastructure routes have reciprocal language alternatives, self 
 test('premium infrastructure is discoverable in every service index and gets a scope-only calculator quote', async t => {
   for (const [path, href] of [['/hizmetler/', '/yeni-nesil-web-altyapisi/'], ['/en/services/', '/en/next-generation-web-foundation/'], ['/az/xidmetler/', '/az/yeni-nesil-veb-infrastrukturu/']]) {
     const page = await pageFor(t, path);
-    assert.equal(await page.locator(`a[href="${href}"]`).count(), 1, `Missing premium-service link on ${path}`);
+    assert.equal(await page.locator(`main a[href="${href}"]`).count(), 1, `Missing premium-service link in content on ${path}`);
   }
   for (const [path, href, expectedTotal, expectedMessage, serviceSelector, totalSelector, whatsappSelector] of [
     ['/', '/yeni-nesil-web-altyapisi/', 'Özel teklif', 'özel teklif talep ediyorum', '[data-service]', '[data-total]', '[data-whatsapp]'],
@@ -124,6 +124,24 @@ test('premium infrastructure is discoverable in every service index and gets a s
   }
 });
 
+
+test('QCT EDGE is accessible from both desktop Services dropdown and mobile service menu in every locale', async t => {
+  const links = [
+    ['/yeni-nesil-web-altyapisi/', 'QCT EDGE'],
+    ['/en/next-generation-web-foundation/', 'QCT EDGE'],
+    ['/az/yeni-nesil-veb-infrastrukturu/', 'QCT EDGE'],
+  ];
+  for (const [route, label] of links) {
+    const page = await pageFor(t, route);
+    const desktop = page.locator(`#masthead .desktop-only-menu .sub-menu a[href="${route}"]`);
+    const mobile = page.locator(`#qctm-panel .qctm-group-panel a[href="${route}"]`);
+    assert.equal(await desktop.count(), 1, route + ' desktop Services link');
+    assert.equal(await mobile.count(), 1, route + ' mobile Services link');
+    assert.match(await desktop.textContent(), /QCT EDGE/);
+    assert.equal(await desktop.getAttribute('aria-current'), 'page', route + ' desktop active state');
+    assert.equal(await mobile.getAttribute('aria-current'), 'page', route + ' mobile active state');
+  }
+});
 
 test('QCT EDGE launch packages and gift terms are consistent across all published locales', async t => {
   const cases = [
@@ -149,6 +167,57 @@ test('QCT EDGE launch packages and gift terms are consistent across all publishe
     assert.match(offer, /2026/);
     assert.equal(await page.locator('.premium-launch__plan a[href^="https://wa.me/"]').count(), 3);
     await assertNoHorizontalOverflow(page, item.detail);
+  }
+});
+
+test('QCT EDGE editorial design keeps offer, value strip and service journey usable on mobile and desktop', async t => {
+  const routes = [
+    { home: '/', detail: '/yeni-nesil-web-altyapisi/' },
+    { home: '/en/', detail: '/en/next-generation-web-foundation/' },
+    { home: '/az/', detail: '/az/yeni-nesil-veb-infrastrukturu/' },
+  ];
+  for (const route of routes) {
+    const home = await pageFor(t, route.home);
+    assert.equal(await home.locator('.qct-edge-topline').count(), 1, route.home + ' editorial heading');
+    assert.equal(await home.locator('.qct-edge-grid > .qct-edge-story').count(), 1, route.home + ' text panel');
+    assert.equal(await home.locator('.qct-edge-grid > .qct-edge-launch').count(), 1, route.home + ' offer card');
+    assert.equal(await home.locator('.qct-edge > .qct-shell > .qct-edge-benefits article').count(), 3, route.home + ' value strip');
+    await assertNoHorizontalOverflow(home, route.home);
+
+    const page = await pageFor(t, route.detail);
+    assert.equal(await page.locator('h1#edge-detail-title').count(), 1);
+    assert.equal(await page.locator('.premium-hero__steps li').count(), 3);
+    assert.equal(await page.locator('.premium-grid article').count(), 4);
+    assert.equal(await page.locator('.premium-process__grid article').count(), 4);
+    assert.equal(await page.locator('.premium-card-index, .premium-process__number, .premium-hero__number').count(), 0,
+      route.detail + ' numbered cards must be absent');
+    assert.equal(await page.locator('.premium-launch__plan').count(), 3);
+    assert.equal(await page.locator('.premium-hero a[href="#packages"]').count(), 1);
+    assert.equal(await page.locator('.premium-final a[href^="https://wa.me/"]').count(), 1);
+    await assertNoHorizontalOverflow(page, route.detail);
+
+    const desktop = await pageFor(t, route.detail, { viewport: { width: 1440, height: 900 } });
+    // The shared desktop header has its own unrelated overflow behavior in EN.
+    // Guard the new EDGE content at desktop width without masking mobile page overflow above.
+    const sectionPaddings = await desktop.evaluate(() => {
+      const selectors = ['.premium-problem', '.premium-scope', '.premium-launch', '.premium-process', '.premium-faq-section'];
+      return selectors.map(selector => ({
+        selector,
+        top: parseFloat(getComputedStyle(document.querySelector(selector)).paddingTop),
+      }));
+    });
+    assert.ok(sectionPaddings.every(item => item.top <= 78),
+      route.detail + ' excessive section spacing: ' + JSON.stringify(sectionPaddings));
+    const desktopBounds = await desktop.evaluate(() => {
+      const selectors = ['.premium-hero__copy', '.premium-hero__panel', '.premium-launch__plan', '.premium-process__grid'];
+      return selectors.flatMap(selector => [...document.querySelectorAll(selector)].map(element => {
+        const { left, right } = element.getBoundingClientRect();
+        return { selector, left: Math.round(left), right: Math.round(right), viewport: innerWidth };
+      }));
+    });
+    assert.ok(desktopBounds.length >= 6, route.detail + ' desktop elements missing');
+    assert.ok(desktopBounds.every(b => b.left >= -1 && b.right <= b.viewport + 1),
+      route.detail + ' EDGE desktop layout overflows: ' + JSON.stringify(desktopBounds));
   }
 });
 
