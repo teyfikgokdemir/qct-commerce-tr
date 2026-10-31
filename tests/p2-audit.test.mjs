@@ -125,6 +125,24 @@ test('premium infrastructure is discoverable in every service index and gets a s
 });
 
 
+test('QCT EDGE is accessible from both desktop Services dropdown and mobile service menu in every locale', async t => {
+  const links = [
+    ['/yeni-nesil-web-altyapisi/', 'QCT EDGE'],
+    ['/en/next-generation-web-foundation/', 'QCT EDGE'],
+    ['/az/yeni-nesil-veb-infrastrukturu/', 'QCT EDGE'],
+  ];
+  for (const [route, label] of links) {
+    const page = await pageFor(t, route);
+    const desktop = page.locator(`#masthead .desktop-only-menu .sub-menu a[href="${route}"]`);
+    const mobile = page.locator(`#qctm-panel .qctm-group-panel a[href="${route}"]`);
+    assert.equal(await desktop.count(), 1, route + ' desktop Services link');
+    assert.equal(await mobile.count(), 1, route + ' mobile Services link');
+    assert.match(await desktop.textContent(), /QCT EDGE/);
+    assert.equal(await desktop.getAttribute('aria-current'), 'page', route + ' desktop active state');
+    assert.equal(await mobile.getAttribute('aria-current'), 'page', route + ' mobile active state');
+  }
+});
+
 test('QCT EDGE launch packages and gift terms are consistent across all published locales', async t => {
   const cases = [
     {home:'/',detail:'/yeni-nesil-web-altyapisi/',gift:'3 AY DİNAMİK SEO HEDİYE',start:'24.900 TL',tax:'KDV dahil'},
