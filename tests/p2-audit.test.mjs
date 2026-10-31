@@ -40,6 +40,117 @@ async function message(page) {
 async function screenshot(page, name) {
   if (process.env.P2_SCREENSHOT_DIR) await page.screenshot({ path: resolve(process.env.P2_SCREENSHOT_DIR, name + '.png'), animations: 'disabled' });
 }
+async function assertNoHorizontalOverflow(page, path) {
+  const measurement = await page.evaluate(() => {
+    const viewportWidth = innerWidth;
+    const selector = element => {
+      if (element.id) return `#${element.id}`;
+      const classes = typeof element.className === 'string' ? element.className.trim().split(/\s+/).filter(Boolean).slice(0, 2) : [];
+      return `${element.tagName.toLowerCase()}${classes.map(name => `.${name}`).join('')}`;
+    };
+    const overflow = [...document.body.querySelectorAll('*')].map(element => {
+      const rect = element.getBoundingClientRect();
+      return { selector: selector(element), left: Math.round(rect.left), right: Math.round(rect.right), scrollWidth: element.scrollWidth, clientWidth: element.clientWidth, position: getComputedStyle(element).position };
+    }).filter(item => item.right > viewportWidth || item.left < 0 || item.scrollWidth > item.clientWidth).slice(0, 24);
+    return { scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, viewportWidth, overflow };
+  });
+  if (measurement.scrollWidth > measurement.viewportWidth) {
+    const isolation = await page.evaluate(() => {
+      const width = () => document.documentElement.scrollWidth;
+      const baseline = width();
+      const cases = [
+        ['az-main-platform-section', '.qct-v2 > .qct-ecosystem'],
+        ['az-platform-marquee', '.qct-v2 .qct-marquee'],
+        ['az-platform-track', '.qct-v2 .qct-marquee-track'],
+        ['az-new-edge-section', '.qct-v2 > .qct-edge'],
+        ['az-mobile-menu', '#qctm-panel'],
+      ];
+      const sections = [...document.querySelectorAll('.qct-v2 > section')];
+      const results = [];
+      const check = (label, element) => {
+        if (!element) return;
+        const before = element.style.display;
+        element.style.setProperty('display', 'none', 'important');
+        const after = width();
+        element.style.display = before;
+        results.push({ label, widthWithout: after, improvement: baseline - after });
+      };
+      for (const [label, selector] of cases) check(label, document.querySelector(selector));
+      for (let i = 0; i < sections.length; i++) check('section-' + i + ':' + sections[i].className, sections[i]);
+      return { baseline, results };
+    });
+    console.error('HORIZONTAL_OVERFLOW_ISOLATION ' + path + ' ' + JSON.stringify(isolation));
+  }
+  assert.equal(measurement.scrollWidth <= measurement.viewportWidth, true, `Horizontal overflow on ${path}: ${JSON.stringify(measurement)}`);
+}
+
+test('premium infrastructure routes have reciprocal language alternatives, self canonicals and mobile-safe layouts', async t => {
+  const routes = [
+    { path: '/yeni-nesil-web-altyapisi/', lang: 'tr-TR', alternates: ['/yeni-nesil-web-altyapisi/', '/en/next-generation-web-foundation/', '/az/yeni-nesil-veb-infrastrukturu/'] },
+    { path: '/en/next-generation-web-foundation/', lang: 'en', alternates: ['/yeni-nesil-web-altyapisi/', '/en/next-generation-web-foundation/', '/az/yeni-nesil-veb-infrastrukturu/'] },
+    { path: '/az/yeni-nesil-veb-infrastrukturu/', lang: 'az-AZ', alternates: ['/yeni-nesil-web-altyapisi/', '/en/next-generation-web-foundation/', '/az/yeni-nesil-veb-infrastrukturu/'] },
+  ];
+  for (const route of routes) {
+    const page = await pageFor(t, route.path);
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://qctcommerce.com${route.path}`);
+    assert.equal(await page.locator(`link[rel="alternate"][hreflang="${route.lang}"]`).getAttribute('href'), `https://qctcommerce.com${route.path}`);
+    for (const alternate of route.alternates) assert.equal(await page.locator(`link[rel="alternate"][hreflang]:not([hreflang="x-default"])[href="https://qctcommerce.com${alternate}"]`).count(), 1, `Missing alternate ${alternate}`);
+    await assertNoHorizontalOverflow(page, route.path);
+  }
+});
+
+test('premium infrastructure is discoverable in every service index and gets a scope-only calculator quote', async t => {
+  for (const [path, href] of [['/hizmetler/', '/yeni-nesil-web-altyapisi/'], ['/en/services/', '/en/next-generation-web-foundation/'], ['/az/xidmetler/', '/az/yeni-nesil-veb-infrastrukturu/']]) {
+    const page = await pageFor(t, path);
+    assert.equal(await page.locator(`a[href="${href}"]`).count(), 1, `Missing premium-service link on ${path}`);
+  }
+  for (const [path, href, expectedTotal, expectedMessage, serviceSelector, totalSelector, whatsappSelector] of [
+    ['/', '/yeni-nesil-web-altyapisi/', 'Özel teklif', 'özel teklif talep ediyorum', '[data-service]', '[data-total]', '[data-whatsapp]'],
+    ['/en/', '/en/next-generation-web-foundation/', 'Custom quote', 'scoped proposal', '[data-service]', '[data-total]', '[data-whatsapp]'],
+    ['/az/', '/az/yeni-nesil-veb-infrastrukturu/', 'Xüsusi təklif', 'xüsusi təklif', '[data-az-service]', '[data-az-total]', '[data-az-whatsapp]'],
+  ]) {
+    const page = await pageFor(t, path);
+    assert.equal(await page.locator('.qct-edge').count(), 1, `Missing QCT EDGE launch section on ${path}`);
+    assert.equal(await page.locator(`.qct-edge a[href="${href}"]`).count(), 1, `Missing QCT EDGE service link on ${path}`);
+    assert.equal(await page.locator('.qct-edge').getByText('PERFORMANCE', { exact: true }).count(), 1);
+    assert.equal(await page.locator('.qct-edge').getByText('VISIBILITY', { exact: true }).count(), 1);
+    assert.equal(await page.locator('.qct-edge').getByText('COMMERCE', { exact: true }).count(), 1);
+    assert.equal(await page.locator('.qct-edge').getByText(/34[.,]900/).count(), 0, `Unapproved price claim on ${path}`);
+    await page.locator(serviceSelector).selectOption('premium-infrastructure');
+    assert.equal(await page.locator(totalSelector).textContent(), expectedTotal);
+    const whatsappMessage = new URL(await page.locator(whatsappSelector).getAttribute('href')).searchParams.get('text');
+    assert.ok(whatsappMessage.includes(expectedMessage));
+    await assertNoHorizontalOverflow(page, path);
+  }
+});
+
+
+test('QCT EDGE launch packages and gift terms are consistent across all published locales', async t => {
+  const cases = [
+    {home:'/',detail:'/yeni-nesil-web-altyapisi/',gift:'3 AY DİNAMİK SEO HEDİYE',start:'24.900 TL',tax:'KDV dahil'},
+    {home:'/en/',detail:'/en/next-generation-web-foundation/',gift:'3 MONTHS OF DYNAMIC SEO INCLUDED',start:'24,900 TL',tax:'VAT included'},
+    {home:'/az/',detail:'/az/yeni-nesil-veb-infrastrukturu/',gift:'3 AY DİNAMİK SEO HƏDİYYƏ',start:'24.900 TL',tax:'KDV daxil'},
+  ];
+  for (const item of cases) {
+    const home = await pageFor(t, item.home);
+    const banner = await home.locator('.qct-edge-launch').textContent();
+    assert.ok(banner.includes(item.start), item.home+' starting price');
+    assert.ok(banner.includes(item.tax), item.home+' VAT-inclusive price label');
+    assert.ok(banner.includes(item.gift), item.home+' gift');
+    const page = await pageFor(t, item.detail);
+    const cards = page.locator('.premium-launch__plan');
+    assert.equal(await cards.count(), 3, item.detail+' package count');
+    const offer = await page.locator('.premium-launch').textContent();
+    for (const name of ['QCT EDGE Start','QCT EDGE Pro','QCT EDGE Business']) assert.ok(offer.includes(name), item.detail+' '+name);
+    assert.ok(offer.includes(item.start), item.detail+' starting price');
+    for (const priceLabel of await page.locator('.premium-launch__starting').allTextContents()) assert.ok(priceLabel.includes(item.tax), item.detail+' VAT-inclusive package label');
+    assert.match(offer, /(?:%20|20%)/, item.detail+' Türkiye VAT rate in terms');
+    assert.ok(offer.includes(item.gift), item.detail+' gift');
+    assert.match(offer, /2026/);
+    assert.equal(await page.locator('.premium-launch__plan a[href^="https://wa.me/"]').count(), 3);
+    await assertNoHorizontalOverflow(page, item.detail);
+  }
+});
 
 test('commercial SEO routes expose a connected, intent-specific internal link cluster', async t => {
   const cases = [

@@ -43,6 +43,7 @@ const servicePaths = new Set([
   '/e-ticaret/', '/web-tasarim/', '/whatsapp-satis/', '/seo-geo/', '/meta-reklamlari/', '/yapay-zeka-otomasyonlari/',
   '/en/ecommerce/', '/en/web-design/', '/en/whatsapp-sales/', '/en/search-visibility/', '/en/meta-ads/', '/en/ai-automation/',
   '/az/e-ticaret/', '/az/veb-dizayn/', '/az/whatsapp-satis/', '/az/seo-geo/', '/az/meta-reklamlari/', '/az/ai-avtomatlasdirma/',
+  '/yeni-nesil-web-altyapisi/', '/en/next-generation-web-foundation/', '/az/yeni-nesil-veb-infrastrukturu/',
 ]);
 const caseStudyPaths = new Set([
   '/calismalar/headwear/', '/calismalar/misima/', '/calismalar/artman/',

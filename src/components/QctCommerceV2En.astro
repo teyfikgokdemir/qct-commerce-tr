@@ -6,6 +6,7 @@ const services = [
   { value: 'refresh', label: 'Existing website redesign', base: 6900 },
   { value: 'audit', label: 'Website audit & improvement plan', base: 1490 },
   { value: 'visibility', label: 'Dynamic SEO · SEO + GEO + AEO + AIO', base: 3990 },
+  { value: 'premium-infrastructure', label: 'QCT EDGE — custom quote', base: 0 },
   { value: 'migration', label: 'Platform migration', base: 7900 },
   { value: 'products', label: 'Product entry only', base: 0 },
 ];
@@ -166,6 +167,7 @@ const platforms = [
     </div>
   </section>
 
+  <section class="qct-edge" aria-labelledby="qct-edge-title"><div class="qct-shell"><p class="qct-section-label">QCT EDGE — NEXT-GENERATION WEB FOUNDATION + DYNAMIC SEO</p><div class="qct-edge-grid"><div><h2 id="qct-edge-title">More than a website.<br/>Digital infrastructure that evolves with your business.</h2><p>Plan a fast, sustainable web foundation with continuous visibility and commercial improvement in one scope.</p><a class="qct-btn qct-btn-primary" href="/en/next-generation-web-foundation/">Explore QCT EDGE <span>→</span></a><div class="qct-edge-launch" aria-label="QCT EDGE year-end launch"><span class="qct-edge-launch__label">2026 YEAR-END LAUNCH · TÜRKİYE</span><strong class="qct-edge-launch__price">24,900 TL <small>starting at · VAT included</small></strong><span class="qct-edge-launch__gift">3 MONTHS OF DYNAMIC SEO INCLUDED</span><small class="qct-edge-launch__terms">QCT EDGE packages only. For projects approved by 31 December 2026; SEO begins at site launch. Türkiye starting prices include 20% VAT. Scope and conditions on the service page.</small></div></div><div class="qct-edge-benefits" aria-label="QCT EDGE value"><article><b>PERFORMANCE</b><span>Fast, mobile-first experience</span></article><article><b>VISIBILITY</b><span>Continuous SEO, GEO, AEO and AIO improvement</span></article><article><b>COMMERCE</b><span>Structure aligned to enquiries and conversion paths</span></article></div></div></div></section>
   <section class="qct-pathways">
     <div class="qct-shell">
       <div class="qct-section-head qct-pathway-head">
@@ -334,18 +336,19 @@ const platforms = [
   function calculate() {
     const selectedService = service?.selectedOptions?.[0];
     const hasService = Boolean(service?.value);
+    const requiresQuote = service?.value === 'premium-infrastructure';
     const base = Number(selectedService?.dataset.base || 0);
     const productOption = products?.selectedOptions?.[0];
-    const productPrice = service?.value === 'ecommerce' && productOption?.dataset.ecommercePrice !== undefined
+    const productPrice = requiresQuote ? 0 : service?.value === 'ecommerce' && productOption?.dataset.ecommercePrice !== undefined
       ? Number(productOption.dataset.ecommercePrice || 0)
       : Number(productOption?.dataset.price || 0);
-    const addonPrice = addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
+    const addonPrice = requiresQuote ? 0 : addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
     const total = base + productPrice + addonPrice;
     const platform = root.querySelector('[data-platform]');
     const completed = [Boolean(service?.value), Boolean(platform?.value), Boolean(products?.value)].filter(Boolean).length;
     progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
 
-    if (pricingStarted && !pricingCompleted && hasService && completed === 3) {
+    if (pricingStarted && !pricingCompleted && hasService && completed === 3 && !requiresQuote) {
       track('pricing_complete', {
         service: service?.value || undefined,
         platform: platform?.value || undefined,
@@ -356,7 +359,7 @@ const platforms = [
     }
 
     if (totalNode) {
-      const nextText = hasService ? (total > 0 ? money.format(total) + ' TL+' : 'Based on scope') : 'Make your selection';
+      const nextText = hasService ? (requiresQuote ? 'Custom quote' : total > 0 ? money.format(total) + ' TL+' : 'Based on scope') : 'Make your selection';
       if (totalNode.textContent !== nextText) {
         totalNode.textContent = nextText;
         totalNode.classList.remove('is-updating');
@@ -365,12 +368,12 @@ const platforms = [
       }
     }
     if (noteNode) noteNode.textContent = hasService
-      ? 'The amount shown is a starting price for standard scope and may change with project requirements.'
+      ? (requiresQuote ? 'A scoped proposal is prepared around foundation, content, integration, language and ongoing optimisation requirements.' : 'The amount shown is a starting price for standard scope and may change with project requirements.')
       : 'Choose a project type to calculate the starting price.';
 
     const serviceText = hasService ? (selectedService?.textContent?.trim() || 'Web projesi') : '';
     const productText = products?.value ? (products?.selectedOptions?.[0]?.textContent?.trim() || '') : '';
-    const message = 'Hello, I used the QCT Commerce price calculator. ' + serviceText + (productText ? ', ' + productText : '') + '. Starting price: ' + (total > 0 ? money.format(total) + ' TL+' : 'scope-based') + '. I would like to discuss the details.';
+    const message = 'Hello, I used the QCT Commerce price calculator. ' + serviceText + (productText ? ', ' + productText : '') + '. Starting price: ' + (requiresQuote ? 'I would like a scoped proposal' : total > 0 ? money.format(total) + ' TL+' : 'scope-based') + '. I would like to discuss the details.';
     if (whatsapp) {
       whatsapp.classList.toggle('is-disabled', !hasService);
       whatsapp.setAttribute('aria-disabled', String(!hasService));
@@ -380,7 +383,7 @@ const platforms = [
       whatsapp.dataset.analyticsService = service?.value || '';
       whatsapp.dataset.analyticsPlatform = platform?.value || '';
       whatsapp.dataset.analyticsProductScope = products?.value || '';
-      whatsapp.dataset.analyticsPricingValue = total > 0 ? String(total) : '';
+      whatsapp.dataset.analyticsPricingValue = !requiresQuote && total > 0 ? String(total) : '';
     }
   }
 

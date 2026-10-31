@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+type Lang = 'tr' | 'en' | 'az';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+
+const copy = {
+  tr: {
+    title: 'QCT EDGE | Yeni Nesil Web Altyapısı + Dinamik SEO | QCT Commerce',
+    description: 'Astro 7 tabanlı modern web altyapısı ve sürekli SEO, GEO, AEO, AIO geliştirmesiyle dijital büyüme için kapsamı projeye göre belirlenen premium hizmet.',
+    name: 'QCT EDGE — Yeni Nesil Web Altyapısı + Dinamik SEO', eyebrow: 'QCT EDGE · Premium dijital altyapı', problemEyebrow: 'Neden birlikte?', processEyebrow: 'Süreç', faqEyebrow: 'Sık sorulanlar',
+    h1: 'Hızlı, güven veren web altyapısı. Sürekli gelişen görünürlük.',
+    lead: 'Web deneyimini ve arama görünürlüğünü iki ayrı iş kalemi gibi değil, aynı ticari hedefe çalışan tek bir dijital temel olarak planlıyoruz.',
+    primary: 'Proje kapsamını konuşalım', secondary: 'Neleri kapsar?',
+    problemTitle: 'Yeni bir site yayınlamak tek başına yeterli değildir.',
+    problem: 'Sitenin hız, içerik, teknik kalite, müşteri yolculuğu ve arama görünürlüğü zaman içinde birlikte gelişmediğinde yatırımın ticari etkisini korumak zorlaşır.',
+    benefits: [
+      ['Hız ve kullanıcı deneyimi', 'Astro 7 ile statik-first sayfalar üretir; uygun projelerde Cloudflare’in küresel CDN dağıtımından yararlanırız. Hedef, ziyaretçinin bilgiye daha az bekleyerek ulaşmasıdır.'],
+      ['Güvenlik ve sürdürülebilirlik', 'Gereksiz istemci kodunu ve bakım yükünü azaltan, proje gereksinimine göre seçilmiş bir yapı kurarız. Güvenlik kararları ihtiyaç ve kullanılan sistemlere göre ayrıca kapsamlanır.'],
+      ['Çok dilli büyümeye hazırlık', 'Dil eşdeğerleri, canonical, hreflang, içerik mimarisi ve yerel kullanıcı niyeti birlikte ele alınır; her proje için gerekli pazarlar ayrıca belirlenir.'],
+      ['Sürekli Dinamik SEO', 'Tek seferlik kontrol listesi yerine teknik sağlık, gerçek sorgular, öncelikli sayfalar, içerik fırsatları ve SEO/GEO/AEO/AIO sinyallerine göre sıradaki iyileştirmeyi belirleriz.'],
+    ],
+    process: [
+      ['İş hedefi ve mevcut durum', 'Satış hedefi, hedef kitle, mevcut site, içerik, kanallar ve teknik kısıtları inceleriz.'],
+      ['Altyapı ve içerik planı', 'Sayfa mimarisi, kullanıcı yolları, ölçüm ihtiyacı ve görünürlük önceliklerini kapsam belgesinde birleştiririz.'],
+      ['Kontrollü yayın', 'Mobil deneyim, bağlantılar, metadata, erişilebilirlik ve dahil edilen ölçüm noktaları doğrulandıktan sonra yayın planlanır.'],
+      ['Veriyle geliştirme', 'Yayın sonrasında gerçek sorgular, teknik sinyaller ve nitelikli talep verileri uygun olduğunda sonraki geliştirme sırasını belirler.'],
+    ],
+    faq: [
+      ['Bu hizmet web tasarımdan nasıl ayrılır?', 'Web tasarım sayfası yeni veya yenilenen sitenin deneyim ve içerik temelini ele alır. Bu premium hizmet, modern altyapı kararlarını yayın sonrası sürekli görünürlük geliştirmesiyle aynı kapsamda birleştirir.'],
+      ['Astro 7 ve Cloudflare Edge ne anlama gelir?', 'Astro 7 ile sayfalar statik-first üretilebilir ve Cloudflare CDN üzerinden küresel olarak dağıtılabilir. Statik CDN dağıtımı Edge SSR değildir; sunucu tarafı çalıştırma ihtiyacı ancak proje için ayrıca değerlendirilir.'],
+      ['Sonuç veya sıralama garantisi veriyor musunuz?', 'Hayır. Teknik kalite ve bulunabilirlik koşullarını güçlendiririz; sıralama ve ticari sonuçlar rekabet, indeksleme, teklif, ekip ve pazar koşullarından da etkilenir.'],
+      ['Paketlerin başlangıç fiyatları nedir?', 'Türkiye lansmanında QCT EDGE Start 24.900 TL, Pro 39.900 TL, Business 59.900 TL’den başlar. Türkiye başlangıç fiyatlarına %20 KDV dahildir. Standart kapsam dışındaki içerik, ek dil ve entegrasyonlar yazılı teklifle belirlenir.'],
+    ],
+    scope: 'Kapsamı inceleyin', final: 'Dijital altyapınızı ve görünürlüğünüzü aynı ticari hedef etrafında planlayalım.', finalText: 'Mevcut sitenizi, hedef pazarlarınızı ve büyüme önceliğinizi paylaşın; uygun başlangıç kapsamını birlikte belirleyelim.', email: 'E-posta gönderin', area: ['Türkiye'],
+  },
+  en: {
+    title: 'QCT EDGE | Next-Generation Web Foundation + Dynamic SEO | QCT Commerce',
+    description: 'A premium, scope-led service combining a modern Astro 7 web foundation with ongoing SEO, GEO, AEO and AIO improvement for sustainable digital growth.',
+    name: 'QCT EDGE — Next-Generation Web Foundation + Dynamic SEO', eyebrow: 'QCT EDGE · Premium digital foundation', problemEyebrow: 'Why together?', processEyebrow: 'Process', faqEyebrow: 'Frequently asked questions',
+    h1: 'A faster, more trustworthy web foundation. Visibility that keeps improving.',
+    lead: 'We plan the web experience and search visibility as one digital foundation serving the same commercial goal, rather than two disconnected workstreams.',
+    primary: 'Discuss your project scope', secondary: 'Explore the scope',
+    problemTitle: 'Launching a new website is not enough on its own.',
+    problem: 'When speed, content, technical quality, the customer journey and search visibility do not improve together over time, it is harder to sustain the commercial value of the investment.',
+    benefits: [
+      ['Speed and user experience', 'We build static-first pages with Astro 7 and, where appropriate, distribute them through Cloudflare’s global CDN. The practical aim is to help visitors reach useful information with less waiting.'],
+      ['Security-conscious and maintainable', 'We select an architecture that reduces unnecessary client code and maintenance burden. Security decisions are scoped separately around the project and systems in use.'],
+      ['Ready for multilingual growth', 'Language equivalents, canonicals, hreflang, content architecture and local user intent are considered together; required markets are defined for each project.'],
+      ['Continuous Dynamic SEO', 'Instead of a one-off checklist, we use technical health, real queries, priority pages, content opportunities and SEO/GEO/AEO/AIO signals to decide what should improve next.'],
+    ],
+    process: [
+      ['Business goal and current state', 'We review commercial goals, audiences, the current site, content, channels and technical constraints.'],
+      ['Foundation and content plan', 'Page architecture, customer paths, measurement needs and visibility priorities are brought together in a scoped plan.'],
+      ['Controlled launch', 'Mobile experience, links, metadata, accessibility and included measurement points are checked before launch.'],
+      ['Evidence-led improvement', 'After launch, real queries, technical signals and qualified-enquiry evidence, where available, guide the next priorities.'],
+    ],
+    faq: [
+      ['How is this different from website design?', 'Website design focuses on the experience and content foundation for a new or improved site. This premium service combines modern web-foundation decisions with ongoing visibility improvement after launch.'],
+      ['What do Astro 7 and Cloudflare Edge mean here?', 'Astro 7 can produce static-first pages that are distributed globally through Cloudflare’s CDN. Static CDN delivery is not Edge SSR; server-side execution is assessed only where a project specifically requires it.'],
+      ['Do you guarantee rankings or outcomes?', 'No. We improve the conditions for technical quality and discoverability, while rankings and commercial outcomes also depend on competition, indexing, the offer, the team and market conditions.'],
+      ['What are the starting package prices?', 'For Türkiye, QCT EDGE Start begins at 24,900 TL, Pro at 39,900 TL and Business at 59,900 TL. These Türkiye starting prices include 20% VAT. Additional content, languages and integrations are quoted separately.'],
+    ],
+    scope: 'Explore the scope', final: 'Plan your digital foundation and visibility around the same commercial goal.', finalText: 'Share your current site, target markets and growth priority so we can define the right first scope together.', email: 'Email us', area: ['Türkiye'],
+  },
+  az: {
+    title: 'QCT EDGE | Yeni Nəsil Veb İnfrastrukturu + Dinamik SEO | QCT Commerce',
+    description: 'Astro 7 əsaslı müasir veb infrastrukturu və davamlı SEO, GEO, AEO, AIO inkişafını birləşdirən premium, layihəyə uyğun xidmət.',
+    name: 'QCT EDGE — Yeni Nəsil Veb İnfrastrukturu + Dinamik SEO', eyebrow: 'QCT EDGE · Premium rəqəmsal infrastruktur', problemEyebrow: 'Niyə birlikdə?', processEyebrow: 'Proses', faqEyebrow: 'Tez-tez verilən suallar',
+    h1: 'Daha sürətli, etibarlı veb təməl. Davamlı inkişaf edən görünürlük.',
+    lead: 'Veb təcrübəsini və axtarış görünürlüğünü ayrı işlər kimi deyil, eyni kommersiya hədəfinə xidmət edən vahid rəqəmsal təməl kimi planlayırıq.',
+    primary: 'Layihə həcmini müzakirə edək', secondary: 'Əhatəni araşdırın',
+    problemTitle: 'Yeni saytı yayımlamaq təkbaşına kifayət deyil.',
+    problem: 'Sürət, məzmun, texniki keyfiyyət, müştəri yolu və axtarış görünürlüğü zamanla birlikdə inkişaf etmədikdə, investisiyanın kommersiya təsirini qorumaq çətinləşir.',
+    benefits: [
+      ['Sürət və istifadəçi təcrübəsi', 'Astro 7 ilə static-first səhifələr qurur, uyğun layihələri Cloudflare-in qlobal CDN şəbəkəsindən yayımlayırıq. Məqsəd ziyarətçinin faydalı məlumata daha az gözləmə ilə çatmasıdır.'],
+      ['Təhlükəsizlik yönümlü və dayanıqlı', 'Lazımsız müştəri kodunu və texniki baxım yükünü azaltmağa yönəlmiş struktur seçirik. Təhlükəsizlik qərarları layihənin ehtiyacına görə ayrıca həcmlənir.'],
+      ['Çoxdilli böyüməyə hazırlıq', 'Dil ekvivalentləri, canonical, hreflang, məzmun arxitekturası və yerli istifadəçi niyyəti birlikdə nəzərdən keçirilir; hər layihə üçün lazım olan bazarlar ayrıca müəyyən olunur.'],
+      ['Davamlı Dinamik SEO', 'Birdəfəlik yoxlama siyahısı əvəzinə texniki sağlamlıq, real sorğular, prioritet səhifələr, məzmun imkanları və SEO/GEO/AEO/AIO siqnallarına əsasən növbəti inkişafı seçirik.'],
+    ],
+    process: [
+      ['Biznes hədəfi və mövcud vəziyyət', 'Kommersiya hədəflərini, auditoriyanı, mövcud saytı, məzmunu, kanalları və texniki məhdudiyyətləri nəzərdən keçiririk.'],
+      ['İnfrastruktur və məzmun planı', 'Səhifə arxitekturasını, müştəri yollarını, ölçüm ehtiyacını və görünürlük prioritetlərini həcmlənmiş planda birləşdiririk.'],
+      ['Nəzarətli yayım', 'Yayımdan əvvəl mobil təcrübə, keçidlər, metadata, əlçatanlıq və daxil edilmiş ölçüm nöqtələri yoxlanılır.'],
+      ['Sübutla inkişaf', 'Yayımdan sonra real sorğular, texniki siqnallar və uyğun olduqda keyfiyyətli sorğu məlumatları növbəti prioritetləri müəyyən edir.'],
+    ],
+    faq: [
+      ['Bu xidmət veb dizayndan necə fərqlənir?', 'Veb dizayn yeni və ya yenilənən saytın təcrübə və məzmun təməlinə fokuslanır. Bu premium xidmət müasir veb infrastrukturu qərarlarını yayım sonrası davamlı görünürlük inkişafı ilə birləşdirir.'],
+      ['Burada Astro 7 və Cloudflare Edge nə deməkdir?', 'Astro 7 static-first səhifələr yarada bilər və onlar Cloudflare CDN ilə qlobal yayımlana bilər. Static CDN yayımı Edge SSR deyil; server tərəfli işləmə yalnız layihənin konkret ehtiyacı olduqda qiymətləndirilir.'],
+      ['Sıralama və ya nəticə zəmanəti verirsiniz?', 'Xeyr. Texniki keyfiyyət və tapılma üçün şəraiti gücləndiririk; sıralama və kommersiya nəticələri rəqabət, indeksləmə, təklif, komanda və bazar şərtlərindən də asılıdır.'],
+      ['Paketlərin başlanğıc qiymətləri nə qədərdir?', 'Türkiyə bazarında QCT EDGE Start 24.900 TL, Pro 39.900 TL, Business isə 59.900 TL-dən başlayır. Türkiyə üzrə başlanğıc qiymətlərə 20% KDV daxildir. Azərbaycan bazarı üçün AZN qiyməti və əlavə ehtiyaclar ayrıca təklif olunur.'],
+    ],
+    scope: 'Əhatəni araşdırın', final: 'Rəqəmsal infrastrukturunuzu və görünürlüğünüzü eyni kommersiya hədəfi ətrafında planlaşdıraq.', finalText: 'Mövcud saytınızı, hədəf bazarlarınızı və böyümə prioritetinizi paylaşın; uyğun ilkin həcmi birlikdə müəyyənləşdirək.', email: 'E-poçt göndərin', area: ['Azerbaijan', 'Türkiye'],
+  },
+}[lang];
+
+
+const launch = {
+  tr: {
+    eyebrow: '2026 YIL SONU · TÜRKİYE LANSMANI',
+    title: 'Premium altyapı. Erişilebilir başlangıç.',
+    subtitle: 'Kapsamı belli üç başlangıç seçeneği. İhtiyacınıza uyan paketi seçin; fazladan özellikler için ödeme yapmayın.',
+    starts: 'KDV dahil başlangıç fiyatı',
+    cta: 'Bu paket için teklif al',
+    gift: '3 AY DİNAMİK SEO HEDİYE',
+    termsTitle: 'Kampanya ve kapsam koşulları',
+    terms: 'Yalnızca 31 Aralık 2026 tarihine kadar yazılı olarak onaylanan Türkiye QCT EDGE projelerinde geçerlidir. Üç aylık Dinamik SEO, site yayına alındığında başlar; teknik SEO takibi, Search Console sorgu analizi, öncelikli sayfa iyileştirmeleri, GEO/AEO çalışmaları ve aylık 1 özgün SEO içeriği kapsar. Üç ay sonunda ücretli hizmet otomatik başlamaz; devam için ayrıca yazılı onay gerekir. Müşteri metin ve görselleri sağlar. Ek sayfalar, diller, özel entegrasyonlar, alan adı, lisans, reklam ve üçüncü taraf maliyetleri kapsam dışıdır. Gösterilen Türkiye başlangıç fiyatlarına %20 KDV dahildir. Ödeme ve teslim koşulları yazılı teklifte açıklanır.',
+    plans: [
+      { name: 'QCT EDGE Start', price: '24.900 TL', features: ['Tek dil · en fazla 3 temel sayfa', 'Premium tasarım sistemi ve mobil uyum', 'Astro 7 + uygun Cloudflare yayın altyapısı', 'Temel teknik SEO ve iletişim akışı'] },
+      { name: 'QCT EDGE Pro', price: '39.900 TL', features: ['Tek dil · 5–7 temel sayfa', 'Genişletilmiş premium tasarım', 'Dönüşüm ölçümü ve gelişmiş teknik SEO', 'İçerik ve kullanıcı yolculuğu planı'] },
+      { name: 'QCT EDGE Business', price: '59.900 TL', features: ['İki dil ve B2B katalog başlangıcı', 'Teklif/iletişim akışı ve ölçüm planı', 'Uluslararası SEO ve dil eşdeğerleri', 'Özel entegrasyonlar ayrıca kapsamlanır'] },
+    ],
+  },
+  en: {
+    eyebrow: '2026 YEAR-END · TÜRKİYE LAUNCH',
+    title: 'Premium infrastructure. An accessible starting point.',
+    subtitle: 'Three clearly scoped starting options, designed to avoid paying for features your project does not need.',
+    starts: 'Starting price · VAT included',
+    cta: 'Request a proposal for this plan',
+    gift: '3 MONTHS OF DYNAMIC SEO INCLUDED',
+    termsTitle: 'Campaign and scope conditions',
+    terms: 'Available only for QCT EDGE projects in Türkiye approved in writing by 31 December 2026. Three months of Dynamic SEO begin when the site goes live: technical SEO monitoring, Search Console query analysis, priority-page improvements, GEO/AEO work and one original SEO article per month. No automatic paid renewal; continuing requires separate written approval. Clients provide text and images. Extra pages, languages, custom integrations, domains, licences, advertising and other third-party costs are excluded. Listed Türkiye starting prices include 20% VAT. Payment and delivery terms are defined in the written quote.',
+    plans: [
+      { name: 'QCT EDGE Start', price: '24,900 TL', features: ['One language · up to 3 core pages', 'Premium design system and mobile UX', 'Astro 7 + suitable Cloudflare deployment', 'Technical SEO foundation and contact flow'] },
+      { name: 'QCT EDGE Pro', price: '39,900 TL', features: ['One language · 5–7 core pages', 'Expanded premium design', 'Conversion measurement and enhanced technical SEO', 'Content and user journey planning'] },
+      { name: 'QCT EDGE Business', price: '59,900 TL', features: ['Two languages and initial B2B catalogue', 'Enquiry flow and measurement plan', 'International SEO and locale equivalents', 'Custom integrations scoped separately'] },
+    ],
+  },
+  az: {
+    eyebrow: '2026 İLSONU · TÜRKİYƏ TƏQDİMATI',
+    title: 'Premium infrastruktur. Əlçatan başlanğıc.',
+    subtitle: 'Ehtiyaca uyğun üç aydın başlanğıc paketi. Lazımsız xüsusiyyətlərə əlavə xərc ödəməyin.',
+    starts: 'KDV daxil başlanğıc qiyməti · Türkiyə',
+    cta: 'Bu paket üçün təklif alın',
+    gift: '3 AY DİNAMİK SEO HƏDİYYƏ',
+    termsTitle: 'Kampaniya və xidmət şərtləri',
+    terms: 'Təklif yalnız Türkiyədə 31 dekabr 2026-dək yazılı təsdiqlənən QCT EDGE layihələrinə şamil olunur. Üç aylıq Dinamik SEO sayt yayımlandıqdan sonra başlayır: texniki SEO nəzarəti, Search Console sorğu təhlili, prioritet səhifə təkmilləşdirmələri, GEO/AEO işləri və ayda bir orijinal SEO məzmunu daxildir. Ödənişli xidmət avtomatik yenilənmir; davam üçün ayrıca yazılı razılıq lazımdır. Mətn və vizualları müştəri təqdim edir. Əlavə səhifələr, dillər, xüsusi inteqrasiyalar, domen, lisenziya, reklam və üçüncü tərəf xərcləri daxil deyil. Türkiyə üzrə göstərilən başlanğıc qiymətlərə 20% KDV daxildir. Ödəniş şərtləri yazılı təklifdə göstərilir. Azərbaycan üçün AZN təklifi ayrıca hazırlanır.',
+    plans: [
+      { name: 'QCT EDGE Start', price: '24.900 TL', features: ['Bir dil · 3 əsas səhifəyədək', 'Premium dizayn sistemi və mobil uyğunluq', 'Astro 7 + uyğun Cloudflare yayımı', 'Texniki SEO bazası və əlaqə axını'] },
+      { name: 'QCT EDGE Pro', price: '39.900 TL', features: ['Bir dil · 5–7 əsas səhifə', 'Genişləndirilmiş premium dizayn', 'Dönüşüm ölçümü və inkişaf etmiş texniki SEO', 'Məzmun və istifadəçi yolunun planlanması'] },
+      { name: 'QCT EDGE Business', price: '59.900 TL', features: ['İki dil və ilkin B2B kataloqu', 'Sorğu axını və ölçüm planı', 'Beynəlxalq SEO və dil ekvivalentləri', 'Xüsusi inteqrasiyalar ayrıca qiymətləndirilir'] },
+    ],
+  },
+}[lang];
+const quoteForPlan = (planName: string) => `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.name} · ${planName}: ${copy.primary}`)}`;
+
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', '@id': `https://qctcommerce.com${Astro.url.pathname}#faq`, url: `https://qctcommerce.com${Astro.url.pathname}`, inLanguage: lang === 'tr' ? 'tr-TR' : lang === 'en' ? 'en-US' : 'az-AZ', mainEntity: copy.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.name}: ${copy.primary}`)}`;
+---
+<BaseLayout title={copy.title} description={copy.description} lang={lang} breadcrumbLabel={copy.name} service={{ name: copy.name, description: copy.description }} areaServed={copy.area}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Header slot="header" lang={lang} />
+  <section class="premium-hero section"><div class="container"><p class="eyebrow">{copy.eyebrow}</p><h1>{copy.h1}</h1><p class="page-hero__lead">{copy.lead}</p><div class="hero__actions"><a class="button button--primary" href={whatsapp} target="_blank" rel="noopener">{copy.primary}</a><a class="button button--secondary" href="#scope">{copy.secondary}</a></div></div></section>
+  <section class="section premium-problem"><div class="container premium-split"><div><p class="eyebrow">{copy.problemEyebrow}</p><h2>{copy.problemTitle}</h2></div><p>{copy.problem}</p></div></section>
+  <section class="section" id="scope"><div class="container"><p class="eyebrow">{copy.scope}</p><div class="premium-grid">{copy.benefits.map(([title, text]) => <article><h2>{title}</h2><p>{text}</p></article>)}</div></div></section>
+
+  <section class="section premium-launch" id="packages" aria-labelledby="qct-edge-packages-title">
+    <div class="container">
+      <p class="eyebrow">{launch.eyebrow}</p>
+      <h2 id="qct-edge-packages-title">{launch.title}</h2>
+      <p class="premium-launch__lead">{launch.subtitle}</p>
+      <div class="premium-launch__grid">
+        {launch.plans.map((plan, index) => <article class={index === 1 ? 'premium-launch__plan is-featured' : 'premium-launch__plan'}>
+          <h3>{plan.name}</h3>
+          <span class="premium-launch__starting">{launch.starts}</span>
+          <strong class="premium-launch__price">{plan.price}</strong>
+          <ul>{plan.features.map((feature) => <li>{feature}</li>)}</ul>
+          <a class="button button--primary" href={quoteForPlan(plan.name)} target="_blank" rel="noopener">{launch.cta}</a>
+        </article>)}
+      </div>
+      <div class="premium-launch__gift">
+        <strong>{launch.gift}</strong>
+        <div><h3>{launch.termsTitle}</h3><p>{launch.terms}</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section premium-process"><div class="container"><p class="eyebrow">{copy.processEyebrow}</p><div class="premium-process__grid">{copy.process.map(([title, text]) => <article><h2>{title}</h2><p>{text}</p></article>)}</div></div></section>
+  <section class="section"><div class="container premium-faq"><p class="eyebrow">{copy.faqEyebrow}</p>{copy.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+  <section class="premium-final"><div class="container"><h2>{copy.final}</h2><p>{copy.finalText}</p><div class="hero__actions"><a class="button button--primary" href={whatsapp} target="_blank" rel="noopener">{copy.primary}</a><a class="button button--secondary" href={`mailto:info@qctcommerce.com?subject=${encodeURIComponent(copy.name)}`}>{copy.email}</a></div></div></section>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+.premium-hero{padding-block:clamp(7rem,14vw,12rem) clamp(4rem,8vw,7rem);background:#edf5ff}.premium-hero .container{max-width:980px}.premium-hero h1,.premium-split h2,.premium-final h2{max-width:15ch;color:var(--qct-color-ink);font-size:clamp(2.5rem,5.3vw,5rem);letter-spacing:-.04em;line-height:1.01;text-wrap:balance}.premium-hero .page-hero__lead{max-width:720px;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.7}.premium-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(2rem,8vw,8rem);align-items:start}.premium-split>p{margin:0;color:var(--qct-color-muted);font-size:1.1rem;line-height:1.8}.premium-grid,.premium-process__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,3vw,3.5rem)}.premium-split>*,.premium-grid article,.premium-process__grid article{min-width:0}.premium-grid h2,.premium-process h2{margin:0 0 .7rem;color:var(--qct-color-ink);font-size:clamp(1.25rem,2vw,1.7rem);letter-spacing:-.04em}.premium-grid p,.premium-process p{margin:0;color:var(--qct-color-muted);line-height:1.72}.premium-split h2,.premium-grid h2,.premium-process h2,.premium-faq summary,.premium-final h2,.premium-final p{overflow-wrap:anywhere}.premium-process{background:#f4f8fc}.premium-faq{max-width:900px}.premium-faq details{border-top:1px solid var(--qct-color-line-strong);padding:1.15rem 0}.premium-faq details:last-child{border-bottom:1px solid var(--qct-color-line-strong)}.premium-faq summary{color:var(--qct-color-ink);cursor:pointer;font-size:1.05rem;font-weight:800}.premium-faq p{max-width:760px;color:var(--qct-color-muted);line-height:1.75}.premium-final{background:#07172e;color:#fff;padding:clamp(4rem,9vw,8rem) 0}.premium-final h2{max-width:20ch;color:#fff}.premium-final p{max-width:720px;color:rgba(255,255,255,.78);font-size:1.08rem;line-height:1.75}.premium-final .button--secondary{border-color:rgba(255,255,255,.62);color:#fff}@media(max-width:720px){.premium-split,.premium-grid,.premium-process__grid{grid-template-columns:1fr}.premium-hero h1,.premium-split h2,.premium-final h2{max-width:100%}}
+
+.premium-launch{background:#edf5ff}
+.premium-launch>.container{max-width:1180px}
+.premium-launch h2{max-width:20ch;margin:0;color:#0f172a;font-size:clamp(2.25rem,4.5vw,4rem);line-height:1.08;letter-spacing:-.045em;text-wrap:balance}
+.premium-launch__lead{max-width:65ch;color:#475569;line-height:1.7;margin:1rem 0 2.2rem}
+.premium-launch__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+.premium-launch__plan{min-width:0;display:flex;flex-direction:column;gap:.65rem;padding:clamp(1.3rem,2.5vw,2.1rem);border:1px solid #cbd5e1;border-radius:20px;background:#fff;box-shadow:0 12px 40px rgba(15,23,42,.05)}
+.premium-launch__plan.is-featured{border-color:#002fa7;box-shadow:0 18px 50px rgba(0,47,167,.11)}
+.premium-launch__plan h3{margin:0 0 .6rem;color:#0f172a;font-size:1.25rem}
+.premium-launch__starting{color:#64748b;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.premium-launch__price{color:#002fa7;font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.04em}
+.premium-launch__plan ul{padding:0;margin:1rem 0 1.4rem;list-style:none;display:grid;gap:.7rem;flex:1}
+.premium-launch__plan li{padding-left:1.05rem;position:relative;color:#334155;line-height:1.5;overflow-wrap:anywhere}
+.premium-launch__plan li:before{content:'•';position:absolute;left:0;color:#002fa7}
+.premium-launch__plan .button{width:100%;text-align:center;justify-content:center}
+.premium-launch__gift{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);gap:2rem;margin-top:1.3rem;padding:1.4rem 1.6rem;border:1px solid #bed3ec;border-radius:18px;background:#f8fbff}
+.premium-launch__gift>strong{color:#002fa7;font-size:clamp(1.2rem,2.2vw,1.65rem);line-height:1.25;letter-spacing:-.025em}
+.premium-launch__gift h3{margin:0 0 .45rem;color:#0f172a;font-size:1rem}
+.premium-launch__gift p{color:#475569;font-size:.87rem;line-height:1.75;margin:0}
+@media(max-width:900px){.premium-launch__grid{grid-template-columns:1fr}.premium-launch__gift{grid-template-columns:1fr;gap:.7rem}}
+</style>
