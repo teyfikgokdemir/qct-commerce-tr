@@ -102,7 +102,7 @@ test('premium infrastructure routes have reciprocal language alternatives, self 
 test('premium infrastructure is discoverable in every service index and gets a scope-only calculator quote', async t => {
   for (const [path, href] of [['/hizmetler/', '/yeni-nesil-web-altyapisi/'], ['/en/services/', '/en/next-generation-web-foundation/'], ['/az/xidmetler/', '/az/yeni-nesil-veb-infrastrukturu/']]) {
     const page = await pageFor(t, path);
-    assert.equal(await page.locator(`a[href="${href}"]`).count(), 1, `Missing premium-service link on ${path}`);
+    assert.equal(await page.locator(`main a[href="${href}"]`).count(), 1, `Missing premium-service link in content on ${path}`);
   }
   for (const [path, href, expectedTotal, expectedMessage, serviceSelector, totalSelector, whatsappSelector] of [
     ['/', '/yeni-nesil-web-altyapisi/', 'Özel teklif', 'özel teklif talep ediyorum', '[data-service]', '[data-total]', '[data-whatsapp]'],
