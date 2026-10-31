@@ -98,6 +98,52 @@ const copy = {
 }[lang];
 
 
+
+const edgeUi = {
+  tr: {
+    viewPackages: 'Paketleri inceleyin', more: 'Hizmet kapsamı',
+    panelLabel: 'QCT EDGE hizmet mimarisi', panelVersion: 'DİJİTAL SİSTEM / 2026',
+    panelTitle: 'Tek bir teslim değil. Gelişmeye açık bir temel.',
+    heroNote: 'ASTRO 7  /  CLOUDFLARE  /  DİNAMİK SEO',
+    scopeTitle: 'Dört temel. Tek bir büyüme yaklaşımı.',
+    processTitle: 'Fikirden yayına, yayından gelişime.',
+    faqTitle: 'Karar vermeden önce.',
+    steps: [
+      ['01', 'ALTYAPI', 'Hızlı ve sürdürülebilir web temeli'],
+      ['02', 'GÖRÜNÜRLÜK', 'Teknik SEO ve arama deneyimi'],
+      ['03', 'GELİŞİM', 'Veriyle beslenen sürekli iyileştirme'],
+    ],
+  },
+  en: {
+    viewPackages: 'Explore packages', more: 'Service scope',
+    panelLabel: 'QCT EDGE service architecture', panelVersion: 'DIGITAL SYSTEM / 2026',
+    panelTitle: 'More than a launch. A foundation designed to evolve.',
+    heroNote: 'ASTRO 7  /  CLOUDFLARE  /  DYNAMIC SEO',
+    scopeTitle: 'Four foundations. One approach to growth.',
+    processTitle: 'From the idea to launch — and beyond.',
+    faqTitle: 'Before you decide.',
+    steps: [
+      ['01', 'FOUNDATION', 'Fast, maintainable web delivery'],
+      ['02', 'VISIBILITY', 'Technical SEO and search experience'],
+      ['03', 'EVOLUTION', 'Continuous, evidence-led improvements'],
+    ],
+  },
+  az: {
+    viewPackages: 'Paketləri araşdırın', more: 'Xidmət əhatəsi',
+    panelLabel: 'QCT EDGE xidmət arxitekturası', panelVersion: 'RƏQƏMSAL SİSTEM / 2026',
+    panelTitle: 'Təkcə yayım deyil. İnkişaf üçün möhkəm təməl.',
+    heroNote: 'ASTRO 7  /  CLOUDFLARE  /  DİNAMİK SEO',
+    scopeTitle: 'Dörd əsas. Vahid inkişaf yanaşması.',
+    processTitle: 'İdeyadan yayıma, yayımdan inkişafa.',
+    faqTitle: 'Qərar verməzdən əvvəl.',
+    steps: [
+      ['01', 'İNFRASTRUKTUR', 'Sürətli və dayanıqlı veb təməl'],
+      ['02', 'GÖRÜNÜRLÜK', 'Texniki SEO və axtarış təcrübəsi'],
+      ['03', 'İNKİŞAF', 'Məlumatlara əsaslanan davamlı təkmilləşdirmə'],
+    ],
+  },
+}[lang];
+
 const launch = {
   tr: {
     eyebrow: '2026 YIL SONU · TÜRKİYE LANSMANI',
@@ -153,9 +199,33 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
 <BaseLayout title={copy.title} description={copy.description} lang={lang} breadcrumbLabel={copy.name} service={{ name: copy.name, description: copy.description }} areaServed={copy.area}>
   <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Header slot="header" lang={lang} />
-  <section class="premium-hero section"><div class="container"><p class="eyebrow">{copy.eyebrow}</p><h1>{copy.h1}</h1><p class="page-hero__lead">{copy.lead}</p><div class="hero__actions"><a class="button button--primary" href={whatsapp} target="_blank" rel="noopener">{copy.primary}</a><a class="button button--secondary" href="#scope">{copy.secondary}</a></div></div></section>
-  <section class="section premium-problem"><div class="container premium-split"><div><p class="eyebrow">{copy.problemEyebrow}</p><h2>{copy.problemTitle}</h2></div><p>{copy.problem}</p></div></section>
-  <section class="section" id="scope"><div class="container"><p class="eyebrow">{copy.scope}</p><div class="premium-grid">{copy.benefits.map(([title, text]) => <article><h2>{title}</h2><p>{text}</p></article>)}</div></div></section>
+  <section class="premium-hero section" aria-labelledby="edge-detail-title">
+    <div class="container premium-hero__layout">
+      <div class="premium-hero__copy">
+        <p class="eyebrow">{copy.eyebrow}</p>
+        <h1 id="edge-detail-title">{copy.h1}</h1>
+        <p class="page-hero__lead">{copy.lead}</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#packages">{edgeUi.viewPackages} <span aria-hidden="true">↗</span></a>
+          <a class="button button--secondary" href="#scope">{edgeUi.more}</a>
+        </div>
+        <span class="premium-hero__footnote">{edgeUi.heroNote}</span>
+      </div>
+      <div class="premium-hero__panel" aria-label={edgeUi.panelLabel}>
+        <div class="premium-hero__panel-header"><strong>QCT <span>EDGE</span></strong><small>{edgeUi.panelVersion}</small></div>
+        <p class="premium-hero__panel-title">{edgeUi.panelTitle}</p>
+        <ol class="premium-hero__steps">
+          {edgeUi.steps.map(([number, title, description]) => <li>
+            <span class="premium-hero__number">{number}</span>
+            <div><strong>{title}</strong><small>{description}</small></div>
+            <span aria-hidden="true" class="premium-hero__step-arrow">↗</span>
+          </li>)}
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="section premium-problem"><div class="container premium-split"><div><p class="eyebrow">{copy.problemEyebrow}</p><h2>{copy.problemTitle}</h2></div><div class="premium-problem__copy"><p>{copy.problem}</p><a href="#packages" class="premium-problem__link">{edgeUi.viewPackages} <span aria-hidden="true">↗</span></a></div></div></section>
+  <section class="section premium-scope" id="scope"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.scope}</p><h2>{edgeUi.scopeTitle}</h2></div><div class="premium-grid">{copy.benefits.map(([title, text], index) => <article><span class="premium-card-index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
   <section class="section premium-launch" id="packages" aria-labelledby="qct-edge-packages-title">
     <div class="container">
@@ -177,32 +247,156 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
       </div>
     </div>
   </section>
-  <section class="section premium-process"><div class="container"><p class="eyebrow">{copy.processEyebrow}</p><div class="premium-process__grid">{copy.process.map(([title, text]) => <article><h2>{title}</h2><p>{text}</p></article>)}</div></div></section>
-  <section class="section"><div class="container premium-faq"><p class="eyebrow">{copy.faqEyebrow}</p>{copy.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
-  <section class="premium-final"><div class="container"><h2>{copy.final}</h2><p>{copy.finalText}</p><div class="hero__actions"><a class="button button--primary" href={whatsapp} target="_blank" rel="noopener">{copy.primary}</a><a class="button button--secondary" href={`mailto:info@qctcommerce.com?subject=${encodeURIComponent(copy.name)}`}>{copy.email}</a></div></div></section>
+  <section class="section premium-process"><div class="container"><div class="premium-section-head"><p class="eyebrow">{copy.processEyebrow}</p><h2>{edgeUi.processTitle}</h2></div><div class="premium-process__grid">{copy.process.map(([title, text], index) => <article><span class="premium-process__number">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+  <section class="section premium-faq-section"><div class="container premium-faq"><div class="premium-section-head"><p class="eyebrow">{copy.faqEyebrow}</p><h2>{edgeUi.faqTitle}</h2></div>{copy.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+  <section class="premium-final"><div class="container premium-final__grid"><div><p class="eyebrow">QCT EDGE</p><h2>{copy.final}</h2></div><div class="premium-final__action"><p>{copy.finalText}</p><div class="hero__actions"><a class="button button--primary" href={whatsapp} target="_blank" rel="noopener">{copy.primary}</a><a class="button button--secondary" href={`mailto:info@qctcommerce.com?subject=${encodeURIComponent(copy.name)}`}>{copy.email}</a></div></div></div></section>
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
 
 <style>
-.premium-hero{padding-block:clamp(7rem,14vw,12rem) clamp(4rem,8vw,7rem);background:#edf5ff}.premium-hero .container{max-width:980px}.premium-hero h1,.premium-split h2,.premium-final h2{max-width:15ch;color:var(--qct-color-ink);font-size:clamp(2.5rem,5.3vw,5rem);letter-spacing:-.04em;line-height:1.01;text-wrap:balance}.premium-hero .page-hero__lead{max-width:720px;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.7}.premium-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(2rem,8vw,8rem);align-items:start}.premium-split>p{margin:0;color:var(--qct-color-muted);font-size:1.1rem;line-height:1.8}.premium-grid,.premium-process__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,3vw,3.5rem)}.premium-split>*,.premium-grid article,.premium-process__grid article{min-width:0}.premium-grid h2,.premium-process h2{margin:0 0 .7rem;color:var(--qct-color-ink);font-size:clamp(1.25rem,2vw,1.7rem);letter-spacing:-.04em}.premium-grid p,.premium-process p{margin:0;color:var(--qct-color-muted);line-height:1.72}.premium-split h2,.premium-grid h2,.premium-process h2,.premium-faq summary,.premium-final h2,.premium-final p{overflow-wrap:anywhere}.premium-process{background:#f4f8fc}.premium-faq{max-width:900px}.premium-faq details{border-top:1px solid var(--qct-color-line-strong);padding:1.15rem 0}.premium-faq details:last-child{border-bottom:1px solid var(--qct-color-line-strong)}.premium-faq summary{color:var(--qct-color-ink);cursor:pointer;font-size:1.05rem;font-weight:800}.premium-faq p{max-width:760px;color:var(--qct-color-muted);line-height:1.75}.premium-final{background:#07172e;color:#fff;padding:clamp(4rem,9vw,8rem) 0}.premium-final h2{max-width:20ch;color:#fff}.premium-final p{max-width:720px;color:rgba(255,255,255,.78);font-size:1.08rem;line-height:1.75}.premium-final .button--secondary{border-color:rgba(255,255,255,.62);color:#fff}@media(max-width:720px){.premium-split,.premium-grid,.premium-process__grid{grid-template-columns:1fr}.premium-hero h1,.premium-split h2,.premium-final h2{max-width:100%}}
-
-.premium-launch{background:#edf5ff}
-.premium-launch>.container{max-width:1180px}
-.premium-launch h2{max-width:20ch;margin:0;color:#0f172a;font-size:clamp(2.25rem,4.5vw,4rem);line-height:1.08;letter-spacing:-.045em;text-wrap:balance}
-.premium-launch__lead{max-width:65ch;color:#475569;line-height:1.7;margin:1rem 0 2.2rem}
-.premium-launch__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
-.premium-launch__plan{min-width:0;display:flex;flex-direction:column;gap:.65rem;padding:clamp(1.3rem,2.5vw,2.1rem);border:1px solid #cbd5e1;border-radius:20px;background:#fff;box-shadow:0 12px 40px rgba(15,23,42,.05)}
-.premium-launch__plan.is-featured{border-color:#002fa7;box-shadow:0 18px 50px rgba(0,47,167,.11)}
-.premium-launch__plan h3{margin:0 0 .6rem;color:#0f172a;font-size:1.25rem}
-.premium-launch__starting{color:#64748b;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
-.premium-launch__price{color:#002fa7;font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.04em}
-.premium-launch__plan ul{padding:0;margin:1rem 0 1.4rem;list-style:none;display:grid;gap:.7rem;flex:1}
-.premium-launch__plan li{padding-left:1.05rem;position:relative;color:#334155;line-height:1.5;overflow-wrap:anywhere}
-.premium-launch__plan li:before{content:'•';position:absolute;left:0;color:#002fa7}
-.premium-launch__plan .button{width:100%;text-align:center;justify-content:center}
-.premium-launch__gift{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);gap:2rem;margin-top:1.3rem;padding:1.4rem 1.6rem;border:1px solid #bed3ec;border-radius:18px;background:#f8fbff}
-.premium-launch__gift>strong{color:#002fa7;font-size:clamp(1.2rem,2.2vw,1.65rem);line-height:1.25;letter-spacing:-.025em}
-.premium-launch__gift h3{margin:0 0 .45rem;color:#0f172a;font-size:1rem}
-.premium-launch__gift p{color:#475569;font-size:.87rem;line-height:1.75;margin:0}
-@media(max-width:900px){.premium-launch__grid{grid-template-columns:1fr}.premium-launch__gift{grid-template-columns:1fr;gap:.7rem}}
+/* QCT EDGE editorial service page — component-scoped only. */
+.premium-hero{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(96px,10vw,145px) 0 clamp(62px,7vw,104px);
+  background:radial-gradient(ellipse at 75% 12%,rgba(37,102,199,.18),transparent 42%),#081a31;
+  color:#fff;
+}
+.premium-hero .container{max-width:1160px}
+.premium-hero__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.86fr);gap:clamp(36px,6vw,100px);align-items:center}
+.premium-hero__layout>*{min-width:0}
+.premium-hero .eyebrow{color:#9ec9ff;font-size:11px;letter-spacing:.17em;font-weight:800;text-transform:uppercase}
+.premium-hero h1{
+  margin:22px 0 25px;max-width:17ch;color:#fff;
+  font-size:clamp(42px,4.8vw,69px);line-height:1.09;letter-spacing:-.055em;font-weight:760;
+  text-wrap:balance;overflow-wrap:anywhere;
+}
+.premium-hero .page-hero__lead{max-width:49ch;margin:0 0 26px;color:#c7d5e9;font-size:clamp(16px,1.35vw,18px);line-height:1.76}
+.premium-hero .hero__actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.premium-hero .hero__actions .button{min-height:49px;padding:12px 22px;border-radius:9px;font-weight:750;line-height:1.4}
+.premium-hero .button--primary{background:#164cd8;color:#fff;border:1px solid #164cd8}
+.premium-hero .button--secondary{background:transparent;border:1px solid rgba(175,210,255,.42);color:#eef5ff}
+.premium-hero .button--primary:hover{background:#2660ea}
+.premium-hero .button--secondary:hover{background:rgba(255,255,255,.08)}
+.premium-hero__footnote{display:block;margin-top:36px;color:#8aabc9;font-size:10px;font-weight:800;letter-spacing:.13em;line-height:1.75}
+.premium-hero__panel{
+  position:relative;overflow:hidden;isolation:isolate;
+  border:1px solid rgba(158,196,240,.25);border-radius:18px;
+  background:linear-gradient(154deg,rgba(16,49,88,.96),rgba(12,31,56,.98));
+  box-shadow:0 36px 76px rgba(0,7,21,.2);
+  padding:clamp(22px,3vw,38px);
+}
+.premium-hero__panel:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,#8fc7ff,rgba(143,199,255,0) 70%)}
+.premium-hero__panel-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:30px;border-bottom:1px solid rgba(179,210,245,.16)}
+.premium-hero__panel-header strong{font-size:20px;font-weight:800;letter-spacing:-.06em;color:#fff}
+.premium-hero__panel-header strong span{color:#9cc8ff}
+.premium-hero__panel-header small{font-size:9px;letter-spacing:.09em;color:#92b1d0;text-align:right}
+.premium-hero__panel-title{max-width:22ch;margin:28px 0 30px;color:#f1f7ff;font-size:clamp(22px,2.3vw,30px);font-weight:700;line-height:1.22;letter-spacing:-.03em}
+.premium-hero__steps{list-style:none;padding:0;margin:0}
+.premium-hero__steps li{display:grid;grid-template-columns:35px minmax(0,1fr) 18px;align-items:start;gap:12px;border-top:1px solid rgba(179,210,245,.14);padding:18px 0}
+.premium-hero__steps li:last-child{padding-bottom:0}
+.premium-hero__number{color:#8dbfff;font-size:12px;font-weight:800;letter-spacing:.1em}
+.premium-hero__steps li strong{display:block;color:#fff;font-size:11px;letter-spacing:.12em;font-weight:800}
+.premium-hero__steps li small{display:block;margin-top:5px;color:#b4c7df;font-size:12px;line-height:1.55}
+.premium-hero__step-arrow{color:#668bb9}
+.premium-problem{padding:clamp(68px,7vw,112px) 0;background:#f6f9fd}
+.premium-split{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.82fr);gap:clamp(30px,8vw,130px);align-items:center}
+.premium-split>*{min-width:0}
+.premium-problem .eyebrow,.premium-scope .eyebrow,.premium-faq-section .eyebrow{color:#002fa7;font-size:11px;letter-spacing:.15em;font-weight:800}
+.premium-problem h2,.premium-section-head h2{max-width:19ch;margin:16px 0 0;color:#0c2039;font-size:clamp(31px,3.8vw,53px);line-height:1.13;letter-spacing:-.048em;font-weight:760;text-wrap:balance;overflow-wrap:anywhere}
+.premium-problem__copy p{max-width:52ch;margin:0 0 25px;color:#475569;font-size:17px;line-height:1.78}
+.premium-problem__link{display:inline-flex;gap:12px;align-items:center;color:#002fa7;font-size:14px;font-weight:800;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:5px}
+.premium-scope{padding:clamp(64px,7vw,105px) 0;background:#fff}
+.premium-section-head{margin-bottom:clamp(30px,4vw,52px)}
+.premium-section-head h2{max-width:23ch}
+.premium-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.premium-grid article{position:relative;min-width:0;min-height:230px;padding:clamp(25px,3vw,40px);background:#f7faff;border:1px solid #e1eaf5;border-radius:15px}
+.premium-card-index{display:block;margin-bottom:30px;color:#2260bc;font-size:12px;font-weight:800;letter-spacing:.12em}
+.premium-grid h3{margin:0 0 12px;color:#0e2848;font-size:clamp(19px,2vw,25px);line-height:1.25;letter-spacing:-.04em;overflow-wrap:anywhere}
+.premium-grid p{max-width:57ch;margin:0;color:#53637b;font-size:14px;line-height:1.75;overflow-wrap:anywhere}
+.premium-launch{padding:clamp(72px,7vw,112px) 0;background:#eaf2fc}
+.premium-launch>.container{max-width:1160px}
+.premium-launch>.container>.eyebrow{color:#184dab;font-size:11px;letter-spacing:.13em;font-weight:800}
+.premium-launch h2{max-width:22ch;margin:14px 0 0;color:#0c2039;font-size:clamp(33px,4vw,55px);line-height:1.11;letter-spacing:-.048em;text-wrap:balance}
+.premium-launch__lead{max-width:62ch;margin:16px 0 36px;color:#52627b;font-size:16px;line-height:1.72}
+.premium-launch__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.premium-launch__plan{min-width:0;display:flex;flex-direction:column;padding:clamp(25px,2.7vw,34px);border:1px solid #d7e2ef;border-radius:15px;background:#fff}
+.premium-launch__plan.is-featured{border-color:#173c72;background:#0d2747;box-shadow:0 22px 52px rgba(14,48,98,.13)}
+.premium-launch__plan h3{margin:0 0 24px;font-size:19px;font-weight:750;letter-spacing:-.035em;color:#112a47}
+.premium-launch__starting{display:block;color:#63758d;font-size:10px;font-weight:800;line-height:1.6;letter-spacing:.09em;text-transform:uppercase}
+.premium-launch__price{display:block;margin:9px 0 21px;color:#002fa7;font-size:clamp(29px,2.55vw,40px);line-height:1.05;letter-spacing:-.045em;font-weight:800}
+.premium-launch__plan ul{display:grid;gap:14px;padding:22px 0 26px;margin:0;list-style:none;border-top:1px solid #e3eaf3;flex:1}
+.premium-launch__plan li{position:relative;padding-left:18px;color:#52627a;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+.premium-launch__plan li:before{content:"+";position:absolute;left:0;color:#154ec3;font-weight:800}
+.premium-launch__plan .button{display:flex;min-height:47px;align-items:center;justify-content:center;text-align:center;border-radius:9px;padding:12px 15px;font-size:13px;font-weight:750;line-height:1.4}
+.premium-launch__plan.is-featured h3,.premium-launch__plan.is-featured .premium-launch__price{color:#fff}
+.premium-launch__plan.is-featured .premium-launch__starting,.premium-launch__plan.is-featured li{color:#c7d8ef}
+.premium-launch__plan.is-featured ul{border-color:rgba(199,216,239,.20)}
+.premium-launch__plan.is-featured li:before{color:#8ac0ff}
+.premium-launch__plan.is-featured .button{background:#fff;color:#0e2c55;border-color:#fff}
+.premium-launch__gift{
+  display:grid;grid-template-columns:minmax(0,.5fr) minmax(0,1.5fr);gap:clamp(18px,3vw,55px);
+  margin-top:16px;padding:clamp(23px,3vw,33px);background:#f9fcff;border:1px solid #cbdcf1;border-radius:15px;
+}
+.premium-launch__gift>strong{align-self:start;max-width:16ch;color:#002fa7;font-size:clamp(20px,2.25vw,28px);line-height:1.18;letter-spacing:-.035em}
+.premium-launch__gift h3{margin:0 0 10px;color:#162f4e;font-size:14px;font-weight:800}
+.premium-launch__gift p{margin:0;color:#536981;font-size:12px;line-height:1.75}
+.premium-process{padding:clamp(70px,7vw,112px) 0;background:#091b34;color:#fff}
+.premium-process .eyebrow{color:#8fbfff;font-size:11px;letter-spacing:.15em;font-weight:800}
+.premium-process .premium-section-head h2{max-width:19ch;color:#fff}
+.premium-process__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid rgba(164,196,236,.21)}
+.premium-process__grid article{min-width:0;padding:30px clamp(13px,2.1vw,30px) 10px 0;margin-right:clamp(10px,2vw,22px)}
+.premium-process__number{display:block;margin-bottom:38px;color:#8fbfff;font-size:12px;font-weight:800;letter-spacing:.15em}
+.premium-process h3{margin:0 0 15px;color:#fff;font-size:20px;line-height:1.3;letter-spacing:-.035em;overflow-wrap:anywhere}
+.premium-process p{margin:0;color:#b9c9df;font-size:13px;line-height:1.75;overflow-wrap:anywhere}
+.premium-faq-section{padding:clamp(65px,7vw,107px) 0;background:#fff}
+.premium-faq{max-width:900px}
+.premium-faq .premium-section-head{margin-bottom:25px}
+.premium-faq details{border-top:1px solid #dce6f1;padding:0}
+.premium-faq details:last-child{border-bottom:1px solid #dce6f1}
+.premium-faq summary{position:relative;list-style:none;cursor:pointer;padding:22px 38px 22px 0;color:#152d4c;font-size:clamp(16px,1.3vw,18px);font-weight:750;line-height:1.5;overflow-wrap:anywhere}
+.premium-faq summary::-webkit-details-marker{display:none}
+.premium-faq summary:after{content:"+";position:absolute;right:4px;top:19px;color:#225dbb;font-size:25px;font-weight:400}
+.premium-faq details[open] summary:after{content:"−"}
+.premium-faq details p{max-width:70ch;margin:0;padding:0 25px 25px 0;color:#55667d;font-size:14px;line-height:1.8}
+.premium-final{padding:clamp(72px,8vw,120px) 0;background:#102d52;color:#fff}
+.premium-final__grid{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.85fr);gap:clamp(24px,6vw,100px);align-items:end}
+.premium-final__grid>*{min-width:0}
+.premium-final .eyebrow{color:#91c3ff;font-size:11px;letter-spacing:.18em}
+.premium-final h2{max-width:19ch;margin:18px 0 0;font-size:clamp(36px,4vw,57px);line-height:1.12;letter-spacing:-.048em;color:#fff;overflow-wrap:anywhere}
+.premium-final p{max-width:46ch;color:#d0deef;font-size:16px;line-height:1.75}
+.premium-final .hero__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.premium-final .button{min-height:48px;padding:12px 20px;border-radius:9px;font-size:14px;font-weight:750;line-height:1.4}
+.premium-final .button--primary{background:#1c54dc;color:#fff;border-color:#1c54dc}
+.premium-final .button--secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+@media(max-width:950px){
+  .premium-hero__layout{grid-template-columns:1fr;gap:35px}
+  .premium-hero h1{max-width:23ch}
+  .premium-hero__panel{max-width:740px}
+  .premium-process__grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+}
+@media(max-width:760px){
+  .premium-hero{padding:85px 0 59px}
+  .premium-hero h1{max-width:100%;font-size:clamp(36px,9.2vw,51px)}
+  .premium-hero .page-hero__lead{font-size:16px}
+  .premium-hero .hero__actions{align-items:stretch;flex-direction:column}
+  .premium-hero .hero__actions .button{width:100%;justify-content:center;text-align:center}
+  .premium-hero__panel{padding:24px}
+  .premium-split,.premium-grid,.premium-launch__grid,.premium-final__grid{grid-template-columns:1fr}
+  .premium-problem__copy p{font-size:16px}
+  .premium-grid article{min-height:0}
+  .premium-launch__gift{grid-template-columns:1fr}
+  .premium-launch__plan .button{width:100%}
+  .premium-final h2{max-width:100%}
+}
+@media(max-width:480px){
+  .premium-process__grid{grid-template-columns:1fr;gap:0}
+  .premium-process__grid article{padding:23px 0 28px;margin:0;border-bottom:1px solid rgba(164,196,236,.16)}
+  .premium-process__number{margin-bottom:13px}
+  .premium-hero__panel-header small{font-size:8px}
+  .premium-hero__panel-title{font-size:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  .premium-hero .button,.premium-launch__plan .button,.premium-final .button{transition:none}
+}
 </style>
