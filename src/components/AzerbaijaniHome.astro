@@ -52,7 +52,8 @@ const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
 [data-qct-az] .qct-close h2{max-width:1050px!important;margin-inline:auto!important;text-wrap:balance}
 [data-qct-az] .qct-close .qct-section-label{text-align:center}
 [data-qct-az] .qct-close .qct-btn{justify-self:center}
-@media(max-width:760px){[data-qct-az] .qct-close h2{font-size:clamp(2.3rem,11vw,3.5rem)!important}}
+/* Azerbaijani closing headline: prevent its long final word from widening the mobile grid. */
+@media(max-width:760px){[data-qct-az] .qct-close-grid{grid-template-columns:minmax(0,1fr)!important}[data-qct-az] .qct-close h2{font-size:clamp(2.2rem,9.7vw,3.5rem)!important;overflow-wrap:anywhere}}
 </style>
 <section class="qct-hero" aria-labelledby="az-hero-title"><div class="qct-shell qct-hero-grid">
 <div class="qct-hero-copy"><p class="qct-eyebrow">AZƏRBAYCAN ÜÇÜN RƏQƏMSAL TİCARƏT SİSTEMLƏRİ</p><h1 id="az-hero-title">Rəqəmsal böyümə üçün <em>vahid sistem.</em></h1><p class="qct-lead">Veb sayt, e-ticarət, SEO, GEO, AEO, AIO, analitika və satış avtomatlaşdırmasını ayrı-ayrı xidmətlər kimi deyil, eyni kommersiya sisteminin hissələri kimi qururuq.</p><div class="qct-hero-actions"><a class="qct-btn qct-btn-primary" href="/az/elaqe/">Layihəyə başlayın <span>→</span></a><a class="qct-text-link" href="#qiymet-hesabla">Qiyməti hesablayın</a></div><div class="qct-proof-line"><span>Şəffaf AZN qiymətləri</span><span>Yerli dildə xidmət</span><span>Axtarış + AI görünürlüyü</span></div></div>
