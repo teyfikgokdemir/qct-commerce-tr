@@ -80,7 +80,7 @@ const getProgrammaticLocaleTargets = () => {
 const localeTargets = getLocaleSwitchTargets(currentPath) || getProgrammaticLocaleTargets();
 // These Turkish resource routes deliberately have no published EN/AZ equivalent yet.
 // Keep the language control visible but non-navigable instead of sending readers to an unrelated homepage.
-const hasPublishedLocaleEquivalent = !['/pazaryeri-kurulumu/','/amazon-turkiye-magaza-kurulumu/','/amazon-amerika-magaza-kurulumu/'].includes(currentPath) && !currentPath.startsWith('/rehberler/') && !currentPath.startsWith('/sektorler/') && !currentPath.startsWith('/tr/araclar/');
+const hasPublishedLocaleEquivalent = !currentPath.startsWith('/rehberler/') && !currentPath.startsWith('/sektorler/') && !currentPath.startsWith('/tr/araclar/');
 const isErrorRoute = currentPath === '/404/' || currentPath === '/404';
 const isAzerbaijanMarketRoute = currentPath === '/lokasyon/azerbaycan/' || currentPath === '/en/location/azerbaijan/';
 const trHref = localeTargets?.tr || (isEnglish ? (pairedLocalePath || '/') : isAzerbaijani ? '/' : (isErrorRoute ? '/' : currentPath));
@@ -107,6 +107,9 @@ const audienceLinks = isAzerbaijani ? [
 const serviceLinks = isAzerbaijani ? [
   ['Bütün xidmətlər', '/az/xidmetler/'],
   ['E-ticarət', '/az/e-ticaret/'],
+  ['Pazaryeri qurulması', '/az/pazaryeri-qurulmasi/'],
+  ['Amazon Türkiyə', '/az/amazon-turkiye-magaza-qurulmasi/'],
+  ['Amazon Amerika', '/az/amazon-amerika-magaza-qurulmasi/'],
   ['Shopify qurulması', '/az/shopify-magaza-qurulmasi/'],
   ['ikas qurulması', '/az/ikas-magaza-qurulmasi/'],
   ['Veb dizayn', '/az/veb-dizayn/'],
@@ -117,6 +120,9 @@ const serviceLinks = isAzerbaijani ? [
 ] : isEnglish ? [
   ['All Services', '/en/services/'],
   ['E-commerce', '/en/ecommerce/'],
+  ['Marketplace Setup', '/en/marketplace-setup/'],
+  ['Amazon Türkiye', '/en/amazon-turkiye-store-setup/'],
+  ['Amazon US', '/en/amazon-us-store-setup/'],
   ['Shopify Setup', '/en/shopify-store-setup/'],
   ['ikas Setup', '/en/ikas-store-setup/'],
   ['Web Design', '/en/web-design/'],

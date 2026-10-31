@@ -45,7 +45,13 @@ Shorter reference: https://qctcommerce.com/llms.txt
 - Marketplace setup (Turkish): https://qctcommerce.com/pazaryeri-kurulumu/
 - Amazon Türkiye onboarding support (Turkish): https://qctcommerce.com/amazon-turkiye-magaza-kurulumu/
 - Amazon US onboarding support (Turkish): https://qctcommerce.com/amazon-amerika-magaza-kurulumu/
-- Marketplace and Amazon service pages above are Turkish-only. Do not infer translated equivalents, marketplace approval, official partnership, guaranteed sales or fixed marketplace setup prices.
+- Marketplace setup (English): https://qctcommerce.com/en/marketplace-setup/
+- Amazon Türkiye onboarding support (English): https://qctcommerce.com/en/amazon-turkiye-store-setup/
+- Amazon US onboarding support (English): https://qctcommerce.com/en/amazon-us-store-setup/
+- Marketplace setup (Azerbaijani): https://qctcommerce.com/az/pazaryeri-qurulmasi/
+- Amazon Türkiye onboarding support (Azerbaijani): https://qctcommerce.com/az/amazon-turkiye-magaza-qurulmasi/
+- Amazon US onboarding support (Azerbaijani): https://qctcommerce.com/az/amazon-amerika-magaza-qurulmasi/
+- Marketplace and Amazon service pages are published across Turkish, English and Azerbaijani. Do not infer marketplace approval, official partnership, guaranteed sales or fixed marketplace setup prices.
 
 ## Intended audience
 - Manufacturers, exporters, distributors / B2B sellers and e-commerce brands.

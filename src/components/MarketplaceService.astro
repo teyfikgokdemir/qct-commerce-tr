@@ -2,108 +2,369 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
-interface Props { market: 'all' | 'tr' | 'us'; }
-const { market } = Astro.props;
+
+interface Props {
+  market: 'all' | 'tr' | 'us';
+  lang?: 'tr' | 'en' | 'az';
+}
+
+const { market, lang = 'tr' } = Astro.props;
 const us = market === 'us';
 const tr = market === 'tr';
-const title = us ? 'Amazon Amerika Mağaza Açma ve Kurulum Danışmanlığı | QCT Commerce' : tr ? 'Amazon Türkiye Mağaza Açma ve Kurulum Danışmanlığı | QCT Commerce' : 'Pazaryeri Mağaza Kurulumu ve Entegrasyon | QCT Commerce';
-const heading = us ? 'Amazon Amerika Kurulumu' : tr ? 'Amazon Türkiye Kurulumu' : 'Pazaryeri Mağaza Kurulumu';
-const lead = us
-  ? 'Amazon.com üzerinden ABD pazarına açılmak isteyen markalar için hesap başvurusu, ürün listeleme ve FBA/FBM operasyon hazırlığını tek plan altında ele alıyoruz.'
-  : tr ? 'Amazon.com.tr üzerinden satışa başlamak için satıcı hesabı hazırlığı, ürün kataloğu, marka sunumu ve operasyon adımlarını planlıyoruz.'
-  : 'Trendyol, Hepsiburada, Amazon Türkiye, Amazon Amerika, n11 ve Etsy için mağaza kurulumunu; ürün, entegrasyon ve operasyon ihtiyaçlarınıza göre tasarlıyoruz.';
-const steps = us
-  ? [['Pazar uygunluğu','Ürün kategorisi, ABD ürün mevzuatı, ithalat, vergi ve lojistik gereklilikleri değerlendirilir.'],['Satıcı hesabı','Amazon.com kayıt sürecinde şirket ve kimlik belgeleri hazırlanır; kabul kararı Amazon’a aittir.'],['Katalog ve lojistik','Ürün sayfaları, görseller, varyasyonlar ve FBA veya FBM modeli yapılandırılır.'],['Yayına hazırlık','Listeleme, maliyet, stok ve sipariş akışı kontrol listesiyle gözden geçirilir.']]
-  : tr ? [['Ön değerlendirme','Ürün grubu, şirket bilgileri ve kategori koşulları belirlenir.'],['Hesap hazırlığı','Satıcı hesabı başvurusu ve mağaza profilinin kurulumu desteklenir.'],['Ürün kataloğu','Başlık, görsel, varyasyon ve kategori eşleşmeleri düzenlenir.'],['Operasyon kontrolü','Stok, fiyat, teslimat ve sipariş süreçleri yayından önce gözden geçirilir.']]
-  : [['Kanal seçimi','Hedef müşteri, kategori ve komisyon yapısına göre uygun kanallar belirlenir.'],['Mağaza kurulumu','Başvuru evrakları, mağaza profili ve katalog düzeni hazırlanır.'],['Entegrasyon planı','Birden fazla kanalda ürün, stok, fiyat ve sipariş akışı tasarlanır.'],['Satışa hazırlık','Operasyon sorumlulukları ve yayına geçiş kontrol listesi netleştirilir.']];
-const details = us ? {
-  eyebrow: 'AMAZON.COM / ABD',
-  title: 'ABD pazarına hazırlık',
-  intro: 'Amazon Amerika yalnızca ürünleri İngilizceye çevirmekten ibaret değildir. Kategori koşullarını, maliyetleri ve sipariş karşılamayı satışa başlamadan önce netleştirmek gerekir.',
-  items: [
-    ['Ürün ve kategori uygunluğu', 'Ürünün ABD pazarındaki kategori kısıtları, etiketleme, güvenlik ve mevzuat gereklilikleri kontrol listesiyle değerlendirilir. Gerekli uzman görüşleri ayrıca alınır.'],
-    ['Listeleme ve katalog', 'Ürün başlıkları, açıklamalar, varyasyon aileleri, temel arama terimleri, görseller ve gerekli ürün tanımlayıcıları pazarın diliyle hazırlanır.'],
-    ['FBA / FBM maliyet modeli', 'Depolama, sipariş karşılama, iade, uluslararası taşıma ve olası gümrük giderleri ürün kârlılığından ayrı düşünülmez.'],
-    ['Marka ve hesap güveni', 'Hesap yetkileri, belge tutarlılığı, marka sahipliği ve varsa Brand Registry uygunluğu başvuru öncesinde değerlendirilir.'],
-    ['Operasyon devri', 'Stok takibi, fiyat güncellemesi, sipariş mesajları ve performans göstergeleri için uygulanabilir bir yönetim akışı belirlenir.'],
-    ['Büyüme hazırlığı', 'Organik ürün görünürlüğü ile reklam, kupon ve kampanya harcamaları ayrıştırılır; reklam bütçesi kurulum hizmetinin içinde varsayılmaz.'],
-  ],
-} : tr ? {
-  eyebrow: 'AMAZON.COM.TR / TÜRKİYE',
-  title: 'Satışa hazır mağaza',
-  intro: 'İyi bir kurulum, hesap açılmasından ürünün müşteriye teslimine kadar uzanır. Katalog kalitesi ve operasyon tutarlılığı birlikte ele alınır.',
-  items: [
-    ['Satıcı hesabı ve belgeler', 'Başvuru bilgileri, şirket ve iletişim belgeleri, ödeme ve fatura süreçleri ile hesap erişimleri düzenli biçimde hazırlanır.'],
-    ['Kategori ve ürün eşleştirme', 'Ürünün mevcut katalogda bulunup bulunmadığı, varyasyonları, barkodları ve kategori özellikleri kontrol edilir.'],
-    ['Ürün sunumu', 'Başlıklar, maddeler, açıklamalar ve fotoğraflar alıcı sorularına net cevap verecek biçimde yapılandırılır.'],
-    ['Fiyat ve kârlılık', 'Kategori komisyonları, gönderim, iade, paketleme ve varsa reklam giderleri hizmet ücretinden ayrı ele alınır.'],
-    ['Stok ve sipariş düzeni', 'Mevcut e-ticaret sitesiyle stok eşitleme ihtiyacı ve sipariş yönetimi için uygun araçlar değerlendirilir.'],
-    ['Yayına geçiş kontrolü', 'Ürün görünürlüğü, teslimat bilgileri, mağaza profili ve operasyon sorumlulukları kontrol edilerek eksikler listelenir.'],
-  ],
-} : {
-  eyebrow: 'PAZARYERİ STRATEJİSİ',
-  title: 'Çok kanallı satış düzeni',
-  intro: 'Her platform aynı ürün için aynı müşteriyi veya aynı maliyet yapısını sunmaz. Kanal seçimi, katalog ve operasyon gerçeklerine dayanmalı.',
-  items: [
-    ['Platform uygunluğu', 'Trendyol, Hepsiburada, n11, Amazon Türkiye, Amazon Amerika ve Etsy için ürün kategorisi, hedef pazar ve satıcı şartları ayrı incelenir.'],
-    ['Merkezi ürün kataloğu', 'Ürün adı, açıklama, görsel, varyasyon, barkod ve kategori bilgileri tutarlı bir kaynaktan yönetilebilecek biçimde tasarlanır.'],
-    ['Stok senkronizasyonu', 'Birden çok kanalda aynı ürünün satılması halinde stok güncellemeleri ve aşırı satış riskine karşı süreç planlanır.'],
-    ['Fiyat ve komisyon', 'Kanal bazında komisyon, kargo, iade ve kampanya maliyeti hesaba katılarak fiyatlandırma yöntemi belirlenir.'],
-    ['Sipariş ve entegrasyon', 'ERP, muhasebe, e-ticaret sitesi ve pazaryerleri arasındaki veri alışverişi teknik erişim koşullarına göre tasarlanır.'],
-    ['Yönetim ve raporlama', 'Satış kanallarının sorumluları, günlük sipariş kontrolü, iptal/iade süreçleri ve takip edilecek göstergeler tanımlanır.'],
-  ],
-};
+const isEnglish = lang === 'en';
+const isAzerbaijani = lang === 'az';
+
+const title = isAzerbaijani
+  ? (us ? 'Amazon Amerika Mağaza Açılması və Satıcı Xidməti | QCT Commerce' : tr ? 'Amazon Türkiyə Mağaza Açılması və Satıcı Xidməti | QCT Commerce' : 'Pazaryeri Mağaza Qurulması və İnteqrasiya Xidmətləri | QCT Commerce')
+  : isEnglish
+    ? (us ? 'Amazon US Store Setup & Seller Consulting | QCT Commerce' : tr ? 'Amazon Türkiye Store Setup & Seller Consulting | QCT Commerce' : 'Marketplace Store Setup & Integration Services | QCT Commerce')
+    : (us ? 'Amazon Amerika Mağaza Açma ve Kurulum Danışmanlığı | QCT Commerce' : tr ? 'Amazon Türkiye Mağaza Açma ve Kurulum Danışmanlığı | QCT Commerce' : 'Pazaryeri Mağaza Kurulumu ve Entegrasyon | QCT Commerce');
+
+const heading = isAzerbaijani
+  ? (us ? 'Amazon Amerika Mağaza Qurulması' : tr ? 'Amazon Türkiyə Mağaza Qurulması' : 'Pazaryeri Mağaza Qurulması')
+  : isEnglish
+    ? (us ? 'Amazon US Store Setup' : tr ? 'Amazon Türkiye Store Setup' : 'Marketplace Store Setup')
+    : (us ? 'Amazon Amerika Kurulumu' : tr ? 'Amazon Türkiye Kurulumu' : 'Pazaryeri Mağaza Kurulumu');
+
+const lead = isAzerbaijani
+  ? (us
+      ? 'Amazon.com vasitəsilə ABŞ bazarına çıxmaq istəyən brendlər üçün hesab qeydiyyatı, məhsul kataloqu, Brand Registry və FBA/FBM logistika hazırlığını vahid strateji planda icra edirik.'
+      : tr
+        ? 'Amazon.com.tr-də rəsmi satışa başlamaq üçün satıcı hesabı sənədləşməsi, məhsul kataloqu, brend təqdimatı və əməliyyat hazırlığını planlaşdırırıq.'
+        : 'Trendyol, Hepsiburada, Amazon Türkiyə, Amazon Amerika, n11 və Etsy platformalarında mağazanızı məhsul kateqoriyanız, inteqrasiya imkanlarınız və əməliyyat modelinizə uyğun qururuq.')
+  : isEnglish
+    ? (us
+        ? 'For brands seeking to enter the US market via Amazon.com, we coordinate seller onboarding, listing optimization, and FBA/FBM operational readiness under a unified strategic plan.'
+        : tr
+          ? 'To launch sales on Amazon.com.tr, we structure seller onboarding, catalog architecture, brand presentation, and order management workflows.'
+          : 'We structure and launch seller stores across Trendyol, Hepsiburada, Amazon Türkiye, Amazon US, n11, and Etsy tailored to your catalog, integration needs, and operational workflow.')
+    : (us
+        ? 'Amazon.com üzerinden ABD pazarına açılmak isteyen markalar için hesap başvurusu, ürün listeleme ve FBA/FBM operasyon hazırlığını tek plan altında ele alıyoruz.'
+        : tr
+          ? 'Amazon.com.tr üzerinden satışa başlamak için satıcı hesabı hazırlığı, ürün kataloğu, marka sunumu ve operasyon adımlarını planlıyoruz.'
+          : 'Trendyol, Hepsiburada, Amazon Türkiye, Amazon Amerika, n11 ve Etsy için mağaza kurulumunu; ürün, entegrasyon ve operasyon ihtiyaçlarınıza göre tasarlıyoruz.');
+
+const steps = isAzerbaijani
+  ? (us
+      ? [['Bazar uyğunluğu','Məhsul kateqoriyası, ABŞ idxal tələbləri, təhlükəsizlik standartları və vergi şərtlərinin araşdırılması.'],['Satıcı hesabı','Amazon.com qeydiyyat prosesində şirkət və şəxsiyyət sənədlərinin hazırlanması; qəbul qərarı Amazon-a aiddir.'],['Kataloq və logistika','İngilis dilində məhsul səhifələri, lisenziyalı şəkillər, variant ailələri və FBA/FBM modelinin qurulması.'],['Yayıma hazırlıq','Məhsul siyahıları, xərc analizi, anbar buferi və sifariş axınının yoxlama siyahısı ilə təsdiqlənməsi.']]
+      : tr
+        ? [['İlkin qiymətləndirmə','Şirkət məlumatları, məhsul qrupu və kateqoriya tələblərinin təhlili.'],['Hesab hazırlığı','Satıcı hesabı müraciəti və mağaza profilinin təhlükəsiz qurulması.'],['Məhsul kataloqu','Başlıqlar, şəkillər, variantlar və kateqoriya parametrlərinin qaydaya salınması.'],['Əməliyyat nəzarəti','Anbar, qiymət, çatdırılma və sifariş axınının satış öncəsi yoxlanması.']]
+        : [['Kanal seçimi','Hədəf alıcı, məhsul qrupu və komissiya dərəcələrinə əsasən ən səmərəli platformaların müəyyənləşdirilməsi.'],['Mağaza qeydiyyatı','Şirkət sənədlərinin hazırlanması, satıcı profilinin və brend aktivlərinin platforma tələblərinə uyğun qurulması.'],['İnteqrasiya planı','Çoxsaylı kanallarda məhsul, anbar qalığı, qiymət və sifariş axınının vahid sistemə bağlanması.'],['Satışa hazırlıq','Gündəlik sifariş icrası, çatdırılma və yoxlama siyahısının yayım öncəsi təsdiqlənməsi.']])
+  : isEnglish
+    ? (us
+        ? [['Market suitability','Evaluating product category requirements, US import rules, tax considerations, and logistics.'],['Seller account','Preparing corporate dossiers and identity verification for Amazon.com registration; approval rests with Amazon.'],['Catalog & logistics','Structuring product pages, high-resolution imagery, variant hierarchies, and FBA or FBM fulfillment.'],['Launch readiness','Reviewing listings, landed unit economics, inventory buffers, and dispatch checklists before go-live.']]
+        : tr
+          ? [['Preliminary audit','Assessing product lines, corporate credentials, and category compliance terms.'],['Account onboarding','Guiding seller account registration, tax settings, and storefront configuration.'],['Product catalog','Structuring search-optimized titles, product bullets, imagery, and category attribute mappings.'],['Operational control','Reviewing inventory feeds, pricing rules, shipping schedules, and order flows before activation.']]
+          : [['Channel selection','Selecting optimal sales channels based on target buyers, category margins, and fee structures.'],['Store setup','Preparing documentation, seller registration, storefront profile, and initial catalog structure.'],['Integration plan','Architecting real-time product, inventory, price, and order data flow across active channels.'],['Sales readiness','Clarifying daily operational responsibilities, dispatch checklists, and customer service workflows.']])
+    : (us
+        ? [['Pazar uygunluğu','Ürün kategorisi, ABD ürün mevzuatı, ithalat, vergi ve lojistik gereklilikleri değerlendirilir.'],['Satıcı hesabı','Amazon.com kayıt sürecinde şirket ve kimlik belgeleri hazırlanır; kabul kararı Amazon’a aittir.'],['Katalog ve lojistik','Ürün sayfaları, görseller, varyasyonlar ve FBA veya FBM modeli yapılandırılır.'],['Yayına hazırlık','Listeleme, maliyet, stok ve sipariş akışı kontrol listesiyle gözden geçirilir.']]
+        : tr
+          ? [['Ön değerlendirme','Ürün grubu, şirket bilgileri ve kategori koşulları belirlenir.'],['Hesap hazırlığı','Satıcı hesabı başvurusu ve mağaza profilinin kurulumu desteklenir.'],['Ürün kataloğu','Başlık, görsel, varyasyon ve kategori eşleşmeleri düzenlenir.'],['Operasyon kontrolü','Stok, fiyat, teslimat ve sipariş süreçleri yayından önce gözden geçirilir.']]
+          : [['Kanal seçimi','Hedef müşteri, kategori ve komisyon yapısına göre uygun kanallar belirlenir.'],['Mağaza kurulumu','Başvuru evrakları, mağaza profili ve katalog düzeni hazırlanır.'],['Entegrasyon planı','Birden fazla kanalda ürün, stok, fiyat ve sipariş akışı tasarlanır.'],['Satışa hazırlık','Operasyon sorumlulukları ve yayına geçiş kontrol listesi netleştirilir.']]);
+
+const details = isAzerbaijani
+  ? (us ? {
+      eyebrow: 'AMAZON.COM / ABŞ',
+      title: 'ABŞ bazarına peşəkar çıxış',
+      intro: 'Amazon Amerika sadəcə məhsulları ingilis dilinə tərcümə etmək deyil. Kateqoriya tələbləri, xərclər, gömrük və anbar logistikası satışdan əvvəl dəqiq hesablanmalıdır.',
+      items: [
+        ['Məhsul və tənzimləmə uyğunluğu', 'ABŞ bazarında kateqoriya məhdudiyyətləri, etiketləmə, təhlükəsizlik və sertifikatlaşdırma tələbləri fərdi şəkildə yoxlanılır.'],
+        ['Yerli ingiliscə listinqlər', 'Məhsul başlıqları, fayda yönümlü izahatlar, axtarış açar sözləri və peşəkar vizual materiallar hazırlanır.'],
+        ['FBA / FBM xərc modeli', 'ABŞ-da anbarlama, çatdırılma, geri qaytarma, beynəlxalq daşıma və mümkün gömrük rüsumları məhsul maya dəyərinə daxil edilir.'],
+        ['Brend və hesab etibarı', 'Sənəd ardıcıllığı, brend mülkiyyəti və Brand Registry uyğunluğu müraciətdən əvvəl yoxlanılır.'],
+        ['Əməliyyatların ötürülməsi', 'Stok izlənməsi, qiymət yenilənməsi, müştəri sorğuları və hesab sağlamlığı üçün praktik idarəetmə təlimatı verilir.'],
+        ['Böyümə və marketinq hazırlığı', 'Təbii axtarış görünürlüyü ilə PPC reklam büdcəsi bir-birindən ayrılır; reklam xərcləri şəffaf şəkildə planlanır.'],
+      ],
+    } : tr ? {
+      eyebrow: 'AMAZON.COM.TR / TÜRKİYƏ',
+      title: 'Satışa tam hazır mağaza infrastrukturu',
+      intro: 'Keyfiyyətli mağaza yalnız hesab açmaqdan ibarət deyil. Kataloq dəqiqliyi, alıcı etibarı və operativ sifariş idarəetməsi birlikdə təmin edilməlidir.',
+      items: [
+        ['Satıcı hesabı və sənədlər', 'Müraciət formaları, şirkət sənədləri, bank və vergi məlumatları sistemli şəkildə hazırlanır.'],
+        ['Kateqoriya və barkod uyğunluğu', 'Məhsulların mövcud kataloqda olub-olmaması, variantlar, barkodlar (EAN) və tələb olunan icazələr yoxlanılır.'],
+        ['Məhsul təqdimatı', 'Başlıqlar, əsas məqamlar, təsvirlər və şəkillər alıcı suallarına dəqiq cavab verəcək şəkildə qurulur.'],
+        ['Qiymət və gəlirlilik', 'Kateqoriya komissiyaları, kargo, qaytarma, qablaşdırma və marketinq xərcləri ayrıca hesablanır.'],
+        ['Stok və sifariş nizamı', 'Mövcud satış kanalları ilə anbar qalığının uzlaşdırılması və sifarişlərin vaxtında icrası planlanır.'],
+        ['Yayıma keçid yoxlaması', 'Məhsul görünürlüyü, çatdırılma müddətləri və mağaza profili tam yoxlanılaraq çatışmazlıqlar aradan qaldırılır.'],
+      ],
+    } : {
+      eyebrow: 'PAZARYERİ STRATEGİYASI',
+      title: 'Çoxkanallı satışın etibarlı infrastrukturu',
+      intro: 'Hər platforma eyni məhsul üçün eyni alıcı kütləsini və ya eyni gəlirlilik modelini təqdim etmir. Kanal seçimi real məhsul strukturuna və əməliyyat imkanlarına əsaslanmalıdır.',
+      items: [
+        ['Platforma uyğunluğu', 'Trendyol, Hepsiburada, n11, Amazon Türkiyə, Amazon Amerika və Etsy üçün kateqoriya tələbləri və satıcı şərtləri fərdi araşdırılır.'],
+        ['Mərkəzi məhsul kataloqu', 'Məhsul adları, təsvirlər, şəkillər, variantlar, barkodlar və kateqoriya uyğunlaşdırması vahid mənbədən idarə olunacaq şəkildə hazırlanır.'],
+        ['Stok sinxronizasiyası', 'Birdən çox kanalda eyni məhsulun satışı zamanı artıq satış və stok xətalarının qarşısını alan axın qurulur.'],
+        ['Qiymət və komissiya hesabatı', 'Platforma komissiyası, logistika, geri qaytarma və kampaniya xərcləri nəzərə alınaraq gəlirli qiymət modeli tərtib edilir.'],
+        ['Sifariş və sistem inteqrasiyası', 'Mövcud e-ticarət saytı, anbar və mühasibatlıq proqramları ilə pazaryerləri arasında məlumat mübadiləsi planlanır.'],
+        ['İdarəetmə və cavabdehlik', 'Gündəlik sifarişlərin izlənməsi, müştəri mesajları, ləğv/iade prosesləri və əsas performans göstəriciləri dəqiqləşdirilir.'],
+      ],
+    })
+  : isEnglish
+    ? (us ? {
+        eyebrow: 'AMAZON.COM / UNITED STATES',
+        title: 'US market expansion readiness',
+        intro: 'Selling on Amazon US requires much more than translating Turkish listings into English. Category requirements, landed unit costs, and fulfillment execution must be validated before going live.',
+        items: [
+          ['Product & category compliance', 'Evaluating category restrictions, labeling laws, consumer safety guidelines, and customs requirements via structured checklists and specialist inputs.'],
+          ['Listings & localized catalog', 'Writing search-indexed titles, conversion bullets, variant families, backend keywords, and benefit-driven imagery tailored to US buyers.'],
+          ['FBA / FBM cost modeling', 'Factoring ocean/air freight, customs clearance, Amazon FBA storage/fulfillment fees, and return allowances directly into unit economics.'],
+          ['Brand & account trust', 'Verifying corporate documentation consistency, trademark ownership, and Amazon Brand Registry eligibility prior to submission.'],
+          ['Operational handover', 'Establishing practical management routines for inventory replenishment, price updates, customer messages, and account health metrics.'],
+          ['Growth readiness', 'Differentiating organic product visibility from PPC advertising campaigns; ad spend is managed transparently without hidden agency markups.'],
+        ],
+      } : tr ? {
+        eyebrow: 'AMAZON.COM.TR / TÜRKİYE',
+        title: 'A store built for sustained performance',
+        intro: 'A reliable setup extends from initial account opening all the way to customer delivery. Catalog quality and operational consistency must work hand in hand.',
+        items: [
+          ['Seller account & documentation', 'Structuring corporate registration forms, tax documents, bank accounts, and user permission hierarchies.'],
+          ['Category & product matching', 'Verifying existing ASIN matches, GTIN/EAN barcodes, variations, and category approval requirements.'],
+          ['Product presentation', 'Structuring titles, bullet points, descriptions, and photography to answer buyer questions clearly and drive conversions.'],
+          ['Pricing & unit profitability', 'Separating category referral fees, courier rates, returns, packaging, and advertising costs from agency setup fees.'],
+          ['Inventory & order workflows', 'Integrating inventory sync with your primary e-commerce store and setting up reliable order processing tools.'],
+          ['Launch verification checklist', 'Verifying product indexation, delivery promises, storefront profile, and team responsibilities before launch.'],
+        ],
+      } : {
+        eyebrow: 'MULTICHANNEL STRATEGY',
+        title: 'Multichannel selling architecture',
+        intro: 'Different platforms do not deliver the same margin or the same customers. Platform choices must reflect real product strengths, unit economics, and fulfillment capability.',
+        items: [
+          ['Platform suitability', 'Auditing Trendyol, Hepsiburada, n11, Amazon Türkiye, Amazon US, and Etsy against product categories, margins, and seller criteria.'],
+          ['Centralized product catalog', 'Structuring titles, descriptions, imagery, variants, barcodes, and category mappings from a single reliable source of truth.'],
+          ['Inventory synchronization', 'Automating real-time stock deductions across all channels to eliminate stockouts and overselling penalties.'],
+          ['Pricing & commission modeling', 'Defining sustainable pricing models accounting for platform-specific fees, shipping, returns, and promotional campaigns.'],
+          ['Order & system integrations', 'Architecting data synchronization between ERP systems, accounting software, your standalone store, and marketplace APIs.'],
+          ['Operational workflows', 'Defining internal operational roles for daily dispatch, customer communications, returns handling, and performance tracking.'],
+        ],
+      })
+    : (us ? {
+        eyebrow: 'AMAZON.COM / ABD',
+        title: 'ABD pazarına hazırlık',
+        intro: 'Amazon Amerika yalnızca ürünleri İngilizceye çevirmekten ibaret değildir. Kategori koşullarını, maliyetleri ve sipariş karşılamayı satışa başlamadan önce netleştirmek gerekir.',
+        items: [
+          ['Ürün ve kategori uygunluğu', 'Ürünün ABD pazarındaki kategori kısıtları, etiketleme, güvenlik ve mevzuat gereklilikleri kontrol listesiyle değerlendirilir. Gerekli uzman görüşleri ayrıca alınır.'],
+          ['Listeleme ve katalog', 'Ürün başlıkları, açıklamalar, varyasyon aileleri, temel arama terimleri, görseller ve gerekli ürün tanımlayıcıları pazarın diliyle hazırlanır.'],
+          ['FBA / FBM maliyet modeli', 'Depolama, sipariş karşılama, iade, uluslararası taşıma ve olası gümrük giderleri ürün kârlılığından ayrı düşünülmez.'],
+          ['Marka ve hesap güveni', 'Hesap yetkileri, belge tutarlılığı, marka sahipliği ve varsa Brand Registry uygunluğu başvuru öncesinde değerlendirilir.'],
+          ['Operasyon devri', 'Stok takibi, fiyat güncellemesi, sipariş mesajları ve performans göstergeleri için uygulanabilir bir yönetim akışı belirlenir.'],
+          ['Büyüme hazırlığı', 'Organik ürün görünürlüğü ile reklam, kupon ve kampanya harcamaları ayrıştırılır; reklam bütçesi kurulum hizmetinin içinde varsayılmaz.'],
+        ],
+      } : tr ? {
+        eyebrow: 'AMAZON.COM.TR / TÜRKİYE',
+        title: 'Satışa hazır mağaza',
+        intro: 'İyi bir kurulum, hesap açılmasından ürünün müşteriye teslimine kadar uzanır. Katalog kalitesi ve operasyon tutarlılığı birlikte ele alınır.',
+        items: [
+          ['Satıcı hesabı ve belgeler', 'Başvuru bilgileri, şirket ve iletişim belgeleri, ödeme ve fatura süreçleri ile hesap erişimleri düzenli biçimde hazırlanır.'],
+          ['Kategori ve ürün eşleştirme', 'Ürünün mevcut katalogda bulunup bulunmadığı, varyasyonları, barkodları ve kategori özellikleri kontrol edilir.'],
+          ['Ürün sunumu', 'Başlıklar, maddeler, açıklamalar ve fotoğraflar alıcı sorularına net cevap verecek biçimde yapılandırılır.'],
+          ['Fiyat ve kârlılık', 'Kategori komisyonları, gönderim, iade, paketleme ve varsa reklam giderleri hizmet ücretinden ayrı ele alınır.'],
+          ['Stok ve sipariş düzeni', 'Mevcut e-ticaret sitesiyle stok eşitleme ihtiyacı ve sipariş yönetimi için uygun araçlar değerlendirilir.'],
+          ['Yayına geçiş kontrolü', 'Ürün görünürlüğü, teslimat bilgileri, mağaza profili ve operasyon sorumlulukları kontrol edilerek eksikler listelenir.'],
+        ],
+      } : {
+        eyebrow: 'PAZARYERİ STRATEJİSİ',
+        title: 'Çok kanallı satış düzeni',
+        intro: 'Her platform aynı ürün için aynı müşteriyi veya aynı maliyet yapısını sunmaz. Kanal seçimi, katalog ve operasyon gerçeklerine dayanmalı.',
+        items: [
+          ['Platform uygunluğu', 'Trendyol, Hepsiburada, n11, Amazon Türkiye, Amazon Amerika ve Etsy için ürün kategorisi, hedef pazar ve satıcı şartları ayrı incelenir.'],
+          ['Merkezi ürün kataloğu', 'Ürün adı, açıklama, görsel, varyasyon, barkod ve kategori bilgileri tutarlı bir kaynaktan yönetilebilecek biçimde tasarlanır.'],
+          ['Stok senkronizasyonu', 'Birden çok kanalda aynı ürünün satılması halinde stok güncellemeleri ve aşırı satış riskine karşı süreç planlanır.'],
+          ['Fiyat ve komisyon', 'Kanal bazında komisyon, kargo, iade ve kampanya maliyeti hesaba katılarak fiyatlandırma yöntemi belirlenir.'],
+          ['Sipariş ve entegrasyon', 'ERP, muhasebe, e-ticaret sitesi ve pazaryerleri arasındaki veri alışverişi teknik erişim koşullarına göre tasarlanır.'],
+          ['Yönetim ve raporlama', 'Satış kanallarının sorumluları, günlük sipariş kontrolü, iptal/iade süreçleri ve takip edilecek göstergeler tanımlanır.'],
+        ],
+      });
+
 const channelLogos = [
   { name: 'Trendyol', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Trendyol_logo.svg' },
   { name: 'Hepsiburada', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Hepsiburada_logo_official.svg' },
   { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
   { name: 'n11', src: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/N11_Logo_2025.svg' },
 ];
-const related = [
+
+const related = isAzerbaijani ? [
+  ['/az/amazon-turkiye-magaza-qurulmasi/','Amazon Türkiyə','Türkiyə bazarında satıcı hesabı və kataloq hazırlığı.'],
+  ['/az/amazon-amerika-magaza-qurulmasi/','Amazon Amerika','ABŞ bazarı, FBA/FBM və beynəlxalq satış hazırlığı.'],
+  ['/az/pazaryeri-qurulmasi/','Bütün pazaryerləri','Trendyol, Hepsiburada, n11, Etsy və inteqrasiyalar.'],
+].filter(([href]) => href !== Astro.url.pathname) : isEnglish ? [
+  ['/en/amazon-turkiye-store-setup/','Amazon Türkiye','Seller account and catalog setup for the Turkish market.'],
+  ['/en/amazon-us-store-setup/','Amazon US','US market entry, FBA/FBM modeling, and cross-border selling.'],
+  ['/en/marketplace-setup/','All marketplaces','Trendyol, Hepsiburada, n11, Etsy, and multichannel integrations.'],
+].filter(([href]) => href !== Astro.url.pathname) : [
   ['/amazon-turkiye-magaza-kurulumu/','Amazon Türkiye','Türkiye pazarında satıcı hesabı ve katalog hazırlığı.'],
   ['/amazon-amerika-magaza-kurulumu/','Amazon Amerika','ABD pazarı, FBA/FBM ve uluslararası satış hazırlığı.'],
   ['/pazaryeri-kurulumu/','Tüm pazaryerleri','Trendyol, Hepsiburada, n11, Etsy ve entegrasyonlar.'],
 ].filter(([href]) => href !== Astro.url.pathname);
-const faq = us ? [
-  ['Amazon Amerika için ABD şirketi şart mı?','ABD şirketi her başvuru için otomatik zorunluluk değildir. Uygunluk, güncel satıcı kayıt koşulları ve işletmenin hukuki/vergi durumuna göre doğrulanır.'],
-  ['FBA ile FBM arasındaki fark nedir?','FBA modelinde Amazon lojistik hizmetleri kullanılır; FBM modelinde sipariş karşılama satıcı tarafından yönetilir. Ücretler, iadeler ve ürün uygunluğu modele göre değişir.'],
-  ['Amazon komisyonları hizmet fiyatına dahil mi?','Hayır. Amazon satıcı aboneliği, kategori komisyonu, lojistik, depolama, vergi ve diğer üçüncü taraf giderler ayrıca değerlendirilir.'],
-] : tr ? [
-  ['Amazon Türkiye satıcı hesabı hemen açılır mı?','Hesap başvurusu için gereken bilgiler hazırlanır. Doğrulama, kategori kabulü ve aktivasyon süreleri Amazon’un değerlendirmesine bağlıdır.'],
-  ['Ürün girişleri dahil mi?','Ürün sayısı, varyasyonlar ve içerik kalitesi proje kapsamına göre ayrıca tekliflendirilir.'],
-  ['Amazon komisyonları kurulum ücretine dahil mi?','Hayır. Amazon’un kendi ücretleri ve satış komisyonları QCT Commerce hizmet bedelinden ayrıdır.'],
-] : [
-  ['Hangi pazaryerleriyle çalışıyorsunuz?','Trendyol, Hepsiburada, Amazon Türkiye, Amazon.com, n11 ve uygun ürün kategorileri için Etsy başvuru ve katalog süreçleri değerlendirilebilir.'],
-  ['Birden fazla mağazanın stoku birlikte yönetilir mi?','Evet; uygun entegrasyon araçları veya API’ler üzerinden ürün, stok, fiyat ve sipariş senkronizasyonu proje kapsamında tasarlanabilir.'],
-  ['Kurulum ücreti sabit mi?','Hayır. Pazar, mağaza sayısı, ürün adedi, entegrasyonlar ve uluslararası operasyon ihtiyaçlarına göre yazılı teklif hazırlanır.'],
-];
-const serviceName = us ? 'Amazon Amerika mağaza kurulumu' : tr ? 'Amazon Türkiye mağaza kurulumu' : 'Pazaryeri mağaza kurulumu';
-const targetMarket = us ? 'ABD / Amazon.com' : tr ? 'Türkiye / Amazon.com.tr' : 'Pazaryeri seçimi için değerlendirme';
+
+const faq = isAzerbaijani
+  ? (us ? [
+      ['Amazon Amerika üçün ABŞ-da şirkət açmaq mütləqdirmi?','ABŞ şirkəti hər satıcı üçün mütləq tələb deyil; bir çox hallarda yerli şirkətlə də qeydiyyat mümkündür. Dəqiq uyğunluq cari qaydalara və biznes modelinə görə müəyyən edilir.'],
+      ['FBA ilə FBM arasında nə fərq var?','FBA modelində məhsullar Amazon anbarlarında saxlanılır və müştəriyə Amazon tərəfindən çatdırılır. FBM modelində isə çatdırılmanı satıcı özü təşkil edir.'],
+      ['Amazon xərcləri xidmət haqqına daxildirmi?','Xeyr. Amazon satıcı abunəliyi, satış komissiyası, FBA loqistika və digər üçüncü tərəf xərcləri birbaşa platformaya ödənilir.'],
+    ] : tr ? [
+      ['Amazon Türkiyə satıcı hesabı nə qədər vaxta təsdiqlənir?','Müraciət üçün lazım olan bütün sənədlər dəqiq hazırlanır. Təsdiq və aktivasiya müddəti tamamilə Amazon-un daxili yoxlama prosesindən asılıdır.'],
+      ['Məhsul daxil edilməsi xidmətə daxildirmi?','Əsas şablonlar və ilkin struktur qurulur. Çoxsaylı məhsulların daxil edilməsi həcminə görə ayrıca razılaşdırılır.'],
+      ['Amazon komissiyaları xidmət haqqına daxildirmi?','Xeyr. Amazon-un aylıq abunə haqları və satış komissiyaları birbaşa Amazon-a ödənilir və QCT Commerce xidmətindən ayrıdır.'],
+    ] : [
+      ['Hansı pazaryerləri ilə işləyirsiniz?','Trendyol, Hepsiburada, Amazon Türkiyə, Amazon.com (ABŞ), n11 və uyğun məhsullar üçün Etsy üzrə mağaza açılışı və kataloq xidmətləri göstəririk.'],
+      ['Birdən çox mağazanın stoku birlikdə idarə oluna bilərmi?','Bəli. Uyğun inteqrasiya alətləri və ya API bağlantıları vasitəsilə məhsul, anbar, qiymət və sifarişlərin avtomatik sinxronizasiyası layihəyə daxil edilə bilər.'],
+      ['Qurulma xidməti sabit qiymətlidirmi?','Xeyr. Seçilən bazarlar, mağaza sayı, məhsul həcmi, inteqrasiyalar və beynəlxalq əməliyyat tələblərinə əsasən şəffaf yazılı təklif təqdim olunur.'],
+    ])
+  : isEnglish
+    ? (us ? [
+        ['Is a US entity required to sell on Amazon US?','A US company is not mandatory for every seller; Turkish entities can register directly. Eligibility and tax structures are evaluated according to your business model.'],
+        ['What is the difference between FBA and FBM?','Under FBA, Amazon handles warehousing, packing, and delivery. Under FBM, fulfillment is managed directly by the seller. Fees, dispatch speed, and Prime badge eligibility differ.'],
+        ['Are Amazon fees included in your service price?','No. Amazon monthly subscription fees, category referral commissions, FBA logistics fees, and ad spend are paid directly to Amazon.'],
+      ] : tr ? [
+        ['How long does Amazon Türkiye account verification take?','We prepare and submit all required corporate documents. Verification and activation timelines depend on Amazon’s internal evaluation processes.'],
+        ['Is product data entry included?','Initial setup templates are included. Bulk product data entry and copywriting are scoped separately based on total SKU volume.'],
+        ['Are Amazon commissions included in your setup fee?','No. Platform subscription fees and sales commissions belong to Amazon and are separate from QCT Commerce agency fees.'],
+      ] : [
+        ['Which marketplaces do you support?','We support Trendyol, Hepsiburada, Amazon Türkiye, Amazon.com (US), n11, and category-appropriate setups on Etsy.'],
+        ['Can inventory be synchronized across multiple channels?','Yes. Through suitable integration software or custom APIs, products, inventory, prices, and orders can be synchronized automatically.'],
+        ['Is the setup price fixed?','No. Written proposals are prepared based on target platforms, SKU counts, variant complexity, ERP integrations, and cross-border logistics requirements.'],
+      ])
+    : (us ? [
+        ['Amazon Amerika için ABD şirketi şart mı?','ABD şirketi her başvuru için otomatik zorunluluk değildir. Uygunluk, güncel satıcı kayıt koşulları ve işletmenin hukuki/vergi durumuna göre doğrulanır.'],
+        ['FBA ile FBM arasındaki fark nedir?','FBA modelinde Amazon lojistik hizmetleri kullanılır; FBM modelinde sipariş karşılama satıcı tarafından yönetilir. Ücretler, iadeler ve ürün uygunluğu modele göre değişir.'],
+        ['Amazon komisyonları hizmet fiyatına dahil mi?','Hayır. Amazon satıcı aboneliği, kategori komisyonu, lojistik, depolama, vergi ve diğer üçüncü taraf giderler ayrıca değerlendirilir.'],
+      ] : tr ? [
+        ['Amazon Türkiye satıcı hesabı hemen açılır mı?','Hesap başvurusu için gereken bilgiler hazırlanır. Doğrulama, kategori kabulü ve aktivasyon süreleri Amazon’un değerlendirmesine bağlıdır.'],
+        ['Ürün girişleri dahil mi?','Ürün sayısı, varyasyonlar ve içerik kalitesi proje kapsamına göre ayrıca tekliflendirilir.'],
+        ['Amazon komisyonları kurulum ücretine dahil mi?','Hayır. Amazon’un kendi ücretleri ve satış komisyonları QCT Commerce hizmet bedelinden ayrıdır.'],
+      ] : [
+        ['Hangi pazaryerleriyle çalışıyorsunuz?','Trendyol, Hepsiburada, Amazon Türkiye, Amazon.com, n11 ve uygun ürün kategorileri için Etsy başvuru ve katalog süreçleri değerlendirilebilir.'],
+        ['Birden fazla mağazanın stoku birlikte yönetilir mi?','Evet; uygun entegrasyon araçları veya API’ler üzerinden ürün, stok, fiyat ve sipariş senkronizasyonu proje kapsamında tasarlanabilir.'],
+        ['Kurulum ücreti sabit mi?','Hayır. Pazar, mağaza sayısı, ürün adedi, entegrasyonlar ve uluslararası operasyon ihtiyaçlarına göre yazılı teklif hazırlanır.'],
+      ]);
+
+const serviceName = isAzerbaijani
+  ? (us ? 'Amazon Amerika mağaza qurulması' : tr ? 'Amazon Türkiyə mağaza qurulması' : 'Pazaryeri mağaza qurulması')
+  : isEnglish
+    ? (us ? 'Amazon US store setup' : tr ? 'Amazon Türkiye store setup' : 'Marketplace store setup')
+    : (us ? 'Amazon Amerika mağaza kurulumu' : tr ? 'Amazon Türkiye mağaza kurulumu' : 'Pazaryeri mağaza kurulumu');
+
+const targetMarket = isAzerbaijani
+  ? (us ? 'ABŞ / Amazon.com' : tr ? 'Türkiyə / Amazon.com.tr' : 'Pazaryeri seçimi üçün qiymətləndirmə')
+  : isEnglish
+    ? (us ? 'US / Amazon.com' : tr ? 'Türkiye / Amazon.com.tr' : 'Evaluation for marketplace selection')
+    : (us ? 'ABD / Amazon.com' : tr ? 'Türkiye / Amazon.com.tr' : 'Pazaryeri seçimi için değerlendirme');
+
 const sourceUrl = 'https://qctcommerce.com' + Astro.url.pathname;
-const quoteMessage = [
+
+const quoteMessage = isAzerbaijani ? [
+  'QCT Commerce — Pazaryeri qurulum təklifi',
+  'Maraqlandığım xidmət: ' + serviceName,
+  'Hədəf bazar: ' + targetMarket,
+  'Mənbə səhifə: ' + sourceUrl,
+  '',
+  'Salam, məhsul kateqoriyam və təxmini çeşid sayım üçün layihə təklifi almaq istəyirəm.',
+].join('\n') : isEnglish ? [
+  'QCT Commerce — Marketplace setup proposal',
+  'Requested service: ' + serviceName,
+  'Target market: ' + targetMarket,
+  'Source page: ' + sourceUrl,
+  '',
+  'Hello, I would like to receive a proposal for my product category and estimated catalog size.',
+].join('\n') : [
   'QCT Commerce — Pazaryeri kurulum teklifi',
   'İlgilendiğim hizmet: ' + serviceName,
   'Hedef pazar: ' + targetMarket,
   'Kaynak sayfa: ' + sourceUrl,
   '',
   'Merhaba, ürün kategorim ve yaklaşık ürün sayım için kurulum teklifi almak istiyorum.',
-].join('\\n');
+].join('\n');
+
 const contact = 'https://wa.me/905456782655?text=' + encodeURIComponent(quoteMessage);
-const breadcrumbName = us ? 'Amazon Amerika Mağaza Kurulumu' : tr ? 'Amazon Türkiye Mağaza Kurulumu' : 'Pazaryeri Mağaza Kurulumu';
-const breadcrumbs = [{name:'Ana sayfa',url:'/'},{name:'Hizmetler',url:'/hizmetler/'},{name:breadcrumbName,url:Astro.url.pathname}];
+
+const breadcrumbName = isAzerbaijani
+  ? (us ? 'Amazon Amerika Mağaza Qurulması' : tr ? 'Amazon Türkiyə Mağaza Qurulması' : 'Pazaryeri Mağaza Qurulması')
+  : isEnglish
+    ? (us ? 'Amazon US Store Setup' : tr ? 'Amazon Türkiye Store Setup' : 'Marketplace Store Setup')
+    : (us ? 'Amazon Amerika Mağaza Kurulumu' : tr ? 'Amazon Türkiye Mağaza Kurulumu' : 'Pazaryeri Mağaza Kurulumu');
+
+const breadcrumbs = isAzerbaijani ? [
+  { name: 'Ana səhifə', url: '/az/' },
+  { name: 'Xidmətlər', url: '/az/xidmetler/' },
+  { name: breadcrumbName, url: Astro.url.pathname }
+] : isEnglish ? [
+  { name: 'Home', url: '/en/' },
+  { name: 'Services', url: '/en/services/' },
+  { name: breadcrumbName, url: Astro.url.pathname }
+] : [
+  { name: 'Ana sayfa', url: '/' },
+  { name: 'Hizmetler', url: '/hizmetler/' },
+  { name: breadcrumbName, url: Astro.url.pathname }
+];
+
+const ctaPrimary = isAzerbaijani
+  ? 'Pazaryeri təklifinizi hazırlayaq'
+  : isEnglish
+    ? 'Request a marketplace proposal'
+    : 'Pazaryeri teklifinizi hazırlayalım';
+
+const ctaSecondary = isAzerbaijani
+  ? 'E-ticarət həlləri'
+  : isEnglish
+    ? 'E-commerce solutions'
+    : 'E-ticaret çözümleri';
+
+const secondaryHref = isAzerbaijani ? '/az/e-ticaret/' : isEnglish ? '/en/ecommerce/' : '/e-ticaret/';
+
+const note = isAzerbaijani
+  ? 'Satıcı təsdiqi və satış həcmi zəmanət edilmir. Platforma rüsumları təklifimizdən ayrıdır.'
+  : isEnglish
+    ? 'Seller approvals and sales volumes are not guaranteed. Platform fees are separate from our agency proposal.'
+    : 'Satıcı onayı ve satış performansı garanti edilmez. Platform ücretleri teklifimizden ayrıdır.';
+
+const channelEyebrow = isAzerbaijani
+  ? 'DƏSTƏKLƏNƏN PAZARYERİ KANALLARI'
+  : isEnglish
+    ? 'SUPPORTED MARKETPLACE CHANNELS'
+    : 'PAZARYERİ KANALLARI';
+
+const channelDisclaimer = isAzerbaijani
+  ? 'Platforma adları və loqoları müvafiq hüquq sahiblərinə məxsusdur. QCT Commerce bu platformaların rəsmi nümayəndəsi deyil.'
+  : isEnglish
+    ? 'Platform brand names and logos belong to their respective trademark holders. QCT Commerce is an independent consulting studio.'
+    : 'Platform adları ve logoları ilgili marka sahiplerine aittir. QCT Commerce, bu platformların resmi temsilcisi değildir.';
+
+const approachEyebrow = isAzerbaijani ? 'YANAŞMAMIZ' : isEnglish ? 'OUR APPROACH' : 'YAKLAŞIMIMIZ';
+const scopeHeading = isAzerbaijani ? 'Qurulumdan aktiv satışa' : isEnglish ? 'From setup to active sales' : 'Kurulumdan satışa';
+const approachIntro = isAzerbaijani
+  ? 'Mağaza açmaq yalnız ilk addımdır. Məhsul strukturunu, əməliyyatları və hədəf bazarı birlikdə planlaşdırır; lazımsız inteqrasiya və gizli xərclərin qarşısını alırıq.'
+  : isEnglish
+    ? 'Launching a store is only the first milestone. We structure product architectures, fulfillment operations, and target markets together, avoiding unnecessary integrations and hidden expenses.'
+    : 'Mağaza açmak yalnızca ilk adımdır. Ürün yapısını, operasyonu ve hedef pazarı birlikte ele alıyor; gereksiz entegrasyon ve belirsiz maliyetlerden kaçınıyoruz.';
+
+const relatedEyebrow = isAzerbaijani ? 'ƏLAQƏLİ XİDMƏTLƏR' : isEnglish ? 'RELATED SERVICES' : 'İLGİLİ HİZMETLER';
+const optionsHeading = isAzerbaijani ? 'Doğru bazarı seçin' : isEnglish ? 'Select the right channel' : 'Doğru pazarı seçin';
+
+const faqEyebrow = isAzerbaijani ? 'TEZ-TEZ VERİLƏN SUALLAR' : isEnglish ? 'FREQUENTLY ASKED QUESTIONS' : 'SIK SORULANLAR';
+const faqHeading = isAzerbaijani ? 'Ən çox verilən suallar' : isEnglish ? 'Common questions' : 'Merak edilenler';
+
+const bottomEyebrow = isAzerbaijani ? 'NÖVBƏTİ ADDIM' : isEnglish ? 'NEXT STEP' : 'SONRAKİ ADIM';
+const bottomTitle = isAzerbaijani ? 'Satış planınızı dəqiqləşdirək' : isEnglish ? 'Let’s structure your marketplace roadmap' : 'Satış planınızı netleştirelim';
+const bottomText = isAzerbaijani
+  ? 'Məhsul kateqoriyanız, hədəf bazarınız və təxmini məhsul sayınızla müraciət edin. Əhatə dairəsini və xidmət haqqını şəffaf yazılı təklif kimi hazırlayaq.'
+  : isEnglish
+    ? 'Share your product category, target market, and catalog size. We will structure the exact scope and service investment in a transparent, written proposal.'
+    : 'Ürün kategoriniz, hedef pazarınız ve yaklaşık ürün adedinizle iletişime geçin. Kapsamı ve hizmet ücretini ayrı, şeffaf bir teklif olarak hazırlayalım.';
+
+const bottomCta = isAzerbaijani ? 'Layihə görüşü' : isEnglish ? 'Discuss a proposal' : 'Teklif görüşmesi';
 ---
-<BaseLayout title={title} description={lead} lang="tr" includeServiceCardStyles breadcrumbs={breadcrumbs}>
-  <Header slot="header" lang="tr"/>
+<BaseLayout title={title} description={lead} lang={lang} includeServiceCardStyles breadcrumbs={breadcrumbs}>
+  <Header slot="header" lang={lang}/>
   <main class="marketplace">
     <section class="marketplace-hero container">
-      
       <h1>{heading}</h1>
       <p class="marketplace-lead">{lead}</p>
-      <div class="marketplace-actions"><a class="marketplace-primary" href={contact} target="_blank" rel="noopener noreferrer">Pazaryeri teklifinizi hazırlayalım <span aria-hidden="true">↗</span></a><a class="marketplace-secondary" href="/e-ticaret/">E-ticaret çözümleri</a></div>
-      <p class="marketplace-note">Satıcı onayı ve satış performansı garanti edilmez. Platform ücretleri teklifimizden ayrıdır.</p>
-      <div class="marketplace-channels" aria-label="Pazaryeri logoları">
-        <p class="marketplace-eyebrow">PAZARYERİ KANALLARI</p>
-        <div class="marketplace-channel-viewport" role="group" aria-label="Pazaryeri markaları">
+      <div class="marketplace-actions"><a class="marketplace-primary" href={contact} target="_blank" rel="noopener noreferrer">{ctaPrimary} <span aria-hidden="true">↗</span></a><a class="marketplace-secondary" href={secondaryHref}>{ctaSecondary}</a></div>
+      <p class="marketplace-note">{note}</p>
+      <div class="marketplace-channels" aria-label={channelEyebrow}>
+        <p class="marketplace-eyebrow">{channelEyebrow}</p>
+        <div class="marketplace-channel-viewport" role="group" aria-label={channelEyebrow}>
           <div class="marketplace-channel-track">
             {[0, 1].map((repeat) => <div class="marketplace-channel-set" aria-hidden={repeat === 1 ? 'true' : undefined}>
               {channelLogos.map((item) => <div class="marketplace-channel" title={item.name}><img src={item.src} alt={repeat === 1 ? '' : item.name + ' logosu'} loading="lazy" decoding="async" /><span>{item.name}</span></div>)}
@@ -111,22 +372,22 @@ const breadcrumbs = [{name:'Ana sayfa',url:'/'},{name:'Hizmetler',url:'/hizmetle
             </div>)}
           </div>
         </div>
-        <p class="marketplace-channel-disclaimer">Platform adları ve logoları ilgili marka sahiplerine aittir. QCT Commerce, bu platformların resmi temsilcisi değildir.</p>
+        <p class="marketplace-channel-disclaimer">{channelDisclaimer}</p>
       </div>
     </section>
     <section class="marketplace-section container" aria-labelledby="scope-heading">
-      <div class="marketplace-intro"><p class="marketplace-eyebrow">YAKLAŞIMIMIZ</p><h2 id="scope-heading">Kurulumdan satışa</h2><p>Mağaza açmak yalnızca ilk adımdır. Ürün yapısını, operasyonu ve hedef pazarı birlikte ele alıyor; gereksiz entegrasyon ve belirsiz maliyetlerden kaçınıyoruz.</p></div>
+      <div class="marketplace-intro"><p class="marketplace-eyebrow">{approachEyebrow}</p><h2 id="scope-heading">{scopeHeading}</h2><p>{approachIntro}</p></div>
       <div class="marketplace-grid">{steps.map(([name,description]) => <article class="marketplace-card"><h3>{name}</h3><p>{description}</p></article>)}</div>
     </section>
     <section class="marketplace-section marketplace-detail container" aria-labelledby="detail-heading">
       <div class="marketplace-intro"><p class="marketplace-eyebrow">{details.eyebrow}</p><h2 id="detail-heading">{details.title}</h2><p>{details.intro}</p></div>
       <div class="marketplace-grid marketplace-detail-grid">{details.items.map(([name,description]) => <article class="marketplace-card"><h3>{name}</h3><p>{description}</p></article>)}</div>
     </section>
-    <section class="marketplace-section marketplace-alt" aria-labelledby="options-heading"><div class="container"><div class="marketplace-intro"><p class="marketplace-eyebrow">İLGİLİ HİZMETLER</p><h2 id="options-heading">Doğru pazarı seçin</h2></div><div class="marketplace-grid marketplace-links">{related.map(([href,name,description]) => <a class="marketplace-card marketplace-link" href={href}><h3>{name} <span aria-hidden="true">↗</span></h3><p>{description}</p></a>)}</div></div></section>
-    <section class="marketplace-section container" aria-labelledby="faq-heading"><div class="marketplace-intro"><p class="marketplace-eyebrow">SIK SORULANLAR</p><h2 id="faq-heading">Merak edilenler</h2></div><div class="marketplace-faq">{faq.map(([q,a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
-    <section class="marketplace-bottom container"><div><p class="marketplace-eyebrow">SONRAKİ ADIM</p><h2>Satış planınızı netleştirelim</h2><p>Ürün kategoriniz, hedef pazarınız ve yaklaşık ürün adedinizle iletişime geçin. Kapsamı ve hizmet ücretini ayrı, şeffaf bir teklif olarak hazırlayalım.</p></div><a class="marketplace-primary" href={contact} target="_blank" rel="noopener noreferrer">Teklif görüşmesi <span aria-hidden="true">↗</span></a></section>
+    <section class="marketplace-section marketplace-alt" aria-labelledby="options-heading"><div class="container"><div class="marketplace-intro"><p class="marketplace-eyebrow">{relatedEyebrow}</p><h2 id="options-heading">{optionsHeading}</h2></div><div class="marketplace-grid marketplace-links">{related.map(([href,name,description]) => <a class="marketplace-card marketplace-link" href={href}><h3>{name} <span aria-hidden="true">↗</span></h3><p>{description}</p></a>)}</div></div></section>
+    <section class="marketplace-section container" aria-labelledby="faq-heading"><div class="marketplace-intro"><p class="marketplace-eyebrow">{faqEyebrow}</p><h2 id="faq-heading">{faqHeading}</h2></div><div class="marketplace-faq">{faq.map(([q,a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+    <section class="marketplace-bottom container"><div><p class="marketplace-eyebrow">{bottomEyebrow}</p><h2>{bottomTitle}</h2><p>{bottomText}</p></div><a class="marketplace-primary" href={contact} target="_blank" rel="noopener noreferrer">{bottomCta} <span aria-hidden="true">↗</span></a></section>
   </main>
-  <Footer slot="footer" lang="tr"/>
+  <Footer slot="footer" lang={lang}/>
 </BaseLayout>
 <style>
 .marketplace{color:var(--text-primary,#182029)}.marketplace-hero{padding-top:clamp(8rem,11vw,10rem);padding-bottom:clamp(4rem,8vw,7rem);max-width:1100px}.marketplace-eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:.73rem;font-weight:700;color:var(--color-accent,#ba9461);margin:0 0 1.25rem}.marketplace-hero h1{font-size:clamp(2.1rem,5.5vw,4.5rem);line-height:1.08;letter-spacing:-.045em;max-width:100%;margin:0 0 1.5rem;text-wrap:balance}.marketplace-channels{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(126,135,143,.2)}.marketplace-channels .marketplace-eyebrow{margin-bottom:1rem}.marketplace-channel-viewport{width:100%;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}.marketplace-channel-track{display:flex;align-items:center;width:max-content;animation:marketplace-marquee 28s linear infinite;will-change:transform}.marketplace-channel-set{display:flex;align-items:center;gap:clamp(1.5rem,5vw,3.5rem);padding-right:clamp(1.5rem,5vw,3.5rem);flex:none}.marketplace-channel{display:flex;flex:none;align-items:center;justify-content:center;min-width:135px;height:64px;padding:0 .35rem;background:none;border:0}.marketplace-channel img{display:block;height:38px;width:auto;max-width:132px;object-fit:contain}.marketplace-channel img[alt*="n11"]{height:32px}.marketplace-channel>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.marketplace-channel--text strong{font-family:Georgia,serif;color:#f1641e;font-size:1.65rem}.marketplace-channel-viewport:hover .marketplace-channel-track,.marketplace-channel-viewport:focus-within .marketplace-channel-track{animation-play-state:paused}.marketplace-channel-viewport--single{mask-image:none}.marketplace-channel-viewport--single .marketplace-channel-track{width:100%;animation:none}.marketplace-channel-viewport--single .marketplace-channel-set{width:100%;justify-content:center}.marketplace-channel-viewport--single .marketplace-channel-set[aria-hidden="true"]{display:none}@keyframes marketplace-marquee{to{transform:translateX(-50%)}}@media(prefers-reduced-motion:reduce){.marketplace-channel-viewport{overflow-x:auto;mask-image:none}.marketplace-channel-track{animation:none}}.marketplace-channel-disclaimer{margin:1rem 0 0;font-size:.76rem;line-height:1.65;opacity:.6}.marketplace-lead{font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.75;max-width:760px;opacity:.82}.marketplace-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.1rem;margin-top:2.25rem}.marketplace-primary,.marketplace-secondary{display:inline-flex;justify-content:center;align-items:center;gap:1rem;padding:1rem 1.45rem;border-radius:8px;font-weight:650;text-decoration:none;transition:transform .2s ease,opacity .2s ease}.marketplace-primary{background:#14252f;color:#fff}.marketplace-secondary{border:1px solid currentColor;color:inherit}.marketplace-primary:hover,.marketplace-secondary:hover{transform:translateY(-2px)}.marketplace-note{font-size:.85rem;opacity:.65;margin-top:1.4rem}.marketplace-section{padding-top:clamp(3.5rem,7vw,6rem);padding-bottom:clamp(3.5rem,7vw,6rem)}.marketplace-alt{background:rgba(140,143,145,.06)}.marketplace-intro{max-width:750px;margin-bottom:2.5rem}.marketplace-intro h2,.marketplace-bottom h2{font-size:clamp(1.8rem,3vw,2.9rem);letter-spacing:-.035em;line-height:1.15;margin:0 0 1rem}.marketplace-intro>p:last-child,.marketplace-bottom p:last-child{line-height:1.8;opacity:.75}.marketplace-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.marketplace-card{border:1px solid rgba(126,135,143,.2);border-radius:12px;padding:1.8rem 1.45rem;background:rgba(255,255,255,.025);min-width:0}.marketplace-card h3{font-size:1.12rem;line-height:1.35;margin:0 0 .75rem}.marketplace-card p{font-size:.94rem;line-height:1.7;opacity:.76;margin:0}.marketplace-links{grid-template-columns:repeat(2,minmax(0,1fr))}.marketplace-detail-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.marketplace-link{display:block;text-decoration:none;color:inherit}.marketplace-link h3{margin-top:0;display:flex;justify-content:space-between}.marketplace-link:hover{border-color:#aa8967}.marketplace-faq{max-width:900px}.marketplace-faq details{border-bottom:1px solid rgba(126,135,143,.25);padding:1.2rem 0}.marketplace-faq summary{cursor:pointer;font-weight:650;line-height:1.5}.marketplace-faq details p{line-height:1.75;opacity:.78;max-width:790px}.marketplace-bottom{padding-top:4rem;padding-bottom:5rem;display:flex;justify-content:space-between;gap:2rem;align-items:center}.marketplace-bottom>div{max-width:710px}@media(max-width:850px){.marketplace-grid,.marketplace-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.marketplace-hero{padding-top:7.5rem}.marketplace-grid,.marketplace-links,.marketplace-detail-grid{grid-template-columns:1fr}.marketplace-card h3{margin-top:1.2rem}.marketplace-bottom{flex-direction:column;align-items:flex-start}.marketplace-primary{width:auto}}@media(prefers-reduced-motion:reduce){.marketplace-primary,.marketplace-secondary{transition:none}}

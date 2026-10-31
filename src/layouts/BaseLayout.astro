@@ -57,6 +57,12 @@ Object.assign(parityRoutes, {
   '/en/distributors-b2b/': '/distributor-b2b/',
   '/e-ticaret-markalari/': '/en/ecommerce-brands/',
   '/en/ecommerce-brands/': '/e-ticaret-markalari/',
+  '/pazaryeri-kurulumu/': '/en/marketplace-setup/',
+  '/en/marketplace-setup/': '/pazaryeri-kurulumu/',
+  '/amazon-turkiye-magaza-kurulumu/': '/en/amazon-turkiye-store-setup/',
+  '/en/amazon-turkiye-store-setup/': '/amazon-turkiye-magaza-kurulumu/',
+  '/amazon-amerika-magaza-kurulumu/': '/en/amazon-us-store-setup/',
+  '/en/amazon-us-store-setup/': '/amazon-amerika-magaza-kurulumu/',
 });
 
 const localeClusters: Record<string, { tr: string; en: string; az: string }> = {};
@@ -86,6 +92,9 @@ addLocaleCluster('/e-ticaret-markalari/', '/en/ecommerce-brands/', '/az/e-ticare
 addLocaleCluster('/gizlilik-politikasi/', '/en/privacy-policy/', '/az/mexfilik/');
 addLocaleCluster('/kullanim-kosullari/', '/en/terms/', '/az/istifade-sertleri/');
 addLocaleCluster('/cerez-politikasi/', '/en/cookie-policy/', '/az/kuki-siyaseti/');
+addLocaleCluster('/pazaryeri-kurulumu/', '/en/marketplace-setup/', '/az/pazaryeri-qurulmasi/');
+addLocaleCluster('/amazon-turkiye-magaza-kurulumu/', '/en/amazon-turkiye-store-setup/', '/az/amazon-turkiye-magaza-qurulmasi/');
+addLocaleCluster('/amazon-amerika-magaza-kurulumu/', '/en/amazon-us-store-setup/', '/az/amazon-amerika-magaza-qurulmasi/');
 for (const item of localeParityClusters) addLocaleCluster(item.tr, item.en, item.az);
 
 const currentPath = Astro.url.pathname;
