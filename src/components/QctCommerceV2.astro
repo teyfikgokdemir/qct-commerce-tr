@@ -6,6 +6,7 @@ const services = [
   { value: 'refresh', label: 'Mevcut site yenileme', base: 6900 },
   { value: 'audit', label: 'Site analizi & iyileştirme planı', base: 1490 },
   { value: 'visibility', label: 'Dinamik SEO · SEO + GEO + AEO + AIO', base: 3990 },
+  { value: 'premium-infrastructure', label: 'QCT EDGE — özel teklif', base: 0 },
   { value: 'migration', label: 'Platform taşıma', base: 7900 },
   { value: 'products', label: 'Sadece ürün ekleme', base: 0 },
   { value: 'marketplace', label: 'Pazaryeri mağaza kurulumu — özel teklif', base: 0 },
@@ -173,6 +174,7 @@ const platforms = [
     </div>
   </section>
 
+  <section class="qct-edge" aria-labelledby="qct-edge-title"><div class="qct-shell"><p class="qct-section-label">QCT EDGE — YENİ NESİL WEB ALTYAPISI + DİNAMİK SEO</p><div class="qct-edge-grid"><div><h2 id="qct-edge-title">Bir web sitesinden fazlası.<br/>İşletmenizle birlikte gelişen dijital altyapı.</h2><p>Hızlı, sürdürülebilir web altyapısını sürekli görünürlük ve ticari iyileştirmeyle aynı kapsamda planlayın.</p><a class="qct-btn qct-btn-primary" href="/yeni-nesil-web-altyapisi/">QCT EDGE’i inceleyin <span>→</span></a></div><div class="qct-edge-benefits" aria-label="QCT EDGE değerleri"><article><b>PERFORMANCE</b><span>Hızlı ve mobil öncelikli deneyim</span></article><article><b>VISIBILITY</b><span>Sürekli SEO, GEO, AEO ve AIO gelişimi</span></article><article><b>COMMERCE</b><span>Talep ve dönüşüm yollarıyla uyumlu yapı</span></article></div></div></div></section>
   <section class="qct-pathways">
     <div class="qct-shell">
       <div class="qct-section-head qct-pathway-head">
@@ -355,17 +357,18 @@ const platforms = [
     const selectedService = service?.selectedOptions?.[0];
     const hasService = Boolean(service?.value);
     const isMarketplace = service?.value === 'marketplace';
+    const requiresQuote = isMarketplace || service?.value === 'premium-infrastructure';
     const base = Number(selectedService?.dataset.base || 0);
     marketOptions.forEach((option) => { option.hidden = !isMarketplace; option.disabled = !isMarketplace; });
     [...platform.options].filter((option) => option.value && !option.hasAttribute('data-market-option')).forEach((option) => { option.hidden = isMarketplace; option.disabled = isMarketplace; });
     if (platform.selectedOptions[0]?.disabled) platform.value = '';
     if (platformLabel) platformLabel.textContent = isMarketplace ? 'Pazaryeri' : 'Altyapı';
     if (platformHelp) platformHelp.textContent = isMarketplace ? 'Mağaza kurulacak satış kanalını seçin' : 'Kullandığınız veya tercih ettiğiniz platform';
-    if (priceLabel) priceLabel.textContent = isMarketplace ? 'PROJENİZE ÖZEL TEKLİF' : 'PROJENİZİN BAŞLANGIÇ FİYATI';
-    if (addonFieldset) addonFieldset.hidden = isMarketplace;
+    if (priceLabel) priceLabel.textContent = requiresQuote ? 'PROJENİZE ÖZEL TEKLİF' : 'PROJENİZİN BAŞLANGIÇ FİYATI';
+    if (addonFieldset) addonFieldset.hidden = requiresQuote;
     const productOption = products?.selectedOptions?.[0];
-    const productPrice = isMarketplace ? 0 : service?.value === 'ecommerce' && productOption?.dataset.ecommercePrice !== undefined ? Number(productOption.dataset.ecommercePrice || 0) : Number(productOption?.dataset.price || 0);
-    const addonPrice = isMarketplace ? 0 : addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
+    const productPrice = requiresQuote ? 0 : service?.value === 'ecommerce' && productOption?.dataset.ecommercePrice !== undefined ? Number(productOption.dataset.ecommercePrice || 0) : Number(productOption?.dataset.price || 0);
+    const addonPrice = requiresQuote ? 0 : addons.reduce((sum, input) => sum + (input.checked ? Number(input.value) : 0), 0);
     const total = base + productPrice + addonPrice;
     const completed = [Boolean(service?.value), Boolean(platform?.value), Boolean(products?.value)].filter(Boolean).length;
     progress.forEach((step, index) => step.classList.toggle('is-active', index < completed));
@@ -383,7 +386,7 @@ const platforms = [
     }
 
     if (totalNode) {
-      const nextText = hasService ? (isMarketplace ? 'Özel teklif' : total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre') : 'Seçiminizi yapın';
+      const nextText = hasService ? (requiresQuote ? 'Özel teklif' : total > 0 ? money.format(total) + ' TL’den' : 'Kapsama göre') : 'Seçiminizi yapın';
       if (totalNode.textContent !== nextText) {
         totalNode.textContent = nextText;
         totalNode.classList.remove('is-updating');
@@ -392,19 +395,19 @@ const platforms = [
       }
     }
     if (noteNode) noteNode.textContent = hasService
-      ? (isMarketplace ? 'Pazaryeri, ürün adedi ve entegrasyon ihtiyacına göre teklif hazırlanır. Platform masrafları dahil değildir.' : 'Gösterilen tutar standart kapsam için başlangıç fiyatıdır; proje detayına göre değişebilir.')
+      ? (isMarketplace ? 'Pazaryeri, ürün adedi ve entegrasyon ihtiyacına göre teklif hazırlanır. Platform masrafları dahil değildir.' : service?.value === 'premium-infrastructure' ? 'Altyapı, içerik, entegrasyon, dil ve sürekli optimizasyon ihtiyacına göre özel teklif hazırlanır.' : 'Gösterilen tutar standart kapsam için başlangıç fiyatıdır; proje detayına göre değişebilir.')
       : 'İhtiyacınızı seçtiğinizde başlangıç fiyatı anında hesaplanır.';
 
     const serviceText = hasService ? (selectedService?.textContent?.trim() || 'Web projesi') : '';
     const productText = products?.value ? (products?.selectedOptions?.[0]?.textContent?.trim() || '') : '';
     const platformText = platform?.value ? platform.selectedOptions[0].textContent.trim() : 'Henüz seçilmedi';
-    const addonText = (isMarketplace ? [] : addons.filter((input) => input.checked))
+    const addonText = (requiresQuote ? [] : addons.filter((input) => input.checked))
       .map((input) => input.closest('label').querySelector('span').textContent.trim().replace(/\s+/g, ' '))
       .join('; ') || 'Yok';
     const message = 'Merhaba, QCT Commerce fiyat hesaplayıcıdan geldim. Hizmet: ' + serviceText
       + '. Altyapı: ' + platformText + '. Ürün kapsamı: ' + (productText || 'Henüz seçilmedi')
       + '. Ek hizmetler: ' + addonText + '. Başlangıç fiyatı: '
-      + (isMarketplace ? 'özel teklif talep ediyorum' : total > 0 ? money.format(total) + ' TL’den' : 'kapsama göre') + '. Detayları görüşmek istiyorum.';
+      + (requiresQuote ? 'özel teklif talep ediyorum' : total > 0 ? money.format(total) + ' TL’den' : 'kapsama göre') + '. Detayları görüşmek istiyorum.';
     if (whatsapp) {
       whatsapp.classList.toggle('is-disabled', !hasService);
       whatsapp.setAttribute('aria-disabled', String(!hasService));
@@ -414,7 +417,7 @@ const platforms = [
       whatsapp.dataset.analyticsService = service?.value || '';
       whatsapp.dataset.analyticsPlatform = platform?.value || '';
       whatsapp.dataset.analyticsProductScope = products?.value || '';
-      whatsapp.dataset.analyticsPricingValue = !isMarketplace && total > 0 ? String(total) : '';
+      whatsapp.dataset.analyticsPricingValue = !requiresQuote && total > 0 ? String(total) : '';
     }
   }
 

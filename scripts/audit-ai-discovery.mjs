@@ -27,7 +27,10 @@ for (const url of urls) {
 }
 const short = read('llms.txt');
 const full = read('llms-full.txt');
-const headers = read('_headers');
+// Cloudflare accepts either line ending, while the header-block parser below
+// deliberately works on LF. Normalize only this audit input so Windows builds
+// validate the same deployed header semantics as Linux CI.
+const headers = read('_headers').replace(/\r\n?/g, '\n');
 const robots = read('robots.txt');
 for (const [label, content] of [['llms.txt', short], ['llms-full.txt', full]]) {
   for (const route of ['/', '/en/', '/az/', '/fiyatlar/', '/en/pricing/', '/az/qiymetler/']) {

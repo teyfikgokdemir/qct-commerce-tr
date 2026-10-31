@@ -41,6 +41,46 @@ async function screenshot(page, name) {
   if (process.env.P2_SCREENSHOT_DIR) await page.screenshot({ path: resolve(process.env.P2_SCREENSHOT_DIR, name + '.png'), animations: 'disabled' });
 }
 
+test('premium infrastructure routes have reciprocal language alternatives, self canonicals and mobile-safe layouts', async t => {
+  const routes = [
+    { path: '/yeni-nesil-web-altyapisi/', lang: 'tr-TR', alternates: ['/yeni-nesil-web-altyapisi/', '/en/next-generation-web-foundation/', '/az/yeni-nesil-veb-infrastrukturu/'] },
+    { path: '/en/next-generation-web-foundation/', lang: 'en', alternates: ['/yeni-nesil-web-altyapisi/', '/en/next-generation-web-foundation/', '/az/yeni-nesil-veb-infrastrukturu/'] },
+    { path: '/az/yeni-nesil-veb-infrastrukturu/', lang: 'az-AZ', alternates: ['/yeni-nesil-web-altyapisi/', '/en/next-generation-web-foundation/', '/az/yeni-nesil-veb-infrastrukturu/'] },
+  ];
+  for (const route of routes) {
+    const page = await pageFor(t, route.path);
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://qctcommerce.com${route.path}`);
+    assert.equal(await page.locator(`link[rel="alternate"][hreflang="${route.lang}"]`).getAttribute('href'), `https://qctcommerce.com${route.path}`);
+    for (const alternate of route.alternates) assert.equal(await page.locator(`link[rel="alternate"][hreflang]:not([hreflang="x-default"])[href="https://qctcommerce.com${alternate}"]`).count(), 1, `Missing alternate ${alternate}`);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Horizontal overflow on ${route.path}`);
+  }
+});
+
+test('premium infrastructure is discoverable in every service index and gets a scope-only calculator quote', async t => {
+  for (const [path, href] of [['/hizmetler/', '/yeni-nesil-web-altyapisi/'], ['/en/services/', '/en/next-generation-web-foundation/'], ['/az/xidmetler/', '/az/yeni-nesil-veb-infrastrukturu/']]) {
+    const page = await pageFor(t, path);
+    assert.equal(await page.locator(`a[href="${href}"]`).count(), 1, `Missing premium-service link on ${path}`);
+  }
+  for (const [path, href, expectedTotal, expectedMessage, serviceSelector, totalSelector, whatsappSelector] of [
+    ['/', '/yeni-nesil-web-altyapisi/', 'Özel teklif', 'özel teklif talep ediyorum', '[data-service]', '[data-total]', '[data-whatsapp]'],
+    ['/en/', '/en/next-generation-web-foundation/', 'Custom quote', 'scoped proposal', '[data-service]', '[data-total]', '[data-whatsapp]'],
+    ['/az/', '/az/yeni-nesil-veb-infrastrukturu/', 'Xüsusi təklif', 'xüsusi təklif', '[data-az-service]', '[data-az-total]', '[data-az-whatsapp]'],
+  ]) {
+    const page = await pageFor(t, path);
+    assert.equal(await page.locator('.qct-edge').count(), 1, `Missing QCT EDGE launch section on ${path}`);
+    assert.equal(await page.locator(`.qct-edge a[href="${href}"]`).count(), 1, `Missing QCT EDGE service link on ${path}`);
+    assert.equal(await page.locator('.qct-edge').getByText('PERFORMANCE', { exact: true }).count(), 1);
+    assert.equal(await page.locator('.qct-edge').getByText('VISIBILITY', { exact: true }).count(), 1);
+    assert.equal(await page.locator('.qct-edge').getByText('COMMERCE', { exact: true }).count(), 1);
+    assert.equal(await page.locator('.qct-edge').getByText(/34[.,]900/).count(), 0, `Unapproved price claim on ${path}`);
+    await page.locator(serviceSelector).selectOption('premium-infrastructure');
+    assert.equal(await page.locator(totalSelector).textContent(), expectedTotal);
+    const whatsappMessage = new URL(await page.locator(whatsappSelector).getAttribute('href')).searchParams.get('text');
+    assert.ok(whatsappMessage.includes(expectedMessage));
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Horizontal overflow on ${path}`);
+  }
+});
+
 test('commercial SEO routes expose a connected, intent-specific internal link cluster', async t => {
   const cases = [
     { url: '/e-ticaret/', selector: '.qct-ecommerce-pathways__grid', links: ['/ikas-magaza-kurulumu/', '/shopify-magaza-kurulumu/', '/blog/ikas-mi-shopify-mi-2026/'] },
