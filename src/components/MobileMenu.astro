@@ -239,6 +239,7 @@ const isCurrent = (path: string) => currentPath === path;
     background: #090d16 !important;color: #f8fafc !important;transform:translateX(100%)!important;visibility:hidden!important;pointer-events:none!important;
     transition:transform .22s ease,visibility 0s .22s!important;overscroll-behavior:contain!important;contain:layout paint!important;
   }
+  .qctm-panel[aria-hidden="true"]{display:none!important}
   .qctm-panel.is-open{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important;transition-delay:0s!important}
   html.qctm-lock,body.qctm-lock{overflow:hidden!important;overscroll-behavior:none!important}
   .qctm-head{display:flex!important;align-items:center!important;justify-content:space-between!important;padding-bottom:12px!important;border-bottom:1px solid rgba(255, 255, 255, .1)!important}
