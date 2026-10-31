@@ -40,6 +40,22 @@ async function message(page) {
 async function screenshot(page, name) {
   if (process.env.P2_SCREENSHOT_DIR) await page.screenshot({ path: resolve(process.env.P2_SCREENSHOT_DIR, name + '.png'), animations: 'disabled' });
 }
+async function assertNoHorizontalOverflow(page, path) {
+  const measurement = await page.evaluate(() => {
+    const viewportWidth = innerWidth;
+    const selector = element => {
+      if (element.id) return `#${element.id}`;
+      const classes = typeof element.className === 'string' ? element.className.trim().split(/\s+/).filter(Boolean).slice(0, 2) : [];
+      return `${element.tagName.toLowerCase()}${classes.map(name => `.${name}`).join('')}`;
+    };
+    const overflow = [...document.body.querySelectorAll('*')].map(element => {
+      const rect = element.getBoundingClientRect();
+      return { selector: selector(element), left: Math.round(rect.left), right: Math.round(rect.right), scrollWidth: element.scrollWidth, clientWidth: element.clientWidth, position: getComputedStyle(element).position };
+    }).filter(item => item.right > viewportWidth || item.left < 0 || item.scrollWidth > item.clientWidth).slice(0, 24);
+    return { scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, viewportWidth, overflow };
+  });
+  assert.equal(measurement.scrollWidth <= measurement.viewportWidth, true, `Horizontal overflow on ${path}: ${JSON.stringify(measurement)}`);
+}
 
 test('premium infrastructure routes have reciprocal language alternatives, self canonicals and mobile-safe layouts', async t => {
   const routes = [
@@ -52,7 +68,7 @@ test('premium infrastructure routes have reciprocal language alternatives, self 
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://qctcommerce.com${route.path}`);
     assert.equal(await page.locator(`link[rel="alternate"][hreflang="${route.lang}"]`).getAttribute('href'), `https://qctcommerce.com${route.path}`);
     for (const alternate of route.alternates) assert.equal(await page.locator(`link[rel="alternate"][hreflang]:not([hreflang="x-default"])[href="https://qctcommerce.com${alternate}"]`).count(), 1, `Missing alternate ${alternate}`);
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Horizontal overflow on ${route.path}`);
+    await assertNoHorizontalOverflow(page, route.path);
   }
 });
 
@@ -77,7 +93,7 @@ test('premium infrastructure is discoverable in every service index and gets a s
     assert.equal(await page.locator(totalSelector).textContent(), expectedTotal);
     const whatsappMessage = new URL(await page.locator(whatsappSelector).getAttribute('href')).searchParams.get('text');
     assert.ok(whatsappMessage.includes(expectedMessage));
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Horizontal overflow on ${path}`);
+    await assertNoHorizontalOverflow(page, path);
   }
 });
 
