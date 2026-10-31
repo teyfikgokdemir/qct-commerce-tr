@@ -539,9 +539,17 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
   .qcte-contact__value { color: #f8fafc; font-size: .84rem; overflow-wrap: anywhere; font-weight: 650; }
   .qcte-contact__location { color: rgba(243,240,233,.47); font-size: .71rem; font-weight: 650; letter-spacing: .1em; margin-top: .5rem; }
   .qcte-bottom {
+  }
+  .qcte-grid + .qcte-bottom {
+    margin-top: clamp(1.8rem, 3.5vw, 2.75rem);
+  }
+  .qcte-utility + .qcte-bottom {
+    margin-top: 1.15rem;
+  }
+  .qcte-bottom {
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem 1.5rem;
-    padding-top: 1.45rem; margin-top: clamp(2.7rem, 5vw, 4rem);
+    padding-top: 1rem; margin-top: 1.15rem;
     border-top: 1px solid rgba(255, 255, 255, .08);
   }
   .qcte-bottom__brand, .qcte-bottom__legal { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; }
