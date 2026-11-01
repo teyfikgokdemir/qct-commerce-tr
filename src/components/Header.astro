@@ -1798,14 +1798,47 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
     }
 
     #masthead .qctm-toggle {
-      background: rgba(15, 23, 42, 0.05) !important;
-      border-color: rgba(15, 23, 42, 0.12) !important;
-      color: #0f172a !important;
-      border-radius: 12px !important;
+      background: #ffffff !important;
+      border: 1px solid rgba(15, 23, 42, 0.1) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+      width: 38px !important;
+      height: 38px !important;
+      border-radius: 10px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 4px !important;
+      padding: 0 !important;
+      cursor: pointer !important;
+      transition:border-color .18s ease, background-color .18s ease, box-shadow .18s ease!important;
+    }
+
+    #masthead .qctm-toggle:hover,
+    #masthead .qctm-toggle:focus-visible {
+      border-color: rgba(0, 47, 167, 0.35) !important;
+      background: #f8fafc !important;
+      box-shadow: 0 2px 6px rgba(0, 47, 167, 0.12), 0 0 0 3px rgba(0, 47, 167, 0.12) !important;
     }
 
     #masthead .qctm-toggle span {
+      display: block !important;
+      height: 1.5px !important;
       background: #0f172a !important;
+      border-radius: 2px !important;
+      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease !important;
+    }
+
+    #masthead .qctm-toggle span:first-child {
+      width: 16px !important;
+    }
+
+    #masthead .qctm-toggle span:last-child {
+      width: 11px !important;
+    }
+
+    #masthead .qctm-toggle:hover span:last-child {
+      width: 16px !important;
     }
   }
 
