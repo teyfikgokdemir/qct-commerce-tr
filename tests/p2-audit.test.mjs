@@ -149,15 +149,16 @@ test('QCT EDGE is accessible from primary top-level navigation and mobile menu a
 
 test('QCT EDGE launch packages and gift terms are consistent across all published locales', async t => {
   const cases = [
-    {home:'/',detail:'/yeni-nesil-web-altyapisi/',gift:'3 AY DİNAMİK SEO HEDİYE',start:'24.900 TL',tax:'KDV dahil'},
-    {home:'/en/',detail:'/en/next-generation-web-foundation/',gift:'3 MONTHS OF DYNAMIC SEO INCLUDED',start:'24,900 TL',tax:'VAT included'},
-    {home:'/az/',detail:'/az/yeni-nesil-veb-infrastrukturu/',gift:'3 AY DİNAMİK SEO HƏDİYYƏ',start:'24.900 TL',tax:'KDV daxil'},
+    {home:'/',detail:'/yeni-nesil-web-altyapisi/',gift:'3 AY DİNAMİK SEO HEDİYE',start:'24.900 TL',startLabel:'başlangıç'},
+    {home:'/en/',detail:'/en/next-generation-web-foundation/',gift:'3 MONTHS OF DYNAMIC SEO INCLUDED',start:'24,900 TL',startLabel:'starter'},
+    {home:'/az/',detail:'/az/yeni-nesil-veb-infrastrukturu/',gift:'3 AY DİNAMİK SEO HƏDİYYƏ',start:'24.900 TL',startLabel:'başlanğıc'},
   ];
   for (const item of cases) {
     const home = await pageFor(t, item.home);
     const banner = await home.locator('.qct-edge-launch').textContent();
     assert.ok(banner.includes(item.start), item.home+' starting price');
-    assert.ok(banner.includes(item.tax), item.home+' VAT-inclusive price label');
+    assert.ok(banner.includes(item.startLabel), item.home+' clean starting price label without legacy KDV');
+    assert.ok(!banner.includes('KDV dahil') && !banner.includes('KDV daxil') && !banner.includes('VAT included'), item.home+' KDV/VAT label removed');
     assert.ok(banner.includes(item.gift), item.home+' gift');
     const page = await pageFor(t, item.detail);
     const cards = page.locator('.premium-launch__plan');
@@ -165,7 +166,9 @@ test('QCT EDGE launch packages and gift terms are consistent across all publishe
     const offer = await page.locator('.premium-launch').textContent();
     for (const name of ['QCT EDGE Start','QCT EDGE Pro','QCT EDGE Business']) assert.ok(offer.includes(name), item.detail+' '+name);
     assert.ok(offer.includes(item.start), item.detail+' starting price');
-    for (const priceLabel of await page.locator('.premium-launch__starting').allTextContents()) assert.ok(priceLabel.includes(item.tax), item.detail+' VAT-inclusive package label');
+    for (const priceLabel of await page.locator('.premium-launch__starting').allTextContents()) {
+      assert.ok(priceLabel.toLowerCase().includes('başlangıç') || priceLabel.toLowerCase().includes('starting') || priceLabel.toLowerCase().includes('başlanğıc'), item.detail+' starting package label');
+    }
     assert.match(offer, /(?:%20|20%)/, item.detail+' Türkiye VAT rate in terms');
     assert.ok(offer.includes(item.gift), item.detail+' gift');
     assert.match(offer, /2026/);

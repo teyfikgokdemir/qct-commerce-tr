@@ -885,12 +885,7 @@ body {
 .site-footer__bottom { border-top-color: rgba(248, 243, 239, 0.18); }
 .site-footer__bottom p { font-size: 0.95rem !important; }
 
-.qct-whatsapp {
-	background: var(--qct-color-coral) !important;
-	box-shadow: none !important;
-	backdrop-filter: none !important;
-	-webkit-backdrop-filter: none !important;
-}
+.qct-whatsapp { background: linear-gradient(135deg, #002fa7 0%, #1d4ed8 100%) !important; border: 1px solid rgba(255, 255, 255, 0.24) !important; box-shadow: 0 10px 24px rgba(0, 47, 167, 0.4), 0 2px 6px rgba(15, 23, 42, 0.2) !important; color: #ffffff !important; }
 
 /* Cookie styles live in the component; these final rules intentionally normalize them. */
 .qct-cookie-consent {

@@ -114,17 +114,18 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
   .qct-whatsapp {
     left: max(1rem, env(safe-area-inset-left)) !important;
     right: auto !important;
-    background: linear-gradient(145deg, rgba(230, 107, 95, 0.98), rgba(38, 23, 48, 0.98)) !important;
+    background: linear-gradient(135deg, #002fa7 0%, #1d4ed8 100%) !important;
     backdrop-filter: blur(18px) !important;
     -webkit-backdrop-filter: blur(18px) !important;
-    border: 1px solid rgba(255, 122, 115, 0.42) !important;
-    color: #f8f5ef !important;
-    box-shadow: 0 16px 42px rgba(38, 23, 48, 0.32) !important;
+    border: 1px solid rgba(255, 255, 255, 0.24) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(0, 47, 167, 0.4), 0 2px 6px rgba(15, 23, 42, 0.2) !important;
   }
 
   .qct-whatsapp::after {
-    background: #25d366 !important;
-    border: 2px solid #2b1936 !important;
+    background: #22c55e !important;
+    border: 2px solid #002fa7 !important;
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.8) !important;
     border-radius: 50% !important;
     bottom: 3px !important;
     box-sizing: border-box !important;
@@ -137,8 +138,8 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
 
   .qct-whatsapp:hover,
   .qct-whatsapp:focus-visible {
-    border-color: rgba(255, 122, 115, 0.78) !important;
-    box-shadow: 0 20px 48px rgba(38, 23, 48, 0.4), 0 0 0 4px rgba(255, 122, 115, 0.1) !important;
+    border-color: rgba(56, 189, 248, 0.7) !important;
+    box-shadow: 0 14px 34px rgba(0, 47, 167, 0.55), 0 0 0 3px rgba(0, 47, 167, 0.22) !important;
     color: #ffffff !important;
     transform: translateY(-2px) !important;
   }
@@ -159,12 +160,12 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
   .qct-back-to-top {
     right: max(1rem, env(safe-area-inset-right)) !important;
     left: auto !important;
-    background: linear-gradient(145deg, rgba(45, 25, 55, 0.96), rgba(28, 16, 35, 0.96)) !important;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(9, 13, 22, 0.98)) !important;
     backdrop-filter: blur(18px) !important;
     -webkit-backdrop-filter: blur(18px) !important;
-    border: 1px solid rgba(230, 107, 95, 0.42) !important;
-    color: #f8f5ef !important;
-    box-shadow: 0 12px 32px rgba(38, 23, 48, 0.28) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35) !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
@@ -179,8 +180,8 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
   }
 
   .qct-back-to-top:hover {
-    border-color: rgba(230, 107, 95, 0.78) !important;
-    box-shadow: 0 16px 36px rgba(38, 23, 48, 0.36), 0 0 0 3px rgba(230, 107, 95, 0.15) !important;
+    border-color: rgba(56, 189, 248, 0.5) !important;
+    box-shadow: 0 14px 32px rgba(0, 47, 167, 0.35), 0 0 0 3px rgba(0, 47, 167, 0.18) !important;
     color: #ffffff !important;
     transform: translateY(-2px) !important;
   }
