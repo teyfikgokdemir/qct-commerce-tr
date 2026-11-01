@@ -753,33 +753,55 @@
 	border-radius: 999px;
 	border: 1px solid rgba(255, 255, 255, 0.06);
 }
-.qct-work-facts-grid {
+.qct-work-specs {
 	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
+	align-items: center;
+	background: #f8fafc;
+	border: 1px solid rgba(15, 23, 42, 0.09);
+	border-radius: 12px;
+	padding: 10px 16px;
 	margin: 18px 0 22px;
+	max-width: 520px;
+	box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
 }
-.qct-work-fact-pill {
-	display: inline-flex;
+.qct-work-spec-item {
+	display: flex;
 	flex-direction: column;
-	background: rgba(0, 47, 167, 0.04);
-	border: 1px solid rgba(0, 47, 167, 0.12);
-	border-radius: 8px;
-	padding: 6px 12px;
-	min-width: 90px;
+	padding: 2px 18px;
+	border-right: 1px solid rgba(15, 23, 42, 0.09);
 }
-.qct-work-fact-pill small {
+.qct-work-spec-item:first-child {
+	padding-left: 0;
+}
+.qct-work-spec-item:last-child {
+	border-right: none;
+	padding-right: 0;
+}
+.qct-work-spec-label {
 	font-size: 9.5px;
 	font-weight: 700;
 	text-transform: uppercase;
-	letter-spacing: 0.06em;
+	letter-spacing: 0.07em;
 	color: #64748b;
+	line-height: 1.2;
 }
-.qct-work-fact-pill strong {
-	font-size: 12.5px;
+.qct-work-spec-value {
+	font-size: 13px;
 	font-weight: 650;
-	color: #002fa7;
-	margin-top: 2px;
+	color: #0f172a;
+	line-height: 1.35;
+	margin-top: 3px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.qct-spec-live-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #22c55e;
+	box-shadow: 0 0 8px #22c55e;
+	display: inline-block;
 }
 @media (max-width: 640px) {
 	.qct-work-browser-bar {
@@ -794,15 +816,46 @@
 		font-size: 9.5px;
 		padding: 1px 8px;
 	}
-	.qct-work-facts-grid {
-		gap: 6px;
+	.qct-work-specs {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		padding: 10px 14px;
+		background: #f8fafc;
+		border: 1px solid rgba(15, 23, 42, 0.08);
+		border-radius: 12px;
 		margin: 14px 0 18px;
+		max-width: 100%;
 	}
-	.qct-work-fact-pill {
-		padding: 5px 9px;
-		min-width: 0;
+	.qct-work-spec-item {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 8px 0;
+		border-right: none;
+		border-bottom: 1px solid rgba(15, 23, 42, 0.06);
 	}
-	.qct-work-fact-pill strong {
-		font-size: 11.5px;
+	.qct-work-spec-item:first-child {
+		padding-top: 2px;
+	}
+	.qct-work-spec-item:last-child {
+		border-bottom: none;
+		padding-bottom: 2px;
+	}
+	.qct-work-spec-label {
+		font-size: 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: #64748b;
+	}
+	.qct-work-spec-value {
+		font-size: 12px;
+		font-weight: 650;
+		color: #002fa7;
+		text-align: right;
+		margin-top: 0;
 	}
 }
