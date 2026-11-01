@@ -265,33 +265,123 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
         </div>
       </div>
 
-      <!-- DESKTOP ONLY NAVIGATION (Aesthetic 1-Column Dark Dropdown) -->
+      <!-- DESKTOP ONLY NAVIGATION (Luxury 2-Column Mega Flyout) -->
       <div class="desktop-only-menu">
         {isAzerbaijani ? (
           <ul class="primary-menu">
             <li><a href="/az/" aria-current={isCurrent('/az/') ? 'page' : undefined}>Ana səhifə</a></li>
             <li class:list={['menu-item-has-children', { 'is-current': isAzerbaijaniServiceCurrent }]}>
               <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Xidmətlər</span></button>
-              <ul class="sub-menu">
-                <li><a href="/az/xidmetler/">Bütün xidmətlər</a></li>
-                <li><a href="/az/e-ticaret/">E-ticarət</a></li>
-                <li><a href="/az/shopify-magaza-qurulmasi/">Shopify qurulması</a></li>
-                <li><a href="/az/ikas-magaza-qurulmasi/">ikas qurulması</a></li>
-                <li><a href="/az/veb-dizayn/">Veb dizayn</a></li>
-                <li><a href="/az/whatsapp-satis/">WhatsApp satış</a></li>
-                <li><a href="/az/seo-geo/">SEO, GEO, AEO & AIO</a></li>
-                <li><a href="/az/meta-reklamlari/">Meta reklamları</a></li>
-                <li><a href="/az/ai-avtomatlasdirma/">AI avtomatlaşdırma</a></li>
-              </ul>
+              <div class="sub-menu qct-mega-flyout" role="menu">
+                <div class="qct-mega-cols">
+                  <div class="qct-mega-col">
+                    <span class="qct-mega-eyebrow">ƏSAS İNFRASTRUKTUR & DİZAYN</span>
+                    <a href="/az/veb-dizayn/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🌐</span>
+                      <div class="qct-mega-info">
+                        <strong>Veb dizayn</strong>
+                        <small>Yüksək sürətli premium korporativ saytlar</small>
+                      </div>
+                    </a>
+                    <a href="/az/e-ticaret/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🛒</span>
+                      <div class="qct-mega-info">
+                        <strong>E-ticarət</strong>
+                        <small>Shopify & ikas mağaza infrastrukturu</small>
+                      </div>
+                    </a>
+                    <a href="/az/shopify-magaza-qurulmasi/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">⚡</span>
+                      <div class="qct-mega-info">
+                        <strong>Shopify qurulması</strong>
+                        <small>Qlobal satışa hazır onlayn mağazalar</small>
+                      </div>
+                    </a>
+                    <a href="/az/ikas-magaza-qurulmasi/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🛍️</span>
+                      <div class="qct-mega-info">
+                        <strong>ikas qurulması</strong>
+                        <small>Müasir və sürətli e-ticarət mağazası</small>
+                      </div>
+                    </a>
+                    <a href="/az/whatsapp-satis/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">💬</span>
+                      <div class="qct-mega-info">
+                        <strong>WhatsApp satış</strong>
+                        <small>Sifariş və müştəri əlaqə sistemləri</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="qct-mega-col">
+                    <span class="qct-mega-eyebrow">BÖYÜMƏ & AVTOMATLAŞDIRMA</span>
+                    <a href="/az/seo-geo/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🔍</span>
+                      <div class="qct-mega-info">
+                        <strong>SEO, GEO, AEO & AIO</strong>
+                        <small>Google və AI axtarış sistemlərində üstünlük</small>
+                      </div>
+                    </a>
+                    <a href="/az/meta-reklamlari/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">📈</span>
+                      <div class="qct-mega-info">
+                        <strong>Meta reklamları</strong>
+                        <small>Dönüşüm yönümlü hədəfli kampaniyalar</small>
+                      </div>
+                    </a>
+                    <a href="/az/ai-avtomatlasdirma/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🤖</span>
+                      <div class="qct-mega-info">
+                        <strong>AI avtomatlaşdırma</strong>
+                        <small>Təkrarlanan əməliyyatların optimizasiyası</small>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="qct-mega-footer">
+                  <a href="/az/xidmetler/" class="qct-mega-footer-link" role="menuitem">
+                    <span>✨ <strong>Bütün Xidmətlər və Çözüm Xəritəsi</strong></span>
+                    <span class="qct-mega-footer-arrow">Hamısını İncələyin →</span>
+                  </a>
+                </div>
+              </div>
             </li>
             <li class="menu-item-has-children">
               <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimlər üçün</span></button>
-              <ul class="sub-menu">
-                <li><a href="/az/istehsalcilar/">İstehsalçılar</a></li>
-                <li><a href="/az/ixracatcilar/">İxracatçılar</a></li>
-                <li><a href="/az/distributor-b2b/">Distribütor &amp; B2B</a></li>
-                <li><a href="/az/e-ticaret-brendleri/">E-ticarət brendləri</a></li>
-              </ul>
+              <div class="sub-menu qct-audience-flyout" role="menu">
+                <div class="qct-audience-header">
+                  <span class="qct-mega-eyebrow">BİZNES MODELİNİZƏ GÖRƏ BAŞLAYIN</span>
+                </div>
+                <div class="qct-audience-items">
+                  <a href="/az/istehsalcilar/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🏭</span>
+                    <div class="qct-mega-info">
+                      <strong>İstehsalçılar</strong>
+                      <small>Fabrik və sənaye üçün korporativ infrastruktur</small>
+                    </div>
+                  </a>
+                  <a href="/az/ixracatcilar/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">✈️</span>
+                    <div class="qct-mega-info">
+                      <strong>İxracatçılar</strong>
+                      <small>Qlobal bazarlar üçün çoxdilli veb sistemlər</small>
+                    </div>
+                  </a>
+                  <a href="/az/distributor-b2b/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🏢</span>
+                    <div class="qct-mega-info">
+                      <strong>Distribütor & B2B</strong>
+                      <small>Topdansatış və diler idarəetmə həlləri</small>
+                    </div>
+                  </a>
+                  <a href="/az/e-ticaret-brendleri/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🚀</span>
+                    <div class="qct-mega-info">
+                      <strong>E-ticarət brendləri</strong>
+                      <small>İnkişaf edən onlayn mağaza altyapısı</small>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </li>
             <li class="menu-item-edge"><a href="/az/yeni-nesil-veb-infrastrukturu/" aria-current={isCurrent('/az/yeni-nesil-veb-infrastrukturu/') ? 'page' : undefined}>QCT EDGE</a></li>
             <li><a href="/az/isler/" aria-current={isCurrent('/az/isler/') ? 'page' : undefined}>İşlərimiz</a></li>
@@ -303,17 +393,265 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
             <li><a href="/en/" aria-current={isCurrent('/en/') ? 'page' : undefined}>Home</a></li>
             <li class:list={['menu-item-has-children', { 'is-current': isEnglishServiceCurrent }]}>
               <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Solutions</span></button>
-              <ul class="sub-menu">
-                <li><a href="/en/services/">All services</a></li><li><a href="/en/ecommerce/">E-commerce</a></li><li><a href="/en/shopify-store-setup/">Shopify setup</a></li><li><a href="/en/ikas-store-setup/">ikas setup</a></li><li><a href="/en/web-design/">Web design</a></li><li><a href="/en/whatsapp-sales/">WhatsApp sales</a></li><li><a href="/en/search-visibility/">SEO, GEO, AEO & AIO</a></li><li><a href="/en/meta-ads/">Meta ads</a></li><li><a href="/en/ai-automation/">AI automation</a></li>
-              </ul>
+              <div class="sub-menu qct-mega-flyout" role="menu">
+                <div class="qct-mega-cols">
+                  <div class="qct-mega-col">
+                    <span class="qct-mega-eyebrow">CORE INFRASTRUCTURE & DESIGN</span>
+                    <a href="/en/web-design/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🌐</span>
+                      <div class="qct-mega-info">
+                        <strong>Web Design</strong>
+                        <small>High-performance modern corporate interfaces</small>
+                      </div>
+                    </a>
+                    <a href="/en/ecommerce/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🛒</span>
+                      <div class="qct-mega-info">
+                        <strong>E-Commerce</strong>
+                        <small>Shopify, ikas & bespoke online stores</small>
+                      </div>
+                    </a>
+                    <a href="/en/shopify-store-setup/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">⚡</span>
+                      <div class="qct-mega-info">
+                        <strong>Shopify Store Setup</strong>
+                        <small>Global scale enterprise e-commerce</small>
+                      </div>
+                    </a>
+                    <a href="/en/ikas-store-setup/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🛍️</span>
+                      <div class="qct-mega-info">
+                        <strong>ikas Store Setup</strong>
+                        <small>Next-gen fast localized checkout</small>
+                      </div>
+                    </a>
+                    <a href="/en/whatsapp-sales/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">💬</span>
+                      <div class="qct-mega-info">
+                        <strong>WhatsApp Sales</strong>
+                        <small>Conversational commerce & order flows</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="qct-mega-col">
+                    <span class="qct-mega-eyebrow">GROWTH & INTELLIGENCE</span>
+                    <a href="/en/search-visibility/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🔍</span>
+                      <div class="qct-mega-info">
+                        <strong>SEO, GEO, AEO & AIO</strong>
+                        <small>Google & AI engine search dominance</small>
+                      </div>
+                    </a>
+                    <a href="/en/meta-ads/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">📈</span>
+                      <div class="qct-mega-info">
+                        <strong>Meta Ads</strong>
+                        <small>Performance advertising & landing pages</small>
+                      </div>
+                    </a>
+                    <a href="/en/ai-automation/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🤖</span>
+                      <div class="qct-mega-info">
+                        <strong>AI Automation</strong>
+                        <small>Controlled process & data automation</small>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="qct-mega-footer">
+                  <a href="/en/services/" class="qct-mega-footer-link" role="menuitem">
+                    <span>✨ <strong>All Services & Solutions Map</strong></span>
+                    <span class="qct-mega-footer-arrow">Explore Full Spectrum →</span>
+                  </a>
+                </div>
+              </div>
             </li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Who we help</span></button><ul class="sub-menu"><li><a href="/en/manufacturers/">Manufacturers</a></li><li><a href="/en/exporters/">Exporters</a></li><li><a href="/en/distributors-b2b/">Distributors & B2B</a></li><li><a href="/en/ecommerce-brands/">E-commerce brands</a></li></ul></li><li class="menu-item-edge"><a href="/en/next-generation-web-foundation/" aria-current={isCurrent('/en/next-generation-web-foundation/') ? 'page' : undefined}>QCT EDGE</a></li><li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>Work</a></li><li><a href="/en/location/azerbaijan/" aria-current={isCurrent('/en/location/azerbaijan/') ? 'page' : undefined}>Azerbaijan</a></li><li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li><li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li><li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
+            <li class="menu-item-has-children">
+              <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Who we help</span></button>
+              <div class="sub-menu qct-audience-flyout" role="menu">
+                <div class="qct-audience-header">
+                  <span class="qct-mega-eyebrow">TARGETED BY BUSINESS MODEL</span>
+                </div>
+                <div class="qct-audience-items">
+                  <a href="/en/manufacturers/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🏭</span>
+                    <div class="qct-mega-info">
+                      <strong>Manufacturers</strong>
+                      <small>Digital presence for factories & industry</small>
+                    </div>
+                  </a>
+                  <a href="/en/exporters/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">✈️</span>
+                    <div class="qct-mega-info">
+                      <strong>Exporters</strong>
+                      <small>Multilingual infrastructure for global trade</small>
+                    </div>
+                  </a>
+                  <a href="/en/distributors-b2b/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🏢</span>
+                    <div class="qct-mega-info">
+                      <strong>Distributors & B2B</strong>
+                      <small>Dealer networks, wholesale & order portals</small>
+                    </div>
+                  </a>
+                  <a href="/en/ecommerce-brands/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🚀</span>
+                    <div class="qct-mega-info">
+                      <strong>E-commerce brands</strong>
+                      <small>High-growth D2C stores & conversion setups</small>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item-edge"><a href="/en/next-generation-web-foundation/" aria-current={isCurrent('/en/next-generation-web-foundation/') ? 'page' : undefined}>QCT EDGE</a></li>
+            <li><a href="/en/work/" aria-current={isCurrent('/en/work/') ? 'page' : undefined}>Work</a></li>
+            <li><a href="/en/location/azerbaijan/" aria-current={isCurrent('/en/location/azerbaijan/') ? 'page' : undefined}>Azerbaijan</a></li>
+            <li><a href="/en/how-we-work/" aria-current={isCurrent('/en/how-we-work/') ? 'page' : undefined}>How we work</a></li>
+            <li><a href="/en/audit/" aria-current={isCurrent('/en/audit/') ? 'page' : undefined}>Audit</a></li>
+            <li><a href="/en/contact/" aria-current={isCurrent('/en/contact/') ? 'page' : undefined}>Contact</a></li>
           </ul>
         ) : (
           <ul class="primary-menu">
             <li><a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Ana sayfa</a></li>
-            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button><ul class="sub-menu"><li><a href="/hizmetler/">Tüm hizmetler</a></li><li><a href="/e-ticaret/">E-ticaret altyapısı</a></li><li><a href="/pazaryeri-kurulumu/">Pazaryeri kurulumu</a></li><li><a href="/amazon-turkiye-magaza-kurulumu/">Amazon Türkiye</a></li><li><a href="/amazon-amerika-magaza-kurulumu/">Amazon Amerika</a></li><li><a href="/shopify-magaza-kurulumu/">Shopify kurulum</a></li><li><a href="/ikas-magaza-kurulumu/">ikas kurulum</a></li><li><a href="/web-tasarim/">Web tasarım</a></li><li><a href="/whatsapp-satis/">WhatsApp satış sistemleri</a></li><li><a href="/seo-geo/">SEO, GEO, AEO ve AIO</a></li><li><a href="/meta-reklamlari/">Meta reklamları</a></li><li><a href="/yapay-zeka-otomasyonlari/">Yapay zekâ otomasyonları</a></li></ul></li>
-            <li class="menu-item-has-children"><button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button><ul class="sub-menu"><li><a href="/ureticiler/">Üreticiler</a></li><li><a href="/ihracatcilar/">İhracatçılar</a></li><li><a href="/distributor-b2b/">Distribütör & B2B</a></li><li><a href="/e-ticaret-markalari/">E-ticaret markaları</a></li></ul></li><li class="menu-item-edge"><a href="/yeni-nesil-web-altyapisi/" aria-current={isCurrent('/yeni-nesil-web-altyapisi/') ? 'page' : undefined}>QCT EDGE</a></li><li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li><li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li><li><a href="/iletisim/">İletişim</a></li>
+            <li class:list={['menu-item-has-children', { 'is-current': isServiceCurrent }]}>
+              <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Hizmetler</span></button>
+              <div class="sub-menu qct-mega-flyout" role="menu">
+                <div class="qct-mega-cols">
+                  <div class="qct-mega-col">
+                    <span class="qct-mega-eyebrow">ÇEKİRDEK ALTYAPI & TASARIM</span>
+                    <a href="/web-tasarim/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🌐</span>
+                      <div class="qct-mega-info">
+                        <strong>Web Tasarım</strong>
+                        <small>Modern kurumsal arayüz & yüksek hız</small>
+                      </div>
+                    </a>
+                    <a href="/e-ticaret/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🛒</span>
+                      <div class="qct-mega-info">
+                        <strong>E-Ticaret Altyapısı</strong>
+                        <small>Shopify, ikas & kurumsal mağaza</small>
+                      </div>
+                    </a>
+                    <a href="/shopify-magaza-kurulumu/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">⚡</span>
+                      <div class="qct-mega-info">
+                        <strong>Shopify Kurulum</strong>
+                        <small>Küresel ölçekte e-ticaret altyapısı</small>
+                      </div>
+                    </a>
+                    <a href="/ikas-magaza-kurulumu/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🛍️</span>
+                      <div class="qct-mega-info">
+                        <strong>ikas Kurulum</strong>
+                        <small>Yeni nesil hızlı yerli e-ticaret</small>
+                      </div>
+                    </a>
+                    <a href="/whatsapp-satis/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">💬</span>
+                      <div class="qct-mega-info">
+                        <strong>WhatsApp Satış Sistemleri</strong>
+                        <small>Sipariş ve bağlamlı dönüşüm akışları</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="qct-mega-col">
+                    <span class="qct-mega-eyebrow">BÜYÜME, SEO & PAZARYERLERİ</span>
+                    <a href="/seo-geo/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🔍</span>
+                      <div class="qct-mega-info">
+                        <strong>SEO, GEO, AEO ve AIO</strong>
+                        <small>Google ve yapay zekâda görünürlük</small>
+                      </div>
+                    </a>
+                    <a href="/meta-reklamlari/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">📈</span>
+                      <div class="qct-mega-info">
+                        <strong>Meta Reklamları</strong>
+                        <small>Dönüşüm odaklı reklam & landing</small>
+                      </div>
+                    </a>
+                    <a href="/pazaryeri-kurulumu/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">📦</span>
+                      <div class="qct-mega-info">
+                        <strong>Pazaryeri Kurulumu</strong>
+                        <small>Trendyol, Hepsiburada & çok kanallı satış</small>
+                      </div>
+                    </a>
+                    <a href="/amazon-turkiye-magaza-kurulumu/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🏷️</span>
+                      <div class="qct-mega-info">
+                        <strong>Amazon Türkiye</strong>
+                        <small>Amazon.com.tr mağaza & operasyon</small>
+                      </div>
+                    </a>
+                    <a href="/amazon-amerika-magaza-kurulumu/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🌍</span>
+                      <div class="qct-mega-info">
+                        <strong>Amazon Amerika</strong>
+                        <small>Amazon.com küresel satış & FBA</small>
+                      </div>
+                    </a>
+                    <a href="/yapay-zeka-otomasyonlari/" class="qct-mega-item" role="menuitem">
+                      <span class="qct-mega-icon">🤖</span>
+                      <div class="qct-mega-info">
+                        <strong>Yapay Zekâ Otomasyonları</strong>
+                        <small>Veri ve iş akışı optimizasyonu</small>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="qct-mega-footer">
+                  <a href="/hizmetler/" class="qct-mega-footer-link" role="menuitem">
+                    <span>✨ <strong>Tüm Hizmetleri ve Çözüm Haritasını Keşfedin</strong></span>
+                    <span class="qct-mega-footer-arrow">Tümünü İnceleyin →</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item-has-children">
+              <button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle><span>Kimler için</span></button>
+              <div class="sub-menu qct-audience-flyout" role="menu">
+                <div class="qct-audience-header">
+                  <span class="qct-mega-eyebrow">İŞLETME TİPİNİZE GÖRE ÇÖZÜMLER</span>
+                </div>
+                <div class="qct-audience-items">
+                  <a href="/ureticiler/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🏭</span>
+                    <div class="qct-mega-info">
+                      <strong>Üreticiler</strong>
+                      <small>Fabrika, sanayi ve B2B odaklı dijital altyapı</small>
+                    </div>
+                  </a>
+                  <a href="/ihracatcilar/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">✈️</span>
+                    <div class="qct-mega-info">
+                      <strong>İhracatçılar</strong>
+                      <small>Çok dilli küresel pazar ve ürün katalogları</small>
+                    </div>
+                  </a>
+                  <a href="/distributor-b2b/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🏢</span>
+                    <div class="qct-mega-info">
+                      <strong>Distribütör & B2B</strong>
+                      <small>Bayi ağı, toptan sipariş ve ürün yönetimi</small>
+                    </div>
+                  </a>
+                  <a href="/e-ticaret-markalari/" class="qct-mega-item" role="menuitem">
+                    <span class="qct-mega-icon">🚀</span>
+                    <div class="qct-mega-info">
+                      <strong>E-ticaret markaları</strong>
+                      <small>Ölçeklenen D2C mağaza ve büyüme altyapısı</small>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item-edge"><a href="/yeni-nesil-web-altyapisi/" aria-current={isCurrent('/yeni-nesil-web-altyapisi/') ? 'page' : undefined}>QCT EDGE</a></li>
+            <li><a href="/calismalar/" aria-current={isCurrent('/calismalar/') ? 'page' : undefined}>Çalışmalar</a></li>
+            <li><a href="/fiyatlar/" aria-current={isCurrent('/fiyatlar/') ? 'page' : undefined}>Fiyatlar</a></li>
+            <li><a href="/iletisim/">İletişim</a></li>
           </ul>
         )}
       </div>
@@ -383,7 +721,7 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
       padding: 0 !important;
     }
 
-    .sub-menu a {
+    .sub-menu:not(.qct-mega-flyout):not(.qct-audience-flyout) a {
       background: transparent !important;
       border: none !important;
       color: #f1f2f6 !important;
@@ -1670,42 +2008,186 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
       font-weight: 700 !important;
     }
 
-    /* Submenu popover - Elite Glass */
+    /* Luxury 2-Column Mega Flyout & Audience Flyout */
+    #masthead .menu-item-has-children {
+      position: relative;
+    }
+
     #masthead .menu-item-has-children .sub-menu {
       position: absolute !important;
       top: calc(100% + 10px) !important;
       left: 0 !important;
-      width: 270px !important;
-      min-width: 270px !important;
+      background: rgba(255, 255, 255, 0.98) !important;
+      backdrop-filter: blur(24px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+      border: 1px solid rgba(15, 23, 42, 0.09) !important;
+      border-radius: 20px !important;
+      box-shadow: 0 28px 68px -12px rgba(15, 23, 42, 0.20), 0 0 0 1px rgba(0, 47, 167, 0.05) !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      z-index: 9999 !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+
+    #masthead .menu-item-has-children .sub-menu.qct-mega-flyout {
+      width: 630px !important;
+      min-width: 630px !important;
+      max-width: calc(100vw - 40px) !important;
+      left: -40px !important;
+    }
+
+    #masthead .menu-item-has-children .sub-menu.qct-audience-flyout {
+      width: 380px !important;
+      min-width: 380px !important;
+      left: -20px !important;
+    }
+
+    .qct-mega-cols {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 12px !important;
+      padding: 16px 18px 14px !important;
       background: #ffffff !important;
-      border: 1px solid rgba(15, 23, 42, 0.08) !important;
-      border-radius: 16px !important;
-      box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(0, 47, 167, 0.04) !important;
-      padding: 8px !important;
+    }
+
+    .qct-mega-col {
       display: flex !important;
       flex-direction: column !important;
       gap: 3px !important;
-      z-index: 9999 !important;
     }
 
-    #masthead .menu-item-has-children .sub-menu a {
+    .qct-audience-items {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+      padding: 6px 14px 14px !important;
+      background: #ffffff !important;
+    }
+
+    .qct-audience-header {
+      padding: 14px 18px 2px !important;
+      background: #ffffff !important;
+    }
+
+    .qct-mega-eyebrow {
+      display: block !important;
+      font-size: 10px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.09em !important;
+      text-transform: uppercase !important;
+      color: #64748b !important;
+      padding: 4px 8px 8px !important;
+      margin: 0 !important;
+      line-height: 1.2 !important;
+    }
+
+    #masthead .sub-menu .qct-mega-item {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 11px !important;
+      padding: 8px 10px !important;
+      border-radius: 11px !important;
+      text-decoration: none !important;
       background: transparent !important;
-      border: none !important;
-      color: #1e293b !important;
-      font-size: 0.86rem !important;
-      font-weight: 600 !important;
-      padding: 9px 12px !important;
+      border: 1px solid transparent !important;
+      transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      box-sizing: border-box !important;
+    }
+
+    #masthead .sub-menu .qct-mega-item:hover,
+    #masthead .sub-menu .qct-mega-item:focus-visible {
+      background: rgba(0, 47, 167, 0.045) !important;
+      border-color: rgba(0, 47, 167, 0.08) !important;
+      transform: translateX(2px) !important;
+    }
+
+    .qct-mega-icon {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 32px !important;
+      height: 32px !important;
       border-radius: 8px !important;
+      background: rgba(0, 47, 167, 0.05) !important;
+      font-size: 15px !important;
+      flex-shrink: 0 !important;
+      margin-top: 1px !important;
+      transition: all 0.16s ease !important;
+    }
+
+    #masthead .sub-menu .qct-mega-item:hover .qct-mega-icon {
+      background: rgba(0, 47, 167, 0.12) !important;
+      transform: scale(1.06) !important;
+    }
+
+    .qct-mega-info {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2px !important;
+      text-align: left !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+    }
+
+    .qct-mega-info strong {
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+      line-height: 1.3 !important;
+      letter-spacing: -0.01em !important;
+      transition: color 0.16s ease !important;
+    }
+
+    #masthead .sub-menu .qct-mega-item:hover .qct-mega-info strong {
+      color: #002fa7 !important;
+    }
+
+    .qct-mega-info small {
+      font-size: 11.5px !important;
+      font-weight: 450 !important;
+      color: #64748b !important;
+      line-height: 1.35 !important;
+    }
+
+    .qct-mega-footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.07) !important;
+      background: linear-gradient(180deg, rgba(248, 250, 252, 0.96), rgba(241, 245, 249, 0.98)) !important;
+      padding: 12px 20px !important;
+    }
+
+    #masthead .sub-menu .qct-mega-footer-link {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      transition: background 160ms ease, color 160ms ease !important;
+      text-decoration: none !important;
+      font-size: 12.5px !important;
+      color: #1e293b !important;
+      font-weight: 600 !important;
+      padding: 4px 6px !important;
+      background: transparent !important;
+      border-radius: 8px !important;
+      transition: all 0.16s ease !important;
     }
 
-    #masthead .menu-item-has-children .sub-menu a:hover,
-    #masthead .menu-item-has-children .sub-menu a:focus-visible {
-      background: rgba(0, 47, 167, 0.06) !important;
+    #masthead .sub-menu .qct-mega-footer-link:hover {
+      background: rgba(0, 47, 167, 0.05) !important;
       color: #002fa7 !important;
+    }
+
+    .qct-mega-footer-arrow {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      color: #002fa7 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      transition: transform 0.16s ease !important;
+    }
+
+    #masthead .sub-menu .qct-mega-footer-link:hover .qct-mega-footer-arrow {
+      transform: translateX(4px) !important;
     }
 
     #masthead .qct-desktop-right {

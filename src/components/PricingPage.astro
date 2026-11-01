@@ -21,7 +21,7 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
 >
 <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <Header slot="header" lang="tr" />
-<link rel="stylesheet" href="/styles/qct-v2.css?v=20261101-elite-v1" />
+<link rel="stylesheet" href="/styles/qct-v2.css?v=20261101-elite-v2" />
 <div class="qct-v2">
 <section class="qct-pricing-hero"><div class="qct-shell">
   <p class="qct-eyebrow">ŞEFFAF VE ÖNGÖRÜLEBİLİR YATIRIM · 2026</p>
@@ -81,7 +81,13 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
     <article><div class="qct-price-info"><span>E-ticaret — kapsamlı</span><p>Özel tasarım, yüksek ürün hacmi, B2B fiyatlandırma, özel checkout, ERP/CRM, pazaryeri veya diğer ileri entegrasyonlar.</p></div><div class="qct-price-tag"><strong>25.000 TL’den</strong><small>Proje bazlı</small></div></article>
     <article><div class="qct-price-info"><span>Platform taşıma</span><p>25 ürüne veya 10 içerik sayfasına kadar temel taşıma, URL eşleme ve yönlendirme planı. Yüksek hacim ve karmaşık veri dönüşümü ayrıca.</p></div><div class="qct-price-tag"><strong>7.900 TL’den</strong><small>Küçük hacimli başlangıç</small></div></article>
   </div>
-  <p class="qct-pricing-disclaimer">Platforma göre detaylı kapsam: <a href="/ikas-magaza-kurulumu/">ikas mağaza kurulumu</a> · <a href="/shopify-magaza-kurulumu/">Shopify mağaza kurulumu</a> · <a href="/blog/ikas-mi-shopify-mi-2026/">ikas–Shopify karşılaştırması</a>. Bunlar QCT Commerce hizmet bedelleridir; platform abonelikleri ayrıca değerlendirilir.</p>
+    <div class="qct-pricing-disclaimer qct-pricing-disclaimer--strip">
+    <div class="qct-pricing-disclaimer__main">
+      <span class="qct-pricing-disclaimer__badge">Platform Kapsamı</span>
+      <span><a href="/ikas-magaza-kurulumu/">ikas kurulumu</a> · <a href="/shopify-magaza-kurulumu/">Shopify kurulumu</a> · <a href="/blog/ikas-mi-shopify-mi-2026/">ikas–Shopify karşılaştırması</a></span>
+    </div>
+    <span class="qct-pricing-disclaimer__sub">QCT Commerce hizmet bedelleridir; platform abonelikleri ayrıca değerlendirilir.</span>
+  </div>
   </div>
 
   <div class="qct-price-category"><div><p class="qct-section-label">MEVCUT SİTE</p><h2>Analiz, yenileme ve teknik iyileştirme</h2></div><div class="qct-price-rows">
@@ -105,7 +111,13 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
     <article><div class="qct-price-info"><span>101–250 ürün</span><p>Standart ürün giriş kapsamı; dosya yapısı ve varyant yoğunluğu önceden kontrol edilir.</p></div><div class="qct-price-tag"><strong>7.900 TL</strong><small>Standart veri hazırsa</small></div></article>
     <article><div class="qct-price-info"><span>251–500 ürün</span><p>Toplu veri işleme gereksinimine göre teklif öncesi örnek ürün kontrolü yapılır.</p></div><div class="qct-price-tag"><strong>12.900 TL</strong><small>Standart veri hazırsa</small></div></article>
   </div></div>
-  <p class="qct-pricing-disclaimer"><strong>Ürün girişi kuralı:</strong> Ayrı SKU ile yönetilen karmaşık varyantlar, açıklama yazımı, çeviri, görsel kesme/düzenleme, veri temizliği ve tedarikçiden bilgi toplama standart ürün giriş ücretine dahil değildir.</p>
+    <div class="qct-pricing-disclaimer qct-pricing-disclaimer--strip">
+    <div class="qct-pricing-disclaimer__main">
+      <span class="qct-pricing-disclaimer__badge">Ürün Girişi Kuralı</span>
+      <span>Standart ürün verisi hazır olduğunda geçerlidir.</span>
+    </div>
+    <span class="qct-pricing-disclaimer__sub">Ayrı SKU'lu karmaşık varyantlar, görsel temizleme ve çeviri standart pakete dahil değildir.</span>
+  </div>
 </div></section>
 
 <section class="qct-benefits" aria-labelledby="pricing-scope-title"><div class="qct-shell">

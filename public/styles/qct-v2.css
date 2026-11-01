@@ -1050,3 +1050,74 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
   .qct-price-rows article{flex-direction:column;align-items:flex-start;gap:14px;padding:18px}
   .qct-price-tag{align-items:flex-start}
 }
+
+
+/* Luxury 1-Line Pricing Disclaimer Strip */
+.qct-pricing-disclaimer--strip {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  padding: 12px 20px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(90deg, rgba(248, 250, 252, 0.98), rgba(241, 245, 249, 0.92)) !important;
+  border: 1px solid rgba(0, 47, 167, 0.12) !important;
+  border-left: 3.5px solid var(--qct-accent, #002fa7) !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04) !important;
+  margin-top: 26px !important;
+}
+.qct-pricing-disclaimer__main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #1e293b;
+  font-weight: 550;
+  white-space: nowrap;
+}
+.qct-pricing-disclaimer__badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #002fa7;
+  background: rgba(0, 47, 167, 0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.qct-pricing-disclaimer__main a {
+  color: #002fa7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+.qct-pricing-disclaimer__main a:hover {
+  color: #e66b5f;
+}
+.qct-pricing-disclaimer__sub {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 450;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .qct-pricing-disclaimer--strip {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    padding: 12px 14px !important;
+  }
+  .qct-pricing-disclaimer__main {
+    flex-wrap: wrap;
+    white-space: normal;
+    font-size: 12px;
+  }
+  .qct-pricing-disclaimer__sub {
+    white-space: normal;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}

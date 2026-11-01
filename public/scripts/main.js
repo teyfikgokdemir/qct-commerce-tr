@@ -90,7 +90,7 @@
 		}
 
 		if (panel) {
-			panel.style.maxHeight = '520px';
+			panel.style.maxHeight = '680px';
 			panel.style.opacity = '1';
 			panel.style.pointerEvents = 'auto';
 			panel.style.transform = 'translateY(0)';
