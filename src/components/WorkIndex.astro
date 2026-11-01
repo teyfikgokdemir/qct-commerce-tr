@@ -39,12 +39,26 @@ const itemListSchema = {
       {workCases.map((item, index) => (
         <article class="qct-work-card">
           <a class="qct-work-card__image" href={`/calismalar/${item.slug}/`} aria-label={`${item.name} çalışmasını görüntüleyin`}>
-            <img src={item.image.src} width={item.image.width} height={item.image.height} alt={item.image.alt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <div class="qct-work-browser-frame">
+              <div class="qct-work-browser-bar">
+                <span class="qct-work-browser-dots"><i /><i /><i /></span>
+                <span class="qct-work-browser-url">{item.liveUrl.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}</span>
+              </div>
+              <img src={item.image.src} width={item.image.width} height={item.image.height} alt={item.image.alt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+            </div>
           </a>
           <div class="qct-work-card__body">
             <div class="qct-work-card__meta"><span>{item.sector}</span></div>
             <h2>{item.name}</h2>
             <p>{item.summary}</p>
+            <div class="qct-work-facts-grid">
+              {item.facts.map((fact) => (
+                <div class="qct-work-fact-pill">
+                  <small>{fact.label}</small>
+                  <strong>{fact.value}</strong>
+                </div>
+              ))}
+            </div>
             <a class="qct-work-link" href={`/calismalar/${item.slug}/`}>{item.name} vaka çalışmasını okuyun <span aria-hidden="true">→</span></a>
           </div>
         </article>
