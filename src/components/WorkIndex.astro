@@ -51,14 +51,14 @@ const itemListSchema = {
             <div class="qct-work-card__meta"><span>{item.sector}</span></div>
             <h2>{item.name}</h2>
             <p>{item.summary}</p>
-            <div class="qct-work-specs">
+            <div class="qct-work-facts-grid">
               {item.facts.map((fact) => (
-                <div class="qct-work-spec-item">
-                  <span class="qct-work-spec-label">{fact.label}</span>
-                  <span class="qct-work-spec-value">
+                <div class="qct-work-fact-pill">
+                  <small>{fact.label}</small>
+                  <strong>
                     {fact.value.toLowerCase().includes('canlı') && <span class="qct-spec-live-dot" aria-hidden="true"></span>}
                     {fact.value}
-                  </span>
+                  </strong>
                 </div>
               ))}
             </div>
