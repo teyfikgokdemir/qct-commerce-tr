@@ -1,6 +1,7 @@
 ---
 import CookieConsent from '../components/CookieConsent.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import EdgeToast from '../components/EdgeToast.astro';
 import { localeParityClusters } from '../data/locale-parity.js';
 
 const SITE_URL = 'https://qctcommerce.com';
@@ -234,6 +235,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   </div>
   <CookieConsent lang={lang} />
   <WhatsAppButton lang={lang} />
+  <EdgeToast lang={lang} currentPath={currentPath} isHome={isHome} />
   <script>import '../scripts/analytics';</script>
   <script src="/scripts/main.js?v=20261028-native-video" is:inline></script>
   <script src="https://teyfikgokdemir.com/cansu-source-beacon.js" data-site="qct-commerce-tr" defer></script>
