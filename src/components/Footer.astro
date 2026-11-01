@@ -122,11 +122,7 @@ const legalLinks = isAzerbaijani ? [
   ['Kullanım koşulları','/kullanim-kosullari/'],
   ['Çerez politikası','/cerez-politikasi/'],
 ];
-const marqueePhrases = isAzerbaijani
-  ? ['VEB DİZAYN', 'E-TİCARƏT', 'RƏQƏMSAL GÖRÜNÜRLÜK', 'AI AVTOMATLAŞDIRMA']
-  : isEnglish
-    ? ['WEB DESIGN', 'E-COMMERCE', 'SEARCH VISIBILITY', 'AI AUTOMATION']
-    : ['WEB TASARIM', 'E-TİCARET', 'DİJİTAL GÖRÜNÜRLÜK', 'YAPAY ZEKÂ OTOMASYONU'];
+
 
 const audienceLinks = isAzerbaijani ? [
   ['İstehsalçılar', '/az/istehsalcilar/'],
@@ -218,17 +214,6 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
 
 ---
 <footer id="colophon" class="site-footer site-footer--editorial">
-  <div class="qcte-marquee" aria-hidden="true">
-    <div class="qcte-marquee__track">
-      <div class="qcte-marquee__group">
-        {marqueePhrases.map((phrase) => <span>{phrase}</span>)}
-      </div>
-      <div class="qcte-marquee__group" aria-hidden="true">
-        {marqueePhrases.map((phrase) => <span>{phrase}</span>)}
-      </div>
-    </div>
-  </div>
-
   <div class="container qcte-editorial">
     <div class="qcte-editorial__lead">
       <div class="qcte-brand">
@@ -366,36 +351,6 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
       radial-gradient(ellipse 55% 200px at 50% 0, rgba(243, 240, 233, .05), transparent 80%),
       radial-gradient(circle at 13% 25%, rgba(243, 240, 233, .025), transparent 30%);
   }
-  .qcte-marquee {
-    position: relative;
-    height: clamp(3.4rem, 5.2vw, 4.8rem);
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    pointer-events: none;
-    user-select: none;
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
-    background: rgba(255,255,255,.012);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
-  }
-  .qcte-marquee__track { display: flex; width: max-content; animation: qcte-scroll 40s linear infinite; }
-  .qcte-marquee__group {
-    display: flex; align-items: center; flex: 0 0 auto;
-    gap: clamp(1.8rem, 3vw, 3rem); padding-right: clamp(1.8rem, 3vw, 3rem);
-  }
-  .qcte-marquee__group span {
-    display: block;
-    font-size: clamp(1.8rem, 3.8vw, 3.15rem);
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: -.04em;
-    white-space: nowrap;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(0, 47, 167, .55);
-    opacity: .88;
-  }
-  @keyframes qcte-scroll { to { transform: translateX(-50%); } }
   .qcte-editorial {
     position: relative;
     z-index: 1;
@@ -568,8 +523,6 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
     .qcte-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 2.2rem; }
   }
   @media(max-width: 600px) {
-    .qcte-marquee { height: 3.1rem; }
-    .qcte-marquee__group span { font-size: 1.65rem; }
     .qcte-editorial { padding-top: 2.4rem; }
     .qcte-brand__title { font-size: clamp(1.65rem,7vw,2rem) !important; }
     .qcte-desk { padding: 1.4rem; }
@@ -586,7 +539,6 @@ const contactHref = isAzerbaijani ? '/az/elaqe/' : isEnglish ? '/en/contact/' : 
     .qcte-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media(prefers-reduced-motion:reduce) {
-    .qcte-marquee__track { animation: none; transform: none; }
     .qcte-desk__button, .qcte-col a { transition: none; }
   }
 </style>
