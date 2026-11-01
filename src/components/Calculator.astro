@@ -1,16 +1,1042 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'; import Header from './Header.astro'; import Footer from './Footer.astro';
-const { kind } = Astro.props as { kind: 'marketplace'|'website'|'ecommerce' };
-const copy = kind === 'marketplace' ? { title:'Pazaryeri Komisyon Hesaplayıcı', description:'Pazaryeri satışınızda komisyon, operasyon, kâr ve kendi e-ticaret sitenizle yıllık maliyet farkını hesaplayın.', label:'Pazaryeri maliyetini gerçek verinizle görün.' } : kind === 'website' ? { title:'Web Sitesi Fiyat Hesaplayıcı', description:'Site kapsamına göre kesin fiyat yerine anlamlı bir tahmini proje aralığı ve doğru hizmet yönlendirmesi alın.', label:'Kapsamı seçin, tahmini aralığı görün.' } : { title:'E-Ticaret Maliyet Hesaplayıcı', description:'Pazaryeri, hazır altyapı, WooCommerce ve özel e-ticaret sitesini ilk kurulum, aylık gider ve yıllık toplam maliyetle karşılaştırın.', label:'Kanal maliyetini aynı varsayımlarla karşılaştırın.' };
-const breadcrumbs=[{name:'Ana sayfa',url:'/'},{name:'Araçlar',url:'/tr/araclar/'},{name:copy.title,url:`/tr/araclar/${kind==='marketplace'?'pazaryeri-komisyon-hesaplama':kind==='website'?'web-sitesi-fiyat-hesaplama':'e-ticaret-maliyet-hesaplama'}/`}];
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+const { kind } = Astro.props as { kind: 'marketplace' | 'website' | 'ecommerce' };
+
+const copy = kind === 'marketplace'
+  ? {
+      title: 'Pazaryeri Komisyon Hesaplayıcı',
+      description: 'Pazaryeri satışınızda komisyon, kargo, reklam, operasyon ve kendi e-ticaret sitenizle yıllık maliyet farkını adil verilerle hesaplayın.',
+      label: 'Kanal maliyetini ve net kârlılığı şeffaf verilerinizle görün.'
+    }
+  : kind === 'website'
+    ? {
+        title: 'Web Sitesi Fiyat Hesaplayıcı',
+        description: 'Site kapsamına göre kesin fiyat yerine anlamlı bir tahmini proje yatırım aralığı ve doğru hizmet yönlendirmesi alın.',
+        label: 'Kapsamı seçin, tahmini yatırım aralığını görün.'
+      }
+    : {
+        title: 'E-Ticaret Maliyet Hesaplayıcı',
+        description: 'Pazaryeri, hazır altyapı, WooCommerce ve özel e-ticareti ilk kurulum, aylık altyapı, reklam ve komisyon giderleriyle şeffafça karşılaştırın.',
+        label: 'Tüm satış modellerini aynı varsayımlarla kıyaslayın.'
+      };
+
+const breadcrumbs = [
+  { name: 'Ana sayfa', url: '/' },
+  { name: 'Araçlar', url: '/tr/araclar/' },
+  {
+    name: copy.title,
+    url: `/tr/araclar/${kind === 'marketplace' ? 'pazaryeri-komisyon-hesaplama' : kind === 'website' ? 'web-sitesi-fiyat-hesaplama' : 'e-ticaret-maliyet-hesaplama'}/`
+  }
+];
+
+const webOptions = [
+  { label: 'Çok dil altyapısı', desc: 'İngilizce / ek diller, URL yapısı ve hreflang' },
+  { label: 'İleri düzey e-ticaret / B2B', desc: 'Özel fiyatlandırma, bayi portalı veya ERP' },
+  { label: 'Özel ödeme & POS entegrasyonu', desc: 'Banka sanal POS veya özel gateway' },
+  { label: 'Rezervasyon & randevu sistemi', desc: 'Takvim, zaman aralığı ve bildirimler' },
+  { label: 'CRM & veri entegrasyonu', desc: 'HubSpot, Zoho veya özel müşteri akışı' },
+  { label: 'WhatsApp satış akışları', desc: 'Doğrudan sipariş ve bağlamlı mesajlaşma' },
+  { label: 'Özel UI/UX tasarım sprinti', desc: 'Sıfırdan Figma tasarım ve özel mikroyapı' },
+  { label: 'SEO Care (Teknik SEO)', desc: 'Arama motoru indeks ve metadata optimizasyonu' },
+  { label: 'GEO, AEO & AI görünürlüğü', desc: 'ChatGPT, Perplexity ve Google AI uyumu' },
+  { label: 'Blog & içerik altyapısı', desc: 'Dinamik makale ve rehber içerik sistemi' }
+];
 ---
-<BaseLayout title={`${copy.title} | QCT Commerce`} description={copy.description} lang="tr" breadcrumbs={breadcrumbs}><Header slot="header" lang="tr"/><main class="calc"><header class="calc__hero container"><p>ÜCRETSİZ ARAÇ</p><h1>{copy.title}</h1><div>{copy.label}</div></header><section class="container calc__shell" data-calculator={kind}>
-{kind === 'marketplace' && <><div class="calc__form"><h2>Pazaryeri satış verileri</h2><label>Ürün satış fiyatı (TL)<input name="price" type="number" value="1000" min="0" /></label><label>Ürün maliyeti (TL)<input name="cost" type="number" value="400" min="0" /></label><label>KDV oranı (%)<input name="vat" type="number" value="20" min="0" /></label><label>Pazaryeri komisyon oranı (%)<input name="commission" type="number" value="18" min="0" /></label><label>Kargo maliyeti (TL)<input name="shipping" type="number" value="65" min="0" /></label><label>Reklam maliyeti / ürün (TL)<input name="ads" type="number" value="45" min="0" /></label><label>Diğer operasyon maliyeti / ürün (TL)<input name="operations" type="number" value="25" min="0" /></label><label>Aylık satış adedi<input name="volume" type="number" value="200" min="0" /></label><hr/><h2>Kendi e-ticaret siteniz</h2><label>Ödeme altyapısı komisyonu (%)<input name="payment" type="number" value="3.5" min="0" /></label><label>Aylık site maliyeti (TL)<input name="site" type="number" value="3000" min="0" /></label><label>Tahmini reklam maliyeti / ürün (TL)<input name="ownAds" type="number" value="55" min="0" /></label></div><div class="calc__results"><p>CANLI SONUÇ</p><h2>Satış başına ve yıllık maliyet</h2><div class="calc__cards"><article><span>PAZARYERİ</span><dl><div><dt>Komisyon</dt><dd data-out="commission">—</dd></div><div><dt>Toplam kesinti</dt><dd data-out="deduction">—</dd></div><div><dt>Net kâr</dt><dd data-out="marketProfit">—</dd></div><div><dt>Kâr marjı</dt><dd data-out="marketMargin">—</dd></div><div><dt>Yıllık toplam maliyet</dt><dd data-out="marketAnnual">—</dd></div></dl></article><article><span>KENDİ SİTENİZ</span><dl><div><dt>İşlem başı maliyet</dt><dd data-out="ownCost">—</dd></div><div><dt>Net kâr</dt><dd data-out="ownProfit">—</dd></div><div><dt>Kâr marjı</dt><dd data-out="ownMargin">—</dd></div><div><dt>Yıllık toplam maliyet</dt><dd data-out="ownAnnual">—</dd></div><div><dt>Tahmini fark</dt><dd data-out="saving">—</dd></div></dl></article></div><p class="calc__note">Sonuçlar tahmini hesaplamadır; KDV uygulaması, iade, kampanya, kategori oranı ve sözleşme koşulları farklılık gösterebilir.</p><aside>Satış hacminiz büyüdükçe pazaryeri komisyonları önemli bir maliyet kalemine dönüşebilir. Kendi e-ticaret altyapınızın size ne kazandırabileceğini birlikte hesaplayalım.<a href="/iletisim/">E-Ticaret Projesi Oluştur</a></aside></div></>}
-{kind === 'website' && <><div class="calc__form"><h2>Proje kapsamı</h2><label>Site tipi<select name="siteType"><option value="base">Kurumsal web sitesi</option><option value="commerce">E-ticaret sitesi</option><option value="custom">Özel platform</option></select></label><label>Sayfa sayısı<input name="pages" type="number" value="8" min="1" /></label><label>Ürün sayısı (varsa)<input name="products" type="number" value="0" min="0" /></label>{['Çok dil','E-ticaret','Ödeme sistemi','Rezervasyon sistemi','CRM entegrasyonu','WhatsApp','Özel tasarım','SEO','GEO / AEO / AIO','Blog'].map((label,i)=><label class="check"><input name={`opt${i}`} type="checkbox"/> {label}</label>)}</div><div class="calc__results"><p>TAHMİNİ ARALIK</p><h2>Proje yatırım aralığınız</h2><strong class="calc__range" data-out="range">—</strong><p data-out="websiteMessage">Seçimleriniz değiştikçe aralık güncellenir.</p><aside>Bu araç kesin teklif vermez. Mevcut içerik, entegrasyon, veri taşıma ve yayın gereksinimleri keşif aşamasında netleştirilir.<a href="/iletisim/">Web Projesi Oluştur</a></aside></div></>}
-{kind === 'ecommerce' && <><div class="calc__form"><h2>Ortak varsayımlar</h2><label>Aylık satış adedi<input name="volume" type="number" value="200" min="0" /></label><label>Ortalama sepet tutarı (TL)<input name="basket" type="number" value="1000" min="0" /></label><label>İlk kurulum bütçesi (TL)<input name="setup" type="number" value="60000" min="0" /></label><label>Aylık reklam bütçesi (TL)<input name="ads" type="number" value="15000" min="0" /></label><label>Pazaryeri komisyonu (%)<input name="commission" type="number" value="18" min="0" /></label></div><div class="calc__results"><p>12 AYLIK KIYAS</p><h2>Yaklaşık toplam maliyet</h2><div class="calc__table"><div><b>Model</b><b>İlk kurulum</b><b>Aylık gider</b><b>İşlem/komisyon</b><b>Yıllık toplam</b></div>{['Pazaryeri','Hazır altyapı','WooCommerce','Özel e-ticaret'].map((name,i)=><div><strong>{name}</strong><span data-out={`set${i}`}>—</span><span data-out={`monthly${i}`}>—</span><span data-out={`fee${i}`}>—</span><b data-out={`total${i}`}>—</b></div>)}</div><p class="calc__note">Model maliyetleri örnek varsayımlardır; sağlayıcı paketleri, uygulamalar, geliştirme kapsamı ve ödeme anlaşmalarıyla doğrulanmalıdır.</p><aside>Karar yalnız en düşük maliyet değildir. Operasyon, esneklik, teknik sahiplik ve büyüme hedefi birlikte değerlendirilmelidir.<a href="/iletisim/">E-Ticaret Projesi Oluştur</a></aside></div></>}
-</section><nav class="container" aria-label="Hesaplama sonuçlarını yorumlayın" style="display:flex;flex-wrap:wrap;gap:1rem;padding-bottom:3rem"><a href={kind==='website'?'/rehberler/2026-web-sitesi-fiyatlari/':kind==='marketplace'?'/rehberler/pazaryeri-komisyonlari-gercekten-ne-kadara-mal-oluyor/':'/rehberler/kendi-e-ticaret-sitesi-pazaryeri-maliyet-karsilastirmasi/'}>Sonucun kapsamını rehberde inceleyin →</a><a href={kind==='website'?'/web-tasarim/':'/e-ticaret/'}>İlgili hizmeti inceleyin →</a></nav></main><Footer slot="footer" lang="tr"/></BaseLayout>
+
+<BaseLayout title={`${copy.title} | QCT Commerce`} description={copy.description} lang="tr" breadcrumbs={breadcrumbs}>
+  <Header slot="header" lang="tr" />
+
+  <main class="calc">
+    <header class="calc__hero container">
+      <span class="calc__hero-tag">ÜCRETSİZ HESAPLAMA ARACI</span>
+      <h1>{copy.title}</h1>
+      <p class="calc__hero-desc">{copy.label}</p>
+    </header>
+
+    <section class="container calc__shell" data-calculator={kind}>
+      {kind === 'marketplace' && (
+        <>
+          <div class="calc__form">
+            <h2>Pazaryeri Satış Verileri</h2>
+            <label>
+              <span>Ürün satış fiyatı (TL · KDV Dahil)</span>
+              <input name="price" type="number" value="1000" min="0" step="1" />
+            </label>
+            <label>
+              <span>Ürün maliyeti (TL · KDV Hariç)</span>
+              <input name="cost" type="number" value="400" min="0" step="1" />
+            </label>
+            <label>
+              <span>KDV oranı (%)</span>
+              <input name="vat" type="number" value="20" min="0" max="100" />
+            </label>
+            <label>
+              <span>Pazaryeri komisyon oranı (%)</span>
+              <input name="commission" type="number" value="18" min="0" step="0.5" />
+            </label>
+            <label>
+              <span>Pazaryeri kargo kesintisi (TL)</span>
+              <input name="shipping" type="number" value="65" min="0" step="1" />
+            </label>
+            <label>
+              <span>Pazaryeri reklamı / sipariş (TL)</span>
+              <input name="ads" type="number" value="45" min="0" step="1" />
+            </label>
+            <label>
+              <span>Paketleme & operasyon / sipariş (TL)</span>
+              <input name="operations" type="number" value="25" min="0" step="1" />
+            </label>
+            <label>
+              <span>Aylık satış hacmi (adet)</span>
+              <input name="volume" type="number" value="200" min="1" step="1" />
+            </label>
+
+            <hr />
+
+            <h2>Kendi E-Ticaret Siteniz</h2>
+            <label>
+              <span>Ödeme altyapısı komisyonu (%)</span>
+              <input name="payment" type="number" value="3.5" min="0" step="0.1" />
+              <small class="calc__hint">PayTR, iyzico, Stripe vb. ortalama işlem komisyonu.</small>
+            </label>
+            <label>
+              <span>Kendi sitenizde kargo gideri / sipariş (TL)</span>
+              <input name="ownShipping" type="number" value="65" min="0" step="1" />
+              <small class="calc__hint">Mağaza karşılıyorsa yazın; alıcıya yansıtıyorsanız 0 girin.</small>
+            </label>
+            <label>
+              <span>Aylık site & altyapı gideri (TL)</span>
+              <input name="site" type="number" value="3000" min="0" step="100" />
+              <small class="calc__hint">Shopify / ikas aboneliği, hosting, alan adı ve eklentiler.</small>
+            </label>
+            <label>
+              <span>Tahmini reklam maliyeti / sipariş (TL)</span>
+              <input name="ownAds" type="number" value="55" min="0" step="1" />
+              <small class="calc__hint">Meta Ads, Google Ads vb. edinme maliyeti payı.</small>
+            </label>
+          </div>
+
+          <div class="calc__results">
+            <span class="calc__results-badge">CANLI KARŞILAŞTIRMA</span>
+            <h2>Sipariş Başına ve Yıllık Net Tablo</h2>
+            <div class="calc__cards">
+              <article class="calc__card">
+                <div class="calc__card-header">
+                  <span>PAZARYERİ KANALI</span>
+                  <small>Trendyol / Hepsiburada / Amazon</small>
+                </div>
+                <dl>
+                  <div><dt>Komisyon kesintisi</dt><dd data-out="commission">—</dd></div>
+                  <div><dt>Kargo, reklam & operasyon</dt><dd data-out="marketLogistics">—</dd></div>
+                  <div><dt>Toplam kanal kesintisi</dt><dd data-out="deduction" class="text-danger">—</dd></div>
+                  <div><dt>Net kâr / sipariş</dt><dd data-out="marketProfit" class="text-bold">—</dd></div>
+                  <div><dt>Net kâr marjı</dt><dd data-out="marketMargin">—</dd></div>
+                  <div class="calc__dl-highlight"><dt>Yıllık toplam kanal gideri</dt><dd data-out="marketAnnual">—</dd></div>
+                </dl>
+              </article>
+
+              <article class="calc__card calc__card--accent">
+                <div class="calc__card-header">
+                  <span>KENDİ E-TİCARET SİTENİZ</span>
+                  <small>Bağımsız Doğrudan Satış</small>
+                </div>
+                <dl>
+                  <div><dt>Ödeme komisyonu</dt><dd data-out="ownPayment">—</dd></div>
+                  <div><dt>Kargo, reklam & operasyon</dt><dd data-out="ownLogistics">—</dd></div>
+                  <div><dt>Site altyapı payı / ürün</dt><dd data-out="ownSitePerOrder">—</dd></div>
+                  <div><dt>Toplam kesinti / sipariş</dt><dd data-out="ownCost" class="text-primary">—</dd></div>
+                  <div><dt>Net kâr / sipariş</dt><dd data-out="ownProfit" class="text-success text-bold">—</dd></div>
+                  <div><dt>Net kâr marjı</dt><dd data-out="ownMargin">—</dd></div>
+                  <div class="calc__dl-highlight"><dt>Yıllık toplam kanal gideri</dt><dd data-out="ownAnnual">—</dd></div>
+                </dl>
+                <div class="calc__saving-box">
+                  <small>Kendi sitenizle yıllık tahmini tasarruf:</small>
+                  <strong data-out="saving">—</strong>
+                </div>
+              </article>
+            </div>
+
+            <p class="calc__note">
+              ✓ <strong>Şeffaf Kapsam Notu:</strong> Hesaplamada KDV matrahı tüketici nihai fiyatından yasal formülle düşülür. Kargo maliyeti her iki tarafta eşit karşılaştırılmıştır. İade oranları, kategoriye özel stopaj ve dönemsel kampanyalar nihai sözleşmede değerlendirilir.
+            </p>
+
+            <aside class="calc__aside">
+              <div>
+                <h3>Pazaryeri komisyonlarına bağımlı kalmayın.</h3>
+                <p>Kendi müşteri kitlenizi oluşturup marka değerinizi büyütmek için uygulanabilir geçiş planını birlikte hazırlayalım.</p>
+              </div>
+              <a href="/iletisim/" class="calc__cta">E-Ticaret Projesi Planlayın →</a>
+            </aside>
+          </div>
+        </>
+      )}
+
+      {kind === 'website' && (
+        <>
+          <div class="calc__form">
+            <h2>Proje Kapsamını Seçin</h2>
+            <label>
+              <span>Site tipi</span>
+              <select name="siteType">
+                <option value="base">Kurumsal Web Sitesi (Temel Altyapı)</option>
+                <option value="commerce">E-Ticaret Sitesi (Shopify / ikas / Woo)</option>
+                <option value="custom">Özel Platform & B2B Portalı</option>
+              </select>
+            </label>
+            <label>
+              <span>Tahmini sayfa sayısı</span>
+              <input name="pages" type="number" value="6" min="1" max="100" />
+              <small class="calc__hint">Başlangıç paketinde 5 sayfa dahildir; üzeri sayfa başı +700 TL olarak hesaplanır.</small>
+            </label>
+            <label>
+              <span>Ürün sayısı (e-ticaret için)</span>
+              <input name="products" type="number" value="0" min="0" max="1000" />
+              <small class="calc__hint">Başlangıç paketinde 10 ürün girişi dahildir; üzeri ürün başı +100 TL standart giriştir.</small>
+            </label>
+
+            <hr />
+
+            <h2>Gereksinimler & Ek Modüller</h2>
+            <div class="calc__checks">
+              {webOptions.map((opt, i) => (
+                <label class="check">
+                  <input name={`opt${i}`} type="checkbox" />
+                  <span class="check__text">
+                    <strong>{opt.label}</strong>
+                    <small>{opt.desc}</small>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div class="calc__results">
+            <span class="calc__results-badge">PROJE YATIRIM TAHMİNİ</span>
+            <h2>Tahmini Proje Bütçe Aralığınız</h2>
+            <div class="calc__range-box">
+              <strong class="calc__range" data-out="range">—</strong>
+              <small>Standart kapsam ve seçilen modüller dahil yaklaşık yatırım aralığıdır.</small>
+            </div>
+            <p class="calc__message" data-out="websiteMessage">Seçimleriniz başlangıç kapsamını gösterir.</p>
+
+            <div class="calc__scope-notice">
+              <h4>Kapsam Standartlarımız</h4>
+              <ul>
+                <li>Tüm projelerde responsive mobil uyum, kurumsal renk kodlaması ve SSL güvenlik altyapısı dahildir.</li>
+                <li>Teklif aşamasında sayfa içerikleri, API entegrasyonları ve teslim tarihleri sözleşmeli olarak netleştirilir.</li>
+              </ul>
+            </div>
+
+            <aside class="calc__aside">
+              <div>
+                <h3>Projenizi net bir kapsam ve süreyle başlatalım.</h3>
+                <p>İhtiyaçlarınızı paylaşın; 24 saat içinde işe özel şeffaf teslimat planı ve sabit teklif sunalım.</p>
+              </div>
+              <a href="/iletisim/" class="calc__cta">Web Projesi Başlatın →</a>
+            </aside>
+          </div>
+        </>
+      )}
+
+      {kind === 'ecommerce' && (
+        <>
+          <div class="calc__form">
+            <h2>İş Modeli Varsayımları</h2>
+            <label>
+              <span>Aylık satış hacmi (adet)</span>
+              <input name="volume" type="number" value="200" min="1" />
+            </label>
+            <label>
+              <span>Ortalama sepet tutarı (TL)</span>
+              <input name="basket" type="number" value="1000" min="10" />
+            </label>
+            <label>
+              <span>İlk kurulum ve tasarım bütçesi (TL)</span>
+              <input name="setup" type="number" value="60000" min="5000" />
+              <small class="calc__hint">Altyapıya göre orantısal ilk yatırım bütçesi.</small>
+            </label>
+            <label>
+              <span>Aylık reklam bütçesi (TL)</span>
+              <input name="ads" type="number" value="15000" min="0" />
+              <small class="calc__hint">Tüm kanallarda ortak pazarlama ve müşteri edinme bütçesi.</small>
+            </label>
+            <label>
+              <span>Pazaryeri komisyon oranı (%)</span>
+              <input name="commission" type="number" value="18" min="0" max="50" step="0.5" />
+            </label>
+          </div>
+
+          <div class="calc__results">
+            <span class="calc__results-badge">12 AYLIK MALİYET ANALİZİ</span>
+            <h2>4 Satış Modelinin Yıllık Toplam Kıyası</h2>
+
+            <div class="calc__table-wrapper">
+              <table class="calc__table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>İlk Kurulum</th>
+                    <th>Aylık Altyapı</th>
+                    <th>Aylık Reklam</th>
+                    <th>İşlem / Komisyon</th>
+                    <th>12 Aylık Toplam</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { name: 'Pazaryeri', note: 'Komisyon bazlı, sıfır başlangıç' },
+                    { name: 'Hazır Altyapı (ikas/Shopify)', note: 'Hızlı kurulum, düşük bakım' },
+                    { name: 'WooCommerce / Açık Kaynak', note: 'Esnek, sunucu ve eklenti bakımı' },
+                    { name: 'Özel E-Ticaret / Headless', note: 'Tam bağımsız kurumsal mimari' }
+                  ].map((row, i) => (
+                    <tr>
+                      <td class="calc__table-name">
+                        <strong>{row.name}</strong>
+                        <small>{row.note}</small>
+                      </td>
+                      <td><span data-out={`set${i}`}>—</span></td>
+                      <td><span data-out={`infra${i}`}>—</span></td>
+                      <td><span data-out={`ads${i}`}>—</span></td>
+                      <td><span data-out={`fee${i}`}>—</span></td>
+                      <td class="calc__table-total"><strong data-out={`total${i}`}>—</strong></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Mobile Card Layout for E-Commerce Models -->
+            <div class="calc__mobile-cards">
+              {[
+                { name: 'Pazaryeri', tag: 'Sıfır Kurulum, Yüksek Komisyon' },
+                { name: 'Hazır Altyapı (Shopify / ikas)', tag: 'Düşük Bakım, En Çok Tercih Edilen' },
+                { name: 'WooCommerce', tag: 'Açık Kaynak, Eklenti Yönetimi' },
+                { name: 'Özel E-Ticaret', tag: 'Kurumsal Ölçek' }
+              ].map((row, i) => (
+                <div class="calc__m-card">
+                  <div class="calc__m-card-header">
+                    <strong>{row.name}</strong>
+                    <small>{row.tag}</small>
+                  </div>
+                  <div class="calc__m-grid">
+                    <div><small>İlk Kurulum</small><span data-out={`m_set${i}`}>—</span></div>
+                    <div><small>Aylık Altyapı</small><span data-out={`m_infra${i}`}>—</span></div>
+                    <div><small>Aylık Reklam</small><span data-out={`m_ads${i}`}>—</span></div>
+                    <div><small>İşlem/Komisyon</small><span data-out={`m_fee${i}`}>—</span></div>
+                  </div>
+                  <div class="calc__m-total">
+                    <span>12 Aylık Toplam:</span>
+                    <strong data-out={`m_total${i}`}>—</strong>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p class="calc__note">
+              ✓ <strong>Matematik Tutarlılığı:</strong> Tablodaki yıllık toplam formülü: <em>İlk Kurulum + 12 × (Aylık Altyapı + Aylık Reklam + İşlem/Komisyon)</em> şeklinde her sütunun açık toplamından oluşur. Hiçbir gizli gider veya tutarsızlık barındırmaz.
+            </p>
+
+            <aside class="calc__aside">
+              <div>
+                <h3>Doğru e-ticaret altyapısını birlikte seçelim.</h3>
+                <p>Ürün sayınız, operasyon hacminiz ve bütçenize göre en verimli altyapıyı netleştirelim.</p>
+              </div>
+              <a href="/iletisim/" class="calc__cta">E-Ticaret Danışmanlığı Alın →</a>
+            </aside>
+          </div>
+        </>
+      )}
+    </section>
+
+    <nav class="container calc__nav" aria-label="Hesaplama sonuçlarını yorumlayın">
+      <a href={kind === 'website' ? '/rehberler/2026-web-sitesi-fiyatlari/' : kind === 'marketplace' ? '/rehberler/pazaryeri-komisyonlari-gercekten-ne-kadara-mal-oluyor/' : '/rehberler/kendi-e-ticaret-sitesi-pazaryeri-maliyet-karsilastirmasi/'}>
+        Sonucun kapsamını rehberde inceleyin →
+      </a>
+      <a href={kind === 'website' ? '/web-tasarim/' : '/e-ticaret/'}>
+        İlgili QCT Commerce hizmetini keşfedin →
+      </a>
+    </nav>
+  </main>
+
+  <Footer slot="footer" lang="tr" />
+</BaseLayout>
+
 <script is:inline>
-  (()=>{const root=document.querySelector('[data-calculator]');if(!root)return;const type=root.dataset.calculator;const n=(name)=>{const value=Number(root.querySelector(`[name="${name}"]`)?.value);return Number.isFinite(value)?Math.max(0,Math.min(value,1e12)):0};const money=(v)=>new Intl.NumberFormat('tr-TR',{style:'currency',currency:'TRY',maximumFractionDigits:0}).format(Number.isFinite(v)?v:0);const put=(key,value)=>{const e=root.querySelector(`[data-out="${key}"]`);if(e)e.textContent=value};
-  const update=()=>{if(type==='marketplace'){const price=n('price'),cost=n('cost'),vat=n('vat')/100,com=price*n('commission')/100,ship=n('shipping'),ads=n('ads'),ops=n('operations'),vol=n('volume'), pay=price*n('payment')/100,site=n('site'),ownAds=n('ownAds');const deduction=com+ship+ads+ops, marketProfit=price-(price*vat)-cost-deduction, ownCost=pay+ownAds+ops+(vol?site/vol:0),ownProfit=price-(price*vat)-cost-ownCost,marketAnnual=deduction*vol*12,ownAnnual=(pay+ownAds+ops)*vol*12+site*12;put('commission',money(com));put('deduction',money(deduction));put('marketProfit',money(marketProfit));put('marketMargin',`${(price?marketProfit/price*100:0).toFixed(1)}%`);put('marketAnnual',money(marketAnnual));put('ownCost',money(ownCost));put('ownProfit',money(ownProfit));put('ownMargin',`${(price?ownProfit/price*100:0).toFixed(1)}%`);put('ownAnnual',money(ownAnnual));put('saving',money(marketAnnual-ownAnnual));}else if(type==='website'){const base={base:8900,commerce:9900,custom:25000}[root.querySelector('[name="siteType"]').value];let total=base;total+=Math.max(0,n('pages')-5)*700+Math.max(0,n('products')-10)*100;const optionCosts=[6000,5000,2500,2500,3500,1000,5000,3900,3900,2500];root.querySelectorAll('.check input:checked').forEach((input)=>{total+=optionCosts[Number(input.name.replace('opt',''))]||0;});put('range',`${money(Math.max(base,total*.9))} – ${money(total*1.1)}`);put('websiteMessage',total>=25000?'Seçimleriniz özel kapsam veya ileri entegrasyon gerektiriyor; net kapsam keşifte belirlenir.':'Seçimleriniz başlangıç kapsamını gösterir; net teklif sayfa, içerik ve entegrasyon ayrıntılarıyla hazırlanır.');}else{const v=n('volume'),b=n('basket'),setup=n('setup'),ads=n('ads'),c=n('commission')/100;const rows=[[0,0,c],[setup*.45,4500,.035],[setup*.75,6500,.03],[setup,11000,.025]];rows.forEach(([s,m,f],i)=>{const fee=b*v*f;const total=s+(m+ads)*12+fee*12;put(`set${i}`,money(s));put(`monthly${i}`,money(m));put(`fee${i}`,money(fee));put(`total${i}`,money(total));});}};root.addEventListener('input',update);root.addEventListener('change',update);update();})();
+  (() => {
+    const root = document.querySelector('[data-calculator]');
+    if (!root) return;
+    const type = root.dataset.calculator;
+
+    const n = (name) => {
+      const el = root.querySelector(`[name="${name}"]`);
+      const val = Number(el?.value);
+      return Number.isFinite(val) ? Math.max(0, Math.min(val, 1e12)) : 0;
+    };
+
+    const money = (v) => new Intl.NumberFormat('tr-TR', {
+      style: 'currency',
+      currency: 'TRY',
+      maximumFractionDigits: 0
+    }).format(Number.isFinite(v) ? Math.round(v) : 0);
+
+    const put = (key, value) => {
+      const els = root.querySelectorAll(`[data-out="${key}"]`);
+      els.forEach((e) => { e.textContent = value; });
+    };
+
+    const update = () => {
+      if (type === 'marketplace') {
+        const price = n('price');
+        const cost = n('cost');
+        const vatRate = n('vat') / 100;
+        const comRate = n('commission') / 100;
+        const ship = n('shipping');
+        const ads = n('ads');
+        const ops = n('operations');
+        const vol = n('volume');
+
+        const payRate = n('payment') / 100;
+        const ownShip = n('ownShipping');
+        const site = n('site');
+        const ownAds = n('ownAds');
+
+        // Yasal KDV matrah hesabı (KDV Dahil fiyattan)
+        const netRevenue = vatRate > 0 ? price / (1 + vatRate) : price;
+        const vatAmount = price - netRevenue;
+
+        // Pazaryeri kesintileri
+        const com = price * comRate;
+        const marketLogistics = ship + ads + ops;
+        const deduction = com + marketLogistics;
+        const marketProfit = netRevenue - cost - deduction;
+        const marketMargin = price > 0 ? (marketProfit / price) * 100 : 0;
+        const marketAnnual = deduction * vol * 12;
+
+        // Kendi siteniz kesintileri
+        const ownPayment = price * payRate;
+        const ownLogistics = ownShip + ownAds + ops;
+        const ownSitePerOrder = vol > 0 ? site / vol : 0;
+        const ownCost = ownPayment + ownLogistics + ownSitePerOrder;
+        const ownProfit = netRevenue - cost - ownCost;
+        const ownMargin = price > 0 ? (ownProfit / price) * 100 : 0;
+        const ownAnnual = (ownPayment + ownShip + ownAds + ops) * vol * 12 + site * 12;
+
+        const saving = marketAnnual - ownAnnual;
+
+        put('commission', money(com));
+        put('marketLogistics', money(marketLogistics));
+        put('deduction', money(deduction));
+        put('marketProfit', money(marketProfit));
+        put('marketMargin', `%${marketMargin.toFixed(1)}`);
+        put('marketAnnual', money(marketAnnual));
+
+        put('ownPayment', money(ownPayment));
+        put('ownLogistics', money(ownLogistics));
+        put('ownSitePerOrder', money(ownSitePerOrder));
+        put('ownCost', money(ownCost));
+        put('ownProfit', money(ownProfit));
+        put('ownMargin', `%${ownMargin.toFixed(1)}`);
+        put('ownAnnual', money(ownAnnual));
+        put('saving', money(saving));
+      } else if (type === 'website') {
+        const siteType = root.querySelector('[name="siteType"]')?.value || 'base';
+        const base = { base: 8900, commerce: 9900, custom: 25000 }[siteType] || 8900;
+        let total = base;
+
+        // Ek sayfa ve ürün maliyetleri
+        const pages = n('pages');
+        const products = n('products');
+        total += Math.max(0, pages - 5) * 700;
+        total += Math.max(0, products - 10) * 100;
+
+        // Ek modül maliyetleri
+        const optionCosts = [6000, 5000, 2500, 2500, 3500, 1000, 5000, 3900, 3900, 2500];
+        root.querySelectorAll('.check input:checked').forEach((input) => {
+          const idx = Number(input.name.replace('opt', ''));
+          total += optionCosts[idx] || 0;
+        });
+
+        const minRange = Math.max(base, Math.round(total * 0.95));
+        const maxRange = Math.round(total * 1.10);
+        put('range', `${money(minRange)} – ${money(maxRange)}`);
+
+        const msg = total >= 35000
+          ? 'Seçimleriniz kurumsal B2B veya özel entegrasyonlar içeriyor; kesin teslim takvimi ve aşamalar keşif toplantısında netleştirilir.'
+          : total >= 20000
+            ? 'Seçimleriniz standart yapının ötesinde ek modüller içeriyor; detaylı teklif sayfa ve entegrasyon şemasıyla hazırlanır.'
+            : 'Seçimleriniz standart başlangıç paketlerimizi yansıtır; net teklif içerik ve teslimat ayrıntılarıyla hazırlanır.';
+        put('websiteMessage', msg);
+      } else if (type === 'ecommerce') {
+        const vol = n('volume');
+        const basket = n('basket');
+        const setup = n('setup');
+        const ads = n('ads');
+        const comRate = n('commission') / 100;
+
+        // 4 Model: [Kurulum çarpanı, Aylık Altyapı, Komisyon Oranı]
+        const models = [
+          [0, 0, comRate],
+          [setup * 0.45, 4500, 0.035],
+          [setup * 0.75, 6500, 0.030],
+          [setup, 11000, 0.025]
+        ];
+
+        models.forEach(([s, m, f], i) => {
+          const fee = basket * vol * f;
+          const total = s + (m + ads + fee) * 12;
+
+          put(`set${i}`, money(s));
+          put(`infra${i}`, money(m));
+          put(`ads${i}`, money(ads));
+          put(`fee${i}`, money(fee));
+          put(`total${i}`, money(total));
+
+          // Mobile mirrors
+          put(`m_set${i}`, money(s));
+          put(`m_infra${i}`, money(m));
+          put(`m_ads${i}`, money(ads));
+          put(`m_fee${i}`, money(fee));
+          put(`m_total${i}`, money(total));
+        });
+      }
+    };
+
+    root.addEventListener('input', update);
+    root.addEventListener('change', update);
+    update();
+  })();
 </script>
-<style>.calc{background:var(--qct-color-background)}.calc__hero{padding:calc(var(--qct-hero-clearance) + 60px) 20px 64px;text-align:center;border-bottom:1px solid var(--qct-color-line)}.calc__hero p,.calc__results>p{color:var(--qct-color-accent-strong);font-size:.75rem;font-weight:800;letter-spacing:.14em}.calc h1,.calc h2{color:var(--qct-color-ink);letter-spacing:-.05em;text-wrap:balance}.calc h1{font-size:clamp(2.35rem,5vw,4.3rem);line-height:1.03;margin:.5rem auto 1rem;max-width:19ch}.calc__hero div{color:var(--qct-color-muted);line-height:1.7}.calc__shell{display:grid;grid-template-columns:minmax(280px,.75fr) minmax(0,1.15fr);gap:clamp(25px,5vw,70px);padding-block:clamp(45px,6vw,82px)}.calc__form{border:1px solid var(--qct-color-line-strong);padding:24px;align-self:start}.calc__form h2{font-size:1.35rem;margin:0 0 1.3rem}.calc label{color:var(--qct-color-ink);display:grid;font-size:.86rem;font-weight:700;gap:.45rem;margin:.85rem 0}.calc input,.calc select{background:#fff;border:1px solid #cfc7bf;border-radius:0;color:#171412;font:inherit;min-height:44px;padding:.6rem}.calc .check{display:block;font-weight:500}.calc .check input{min-height:0;margin-right:.45rem}.calc hr{border:0;border-top:1px solid var(--qct-color-line);margin:1.6rem 0}.calc__results{min-width:0}.calc__results h2{font-size:clamp(1.75rem,3.5vw,2.7rem);margin:.35rem 0 1.7rem}.calc__cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.calc__cards article{border:1px solid var(--qct-color-line-strong);padding:19px}.calc__cards article>span{color:var(--qct-color-accent-strong);font-size:.7rem;font-weight:800;letter-spacing:.12em}.calc dl{margin:1rem 0 0}.calc dl div{border-top:1px solid var(--qct-color-line);display:flex;justify-content:space-between;gap:10px;padding:.8rem 0}.calc dt{color:var(--qct-color-muted);font-size:.86rem}.calc dd{color:var(--qct-color-ink);font-weight:800;margin:0;text-align:right}.calc__note{color:var(--qct-color-muted);font-size:.85rem;line-height:1.5}.calc aside{background:#171412;color:#fffaf5;line-height:1.65;margin-top:1.8rem;padding:24px}.calc aside a{background:var(--qct-color-accent);color:#171412;display:block;font-weight:800;margin-top:1rem;padding:.85rem;text-align:center;text-decoration:none}.calc__range{color:var(--qct-color-ink);display:block;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-.06em;margin-bottom:1rem}.calc__table{border:1px solid var(--qct-color-line-strong);max-width:100%;overflow:auto}.calc__table>div{display:grid;grid-template-columns:1.25fr repeat(4,minmax(100px,1fr));gap:10px;min-width:660px;padding:14px;border-bottom:1px solid var(--qct-color-line)}.calc__table>div:first-child{background:#171412;color:#fffaf5;font-size:.78rem}.calc__table span{color:var(--qct-color-muted);font-size:.9rem}@media(max-width:800px){.calc__shell{grid-template-columns:1fr}.calc__cards{grid-template-columns:1fr}} </style>
+
+<style>
+  .calc {
+    background: #f8fafc;
+    min-height: 100vh;
+  }
+  .calc__hero {
+    padding: calc(var(--qct-hero-clearance, 90px) + 40px) 20px 48px;
+    text-align: center;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  .calc__hero-tag {
+    display: inline-block;
+    color: #002fa7;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(0, 47, 167, 0.06);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .calc h1 {
+    color: #0f172a;
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin: 0 auto 12px;
+    max-width: 22ch;
+  }
+  .calc__hero-desc {
+    color: #64748b;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .calc__shell {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(24px, 4vw, 56px);
+    padding-block: clamp(36px, 5vw, 64px);
+    align-items: start;
+  }
+  .calc__form {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.09);
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+    padding: clamp(20px, 3vw, 32px);
+  }
+  .calc__form h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+    margin: 0 0 1.2rem;
+  }
+  .calc label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 1.1rem;
+  }
+  .calc label > span {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #334155;
+  }
+  .calc input[type="number"],
+  .calc select {
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 10px;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    min-height: 44px;
+    padding: 8px 14px;
+    transition: all 0.16s ease;
+  }
+  .calc input[type="number"]:focus,
+  .calc select:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #002fa7;
+    box-shadow: 0 0 0 3px rgba(0, 47, 167, 0.12);
+  }
+  .calc__hint {
+    font-size: 0.78rem;
+    color: #64748b;
+    line-height: 1.4;
+  }
+  .calc hr {
+    border: 0;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    margin: 1.8rem 0;
+  }
+  .calc__checks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .calc .check {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    margin: 0 !important;
+  }
+  .calc .check:hover {
+    background: rgba(0, 47, 167, 0.04);
+  }
+  .calc .check input[type="checkbox"] {
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    accent-color: #002fa7;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .check__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .check__text strong {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .check__text small {
+    font-size: 0.76rem;
+    color: #64748b;
+  }
+  .calc__results {
+    min-width: 0;
+  }
+  .calc__results-badge {
+    color: #002fa7;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .calc__results h2 {
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    margin: 6px 0 1.4rem;
+  }
+  .calc__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .calc__card {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.09);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+  }
+  .calc__card--accent {
+    border-color: rgba(0, 47, 167, 0.24);
+    background: linear-gradient(180deg, #ffffff 0%, rgba(240, 246, 255, 0.5) 100%);
+    box-shadow: 0 6px 24px rgba(0, 47, 167, 0.06);
+  }
+  .calc__card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  .calc__card-header span {
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #002fa7;
+    text-transform: uppercase;
+  }
+  .calc__card-header small {
+    font-size: 0.78rem;
+    color: #64748b;
+  }
+  .calc dl {
+    margin: 12px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .calc dl div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  }
+  .calc dt {
+    font-size: 0.84rem;
+    color: #64748b;
+    font-weight: 550;
+  }
+  .calc dd {
+    font-size: 0.92rem;
+    font-weight: 750;
+    color: #0f172a;
+    margin: 0;
+    text-align: right;
+  }
+  .calc__dl-highlight {
+    background: rgba(0, 47, 167, 0.04);
+    margin: 6px -10px 0;
+    padding: 10px 10px !important;
+    border-radius: 8px;
+    border-bottom: none !important;
+  }
+  .calc__dl-highlight dt {
+    color: #0f172a;
+    font-weight: 750;
+  }
+  .calc__dl-highlight dd {
+    color: #002fa7;
+    font-size: 1.05rem;
+    font-weight: 850;
+  }
+  .calc__saving-box {
+    margin-top: 14px;
+    padding: 12px;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.22);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .calc__saving-box small {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #15803d;
+    margin-bottom: 2px;
+  }
+  .calc__saving-box strong {
+    font-size: 1.4rem;
+    font-weight: 850;
+    color: #15803d;
+    letter-spacing: -0.02em;
+  }
+  .text-danger { color: #b91c1c !important; }
+  .text-primary { color: #002fa7 !important; }
+  .text-success { color: #15803d !important; }
+  .text-bold { font-size: 1rem !important; font-weight: 850 !important; }
+
+  /* Web Range Box */
+  .calc__range-box {
+    background: #ffffff;
+    border: 1px solid rgba(0, 47, 167, 0.16);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 18px rgba(0, 47, 167, 0.05);
+  }
+  .calc__range {
+    display: block;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    color: #002fa7;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .calc__range-box small {
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+  .calc__message {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #334155;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+  }
+  .calc__scope-notice {
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+  }
+  .calc__scope-notice h4 {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 8px;
+  }
+  .calc__scope-notice ul {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .calc__scope-notice li {
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.45;
+  }
+
+  /* E-Commerce Table Desktop */
+  .calc__table-wrapper {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.09);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+    margin-bottom: 20px;
+  }
+  .calc__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  .calc__table thead {
+    background: #0f172a;
+    color: #ffffff;
+  }
+  .calc__table th {
+    padding: 14px 16px;
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .calc__table td {
+    padding: 14px 16px;
+    font-size: 0.92rem;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    color: #334155;
+  }
+  .calc__table tbody tr:hover {
+    background: rgba(0, 47, 167, 0.025);
+  }
+  .calc__table-name strong {
+    display: block;
+    font-size: 0.94rem;
+    font-weight: 750;
+    color: #0f172a;
+  }
+  .calc__table-name small {
+    display: block;
+    font-size: 0.76rem;
+    color: #64748b;
+    margin-top: 2px;
+  }
+  .calc__table-total strong {
+    font-size: 1.05rem;
+    font-weight: 850;
+    color: #002fa7;
+  }
+
+  /* Mobile E-commerce Cards */
+  .calc__mobile-cards {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .calc__m-card {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.09);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .calc__m-card-header {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+  }
+  .calc__m-card-header strong {
+    display: block;
+    font-size: 1rem;
+    color: #0f172a;
+  }
+  .calc__m-card-header small {
+    font-size: 0.78rem;
+    color: #64748b;
+  }
+  .calc__m-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .calc__m-grid div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .calc__m-grid small {
+    font-size: 0.76rem;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .calc__m-grid span {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .calc__m-total {
+    background: rgba(0, 47, 167, 0.05);
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .calc__m-total span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .calc__m-total strong {
+    font-size: 1.15rem;
+    font-weight: 850;
+    color: #002fa7;
+  }
+
+  .calc__note {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #64748b;
+    margin-top: 14px;
+  }
+
+  /* Aside Banner (Luxury Deep Navy) */
+  .calc__aside {
+    background: linear-gradient(135deg, #0c1c38 0%, #071224 100%);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 24px;
+    color: #f8fafc;
+    box-shadow: 0 12px 32px rgba(0, 14, 40, 0.16);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .calc__aside h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px;
+  }
+  .calc__aside p {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #94a3b8;
+    margin: 0;
+  }
+  .calc__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #002fa7;
+    color: #ffffff !important;
+    font-size: 0.92rem;
+    font-weight: 750;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.16s ease, transform 0.16s ease;
+    align-self: flex-start;
+  }
+  .calc__cta:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+  }
+
+  .calc__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 48px;
+    margin-top: 10px;
+  }
+  .calc__nav a {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #002fa7;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .calc__shell {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 760px) {
+    .calc__cards {
+      grid-template-columns: 1fr;
+    }
+    .calc__table-wrapper {
+      display: none;
+    }
+    .calc__mobile-cards {
+      display: flex;
+    }
+    .calc__aside {
+      padding: 20px 16px;
+    }
+    .calc__cta {
+      width: 100%;
+    }
+  }
+</style>
