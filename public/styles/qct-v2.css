@@ -342,21 +342,17 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
 }
 
 .qct-image-story .qct-section-label {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
-  padding: 6px 16px !important;
-  border-radius: 999px !important;
-  background: rgba(0, 47, 167, 0.22) !important;
-  border: 1px solid rgba(96, 165, 250, 0.32) !important;
-  color: #93c5fd !important;
+  display: inline-block !important;
   font-size: 11px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.16em !important;
-  margin: 0 auto 18px !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.22em !important;
+  color: #60a5fa !important;
+  margin: 0 auto 16px !important;
   text-transform: uppercase !important;
-  box-shadow: 0 0 24px rgba(37, 99, 235, 0.18) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
 }
 
 .qct-image-story .qct-section-head h2 {
