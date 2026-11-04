@@ -1,4 +1,4 @@
-/* Service cards namespaced and isolated with elite Swiss luxury design */
+/* Service cards: restrained editorial treatment, scoped to service grids. */
 .site-main .qct-svc-grid {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
@@ -24,10 +24,10 @@
   min-height: 0 !important;
   overflow: hidden !important;
   padding: clamp(1.6rem, 2.5vw, 2.2rem) !important;
-  border: 1px solid rgba(15, 23, 42, 0.08) !important;
-  border-radius: 20px !important;
+  border: 1px solid #dfe5ed !important;
+  border-radius: 16px !important;
   background: #ffffff !important;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px rgba(15, 23, 42, 0.02) !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.035) !important;
   color: #0f172a !important;
   font-family: inherit !important;
   text-align: left !important;
@@ -40,25 +40,19 @@
 }
 
 .site-main .qct-svc-grid > .qct-svc-card::before {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 auto auto 0 !important;
-  width: 100% !important;
-  height: 3px !important;
-  background: linear-gradient(90deg, #002fa7, #3b82f6) !important;
-  opacity: 0 !important;
-  transition: opacity .25s ease !important;
-  z-index: 1 !important;
+  /* Remove decorative top stripes; use spacing, content and focus instead. */
+  content: none !important;
 }
 
-.site-main .qct-svc-grid > .qct-svc-card:hover {
-  transform: translateY(-4px) !important;
-  border-color: rgba(0, 47, 167, 0.28) !important;
-  box-shadow: 0 20px 40px -10px rgba(0, 47, 167, 0.12), 0 0 0 1px rgba(0, 47, 167, 0.08) !important;
+.site-main .qct-svc-grid > .qct-svc-card--link:hover {
+  transform: translateY(-2px) !important;
+  border-color: #9eb3d3 !important;
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.07) !important;
 }
 
-.site-main .qct-svc-grid > .qct-svc-card:hover::before {
-  opacity: 1 !important;
+.site-main .qct-svc-grid > .qct-svc-card--link:focus-visible {
+  outline: 3px solid #002fa7 !important;
+  outline-offset: 3px !important;
 }
 
 .site-main .qct-svc-grid > .qct-svc-card .qct-svc-card__top {
@@ -91,11 +85,11 @@
 .site-main .qct-svc-grid > .qct-svc-card .qct-svc-card__arrow {
   display: inline-grid !important;
   place-items: center !important;
-  width: 2rem !important;
-  height: 2rem !important;
-  flex: 0 0 2rem !important;
-  border-radius: 999px !important;
-  background: rgba(0, 47, 167, 0.06) !important;
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  flex: 0 0 1.75rem !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   color: #002fa7 !important;
   font-size: 1.15rem !important;
   font-weight: 700 !important;
@@ -105,8 +99,8 @@
 
 .site-main .qct-svc-grid > .qct-svc-card:hover .qct-svc-card__arrow {
   transform: translateX(4px) !important;
-  background: #002fa7 !important;
-  color: #ffffff !important;
+  background: transparent !important;
+  color: #002fa7 !important;
 }
 
 .site-main .qct-svc-grid > .qct-svc-card p {
@@ -117,8 +111,9 @@
   font-size: .95rem !important;
   line-height: 1.65 !important;
   margin: 0 !important;
-  max-width: none !important;
+  max-width: 52ch !important;
   text-align: left !important;
+  text-wrap: pretty !important;
 }
 
 @media (max-width: 900px) {
@@ -141,5 +136,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .site-main .qct-svc-grid > .qct-svc-card { transition: none !important; }
-  .site-main .qct-svc-grid > .qct-svc-card:hover { transform: none !important; }
+  .site-main .qct-svc-grid > .qct-svc-card--link:hover { transform: none !important; }
 }
