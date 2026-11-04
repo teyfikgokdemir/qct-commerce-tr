@@ -1,0 +1,56 @@
+# Isolated design baseline: no application changes, deployment or privileged credentials.
+# Runs only for the experiment branch. Findings (exit code 2) are not CI failures.
+name: Impeccable Design Baseline (experiment)
+
+on:
+  push:
+    branches:
+      - experiment/impeccable-design-audit
+
+permissions:
+  contents: read
+
+jobs:
+  design-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout audited ref
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.4
+
+      - name: Impeccable v4.8.0 - source and CSS scans
+        shell: bash
+        run: |
+          set +e
+          npx --yes impeccable@4.8.0 detect --json src/ > impeccable-src.json 2> impeccable-src.stderr
+          src_status=$?
+          npx --yes impeccable@4.8.0 detect --json public/styles/ > impeccable-css.json 2> impeccable-css.stderr
+          css_status=$?
+          set -e
+
+          printf 'source_exit=%s\ncss_exit=%s\n' "$src_status" "$css_status" > impeccable-status.txt
+          echo "Source scan exit: $src_status (0 clean, 2 findings, 1 scan error)"
+          echo "CSS scan exit: $css_status (0 clean, 2 findings, 1 scan error)"
+          echo "Results uploaded as a workflow artifact for manual review."
+
+          if [ "$src_status" -ne 0 ] && [ "$src_status" -ne 2 ]; then exit 1; fi
+          if [ "$css_status" -ne 0 ] && [ "$css_status" -ne 2 ]; then exit 1; fi
+
+      - name: Upload design baseline evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: impeccable-design-baseline
+          path: |
+            impeccable-src.json
+            impeccable-src.stderr
+            impeccable-css.json
+            impeccable-css.stderr
+            impeccable-status.txt
+          retention-days: 7
+          if-no-files-found: warn
