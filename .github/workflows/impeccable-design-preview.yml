@@ -53,6 +53,7 @@ jobs:
           ]) {
             for (const viewport of [
               { name: 'mobile', width: 390, height: 844 },
+              { name: 'laptop', width: 1200, height: 900 },
               { name: 'desktop', width: 1440, height: 900 },
             ]) {
               const context = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: 'reduce' });
@@ -60,6 +61,11 @@ jobs:
               for (const target of targets) {
                 await page.goto(origin + target.path, { waitUntil: 'networkidle', timeout: 60000 });
                 await page.screenshot({ path: `design-shots/${site}-${target.name}-${viewport.name}.png`, fullPage: false, animations: 'disabled' });
+                const focus = target.name.startsWith('home') ? page.locator('.qct-calculator') : page.locator('.qct-svc-grid').first();
+                if (await focus.count()) {
+                  await focus.scrollIntoViewIfNeeded();
+                  await page.screenshot({ path: `design-shots/${site}-${target.name}-${viewport.name}-detail.png`, fullPage: false, animations: 'disabled' });
+                }
                 const measure = await page.evaluate(() => ({
                   horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
                   viewport: innerWidth,
