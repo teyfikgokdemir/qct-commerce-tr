@@ -71,6 +71,13 @@ jobs:
                   viewport: innerWidth,
                   scrollWidth: document.documentElement.scrollWidth,
                   title: document.title,
+                  widthDomains: ['html', 'body', '.site-main', '[data-qct-v2]', '.qct-marquee', '.qct-image-story', '.qct-image-story .qct-section-head', '.qct-image-story .qct-section-head > p:not(.qct-section-label)', '.site-footer', '.site-header']
+                    .map((selector) => {
+                      const el = document.querySelector(selector);
+                      if (!el) return null;
+                      const box = el.getBoundingClientRect();
+                      return { selector, scrollWidth: el.scrollWidth, clientWidth: el.clientWidth, rectRight: Math.round(box.right), overflowX: getComputedStyle(el).overflowX, whiteSpace: getComputedStyle(el).whiteSpace };
+                    }).filter(Boolean),
                   editorial: (() => {
                     const node = document.querySelector('.qct-image-story .qct-section-head h2');
                     if (!node) return null;
