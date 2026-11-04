@@ -233,6 +233,15 @@
   }
 }
 
+/* Keep long add-on names intact in the three-column desktop builder. */
+@media (min-width: 961px) {
+  [data-qct-v2] .qct-check span {
+    font-size: 12.5px !important;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
 /* English editorial headline stays on one line without forcing horizontal scroll. */
 @media (min-width: 1024px) {
   html[lang="en"] [data-qct-v2] .qct-image-story .qct-section-head h2 {
