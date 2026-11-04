@@ -41,6 +41,21 @@ jobs:
           if [ "$src_status" -ne 0 ] && [ "$src_status" -ne 2 ]; then exit 1; fi
           if [ "$css_status" -ne 0 ] && [ "$css_status" -ne 2 ]; then exit 1; fi
 
+      - name: Impeccable - rendered production baseline (non-blocking)
+        shell: bash
+        run: |
+          # Read-only assessment of the current production page; no deploy and no login.
+          set +e
+          timeout 120s npx --yes impeccable@4.8.0 detect --json https://qctcommerce.com/ > impeccable-live-home.json 2> impeccable-live-home.stderr
+          home_status=$?
+          timeout 120s npx --yes impeccable@4.8.0 detect --json https://qctcommerce.com/hizmetler/ > impeccable-live-services.json 2> impeccable-live-services.stderr
+          services_status=$?
+          set -e
+          printf 'home_exit=%s\\nservices_exit=%s\\n' "$home_status" "$services_status" >> impeccable-status.txt
+          echo "Rendered homepage exit: $home_status"
+          echo "Rendered services exit: $services_status"
+          echo "Rendered checks are observational; unsupported browser/scan errors remain explicit in the artifact."
+
       - name: Upload design baseline evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -52,5 +67,9 @@ jobs:
             impeccable-css.json
             impeccable-css.stderr
             impeccable-status.txt
+            impeccable-live-home.json
+            impeccable-live-home.stderr
+            impeccable-live-services.json
+            impeccable-live-services.stderr
           retention-days: 7
           if-no-files-found: warn
