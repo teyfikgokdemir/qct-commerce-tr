@@ -71,13 +71,24 @@ jobs:
                   viewport: innerWidth,
                   scrollWidth: document.documentElement.scrollWidth,
                   title: document.title,
+                  editorial: (() => {
+                    const node = document.querySelector('.qct-image-story .qct-section-head h2');
+                    if (!node) return null;
+                    const r = node.getBoundingClientRect();
+                    return { right: Math.round(r.right), width: Math.round(r.width), fontSize: getComputedStyle(node).fontSize, whiteSpace: getComputedStyle(node).whiteSpace };
+                  })(),
                   offenders: [...document.querySelectorAll('body *')]
                     .filter((element) => {
                       const r = element.getBoundingClientRect();
                       const style = getComputedStyle(element);
-                      return style.display !== 'none' && r.width > 0 && (r.right > innerWidth + 2 || r.left < -2);
+                      if (style.display === 'none' || r.width === 0 || !(r.right > innerWidth + 2 || r.left < -2)) return false;
+                      for (let p = element.parentElement; p; p = p.parentElement) {
+                        if (/hidden|clip|auto|scroll/.test(getComputedStyle(p).overflowX)) return false;
+                      }
+                      return true;
                     })
-                    .slice(0, 12).map((element) => ({
+                    .sort((a, b) => b.getBoundingClientRect().right - a.getBoundingClientRect().right)
+                    .slice(0, 16).map((element) => ({
                       tag: element.tagName.toLowerCase(),
                       className: typeof element.className === 'string' ? element.className.slice(0, 90) : '',
                       right: Math.round(element.getBoundingClientRect().right),
