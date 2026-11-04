@@ -242,6 +242,15 @@
   }
 }
 
+/* A full-length English description must wrap instead of widening the page. */
+@media (min-width: 1024px) {
+  html[lang="en"] [data-qct-v2] .qct-image-story .qct-section-head > p:not(.qct-section-label) {
+    max-width: 72ch !important;
+    white-space: normal !important;
+    text-wrap: balance;
+  }
+}
+
 /* English editorial headline stays on one line without forcing horizontal scroll. */
 @media (min-width: 1024px) {
   html[lang="en"] [data-qct-v2] .qct-image-story .qct-section-head h2 {
