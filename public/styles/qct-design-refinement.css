@@ -232,3 +232,12 @@
     transition: none;
   }
 }
+
+/* English editorial headline stays on one line without forcing horizontal scroll. */
+@media (min-width: 1024px) {
+  html[lang="en"] [data-qct-v2] .qct-image-story .qct-section-head h2 {
+    font-size: clamp(26px, 2.3vw, 35px) !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.035em;
+  }
+}
