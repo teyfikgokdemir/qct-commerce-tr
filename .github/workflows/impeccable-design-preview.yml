@@ -1,0 +1,82 @@
+name: Design Preview - Impeccable
+
+on:
+  push:
+    branches: [design/impeccable-premium-polish-20261104]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.4
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build and run existing content and multilingual audits
+        run: npm run build
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capture current production vs proposed local build
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/qct-preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid 2>/dev/null || true' EXIT
+          for i in {1..30}; do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:4321/; then break; fi
+            sleep 1
+          done
+          curl --fail --silent --output /dev/null http://127.0.0.1:4321/
+          mkdir -p design-shots
+          node --input-type=module <<'NODE'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({ headless: true });
+          const targets = [
+            { name: 'home-tr', path: '/' },
+            { name: 'home-en', path: '/en/' },
+            { name: 'services-tr', path: '/hizmetler/' },
+          ];
+          for (const [site, origin] of [
+            ['production', 'https://qctcommerce.com'],
+            ['proposal', 'http://127.0.0.1:4321'],
+          ]) {
+            for (const viewport of [
+              { name: 'mobile', width: 390, height: 844 },
+              { name: 'desktop', width: 1440, height: 900 },
+            ]) {
+              const context = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+              const page = await context.newPage();
+              for (const target of targets) {
+                await page.goto(origin + target.path, { waitUntil: 'networkidle', timeout: 60000 });
+                await page.screenshot({ path: `design-shots/${site}-${target.name}-${viewport.name}.png`, fullPage: false, animations: 'disabled' });
+                const measure = await page.evaluate(() => ({
+                  horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
+                  viewport: innerWidth,
+                  scrollWidth: document.documentElement.scrollWidth,
+                  title: document.title,
+                }));
+                console.log(site, target.name, viewport.name, JSON.stringify(measure));
+                if (measure.horizontalOverflow) throw new Error(`Horizontal overflow in ${site} ${target.name} ${viewport.name}`);
+              }
+              await context.close();
+            }
+          }
+          await browser.close();
+          NODE
+      - name: Upload visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qct-premium-design-shots
+          path: design-shots/
+          retention-days: 7
+          if-no-files-found: warn
