@@ -39,6 +39,8 @@ jobs:
           mkdir -p design-shots
           node --input-type=module <<'NODE'
           import { chromium } from 'playwright';
+          import { writeFileSync } from 'node:fs';
+          const measurements = [];
           const browser = await chromium.launch({ headless: true });
           const targets = [
             { name: 'home-tr', path: '/' },
@@ -63,14 +65,35 @@ jobs:
                   viewport: innerWidth,
                   scrollWidth: document.documentElement.scrollWidth,
                   title: document.title,
+                  offenders: [...document.querySelectorAll('body *')]
+                    .filter((element) => {
+                      const r = element.getBoundingClientRect();
+                      const style = getComputedStyle(element);
+                      return style.display !== 'none' && r.width > 0 && (r.right > innerWidth + 2 || r.left < -2);
+                    })
+                    .slice(0, 12).map((element) => ({
+                      tag: element.tagName.toLowerCase(),
+                      className: typeof element.className === 'string' ? element.className.slice(0, 90) : '',
+                      right: Math.round(element.getBoundingClientRect().right),
+                      left: Math.round(element.getBoundingClientRect().left),
+                    })),
                 }));
+                measurements.push({ site, page: target.name, viewport: viewport.name, ...measure });
                 console.log(site, target.name, viewport.name, JSON.stringify(measure));
-                if (measure.horizontalOverflow) throw new Error(`Horizontal overflow in ${site} ${target.name} ${viewport.name}`);
               }
               await context.close();
             }
           }
           await browser.close();
+          writeFileSync('design-shots/measurements.json', JSON.stringify(measurements, null, 2));
+          const regressions = [];
+          for (const p of measurements.filter(x => x.site === 'proposal')) {
+            const baseline = measurements.find(x => x.site === 'production' && x.page === p.page && x.viewport === p.viewport);
+            if (p.horizontalOverflow && (!baseline?.horizontalOverflow || p.scrollWidth > baseline.scrollWidth + 2)) {
+              regressions.push(`${p.page}/${p.viewport}: proposal ${p.scrollWidth}px vs baseline ${baseline?.scrollWidth}px`);
+            }
+          }
+          if (regressions.length) throw new Error('New or worsened horizontal overflow: ' + regressions.join('; '));
           NODE
       - name: Upload visual evidence
         if: always()
