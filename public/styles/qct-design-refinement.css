@@ -259,3 +259,20 @@
     letter-spacing: -0.035em;
   }
 }
+
+/* Existing English close CTA used an auto minimum grid width, widening the page. */
+@media (min-width: 961px) {
+  html[lang="en"] [data-qct-v2] .qct-close-grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  html[lang="en"] [data-qct-v2] .qct-close-grid > div {
+    min-width: 0;
+  }
+  html[lang="en"] [data-qct-v2] .qct-close h2 {
+    max-width: 17ch;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    font-size: clamp(43px, 4.5vw, 66px);
+    line-height: 1.05;
+  }
+}
