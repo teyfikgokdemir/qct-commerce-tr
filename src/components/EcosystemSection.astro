@@ -44,7 +44,9 @@ const entries = [
   .ecosystem__lead { max-width: 70ch; margin-block: 1rem 2rem; }
   .ecosystem__list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem; }
   .ecosystem__list li { min-width: 0; padding-block: 1rem; border-top: 1px solid currentColor; }
-  .ecosystem__list a { font-weight: 700; text-underline-offset: .25em; }
+  .ecosystem__list a { display: inline-flex; align-items: center; min-height: 44px; gap: .25em; font-weight: 700; text-underline-offset: .25em; scroll-margin-block: 7rem 16rem; }
+  .ecosystem a:focus-visible { outline: 3px solid #003cc5; outline-offset: 4px; }
+  .ecosystem h2 { text-wrap: balance; scroll-margin-top: 7rem; }
   .ecosystem__list p { margin-block: .75rem 0; }
   .ecosystem__note { max-width: 80ch; margin-block: 2rem; }
 </style>
