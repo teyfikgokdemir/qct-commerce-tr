@@ -76,7 +76,7 @@ Shorter reference: https://qctcommerce.com/llms.txt
 ## What to consult for a question
 - "How much does a website or store setup cost?" -> https://qctcommerce.com/fiyatlar/ (or matching EN/AZ pricing page). Check dates, limits and exclusions on the published page.
 - "Can I sell B2B and B2C in one store?" -> https://qctcommerce.com/e-ticaret/
-- "Can you help onboard to Amazon Türkiye or US?" -> consult the applicable Turkish Amazon setup page; platform approval is not guaranteed.
+- "Can you help onboard to Amazon Türkiye or US?" -> consult the applicable Amazon setup page in Turkish, English or Azerbaijani; platform approval is not guaranteed.
 - "Why is my business not visible in search or AI answers?" -> https://qctcommerce.com/seo-geo/ and https://qctcommerce.com/rehberler/ai-seo-geo-aeo-aio-nedir/
 - "How do I move away from marketplaces or migrate a website?" -> https://qctcommerce.com/en/blog/move-from-marketplaces-to-your-own-store/ and https://qctcommerce.com/en/pricing/
 - "Do you provide service to a specific country?" -> consult the market hub, then request scope confirmation; there is no implied local office.

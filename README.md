@@ -10,7 +10,7 @@ Astro tabanlı, Cloudflare Pages üzerinde yayınlanan çok dilli QCT Commerce d
 | English | https://qctcommerce.com/en/ | Hizmet, blog, iletişim ve lokasyon içerikleri |
 | Azərbaycanca | https://qctcommerce.com/az/ | Yerelleştirilmiş temel hizmet, blog ve ticari sayfalar |
 
-Tek site ve tek alan adı kullanılır. Gerçek eşdeğer sayfalar için reciprocal `hreflang` ve self-canonical URL'ler üretilir. Her sayfanın tüm dillerde karşılığı **olmak zorunda değildir**. Özellikle pazaryeri / Amazon kurulum sayfaları şu anda yalnızca Türkçedir. TR/EN lokasyon sayfaları Azerbaycan dilindeki sayfalarla yapay olarak çoğaltılmaz.
+Tek site ve tek alan adı kullanılır. Gerçek eşdeğer sayfalar için reciprocal `hreflang` ve self-canonical URL'ler üretilir. Her sayfanın tüm dillerde karşılığı **olmak zorunda değildir**. Pazaryeri / Amazon kurulum sayfaları TR/EN/AZ dillerinde yayınlanır. Dil eşdeğerleri kaynak rota kayıtlarından doğrulanır; eksik çeviriler için URL üretilmez.
 
 Mevcut sayfalar `src/pages`, bileşenler `src/components`, dil eşdeğerleri `src/data/locale-parity.js` ve `src/data/locale-routing.js` içinde yönetilir. `src/layouts/BaseLayout.astro` canonical, hreflang, OG ve ana JSON-LD şemalarını üretir.
 

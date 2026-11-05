@@ -7,6 +7,23 @@ import { chromium } from 'playwright';
 
 // Run `npm run build` first. Uses real built pages; never sends leads or analytics.
 const root = resolve('dist');
+test('ecosystem links provide mobile touch targets and visible keyboard focus in all locales', async t => {
+  for (const path of ['/hakkimizda/', '/en/about/', '/az/haqqimizda/']) {
+    const page = await pageFor(t, path);
+    const links = page.locator('.ecosystem__list a');
+    assert.equal(await links.count(), 5);
+    for (let i = 0; i < 5; i++) {
+      const link = links.nth(i);
+      assert.ok((await link.boundingBox()).height >= 44, `${path}: touch target`);
+      await link.focus();
+      await page.waitForFunction(() => { const r = document.activeElement.getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight; });
+      const state = await link.evaluate(el => ({ outline: getComputedStyle(el).outlineStyle, top: el.getBoundingClientRect().top, bottom: el.getBoundingClientRect().bottom }));
+      assert.notEqual(state.outline, 'none', `${path}: visible focus`);
+      assert.ok(state.top >= 0 && state.bottom <= 844, `${path}: focus in viewport`);
+    }
+    await page.close();
+  }
+});
 let server, browser, base;
 before(async () => {
   server = createServer(async (req, res) => {

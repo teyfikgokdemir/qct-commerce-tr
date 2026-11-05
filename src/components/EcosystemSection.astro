@@ -1,0 +1,52 @@
+---
+interface Props { lang: string }
+const { lang } = Astro.props;
+const copy = lang === 'en' ? {
+  label: 'QCTONE ECOSYSTEM', title: 'One ecosystem. A clear starting point for each need.',
+  lead: 'Start with QCT Commerce for websites, online stores, marketplaces and digital growth. Related ventures bring distinct areas of expertise under founder Teyfik Gökdemir’s operating portfolio.',
+  roles: ['Websites, e-commerce, marketplaces and digital growth.', 'Software, technical architecture, automation and digital products.', 'International trade, strategic sourcing and market entry.', 'Founder, operating approach and the wider portfolio.', 'A separate content and media venture.'],
+  note: 'Shared ecosystem membership does not establish a client relationship or a project delivery claim. Selected work describes its own scope; business results require separate evidence.',
+  action: 'Discuss your project', href: '/en/contact/'
+} : lang === 'az' ? {
+  label: 'QCTONE EKOSİSTEMİ', title: 'Hər ehtiyac üçün aydın başlanğıc nöqtəsi.',
+  lead: 'Veb sayt, onlayn mağaza, bazaryeri və rəqəmsal böyümə üçün QCT Commerce ilə başlayın. Teyfik Gökdemirin idarə etdiyi ekosistemdə hər təşəbbüsün ayrıca fəaliyyət sahəsi var.',
+  roles: ['Veb sayt, e-ticarət, bazaryeri və rəqəmsal böyümə.', 'Proqram təminatı, texniki arxitektura, avtomatlaşdırma və rəqəmsal məhsullar.', 'Beynəlxalq ticarət, strateji tədarük və bazara giriş.', 'Təsisçi, iş yanaşması və təşəbbüslər portfeli.', 'Ayrıca məzmun və media təşəbbüsü.'],
+  note: 'Eyni ekosistemdə olmaq müştəri münasibətini və ya layihənin icrasını təsdiqləmir. Seçilmiş işlərdə əhatə ayrıca göstərilir; kommersiya nəticələri ayrıca sübut tələb edir.',
+  action: 'Layihənizi müzakirə edək', href: '/az/elaqe/'
+} : {
+  label: 'QCTONE EKOSİSTEMİ', title: 'Her ihtiyaç için açık bir başlangıç noktası.',
+  lead: 'Web sitesi, e-ticaret, pazaryeri ve dijital büyüme için QCT Commerce ile başlayın. Teyfik Gökdemir’in yönettiği ekosistemde her girişimin ayrı bir çalışma alanı bulunur.',
+  roles: ['Web sitesi, e-ticaret, pazaryeri ve dijital büyüme.', 'Yazılım, teknik mimari, otomasyon ve dijital ürün geliştirme.', 'Uluslararası ticaret, stratejik tedarik ve pazara giriş.', 'Kurucu, çalışma yaklaşımı ve girişimler portföyü.', 'Kendi içerik ve medya odağıyla çalışan ayrı girişim.'],
+  note: 'Aynı ekosistemde bulunmak müşteri ilişkisini veya proje teslimini kanıtlamaz. Seçilmiş çalışmalarda kapsam ayrıca belirtilir; ticari sonuçlar ayrı kanıt gerektirir.',
+  action: 'Web ve e-ticaret talebi oluşturun', href: '/iletisim/'
+};
+const entries = [
+  { name: 'QCT Commerce', url: lang === 'en' ? '/en/services/' : lang === 'az' ? '/az/xidmetler/' : '/hizmetler/' },
+  { name: 'QCT Studio', url: 'https://qctstudio.com/' },
+  { name: 'CTSEG', url: 'https://ctseg.com.tr/' },
+  { name: 'Teyfik Gökdemir', url: 'https://teyfikgokdemir.com/' },
+  { name: 'Mythborn', url: 'https://mythborn.co/' }
+];
+---
+<section class="section ecosystem" aria-labelledby="ecosystem-title">
+  <div class="container">
+    <p class="eyebrow">{copy.label}</p>
+    <h2 id="ecosystem-title">{copy.title}</h2>
+    <p class="ecosystem__lead">{copy.lead}</p>
+    <ul class="ecosystem__list">
+      {entries.map((entry, i) => <li><a href={entry.url}>{entry.name}<span aria-hidden="true"> ↗</span></a><p>{copy.roles[i]}</p></li>)}
+    </ul>
+    <p class="ecosystem__note">{copy.note}</p>
+    <a class="button button--primary" href={copy.href}>{copy.action}</a>
+  </div>
+</section>
+<style>
+  .ecosystem__lead { max-width: 70ch; margin-block: 1rem 2rem; }
+  .ecosystem__list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem; }
+  .ecosystem__list li { min-width: 0; padding-block: 1rem; border-top: 1px solid currentColor; }
+  .ecosystem__list a { display: inline-flex; align-items: center; min-height: 44px; gap: .25em; font-weight: 700; text-underline-offset: .25em; scroll-margin-block: 7rem 16rem; }
+  .ecosystem a:focus-visible { outline: 3px solid #003cc5; outline-offset: 4px; }
+  .ecosystem h2 { text-wrap: balance; scroll-margin-top: 7rem; }
+  .ecosystem__list p { margin-block: .75rem 0; }
+  .ecosystem__note { max-width: 80ch; margin-block: 2rem; }
+</style>

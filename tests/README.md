@@ -1,6 +1,7 @@
 # P2 regression checks
 
-Install dependencies with `npm ci`, then run `npm run build` and `npm test`.
+Install dependencies with `npm ci`, then run `npm test`. Its `pretest` hook builds
+the current source and runs the production audits before starting regression tests.
 The tests serve the built `dist/` locally, launch headless Chromium, and block
 external requests. They do not submit leads or send analytics to production.
 
@@ -14,4 +15,5 @@ inert restoration, resize cleanup, translated motion controls, persistent video
 pause, live/initial reduced motion, and desktop horizontal overflow.
 
 Optional: set `P2_SCREENSHOT_DIR` to an existing directory to capture review
-images. Tests always rebuild nothing implicitly: rerun the build after edits.
+images. Direct `node --test` runs bypass the npm build hook; run `npm run build`
+first when invoking individual test files directly.
