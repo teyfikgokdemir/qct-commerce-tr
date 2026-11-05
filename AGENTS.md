@@ -3,7 +3,7 @@
 ## Current architecture (verified 2026-10-30)
 - Astro 7.4.x static marketing site, deployed by Cloudflare Pages from `main`. Production: https://qctcommerce.com.
 - **Three published locales:** Turkish at `/`, English at `/en/`, Azerbaijani at `/az/`. Treat all three as production features. Keep page-specific reciprocal hreflang only when genuine translations exist, canonical and x-default behavior, language switch routes, metadata and localized content intact.
-- Turkish marketplace and Amazon setup routes do **not** currently have English/Azerbaijani translations. Do not invent translated URLs.
+- Marketplace and Amazon setup routes have published TR/EN/AZ translations. Verify exact equivalents in source route records; do not invent translated URLs.
 - Location/market hub programmatic pages exist in TR/EN; AZ is deliberately handled via the actual Azerbaijani pages. Do not invent offices, local clients or geographic presence.
 - Preserve the quote calculator, WhatsApp funnel, consent/analytics, accessibility, videos, keyboard navigation, responsive design, and the current brand color system.
 
