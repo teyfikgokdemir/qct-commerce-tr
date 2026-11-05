@@ -1,3 +1,4 @@
+import { hasServicePrice } from './pricing-verification.mjs';
 const checks = [
   {
     url: 'https://qctcommerce.com/',
@@ -66,9 +67,9 @@ const checks = [
     url: 'https://qctcommerce.com/en/pricing/',
     verify: async (response, body) =>
       response.ok &&
-      body.includes('Website redesign</span><strong>6.900 TL</strong>') &&
-      body.includes('Dynamic SEO</span><strong>5.990 TL / month</strong>') &&
-      !body.includes('Website redesign</span><strong>4.900 TL</strong>'),
+      hasServicePrice(body, 'Website redesign', '6.900 TL') &&
+      hasServicePrice(body, 'Dynamic SEO', '5.990 TL / month') &&
+      !hasServicePrice(body, 'Website redesign', '4.900 TL'),
     label: 'English pricing stays aligned with current redesign and Dynamic SEO prices',
   },
   {
