@@ -2,6 +2,7 @@
 import CookieConsent from '../components/CookieConsent.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import EdgeToast from '../components/EdgeToast.astro';
+import EcosystemSection from '../components/EcosystemSection.astro';
 import { localeParityClusters } from '../data/locale-parity.js';
 
 const SITE_URL = 'https://qctcommerce.com';
@@ -230,7 +231,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#primary">{isAzerbaijani ? 'Məzmuna keç' : isEnglish ? 'Skip to content' : 'İçeriğe geç'}</a>
     <slot name="header" />
-    <main id="primary" class="site-main"><slot /></main>
+    <main id="primary" class="site-main"><slot />{['/hakkimizda/', '/en/about/', '/az/haqqimizda/'].includes(currentPath) && <EcosystemSection lang={lang} />}</main>
     <slot name="footer" />
   </div>
   <CookieConsent lang={lang} />
