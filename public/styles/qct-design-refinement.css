@@ -1,0 +1,278 @@
+/* QCT Commerce / Impeccable refinement 2026-11-04.
+   Scoped to the TR/EN homepage builder; pricing logic and shared brand tokens stay intact. */
+[data-qct-v2] .qct-hero-copy > h1 {
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+[data-qct-v2] .qct-hero-copy > .qct-lead {
+  max-width: 56ch;
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+[data-qct-v2] .qct-hero-copy > .qct-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.11em;
+}
+
+[data-qct-v2] .qct-calculator {
+  --qct-muted: #475569;
+  background: #fff;
+  border: 1px solid #dce4ef;
+  border-radius: 22px;
+  padding: clamp(20px, 2.6vw, 28px);
+  box-shadow: 0 22px 64px rgba(12, 30, 62, 0.09);
+  backdrop-filter: none;
+}
+
+[data-qct-v2] .qct-calculator::before {
+  display: none;
+}
+
+[data-qct-v2] .qct-calculator-head {
+  gap: 16px;
+  margin-bottom: 17px;
+}
+
+[data-qct-v2] .qct-calculator h2 {
+  font-size: clamp(25px, 2vw, 30px);
+  line-height: 1.16;
+  letter-spacing: -0.04em;
+}
+
+[data-qct-v2] .qct-builder-status {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.085em;
+  line-height: 1.4;
+}
+
+[data-qct-v2] .qct-builder-sub {
+  display: block;
+  max-width: 48ch;
+  margin-top: 8px;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+[data-qct-v2] .qct-calculator form {
+  gap: 12px;
+}
+
+[data-qct-v2] .qct-field > span {
+  gap: 8px 14px;
+}
+
+[data-qct-v2] .qct-field > span b,
+[data-qct-v2] .qct-calculator fieldset legend {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+[data-qct-v2] .qct-field > span small,
+[data-qct-v2] .qct-calculator fieldset legend small {
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+[data-qct-v2] .qct-calculator label > span,
+[data-qct-v2] .qct-calculator legend {
+  margin-bottom: 7px;
+}
+
+[data-qct-v2] .qct-calculator select {
+  min-height: 46px;
+  background-color: #f8faff;
+  border-color: #dce4ef;
+  border-radius: 11px;
+  color: #13253e;
+  font-size: 14px;
+}
+
+[data-qct-v2] .qct-calculator select:focus-visible,
+[data-qct-v2] .qct-check:focus-within {
+  outline: 2px solid #002fa7;
+  outline-offset: 3px;
+}
+
+[data-qct-v2] .qct-addon-grid {
+  gap: 9px;
+}
+
+[data-qct-v2] .qct-check {
+  min-height: 54px;
+  padding: 10px 12px;
+  border: 1px solid #e0e6f0;
+  border-radius: 12px;
+  background: #fff;
+  transform: none;
+}
+
+[data-qct-v2] .qct-check:hover {
+  transform: none;
+  border-color: #9cb6e3;
+  background: #f8faff;
+}
+
+[data-qct-v2] .qct-check input {
+  accent-color: #002fa7;
+}
+
+[data-qct-v2] .qct-check span {
+  color: #20324c;
+  font-size: 13px !important;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+[data-qct-v2] .qct-check small {
+  color: #475569;
+  font-size: 12px !important;
+  line-height: 1.4;
+}
+
+[data-qct-v2] .qct-price-result {
+  gap: 16px;
+  padding-top: 18px;
+  border-top-color: #dce4ef;
+}
+
+[data-qct-v2] .qct-price-result span {
+  color: #475569;
+  font-size: 12px;
+  letter-spacing: 0.035em;
+}
+
+[data-qct-v2] .qct-price-result strong {
+  font-size: clamp(25px, 2.4vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+[data-qct-v2] .qct-price-result small,
+[data-qct-v2] .qct-external-cost-note {
+  display: block;
+  max-width: 60ch;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.52;
+}
+
+[data-qct-v2] .qct-price-result [data-result-note] {
+  margin-top: 5px;
+}
+
+[data-qct-v2] .qct-external-cost-note {
+  margin-top: 6px;
+}
+
+[data-qct-v2] .qct-result-btn {
+  min-height: 48px;
+  padding-inline: 19px;
+  flex-shrink: 0;
+}
+
+[data-qct-v2] .qct-result-btn:focus-visible {
+  outline: 2px solid #002fa7;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  [data-qct-v2] .qct-calculator {
+    border-radius: 18px;
+    padding: 19px 16px;
+  }
+
+  [data-qct-v2] .qct-calculator-head {
+    margin-bottom: 15px;
+  }
+
+  [data-qct-v2] .qct-builder-sub {
+    font-size: 13px;
+  }
+
+  [data-qct-v2] .qct-field > span small {
+    display: block;
+    text-align: left;
+  }
+
+  [data-qct-v2] .qct-calculator select {
+    min-height: 46px;
+  }
+
+  [data-qct-v2] .qct-price-result {
+    position: static;
+    padding: 15px 0 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  [data-qct-v2] .qct-price-result [data-result-note] {
+    display: block;
+  }
+
+  [data-qct-v2] .qct-price-result small,
+  [data-qct-v2] .qct-external-cost-note {
+    font-size: 12px;
+  }
+
+  [data-qct-v2] .qct-result-btn {
+    min-height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-qct-v2] .qct-check,
+  [data-qct-v2] .qct-result-btn {
+    transition: none;
+  }
+}
+
+/* Keep long add-on names intact in the three-column desktop builder. */
+@media (min-width: 961px) {
+  [data-qct-v2] .qct-check span {
+    font-size: 12.5px !important;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
+/* A full-length English description must wrap instead of widening the page. */
+@media (min-width: 1024px) {
+  html[lang="en"] [data-qct-v2] .qct-image-story .qct-section-head > p:not(.qct-section-label) {
+    max-width: 72ch !important;
+    white-space: normal !important;
+    text-wrap: balance;
+  }
+}
+
+/* English editorial headline stays on one line without forcing horizontal scroll. */
+@media (min-width: 1024px) {
+  html[lang="en"] [data-qct-v2] .qct-image-story .qct-section-head h2 {
+    font-size: clamp(26px, 2.3vw, 35px) !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.035em;
+  }
+}
+
+/* Existing English close CTA used an auto minimum grid width, widening the page. */
+@media (min-width: 961px) {
+  html[lang="en"] [data-qct-v2] .qct-close-grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  html[lang="en"] [data-qct-v2] .qct-close-grid > div {
+    min-width: 0;
+  }
+  html[lang="en"] [data-qct-v2] .qct-close h2 {
+    max-width: 17ch;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    font-size: clamp(43px, 4.5vw, 66px);
+    line-height: 1.05;
+  }
+}

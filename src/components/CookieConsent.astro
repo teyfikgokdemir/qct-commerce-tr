@@ -8,21 +8,21 @@ const { lang } = Astro.props;
 const copyMap: Record<string, { label: string; text: string; accept: string; reject: string; policy: string }> = {
   tr: {
     label: 'Çerez tercihleri',
-    text: 'Site kullanımını anlamak için ölçüm kullanıyoruz. İzin verilmediğinde analitik depolama kapalı kalır ve yalnızca çerezsiz ölçüm sinyalleri kullanılır.',
+    text: 'GA4, GTM, Clarity ve Cansu ölçüm araçları yalnızca analitik izniyle yüklenir. Reddetmeniz veya izni geri çekmeniz ölçümü durdurur. Clarity oturum kaydı için kayıt izni de gerekir.',
     accept: 'Onayla',
     reject: 'Reddet',
     policy: 'Çerez politikası',
   },
   en: {
     label: 'Cookie preferences',
-    text: 'We use measurement to understand site usage. If consent is denied, analytics storage stays disabled and only cookieless measurement signals are used.',
+    text: 'GA4, GTM, Clarity and Cansu analytics load only after analytics consent. Rejecting or withdrawing consent stops measurement. Clarity session recording also requires recording consent.',
     accept: 'Accept',
     reject: 'Reject',
     policy: 'Cookie policy',
   },
   az: {
     label: 'Kuki seçimləri',
-    text: 'Saytdan istifadəni anlamaq üçün ölçmə vasitələrindən istifadə edirik. Razılıq verilmədikdə analitik yaddaş bağlı qalır və yalnız kukisiz ölçmə siqnalları davam edir.',
+    text: 'GA4, GTM, Clarity və Cansu analitikası yalnız analitik razılığı verdikdən sonra yüklənir. Rədd etdikdə və ya razılığı geri götürdükdə ölçmə dayanır. Clarity sessiya yazısı üçün ayrıca yazı razılığı da tələb olunur.',
     accept: 'Qəbul et',
     reject: 'Rədd et',
     policy: 'Kuki siyasəti',
@@ -65,12 +65,11 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : lang === 'az' ? '/az/ku
   try { saved = localStorage.getItem(key); } catch {}
   let recording = false;
   try { recording = localStorage.getItem('qct-recording-consent-v1') === 'granted'; } catch {}
-  const ANALYTICS_TEST_MODE = true;
-  analytics.setConsent({ analytics: ANALYTICS_TEST_MODE ? true : saved === 'granted', recording: ANALYTICS_TEST_MODE ? true : recording });
+  analytics.setConsent({ analytics: saved === 'granted', recording });
   show(!['granted', 'denied'].includes(saved || '') || (saved === 'granted' && !!analyticsConfig.clarity && !recording));
   const choose = (state: string) => {
     try { localStorage.setItem(key, state); localStorage.setItem('qct-recording-consent-v1', state); } catch {}
-    analytics.setConsent({ analytics: ANALYTICS_TEST_MODE ? true : state === 'granted', recording: ANALYTICS_TEST_MODE ? true : state === 'granted' });
+    analytics.setConsent({ analytics: state === 'granted', recording: state === 'granted' });
     show(false);
   };
   document.querySelector('[data-cookie-accept]')?.addEventListener('click', () => choose('granted'));
