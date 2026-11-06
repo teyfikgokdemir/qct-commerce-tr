@@ -2327,4 +2327,40 @@ const desktopLanguageLabel = isAzerbaijani ? 'Dil seçimi' : isEnglish ? 'Langua
   @media (prefers-reduced-transparency: reduce) {
     #masthead.site-header { background: #ffffff !important; }
   }
+
+  /* English navigation: retain every destination without viewport overflow. */
+  @media (min-width: 1000px) and (max-width: 1599px) {
+    html[lang="en"] #masthead .site-header__inner.container {
+      max-width: 100%;
+      gap: clamp(8px, 1vw, 16px);
+      padding-inline: clamp(14px, 1.6vw, 24px);
+    }
+    html[lang="en"] #masthead .site-title--logo {
+      width: clamp(125px, 9.8vw, 156px);
+    }
+    html[lang="en"] #masthead .main-navigation {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+    html[lang="en"] #masthead .primary-menu {
+      gap: 2px !important;
+      flex-wrap: wrap !important;
+      justify-content: center;
+    }
+    html[lang="en"] #masthead .primary-menu > li > a,
+    html[lang="en"] #masthead .primary-menu > li > .submenu-toggle,
+    html[lang="en"] #masthead .primary-menu > li > .submenu-toggle span {
+      font-size: 0.83rem !important;
+    }
+    html[lang="en"] #masthead .primary-menu > li > a,
+    html[lang="en"] #masthead .primary-menu > li > .submenu-toggle {
+      padding-inline: 6px !important;
+    }
+    html[lang="en"] #masthead .qct-desktop-right {
+      gap: 6px;
+    }
+    html[lang="en"] #masthead .qct-header-cta {
+      padding-inline: 13px;
+    }
+  }
 </style>
