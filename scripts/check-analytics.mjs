@@ -21,7 +21,7 @@ let checks = 0;
 const check = (name, fn) => { fn(); checks++; console.log('PASS ' + name); };
 
 check('no consent keeps vendors unloaded and blocks analytics events', () => {
-  const f = fixture();
+  const f = fixture(true);
   assert.deepEqual(f.scripts.map(s => s.id), []);
   f.api.setConsent({analytics:false,recording:false});
   assert.deepEqual(f.scripts.map(s => s.id), []);
