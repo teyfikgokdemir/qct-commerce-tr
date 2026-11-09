@@ -1,3 +1,6 @@
+# Infrastructure SEO redirects
+/sitemap.xml /sitemap-index.xml 301
+
 # Eski Shopify dijital hizmet ürünleri
 /products/baslangic-paketi /e-ticaret/ 301
 /products/lansman-paketi /e-ticaret/ 301
