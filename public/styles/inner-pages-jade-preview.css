@@ -356,3 +356,26 @@ body[data-qct-inner-preview="jade"] #primary .qct-svc-hero + .qct-svc-section .q
     text-wrap: balance;
   }
 }
+
+
+/* QCT EDGE toast uses its own blue system. Harmonise the small overlay while
+   preserving the session-dismissal and timing behaviour exactly as shipped. */
+body[data-qct-inner-preview="jade"] .qct-edge-toast {
+  background: rgba(12, 30, 37, .985);
+  border-color: rgba(119, 222, 187, .30);
+  box-shadow: 0 14px 37px rgba(5, 25, 29, .25);
+}
+body[data-qct-inner-preview="jade"] .qct-edge-toast-badge {
+  color: #a4e6d2;
+  background: rgba(33, 142, 111, .17);
+  border-color: rgba(119, 222, 187, .30);
+}
+body[data-qct-inner-preview="jade"] .qct-edge-toast-dot {
+  background: #80ddc4;
+  box-shadow: 0 0 6px rgba(128, 221, 196, .38);
+}
+body[data-qct-inner-preview="jade"] .qct-edge-toast-cta {
+  background: #0a7164;
+  color: #fff;
+  box-shadow: none;
+}
