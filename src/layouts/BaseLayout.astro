@@ -100,6 +100,12 @@ addLocaleCluster('/amazon-amerika-magaza-kurulumu/', '/en/amazon-us-store-setup/
 for (const item of localeParityClusters) addLocaleCluster(item.tr, item.en, item.az);
 
 const currentPath = Astro.url.pathname;
+// Preview only: six published service/pricing indexes receive the alternate
+// palette. Other routes retain their existing production styles.
+const isInnerPageJadePreview = new Set([
+  '/hizmetler/', '/en/services/', '/az/xidmetler/',
+  '/fiyatlar/', '/en/pricing/', '/az/qiymetler/',
+]).has(currentPath);
 const pairedPath = parityRoutes[currentPath];
 const cluster = localeClusters[currentPath];
 const clusterAlternates = cluster ? [
@@ -226,8 +232,9 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': [organizationS
   {includeServiceCardStyles && <link rel="stylesheet" href="/styles/service-cards-isolated.css?v=20261104-impeccable-v1" />}
   {isInternational && <link rel="stylesheet" href="/styles/international.css?v=20261028-brand-blue" />}
   {includeWorkStyles && <><link rel="stylesheet" href="/styles/work.css?v=20261101-elite-v3" /><link rel="stylesheet" href="/styles/case-study-overrides.css?v=20261028-brand-blue" /></>}
+  {isInnerPageJadePreview && <link rel="stylesheet" href="/styles/inner-pages-jade-preview.css?v=20261110-inner-v1" />}
 </head>
-<body>
+<body data-qct-inner-preview={isInnerPageJadePreview ? 'jade' : undefined}>
   <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#primary">{isAzerbaijani ? 'Məzmuna keç' : isEnglish ? 'Skip to content' : 'İçeriğe geç'}</a>
     <slot name="header" />
