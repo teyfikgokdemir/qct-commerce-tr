@@ -318,3 +318,41 @@ body[data-qct-inner-preview="jade"] .qct-close .qct-btn-light {
     transform: none !important;
   }
 }
+
+
+/* ServicePage component has locally scoped !important blue rules.
+   The index-specific override needs #primary specificity to win. */
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(48, 164, 136, .08), transparent 46%),
+    #f7faf8 !important;
+}
+body[data-qct-inner-preview="jade"] #primary :is(.qct-svc-hero, .qct-svc-section) .qct-section__eyebrow {
+  color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero .qct-btn--primary,
+body[data-qct-inner-preview="jade"] #primary .qct-svc-final__btn-primary {
+  background: #0a7164 !important;
+  border-color: #0a7164 !important;
+  color: #fff !important;
+}
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero .qct-btn--primary:hover,
+body[data-qct-inner-preview="jade"] #primary .qct-svc-final__btn-primary:hover {
+  background: #07584f !important;
+}
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero + .qct-svc-section {
+  padding-block: 30px 28px;
+}
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero + .qct-svc-section .qct-section__header {
+  margin-bottom: 0;
+}
+@media (max-width: 390px) {
+  html[lang="az"] body[data-qct-inner-preview="jade"] #primary .qct-pricing-faq h2 {
+    max-width: 100%;
+    min-width: 0;
+    font-size: clamp(27px, 8.9vw, 36px);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+}
