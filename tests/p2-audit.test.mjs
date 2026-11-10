@@ -578,3 +578,49 @@ test('preview onyx-jade palette keeps shared home identity across three locales'
     await assertNoHorizontalOverflow(page, path);
   }
 });
+
+
+test('preview homepage shows verified work in all locales and matches onyx-jade spotlight', async t => {
+  for (const [path, cases] of [
+    ['/', ['/calismalar/headwear/', '/calismalar/misima/', '/calismalar/artman/']],
+    ['/en/', ['/en/work/headwear/', '/en/work/misima/', '/en/work/artman/']],
+    ['/az/', ['/az/isler/headwear/', '/az/isler/misima/', '/az/isler/artman/']]
+  ]) {
+    const page = await pageFor(t, path, { viewport: { width: 1440, height: 900 } });
+    const links = page.locator('.qct-case-grid > .qct-case-link');
+    assert.equal(await links.count(), 3, path + ': three existing case studies');
+    for (const [idx, href] of cases.entries()) {
+      assert.equal(await links.nth(idx).getAttribute('href'), href);
+      assert.ok((await links.nth(idx).locator('img').getAttribute('alt')).length > 20);
+    }
+    assert.equal(await page.locator('.qct-case-more').count(), 1);
+    const palette = await page.evaluate(() => ({
+      edge: getComputedStyle(document.querySelector('.qct-edge')).backgroundColor,
+      footer: getComputedStyle(document.querySelector('#colophon')).backgroundColor,
+      work: getComputedStyle(document.querySelector('.qct-image-story')).backgroundColor,
+      cols: getComputedStyle(document.querySelector('.qct-case-grid')).gridTemplateColumns,
+      card: document.querySelector('.qct-case-link').getBoundingClientRect().height,
+    }));
+    assert.equal(palette.footer, 'rgb(11, 21, 25)', path + ': graphite footer');
+    assert.equal(palette.work, 'rgb(16, 27, 31)', path + ': graphite work section');
+    assert.ok(palette.card > 200, path + ': real work image is visible');
+    await assertNoHorizontalOverflow(page, path);
+  }
+});
+
+test('preview live work showcase fits mobile and keeps all links accessible', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    for (const width of [320, 390, 430]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
+      const links = page.locator('.qct-case-grid > .qct-case-link');
+      assert.equal(await links.count(), 3);
+      const rects = await links.evaluateAll(elements => elements.map(el => {
+        const rect = el.getBoundingClientRect();
+        return { left: rect.left, right: rect.right, height: rect.height };
+      }));
+      assert.ok(rects.every(box => box.left >= -1 && box.right <= width + 1 && box.height >= 180),
+        path + ': visible and fitting work cards @' + width + ': ' + JSON.stringify(rects));
+    }
+  }
+});
