@@ -563,3 +563,63 @@ test('preview laptop quote result stays above visible consent banner', async t =
     await assertNoHorizontalOverflow(page, path + ' @1440x768');
   }
 });
+
+
+test('compact consent banner remains readable, accessible and neutral across locales', async t => {
+  for (const [path, cue] of [['/', /çerezsiz/i], ['/en/', /cookieless/i], ['/az/', /kukisiz/i]]) {
+    for (const width of [320, 390]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      const notice = page.locator('[data-cookie-consent]');
+      await notice.waitFor({ state: 'visible' });
+      const m = await notice.evaluate(el => {
+        const box = el.getBoundingClientRect();
+        const p = el.querySelector('p');
+        const buttons = [...el.querySelectorAll('button')].map(btn => {
+          const r = btn.getBoundingClientRect();
+          return { width: r.width, height: r.height, left: r.left, right: r.right };
+        });
+        return {
+          height: box.height, top: box.top, left: box.left, right: box.right,
+          copy: p?.textContent ?? '', clipped: p.scrollHeight > p.clientHeight + 1,
+          buttons, fullText: el.textContent ?? ''
+        };
+      });
+      const limit = width === 320 ? 178 : 156;
+      assert.ok(m.height <= limit, path + ' ' + width + ': consent banner too tall ' + JSON.stringify(m));
+      assert.ok(m.left >= -1 && m.right <= width + 1, path + ': banner must fit screen');
+      assert.equal(m.clipped, false, path + ': never truncate the disclosure');
+      assert.match(m.copy, cue, path + ': explain consent-independent signals');
+      assert.ok(!m.fullText.includes('Cansu'), path + ': no provider/internal identity in notice');
+      assert.ok(m.buttons.length === 2 && m.buttons.every(b => b.height >= 44 && b.left >= 0 && b.right <= width), path + ': two accessible consent actions');
+      assert.equal(await notice.locator('a[href]').count(), 1, path + ': keep full policy link');
+      if (width === 390) {
+        const cta = page.locator('.qct-hero .qct-hero-copy .qct-btn-primary');
+        const ctaBox = await cta.boundingBox();
+        assert.ok(ctaBox && ctaBox.bottom <= m.top - 8, path + ': hero CTA should clear consent strip on 390×844: ' + JSON.stringify({ctaBottom: ctaBox?.bottom, bannerTop: m.top}));
+      }
+    }
+  }
+});
+
+test('consent reject/accept controls retain exact preference behavior on preview', async t => {
+  for (const [path, choice, value] of [['/', 'reject', 'denied'], ['/en/', 'accept', 'granted']]) {
+    const page = await pageFor(t, path);
+    await page.locator(`[data-cookie-${choice}]`).click();
+    assert.equal(await page.evaluate(() => localStorage.getItem('qct-analytics-consent')), value);
+    assert.equal(await page.evaluate(() => localStorage.getItem('qct-recording-consent-v1')), value);
+    assert.equal(await page.locator('[data-cookie-consent]').isVisible(), false);
+    await page.reload();
+    assert.equal(await page.locator('[data-cookie-consent]').isVisible(), false);
+  }
+});
+
+test('consent banner uses a single compact desktop line on 1440px viewport', async t => {
+  const page = await pageFor(t, '/', { viewport: { width: 1440, height: 768 } });
+  const m = await page.locator('[data-cookie-consent]').evaluate(el => ({
+    height: el.getBoundingClientRect().height,
+    top: el.getBoundingClientRect().top,
+    paragraph: getComputedStyle(el.querySelector('p')).textOverflow
+  }));
+  assert.ok(m.height <= 75, 'desktop notice should be compact: ' + JSON.stringify(m));
+  assert.notEqual(m.paragraph, 'ellipsis', 'desktop notice cannot truncate privacy disclosure');
+});
