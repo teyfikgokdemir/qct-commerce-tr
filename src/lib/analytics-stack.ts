@@ -39,13 +39,22 @@ function build(config: Config) {
     const s = document.createElement('script'); s.id = id; s.async = true; s.src = src;
     document.head.appendChild(s);
   };
+  function loadAnonymousCounters() {
+    if (!config.cansu) return;
+    const site = config.cansuSite || config.site;
+    for (const [id, src] of [['qct-cansu-umami', 'https://teyfikgokdemir.com/cansu-umami-loader.js'], ['qct-privacy-traffic', 'https://teyfikgokdemir.com/privacy-traffic.js']]) {
+      if (document.getElementById(id)) continue;
+      const script = document.createElement('script'); script.id = id; script.async = true; script.src = src; script.dataset.site = site; document.head.appendChild(script);
+    }
+  }
   function loadCansu() {
     if (!consent.analytics || !config.cansu || cansuLoaded) return;
     cansuLoaded = true;
     const site = config.cansuSite || config.site;
-    const beacon = document.createElement('script'); beacon.id = 'qct-cansu-source-beacon'; beacon.src = 'https://teyfikgokdemir.com/cansu-source-beacon.js'; beacon.defer = true; beacon.dataset.site = site; document.head.appendChild(beacon);
-    const events = document.createElement('script'); events.id = 'qct-cansu-events'; events.src = '/cansu-events.js'; events.defer = true; events.dataset.site = site; document.head.appendChild(events);
-    const umami = document.createElement('script'); umami.id = 'qct-cansu-umami'; umami.src = 'https://teyfikgokdemir.com/cansu-umami-loader.js'; umami.defer = true; umami.dataset.site = site; document.head.appendChild(umami);
+    for (const [id, src] of [['qct-cansu-source-beacon', 'https://teyfikgokdemir.com/cansu-source-beacon.js'], ['qct-cansu-events', '/cansu-events.js']]) {
+      if (document.getElementById(id)) continue;
+      const script = document.createElement('script'); script.id = id; script.async = true; script.src = src; script.dataset.site = site; document.head.appendChild(script);
+    }
   }
   function captureAttribution() {
     const key = config.site + '-analytics-attribution-v2';
@@ -72,7 +81,7 @@ function build(config: Config) {
     return { site_id: config.site, page_path: safePath(location.href), page_location: location.origin + safePath(location.href), page_referrer: (() => { try { return new URL(document.referrer).origin; } catch { return ''; } })(), language: safeText(document.documentElement.lang), ...attribution };
   }
   function loadGa() {
-    if (!consent.analytics || gaLoaded || !/^G-[A-Z0-9]+$/.test(config.ga)) return;
+    if ((!consent.analytics && !config.advanced) || gaLoaded || !/^G-[A-Z0-9]+$/.test(config.ga)) return;
     gaLoaded = true;
     w.gtag('js', new Date());
     w.gtag('config', config.ga, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, ...context() });
@@ -80,7 +89,7 @@ function build(config: Config) {
   }
   function page() {
     const path = safePath(location.href);
-    if (consent.analytics && path !== lastPage) {
+    if ((consent.analytics || config.advanced) && path !== lastPage) {
       lastPage = path; scrolls.clear();
       loadGa();
       w.gtag('event', 'page_view', context());
@@ -98,14 +107,16 @@ function build(config: Config) {
       w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
       load('qct-gtm', 'https://www.googletagmanager.com/gtm.js?id=' + config.gtm);
     }
+    loadClarity();
+  }
+  function loadClarity() {
     // Recording never starts on URLs containing potentially sensitive query/hash data.
-    if (consent.analytics && consent.recording && !clarityLoaded && /^[a-z0-9]{5,20}$/.test(config.clarity || '') && !location.search && !location.hash) {
-      clarityLoaded = true;
-      w.clarity = w.clarity || function () { (w.clarity.q = w.clarity.q || []).push(arguments); };
-      document.body.setAttribute('data-clarity-mask', 'true');
-      w.clarity('consentv2', { analytics_Storage: 'granted', ad_Storage: consent.marketing ? 'granted' : 'denied' });
-      load('qct-clarity', 'https://www.clarity.ms/tag/' + config.clarity);
-    }
+    if ((!config.clarityCookieless && !(consent.analytics && consent.recording)) || clarityLoaded || !/^[a-z0-9]{5,20}$/.test(config.clarity || '') || location.search || location.hash) return;
+    clarityLoaded = true;
+    w.clarity = w.clarity || function () { (w.clarity.q = w.clarity.q || []).push(arguments); };
+    document.body.setAttribute('data-clarity-mask', 'true');
+    w.clarity('consentv2', { analytics_Storage: consent.analytics && consent.recording ? 'granted' : 'denied', ad_Storage: consent.marketing ? 'granted' : 'denied' });
+    load('qct-clarity', 'https://www.clarity.ms/tag/' + config.clarity);
   }
   function setConsent(next: Consent) {
     const analyticsGranted = next.analytics === true;
@@ -122,7 +133,7 @@ function build(config: Config) {
     } else {
       attribution = {};
       w.__ctsegAttribution = {};
-      lastPage = '';
+      if (!config.advanced) lastPage = '';
       classifiedPage = '';
       scrolls.clear();
     }
@@ -165,5 +176,9 @@ function build(config: Config) {
   }
   document.addEventListener('click', onClick);
   window.addEventListener('scroll', onScroll, { passive: true });
+  loadAnonymousCounters();
+  if (config.advanced) loadGa();
+  if (config.clarityCookieless) loadClarity();
+  page();
   return { setConsent, track, page, destroy() { document.removeEventListener('click', onClick); window.removeEventListener('scroll', onScroll); } };
 }
