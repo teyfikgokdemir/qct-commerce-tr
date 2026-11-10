@@ -379,3 +379,21 @@ body[data-qct-inner-preview="jade"] .qct-edge-toast-cta {
   color: #fff;
   box-shadow: none;
 }
+
+
+/* AZ standard-page component declares text colors with locally scoped
+   !important rules. The light hero must maintain dark visible typography. */
+html[lang="az"] body[data-qct-inner-preview="jade"] #primary .az-page-hero h1 {
+  color: #142934 !important;
+  -webkit-text-fill-color: #142934 !important;
+  text-shadow: none !important;
+}
+html[lang="az"] body[data-qct-inner-preview="jade"] #primary .az-page-hero .button--secondary {
+  background: #ffffff !important;
+  color: #0a7164 !important;
+  border: 1px solid #bad8cc !important;
+}
+html[lang="az"] body[data-qct-inner-preview="jade"] #primary .az-page-hero .button--primary {
+  color: #ffffff !important;
+  background: #0a7164 !important;
+}
