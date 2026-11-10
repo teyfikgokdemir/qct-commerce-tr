@@ -260,7 +260,7 @@ body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #masthead .primary-menu > li >
    its three columns or reducing mobile touch areas. */
 @media (min-width: 961px) and (max-height: 820px) {
   .qct-v2:is([data-qct-v2],[data-qct-az]) > .qct-hero {
-    padding-top: 24px;
+    padding-top: 12px;
   }
   .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-calculator {
     margin-top: 0;
