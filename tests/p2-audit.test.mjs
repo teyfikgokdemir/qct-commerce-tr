@@ -502,3 +502,41 @@ for (const path of ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/', 
     assert.equal(await page.locator('.marketplace-channel-track').evaluate(el => getComputedStyle(el).animationName), 'none');
   });
 }
+
+
+test('live-layout preview keeps desktop calculator result within first viewport at common widths', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    for (const width of [1440, 1716]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 900 } });
+      const calculator = page.locator('.qct-hero .qct-calculator');
+      const geometry = await calculator.evaluate(el => {
+        const box = el.getBoundingClientRect();
+        const result = el.querySelector('.qct-price-result')?.getBoundingClientRect();
+        const addOns = el.querySelector('.qct-addon-grid');
+        return {
+          top: box.top, bottom: box.bottom, height: box.height,
+          resultBottom: result?.bottom ?? null,
+          addonColumns: addOns ? getComputedStyle(addOns).gridTemplateColumns.split(' ').length : 0,
+          accent: getComputedStyle(el.closest('.qct-v2')).getPropertyValue('--qct-accent').trim()
+        };
+      });
+      assert.ok(geometry.top >= 0 && geometry.bottom <= 900, path + ' @' + width + ': builder must be visible without a second scroll ' + JSON.stringify(geometry));
+      assert.ok(geometry.resultBottom <= 900, path + ' @' + width + ': total/CTA must not be below viewport');
+      assert.equal(geometry.accent, '#0a7164');
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
+    }
+  }
+});
+
+test('live-layout preview preserves mobile calculator touch targets and layout', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    for (const width of [320, 390, 430]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
+      const fields = page.locator('.qct-hero .qct-calculator select');
+      const heights = await fields.evaluateAll(elements => elements.map(el => el.getBoundingClientRect().height));
+      assert.ok(heights.length >= 3 && heights.every(height => height >= 44), path + ': mobile select touch targets ' + JSON.stringify(heights));
+      assert.equal(await page.locator('.qct-hero .qct-calculator').count(), 1);
+    }
+  }
+});
