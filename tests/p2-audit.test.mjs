@@ -552,3 +552,29 @@ test('standalone web price calculator fields fit narrow phone viewports', async 
       `controls must fit the form at ${width}px: ${JSON.stringify(bounds)}`);
   }
 });
+
+
+test('preview onyx-jade palette keeps shared home identity across three locales', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    const page = await pageFor(t, path, { viewport: { width: 1440, height: 900 } });
+    const expected = await page.locator('.qct-v2').evaluate(root => {
+      const hero = root.querySelector('.qct-hero');
+      const cta = hero?.querySelector('.qct-hero-copy .qct-btn-primary');
+      const result = root.querySelector('.qct-calculator .qct-price-result');
+      const accent = getComputedStyle(root).getPropertyValue('--qct-accent').trim();
+      return {
+        accent,
+        heroBackground: getComputedStyle(hero).backgroundImage,
+        buttonBg: getComputedStyle(cta).backgroundColor,
+        buttonColor: getComputedStyle(cta).color,
+        resultBg: getComputedStyle(result).backgroundColor
+      };
+    });
+    assert.equal(expected.accent, '#0b7568', path + ': onyx-jade brand token');
+    assert.match(expected.heroBackground, /rgb\(16, 23, 28\)/, path + ': graphite hero rather than old navy');
+    assert.equal(expected.buttonBg, 'rgb(114, 214, 190)', path + ': mint hero button');
+    assert.equal(expected.buttonColor, 'rgb(9, 45, 40)', path + ': dark button label');
+    assert.equal(expected.resultBg, 'rgb(21, 44, 45)', path + ': matching dark result surface');
+    await assertNoHorizontalOverflow(page, path);
+  }
+});
