@@ -887,20 +887,7 @@ body {
 
 .qct-whatsapp { background: linear-gradient(135deg, #002fa7 0%, #1d4ed8 100%) !important; border: 1px solid rgba(255, 255, 255, 0.24) !important; box-shadow: 0 10px 24px rgba(0, 47, 167, 0.4), 0 2px 6px rgba(15, 23, 42, 0.2) !important; color: #ffffff !important; }
 
-/* Cookie styles live in the component; these final rules intentionally normalize them. */
-.qct-cookie-consent {
-	background: var(--qct-color-ink) !important;
-	border: 1px solid rgba(248, 243, 239, 0.22) !important;
-	border-radius: var(--qct-radius-md) !important;
-	box-shadow: 0 14px 34px rgba(33, 23, 29, 0.18) !important;
-	backdrop-filter: none !important;
-}
-
-.qct-cookie-consent button,
-.qct-cookie-settings {
-	border-radius: var(--qct-radius-sm) !important;
-}
-
+/* Cookie consent surface styling is owned by CookieConsent.astro. */
 body:has(.qct-cookie-consent:not([hidden])) .qct-whatsapp {
 	display: none !important;
 }
@@ -912,25 +899,6 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
 :is(input, textarea, select):focus-visible {
 	border-color: var(--qct-color-coral-dark) !important;
 	box-shadow: 0 0 0 3px rgba(230, 107, 95, 0.18) !important;
-}
-
-.qct-cookie-consent button.is-primary {
-	background: var(--qct-color-background) !important;
-	border-color: var(--qct-color-background) !important;
-	box-shadow: none !important;
-	color: var(--qct-color-coral-dark) !important;
-}
-
-.qct-cookie-consent strong,
-.qct-cookie-consent a {
-	color: var(--qct-color-on-dark) !important;
-}
-
-.qct-cookie-consent p,
-.qct-cookie-consent button:not(.is-primary) {
-	color: var(--qct-color-on-dark-muted) !important;
-	font-size: 1rem !important;
-	line-height: 1.6 !important;
 }
 
 .qct-cookie-settings {
