@@ -1,5 +1,4 @@
 ---
-import { analyticsDisclosure } from "../lib/analytics-disclosure";
 interface Props {
   lang: string;
 }
@@ -8,21 +7,21 @@ const { lang } = Astro.props;
 const copyMap: Record<string, { label: string; text: string; accept: string; reject: string; policy: string }> = {
   tr: {
     label: 'Çerez tercihleri',
-    text: 'GA4, GTM, Clarity ve Cansu ölçüm araçları yalnızca analitik izniyle yüklenir. Reddetmeniz veya izni geri çekmeniz ölçümü durdurur. Clarity oturum kaydı için kayıt izni de gerekir.',
+    text: 'Anonim sayım ve sınırlı çerezsiz ölçüm tercihinizden bağımsız çalışabilir. Analitik çerezler ve oturum kayıtları yalnızca onayla açılır.',
     accept: 'Onayla',
     reject: 'Reddet',
     policy: 'Çerez politikası',
   },
   en: {
     label: 'Cookie preferences',
-    text: 'GA4, GTM, Clarity and Cansu analytics load only after analytics consent. Rejecting or withdrawing consent stops measurement. Clarity session recording also requires recording consent.',
+    text: 'Anonymous counts and limited cookieless analytics may run regardless of your choice. Analytics cookies and session recording require consent.',
     accept: 'Accept',
     reject: 'Reject',
     policy: 'Cookie policy',
   },
   az: {
     label: 'Kuki seçimləri',
-    text: 'GA4, GTM, Clarity və Cansu analitikası yalnız analitik razılığı verdikdən sonra yüklənir. Rədd etdikdə və ya razılığı geri götürdükdə ölçmə dayanır. Clarity sessiya yazısı üçün ayrıca yazı razılığı da tələb olunur.',
+    text: 'Anonim sayım və məhdud kukisiz ölçmə seçiminizdən asılı olmadan işləyə bilər. Analitik kukilər və sessiya yazısı yalnız razılıqla aktivləşir.',
     accept: 'Qəbul et',
     reject: 'Rədd et',
     policy: 'Kuki siyasəti',
@@ -41,8 +40,11 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : lang === 'az' ? '/az/ku
   hidden
 >
   <div class="qct-cookie-consent__content">
-    <strong>{c.label}</strong>
-    <p>{c.text} <a href={policyUrl}>{c.policy}</a></p>
+    <div class="qct-cookie-consent__heading">
+      <strong>{c.label}</strong>
+      <a href={policyUrl}>{c.policy}</a>
+    </div>
+    <p>{c.text}</p>
   </div>
 
   <div class="qct-cookie-consent__actions">
@@ -83,88 +85,133 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : lang === 'az' ? '/az/ku
 </script>
 
 <style>
+  /* Consent options remain visible and equally accessible. Text is never
+     clipped; the short disclosure links to the full cookie policy. */
   .qct-cookie-consent {
     position: fixed;
     z-index: 9998;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: auto 0 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 18px;
+    padding: 9px clamp(14px, 2.5vw, 34px) max(9px, env(safe-area-inset-bottom));
+    margin: 0;
+    color: #f0f8f5;
+    background: #102029;
+    border: 0;
+    border-top: 1px solid rgba(137, 204, 185, .24);
+    border-radius: 0;
+    box-shadow: 0 -9px 32px rgba(7, 24, 32, .18);
+    backdrop-filter: none;
+  }
+  .qct-cookie-consent[hidden] { display: none; }
+  .qct-cookie-consent__content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 100%;
-    margin: 0;
-    padding: .48rem clamp(1rem,3vw,2rem);
-    color: #f6f0e8;
-    background: rgba(22,21,19,.98);
-    border: 0;
-    border-top: 1px solid rgba(255,255,255,.12);
-    border-radius: 0;
-    box-shadow: 0 -10px 30px rgba(0,0,0,.22);
-    backdrop-filter: blur(14px);
+    gap: 15px;
+    min-width: 0;
   }
-  .qct-cookie-consent[hidden] { display:none; }
-  .qct-cookie-consent__content {
-    min-width:0;
-    display:flex;
-    align-items:baseline;
-    gap:.85rem;
-    white-space:nowrap;
+  .qct-cookie-consent__heading {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    flex: 0 0 auto;
   }
   .qct-cookie-consent strong {
-    flex:0 0 auto;
-    color:#fff;
-    font-size:.76rem;
-    line-height:1.2;
-    font-weight:800;
+    color: #f7faf8;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.3;
   }
   .qct-cookie-consent p {
-    min-width:0;
-    margin:0;
-    color:rgba(246,240,232,.72);
-    font-size:.75rem;
-    line-height:1.25;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    margin: 0;
+    min-width: 0;
+    color: #c4d7d1;
+    font-size: 12px;
+    font-weight: 450;
+    line-height: 1.45;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
   .qct-cookie-consent a {
-    color:#ff9a87;
-    text-decoration:underline;
-    text-underline-offset:3px;
+    color: #a9e7d4;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 650;
+    font-size: 12px;
   }
   .qct-cookie-consent__actions {
-    display:flex;
-    flex:0 0 auto;
-    align-items:center;
-    gap:.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(90px, auto));
+    align-items: center;
+    gap: 8px;
   }
   .qct-cookie-consent button {
-    min-height:32px;
-    padding:.38rem .78rem;
-    font:inherit;
-    font-size:.8rem;
-    font-weight:800;
-    cursor:pointer;
-    color:#f6f0e8;
-    background:transparent;
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:999px;
+    min-height: 44px;
+    padding: 8px 17px;
+    border: 1px solid rgba(187, 218, 209, .36);
+    border-radius: 8px;
+    background: #162a33;
+    color: #f2f9f5;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.25;
+    font-weight: 750;
+    cursor: pointer;
   }
   .qct-cookie-consent button.is-primary {
-    color:#171614;
-    background:#d2ff59;
-    border-color:#d2ff59;
+    background: #81ddc5;
+    border-color: #81ddc5;
+    color: #0e332b;
   }
-  .qct-cookie-consent button:hover { border-color:#ff9a87; }
+  .qct-cookie-consent button:hover { border-color: #c7f4e5; }
   .qct-cookie-consent button:focus-visible,
-  .qct-cookie-consent a:focus-visible { outline:3px solid #fff; outline-offset:3px; }
-  @media(max-width:720px){
-    .qct-cookie-consent{align-items:stretch;flex-direction:column;gap:.55rem;padding:.58rem .7rem}
-    .qct-cookie-consent__content{display:block;white-space:normal}
-    .qct-cookie-consent strong{display:block;margin-bottom:.18rem;font-size:.86rem}
-    .qct-cookie-consent p{overflow:visible;text-overflow:clip;font-size:.76rem;line-height:1.35}
-    .qct-cookie-consent__actions{width:100%;gap:.45rem}
-    .qct-cookie-consent button{flex:1;min-height:34px;padding:.42rem .65rem;font-size:.8rem}
+  .qct-cookie-consent a:focus-visible {
+    outline: 3px solid #d3fff0;
+    outline-offset: 2px;
+  }
+  @media (max-width: 940px) {
+    .qct-cookie-consent {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+    }
+    .qct-cookie-consent__content {
+      display: grid;
+      gap: 4px;
+    }
+  }
+  @media (max-width: 720px) {
+    .qct-cookie-consent {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 9px;
+      padding: 10px 14px max(12px, env(safe-area-inset-bottom));
+    }
+    .qct-cookie-consent__content { gap: 5px; }
+    .qct-cookie-consent__heading {
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .qct-cookie-consent p {
+      font-size: 11.75px;
+      line-height: 1.43;
+    }
+    .qct-cookie-consent__actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+    }
+    .qct-cookie-consent button {
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 12px;
+    }
+  }
+  @media (max-width: 350px) {
+    .qct-cookie-consent { gap: 7px; padding-inline: 10px; }
+    .qct-cookie-consent p { font-size: 11.5px; }
   }
 </style>
