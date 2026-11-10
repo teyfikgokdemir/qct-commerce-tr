@@ -1065,14 +1065,6 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
 
 	.qct-svc-timeline { grid-template-columns: minmax(0, 1fr); }
 
-	.qct-cookie-consent {
-		gap: 0.65rem !important;
-		padding: 0.8rem !important;
-	}
-
-	.qct-cookie-consent p { line-height: 1.5 !important; }
-	.qct-cookie-consent__actions { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) !important; }
-
 	.qct-error-page__actions {
 		display: grid;
 		grid-template-columns: 1fr;
