@@ -623,3 +623,43 @@ test('consent banner uses a single compact desktop line on 1440px viewport', asy
   assert.ok(m.height <= 75, 'desktop notice should be compact: ' + JSON.stringify(m));
   assert.notEqual(m.paragraph, 'ellipsis', 'desktop notice cannot truncate privacy disclosure');
 });
+
+
+test('preview jade palette is limited to the six published service and pricing indexes', async t => {
+  const routes = [
+    { path: '/hizmetler/', hero: '.qct-svc-hero', link: '/yeni-nesil-web-altyapisi/' },
+    { path: '/en/services/', hero: '.page-hero', link: '/en/next-generation-web-foundation/' },
+    { path: '/az/xidmetler/', hero: '.az-page-hero', link: '/az/yeni-nesil-veb-infrastrukturu/' },
+    { path: '/fiyatlar/', hero: '.qct-pricing-hero', price: '24.900 TL' },
+    { path: '/en/pricing/', hero: '.qct-pricing-hero', price: '24.900 TL' },
+    { path: '/az/qiymetler/', hero: '.qct-pricing-hero', price: '1.490 AZN' },
+  ];
+  for (const { path, hero, link, price } of routes) {
+    const page = await pageFor(t, path, { viewport: { width: 1440, height: 900 } });
+    assert.equal(await page.locator('body').getAttribute('data-qct-inner-preview'), 'jade', path);
+    assert.equal(await page.locator('link[href*="inner-pages-jade-preview.css"]').count(), 1, path);
+    const heroColor = await page.locator(hero).evaluate(el => getComputedStyle(el).backgroundColor);
+    assert.equal(heroColor, 'rgb(247, 250, 248)', path + ': porcelain hero surface');
+    const headerCta = await page.locator('#masthead .qct-header-cta').evaluate(el => getComputedStyle(el).backgroundColor);
+    assert.equal(headerCta, 'rgb(10, 113, 100)', path + ': unified jade CTA');
+    if (link) assert.ok(await page.locator(`main a[href="${link}"]`).count() >= 1, path + ': service route preserved');
+    if (price) {
+      assert.ok((await page.locator('main').innerText()).includes(price), path + ': price content unchanged');
+      assert.equal(await page.locator('.qct-pricing-edge-card .qct-btn-primary').count(), 1, path + ': QCT EDGE CTA unchanged');
+    }
+    await assertNoHorizontalOverflow(page, path + ' desktop');
+  }
+  const control = await pageFor(t, '/iletisim/');
+  assert.equal(await control.locator('link[href*="inner-pages-jade-preview.css"]').count(), 0, 'other pages not affected');
+  assert.equal(await control.locator('body').getAttribute('data-qct-inner-preview'), null, 'other pages not marked');
+});
+
+test('preview service and pricing indexes remain mobile-safe in TR EN AZ', async t => {
+  for (const path of ['/hizmetler/', '/en/services/', '/az/xidmetler/', '/fiyatlar/', '/en/pricing/', '/az/qiymetler/']) {
+    for (const width of [320, 390]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
+      assert.equal(await page.locator('main h1').count(), 1, path + ': heading preserved');
+    }
+  }
+});
