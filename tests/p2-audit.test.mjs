@@ -624,3 +624,23 @@ test('preview live work showcase fits mobile and keeps all links accessible', as
     }
   }
 });
+
+
+test('preview selected work images decode on scroll in all locales', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    const page = await pageFor(t, path, { viewport: { width: 1280, height: 820 } });
+    assert.equal(await page.locator('#selected-work').count(), 1, path + ': direct section anchor');
+    assert.equal(await page.locator('#qct-edge-showcase').count(), 1, path + ': QCT EDGE section anchor');
+    for (const image of await page.locator('#selected-work .qct-case-link img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await image.evaluate(async el => {
+        if (!el.complete) await new Promise((resolve, reject) => {
+          el.addEventListener('load', resolve, { once: true });
+          el.addEventListener('error', reject, { once: true });
+        });
+      });
+      const state = await image.evaluate(el => ({ src: el.currentSrc, naturalWidth: el.naturalWidth, naturalHeight: el.naturalHeight }));
+      assert.ok(state.naturalWidth > 200 && state.naturalHeight > 100, path + ': broken case image ' + JSON.stringify(state));
+    }
+  }
+});
