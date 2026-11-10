@@ -502,3 +502,53 @@ for (const path of ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/', 
     assert.equal(await page.locator('.marketplace-channel-track').evaluate(el => getComputedStyle(el).animationName), 'none');
   });
 }
+
+
+test('preview cookie disclosure stays readable and compact without blocking its own actions', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    for (const width of [320, 390]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      const consent = page.locator('[data-cookie-consent]');
+      await consent.waitFor({ state: 'visible' });
+      const measure = await consent.evaluate(element => {
+        const rect = element.getBoundingClientRect();
+        const buttons = [...element.querySelectorAll('button')].map(el => el.getBoundingClientRect());
+        return {
+          height: rect.height, width: rect.width, left: rect.left, right: rect.right,
+          buttonHeights: buttons.map(el => el.height),
+          buttonBounds: buttons.map(el => [el.left, el.right]),
+          viewport: innerWidth,
+          text: element.querySelector('p')?.textContent || ''
+        };
+      });
+      assert.ok(measure.height <= 220, `${path} at ${width}px: banner too tall ${JSON.stringify(measure)}`);
+      assert.ok(measure.left >= -1 && measure.right <= width + 1, `${path} at ${width}px: banner exceeds viewport`);
+      assert.ok(measure.buttonHeights.every(height => height >= 44), `${path}: consent targets must be >=44px`);
+      assert.ok(measure.buttonBounds.every(([left, right]) => left >= 0 && right <= width), `${path}: consent actions must fit`);
+      assert.match(measure.text, /(?:çerezsiz|cookieless|kukisiz)/i, `${path}: disclosure must mention limited cookieless measurement`);
+      assert.equal(await consent.locator('a[href]').count(), 1, `${path}: cookie policy link required`);
+    }
+  }
+});
+
+test('standalone web price calculator fields fit narrow phone viewports', async t => {
+  const path = '/tr/araclar/web-sitesi-fiyat-hesaplama/';
+  for (const width of [320, 360, 390, 430]) {
+    const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+    await assertNoHorizontalOverflow(page, path + ' @' + width);
+    const bounds = await page.locator('.calc__form').evaluate(form => {
+      const formRect = form.getBoundingClientRect();
+      return {
+        formLeft: formRect.left, formRight: formRect.right,
+        fields: [...form.querySelectorAll('select, input[type="number"]')].map(element => {
+          const rect = element.getBoundingClientRect();
+          return { name: element.getAttribute('name'), left: rect.left, right: rect.right, width: rect.width };
+        })
+      };
+    });
+    assert.ok(bounds.formLeft >= -1 && bounds.formRight <= width + 1, `form overflows ${width}px: ${JSON.stringify(bounds)}`);
+    assert.ok(bounds.fields.length > 0);
+    assert.ok(bounds.fields.every(field => field.left >= bounds.formLeft - 1 && field.right <= bounds.formRight + 1),
+      `controls must fit the form at ${width}px: ${JSON.stringify(bounds)}`);
+  }
+});
