@@ -1,7 +1,7 @@
 /* QCT Commerce | Editorial home concept
    Preview-only exploration, 2026-11-10.
    Scope: TR / EN / AZ home heroes and their existing quote builders.
-   No calculator logic, pricing, analytics, routing, or shared page styles changed. */
+   Palette variant B: Onyx / Arctic Jade / Porcelain.\n   No calculator logic, pricing, analytics, routing, or shared page styles changed. */
 
 .qct-v2[data-qct-v2] > .qct-hero,
 .qct-v2[data-qct-az] > .qct-hero {
@@ -10,11 +10,11 @@
   min-height: 0;
   padding: clamp(40px, 4.5vw, 66px) 0 62px;
   background:
-    radial-gradient(ellipse at 83% 26%, rgba(50, 112, 222, .24), transparent 39%),
-    linear-gradient(90deg, rgba(153, 191, 255, .035) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(0deg, rgba(153, 191, 255, .03) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(115deg, #071428 0%, #0b2040 54%, #07162d 100%);
-  color: #f8fbff;
+    radial-gradient(ellipse at 83% 26%, rgba(55, 171, 156, .18), transparent 39%),
+    linear-gradient(90deg, rgba(172, 221, 215, .045) 1px, transparent 1px) 0 0 / 72px 72px,
+    linear-gradient(0deg, rgba(172, 221, 215, .035) 1px, transparent 1px) 0 0 / 72px 72px,
+    linear-gradient(115deg, #10171c 0%, #15282b 54%, #0d181d 100%);
+  color: #f7f8f5;
   overflow: clip;
 }
 
@@ -39,7 +39,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 27px;
-  color: #9ebeff !important;
+  color: #a9ded5 !important;
   font-size: 10.5px;
   line-height: 1.5;
   font-weight: 750;
@@ -51,15 +51,15 @@
   content: "";
   flex: 0 0 28px;
   height: 2px;
-  background: #4bb7ff;
+  background: #7cdec6;
 }
 
 html[lang] .qct-v2[data-qct-v2] > .qct-hero .qct-hero-copy h1,
 html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy h1 {
   max-width: 660px;
   margin: 0;
-  color: #f6f9ff !important;
-  -webkit-text-fill-color: #f6f9ff !important;
+  color: #f7f8f5 !important;
+  -webkit-text-fill-color: #f7f8f5 !important;
   font-size: clamp(49px, 5.1vw, 73px);
   line-height: 1.045;
   font-weight: 760;
@@ -70,8 +70,8 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy h1 {
 
 html[lang] .qct-v2[data-qct-v2] > .qct-hero .qct-hero-copy h1 em,
 html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy h1 em {
-  color: #7bbcff !important;
-  -webkit-text-fill-color: #7bbcff !important;
+  color: #91e4cb !important;
+  -webkit-text-fill-color: #91e4cb !important;
   font-style: normal;
 }
 
@@ -79,7 +79,7 @@ html[lang] .qct-v2[data-qct-v2] > .qct-hero .qct-hero-copy > .qct-lead,
 html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   max-width: 55ch;
   margin-top: 25px;
-  color: #c5d3e9 !important;
+  color: #c6d5d2 !important;
   font-size: clamp(15px, 1.16vw, 16.5px);
   line-height: 1.68;
   text-wrap: pretty;
@@ -95,17 +95,17 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 .qct-v2[data-qct-az] .qct-hero-copy .qct-hero-actions .qct-btn-primary {
   min-height: 53px;
   padding-inline: 25px;
-  border: 1px solid #2962ee;
+  border: 1px solid #a6ebd9;
   border-radius: 10px;
-  background: #1450d2;
-  box-shadow: 0 12px 26px rgba(0, 30, 110, .30);
+  background: #72d6be;
+  box-shadow: 0 12px 26px rgba(0, 16, 14, .3);
 }
 
 .qct-v2[data-qct-v2] .qct-hero-copy .qct-text-link,
 .qct-v2[data-qct-az] .qct-hero-copy .qct-text-link {
-  color: #eff5ff !important;
+  color: #f1f7f2 !important;
   text-underline-offset: 7px;
-  text-decoration-color: #75a5ec;
+  text-decoration-color: #85dcc6;
 }
 
 .qct-v2[data-qct-v2] .qct-hero-copy .qct-proof-line,
@@ -113,14 +113,14 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   margin-top: 38px;
   padding-top: 20px;
   gap: 10px 20px;
-  border-top: 1px solid rgba(189, 212, 255, .20);
-  color: #aebfd8;
+  border-top: 1px solid rgba(182, 228, 215, .22);
+  color: #b3c8c1;
   font-size: 11.5px;
 }
 
 .qct-v2[data-qct-v2] .qct-proof-line span::before,
 .qct-v2[data-qct-az] .qct-proof-line span::before {
-  background: #55b7ff;
+  background: #7cdec6;
 }
 
 .qct-v2[data-qct-v2] .qct-calculator,
@@ -128,10 +128,10 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   min-width: 0;
   margin-top: 0;
   padding: clamp(20px, 2.4vw, 28px);
-  border: 1px solid rgba(184, 205, 239, .66);
+  border: 1px solid rgba(185, 210, 205, .74);
   border-radius: 23px;
   background: #fff;
-  box-shadow: 0 28px 66px rgba(0, 6, 23, .31), 0 3px 12px rgba(0, 8, 35, .08);
+  box-shadow: 0 28px 66px rgba(0, 15, 15, .3), 0 3px 12px rgba(0, 14, 16, .08);
   backdrop-filter: none;
 }
 
@@ -145,7 +145,7 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   width: 74px;
   height: 3px;
   border-radius: 0 0 3px 3px;
-  background: #1450d2;
+  background: #72d6be;
 }
 
 .qct-v2[data-qct-v2] .qct-calculator-head,
@@ -158,7 +158,7 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 .qct-v2[data-qct-v2] .qct-calculator h2,
 .qct-v2[data-qct-az] .qct-calculator h2 {
   margin: 0;
-  color: #101d33;
+  color: #152d2d;
   font-size: clamp(25px, 2.1vw, 29px);
   line-height: 1.15;
   letter-spacing: -.045em;
@@ -167,7 +167,7 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 .qct-v2[data-qct-v2] .qct-builder-status,
 .qct-v2[data-qct-az] .qct-builder-status {
   margin-bottom: 9px;
-  color: #1748a8;
+  color: #0d756a;
   font-size: 10px;
   letter-spacing: .115em;
 }
@@ -177,7 +177,7 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   display: block;
   max-width: 42ch;
   margin-top: 8px;
-  color: #52637c;
+  color: #596f6e;
   font-size: 12.5px;
   line-height: 1.5;
 }
@@ -190,15 +190,15 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 .qct-v2[data-qct-v2] .qct-calculator select,
 .qct-v2[data-qct-az] .qct-calculator select {
   min-height: 46px;
-  border-color: #d9e1ed;
+  border-color: #d7e3e0;
   border-radius: 10px;
-  background: #f7f9fd;
+  background: #f6faf8;
   font-size: 13.5px;
 }
 
 .qct-v2[data-qct-v2] .qct-calculator .qct-field > span b,
 .qct-v2[data-qct-az] .qct-calculator .qct-field > span b {
-  color: #142139;
+  color: #19302f;
   font-weight: 725;
 }
 
@@ -213,7 +213,7 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 .qct-v2[data-qct-az] .qct-calculator .qct-check {
   min-height: 52px;
   padding: 10px 11px;
-  border: 1px solid #e0e7f0;
+  border: 1px solid #dce8e4;
   border-radius: 10px;
   background: #fff;
   box-shadow: none;
@@ -222,7 +222,7 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 
 .qct-v2[data-qct-v2] .qct-calculator .qct-check span,
 .qct-v2[data-qct-az] .qct-calculator .qct-check span {
-  color: #223450;
+  color: #223a38;
   font-size: 12.5px !important;
   line-height: 1.36;
   overflow-wrap: anywhere;
@@ -231,14 +231,14 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 .qct-v2[data-qct-v2] .qct-calculator .qct-check small,
 .qct-v2[data-qct-az] .qct-calculator .qct-check small {
   margin-top: 3px;
-  color: #56677d;
+  color: #576e68;
   font-size: 11.5px !important;
 }
 
 .qct-v2[data-qct-v2] .qct-calculator .qct-check:has(input:checked),
 .qct-v2[data-qct-az] .qct-calculator .qct-check:has(input:checked) {
-  border-color: #5a8df1;
-  background: #edf4ff;
+  border-color: #65b9a5;
+  background: #e9f8f1;
 }
 
 .qct-v2[data-qct-v2] .qct-calculator .qct-price-result,
@@ -248,9 +248,9 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   align-items: center;
   margin-top: 5px;
   padding: 18px;
-  border: 1px solid rgba(105, 159, 243, .21);
+  border: 1px solid rgba(122, 216, 195, .25);
   border-radius: 14px;
-  background: #0c1c38;
+  background: #152c2d;
   box-shadow: none;
 }
 
@@ -261,7 +261,7 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 
 .qct-v2[data-qct-v2] .qct-calculator .qct-price-result > div .qct-price-label,
 .qct-v2[data-qct-az] .qct-calculator .qct-price-result > div .qct-price-label {
-  color: #a6cbff !important;
+  color: #9cebd7 !important;
   font-size: 9px !important;
   letter-spacing: .13em;
 }
@@ -275,7 +275,7 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
 
 .qct-v2[data-qct-v2] .qct-calculator .qct-price-result small,
 .qct-v2[data-qct-az] .qct-calculator .qct-price-result small {
-  color: #b9c8dd;
+  color: #bed3cc;
   font-size: 10.5px;
   line-height: 1.4;
 }
@@ -286,15 +286,15 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   flex: 0 0 auto;
   padding-inline: 16px;
   border-radius: 8px;
-  background: #1555df;
+  background: #72d6be;
   color: #fff;
 }
 
 .qct-v2[data-qct-v2] .qct-brand-film__frame,
 .qct-v2[data-qct-az] .qct-brand-film__frame {
-  border-color: rgba(143, 178, 237, .25);
+  border-color: rgba(146, 205, 190, .23);
   border-radius: 20px;
-  box-shadow: 0 24px 50px rgba(0, 6, 23, .26);
+  box-shadow: 0 24px 50px rgba(0, 16, 16, .28);
 }
 
 @media (max-width: 1100px) {
@@ -332,8 +332,8 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   .qct-v2[data-qct-az] > .qct-hero {
     padding: 30px 0 40px;
     background:
-      radial-gradient(ellipse at 100% 24%, rgba(41, 101, 222, .24), transparent 57%),
-      linear-gradient(135deg, #071428, #0b2040 67%, #07162d);
+      radial-gradient(ellipse at 100% 24%, rgba(51, 157, 141, .18), transparent 57%),
+      linear-gradient(135deg, #10171c, #15282b 67%, #0d181d);
   }
   .qct-v2[data-qct-v2] > .qct-hero > .qct-hero-grid,
   .qct-v2[data-qct-az] > .qct-hero > .qct-hero-grid {
@@ -413,6 +413,77 @@ html[lang] .qct-v2[data-qct-az] > .qct-hero .qct-hero-copy > .qct-lead {
   .qct-v2[data-qct-az] .qct-brand-film__frame {
     border-radius: 16px;
   }
+}
+
+
+/* Alternate preview palette: Onyx × Arctic Jade.
+   Kept home-scoped so service pages and production branding are untouched. */
+.qct-v2[data-qct-v2],
+.qct-v2[data-qct-az] {
+  --qct-accent: #0b7568;
+  --qct-accent-dark: #075249;
+  --qct-ink: #182c2d;
+  --qct-muted: #637875;
+  --qct-bg: #f8faf8;
+  --qct-surface: #f0f5f2;
+  --qct-line: #dbe7e2;
+}
+.qct-v2[data-qct-v2] .qct-calculator,
+.qct-v2[data-qct-az] .qct-calculator {
+  --qct-accent: #0a7768;
+  --qct-accent-dark: #075249;
+}
+.qct-v2[data-qct-v2] .qct-live-dot,
+.qct-v2[data-qct-az] .qct-live-dot {
+  background: #23bba1;
+  box-shadow: 0 0 0 4px rgba(35, 187, 161, .12);
+}
+.qct-v2[data-qct-v2] .qct-builder-progress span.is-active,
+.qct-v2[data-qct-az] .qct-builder-progress span.is-active {
+  background: #0b7568;
+}
+.qct-v2[data-qct-v2] .qct-calculator select:focus,
+.qct-v2[data-qct-az] .qct-calculator select:focus {
+  border-color: #0b7568;
+  box-shadow: 0 0 0 3px rgba(11, 117, 104, .14);
+}
+.qct-v2[data-qct-v2] .qct-hero-copy .qct-hero-actions .qct-btn-primary,
+.qct-v2[data-qct-az] .qct-hero-copy .qct-hero-actions .qct-btn-primary,
+.qct-v2[data-qct-v2] .qct-calculator .qct-price-result .qct-result-btn,
+.qct-v2[data-qct-az] .qct-calculator .qct-price-result .qct-result-btn {
+  color: #092d28 !important;
+  font-weight: 800;
+}
+.qct-v2[data-qct-v2] .qct-hero-copy .qct-hero-actions .qct-btn-primary:hover,
+.qct-v2[data-qct-az] .qct-hero-copy .qct-hero-actions .qct-btn-primary:hover,
+.qct-v2[data-qct-v2] .qct-calculator .qct-price-result .qct-result-btn:hover,
+.qct-v2[data-qct-az] .qct-calculator .qct-price-result .qct-result-btn:hover {
+  background: #98e8d3;
+}
+body:has(.qct-v2[data-qct-v2]) #masthead .qct-header-cta,
+body:has(.qct-v2[data-qct-az]) #masthead .qct-header-cta {
+  background: #0b7568 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(11, 117, 104, .18);
+}
+body:has(.qct-v2[data-qct-v2]) #masthead .qct-header-cta:hover,
+body:has(.qct-v2[data-qct-az]) #masthead .qct-header-cta:hover {
+  background: #075249 !important;
+}
+body:has(.qct-v2[data-qct-v2]) .qct-cookie-consent,
+body:has(.qct-v2[data-qct-az]) .qct-cookie-consent {
+  background: #111f24 !important;
+  border-top-color: rgba(145, 228, 203, .28) !important;
+}
+body:has(.qct-v2[data-qct-v2]) .qct-cookie-consent button.is-primary,
+body:has(.qct-v2[data-qct-az]) .qct-cookie-consent button.is-primary {
+  background: #72d6be !important;
+  color: #092d28 !important;
+  border-color: #72d6be !important;
+}
+body:has(.qct-v2[data-qct-v2]) .qct-cookie-consent a,
+body:has(.qct-v2[data-qct-az]) .qct-cookie-consent a {
+  color: #a7f1dd !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
