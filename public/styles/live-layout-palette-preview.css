@@ -270,3 +270,22 @@ body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #masthead .primary-menu > li >
     gap: 6px;
   }
 }
+
+
+/* Mobile first impression: retain familiar typography and calculator layout,
+   but trim surplus hero whitespace so the primary action is visible. */
+@media (max-width: 640px) {
+  .qct-v2:is([data-qct-v2],[data-qct-az]) > .qct-hero {
+    padding-top: 28px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-hero-copy > .qct-eyebrow {
+    margin-bottom: 13px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-hero-copy > .qct-lead {
+    margin-top: 18px;
+    line-height: 1.56;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-hero-copy > .qct-hero-actions {
+    margin-top: 19px;
+  }
+}
