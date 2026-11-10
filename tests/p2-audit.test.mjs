@@ -595,7 +595,7 @@ test('compact consent banner remains readable, accessible and neutral across loc
       if (width === 390) {
         const cta = page.locator('.qct-hero .qct-hero-copy .qct-btn-primary');
         const ctaBox = await cta.boundingBox();
-        assert.ok(ctaBox && ctaBox.bottom <= m.top - 8, path + ': hero CTA should clear consent strip on 390×844: ' + JSON.stringify({ctaBottom: ctaBox?.bottom, bannerTop: m.top}));
+        assert.ok(ctaBox && ctaBox.y + ctaBox.height <= m.top - 8, path + ': hero CTA should clear consent strip on 390×844: ' + JSON.stringify({ctaBottom: ctaBox && ctaBox.y + ctaBox.height, bannerTop: m.top}));
       }
     }
   }
