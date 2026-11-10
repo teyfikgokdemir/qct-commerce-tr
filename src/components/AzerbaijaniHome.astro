@@ -39,6 +39,8 @@ const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
 <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <Header slot="header" lang="az" />
 <link rel="stylesheet" href="/styles/qct-v2.css?v=20261102-typo-v3" />
+<link rel="stylesheet" href="/styles/editorial-home-preview.css?v=20261110-onyx-jade-v2" />
+<link rel="stylesheet" href="/styles/editorial-home-sections.css?v=20261110-showcase-v1" />
 <div class="qct-v2" data-qct-az>
 <style is:inline>
 [data-qct-az] .qct-hero-copy > *,
@@ -81,7 +83,7 @@ const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
     <div class="qct-marquee-group" aria-hidden="true">{platforms.map(p=><a class="qct-marquee-item" href={p.href} tabindex="-1"><small>{p.type}</small><strong>{p.name}</strong></a>)}</div>
   </div></div>
 </section>
-<section class="qct-edge" aria-labelledby="qct-edge-title">
+<section class="qct-edge" id="qct-edge-showcase" aria-labelledby="qct-edge-title">
   <div class="qct-shell">
     <div class="qct-edge-topline">
       <p class="qct-section-label">QCT EDGE — YENİ NƏSİL VEB İNFRASTRUKTURU + DİNAMİK SEO</p>
@@ -103,7 +105,7 @@ const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
         <div class="qct-edge-launch__pricing">
           <span class="qct-edge-launch__badge-tag">XÜSUSİ LANSMAN PAKETİ</span>
           <strong class="qct-edge-launch__price">24.900 TL <small>başlanğıc</small></strong>
-          <p class="qct-edge-launch__lead">Biznesinizi Google-da və süni intellektdə önə çıxaran, sıfır texniki qayğı ilə açar təslim yeni nəsil veb infrastrukturu.</p>
+          <p class="qct-edge-launch__lead">Texniki SEO, əlçatan məzmun və sürətli veb infrastrukturunu eyni sistemdə birləşdirən həll.</p>
         </div>
         <ul class="qct-edge-launch__list">
           <li><span>⚡</span> <div><strong>Dərhal Açılan Səhifələr:</strong> Mobildə gözləmə müddətini sıfırlayan ultra sürətli açılış</div></li>
@@ -121,19 +123,24 @@ const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
 </section>
 <section class="qct-pathways" id="heller"><div class="qct-shell"><div class="qct-section-head"><div><p class="qct-section-label">XİDMƏTLƏR</p><h2>Sayt qururuq.<br/><em>Satış sistemini də.</em></h2></div><p>Azərbaycan şirkətləri üçün lokal dil, düzgün texniki baza və ölçülə bilən kommersiya axını qururuq.</p></div><div class="qct-pathway-grid"><article><span class="qct-pathway-label">VEB & E-TİCARƏT</span><h3>Yeni rəqəmsal platforma</h3><p>Korporativ sayt, e-ticarət və çoxdilli struktur.</p><ul><li><a href="/az/veb-dizayn/">Veb dizayn</a></li><li><a href="/az/e-ticaret/">E-ticarət</a></li><li><a href="/az/shopify-magaza-qurulmasi/">Shopify</a></li><li><a href="/az/ikas-magaza-qurulmasi/">ikas</a></li></ul></article><article><span class="qct-pathway-label">GÖRÜNÜRLÜK & SATIŞ</span><h3>Tapılmaq və tələb yaratmaq</h3><p>Axtarış və AI görünürlüyünü satış axını ilə birləşdiririk.</p><ul><li><a href="/az/seo-geo/">SEO, GEO, AEO, AIO</a></li><li><a href="/az/meta-reklamlari/">Meta reklamları</a></li><li><a href="/az/whatsapp-satis/">WhatsApp satış</a></li><li><a href="/az/ai-avtomatlasdirma/">AI avtomatlaşdırma</a></li></ul></article></div></div></section>
 <section class="qct-benefits" id="kimler-ucun"><div class="qct-shell qct-benefit-grid"><article><h3>İstehsalçılar</h3><p>Məhsul, sertifikat, kataloq və B2B tələb axını.</p></article><article><h3>İxracatçılar</h3><p>Çoxdilli təqdimat və yeni bazarlarda görünürlük.</p></article><article><h3>Distribütorlar</h3><p>Partnyor, diler və təklif sorğularını strukturlaşdırın.</p></article><article><h3>E-ticarət brendləri</h3><p>Mobil dönüşüm, məhsul axını və ölçülə bilən satış.</p></article></div></section>
-<section class="qct-image-story" aria-labelledby="az-image-story-title">
+<section class="qct-image-story" id="selected-work" aria-labelledby="az-image-story-title">
   <div class="qct-shell">
     <div class="qct-section-head qct-image-story__head">
-      <p class="qct-section-label">SİSTEMİN DAXİLİNDƏ</p>
-      <h2 id="az-image-story-title">Dizayn, data və əməliyyat. <em>Eyni kommersiya axınında.</em></h2>
-      <p>Yaxşı görünən interfeys təkbaşına kifayət deyil. Dönüşüm, ölçüm, əməliyyat və platforma arxitekturasını eyni müştəri yolunda birləşdiririk.</p>
-    </div>
-    <div class="qct-image-story__grid">
-      <figure class="is-wide"><img src="/images/qct-commerce-2026/qct-commerce-analytics-growth.webp" width="1376" height="768" alt="E-ticarət satış və böyümə analitikası" loading="lazy" decoding="async" /><figcaption><b>Ölçüm</b><span>Satış, dönüşüm və müştəri yolunu görünən edin.</span></figcaption></figure>
-      <figure><img src="/images/qct-commerce-2026/qct-commerce-cro-conversion.webp" width="1376" height="768" alt="Dönüşüm üçün optimallaşdırılan e-ticarət məhsul səhifəsi" loading="lazy" decoding="async" /><figcaption><b>Dönüşüm</b><span>Qərar nöqtəsində sürtünməni azaldın.</span></figcaption></figure>
-      <figure><img src="/images/qct-commerce-2026/qct-commerce-operations-fulfillment.webp" width="1376" height="768" alt="E-ticarət sifariş və fulfillment əməliyyatı" loading="lazy" decoding="async" /><figcaption><b>Əməliyyat</b><span>Rəqəmsal sifarişi real iş axınına bağlayın.</span></figcaption></figure>
-      <figure class="is-wide"><img src="/images/qct-commerce-2026/qct-commerce-platform-migration.webp" width="1376" height="768" alt="E-ticarət platforma miqrasiyası" loading="lazy" decoding="async" /><figcaption><b>Platforma transformasiyası</b><span>Məhsul, məzmun və görünürlüyü nəzarətlə daşıyın.</span></figcaption></figure>
-    </div>
+      <p class="qct-section-label">SEÇİLMİŞ İŞLƏR</p>
+      <h2 id="az-image-story-title">Dizaynı sözlə deyil, <em>canlı işlərlə göstəririk.</em></h2>
+      <p>Həyata keçirilmiş e-ticarət və korporativ veb layihələrindən seçmələr. Hər layihənin arxasındakı yanaşmanı nəzərdən keçirin.</p></div>
+    <div class="qct-image-story__grid qct-case-grid">
+        <a class="qct-case-link qct-case-link--feature" href="/az/isler/headwear/" aria-label="HEADWEAR layihəsini nəzərdən keçirin">
+          <figure><img src="/images/work/headwear/headwear-web-deneyimi.webp" width="1600" height="1000" alt="HEADWEAR çoxdilli e-ticarət saytının ekran görüntüsü" loading="lazy" decoding="async" /><figcaption><b>HEADWEAR</b><span>Çoxdilli e-ticarət · Canlı layihə ↗</span></figcaption></figure>
+        </a>
+        <a class="qct-case-link" href="/az/isler/misima/" aria-label="Misima Group layihəsini nəzərdən keçirin">
+          <figure><img src="/images/work/misima/misima-web-deneyimi.webp" width="1600" height="1000" alt="Misima Group korporativ veb saytının ekran görüntüsü" loading="lazy" decoding="async" /><figcaption><b>Misima Group</b><span>Korporativ veb və məhsul təqdimatı ↗</span></figcaption></figure>
+        </a>
+        <a class="qct-case-link" href="/az/isler/artman/" aria-label="Artman Group layihəsini nəzərdən keçirin">
+          <figure><img src="/images/work/artman/artman-web-deneyimi.webp" width="1600" height="1000" alt="Artman Group korporativ veb saytının ekran görüntüsü" loading="lazy" decoding="async" /><figcaption><b>Artman Group</b><span>B2B xidmət arxitekturası ↗</span></figcaption></figure>
+        </a>
+      </div>
+      <a class="qct-case-more" href="/az/isler/">Bütün işlərə baxın <span aria-hidden="true">↗</span></a>
   </div>
 </section>
 <section class="qct-offers">

@@ -1,5 +1,4 @@
 ---
-import { analyticsDisclosure } from "../lib/analytics-disclosure";
 interface Props {
   lang: string;
 }
@@ -8,21 +7,21 @@ const { lang } = Astro.props;
 const copyMap: Record<string, { label: string; text: string; accept: string; reject: string; policy: string }> = {
   tr: {
     label: 'Çerez tercihleri',
-    text: 'GA4, GTM, Clarity ve Cansu ölçüm araçları yalnızca analitik izniyle yüklenir. Reddetmeniz veya izni geri çekmeniz ölçümü durdurur. Clarity oturum kaydı için kayıt izni de gerekir.',
+    text: 'Anonim sayfa sayımı ve sınırlı çerezsiz ölçüm izinsiz çalışabilir. Analitik çerezler ve oturum kayıtları yalnızca onayınızla açılır.',
     accept: 'Onayla',
     reject: 'Reddet',
     policy: 'Çerez politikası',
   },
   en: {
     label: 'Cookie preferences',
-    text: 'GA4, GTM, Clarity and Cansu analytics load only after analytics consent. Rejecting or withdrawing consent stops measurement. Clarity session recording also requires recording consent.',
+    text: 'Anonymous page counts and limited cookieless measurement may work without consent. Analytics cookies and session recordings require your approval.',
     accept: 'Accept',
     reject: 'Reject',
     policy: 'Cookie policy',
   },
   az: {
     label: 'Kuki seçimləri',
-    text: 'GA4, GTM, Clarity və Cansu analitikası yalnız analitik razılığı verdikdən sonra yüklənir. Rədd etdikdə və ya razılığı geri götürdükdə ölçmə dayanır. Clarity sessiya yazısı üçün ayrıca yazı razılığı da tələb olunur.',
+    text: 'Anonim səhifə sayımı və məhdud kukisiz ölçmə razılıq olmadan işləyə bilər. Analitik kukilər və sessiya yazıları yalnız razılığınızla aktivləşir.',
     accept: 'Qəbul et',
     reject: 'Rədd et',
     policy: 'Kuki siyasəti',
@@ -83,88 +82,112 @@ const policyUrl = lang === 'en' ? '/en/cookie-policy/' : lang === 'az' ? '/az/ku
 </script>
 
 <style>
+  /* The banner is a compact, readable preference surface, not a full-screen modal.
+     Keep consent behaviour in the script above; styles must never imply consent. */
   .qct-cookie-consent {
     position: fixed;
     z-index: 9998;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
+    inset: auto 0 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    gap: clamp(14px, 2.5vw, 32px);
     width: 100%;
     margin: 0;
-    padding: .48rem clamp(1rem,3vw,2rem);
-    color: #f6f0e8;
-    background: rgba(22,21,19,.98);
+    padding: 13px clamp(16px, 3vw, 40px) max(13px, env(safe-area-inset-bottom));
+    color: #f4f7ff;
+    background: #0b172d;
     border: 0;
-    border-top: 1px solid rgba(255,255,255,.12);
+    border-top: 1px solid rgba(155, 192, 255, .27);
     border-radius: 0;
-    box-shadow: 0 -10px 30px rgba(0,0,0,.22);
-    backdrop-filter: blur(14px);
+    box-shadow: 0 -12px 32px rgba(4, 15, 38, .22);
   }
-  .qct-cookie-consent[hidden] { display:none; }
+  .qct-cookie-consent[hidden] { display: none; }
   .qct-cookie-consent__content {
-    min-width:0;
-    display:flex;
-    align-items:baseline;
-    gap:.85rem;
-    white-space:nowrap;
+    min-width: 0;
+    display: grid;
+    gap: 4px;
   }
   .qct-cookie-consent strong {
-    flex:0 0 auto;
-    color:#fff;
-    font-size:.76rem;
-    line-height:1.2;
-    font-weight:800;
+    color: #fff;
+    font-size: 12.5px;
+    line-height: 1.35;
+    font-weight: 800;
   }
   .qct-cookie-consent p {
-    min-width:0;
-    margin:0;
-    color:rgba(246,240,232,.72);
-    font-size:.75rem;
-    line-height:1.25;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    max-width: 100ch;
+    min-width: 0;
+    margin: 0;
+    color: #bdcce1;
+    font-size: 12.5px;
+    line-height: 1.45;
+    overflow: visible;
+    white-space: normal;
   }
   .qct-cookie-consent a {
-    color:#ff9a87;
-    text-decoration:underline;
-    text-underline-offset:3px;
+    color: #c9e4ff;
+    font-weight: 750;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   .qct-cookie-consent__actions {
-    display:flex;
-    flex:0 0 auto;
-    align-items:center;
-    gap:.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(110px, 1fr));
+    align-items: stretch;
+    gap: 9px;
+    flex: 0 0 auto;
   }
   .qct-cookie-consent button {
-    min-height:32px;
-    padding:.38rem .78rem;
-    font:inherit;
-    font-size:.8rem;
-    font-weight:800;
-    cursor:pointer;
-    color:#f6f0e8;
-    background:transparent;
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:999px;
+    min-height: 44px;
+    padding: 8px 18px;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 800;
+    cursor: pointer;
+    color: #e6efff;
+    background: #122540;
+    border: 1px solid rgba(186, 207, 243, .4);
+    border-radius: 8px;
+    box-shadow: none;
   }
   .qct-cookie-consent button.is-primary {
-    color:#171614;
-    background:#d2ff59;
-    border-color:#d2ff59;
+    color: #fff;
+    background: #1250d3;
+    border-color: #3977f2;
   }
-  .qct-cookie-consent button:hover { border-color:#ff9a87; }
+  .qct-cookie-consent button:hover {
+    border-color: #b4d8ff;
+  }
   .qct-cookie-consent button:focus-visible,
-  .qct-cookie-consent a:focus-visible { outline:3px solid #fff; outline-offset:3px; }
-  @media(max-width:720px){
-    .qct-cookie-consent{align-items:stretch;flex-direction:column;gap:.55rem;padding:.58rem .7rem}
-    .qct-cookie-consent__content{display:block;white-space:normal}
-    .qct-cookie-consent strong{display:block;margin-bottom:.18rem;font-size:.86rem}
-    .qct-cookie-consent p{overflow:visible;text-overflow:clip;font-size:.76rem;line-height:1.35}
-    .qct-cookie-consent__actions{width:100%;gap:.45rem}
-    .qct-cookie-consent button{flex:1;min-height:34px;padding:.42rem .65rem;font-size:.8rem}
+  .qct-cookie-consent a:focus-visible {
+    outline: 3px solid #a5cbff;
+    outline-offset: 3px;
+  }
+  @media (max-width: 720px) {
+    .qct-cookie-consent {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 11px;
+      padding: 11px 14px max(12px, env(safe-area-inset-bottom));
+    }
+    .qct-cookie-consent__content { gap: 3px; }
+    .qct-cookie-consent strong { font-size: 12.5px; }
+    .qct-cookie-consent p {
+      font-size: 12px;
+      line-height: 1.42;
+    }
+    .qct-cookie-consent__actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+      gap: 8px;
+    }
+    .qct-cookie-consent button { min-height: 44px; padding: 8px 12px; }
+  }
+  @media (max-width: 340px) {
+    .qct-cookie-consent { padding-inline: 10px; gap: 8px; }
+    .qct-cookie-consent p { font-size: 11.5px; }
   }
 </style>
