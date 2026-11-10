@@ -663,3 +663,27 @@ test('preview service and pricing indexes remain mobile-safe in TR EN AZ', async
     }
   }
 });
+
+
+test('Azerbaijani light service hero keeps its headline and secondary CTA readable', async t => {
+  for (const width of [390, 1440]) {
+    const page = await pageFor(t, '/az/xidmetler/', { viewport: { width, height: 844 } });
+    const visual = await page.evaluate(() => {
+      const heading = document.querySelector('#primary .az-page-hero h1');
+      const secondary = document.querySelector('#primary .az-page-hero .button--secondary');
+      const hero = document.querySelector('#primary .az-page-hero');
+      return {
+        heading: getComputedStyle(heading).color,
+        headingFill: getComputedStyle(heading).webkitTextFillColor,
+        secondary: getComputedStyle(secondary).color,
+        secondaryBg: getComputedStyle(secondary).backgroundColor,
+        heroBg: getComputedStyle(hero).backgroundColor
+      };
+    });
+    assert.equal(visual.heading, 'rgb(20, 41, 52)', 'dark readable AZ heading: ' + JSON.stringify(visual));
+    assert.equal(visual.headingFill, 'rgb(20, 41, 52)', 'AZ heading fill should not be white');
+    assert.equal(visual.secondary, 'rgb(10, 113, 100)', 'secondary action visible on light background');
+    assert.equal(visual.secondaryBg, 'rgb(255, 255, 255)', 'secondary action contrast');
+    await assertNoHorizontalOverflow(page, '/az/xidmetler/ @' + width);
+  }
+});
