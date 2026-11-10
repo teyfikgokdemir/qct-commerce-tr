@@ -523,14 +523,9 @@ test('live-layout preview keeps desktop calculator result within first viewport 
       assert.ok(geometry.top >= 0 && geometry.bottom <= 900, path + ' @' + width + ': builder must be visible without a second scroll ' + JSON.stringify(geometry));
       assert.ok(geometry.resultBottom <= 900, path + ' @' + width + ': total/CTA must not be below viewport');
       assert.equal(geometry.accent, '#0a7164');
-      // The existing English desktop header overflows the document by 9px at
-      // 1716px. That is pre-existing and out of scope for a calculator preview.
-      // Assert the hero itself stays inside the viewport rather than failing
-      // this focused test for unrelated navigation geometry.
-      const heroBounds = await page.locator('.qct-hero').boundingBox();
-      assert.ok(heroBounds.x >= -1 && heroBounds.x + heroBounds.width <= width + 1,
-        path + ': home hero must fit at ' + width);
-      if (width === 1440) await assertNoHorizontalOverflow(page, path + ' @' + width);
+      // English desktop navigation used to spill 9px at width 1716.
+      // This preview now fixes that too, without hiding links.
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
     }
   }
 });
@@ -545,5 +540,26 @@ test('live-layout preview preserves mobile calculator touch targets and layout',
       assert.ok(heights.length >= 3 && heights.every(height => height >= 44), path + ': mobile select touch targets ' + JSON.stringify(heights));
       assert.equal(await page.locator('.qct-hero .qct-calculator').count(), 1);
     }
+  }
+});
+
+
+test('preview laptop quote result stays above visible consent banner', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    const page = await pageFor(t, path, { viewport: { width: 1440, height: 768 } });
+    const geo = await page.evaluate(() => {
+      const panel = document.querySelector('.qct-hero .qct-calculator').getBoundingClientRect();
+      const result = document.querySelector('.qct-hero .qct-price-result').getBoundingClientRect();
+      const consent = document.querySelector('[data-cookie-consent]');
+      const bannerTop = consent && !consent.hidden ? consent.getBoundingClientRect().top : innerHeight;
+      const header = document.querySelector('#masthead').getBoundingClientRect();
+      return {
+        panelTop: panel.top, panelBottom: panel.bottom,
+        resultBottom: result.bottom, bannerTop, headerBottom: header.bottom
+      };
+    });
+    assert.ok(geo.panelTop >= geo.headerBottom - 2, path + ': builder below sticky header: ' + JSON.stringify(geo));
+    assert.ok(geo.resultBottom <= geo.bannerTop - 8, path + ': result should clear consent on laptop: ' + JSON.stringify(geo));
+    await assertNoHorizontalOverflow(page, path + ' @1440x768');
   }
 });
