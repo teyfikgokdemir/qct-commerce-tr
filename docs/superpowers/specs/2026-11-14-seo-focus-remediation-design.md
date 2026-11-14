@@ -1,7 +1,7 @@
 # QCT Commerce SEO Focus Remediation — Design
 
 **Date:** 14 November 2026
-**Status:** Awaiting implementation approval
+**Status:** Implemented on `codex/seo-focus-remediation`; pending PR review
 **Scope:** Conservative organic-search and measurement remediation for the existing Turkish-first Astro site
 
 ## Context
@@ -58,7 +58,7 @@ Locale-paired Turkish and English pages will change class together. Hreflang rem
 
 ### ikas cost article
 
-The existing `/blog/ikas-fiyatlari-2026-paket-kurulum-tema-seo-ek-maliyetler/` URL will be preserved. Its visible introduction and metadata will be refined around the demonstrated queries “ikas ne kadar”, “ikas web sitesi fiyatları”, and “ikas ücreti ne kadar”.
+The existing `/blog/ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri/` URL will be preserved. Its visible introduction and metadata will be refined around the demonstrated queries “ikas ne kadar”, “ikas web sitesi fiyatları”, and “ikas ücreti ne kadar”.
 
 The article will:
 
