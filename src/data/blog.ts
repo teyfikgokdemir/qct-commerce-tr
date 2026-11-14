@@ -102,10 +102,10 @@ export const articles: BlogArticle[] = [
   },
   {
     slug: 'ikas-fiyatlari-2026-kurulum-tema-seo-maliyetleri', seoKey: 'blog-ikas-cost-2026',
-    title: 'ikas fiyatları 2026: paket, kurulum, tema, SEO ve ek maliyetler',
+    title: 'ikas ne kadar? 2026 paket, kurulum ve ek maliyetler',
     excerpt: 'ikas mağazası kurarken platform paketi, profesyonel kurulum, tema düzenleme, ürün girişi, SEO ve entegrasyon maliyetlerini ayrı ayrı planlayın.',
-    published: '2026-09-21', modified: '2026-09-21',
-    intro: '“ikas ne kadar?” sorusunun tek rakamlı bir cevabı yoktur. Platformun kendi abonelik veya paket bedeli ile mağazanın profesyonel kurulumu, tema düzenlemesi, ürün aktarımı, SEO çalışması ve üçüncü taraf servisleri farklı maliyet kalemleridir. Sağlıklı bütçe, bu kalemleri birbirine karıştırmadan hesaplanır.',
+    published: '2026-09-21', modified: '2026-11-14',
+    intro: 'ikas ne kadar? Toplam maliyet tek bir rakam değildir: ikas’ın güncel platform paketi ile mağaza kurulumu, tema uyarlaması, veri taşıma, ürün girişi, SEO, entegrasyon, ödeme ve operasyon giderleri ayrı kalemlerdir. Sağlıklı bütçe, platform ücretini proje kapsamından ayırarak hesaplanır.',
     summary: ['ikas platform ücretini kurulum hizmetinden ayrı değerlendirin.','Tema, ürün girişi, veri taşıma ve özel entegrasyonların kapsamını baştan netleştirin.','Panelde SEO alanlarının bulunması profesyonel SEO çalışmasının otomatik yapıldığı anlamına gelmez.','12 aylık toplam maliyeti lisans, hizmet, uygulama, ödeme ve operasyon kalemleriyle birlikte hesaplayın.'],
     sections: [
       { heading: 'ikas fiyatı neden tek bir rakam değildir?', paragraphs: ['Bir ikas projesinde en az iki ayrı bütçe vardır: platformun kendi paket/lisans maliyeti ve mağazayı satışa hazırlayan uygulama hizmeti. Bunlara ihtiyaç halinde tema, ürün girişi, veri taşıma, entegrasyon, içerik, SEO ve ölçüm çalışmaları eklenir. Bu nedenle yalnız “kurulum fiyatı” üzerinden karar vermek toplam maliyeti eksik gösterir.'] },
