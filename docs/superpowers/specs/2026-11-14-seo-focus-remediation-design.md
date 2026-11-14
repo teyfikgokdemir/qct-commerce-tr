@@ -33,7 +33,7 @@ This design concentrates indexing and editorial effort without deleting routes, 
 Every generated location page will fall into one of two explicit classes:
 
 1. **Indexable:** included in the XML sitemap and rendered with the existing canonical and locale annotations.
-2. **Discovery-only:** remains a working `200` page, remains reachable through internal links, keeps its self-canonical, and renders `noindex, follow`; it is omitted from the XML sitemap.
+2. **Discovery-only:** remains a working `200` page, remains reachable through internal links, keeps its self-canonical, and renders `noindex, follow`; it is omitted from the XML sitemap and does not emit hreflang alternates.
 
 No page in this work will be blocked in `robots.txt`. Search engines must be able to crawl discovery-only pages to see the `noindex` directive.
 
@@ -52,7 +52,7 @@ The approved indexable combinations will live in one small, dated source module 
 
 Location child templates will derive indexability from the shared policy and pass the existing `noindex` option to the base layout. The Astro sitemap integration will use the same policy to exclude discovery-only URLs. One source of truth prevents a page from being indexable in markup but absent from the intended publication policy, or vice versa.
 
-Locale-paired Turkish and English pages will change class together. Existing canonicals, hreflang links, page content, routes, and internal navigation remain intact.
+Locale-paired Turkish and English pages will change class together. Hreflang remains reciprocal on indexable pairs and is suppressed on both discovery-only counterparts, matching the repository's built-HTML audit. Existing canonicals, page content, routes, and internal navigation remain intact.
 
 ## 2. Search-result and content improvement
 
