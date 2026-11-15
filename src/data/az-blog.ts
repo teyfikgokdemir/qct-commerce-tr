@@ -706,6 +706,73 @@ export const azBlogPosts: AzBlogPost[] = [
     "relatedHref": "/az/whatsapp-satis/",
     "published": "2026-09-21",
     "modified": "2026-09-28"
+  },
+  {
+    "slug": "shopify-turkiye-virtual-pos-komissiyalari-2026",
+    "title": "Shopify Türkiyə Virtual POS və Komissiyalar 2026: iyzico, PayTR, Stripe",
+    "description": "Shopify mağazasında iyzico, PayTR, Stripe və Shopify üçüncü tərəf əməliyyat komissiyalarının, taksit və valyuta qəbulunun 2026 müqayisəsi.",
+    "intro": "Türkiyə üzərindən Shopify mağazası quran brendlər üçün əsas xərc aylıq paket deyil, ödəniş provayderi ilə Shopify əlavə əməliyyat komissiyasının birgə təsiridir.",
+    "summary": [
+      "Yerli ödənişlər iyzico və ya PayTR üzərindən qəbul edilir.",
+      "Dövriyyə artdıqca Grow/Advanced planına keçid komissiya yükünü azalda bilər.",
+      "Xarici şirkət üzərindən Stripe inteqrasiyası beynəlxalq satışı sadələşdirir."
+    ],
+    "sections": [
+      {
+        "heading": "Ödəniş arxitekturası və komissiya balansı",
+        "paragraphs": [
+          "Kurulumdan əvvəl orta səbət məbləği, taksit nisbəti və valyuta axını hesablanaraq ən sərfəli plan və provayder seçilməlidir."
+        ]
+      }
+    ],
+    "relatedLabel": "Shopify mağaza qurulmasına baxın",
+    "relatedHref": "/az/shopify-magaza-qurulmasi/",
+    "published": "2026-11-15",
+    "modified": "2026-11-15"
+  },
+  {
+    "slug": "mikro-ixrac-etgb-e-ticaret-rehberi-2026",
+    "title": "Mikro İxrac (ETGB) ilə Xaricə E-Ticarət Bələdçisi 2026",
+    "description": "300 kq və 15.000 Avro limitinə qədər ETGB mikro ixrac ilə ƏDV-siz faktura, sürətli kargo və çoxdilli e-ticarət mağazası qurulması.",
+    "intro": "ETGB mikro ixrac modeli istehsalçı və brendlərə gömrük müşaviri xərci olmadan beynəlxalq sifarişləri sürətli kargo ilə göndərməyə imkan verir.",
+    "summary": [
+      "300 kq və 15.000 Avro həddinə qədər elektron bəyannamə ilə ixrac mümkündür.",
+      "Çoxdilli məhsul səhifələri və yerli valyuta dönüşümü artırır."
+    ],
+    "sections": [
+      {
+        "heading": "Beynəlxalq satışda əsas texniki addımlar",
+        "paragraphs": [
+          "Ölkə üzrə çatdırılma müddəti, gömrük şəffaflığı və beynəlxalq kart ödənişləri səbətdə tərketməni azaldır."
+        ]
+      }
+    ],
+    "relatedLabel": "İxracatçılar üçün e-ticarət həllərinə baxın",
+    "relatedHref": "/az/ixracatcilar/",
+    "published": "2026-11-15",
+    "modified": "2026-11-15"
+  },
+  {
+    "slug": "b2b-topdansatis-e-ticaret-portali-qurulmasi-2026",
+    "title": "B2B Diler və Topdansatış E-Ticarət Portalı Necə Qurulur? (2026)",
+    "description": "İstehsalçı və distribütorlar üçün dilerə özəl qiymət, MOQ qaydaları, sürətli SKU sifariş cədvəli və ERP inteqrasiyası.",
+    "intro": "WhatsApp və Excel ilə topdansatış sifarişi toplayan şirkətlər üçün B2B diler portalı qiymət xətalarını aradan qaldırır və təkrar sifarişləri sürətləndirir.",
+    "summary": [
+      "Təsdiqli dilerlərə özəl qiymət siyahısı və qutu/palet MOQ qaydaları tətbiq olunur.",
+      "ERP stok və cari hesab sinxronizasiyası əməliyyat yükünü azaldır."
+    ],
+    "sections": [
+      {
+        "heading": "B2B portalında vacib modullar",
+        "paragraphs": [
+          "SKU kodları ilə sürətli sifariş cədvəli, proforma/RFQ təklif axını və Google-da indekslənən texniki kateqoriya səhifələri birlikdə qurulmalıdır."
+        ]
+      }
+    ],
+    "relatedLabel": "B2B distribütor həllərinə baxın",
+    "relatedHref": "/az/distributor-b2b/",
+    "published": "2026-11-15",
+    "modified": "2026-11-15"
   }
 ];
 export function getAzBlogPost(slug:string){const p=azBlogPosts.find(x=>x.slug===slug);if(!p)throw new Error('Azerbaijani article not found: '+slug);return p;}

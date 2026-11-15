@@ -705,6 +705,87 @@ export const articlesEn:BlogArticleEn[]=[
     "relatedHref": "/en/whatsapp-sales/",
     "published": "2026-09-21",
     "modified": "2026-09-21"
+  },
+  {
+    "slug": "shopify-turkey-payment-gateways-commissions-2026",
+    "title": "Shopify Türkiye Payment Gateways & Commissions 2026: iyzico, PayTR, Stripe",
+    "description": "Compare Shopify transaction fees, iyzico and PayTR installment commissions, and international Stripe structures for selling from Türkiye in 2026.",
+    "intro": "For brands launching Shopify in Türkiye, total payment cost depends on both the local BDDK-licensed gateway fee and Shopify’s third-party transaction fee, because Shopify Payments is not natively active in Türkiye.",
+    "summary": [
+      "Local TL card checkout runs through iyzico or PayTR alongside Shopify’s plan-based third-party fee (0.6%–2%).",
+      "As monthly GMV grows, upgrading from Basic to Grow or Advanced can pay for itself through lower transaction fees.",
+      "Foreign-entity Stripe or Shopify Payments setups simplify multi-currency USD/EUR checkout for cross-border stores."
+    ],
+    "sections": [
+      {
+        "heading": "How payment fees stack on Shopify Türkiye",
+        "paragraphs": [
+          "Every order combines the payment provider’s processing rate with Shopify’s external gateway fee. Modeling average order value, installment ratio, and refund rate before launch protects unit margins."
+        ]
+      },
+      {
+        "heading": "Choosing between iyzico, PayTR, and Stripe",
+        "paragraphs": [
+          "iyzico offers rapid onboarding and broad installment coverage; PayTR provides competitive high-volume TL rates; Stripe via a US/UK/EU entity unlocks Apple Pay and lower cross-border friction."
+        ]
+      }
+    ],
+    "relatedLabel": "Explore Shopify store architecture",
+    "relatedHref": "/en/shopify-store-setup/",
+    "published": "2026-11-15",
+    "modified": "2026-11-15"
+  },
+  {
+    "slug": "micro-export-etgb-ecommerce-turkey-guide-2026",
+    "title": "Micro-Export (ETGB) E-Commerce Guide from Türkiye 2026: VAT Refund & Shipping",
+    "description": "How Turkish manufacturers and brands export online via ETGB up to 300 kg and €15,000 with 0% VAT invoicing, express couriers, and localized storefronts.",
+    "intro": "ETGB (Electronic Commerce Customs Declaration) lets Turkish brands ship international e-commerce orders up to 300 kg and €15,000 through authorized express couriers without traditional customs broker fees.",
+    "summary": [
+      "Orders within 300 kg and €15,000 qualify for streamlined ETGB export clearance.",
+      "Export invoices are issued at 0% VAT, enabling input VAT recovery for eligible producers.",
+      "Local currency pricing, DDP duty clarity, and native-language product pages drive international conversion."
+    ],
+    "sections": [
+      {
+        "heading": "ETGB limits and documentation",
+        "paragraphs": [
+          "Exporters issue zero-rated e-export invoices and dispatch via authorized express carriers (DHL, FedEx, UPS, PTS) that file the electronic customs declaration."
+        ]
+      },
+      {
+        "heading": "Structuring a high-converting cross-border storefront",
+        "paragraphs": [
+          "Clear delivery lead times, transparent customs duties, international card/Apple Pay support, and hreflang-aligned product schema prevent checkout abandonment."
+        ]
+      }
+    ],
+    "relatedLabel": "Explore multilingual e-commerce for exporters",
+    "relatedHref": "/en/exporters/",
+    "published": "2026-11-15",
+    "modified": "2026-11-15"
+  },
+  {
+    "slug": "b2b-wholesale-ecommerce-portal-setup-2026",
+    "title": "How to Build a B2B Wholesale & Dealer E-Commerce Portal (2026 Guide)",
+    "description": "B2B portal architecture for manufacturers and distributors: dealer-only pricing, MOQ rules, quick SKU order tables, credit limits, and ERP sync.",
+    "intro": "Manufacturers still collecting wholesale orders over WhatsApp and Excel face pricing errors and manual bottlenecks. A dedicated B2B dealer portal automates tier pricing, MOQ enforcement, and ERP stock sync.",
+    "summary": [
+      "Approved dealers log in to see contract pricing, case-pack MOQs, and volume discounts.",
+      "Quick SKU order grids and one-click reordering cut repeat order time.",
+      "Indexable category and technical spec pages still attract new distributors from Google."
+    ],
+    "sections": [
+      {
+        "heading": "Core modules of an operational B2B portal",
+        "paragraphs": [
+          "Combine gated dealer approval, customer-group price lists, credit/open-account terms or proforma RFQ checkout, and real-time ERP inventory synchronization."
+        ]
+      }
+    ],
+    "relatedLabel": "Explore B2B distributor web systems",
+    "relatedHref": "/en/distributor-b2b/",
+    "published": "2026-11-15",
+    "modified": "2026-11-15"
   }
 ];
 export function getArticleEn(slug:string){const a=articlesEn.find(x=>x.slug===slug);if(!a)throw new Error('English article not found: '+slug);return a}
