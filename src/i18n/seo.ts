@@ -5,6 +5,7 @@ export type SeoPage =
   | 'blog-ai-product-content' | 'blog-whatsapp-automation'
   | 'blog-google-not-visible' | 'blog-chatgpt-visibility' | 'blog-dynamic-seo-2026' | 'blog-chatgpt-ads-2026' | 'blog-chatgpt-searchbot-2026' | 'blog-multimodal-search-2026' | 'blog-web-pricing-2026'
   | 'blog-ikas-shopify-2026' | 'blog-mobile-ecommerce-conversion' | 'blog-ikas-cost-2026' | 'blog-marketplace-commission-2026'
+  | 'blog-shopify-pos-tr-2026' | 'blog-micro-export-etgb-2026' | 'blog-b2b-wholesale-portal-2026'
   | 'work' | 'work-headwear' | 'work-misima' | 'work-artman';
 
 interface SeoEntry { title: string; description: string; }
@@ -39,6 +40,9 @@ const seo: Record<SeoPage, SeoEntry> = {
   'blog-mobile-ecommerce-conversion': { title: 'Mobil E-Ticaret Sitesi Neden Satış Yapmıyor? 2026 Rehberi', description: 'Mobil e-ticaret dönüşümünü düşüren hız, menü, filtre, ürün sayfası, sepet ve ödeme sorunlarını tespit etmek için uygulamalı kontrol listesi.' },
   'blog-ikas-cost-2026': { title: 'ikas Fiyatları 2026: Paket, Kurulum, Tema ve SEO', description: 'ikas paket, mağaza kurulum, tema düzenleme, ürün girişi, SEO, entegrasyon ve üçüncü taraf maliyetlerini ayrı kalemlerle planlayın.' },
   'blog-marketplace-commission-2026': { title: 'Pazaryeri Komisyon Oranları 2026: Trendyol, Hepsiburada, n11', description: 'Trendyol, Hepsiburada, Amazon Türkiye, n11, Pazarama ve ÇiçekSepeti komisyon ve ek maliyetlerini karşılaştırın; gerçek kâr marjınızı hesaplayın.' },
+  'blog-shopify-pos-tr-2026': { title: 'Shopify Türkiye Sanal POS & Komisyonlar 2026: iyzico, PayTR', description: 'Türkiye’de Shopify mağazası için iyzico, PayTR, Stripe ve Shopify işlem komisyonlarını, taksit kurulumunu ve döviz tahsilat farklarını karşılaştırın.' },
+  'blog-micro-export-etgb-2026': { title: 'Mikro İhracat (ETGB) E-İhracat Rehberi 2026: KDV İadesi', description: 'Türkiye’den yurt dışına ETGB mikro ihracat ile satış yaparken fatura, kargo, gümrük sınırı, KDV iadesi ve çok dilli e-ticaret kurulum adımlarını öğrenin.' },
+  'blog-b2b-wholesale-portal-2026': { title: 'B2B Bayilik ve Toptan Satış E-Ticaret Sitesi Kurulumu 2026', description: 'Üretici ve distribütörler için bayi özel fiyatlandırma, minimum sipariş adedi (MOQ), cari hesap takibi ve teklif akışıyla B2B e-ticaret mimarisi.' },
   work: { title: 'Seçili Web ve E-ticaret Çalışmaları — QCT Commerce', description: 'QCT ekosistemi kapsamında gerçekleştirilen seçili web, e-ticaret ve dijital deneyim çalışmalarını doğrulanabilir kapsam ve çıktılarıyla inceleyin.' },
   'work-headwear': { title: 'HEADWEAR E-ticaret Vaka Çalışması — QCT Commerce', description: 'HEADWEAR için ürün keşfi, çok dilli mağaza yapısı, mobil alışveriş ve teknik arama temellerini birleştiren e-ticaret çalışmasını inceleyin.' },
   'work-misima': { title: 'Misima Group Web Vaka Çalışması — QCT Commerce', description: 'Misima Group için web stratejisi, bilgi mimarisi, arayüz tasarımı ve geliştirmeyi birleştiren kurumsal dijital deneyimi inceleyin.' },
