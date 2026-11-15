@@ -783,7 +783,7 @@ export const articlesEn:BlogArticleEn[]=[
       }
     ],
     "relatedLabel": "Explore B2B distributor web systems",
-    "relatedHref": "/en/distributor-b2b/",
+    "relatedHref": "/en/distributors-b2b/",
     "published": "2026-11-15",
     "modified": "2026-11-15"
   }
