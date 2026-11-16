@@ -502,3 +502,188 @@ for (const path of ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/', 
     assert.equal(await page.locator('.marketplace-channel-track').evaluate(el => getComputedStyle(el).animationName), 'none');
   });
 }
+
+
+test('live-layout preview keeps desktop calculator result within first viewport at common widths', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    for (const width of [1440, 1716]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 900 } });
+      const calculator = page.locator('.qct-hero .qct-calculator');
+      const geometry = await calculator.evaluate(el => {
+        const box = el.getBoundingClientRect();
+        const result = el.querySelector('.qct-price-result')?.getBoundingClientRect();
+        const addOns = el.querySelector('.qct-addon-grid');
+        return {
+          top: box.top, bottom: box.bottom, height: box.height,
+          resultBottom: result?.bottom ?? null,
+          addonColumns: addOns ? getComputedStyle(addOns).gridTemplateColumns.split(' ').length : 0,
+          accent: getComputedStyle(el.closest('.qct-v2')).getPropertyValue('--qct-accent').trim()
+        };
+      });
+      assert.ok(geometry.top >= 0 && geometry.bottom <= 900, path + ' @' + width + ': builder must be visible without a second scroll ' + JSON.stringify(geometry));
+      assert.ok(geometry.resultBottom <= 900, path + ' @' + width + ': total/CTA must not be below viewport');
+      assert.equal(geometry.accent, '#0a7164');
+      // English desktop navigation used to spill 9px at width 1716.
+      // This preview now fixes that too, without hiding links.
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
+    }
+  }
+});
+
+test('live-layout preview preserves mobile calculator touch targets and layout', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    for (const width of [320, 390, 430]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
+      const fields = page.locator('.qct-hero .qct-calculator select');
+      const heights = await fields.evaluateAll(elements => elements.map(el => el.getBoundingClientRect().height));
+      assert.ok(heights.length >= 3 && heights.every(height => height >= 44), path + ': mobile select touch targets ' + JSON.stringify(heights));
+      assert.equal(await page.locator('.qct-hero .qct-calculator').count(), 1);
+    }
+  }
+});
+
+
+test('preview laptop quote result stays above visible consent banner', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    const page = await pageFor(t, path, { viewport: { width: 1440, height: 768 } });
+    const geo = await page.evaluate(() => {
+      const panel = document.querySelector('.qct-hero .qct-calculator').getBoundingClientRect();
+      const result = document.querySelector('.qct-hero .qct-price-result').getBoundingClientRect();
+      const consent = document.querySelector('[data-cookie-consent]');
+      const bannerTop = consent && !consent.hidden ? consent.getBoundingClientRect().top : innerHeight;
+      const header = document.querySelector('#masthead').getBoundingClientRect();
+      return {
+        panelTop: panel.top, panelBottom: panel.bottom,
+        resultBottom: result.bottom, bannerTop, headerBottom: header.bottom
+      };
+    });
+    assert.ok(geo.panelTop >= geo.headerBottom - 2, path + ': builder below sticky header: ' + JSON.stringify(geo));
+    assert.ok(geo.resultBottom <= geo.bannerTop - 8, path + ': result should clear consent on laptop: ' + JSON.stringify(geo));
+    await assertNoHorizontalOverflow(page, path + ' @1440x768');
+  }
+});
+
+
+test('compact consent banner remains readable, accessible and neutral across locales', async t => {
+  for (const [path, cue] of [['/', /çerezsiz/i], ['/en/', /cookieless/i], ['/az/', /kukisiz/i]]) {
+    for (const width of [320, 390]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      const notice = page.locator('[data-cookie-consent]');
+      await notice.waitFor({ state: 'visible' });
+      const m = await notice.evaluate(el => {
+        const box = el.getBoundingClientRect();
+        const p = el.querySelector('p');
+        const buttons = [...el.querySelectorAll('button')].map(btn => {
+          const r = btn.getBoundingClientRect();
+          return { width: r.width, height: r.height, left: r.left, right: r.right };
+        });
+        return {
+          height: box.height, top: box.top, left: box.left, right: box.right,
+          copy: p?.textContent ?? '', clipped: p.scrollHeight > p.clientHeight + 1,
+          buttons, fullText: el.textContent ?? ''
+        };
+      });
+      const limit = width === 320 ? 178 : 156;
+      assert.ok(m.height <= limit, path + ' ' + width + ': consent banner too tall ' + JSON.stringify(m));
+      assert.ok(m.left >= -1 && m.right <= width + 1, path + ': banner must fit screen');
+      assert.equal(m.clipped, false, path + ': never truncate the disclosure');
+      assert.match(m.copy, cue, path + ': explain consent-independent signals');
+      assert.ok(!m.fullText.includes('Cansu'), path + ': no provider/internal identity in notice');
+      assert.ok(m.buttons.length === 2 && m.buttons.every(b => b.height >= 44 && b.left >= 0 && b.right <= width), path + ': two accessible consent actions');
+      assert.equal(await notice.locator('a[href]').count(), 1, path + ': keep full policy link');
+      if (width === 390) {
+        const cta = page.locator('.qct-hero .qct-hero-copy .qct-btn-primary');
+        const ctaBox = await cta.boundingBox();
+        assert.ok(ctaBox && ctaBox.y + ctaBox.height <= m.top - 8, path + ': hero CTA should clear consent strip on 390×844: ' + JSON.stringify({ctaBottom: ctaBox && ctaBox.y + ctaBox.height, bannerTop: m.top}));
+      }
+    }
+  }
+});
+
+test('consent reject/accept controls retain exact preference behavior on preview', async t => {
+  for (const [path, choice, value] of [['/', 'reject', 'denied'], ['/en/', 'accept', 'granted']]) {
+    const page = await pageFor(t, path);
+    await page.locator(`[data-cookie-${choice}]`).click();
+    assert.equal(await page.evaluate(() => localStorage.getItem('qct-analytics-consent')), value);
+    assert.equal(await page.evaluate(() => localStorage.getItem('qct-recording-consent-v1')), value);
+    assert.equal(await page.locator('[data-cookie-consent]').isVisible(), false);
+    await page.reload();
+    assert.equal(await page.locator('[data-cookie-consent]').isVisible(), false);
+  }
+});
+
+test('consent banner uses a single compact desktop line on 1440px viewport', async t => {
+  const page = await pageFor(t, '/', { viewport: { width: 1440, height: 768 } });
+  const m = await page.locator('[data-cookie-consent]').evaluate(el => ({
+    height: el.getBoundingClientRect().height,
+    top: el.getBoundingClientRect().top,
+    paragraph: getComputedStyle(el.querySelector('p')).textOverflow
+  }));
+  assert.ok(m.height <= 75, 'desktop notice should be compact: ' + JSON.stringify(m));
+  assert.notEqual(m.paragraph, 'ellipsis', 'desktop notice cannot truncate privacy disclosure');
+});
+
+
+test('preview jade palette is limited to the six published service and pricing indexes', async t => {
+  const routes = [
+    { path: '/hizmetler/', hero: '.qct-svc-hero', link: '/yeni-nesil-web-altyapisi/' },
+    { path: '/en/services/', hero: '.page-hero', link: '/en/next-generation-web-foundation/' },
+    { path: '/az/xidmetler/', hero: '.az-page-hero', link: '/az/yeni-nesil-veb-infrastrukturu/' },
+    { path: '/fiyatlar/', hero: '.qct-pricing-hero', price: '24.900 TL' },
+    { path: '/en/pricing/', hero: '.qct-pricing-hero', price: '24.900 TL' },
+    { path: '/az/qiymetler/', hero: '.qct-pricing-hero', price: '1.490 AZN' },
+  ];
+  for (const { path, hero, link, price } of routes) {
+    const page = await pageFor(t, path, { viewport: { width: 1440, height: 900 } });
+    assert.equal(await page.locator('body').getAttribute('data-qct-inner-preview'), 'jade', path);
+    assert.equal(await page.locator('link[href*="inner-pages-jade-preview.css"]').count(), 1, path);
+    const heroColor = await page.locator(hero).evaluate(el => getComputedStyle(el).backgroundColor);
+    assert.equal(heroColor, 'rgb(247, 250, 248)', path + ': porcelain hero surface');
+    const headerCta = await page.locator('#masthead .qct-header-cta').evaluate(el => getComputedStyle(el).backgroundColor);
+    assert.equal(headerCta, 'rgb(10, 113, 100)', path + ': unified jade CTA');
+    if (link) assert.ok(await page.locator(`main a[href="${link}"]`).count() >= 1, path + ': service route preserved');
+    if (price) {
+      assert.ok((await page.locator('main').innerText()).includes(price), path + ': price content unchanged');
+      assert.equal(await page.locator('.qct-pricing-edge-card .qct-btn-primary').count(), 1, path + ': QCT EDGE CTA unchanged');
+    }
+    await assertNoHorizontalOverflow(page, path + ' desktop');
+  }
+  const control = await pageFor(t, '/iletisim/');
+  assert.equal(await control.locator('link[href*="inner-pages-jade-preview.css"]').count(), 0, 'other pages not affected');
+  assert.equal(await control.locator('body').getAttribute('data-qct-inner-preview'), null, 'other pages not marked');
+});
+
+test('preview service and pricing indexes remain mobile-safe in TR EN AZ', async t => {
+  for (const path of ['/hizmetler/', '/en/services/', '/az/xidmetler/', '/fiyatlar/', '/en/pricing/', '/az/qiymetler/']) {
+    for (const width of [320, 390]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
+      assert.equal(await page.locator('main h1').count(), 1, path + ': heading preserved');
+    }
+  }
+});
+
+
+test('Azerbaijani light service hero keeps its headline and secondary CTA readable', async t => {
+  for (const width of [390, 1440]) {
+    const page = await pageFor(t, '/az/xidmetler/', { viewport: { width, height: 844 } });
+    const visual = await page.evaluate(() => {
+      const heading = document.querySelector('#primary .az-page-hero h1');
+      const secondary = document.querySelector('#primary .az-page-hero .button--secondary');
+      const hero = document.querySelector('#primary .az-page-hero');
+      return {
+        heading: getComputedStyle(heading).color,
+        headingFill: getComputedStyle(heading).webkitTextFillColor,
+        secondary: getComputedStyle(secondary).color,
+        secondaryBg: getComputedStyle(secondary).backgroundColor,
+        heroBg: getComputedStyle(hero).backgroundColor
+      };
+    });
+    assert.equal(visual.heading, 'rgb(20, 41, 52)', 'dark readable AZ heading: ' + JSON.stringify(visual));
+    assert.equal(visual.headingFill, 'rgb(20, 41, 52)', 'AZ heading fill should not be white');
+    assert.equal(visual.secondary, 'rgb(10, 113, 100)', 'secondary action visible on light background');
+    assert.equal(visual.secondaryBg, 'rgb(255, 255, 255)', 'secondary action contrast');
+    await assertNoHorizontalOverflow(page, '/az/xidmetler/ @' + width);
+  }
+});

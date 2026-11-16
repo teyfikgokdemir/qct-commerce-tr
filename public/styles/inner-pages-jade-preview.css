@@ -1,0 +1,399 @@
+/* QCT Commerce · inner-page color-unification trial · 2026-11-10
+   Preview branch only. Loaded exclusively for three service indexes and
+   three pricing pages. Keep live layouts, prices, links, logo and SEO intact.
+   Brand: porcelain #f7faf8, graphite #102029, jade #0a7164. */
+
+body[data-qct-inner-preview="jade"] {
+  --qct-accent: #0a7164;
+  --qct-accent-dark: #07584f;
+  --qct-surface: #f7faf8;
+  --qct-line: #dce8e2;
+}
+body[data-qct-inner-preview="jade"] #masthead .qct-header-cta,
+body[data-qct-inner-preview="jade"] #colophon .qcte-desk__button {
+  background: #0a7164 !important;
+  box-shadow: 0 4px 15px rgba(10, 113, 100, .17) !important;
+}
+body[data-qct-inner-preview="jade"] #masthead .qct-header-cta:hover,
+body[data-qct-inner-preview="jade"] #colophon .qcte-desk__button:hover {
+  background: #07584f !important;
+}
+body[data-qct-inner-preview="jade"] #masthead .primary-menu > li > a[aria-current="page"] {
+  color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] #masthead .primary-menu > li > a[aria-current="page"]::after {
+  border-color: #0a7164 !important;
+  background-color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] #colophon .qcte-eyebrow,
+body[data-qct-inner-preview="jade"] #colophon .qcte-col__label,
+body[data-qct-inner-preview="jade"] #colophon .qcte-desk__badge {
+  color: #90dcc8 !important;
+}
+body[data-qct-inner-preview="jade"] #primary a:focus-visible {
+  outline: 3px solid #0a7164;
+  outline-offset: 3px;
+}
+
+/* Turkish service index: existing editorial layout and text stay untouched. */
+body[data-qct-inner-preview="jade"] .qct-svc-hero {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(48, 164, 136, .08), transparent 46%),
+    #f7faf8;
+  border-color: #dce8e2;
+  padding-block: clamp(38px, 4vw, 56px) clamp(30px, 3.8vw, 48px);
+}
+body[data-qct-inner-preview="jade"] .qct-svc-hero::after {
+  background: linear-gradient(90deg, transparent, rgba(10, 113, 100, .31), transparent);
+}
+body[data-qct-inner-preview="jade"] .qct-svc-hero__kicker {
+  color: #08675b !important;
+  background: #e7f4ee;
+  border-color: #cce6dc;
+}
+body[data-qct-inner-preview="jade"] .qct-svc-hero__kicker-dot {
+  background: #0a7164;
+  box-shadow: 0 0 0 3px rgba(10, 113, 100, .13);
+}
+body[data-qct-inner-preview="jade"] :is(.qct-svc-hero, .qct-svc-section) .qct-section__eyebrow,
+body[data-qct-inner-preview="jade"] .qct-svc-card--link:hover h3,
+body[data-qct-inner-preview="jade"] .qct-svc-card__arrow {
+  color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] .qct-svc-section {
+  background: #ffffff;
+  padding-block: clamp(34px, 4vw, 54px);
+}
+body[data-qct-inner-preview="jade"] .qct-svc-section--alt {
+  background: #f5f9f6;
+  border-color: #dce8e2;
+}
+body[data-qct-inner-preview="jade"] .qct-svc-section .qct-svc-card,
+body[data-qct-inner-preview="jade"] .qct-svc-section .qct-svc-step {
+  border-color: #dce8e2;
+  box-shadow: 0 5px 20px rgba(12, 42, 34, .035);
+}
+body[data-qct-inner-preview="jade"] .qct-svc-card--link:hover {
+  border-color: #8cc9b7;
+  box-shadow: 0 14px 32px rgba(12, 79, 65, .08);
+}
+body[data-qct-inner-preview="jade"] .qct-svc-card__arrow,
+body[data-qct-inner-preview="jade"] .qct-svc-step__number {
+  background: #eaf5f0;
+  border-color: #c7e7d9;
+  color: #0a7164;
+}
+body[data-qct-inner-preview="jade"] .qct-svc-step::before {
+  background: linear-gradient(90deg, #0a7164, #81ddc5);
+}
+body[data-qct-inner-preview="jade"] .qct-svc-hero .qct-btn--primary,
+body[data-qct-inner-preview="jade"] .qct-svc-final__btn-primary {
+  background: #0a7164 !important;
+  color: #fff !important;
+  box-shadow: 0 8px 22px rgba(10, 113, 100, .18);
+}
+body[data-qct-inner-preview="jade"] .qct-svc-hero .qct-btn--primary:hover,
+body[data-qct-inner-preview="jade"] .qct-svc-final__btn-primary:hover {
+  background: #07584f !important;
+}
+body[data-qct-inner-preview="jade"] .qct-svc-final {
+  background:
+    radial-gradient(ellipse at 55% 0%, rgba(55, 159, 131, .15), transparent 72%),
+    #102029 !important;
+}
+body[data-qct-inner-preview="jade"] .qct-svc-final__badge {
+  background: rgba(93, 205, 170, .13);
+  border-color: rgba(93, 205, 170, .21);
+  color: #a7e6d4 !important;
+}
+body[data-qct-inner-preview="jade"] .qct-svc-final__badge-dot,
+body[data-qct-inner-preview="jade"] .qct-svc-final__perk-dot {
+  background: #81ddc5;
+  box-shadow: none;
+}
+
+/* English service index: keep its distinct service directory and content. */
+body[data-qct-inner-preview="jade"] #primary > .page-hero {
+  background:
+    radial-gradient(circle at 78% 0%, rgba(58, 165, 138, .075), transparent 40%),
+    #f7faf8;
+  border-bottom: 1px solid #dce8e2;
+}
+body[data-qct-inner-preview="jade"] #primary > .page-hero .eyebrow {
+  color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] #primary .service-grid .service-card {
+  border-color: #dce8e2;
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(12, 42, 34, .035);
+}
+body[data-qct-inner-preview="jade"] #primary .service-grid .service-card:hover,
+body[data-qct-inner-preview="jade"] #primary .service-grid .service-card:focus-visible {
+  border-color: #8cc9b7;
+}
+body[data-qct-inner-preview="jade"] #primary .service-grid .service-card strong {
+  color: #0a7164;
+}
+
+/* Azerbaijani service index: replace the unrelated coral/brown palette while
+   preserving its independently localised layout and navigation. */
+body[data-qct-inner-preview="jade"] .az-standard-page {
+  background: #f7faf8;
+  color: #11252b;
+}
+body[data-qct-inner-preview="jade"] .az-page-hero {
+  background:
+    radial-gradient(circle at 80% 4%, rgba(53, 166, 139, .075), transparent 43%),
+    #f7faf8;
+  border-bottom-color: #dce8e2;
+  color: #142934;
+  padding-block: clamp(58px, 6vw, 76px) clamp(48px, 5vw, 66px);
+}
+body[data-qct-inner-preview="jade"] .az-page-hero h1 {
+  color: #142934 !important;
+}
+body[data-qct-inner-preview="jade"] .az-page-hero .eyebrow {
+  color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] .az-page-lead {
+  color: #536a67;
+}
+body[data-qct-inner-preview="jade"] .az-page-hero .button--primary,
+body[data-qct-inner-preview="jade"] .az-page-cta .button--primary {
+  background: #0a7164 !important;
+  color: #fff !important;
+  border-color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] .az-page-hero .button--secondary {
+  background: #ffffff !important;
+  color: #0a7164 !important;
+  border-color: #bad8cc !important;
+}
+body[data-qct-inner-preview="jade"] .az-page-section,
+body[data-qct-inner-preview="jade"] .az-page-section:nth-of-type(odd) {
+  background: #f7faf8;
+  padding-block: clamp(48px, 5vw, 76px);
+}
+body[data-qct-inner-preview="jade"] .az-page-card {
+  background: #fff;
+  border-color: #dce8e2;
+  box-shadow: 0 6px 25px rgba(15, 55, 43, .045);
+}
+body[data-qct-inner-preview="jade"] a.az-page-card:hover {
+  border-color: #91cbb9;
+  box-shadow: 0 14px 30px rgba(15, 55, 43, .09);
+}
+body[data-qct-inner-preview="jade"] .az-page-card p,
+body[data-qct-inner-preview="jade"] .az-page-heading > p:not(.eyebrow) {
+  color: #596f6b;
+}
+body[data-qct-inner-preview="jade"] .az-page-card strong,
+body[data-qct-inner-preview="jade"] .az-page-heading .eyebrow {
+  color: #0a7164;
+}
+body[data-qct-inner-preview="jade"] .az-page-cta {
+  background: #102029;
+}
+body[data-qct-inner-preview="jade"] .az-page-cta .eyebrow {
+  color: #8bdfc8;
+}
+
+/* Pricing TR/EN/AZ: all prices, tier rows, disclaimers and CTAs unchanged. */
+body[data-qct-inner-preview="jade"] .qct-v2:has(.qct-pricing-hero) {
+  --qct-accent: #0a7164;
+  --qct-accent-dark: #07584f;
+  --qct-line: #dce8e2;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-hero {
+  padding-block: clamp(44px, 5vw, 62px) 36px;
+  background:
+    radial-gradient(circle at 75% 9%, rgba(49, 166, 134, .055), transparent 38%),
+    #f7faf8;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-hero h1 em {
+  color: #0a7164 !important;
+  -webkit-text-fill-color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-hero-badges span {
+  background: #edf6f0;
+  color: #0a7164;
+  border-color: #d1e9dd;
+  box-shadow: none;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-disclaimer {
+  background: #ffffff;
+  border-color: #dce8e2;
+  border-left-color: #0a7164;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-hero .qct-hero-actions .qct-btn-primary,
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card .qct-btn-primary {
+  background: #0a7164;
+  color: #fff;
+  border-color: #0a7164;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-hero .qct-hero-actions .qct-btn-primary:hover,
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card .qct-btn-primary:hover {
+  background: #07584f;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card {
+  background: linear-gradient(145deg, #102029 0%, #132d30 100%);
+  border-color: rgba(111, 211, 178, .3);
+  box-shadow: 0 20px 48px rgba(12, 40, 34, .17);
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card::before {
+  background: linear-gradient(90deg, transparent, #81ddc5, transparent);
+  box-shadow: none;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card__tag,
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card__price strong,
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card__price span {
+  color: #93e5ce;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card__gift {
+  background: rgba(98, 206, 166, .13);
+  border-color: rgba(130, 224, 195, .3);
+  color: #c3f0e2;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-edge-card__action {
+  border-left-color: rgba(141, 221, 197, .2);
+}
+body[data-qct-inner-preview="jade"] .qct-price-rows article {
+  border-color: #dce8e2;
+  box-shadow: 0 3px 14px rgba(12, 42, 34, .025);
+}
+body[data-qct-inner-preview="jade"] .qct-price-rows article:hover {
+  border-color: #a1ccb8;
+  box-shadow: 0 9px 25px rgba(12, 42, 34, .06);
+}
+body[data-qct-inner-preview="jade"] .qct-price-tag strong {
+  color: #0a7164;
+}
+body[data-qct-inner-preview="jade"] .qct-price-tag small {
+  color: #0a7164;
+  background: #edf6f0;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-faq .qct-section-label {
+  color: #0a7164;
+}
+body[data-qct-inner-preview="jade"] .qct-pricing-faq details {
+  border-color: #dce8e2;
+}
+body[data-qct-inner-preview="jade"] .qct-close .qct-btn-light {
+  background: #daf4e9;
+  color: #10362c;
+}
+@media (max-width: 980px) {
+  body[data-qct-inner-preview="jade"] .qct-pricing-edge-card__action {
+    border-left: 0;
+    border-top-color: rgba(141, 221, 197, .2);
+  }
+}
+@media (max-width: 680px) {
+  body[data-qct-inner-preview="jade"] .az-page-hero {
+    padding-block: 44px 42px;
+  }
+  body[data-qct-inner-preview="jade"] .qct-pricing-hero {
+    padding-block: 36px 30px;
+  }
+  body[data-qct-inner-preview="jade"] .qct-pricing-edge-card {
+    padding: 23px 18px;
+  }
+  body[data-qct-inner-preview="jade"] .qct-pricing-edge-card__tags {
+    flex-wrap: wrap;
+  }
+  body[data-qct-inner-preview="jade"] .qct-price-tag {
+    min-width: 0;
+    max-width: 100%;
+  }
+  body[data-qct-inner-preview="jade"] .qct-price-tag small {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-qct-inner-preview="jade"] .service-card,
+  body[data-qct-inner-preview="jade"] .az-page-card,
+  body[data-qct-inner-preview="jade"] .qct-price-rows article {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+
+/* ServicePage component has locally scoped !important blue rules.
+   The index-specific override needs #primary specificity to win. */
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(48, 164, 136, .08), transparent 46%),
+    #f7faf8 !important;
+}
+body[data-qct-inner-preview="jade"] #primary :is(.qct-svc-hero, .qct-svc-section) .qct-section__eyebrow {
+  color: #0a7164 !important;
+}
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero .qct-btn--primary,
+body[data-qct-inner-preview="jade"] #primary .qct-svc-final__btn-primary {
+  background: #0a7164 !important;
+  border-color: #0a7164 !important;
+  color: #fff !important;
+}
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero .qct-btn--primary:hover,
+body[data-qct-inner-preview="jade"] #primary .qct-svc-final__btn-primary:hover {
+  background: #07584f !important;
+}
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero + .qct-svc-section {
+  padding-block: 30px 28px;
+}
+body[data-qct-inner-preview="jade"] #primary .qct-svc-hero + .qct-svc-section .qct-section__header {
+  margin-bottom: 0;
+}
+@media (max-width: 390px) {
+  html[lang="az"] body[data-qct-inner-preview="jade"] #primary .qct-pricing-faq h2 {
+    max-width: 100%;
+    min-width: 0;
+    font-size: clamp(27px, 8.9vw, 36px);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+}
+
+
+/* QCT EDGE toast uses its own blue system. Harmonise the small overlay while
+   preserving the session-dismissal and timing behaviour exactly as shipped. */
+body[data-qct-inner-preview="jade"] .qct-edge-toast {
+  background: rgba(12, 30, 37, .985);
+  border-color: rgba(119, 222, 187, .30);
+  box-shadow: 0 14px 37px rgba(5, 25, 29, .25);
+}
+body[data-qct-inner-preview="jade"] .qct-edge-toast-badge {
+  color: #a4e6d2;
+  background: rgba(33, 142, 111, .17);
+  border-color: rgba(119, 222, 187, .30);
+}
+body[data-qct-inner-preview="jade"] .qct-edge-toast-dot {
+  background: #80ddc4;
+  box-shadow: 0 0 6px rgba(128, 221, 196, .38);
+}
+body[data-qct-inner-preview="jade"] .qct-edge-toast-cta {
+  background: #0a7164;
+  color: #fff;
+  box-shadow: none;
+}
+
+
+/* AZ standard-page component declares text colors with locally scoped
+   !important rules. The light hero must maintain dark visible typography. */
+html[lang="az"] body[data-qct-inner-preview="jade"] #primary .az-page-hero h1 {
+  color: #142934 !important;
+  -webkit-text-fill-color: #142934 !important;
+  text-shadow: none !important;
+}
+html[lang="az"] body[data-qct-inner-preview="jade"] #primary .az-page-hero .button--secondary {
+  background: #ffffff !important;
+  color: #0a7164 !important;
+  border: 1px solid #bad8cc !important;
+}
+html[lang="az"] body[data-qct-inner-preview="jade"] #primary .az-page-hero .button--primary {
+  color: #ffffff !important;
+  background: #0a7164 !important;
+}
