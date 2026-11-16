@@ -1,0 +1,404 @@
+/* QCT Commerce / preview-only editorial extension
+   Scope: TR, EN and AZ home pages, via the existing .qct-v2 root.
+   Palette: Onyx #10171C, Jade #72D6BE, Porcelain #F7F8F5.
+   No pricing, JS, tracking, canonical or global inner-page styles. */
+
+.qct-v2:is([data-qct-v2],[data-qct-az]) {
+  --qct-ink: #182c2d;
+  --qct-muted: #637875;
+  --qct-accent: #0b7568;
+  --qct-accent-dark: #075249;
+  --qct-bg: #f7f8f5;
+  --qct-surface: #f0f5f1;
+  --qct-line: #d9e6df;
+  background: #f7f8f5;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) :is(a, button, summary):focus-visible {
+  outline: 3px solid #38bfa2;
+  outline-offset: 3px;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-ecosystem {
+  background: #edf4f0;
+  border-color: #d8e5df;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-ecosystem-head .qct-section-label {
+  color: #0b7568;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-marquee-item {
+  border-color: #dae6e0;
+}
+
+/* QCT EDGE: a product spotlight, not a competing blue sub-brand. */
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge {
+  background:
+    radial-gradient(ellipse 55% 80% at 100% -10%, rgba(44, 171, 143, .14), transparent 72%),
+    linear-gradient(125deg, #0f1c20 0%, #142a2c 67%, #102021 100%);
+  padding-block: clamp(48px, 5vw, 68px);
+  border-block: 1px solid rgba(149, 222, 198, .13);
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge::before {
+  background: radial-gradient(circle, rgba(75, 199, 169, .14), transparent 71%);
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-topline .qct-section-label,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge h2 em,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-benefits b,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__label {
+  color: #91e4cb;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge h2 {
+  color: #f7f8f5;
+  max-width: 23ch;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-story p {
+  color: #c1d2cb;
+  max-width: 49ch;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-story__note,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-benefits span {
+  color: #b7cfc4;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-story .qct-btn-primary {
+  background: #72d6be;
+  color: #092d28;
+  border: 1px solid rgba(166, 241, 220, .85);
+  border-radius: 10px;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-story .qct-btn-primary:hover {
+  background: #a0eddb;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch {
+  border-color: rgba(135, 213, 188, .3);
+  background: linear-gradient(155deg, #1a3434 0%, #0e1c20 100%);
+  box-shadow: 0 21px 55px rgba(0, 10, 10, .27), inset 0 1px 0 rgba(213, 255, 237, .09);
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch::before {
+  background: linear-gradient(90deg, transparent, #62ccb2 25%, #b2efde 50%, #62ccb2 75%, transparent);
+  box-shadow: 0 0 12px rgba(97, 205, 176, .15);
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__header,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__footer,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-benefits {
+  border-color: rgba(160, 226, 201, .17);
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__gift {
+  color: #c1f5e8;
+  background: rgba(62, 177, 146, .13);
+  border-color: rgba(143, 222, 197, .32);
+  box-shadow: none;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__list li {
+  background: rgba(221, 255, 242, .025);
+  border-color: rgba(172, 218, 203, .09);
+  color: #c0d4ce;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__list li:hover {
+  border-color: rgba(143, 222, 197, .26);
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__price {
+  color: #f7f8f5;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__price small,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__badge-tag,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__terms {
+  color: #b6cec4;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-launch__lead {
+  color: #d2e0da;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-benefits article {
+  border-color: rgba(160, 226, 201, .17);
+}
+
+/* Spacious because it has purpose, not because the screen is being held hostage. */
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-pathways {
+  background: #f7f8f5;
+  padding: clamp(60px, 6.4vw, 88px) 0 30px;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-benefits {
+  background: #f7f8f5;
+  padding: 24px 0 clamp(52px, 5.4vw, 76px);
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-pathways .qct-section-head h2 em,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-offers .qct-section-head h2 em,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-search-faq .qct-section-head h2 em {
+  color: #0b7568;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-section-label {
+  color: #0b7568;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-pathway-grid {
+  border-color: #d9e6df;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-pathway-grid article + article,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-benefit-grid article {
+  border-color: #d9e6df;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-pathway-label {
+  background: #e2f3ea;
+  color: #075f55;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-pathway-grid li::before {
+  background: #0b7568;
+}
+
+/* Work is the proof: replace generic representational images with the site's
+   existing, documented live project screenshots and localized case study links. */
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-image-story {
+  padding: clamp(64px, 6.5vw, 96px) 0 !important;
+  background:
+    radial-gradient(ellipse 75% 50% at 50% -10%, rgba(45, 137, 114, .16), transparent 74%),
+    #101b1f !important;
+  border-color: rgba(174, 232, 209, .11) !important;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-image-story .qct-section-label {
+  color: #9ae4cf !important;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-image-story .qct-section-head h2 {
+  color: #f7f8f5 !important;
+  max-width: 27ch !important;
+  white-space: normal !important;
+  text-wrap: balance;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-image-story .qct-section-head h2 em {
+  color: #8de0c5 !important;
+  -webkit-text-fill-color: #8de0c5 !important;
+  background: none !important;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-image-story .qct-section-head p:not(.qct-section-label) {
+  max-width: 69ch !important;
+  white-space: normal !important;
+  color: #bed0c8 !important;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-image-story .qct-case-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-rows: repeat(2, 248px);
+  grid-auto-rows: auto;
+  gap: 16px;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-link {
+  display: block;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border-radius: 17px;
+  overflow: clip;
+  text-decoration: none;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-link--feature {
+  grid-row: 1 / span 2;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link figure {
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+  margin: 0;
+  border: 1px solid rgba(204, 230, 218, .2) !important;
+  border-radius: 17px !important;
+  overflow: hidden;
+  background: #182426 !important;
+  transition: border-color .2s ease;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link:hover figure,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link:focus-visible figure {
+  border-color: #8de0c5 !important;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link figcaption {
+  display: grid;
+  justify-items: start;
+  align-items: end;
+  gap: 4px;
+  left: 24px;
+  right: 20px;
+  bottom: 22px;
+  text-align: left;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link figcaption b {
+  font-size: clamp(20px, 2.2vw, 30px);
+  letter-spacing: -.035em;
+  line-height: 1.06;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link:not(.qct-case-link--feature) figcaption b {
+  font-size: clamp(18px, 1.9vw, 23px);
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link figcaption span {
+  color: #dbe7e2 !important;
+  max-width: 34ch;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: left;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-more {
+  display: flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  gap: 18px;
+  margin: 28px auto 0;
+  padding: 10px 2px;
+  border-bottom: 1px solid #8de0c5;
+  color: #dbf5e9;
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-more:hover {
+  color: #8de0c5;
+}
+
+/* Remaining light sections use the same surface vocabulary. */
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-offers {
+  padding: clamp(64px, 6.5vw, 88px) 0;
+  background: #f7f8f5;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-offer-grid,
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-offer-grid a {
+  border-color: #d9e6df;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-search-faq {
+  background: #edf3ee;
+  padding: clamp(62px, 6vw, 82px) 0;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-search-faq .qct-faq-grid details {
+  background: #fff;
+  border-color: #dbe6df;
+  box-shadow: none;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-close {
+  padding: clamp(64px, 6vw, 90px) 0;
+  background:
+    radial-gradient(circle at 55% 0%, rgba(46, 144, 116, .11), transparent 53%),
+    #101b1f;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-close h2 em {
+  color: #8de0c5;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-close .qct-section-label {
+  color: #a8e5d4;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-close .qct-btn-light {
+  background: #72d6be;
+  color: #092d28;
+  border-radius: 10px;
+}
+.qct-v2:is([data-qct-v2],[data-qct-az]) .qct-close .qct-btn-light:hover {
+  background: #a0eddb;
+}
+
+/* The footer is shared. These selectors only affect the three preview homes. */
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon.site-footer--editorial {
+  background: #0b1519 !important;
+  color: #f7f8f5;
+  border-top: 1px solid rgba(145, 223, 199, .12);
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-logo img,
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #masthead .site-title--logo img {
+  filter: hue-rotate(-46deg) saturate(.86);
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-eyebrow,
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-desk__badge,
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-col__label,
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-contact__type,
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-bottom__legal a:hover {
+  color: #98e5cf !important;
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-status {
+  color: #9ed9c8;
+  border-color: rgba(143, 222, 197, .2);
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-status__dot {
+  background: #72d6be;
+  box-shadow: 0 0 10px rgba(114, 214, 190, .3);
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-desk {
+  border-color: rgba(151, 220, 199, .18);
+  background: linear-gradient(145deg, rgba(134, 216, 186, .075), rgba(255,255,255,.015));
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-desk::before,
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-rule {
+  background: linear-gradient(90deg, transparent, rgba(114, 214, 190, .56), transparent);
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-desk__button {
+  background: #0b7568 !important;
+  color: #fff !important;
+  box-shadow: none;
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-desk__button:hover {
+  background: #09685c !important;
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #colophon .qcte-contact__card:hover {
+  border-color: #72d6be;
+  background: rgba(114, 214, 190, .065);
+}
+body:has(.qct-v2:is([data-qct-v2],[data-qct-az])) #masthead .primary-menu > li > a[aria-current="page"] {
+  color: #0b7568 !important;
+}
+
+/* Responsive composition: the feature case stays prominent without consuming
+   the mobile page with oversized repetitive image tiles. */
+@media (max-width: 960px) {
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-image-story .qct-case-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 320px 210px;
+    gap: 12px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-link--feature {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+}
+@media (max-width: 640px) {
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge {
+    padding-block: 40px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-edge-benefits {
+    gap: 14px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-image-story .qct-case-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(220px, auto) repeat(2, minmax(190px, auto));
+    gap: 12px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-link--feature {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-link {
+    min-height: 210px;
+    aspect-ratio: 1.45/1;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-link--feature {
+    aspect-ratio: 1.17/1;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link figcaption {
+    left: 16px;
+    bottom: 15px;
+    right: 15px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link figcaption b,
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link:not(.qct-case-link--feature) figcaption b {
+    font-size: 20px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-grid .qct-case-link figcaption span {
+    display: block;
+    font-size: 11px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-pathways {
+    padding-top: 54px;
+  }
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-close h2 {
+    white-space: normal;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-link img,
+  .qct-v2:is([data-qct-v2],[data-qct-az]) .qct-case-more {
+    transition: none;
+  }
+}

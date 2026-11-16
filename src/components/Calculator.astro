@@ -1019,12 +1019,12 @@ const webOptions = [
 
   @media (max-width: 900px) {
     .calc__shell {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
   @media (max-width: 760px) {
     .calc__cards {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .calc__table-wrapper {
       display: none;
@@ -1037,6 +1037,45 @@ const webOptions = [
     }
     .calc__cta {
       width: 100%;
+    }
+  }
+
+  /* A long native select label must never set the intrinsic grid track width. */
+  .calc__shell,
+  .calc__shell > *,
+  .calc__form label {
+    min-width: 0;
+  }
+  .calc input[type="number"],
+  .calc select {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .calc select {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  @media (max-width: 900px) {
+    .calc__shell {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 760px) {
+    .calc__hero {
+      padding: 52px 16px 28px;
+    }
+    .calc__shell {
+      gap: 28px;
+      padding-block: 28px 44px;
+    }
+    .calc__form {
+      padding: 20px 16px;
+    }
+    .calc__hero-desc {
+      font-size: 1rem;
+      line-height: 1.5;
     }
   }
 </style>

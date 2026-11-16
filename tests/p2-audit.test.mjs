@@ -502,3 +502,145 @@ for (const path of ['/pazaryeri-kurulumu/', '/amazon-turkiye-magaza-kurulumu/', 
     assert.equal(await page.locator('.marketplace-channel-track').evaluate(el => getComputedStyle(el).animationName), 'none');
   });
 }
+
+
+test('preview cookie disclosure stays readable and compact without blocking its own actions', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    for (const width of [320, 390]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      const consent = page.locator('[data-cookie-consent]');
+      await consent.waitFor({ state: 'visible' });
+      const measure = await consent.evaluate(element => {
+        const rect = element.getBoundingClientRect();
+        const buttons = [...element.querySelectorAll('button')].map(el => el.getBoundingClientRect());
+        return {
+          height: rect.height, width: rect.width, left: rect.left, right: rect.right,
+          buttonHeights: buttons.map(el => el.height),
+          buttonBounds: buttons.map(el => [el.left, el.right]),
+          viewport: innerWidth,
+          text: element.querySelector('p')?.textContent || ''
+        };
+      });
+      assert.ok(measure.height <= 220, `${path} at ${width}px: banner too tall ${JSON.stringify(measure)}`);
+      assert.ok(measure.left >= -1 && measure.right <= width + 1, `${path} at ${width}px: banner exceeds viewport`);
+      assert.ok(measure.buttonHeights.every(height => height >= 44), `${path}: consent targets must be >=44px`);
+      assert.ok(measure.buttonBounds.every(([left, right]) => left >= 0 && right <= width), `${path}: consent actions must fit`);
+      assert.match(measure.text, /(?:çerezsiz|cookieless|kukisiz)/i, `${path}: disclosure must mention limited cookieless measurement`);
+      assert.equal(await consent.locator('a[href]').count(), 1, `${path}: cookie policy link required`);
+    }
+  }
+});
+
+test('standalone web price calculator fields fit narrow phone viewports', async t => {
+  const path = '/tr/araclar/web-sitesi-fiyat-hesaplama/';
+  for (const width of [320, 360, 390, 430]) {
+    const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+    await assertNoHorizontalOverflow(page, path + ' @' + width);
+    const bounds = await page.locator('.calc__form').evaluate(form => {
+      const formRect = form.getBoundingClientRect();
+      return {
+        formLeft: formRect.left, formRight: formRect.right,
+        fields: [...form.querySelectorAll('select, input[type="number"]')].map(element => {
+          const rect = element.getBoundingClientRect();
+          return { name: element.getAttribute('name'), left: rect.left, right: rect.right, width: rect.width };
+        })
+      };
+    });
+    assert.ok(bounds.formLeft >= -1 && bounds.formRight <= width + 1, `form overflows ${width}px: ${JSON.stringify(bounds)}`);
+    assert.ok(bounds.fields.length > 0);
+    assert.ok(bounds.fields.every(field => field.left >= bounds.formLeft - 1 && field.right <= bounds.formRight + 1),
+      `controls must fit the form at ${width}px: ${JSON.stringify(bounds)}`);
+  }
+});
+
+
+test('preview onyx-jade palette keeps shared home identity across three locales', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    const page = await pageFor(t, path, { viewport: { width: 1440, height: 900 } });
+    const expected = await page.locator('.qct-v2').evaluate(root => {
+      const hero = root.querySelector('.qct-hero');
+      const cta = hero?.querySelector('.qct-hero-copy .qct-btn-primary');
+      const result = root.querySelector('.qct-calculator .qct-price-result');
+      const accent = getComputedStyle(root).getPropertyValue('--qct-accent').trim();
+      return {
+        accent,
+        heroBackground: getComputedStyle(hero).backgroundImage,
+        buttonBg: getComputedStyle(cta).backgroundColor,
+        buttonColor: getComputedStyle(cta).color,
+        resultBg: getComputedStyle(result).backgroundColor
+      };
+    });
+    assert.equal(expected.accent, '#0b7568', path + ': onyx-jade brand token');
+    assert.match(expected.heroBackground, /rgb\(16, 23, 28\)/, path + ': graphite hero rather than old navy');
+    assert.equal(expected.buttonBg, 'rgb(114, 214, 190)', path + ': mint hero button');
+    assert.equal(expected.buttonColor, 'rgb(9, 45, 40)', path + ': dark button label');
+    assert.equal(expected.resultBg, 'rgb(21, 44, 45)', path + ': matching dark result surface');
+    await assertNoHorizontalOverflow(page, path);
+  }
+});
+
+
+test('preview homepage shows verified work in all locales and matches onyx-jade spotlight', async t => {
+  for (const [path, cases] of [
+    ['/', ['/calismalar/headwear/', '/calismalar/misima/', '/calismalar/artman/']],
+    ['/en/', ['/en/work/headwear/', '/en/work/misima/', '/en/work/artman/']],
+    ['/az/', ['/az/isler/headwear/', '/az/isler/misima/', '/az/isler/artman/']]
+  ]) {
+    const page = await pageFor(t, path, { viewport: { width: 1440, height: 900 } });
+    const links = page.locator('.qct-case-grid > .qct-case-link');
+    assert.equal(await links.count(), 3, path + ': three existing case studies');
+    for (const [idx, href] of cases.entries()) {
+      assert.equal(await links.nth(idx).getAttribute('href'), href);
+      assert.ok((await links.nth(idx).locator('img').getAttribute('alt')).length > 20);
+    }
+    assert.equal(await page.locator('.qct-case-more').count(), 1);
+    const palette = await page.evaluate(() => ({
+      edge: getComputedStyle(document.querySelector('.qct-edge')).backgroundColor,
+      footer: getComputedStyle(document.querySelector('#colophon')).backgroundColor,
+      work: getComputedStyle(document.querySelector('.qct-image-story')).backgroundColor,
+      cols: getComputedStyle(document.querySelector('.qct-case-grid')).gridTemplateColumns,
+      card: document.querySelector('.qct-case-link').getBoundingClientRect().height,
+    }));
+    assert.equal(palette.footer, 'rgb(11, 21, 25)', path + ': graphite footer');
+    assert.equal(palette.work, 'rgb(16, 27, 31)', path + ': graphite work section');
+    assert.ok(palette.card > 200, path + ': real work image is visible');
+    await assertNoHorizontalOverflow(page, path);
+  }
+});
+
+test('preview live work showcase fits mobile and keeps all links accessible', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    for (const width of [320, 390, 430]) {
+      const page = await pageFor(t, path, { viewport: { width, height: 844 } });
+      await assertNoHorizontalOverflow(page, path + ' @' + width);
+      const links = page.locator('.qct-case-grid > .qct-case-link');
+      assert.equal(await links.count(), 3);
+      const rects = await links.evaluateAll(elements => elements.map(el => {
+        const rect = el.getBoundingClientRect();
+        return { left: rect.left, right: rect.right, height: rect.height };
+      }));
+      assert.ok(rects.every(box => box.left >= -1 && box.right <= width + 1 && box.height >= 180),
+        path + ': visible and fitting work cards @' + width + ': ' + JSON.stringify(rects));
+    }
+  }
+});
+
+
+test('preview selected work images decode on scroll in all locales', async t => {
+  for (const path of ['/', '/en/', '/az/']) {
+    const page = await pageFor(t, path, { viewport: { width: 1280, height: 820 } });
+    assert.equal(await page.locator('#selected-work').count(), 1, path + ': direct section anchor');
+    assert.equal(await page.locator('#qct-edge-showcase').count(), 1, path + ': QCT EDGE section anchor');
+    for (const image of await page.locator('#selected-work .qct-case-link img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await image.evaluate(async el => {
+        if (!el.complete) await new Promise((resolve, reject) => {
+          el.addEventListener('load', resolve, { once: true });
+          el.addEventListener('error', reject, { once: true });
+        });
+      });
+      const state = await image.evaluate(el => ({ src: el.currentSrc, naturalWidth: el.naturalWidth, naturalHeight: el.naturalHeight }));
+      assert.ok(state.naturalWidth > 200 && state.naturalHeight > 100, path + ': broken case image ' + JSON.stringify(state));
+    }
+  }
+});
