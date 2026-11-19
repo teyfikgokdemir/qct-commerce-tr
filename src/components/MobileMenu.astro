@@ -33,7 +33,7 @@ const isCurrent = (path: string) => currentPath === path;
           <span class="qctm-link-inner">
             <span>{label}</span>
             {(href.includes('yeni-nesil') || href.includes('next-generation') || href.includes('infrastruktur')) && (
-              <span class="qctm-edge-badge">2026 ALTYAPI</span>
+              <span class="qctm-edge-badge">{isAzerbaijani ? '2027 İNFRASTRUKTUR' : isEnglish ? '2027 INFRASTRUCTURE' : '2027 ALTYAPISI'}</span>
             )}
           </span>
           <i aria-hidden="true">↗</i>
