@@ -1,0 +1,6 @@
+---
+import BlogArticle from '../../../components/BlogArticle.astro';
+import { getArticle } from '../../../data/blog';
+const article = getArticle('b2b-toptan-satis-e-ticaret-sitesi-nasil-kurulur');
+---
+<BlogArticle article={article} />

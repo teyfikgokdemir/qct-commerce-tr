@@ -51,6 +51,9 @@ The blog covers platform conditions, setup, search visibility and operational mi
 - [SEO, GEO, AEO and AIO definitions](https://qctcommerce.com/rehberler/ai-seo-geo-aeo-aio-nedir/): terms and practical responsibilities; no visibility guarantee.
 - [Website offer comparison](https://qctcommerce.com/rehberler/2026-web-sitesi-fiyatlari/): scope checklist; current QCT service prices remain on /fiyatlar/.
 - [Multilingual URL checks](https://qctcommerce.com/rehberler/cok-dilli-web-sitesi-seo/): real equivalents, canonical and hreflang; connects B2C e-export preparation with B2B export catalog needs.
+- [Shopify Türkiye virtual POS & commissions 2026](https://qctcommerce.com/blog/shopify-turkiye-sanal-pos-komisyonlari-2026/): iyzico, PayTR, Stripe and third-party transaction fee modeling (EN: /en/blog/shopify-turkey-payment-gateways-commissions-2026/ · AZ: /az/bloq/shopify-turkiye-virtual-pos-komissiyalari-2026/).
+- [Micro-export (ETGB) e-commerce guide 2026](https://qctcommerce.com/blog/mikro-ihracat-etgb-e-ihracat-rehberi-2026/): 300 kg / €15,000 ETGB limits, 0% VAT invoicing, express couriers and cross-border storefront structure (EN: /en/blog/micro-export-etgb-ecommerce-turkey-guide-2026/ · AZ: /az/bloq/mikro-ixrac-etgb-e-ticaret-rehberi-2026/).
+- [B2B wholesale & dealer portal guide 2026](https://qctcommerce.com/blog/b2b-toptan-satis-e-ticaret-sitesi-nasil-kurulur/): dealer-only pricing, MOQ rules, quick SKU ordering and ERP synchronization (EN: /en/blog/b2b-wholesale-ecommerce-portal-setup-2026/ · AZ: /az/bloq/b2b-topdansatis-e-ticaret-portali-qurulmasi-2026/).
 
 ## Programmatic SEO
 Turkish market/location hubs: [Location hub](https://qctcommerce.com/lokasyon/)

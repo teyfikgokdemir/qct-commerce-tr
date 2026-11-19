@@ -16,6 +16,9 @@ export const blogLocaleClusters = [
   { tr:'/blog/chatgpt-ads-2026-reklam-verme/', en:'/en/blog/chatgpt-ads-2026-advertising-guide/', az:'/az/bloq/chatgpt-ads-2026-reklam/' },
   { tr:'/blog/oai-searchbot-chatgpt-search-gorunurlugu-2026/', en:'/en/blog/oai-searchbot-chatgpt-search-visibility-2026/', az:'/az/bloq/oai-searchbot-chatgpt-search-2026/' },
   { tr:'/blog/multimodal-arama-seo-2026-gorsel-ai/', en:'/en/blog/multimodal-search-seo-2026-visual-ai/', az:'/az/bloq/multimodal-axtaris-seo-2026/' },
+  { tr:'/blog/shopify-turkiye-sanal-pos-komisyonlari-2026/', en:'/en/blog/shopify-turkey-payment-gateways-commissions-2026/', az:'/az/bloq/shopify-turkiye-virtual-pos-komissiyalari-2026/' },
+  { tr:'/blog/mikro-ihracat-etgb-e-ihracat-rehberi-2026/', en:'/en/blog/micro-export-etgb-ecommerce-turkey-guide-2026/', az:'/az/bloq/mikro-ixrac-etgb-e-ticaret-rehberi-2026/' },
+  { tr:'/blog/b2b-toptan-satis-e-ticaret-sitesi-nasil-kurulur/', en:'/en/blog/b2b-wholesale-ecommerce-portal-setup-2026/', az:'/az/bloq/b2b-topdansatis-e-ticaret-portali-qurulmasi-2026/' },
 ];
 export const localeParityClusters = [
   {tr:'/',en:'/en/',az:'/az/'},{tr:'/hakkimizda/',en:'/en/about/',az:'/az/haqqimizda/'},{tr:'/hizmetler/',en:'/en/services/',az:'/az/xidmetler/'},

@@ -1,5 +1,5 @@
 # QCT Commerce — Detailed public site reference
-Updated: 2026-10-30
+Updated: 2026-11-19
 Canonical site: https://qctcommerce.com/
 Shorter reference: https://qctcommerce.com/llms.txt
 
@@ -67,6 +67,9 @@ Shorter reference: https://qctcommerce.com/llms.txt
 - SEO / GEO / AEO / AIO explanation (TR): https://qctcommerce.com/rehberler/ai-seo-geo-aeo-aio-nedir/
 - Multilingual website SEO checks (TR): https://qctcommerce.com/rehberler/cok-dilli-web-sitesi-seo/
 - Website offer/pricing guide (TR): https://qctcommerce.com/rehberler/2026-web-sitesi-fiyatlari/
+- Shopify Türkiye payment gateways & commissions 2026: https://qctcommerce.com/blog/shopify-turkiye-sanal-pos-komisyonlari-2026/ | https://qctcommerce.com/en/blog/shopify-turkey-payment-gateways-commissions-2026/ | https://qctcommerce.com/az/bloq/shopify-turkiye-virtual-pos-komissiyalari-2026/
+- Micro-export (ETGB) e-commerce guide 2026: https://qctcommerce.com/blog/mikro-ihracat-etgb-e-ihracat-rehberi-2026/ | https://qctcommerce.com/en/blog/micro-export-etgb-ecommerce-turkey-guide-2026/ | https://qctcommerce.com/az/bloq/mikro-ixrac-etgb-e-ticaret-rehberi-2026/
+- B2B wholesale & dealer portal guide 2026: https://qctcommerce.com/blog/b2b-toptan-satis-e-ticaret-sitesi-nasil-kurulur/ | https://qctcommerce.com/en/blog/b2b-wholesale-ecommerce-portal-setup-2026/ | https://qctcommerce.com/az/bloq/b2b-topdansatis-e-ticaret-portali-qurulmasi-2026/
 
 ## Target-market and location content
 - Turkish market hub: https://qctcommerce.com/lokasyon/

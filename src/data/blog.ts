@@ -7,6 +7,121 @@ export interface BlogArticle {
 }
 
 export const articles: BlogArticle[] = [
+  {
+    slug: 'shopify-turkiye-sanal-pos-komisyonlari-2026', seoKey: 'blog-shopify-pos-tr-2026',
+    title: 'Shopify Türkiye Sanal POS ve Komisyonlar 2026: iyzico, PayTR, Stripe Karşılaştırması',
+    excerpt: 'Türkiye’de Shopify mağazası açarken sanal POS seçimi, üçüncü taraf işlem ücretleri, taksit entegrasyonu ve döviz tahsilatı için net maliyet tablosu.',
+    published: '2026-11-15', modified: '2026-11-15',
+    intro: 'Türkiye’de Shopify kurmak isteyen markaların en sık takıldığı nokta aylık paket ücreti değil, sanal POS ve üçüncü taraf ödeme komisyonlarının toplam birim kâra etkisidir. Çünkü Shopify Payments henüz Türkiye’de yerel olarak aktif olmadığı için hem ödeme sağlayıcı komisyonu hem de Shopify’ın harici geçit (third-party transaction fee) kesintisi birlikte hesaplanmalıdır.',
+    summary: [
+      'Shopify Payments Türkiye’de yerel olarak desteklenmediğinden üçüncü taraf ödeme geçidi (iyzico, PayTR, GarantiPay vb.) kullanılır.',
+      'Plana göre değişen %0,6 ile %2 arası Shopify harici işlem komisyonu, sanal POS oranının üzerine eklenir.',
+      'Yurt içi TL satışlarda vade ve taksit seçenekleri iyzico veya PayTR ile çözülebilir; yurt dışı şirket üzerinden Stripe açıldığında çoklu para birimi akışı sadeleşir.',
+      'Ortalama sepet tutarı ve aylık ciro yükseldikçe Basic yerine Grow/Advanced planına geçmek toplam komisyon maliyetini düşürebilir.',
+    ],
+    sections: [
+      {
+        heading: 'Shopify Türkiye ödeme mimarisi nasıl çalışır?',
+        paragraphs: [
+          'Türkiye vergi levhasıyla açılan bir Shopify mağazasında kart tahsilatı için BDDK lisanslı bir ödeme kuruluşu (iyzico veya PayTR) entegre edilir. Müşteri ödeme adımında harici güvenli ödeme ekranına veya desteklenen gömülü akışa yönlendirilir.',
+          'Toplam kesinti iki kalemden oluşur: ödeme kuruluşunun tek çekim/taksit komisyonu ve Shopify’ın seçilen abonelik paketine göre uyguladığı harici geçit işlem ücreti.',
+        ],
+      },
+      {
+        heading: 'iyzico, PayTR ve Stripe ne zaman tercih edilmeli?',
+        paragraphs: ['Hedef pazar ve şirket yapısına göre doğru kombinasyon değişir:'],
+        items: [
+          'iyzico: Hızlı kurulum, geniş taksit ve alternatif ödeme ağı, güçlü Shopify Türkiye uyumluluğu.',
+          'PayTR: Yüksek hacimli TL satışlarda rekabetçi komisyon oranları ve ertesi gün/haftalık valör seçenekleri.',
+          'Stripe (yurt dışı şirket ile): ABD veya İngiltere/AB şirketi üzerinden Shopify Payments veya Stripe kullanıldığında harici işlem ücreti baskısı azalır, Apple Pay ve yerel Avrupa yöntemleri açılır.',
+        ],
+      },
+      {
+        heading: 'Ciroya göre paket seçimi: Basic mi Grow mu?',
+        paragraphs: [
+          'Aylık ciro belirli bir eşiği geçtiğinde bir üst Shopify paketine geçmek, yalnızca harici işlem komisyonundaki %1’lik düşüş sayesinde paket farkını kendi kendine amorti edebilir. Kurulum öncesinde ortalama sepet tutarı, taksit oranı ve iade yüzdesi birlikte modellenmelidir.',
+        ],
+      },
+    ],
+    relatedService: { label: 'Shopify mağaza kurulumu ve ödeme mimarisini inceleyin', href: '/shopify-magaza-kurulumu/' },
+  },
+  {
+    slug: 'mikro-ihracat-etgb-e-ihracat-rehberi-2026', seoKey: 'blog-micro-export-etgb-2026',
+    title: 'Mikro İhracat (ETGB) E-İhracat Rehberi 2026: KDV İadesi, Kargo ve Tahsilat',
+    excerpt: 'Türkiye’den yurt dışına ETGB kapsamında e-ihracat yaparken gümrük sınırları, KDV’siz fatura, entegre kargo ve çok dilli mağaza kurulum adımları.',
+    published: '2026-11-15', modified: '2026-11-15',
+    intro: 'Üretici ve marka sahipleri için yurt dışına dövizle satış yapmanın en hızlı yolu Elektronik Ticaret Gümrük Beyannamesi (ETGB) yani mikro ihracattır. Gümrük müşaviri masrafı olmadan, yetkili hızlı kargo operatörleri üzerinden çıkış yapılarak KDV iadesi ve kurumlar vergisi istisnasından yararlanılabilir.',
+    summary: [
+      'ETGB ile 300 kg ağırlık ve 15.000 Euro fatura tutarı sınırına kadar olan gönderiler hızlı kargo operatörü beyanıyla ihraç edilebilir.',
+      'E-ihracat faturası KDV’siz (%0) kesilir; ürünün üretim/alışında ödenen KDV için iade süreci işletilebilir.',
+      'Çok dilli ürün sayfaları, yerel para birimi gösterimi ve gümrük vergisi (DDP/DAP) şeffaflığı sepette terk oranını ciddi biçimde düşürür.',
+      'Mikro ihracatta kargo ve iade lojistiği baştan fiyatlanmadığında döviz geliri brüt görünse de net kâr eriyebilir.',
+    ],
+    sections: [
+      {
+        heading: 'ETGB mikro ihracat sınırları ve fatura süreci',
+        paragraphs: [
+          'Mikro ihracat kapsamında gönderilen ürünlerin 300 kg ve 15.000 Euro üst sınırlarını aşmaması, ayrıca kat’i satış niteliğinde olması gerekir. E-fatura mükellefleri mikro ihracat çıkışlarında e-arşiv/ihracat faturası düzenleyerek DHL, FedEx, UPS veya PTS gibi yetkili operatörlere iletir.',
+        ],
+      },
+      {
+        heading: 'E-ihracat sitesinde dönüşümü belirleyen 4 teknik detay',
+        paragraphs: ['Sadece siteyi İngilizceye çevirmek yurt dışı satışı getirmez; alıcı güveni şu detaylarda kurulur:'],
+        items: [
+          'Hedef ülke para birimi ve yerel kargo teslim süresi bilgisi (ör. Almanya 3-5 iş günü).',
+          'Gümrük vergisinin (Duty/Tax) kapıda sürpriz çıkmaması için DDP veya net bilgilendirme.',
+          'Uluslararası kart, Apple Pay, PayPal/alternatif yöntemlere uyumlu ödeme altyapısı.',
+          'Hedef dilde doğru hreflang, yerel anahtar kelime ve yapılandırılmış ürün verisi (Schema).',
+        ],
+      },
+      {
+        heading: 'Pazaryeri mi kendi e-ihracat mağazanız mı?',
+        paragraphs: [
+          'Amazon veya Etsy üzerinden başlangıç talebi doğrulansa bile uzun vadede müşteri verisine sahip olmak, tekrar satış yapmak ve komisyon bağımlılığını azaltmak için kendi çok dilli e-ticaret altyapınızı paralel kurmanız gerekir.',
+        ],
+      },
+    ],
+    relatedService: { label: 'İhracatçılar için çok dilli e-ticaret çözümlerini inceleyin', href: '/ihracatcilar/' },
+  },
+  {
+    slug: 'b2b-toptan-satis-e-ticaret-sitesi-nasil-kurulur', seoKey: 'blog-b2b-wholesale-portal-2026',
+    title: 'B2B Bayilik ve Toptan Satış E-Ticaret Sitesi Nasıl Kurulur? (2026 Rehberi)',
+    excerpt: 'WhatsApp ve Excel üzerinden toptan sipariş alan üretici ve distribütörler için bayi özel fiyat listesi, MOQ, cari hesap ve ERP entegrasyon mimarisi.',
+    published: '2026-11-15', modified: '2026-11-15',
+    intro: 'Birçok üretici ve toptancı hâlâ siparişleri WhatsApp mesajları, PDF kataloglar ve Excel tabloları üzerinden topluyor. Bu model ölçek büyüdükçe fiyat hatasına, stok uyumsuzluğuna ve satış ekibinin tekrarlayan operasyonlara gömülmesine yol açar. Doğru kurgulanmış bir B2B bayi portalı satış ekibini sipariş memuru olmaktan çıkarır.',
+    summary: [
+      'B2B e-ticaret sitesi herkese açık fiyat göstermek zorunda değildir; onaylı bayi girişi ile özel fiyat listeleri tanımlanabilir.',
+      'Minimum sipariş adedi (MOQ), koli içi adet ve kademeli iskonto kuralları sistem tarafından otomatik uygulanmalıdır.',
+      'Cari hesap limiti, açık hesap/vadeli ödeme ve teklif (RFQ) akışı perakende e-ticaretten farklıdır.',
+      'ERP/muhasebe stok ve fiyat senkronizasyonu sağlıklı kurulmadığında bayiler portala güvenmez ve tekrar telefona döner.',
+    ],
+    sections: [
+      {
+        heading: 'Perakende (B2C) ile Toptan (B2B) altyapı farkları',
+        paragraphs: [
+          'B2C mağazada amaç tekil kullanıcıya hızlı sepet tamamlattırmaktır. B2B tarafta ise aynı alıcı her hafta 20–50 kalem ürünü SKU koduyla veya hızlı sipariş tablosuyla sepete ekler; bu yüzden arama, toplu adet girişi ve geçmiş siparişi tek tıkla tekrarlama özellikleri kritik önem taşır.',
+        ],
+      },
+      {
+        heading: 'Kurumsal B2B bayi portalında bulunması gereken temel modüller',
+        paragraphs: ['Sahada gerçekten kullanılan bir B2B portalı şu 5 katmanı içermelidir:'],
+        items: [
+          'Bayi başvurusu ve yönetici onayı sonrası aktifleşen kapalı fiyat görünürlüğü.',
+          'Müşteri grubuna özel iskonto matrisi ve koli/palet bazlı minimum sipariş (MOQ) kuralları.',
+          'Hızlı sipariş formu (SKU + adet tablosu) ve geçmiş siparişten tek tıkla yeniden sipariş.',
+          'Kredi kartı, havale/EFT bildirimi, cari limit ve proforma/teklif isteme (RFQ) seçeneği.',
+          'Logo, Mikro, Netsis veya mevcut ERP ile stok ve cari mutabakat entegrasyonu.',
+        ],
+      },
+      {
+        heading: 'Hem Google’dan yeni bayi bulma hem mevcut bayilere hizmet verme',
+        paragraphs: [
+          'Fiyatlar giriş arkasına gizlense bile kategori, teknik şartname, ürün spesifikasyonları ve bayilik şartları sayfaları Google’da indekslenebilir olmalıdır. Böylece portal yalnızca mevcut bayilerin sipariş ekranı değil, aynı zamanda yeni distribütör ve toptan alıcı kazandıran bir B2B kanalı olur.',
+        ],
+      },
+    ],
+    relatedService: { label: 'Distribütör ve B2B web çözümlerimizi inceleyin', href: '/distributor-b2b/' },
+  },
 
   {
     slug: 'dinamik-seo-2026-seo-geo-aeo-aio', seoKey: 'blog-dynamic-seo-2026',

@@ -705,6 +705,126 @@ export const articlesEn:BlogArticleEn[]=[
     "relatedHref": "/en/whatsapp-sales/",
     "published": "2026-09-21",
     "modified": "2026-09-21"
+  },
+  {
+    "slug": "shopify-turkey-payment-gateways-commissions-2026",
+    "trSlug": "shopify-turkiye-sanal-pos-komisyonlari-2026",
+    "title": "Shopify Türkiye Payment Gateways & Commissions 2026: iyzico, PayTR, Stripe",
+    "description": "Compare Shopify transaction fees, iyzico and PayTR installment commissions, and international Stripe structures for selling from Türkiye in 2026.",
+    "intro": "For brands launching a Shopify store in Türkiye, the real cost driver is rarely the monthly subscription—it is the combined impact of local virtual POS rates and Shopify’s third-party transaction fee on unit economics. Because Shopify Payments is not natively supported in Türkiye, every domestic card transaction must be modeled with both the local gateway commission and Shopify’s plan-based external gateway fee.",
+    "summary": [
+      "Because Shopify Payments is not locally active in Türkiye, domestic stores connect a BDDK-licensed third-party gateway such as iyzico, PayTR, or GarantiPay.",
+      "Shopify’s plan-based third-party transaction fee (0.6% to 2% depending on plan tier) stacks on top of the payment provider’s processing and installment rate.",
+      "Domestic TRY sales with local installments are typically handled via iyzico or PayTR, while cross-border brands operating through a US, UK, or EU entity can simplify multi-currency checkout with Stripe or Shopify Payments.",
+      "Once monthly GMV crosses a predictable threshold, upgrading from Basic to Grow or Advanced can pay for itself purely through the reduction in external transaction fees."
+    ],
+    "sections": [
+      {
+        "heading": "How the Shopify Türkiye payment architecture works",
+        "paragraphs": [
+          "A Shopify store registered under a Turkish tax entity processes domestic cards through a BDDK-licensed payment institution such as iyzico or PayTR. At checkout, the buyer completes payment either via a hosted secure payment screen or a supported embedded flow configured for 3D Secure compliance.",
+          "Total payment cost per order consists of two separate layers: the payment provider’s single-payment or installment commission and Shopify’s third-party transaction fee tied to your subscription tier. Modeling both layers alongside refund rates and settlement timing (valor) before launch prevents hidden margin erosion."
+        ]
+      },
+      {
+        "heading": "When to choose iyzico, PayTR, or Stripe",
+        "paragraphs": [
+          "The right payment stack depends on whether your primary revenue comes from domestic Turkish buyers, international customers, or a hybrid model. iyzico is widely chosen for fast onboarding, broad Turkish installment coverage, and mature Shopify compatibility when launching quickly.",
+          "PayTR is often preferred by higher-volume TRY stores looking for competitive negotiated commission rates and next-day or weekly settlement options. Stripe—available when operating through a foreign legal entity in the US, UK, or EU—unlocks Apple Pay, local European payment methods, and cleaner USD/EUR/GBP settlement while reducing cross-border checkout friction."
+        ]
+      },
+      {
+        "heading": "Choosing the right Shopify plan by monthly GMV",
+        "paragraphs": [
+          "Many merchants stay on Shopify Basic too long without calculating the break-even point of external transaction fees. When monthly turnover passes the threshold where a 1% fee reduction exceeds the monthly subscription gap, moving to Grow or Advanced lowers net payment cost automatically.",
+          "Before finalizing store architecture, map your average order value, share of installment orders, return percentage, and domestic versus export revenue split. Aligning the Shopify plan, gateway contract, and currency setup at launch avoids costly mid-scale replatforming."
+        ]
+      }
+    ],
+    "relatedLabel": "Explore Shopify store architecture",
+    "relatedHref": "/en/shopify-store-setup/",
+    "published": "2026-11-15",
+    "modified": "2026-11-19"
+  },
+  {
+    "slug": "micro-export-etgb-ecommerce-turkey-guide-2026",
+    "trSlug": "mikro-ihracat-etgb-e-ihracat-rehberi-2026",
+    "title": "Micro-Export (ETGB) E-Commerce Guide from Türkiye 2026: VAT Refund & Shipping",
+    "description": "How Turkish manufacturers and brands export online via ETGB up to 300 kg and €15,000 with 0% VAT invoicing, express couriers, and localized storefronts.",
+    "intro": "For Turkish manufacturers and D2C brands, the fastest path to earning foreign currency online is micro-export under the Electronic Commerce Customs Declaration (ETGB). By dispatching eligible orders through authorized express couriers without traditional customs broker overhead, companies can issue zero-rated export invoices and benefit from VAT refund and export tax incentives.",
+    "summary": [
+      "Shipments up to 300 kg in gross weight and €15,000 in invoice value can be exported under ETGB via authorized express carriers.",
+      "Micro-export invoices are issued at 0% VAT, allowing eligible producers and merchants to pursue input VAT recovery on production and procurement costs.",
+      "Localized product pages, native currency display, and upfront customs duty clarity (DDP or transparent DAP) significantly reduce international checkout abandonment.",
+      "Cross-border shipping rates and return logistics must be priced into unit margins from day one so gross foreign-currency revenue translates into real net profit."
+    ],
+    "sections": [
+      {
+        "heading": "ETGB micro-export limits and invoicing workflow",
+        "paragraphs": [
+          "To qualify for micro-export under ETGB, each shipment must remain within the 300 kg weight cap and €15,000 invoice ceiling and represent a final commercial sale. E-invoice taxpayers issue an e-archive or e-export invoice at 0% VAT with accurate HS (GTIP) codes and transmit it to authorized express operators such as DHL, FedEx, UPS, or PTS.",
+          "The authorized carrier files the electronic customs declaration on behalf of the exporter and delivers the confirmed ETGB record needed by your accountant for VAT refund reconciliation and export incentive reporting. Clean SKU-to-HS code mapping in your store backend keeps fulfillment fast and audit-ready."
+        ]
+      },
+      {
+        "heading": "Four technical details that drive cross-border conversion",
+        "paragraphs": [
+          "Simply translating a Turkish storefront into English rarely produces consistent international sales. Cross-border buyers evaluate trust through four operational signals: local currency pricing paired with realistic country-specific delivery windows (for example, 3–5 business days to Germany), transparent customs duty handling (DDP or clear pre-checkout tax disclosure), and familiar international payment methods such as global cards, Apple Pay, or local wallets.",
+          "On the organic discovery side, each target market needs clean URL separation, reciprocal hreflang tags, localized search terminology, and structured product schema (price, availability, shipping details). Without this technical foundation, search engines struggle to serve the right currency and language version to international buyers."
+        ]
+      },
+      {
+        "heading": "Marketplaces versus your own e-export storefront",
+        "paragraphs": [
+          "International marketplaces such as Amazon or Etsy can help validate early demand in new geographies, yet relying solely on marketplace traffic limits brand equity, customer data ownership, and repeat-purchase margins due to recurring referral and fulfillment fees.",
+          "The most resilient export strategy builds a dedicated multilingual e-commerce storefront alongside marketplace channels. Owning your direct channel lets you capture B2C and wholesale inquiries, build retention flows, and protect unit economics as international volume scales."
+        ]
+      }
+    ],
+    "relatedLabel": "Explore multilingual e-commerce for exporters",
+    "relatedHref": "/en/exporters/",
+    "published": "2026-11-15",
+    "modified": "2026-11-19"
+  },
+  {
+    "slug": "b2b-wholesale-ecommerce-portal-setup-2026",
+    "trSlug": "b2b-toptan-satis-e-ticaret-sitesi-nasil-kurulur",
+    "title": "How to Build a B2B Wholesale & Dealer E-Commerce Portal (2026 Guide)",
+    "description": "B2B portal architecture for manufacturers and distributors: dealer-only pricing, MOQ rules, quick SKU order tables, credit limits, and ERP sync.",
+    "intro": "Many manufacturers and wholesale distributors still collect dealer orders through WhatsApp threads, static PDF catalogs, and manual Excel sheets. As SKU count and dealer volume grow, that workflow creates pricing discrepancies, stock conflicts, and repetitive order entry that traps sales teams in clerical work instead of account growth. A purpose-built B2B dealer portal eliminates manual bottlenecks.",
+    "summary": [
+      "A B2B portal does not have to expose wholesale prices publicly; approved dealers log in to view contract-specific price lists.",
+      "Minimum order quantities (MOQ), case-pack multiples, and tiered volume discounts should be enforced automatically at cart level.",
+      "Open-account credit limits, deferred payment terms, bank transfer notifications, and proforma RFQ workflows differ fundamentally from retail checkout.",
+      "Without reliable ERP or accounting synchronization for live stock and balances, dealers lose trust in the portal and revert to phone and WhatsApp ordering."
+    ],
+    "sections": [
+      {
+        "heading": "How B2B wholesale architecture differs from retail B2C",
+        "paragraphs": [
+          "A retail B2C storefront is optimized to guide an individual shopper toward a fast one- or two-item checkout. In B2B wholesale, the same repeat buyer orders 20 to 50 SKUs every week using product codes, case quantities, and contracted discount tiers.",
+          "Because repeat ordering speed determines adoption, a B2B portal prioritizes SKU search, bulk quantity entry tables, and one-click reordering from past invoices over decorative retail merchandising. Reducing order placement from 30 minutes of phone calls to 3 minutes self-service directly increases order frequency."
+        ]
+      },
+      {
+        "heading": "Five core modules every operational B2B portal needs",
+        "paragraphs": [
+          "A dealer portal that teams actually adopt in daily operations combines five connected layers: gated dealer registration with admin approval so wholesale pricing stays private; customer-group discount matrices with automatic carton or pallet MOQ rules; and a quick-order SKU grid paired with one-click reorder from order history.",
+          "On the financial and operational side, the checkout must support corporate cards, wire/EFT confirmation, open-account credit limits, and proforma or RFQ quote requests—backed by real-time inventory and current-account synchronization with ERP systems such as Logo, Mikro, Netsis, or your existing accounting stack."
+        ]
+      },
+      {
+        "heading": "Winning new distributors on Google while serving existing dealers",
+        "paragraphs": [
+          "Keeping wholesale prices behind a dealer login does not mean hiding your entire catalog from search engines. Category hubs, technical specifications, product data sheets, and dealership application pages should remain cleanly crawlable and indexable on Google.",
+          "When structured with clear technical intent and internal links, your B2B portal operates simultaneously as a self-service ordering engine for current dealers and a continuous organic acquisition channel that attracts new domestic and international distributors."
+        ]
+      }
+    ],
+    "relatedLabel": "Explore B2B distributor web systems",
+    "relatedHref": "/en/distributors-b2b/",
+    "published": "2026-11-15",
+    "modified": "2026-11-19"
   }
 ];
 export function getArticleEn(slug:string){const a=articlesEn.find(x=>x.slug===slug);if(!a)throw new Error('English article not found: '+slug);return a}
