@@ -964,6 +964,31 @@ const whatsapp = `https://wa.me/905456782655?text=${encodeURIComponent(`${copy.n
   .premium-hero__panel-header small{font-size:8.5px}
   .premium-hero__panel-title{font-size:20px}
 }
+@media(max-width:760px) and (prefers-reduced-motion:no-preference){
+  .premium-hero .eyebrow,
+  .premium-hero h1,
+  .premium-hero .page-hero__lead,
+  .premium-hero .hero__actions,
+  .premium-hero__panel{
+    animation:qctEdgeMobileEnter .52s cubic-bezier(.22,1,.36,1) both;
+  }
+  .premium-hero h1{animation-delay:.05s}
+  .premium-hero .page-hero__lead{animation-delay:.1s}
+  .premium-hero .hero__actions{animation-delay:.15s}
+  .premium-hero__panel{animation-delay:.2s}
+  .premium-hero__steps li > span:first-child{
+    animation:qctEdgeDotPulse 2.4s cubic-bezier(0,0,.2,1) infinite;
+  }
+}
+@keyframes qctEdgeMobileEnter{
+  0%{opacity:.01;transform:translate3d(0,16px,0) scale(.985)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@keyframes qctEdgeDotPulse{
+  0%{box-shadow:0 0 0 0 rgba(56,189,248,.55)}
+  70%{box-shadow:0 0 0 8px rgba(56,189,248,0)}
+  100%{box-shadow:0 0 0 0 rgba(56,189,248,0)}
+}
 @media(prefers-reduced-motion:reduce){
   .premium-hero .button,.premium-launch__plan .button,.premium-final .button{transition:none}
 }

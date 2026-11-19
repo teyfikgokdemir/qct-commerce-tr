@@ -556,4 +556,30 @@
       if(!userPaused&&!motion.matches)play();
     }
   });
+
+  /* Mobile-only scroll-triggered spring reveal for cards and sections (<= 760px) */
+  if (!motion.matches && 'IntersectionObserver' in window && window.matchMedia('(max-width: 760px)').matches) {
+    var mobileTargets = document.querySelectorAll(
+      '.qct-edge-story, .qct-edge-launch, .qct-edge-benefits article, .qct-pathway-grid article, .qct-benefit-grid article, .qct-offer-grid a, .qct-image-story figure, .qct-pricing-edge-card, .qct-price-rows article, .premium-grid article, .premium-launch__plan, .premium-process__grid article'
+    );
+    if (mobileTargets.length) {
+      var mObserver = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-m-inview');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -20px 0px', threshold: 0.06 });
+
+      mobileTargets.forEach(function (el, idx) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top > window.innerHeight * 0.92) {
+          el.classList.add('qct-m-reveal');
+          el.style.setProperty('--qct-m-delay', ((idx % 3) * 55) + 'ms');
+          mObserver.observe(el);
+        }
+      });
+    }
+  }
 })();

@@ -1610,3 +1610,375 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ==========================================================================
+   MOBILE-ONLY KINETIC & MODERN 2027 ANIMATION LAYER
+   Strictly scoped to mobile viewports (<= 760px) and respects reduced-motion.
+   ========================================================================== */
+@keyframes qct-mobile-gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes qct-mobile-bar-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes qct-mobile-pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(0, 47, 167, 0.45); }
+  70% { box-shadow: 0 0 0 7px rgba(0, 47, 167, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 47, 167, 0); }
+}
+
+@keyframes qct-mobile-cyan-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+@keyframes qct-mobile-btn-shimmer {
+  0%, 20% { transform: translateX(-130%) skewX(-18deg); }
+  48%, 100% { transform: translateX(220%) skewX(-18deg); }
+}
+
+@keyframes qct-mobile-ambient-glow {
+  0% { transform: translate3d(-6%, -4%, 0) scale(0.96); opacity: 0.75; }
+  100% { transform: translate3d(6%, 5%, 0) scale(1.06); opacity: 1; }
+}
+
+@keyframes qct-mobile-gift-glow {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.22), inset 0 0 8px rgba(56, 189, 248, 0.12);
+    border-color: rgba(56, 189, 248, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.48), inset 0 0 12px rgba(99, 102, 241, 0.25);
+    border-color: rgba(125, 211, 252, 0.85);
+  }
+}
+
+@keyframes qct-mobile-spring-up {
+  0% {
+    opacity: 0.01;
+    transform: translate3d(0, 16px, 0) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (max-width: 760px) {
+  /* Modern Architectural Mesh Backdrop in Mobile Hero */
+  .qct-v2 > .qct-hero {
+    position: relative;
+    isolation: isolate;
+    background:
+      radial-gradient(120% 60% at 85% 0%, rgba(37, 99, 235, 0.09) 0%, rgba(56, 189, 248, 0.04) 42%, transparent 72%),
+      radial-gradient(90% 50% at 10% 25%, rgba(0, 47, 167, 0.06) 0%, transparent 68%),
+      linear-gradient(180deg, #f8faff 0%, #fafafc 100%) !important;
+  }
+
+  .qct-v2 > .qct-hero::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -30px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.14) 0%, rgba(56, 189, 248, 0.06) 45%, transparent 72%);
+    filter: blur(18px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Live Pulsing Indicator Dot inside Mobile Hero Eyebrow Pill */
+  .qct-v2 .qct-hero-copy > .qct-eyebrow {
+    gap: 8px;
+    background: linear-gradient(135deg, #eff5ff 0%, #e6effe 100%) !important;
+    border: 1px solid rgba(37, 99, 235, 0.22) !important;
+    box-shadow: 0 4px 14px rgba(0, 47, 167, 0.08), inset 0 1px 0 #ffffff !important;
+  }
+
+  .qct-v2 .qct-hero-copy > .qct-eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #002fa7;
+    flex-shrink: 0;
+  }
+
+  /* Animated Gradient Highlight on Hero Italic Headline */
+  .qct-v2 .qct-hero h1 em,
+  html[lang="en"] .site-main .qct-v2 .qct-hero h1 em,
+  [data-qct-az] .qct-hero h1 em {
+    background: linear-gradient(120deg, #002fa7 0%, #2563eb 38%, #0284c7 68%, #002fa7 100%) !important;
+    background-size: 220% auto !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  /* Tactile Modern Hero Buttons & Trust Chips */
+  .qct-v2 .qct-hero-actions .qct-btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #002fa7 0%, #1d4ed8 55%, #002fa7 100%) !important;
+    background-size: 200% auto !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+  }
+
+  .qct-v2 .qct-hero-actions .qct-text-link {
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid #cbd8ec !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05), inset 0 1px 0 #ffffff !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .qct-v2 .qct-proof-line span {
+    background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%) !important;
+    border: 1px solid #d8e3f4 !important;
+    box-shadow: 0 2px 8px rgba(0, 47, 167, 0.05), inset 0 1px 0 #ffffff !important;
+  }
+
+  /* QCT EDGE 2027 Mobile Glass & Neon Console Enhancements */
+  .qct-v2 .qct-edge-launch {
+    background:
+      radial-gradient(120% 70% at 100% 0%, rgba(56, 189, 248, 0.14), transparent 58%),
+      linear-gradient(160deg, rgba(11, 27, 56, 0.96) 0%, rgba(4, 12, 28, 0.99) 100%) !important;
+    border: 1px solid rgba(56, 189, 248, 0.38) !important;
+    box-shadow: 0 22px 50px rgba(0, 6, 18, 0.55), 0 0 28px rgba(37, 99, 235, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+  }
+
+  .qct-v2 .qct-edge-launch:before {
+    height: 3px !important;
+    background: linear-gradient(90deg, #002fa7 0%, #38bdf8 35%, #818cf8 65%, #38bdf8 85%, #002fa7 100%) !important;
+    background-size: 200% 100% !important;
+  }
+
+  .qct-v2 .qct-edge-launch__list li {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 12px !important;
+    border-radius: 13px !important;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+    border: 1px solid rgba(147, 197, 253, 0.16) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .qct-v2 .qct-edge-launch__list li > span {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.26);
+    font-size: 14px !important;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .qct-v2 .qct-edge-benefits article,
+  .qct-v2 .qct-edge-benefits article:first-child {
+    position: relative;
+    overflow: hidden;
+    padding: 13px 15px 13px 18px !important;
+    background: linear-gradient(145deg, rgba(15, 32, 66, 0.78) 0%, rgba(8, 19, 41, 0.88) 100%) !important;
+    border: 1px solid rgba(147, 197, 253, 0.2) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 10px 24px rgba(0, 6, 18, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .qct-v2 .qct-edge-benefits article::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    border-radius: 0 999px 999px 0;
+    background: linear-gradient(180deg, #38bdf8 0%, #2563eb 100%);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.55);
+  }
+
+  /* Modernized Mobile Cards: Pathways, Benefits & Service Offers */
+  .qct-v2 .qct-pathway-grid article,
+  .qct-v2 .qct-pathway-grid article + article {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%) !important;
+    border: 1px solid #d8e3f4 !important;
+    box-shadow: 0 14px 32px -8px rgba(15, 23, 42, 0.07), inset 0 1px 0 #ffffff !important;
+  }
+
+  .qct-v2 .qct-pathway-grid article::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 18px;
+    width: 48px;
+    height: 3px;
+    border-radius: 0 0 999px 999px;
+    background: linear-gradient(90deg, #002fa7, #38bdf8);
+  }
+
+  .qct-v2 .qct-benefit-grid article {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%) !important;
+    border: 1px solid #dce6f5 !important;
+    box-shadow: 0 10px 26px -6px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff !important;
+  }
+
+  .qct-v2 .qct-offer-grid a,
+  .qct-v2 .qct-offer-grid a:nth-child(odd),
+  .qct-v2 .qct-offer-grid a:nth-child(even) {
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%) !important;
+    border: 1px solid #dce6f5 !important;
+    box-shadow: 0 8px 22px -6px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff !important;
+    transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .qct-v2 .qct-offer-price strong,
+  .qct-v2 .qct-offer-grid strong {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eff4ff;
+    border: 1px solid rgba(0, 47, 167, 0.15);
+    color: #002fa7;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Elevated Glass & Neon-Edge Mobile Calculator */
+  .qct-v2 .qct-calculator {
+    background: linear-gradient(170deg, #ffffff 0%, #f6f9ff 100%) !important;
+    border: 1px solid #cddbf0 !important;
+    box-shadow: 0 24px 56px -12px rgba(12, 30, 62, 0.14), 0 0 0 1px rgba(255, 255, 255, 0.9) inset !important;
+  }
+
+  .qct-v2 .qct-calculator::before {
+    height: 3.5px !important;
+    background: linear-gradient(90deg, #002fa7 0%, #38bdf8 50%, #4f46e5 75%, #002fa7 100%) !important;
+    background-size: 200% 100% !important;
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+  }
+
+  .qct-v2 .qct-check {
+    background: #ffffff !important;
+    border: 1px solid #dce5f3 !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.025);
+    transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease !important;
+  }
+
+  .qct-v2 .qct-check:has(input:checked) {
+    background: linear-gradient(145deg, #eff5ff 0%, #e2edff 100%) !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 6px 16px -4px rgba(37, 99, 235, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .qct-v2 .qct-price-result {
+    background: linear-gradient(145deg, #f5f9ff 0%, #eaf2ff 100%) !important;
+    border: 1px solid #c7daf7 !important;
+    box-shadow: 0 10px 26px -8px rgba(0, 47, 167, 0.12), inset 0 1px 0 #ffffff !important;
+  }
+}
+
+/* Motion-enabled animations strictly for mobile viewports with no reduced-motion preference */
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .qct-v2 > .qct-hero::before {
+    animation: qct-mobile-ambient-glow 8s ease-in-out infinite alternate;
+  }
+
+  .qct-v2 .qct-hero-copy > .qct-eyebrow::before,
+  .qct-v2 .qct-live-dot,
+  .qct-v2 .qct-proof-line span:before {
+    animation: qct-mobile-pulse-ring 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .qct-v2 .qct-hero h1 em,
+  html[lang="en"] .site-main .qct-v2 .qct-hero h1 em,
+  [data-qct-az] .qct-hero h1 em {
+    animation: qct-mobile-gradient-flow 6s ease-in-out infinite;
+  }
+
+  .qct-v2 .qct-hero-actions .qct-btn-primary::after {
+    content: "";
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 45%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%);
+    transform: translateX(-130%) skewX(-18deg);
+    animation: qct-mobile-btn-shimmer 4.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    pointer-events: none;
+  }
+
+  .qct-v2 .qct-calculator::before,
+  .qct-v2 .qct-edge-launch:before,
+  .qct-v2 .qct-pricing-edge-card:before {
+    animation: qct-mobile-bar-flow 4.5s linear infinite;
+  }
+
+  .qct-v2 .qct-edge-launch__gift,
+  .qct-v2 .qct-pricing-edge-card__gift {
+    animation: qct-mobile-gift-glow 3.2s ease-in-out infinite;
+  }
+
+  /* Staggered spring entrance for mobile hero & calculator */
+  .qct-v2 .qct-hero-copy > .qct-eyebrow {
+    animation: qct-mobile-spring-up 0.42s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+  }
+  .qct-v2 .qct-hero-copy > h1 {
+    animation: qct-mobile-spring-up 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both !important;
+  }
+  .qct-v2 .qct-hero-copy > .qct-lead {
+    animation: qct-mobile-spring-up 0.52s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both !important;
+  }
+  .qct-v2 .qct-hero-copy > .qct-hero-actions {
+    animation: qct-mobile-spring-up 0.54s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both !important;
+  }
+  .qct-v2 .qct-hero-copy > .qct-proof-line {
+    animation: qct-mobile-spring-up 0.56s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both !important;
+  }
+  .qct-v2 .qct-calculator {
+    animation: qct-mobile-spring-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both !important;
+  }
+
+  /* Tactile touch-feedback micro-interactions on mobile cards & buttons */
+  .qct-v2 .qct-btn:active,
+  .qct-v2 .qct-text-link:active,
+  .qct-v2 .qct-check:active,
+  .qct-v2 .qct-offer-grid a:active,
+  .qct-v2 .qct-pathway-grid article:active,
+  .qct-v2 .qct-benefit-grid article:active {
+    transform: scale(0.985) !important;
+  }
+
+  /* Scroll-triggered mobile card reveal (progressive enhancement; stays visible for crawlers/tests) */
+  .qct-m-reveal {
+    opacity: 0.92;
+    transform: translate3d(0, 18px, 0) scale(0.985);
+    transition:
+      opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--qct-m-delay, 0ms);
+    will-change: transform, opacity;
+  }
+
+  .qct-m-reveal.is-m-inview {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
