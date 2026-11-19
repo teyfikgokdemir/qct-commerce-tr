@@ -709,70 +709,123 @@ export const azBlogPosts: AzBlogPost[] = [
   },
   {
     "slug": "shopify-turkiye-virtual-pos-komissiyalari-2026",
+    "trSlug": "shopify-turkiye-sanal-pos-komisyonlari-2026",
     "title": "Shopify Türkiyə Virtual POS və Komissiyalar 2026: iyzico, PayTR, Stripe",
     "description": "Shopify mağazasında iyzico, PayTR, Stripe və Shopify üçüncü tərəf əməliyyat komissiyalarının, taksit və valyuta qəbulunun 2026 müqayisəsi.",
-    "intro": "Türkiyə üzərindən Shopify mağazası quran brendlər üçün əsas xərc aylıq paket deyil, ödəniş provayderi ilə Shopify əlavə əməliyyat komissiyasının birgə təsiridir.",
+    "intro": "Türkiyə üzərindən Shopify mağazası quran brendlərin ən çox diqqətdən qaçırdığı məqam aylıq paket haqqı deyil, virtual POS və üçüncü tərəf ödəniş komissiyalarının vahid mənfəətə birgə təsiridir. Shopify Payments Türkiyədə yerli olaraq aktiv olmadığı üçün hər sifarişdə həm ödəniş provayderinin, həm də Shopify-ın xarici şlüz komissiyası birlikdə hesablanmalıdır.",
     "summary": [
-      "Yerli ödənişlər iyzico və ya PayTR üzərindən qəbul edilir.",
-      "Dövriyyə artdıqca Grow/Advanced planına keçid komissiya yükünü azalda bilər.",
-      "Xarici şirkət üzərindən Stripe inteqrasiyası beynəlxalq satışı sadələşdirir."
+      "Shopify Payments Türkiyədə yerli dəstəklənmədiyi üçün iyzico, PayTR və ya GarantiPay kimi BDDK lisenziyalı üçüncü tərəf şlüzlər inteqrasiya olunur.",
+      "Seçilən Shopify paketindən asılı olaraq %0,6 ilə %2 arasında dəyişən əlavə əməliyyat komissiyası virtual POS faizinin üzərinə əlavə edilir.",
+      "Yerli TL satışlarda taksit və valör balansı iyzico və ya PayTR ilə həll olunur; ABŞ, Böyük Britaniya və ya Aİ şirkəti üzərindən Stripe açıldıqda çoxvalyutalı ödəniş axını sadələşir.",
+      "Aylıq dövriyyə və orta səbət məbləği böyüdükcə Basic paketindən Grow və ya Advanced planına keçid komissiya qənaəti hesabına öz xərcini ödəyə bilər."
     ],
     "sections": [
       {
-        "heading": "Ödəniş arxitekturası və komissiya balansı",
+        "heading": "Shopify Türkiyə ödəniş arxitekturası necə işləyir?",
         "paragraphs": [
-          "Kurulumdan əvvəl orta səbət məbləği, taksit nisbəti və valyuta axını hesablanaraq ən sərfəli plan və provayder seçilməlidir."
+          "Türkiyə vergi qeydiyyatı ilə açılan Shopify mağazasında kart ödənişlərini qəbul etmək üçün BDDK lisenziyalı ödəniş qurumu (iyzico və ya PayTR) qoşulur. Müştəri ödəniş mərhələsində 3D Secure uyğun təhlükəsiz ödəniş ekranı və ya dəstəklənən daxili axın üzərindən əməliyyatı tamamlayır.",
+          "Hər sifarişin ümumi ödəniş xərci iki ayrı maddədən ibarətdir: ödəniş provayderinin birdəfəlik və ya taksit komissiyası və Shopify-ın abunə paketinə görə tutduğu üçüncü tərəf əməliyyat haqqı. Layihəyə başlamazdan əvvəl qaytarma faizi və hesaba köçürmə (valör) müddəti birlikdə hesablanmalıdır."
+        ]
+      },
+      {
+        "heading": "iyzico, PayTR və Stripe nə zaman seçilməlidir?",
+        "paragraphs": [
+          "Doğru ödəniş kombinasiyası hədəf bazar və hüquqi strukturdan asılıdır. iyzico sürətli aktivləşdirmə, geniş taksit şəbəkəsi və güclü Shopify uyğunluğu ilə bazara tez çıxmaq istəyən brendlər üçün əlverişlidir.",
+          "PayTR yüksək həcmli TL dövriyyəsində rəqabətli komissiya dərəcələri və növbəti gün və ya həftəlik valör seçimləri ilə fərqlənir. Xarici şirkət (ABŞ, Böyük Britaniya, Aİ) üzərindən Stripe və ya Shopify Payments istifadə olunduqda isə Apple Pay, yerli Avropa ödəniş üsulları və USD/EUR/GBP qəbulu daha az itki ilə idarə olunur."
+        ]
+      },
+      {
+        "heading": "Aylıq dövriyyəyə görə paket seçimi: Basic, yoxsa Grow?",
+        "paragraphs": [
+          "Bir çox mağaza aylıq paket fərqinə baxaraq uzun müddət Basic planında qalır, lakin müəyyən dövriyyə həddindən sonra xarici əməliyyat komissiyasındakı 1% azalma üst paketin abunə fərqini tam qarşılayır.",
+          "Mağaza arxitekturasını təsdiqləməzdən əvvəl orta səbət məbləği, taksitli sifariş payı, qaytarma nisbəti və yerli/ixrac satış bölgüsü birlikdə modelləşdirilməlidir. Paket, POS müqaviləsi və valyuta axını başlanğıcda düzgün qurulanda böyümə mərhələsində mənfəət marjası qorunur."
         ]
       }
     ],
     "relatedLabel": "Shopify mağaza qurulmasına baxın",
     "relatedHref": "/az/shopify-magaza-qurulmasi/",
     "published": "2026-11-15",
-    "modified": "2026-11-15"
+    "modified": "2026-11-19"
   },
   {
     "slug": "mikro-ixrac-etgb-e-ticaret-rehberi-2026",
+    "trSlug": "mikro-ihracat-etgb-e-ihracat-rehberi-2026",
     "title": "Mikro İxrac (ETGB) ilə Xaricə E-Ticarət Bələdçisi 2026",
     "description": "300 kq və 15.000 Avro limitinə qədər ETGB mikro ixrac ilə ƏDV-siz faktura, sürətli kargo və çoxdilli e-ticarət mağazası qurulması.",
-    "intro": "ETGB mikro ixrac modeli istehsalçı və brendlərə gömrük müşaviri xərci olmadan beynəlxalq sifarişləri sürətli kargo ilə göndərməyə imkan verir.",
+    "intro": "İstehsalçı və brend sahibləri üçün xaricə valyuta ilə satış etməyin ən sürətli yolu Elektron Ticarət Gömrük Bəyannaməsi (ETGB), yəni mikro ixracdır. Gömrük müşaviri xərci olmadan, səlahiyyətli sürətli kargo operatorları vasitəsilə çıxış edilərək ƏDV-siz faktura və ixrac üstünlüklərindən yararlanmaq mümkündür.",
     "summary": [
-      "300 kq və 15.000 Avro həddinə qədər elektron bəyannamə ilə ixrac mümkündür.",
-      "Çoxdilli məhsul səhifələri və yerli valyuta dönüşümü artırır."
+      "ETGB çərçivəsində 300 kq çəki və 15.000 Avro faktura həddinə qədər göndərişlər səlahiyyətli sürətli kargo operatoru bəyannaməsi ilə ixrac olunur.",
+      "E-ixrac fakturası 0% ƏDV ilə kəsilir və uyğun istehsalçılar üçün istehsal/alış mərhələsində ödənilən ƏDV-nin geri qaytarılması prosesi işlədilə bilər.",
+      "Çoxdilli məhsul səhifələri, yerli valyuta göstərimi və gömrük rüsumu (DDP/DAP) şəffaflığı beynəlxalq səbətdə tərketməni əhəmiyyətli dərəcədə azaldır.",
+      "Kargo və qaytarma logistikası əvvəlcədən qiymətə daxil edilmədikdə valyuta gəliri yüksək görünsə də xalis mənfəət əriyə bilər."
     ],
     "sections": [
       {
-        "heading": "Beynəlxalq satışda əsas texniki addımlar",
+        "heading": "ETGB mikro ixrac hədləri və faktura prosesi",
         "paragraphs": [
-          "Ölkə üzrə çatdırılma müddəti, gömrük şəffaflığı və beynəlxalq kart ödənişləri səbətdə tərketməni azaldır."
+          "Mikro ixrac çərçivəsində göndərilən sifarişlərin 300 kq çəki və 15.000 Avro dəyər limitini aşmaması, həmçinin qəti satış xarakteri daşıması tələb olunur. İxracatçı şirkət 0% ƏDV-li e-ixrac fakturasını düzgün GTİP (HS) kodları ilə hazırlayaraq DHL, FedEx, UPS və ya PTS kimi səlahiyyətli operatorlara təqdim edir.",
+          "Səlahiyyətli kargo operatoru elektron gömrük bəyannaməsini rəsmiləşdirir və mühasibatlıq üçün tələb olunan təsdiqli ETGB sənədini təqdim edir. Mağaza bazasında SKU və HS kodlarının əvvəlcədən düzgün eşləşdirilməsi göndəriş prosesini sürətləndirir."
+        ]
+      },
+      {
+        "heading": "E-ixrac saytında dönüşümü müəyyən edən 4 texniki detal",
+        "paragraphs": [
+          "Saytı sadəcə başqa dilə tərcümə etmək beynəlxalq satış gətirmir; alıcı etibarı dörd praktiki detalla qurulur: hədəf ölkənin valyutası və real çatdırılma müddəti (məsələn, Almaniyaya 3–5 iş günü), qapıda gözlənilməz rüsum çıxmaması üçün DDP və ya aydın vergi məlumatlandırması, həmçinin beynəlxalq kart və Apple Pay dəstəyi.",
+          "Axtarış görünürlüyü tərəfində isə hər bazar üçün ayrı URL strukturu, qarşılıqlı hreflang etiketləri, yerli axtarış ifadələri və strukturlaşdırılmış məhsul schema məlumatı (qiymət, stok, çatdırılma) düzgün qurulmalıdır."
+        ]
+      },
+      {
+        "heading": "Pazaryeri, yoxsa öz e-ixrac mağazanız?",
+        "paragraphs": [
+          "Amazon və ya Etsy kimi platformalar yeni bazarlarda ilkin tələbi yoxlamaq üçün faydalı ola bilər, lakin yalnız pazaryerinə bağlı qalmaq müştəri məlumatına sahib olmağı məhdudlaşdırır və yüksək komissiya asılılığı yaradır.",
+          "Uzunmüddətli və dayanıqlı ixrac modeli üçün pazaryeri kanalları ilə paralel şəkildə öz çoxdilli e-ticarət infrastrukturunuzu qurmaq vacibdir. Öz kanalınız həm təkrar satışları artırır, həm də beynəlxalq topdansatış müraciətlərini birbaşa toplamağa imkan verir."
         ]
       }
     ],
     "relatedLabel": "İxracatçılar üçün e-ticarət həllərinə baxın",
     "relatedHref": "/az/ixracatcilar/",
     "published": "2026-11-15",
-    "modified": "2026-11-15"
+    "modified": "2026-11-19"
   },
   {
     "slug": "b2b-topdansatis-e-ticaret-portali-qurulmasi-2026",
+    "trSlug": "b2b-toptan-satis-e-ticaret-sitesi-nasil-kurulur",
     "title": "B2B Diler və Topdansatış E-Ticarət Portalı Necə Qurulur? (2026)",
     "description": "İstehsalçı və distribütorlar üçün dilerə özəl qiymət, MOQ qaydaları, sürətli SKU sifariş cədvəli və ERP inteqrasiyası.",
-    "intro": "WhatsApp və Excel ilə topdansatış sifarişi toplayan şirkətlər üçün B2B diler portalı qiymət xətalarını aradan qaldırır və təkrar sifarişləri sürətləndirir.",
+    "intro": "Bir çox istehsalçı və topdansatış şirkəti hələ də sifarişləri WhatsApp yazışmaları, PDF kataloqlar və Excel cədvəlləri ilə toplayır. Çeşid və diler sayı artdıqca bu yanaşma qiymət xətalarına, stok uyğunsuzluğuna və satış komandasının təkrarlanan əməliyyatlara bağlanmasına səbəb olur. Düzgün qurulmuş B2B diler portalı satış komandasını əl ilə sifariş qeydiyyatından azad edir.",
     "summary": [
-      "Təsdiqli dilerlərə özəl qiymət siyahısı və qutu/palet MOQ qaydaları tətbiq olunur.",
-      "ERP stok və cari hesab sinxronizasiyası əməliyyat yükünü azaldır."
+      "B2B e-ticarət portalı qiymətləri hamıya açıq göstərmək məcburiyyətində deyil; təsdiqli diler girişi ilə fərdi qiymət siyahıları təyin olunur.",
+      "Minimum sifariş sayı (MOQ), qutu/palet vahidləri və həcmə görə pilləli endirim qaydaları sistem tərəfindən avtomatik tətbiq edilməlidir.",
+      "Cari hesab limiti, möhlətli ödəniş, köçürmə bildirimi və proforma təklif (RFQ) axını pərakəndə e-ticarətdən köklü şəkildə fərqlənir.",
+      "ERP və mühasibatlıq stok-qiymət sinxronizasiyası sabit işləmədikdə dilerlər portala güvənmir və yenidən telefonla sifarişə qayıdır."
     ],
     "sections": [
       {
-        "heading": "B2B portalında vacib modullar",
+        "heading": "Pərakəndə (B2C) ilə topdansatış (B2B) arxitektura fərqləri",
         "paragraphs": [
-          "SKU kodları ilə sürətli sifariş cədvəli, proforma/RFQ təklif axını və Google-da indekslənən texniki kateqoriya səhifələri birlikdə qurulmalıdır."
+          "B2C mağazada əsas hədəf tək alıcının bir-iki məhsulu sürətlə səbətə atıb ödəməsidir. B2B tərəfdə isə eyni diler hər həftə 20–50 çeşid məhsulu SKU kodu, qutu sayı və müqavilə endirimi ilə sifariş edir.",
+          "Buna görə B2B portalında sürətli SKU axtarışı, toplu say giriş cədvəli və əvvəlki sifarişi bir kliklə təkrarlama funksiyası həlledicidir. Sifariş prosesinin 30 dəqiqəlik telefon danışığından 3 dəqiqəlik özünəxidmət axınına düşməsi təkrar sifariş tezliyini yüksəldir."
+        ]
+      },
+      {
+        "heading": "İşlək B2B diler portalında olmalı 5 əsas modul",
+        "paragraphs": [
+          "Sahədə real istifadə olunan B2B portalı beş əsas qatı birləşdirməlidir: admin təsdiqi ilə açılan qapalı diler qiymət görünürlüyü, müştəri qrupuna özəl endirim matrisi və qutu/palet əsaslı MOQ qaydaları, həmçinin sürətli SKU sifariş cədvəli və keçmiş sifarişdən təkrar sifariş imkanı.",
+          "Maliyyə və əməliyyat hissəsində isə korporativ kart, bank köçürməsi bildirimi, açıq hesab limiti və proforma/RFQ təklif sorğusu dəstəklənməli; Logo, Mikro, Netsis və ya mövcud ERP sistemi ilə canlı stok və cari balans sinxronizasiyası qurulmalıdır."
+        ]
+      },
+      {
+        "heading": "Həm Google-dan yeni diler qazanmaq, həm mövcud dilerlərə xidmət",
+        "paragraphs": [
+          "Topdansatış qiymətlərinin giriş arxasında gizlədilməsi bütün kataloqun axtarış motorlarına bağlanması demək deyil. Kateqoriya səhifələri, texniki spesifikasiyalar, məhsul xüsusiyyətləri və dilerlik müraciət səhifələri Google-da indekslənə bilən şəkildə hazırlanmalıdır.",
+          "Beləliklə portal yalnız mövcud dilerlərin sifariş ekranı olaraq qalmır, eyni zamanda həm ölkə daxilindən, həm də xaricdən yeni distribütor və topdan alıcı gətirən davamlı B2B satış kanalına çevrilir."
         ]
       }
     ],
     "relatedLabel": "B2B distribütor həllərinə baxın",
     "relatedHref": "/az/distributor-b2b/",
     "published": "2026-11-15",
-    "modified": "2026-11-15"
+    "modified": "2026-11-19"
   }
 ];
 export function getAzBlogPost(slug:string){const p=azBlogPosts.find(x=>x.slug===slug);if(!p)throw new Error('Azerbaijani article not found: '+slug);return p;}
