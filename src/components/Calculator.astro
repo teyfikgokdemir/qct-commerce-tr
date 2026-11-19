@@ -8,18 +8,21 @@ const { kind } = Astro.props as { kind: 'marketplace' | 'website' | 'ecommerce' 
 const copy = kind === 'marketplace'
   ? {
       title: 'Pazaryeri Komisyon Hesaplayıcı',
-      description: 'Pazaryeri satışınızda komisyon, kargo, reklam, operasyon ve kendi e-ticaret sitenizle yıllık maliyet farkını adil verilerle hesaplayın.',
+      seoTitle: 'Pazaryeri Komisyon & Kâr Hesaplama (Trendyol, Amazon) | QCT',
+      description: 'Trendyol, Hepsiburada ve Amazon pazaryeri komisyon hesaplama aracı: kargo, reklam, KDV ve kendi e-ticaret sitenizle net kârlılık farkını hesaplayın.',
       label: 'Kanal maliyetini ve net kârlılığı şeffaf verilerinizle görün.'
     }
   : kind === 'website'
     ? {
         title: 'Web Sitesi Fiyat Hesaplayıcı',
-        description: 'Site kapsamına göre kesin fiyat yerine anlamlı bir tahmini proje yatırım aralığı ve doğru hizmet yönlendirmesi alın.',
+        seoTitle: 'Web Sitesi Fiyat Hesaplama 2026: Kurumsal & E-Ticaret | QCT',
+        description: '2026 web sitesi fiyat hesaplama aracı: kurumsal web tasarım, çok dilli altyapı, özel yazılım, SEO/GEO ve B2B portal yatırım aralığını anında hesaplayın.',
         label: 'Kapsamı seçin, tahmini yatırım aralığını görün.'
       }
     : {
         title: 'E-Ticaret Maliyet Hesaplayıcı',
-        description: 'Pazaryeri, hazır altyapı, WooCommerce ve özel e-ticareti ilk kurulum, aylık altyapı, reklam ve komisyon giderleriyle şeffafça karşılaştırın.',
+        seoTitle: 'E-Ticaret Maliyet Hesaplama 2026: Shopify, ikas & Özel | QCT',
+        description: 'E-ticaret maliyet hesaplama aracı: Shopify, ikas, WooCommerce, pazaryeri ve özel e-ticaret kurulum, komisyon, POS ve aylık altyapı giderlerini kıyaslayın.',
         label: 'Tüm satış modellerini aynı varsayımlarla kıyaslayın.'
       };
 
@@ -46,7 +49,7 @@ const webOptions = [
 ];
 ---
 
-<BaseLayout title={`${copy.title} | QCT Commerce`} description={copy.description} lang="tr" breadcrumbs={breadcrumbs}>
+<BaseLayout title={copy.seoTitle} description={copy.description} lang="tr" breadcrumbs={breadcrumbs}>
   <Header slot="header" lang="tr" />
 
   <main class="calc">
