@@ -297,6 +297,51 @@ test('platform-prefilled quote records exactly one completed interaction without
   assert.ok((await message(page)).includes('Shopify'));
 });
 
+test('valid project brief emits one lead sequence after validation', async t => {
+  const page = await pageFor(t, '/iletisim/');
+  await page.waitForFunction(() => typeof window.qctTrackEvent === 'function');
+  await page.evaluate(() => {
+    window.__briefTestEvents = [];
+    window.__briefTestOpens = [];
+    window.qctTrackEvent = (name, params) => window.__briefTestEvents.push({ name, params });
+    window.open = (url, target, features) => {
+      window.__briefTestOpens.push({ url, target, features });
+      return null;
+    };
+  });
+
+  const form = page.locator('[data-lead-brief]');
+  const completionNames = ['form_submit', 'generate_lead', 'whatsapp_click'];
+  const completionEvents = () => page.evaluate((names) =>
+    (window.__briefTestEvents || []).filter((event) => names.includes(event.name)), completionNames);
+
+  await form.evaluate((element) => element.requestSubmit());
+  assert.deepEqual(await completionEvents(), [], 'invalid brief must emit no completion event');
+  assert.equal(await page.evaluate(() => window.__briefTestOpens.length), 0, 'invalid brief must not open WhatsApp');
+
+  await form.locator('[name="business"]').selectOption({ index: 1 });
+  await form.locator('[name="platform"]').selectOption({ index: 1 });
+  await form.locator('[name="market"]').fill('Türkiye');
+  await form.locator('[name="priority"]').selectOption({ index: 1 });
+  await form.locator('[name="timeline"]').selectOption({ index: 1 });
+  await form.evaluate((element) => element.requestSubmit());
+
+  const events = await completionEvents();
+  assert.deepEqual(events.map((event) => event.name), completionNames);
+  for (const event of events) assert.deepEqual(event.params, { form_name: 'project_brief' });
+
+  const opens = await page.evaluate(() => window.__briefTestOpens);
+  assert.equal(opens.length, 1);
+  assert.equal(opens[0].target, '_blank');
+  assert.equal(opens[0].features, 'noopener,noreferrer');
+  const openedUrl = new URL(opens[0].url);
+  assert.equal(openedUrl.origin, 'https://wa.me');
+  const brief = openedUrl.searchParams.get('text');
+  for (const expected of ['kısa proje briefini doldurdum', 'Üretici', 'Mevcut platform yok', 'Türkiye', 'Yeni web sitesi / mağaza', 'Mümkün olan en kısa sürede']) {
+    assert.ok(brief.includes(expected), `WhatsApp brief missing ${expected}`);
+  }
+});
+
 test('Shopify and ikas pages explain the platform-specific setup steps and cost boundary', async t => {
   const scenarios = [
     {path:'/shopify-magaza-kurulumu/', title:'Shopify mağaza açma hazırlığı', faq:'Shopify mağaza kurulum süresi ne kadar?'},

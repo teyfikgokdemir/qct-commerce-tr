@@ -132,6 +132,8 @@ for (const [url, page] of pages) {
     const anchorHreflang = attr(anchorTag, 'hreflang');
     const alternateMatch = page.alternates.some(a => a.lang === anchorHreflang && new URL(a.href, SITE).pathname === target.pathname);
     if (alternateMatch) continue;
+    const noindexLocaleSwitch = !page.indexable && anchorHreflang === hrefLang[locale(target.href)];
+    if (noindexLocaleSwitch) continue;
     if (target.pathname.startsWith('/en/')) {
       if (!pages.has(target.origin + target.pathname) || redirectFor(target.href)) fail(url, `English link missing or redirected: ${href}`);
     } else if (!(

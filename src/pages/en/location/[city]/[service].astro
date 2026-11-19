@@ -3,6 +3,7 @@ import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Header from "../../../../components/Header.astro";
 import Footer from "../../../../components/Footer.astro";
 import { enMarkets, programmaticServices, trServicePath, enServicePath } from "../../../../data/programmatic-markets";
+import { isProgrammaticLocationServiceIndexable } from "../../../../data/location-indexation.mjs";
 
 export function getStaticPaths() {
   return enMarkets
@@ -13,12 +14,13 @@ export function getStaticPaths() {
 }
 
 const { market, service } = Astro.props;
+const isIndexable = isProgrammaticLocationServiceIndexable(market.alternateId, service.trSlug);
 const title = `${market.name} ${service.enName} Services | QCT Commerce`;
 const description = `${service.enName} for ${market.name}: ${service.enOutcome} Build a measurable, scalable digital growth system with QCT Commerce.`;
-const alternates = [
+const alternates = isIndexable ? [
   { lang: "tr-TR", href: trServicePath(market.alternateId, service) },
   { lang: "en", href: enServicePath(market.id, service) },
-];
+] : [];
 const breadcrumbs = [
   { name: "Home", url: "/en/" },
   { name: "Markets and locations", url: "/en/location/" },
@@ -27,7 +29,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} lang="en" alternates={alternates} breadcrumbs={breadcrumbs} pageType="WebPage" areaServed={market.areaServed} service={{ name: `${market.name} ${service.enName}`, description }}>
+<BaseLayout title={title} description={description} lang="en" alternates={alternates} noindex={!isIndexable} breadcrumbs={breadcrumbs} pageType="WebPage" areaServed={market.areaServed} service={{ name: `${market.name} ${service.enName}`, description }}>
   <Header slot="header" lang="en" />
 
   <section class="page-hero section">
