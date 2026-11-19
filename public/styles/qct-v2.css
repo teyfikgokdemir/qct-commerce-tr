@@ -232,12 +232,13 @@
 @media(max-width:760px){.qct-pricing-disclaimer{font-size:11px}.qct-external-cost-note{font-size:8.5px}}
 
 @media(max-width:640px){
-  .qct-hero{padding-top:56px}
-}
-
-@media(max-width:640px){
+  .qct-hero{
+    padding-top:22px!important;
+    padding-bottom:32px!important;
+  }
   .qct-hero-copy>.qct-eyebrow{
-    display:block!important;
+    display:inline-flex!important;
+    align-items:center;
     visibility:visible!important;
     opacity:1!important;
     transform:none!important;
@@ -245,16 +246,16 @@
     position:relative;
     z-index:2;
     margin:0 0 14px!important;
-    color:#6b6259!important;
+    padding:5px 12px!important;
+    border-radius:999px;
+    background:#eff4ff!important;
+    border:1px solid rgba(0,47,167,.16);
+    color:#002fa7!important;
     font-size:10px!important;
-    line-height:1.4!important;
-    letter-spacing:.16em!important;
-  }
-}
-
-@media(max-width:640px){
-  .qct-hero{
-    padding-top:calc(var(--qct-header-height) + var(--qct-header-gap))!important;
+    font-weight:800!important;
+    line-height:1.35!important;
+    letter-spacing:.11em!important;
+    box-shadow:0 2px 8px rgba(0,47,167,.05);
   }
 }
 
@@ -1146,5 +1147,466 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
     white-space: normal;
     font-size: 11px;
     line-height: 1.45;
+  }
+}
+
+/* ==========================================================================
+   MOBILE-ONLY ULTRA-ELITE DESIGN SYSTEM (2027)
+   Strictly scoped to mobile viewports (<= 760px / <= 640px).
+   Desktop layout, spacing, and visual hierarchy remain 100% untouched.
+   ========================================================================== */
+@media (max-width: 760px) {
+  .qct-v2 .qct-hero-grid {
+    gap: 28px;
+  }
+
+  .qct-v2 .qct-hero h1 {
+    font-size: clamp(32px, 8.8vw, 42px) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.042em !important;
+    overflow-wrap: break-word !important;
+    text-wrap: balance;
+  }
+
+  .qct-v2 .qct-hero .qct-lead {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-top: 14px !important;
+    color: #334155 !important;
+  }
+
+  .qct-v2 .qct-hero-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+  }
+
+  .qct-v2 .qct-hero-actions .qct-btn-primary {
+    width: 100% !important;
+    min-height: 50px !important;
+    border-radius: 14px !important;
+    font-size: 15px !important;
+    font-weight: 750 !important;
+    box-shadow: 0 12px 28px -6px rgba(0, 47, 167, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  }
+
+  .qct-v2 .qct-hero-actions .qct-text-link {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 46px;
+    padding: 0 18px !important;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid #dbe3ef;
+    color: #0f172a !important;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  }
+
+  .qct-v2 .qct-proof-line {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+    margin-top: 18px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .qct-v2 .qct-proof-line span {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 11px 5px 22px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 650;
+    color: #334155;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  }
+
+  .qct-v2 .qct-proof-line span:before {
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: #002fa7;
+    box-shadow: 0 0 0 2px rgba(0, 47, 167, 0.14);
+  }
+
+  /* Mobile QCT EDGE 2027 Executive Dark Console */
+  .qct-v2 .qct-edge {
+    padding: 36px 0 34px !important;
+    background:
+      radial-gradient(ellipse 115% 55% at 50% 0%, rgba(0, 82, 212, 0.28), transparent 68%),
+      #051124 !important;
+  }
+
+  .qct-v2 .qct-edge-topline {
+    margin-bottom: 12px;
+  }
+
+  .qct-v2 .qct-edge-topline .qct-section-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 11px;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    color: #7dd3fc;
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+  }
+
+  .qct-v2 .qct-edge h2 {
+    font-size: clamp(26px, 7.6vw, 34px) !important;
+    line-height: 1.12 !important;
+  }
+
+  .qct-v2 .qct-edge-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .qct-v2 .qct-edge-story .qct-btn {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 12px;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: 0 10px 24px rgba(0, 47, 167, 0.45);
+  }
+
+  .qct-v2 .qct-edge-story__note {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 9.5px;
+    letter-spacing: 0.13em;
+    color: #94a3b8;
+  }
+
+  .qct-v2 .qct-edge-launch {
+    padding: 20px 16px 16px !important;
+    border-radius: 18px !important;
+    gap: 12px;
+  }
+
+  .qct-v2 .qct-edge-launch__list li {
+    padding: 9px 11px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.035);
+    border-color: rgba(147, 197, 253, 0.12);
+  }
+
+  .qct-v2 .qct-edge-benefits {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding-top: 12px !important;
+    border-top: 0 !important;
+  }
+
+  .qct-v2 .qct-edge-benefits article,
+  .qct-v2 .qct-edge-benefits article:first-child {
+    padding: 12px 14px !important;
+    border: 1px solid rgba(147, 197, 253, 0.16) !important;
+    border-radius: 12px;
+    background: rgba(12, 26, 54, 0.68);
+  }
+
+  /* Mobile Section Headings & Pathways Cards */
+  .qct-v2 .qct-section-head {
+    margin-bottom: 24px;
+    gap: 12px;
+  }
+
+  .qct-v2 .qct-section-head h2,
+  .qct-v2 .qct-close h2 {
+    font-size: clamp(28px, 7.8vw, 36px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.04em !important;
+    text-wrap: balance;
+  }
+
+  .qct-v2 .qct-section-head > p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .qct-v2 .qct-pathways {
+    padding: 44px 0 16px;
+  }
+
+  .qct-v2 .qct-pathway-grid {
+    border: 0 !important;
+    gap: 14px;
+  }
+
+  .qct-v2 .qct-pathway-grid article,
+  .qct-v2 .qct-pathway-grid article + article {
+    background: #ffffff;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 18px;
+    padding: 22px 18px !important;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  }
+
+  .qct-v2 .qct-pathway-grid h3 {
+    font-size: 22px !important;
+    line-height: 1.18;
+    margin-bottom: 10px;
+  }
+
+  /* Mobile Pricing Page QCT EDGE Card & Hero */
+  .qct-v2 .qct-pricing-hero {
+    padding: 24px 0 28px !important;
+  }
+
+  .qct-v2 .qct-pricing-hero h1 {
+    font-size: clamp(32px, 8.8vw, 42px) !important;
+    line-height: 1.06 !important;
+  }
+
+  .qct-v2 .qct-pricing-edge-card {
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+    gap: 20px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .qct-v2 .qct-pricing-edge-card__tags {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .qct-v2 .qct-pricing-edge-card h2 {
+    font-size: 26px !important;
+  }
+
+  .qct-v2 .qct-pricing-edge-card__perks {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .qct-v2 .qct-pricing-edge-card__action {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .qct-v2 .qct-pricing-edge-card__action .qct-btn {
+    width: 100%;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  [data-qct-az] .qct-hero .qct-eyebrow {
+    color: #002fa7 !important;
+  }
+
+  /* Mobile Calculator Card (TR, EN, AZ) */
+  .qct-v2 .qct-calculator {
+    position: relative;
+    background: #ffffff !important;
+    border: 1px solid #d8e2f0 !important;
+    border-radius: 22px !important;
+    padding: 20px 16px 18px !important;
+    margin-top: 4px !important;
+    box-shadow: 0 22px 54px -12px rgba(15, 23, 42, 0.12), 0 4px 14px rgba(0, 47, 167, 0.05) !important;
+  }
+
+  .qct-v2 .qct-calculator::before {
+    content: "";
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 3px;
+    border-radius: 0 0 999px 999px;
+    background: linear-gradient(90deg, #002fa7 0%, #2563eb 50%, #38bdf8 100%);
+  }
+
+  .qct-v2 .qct-calculator select {
+    min-height: 46px;
+    border-radius: 12px;
+    background-color: #f8faff;
+    border-color: #dce4ef;
+  }
+
+  .qct-v2 .qct-addon-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .qct-v2 .qct-check {
+    min-height: 48px !important;
+    padding: 8px 10px !important;
+    border-radius: 11px !important;
+    align-items: flex-start !important;
+  }
+
+  .qct-v2 .qct-check input {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .qct-v2 .qct-check span {
+    font-size: 12px !important;
+    line-height: 1.32 !important;
+  }
+
+  .qct-v2 .qct-check small {
+    font-size: 11px !important;
+    margin-top: 2px !important;
+  }
+
+  .qct-v2 .qct-price-result {
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 14px !important;
+    margin-top: 6px !important;
+    border: 1px solid #dbe6f7 !important;
+    border-radius: 16px !important;
+    background: linear-gradient(180deg, #f8faff 0%, #f1f5fd 100%) !important;
+    box-shadow: inset 0 1px 0 #ffffff !important;
+  }
+
+  .qct-v2 .qct-price-result strong {
+    font-size: 26px !important;
+    line-height: 1.12 !important;
+  }
+
+  .qct-v2 .qct-price-result small,
+  .qct-v2 .qct-price-result .qct-external-cost-note {
+    max-width: 100% !important;
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .qct-v2 .qct-result-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    border-radius: 12px !important;
+    justify-content: center !important;
+    font-size: 14.5px !important;
+  }
+
+  .qct-v2 .qct-result-btn span {
+    display: inline !important;
+  }
+
+  /* Mobile Benefits Cards */
+  .qct-v2 .qct-benefits {
+    padding: 36px 0;
+  }
+
+  .qct-v2 .qct-benefit-grid {
+    border-top: 0 !important;
+    gap: 12px !important;
+  }
+
+  .qct-v2 .qct-benefit-grid article {
+    background: #ffffff;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px;
+    padding: 18px 16px !important;
+    margin: 0 !important;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.03);
+  }
+
+  .qct-v2 .qct-index {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #eff4ff;
+    font-size: 11px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .qct-v2 .qct-benefit-grid h3 {
+    font-size: 19px;
+    margin-bottom: 6px;
+  }
+
+  /* Mobile Offers Cards */
+  .qct-v2 .qct-offers {
+    padding: 44px 0 52px;
+  }
+
+  .qct-v2 .qct-offer-grid {
+    border-top: 0 !important;
+    gap: 10px !important;
+  }
+
+  .qct-v2 .qct-offer-grid a,
+  .qct-v2 .qct-offer-grid a:nth-child(odd),
+  .qct-v2 .qct-offer-grid a:nth-child(even) {
+    background: #ffffff;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px;
+    padding: 16px !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+    gap: 6px 12px;
+    align-items: flex-start;
+  }
+
+  .qct-v2 .qct-offer-grid span {
+    font-size: 16.5px;
+    line-height: 1.3;
+  }
+
+  .qct-v2 .qct-offer-price strong,
+  .qct-v2 .qct-offer-grid strong {
+    font-size: 16.5px;
+  }
+
+  .qct-v2 .qct-offer-grid small {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Mobile Image Story & Closing Section */
+  .qct-v2 .qct-image-story {
+    padding: 48px 0 54px !important;
+  }
+
+  .qct-v2 .qct-image-story .qct-section-head {
+    margin-bottom: 24px !important;
+  }
+
+  .qct-v2 .qct-close {
+    padding: 48px 0 56px;
+  }
+
+  .qct-v2 .qct-close p:not(.qct-section-label) {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 14px;
+  }
+
+  .qct-v2 .qct-close .qct-btn-light {
+    width: 100%;
+    min-height: 50px;
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 350px) {
+  .qct-v2 .qct-addon-grid {
+    grid-template-columns: 1fr !important;
   }
 }

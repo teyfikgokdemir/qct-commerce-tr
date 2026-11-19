@@ -188,7 +188,7 @@ test('QCT EDGE launch packages and gift terms are consistent across all publishe
     }
     assert.match(offer, /(?:%20|20%)/, item.detail+' Türkiye VAT rate in terms');
     assert.ok(offer.includes(item.gift), item.detail+' gift');
-    assert.match(offer, /2026/);
+    assert.match(offer, /2027/);
     assert.equal(await page.locator('.premium-launch__plan a[href^="https://wa.me/"]').count(), 3);
     await assertNoHorizontalOverflow(page, item.detail);
   }
