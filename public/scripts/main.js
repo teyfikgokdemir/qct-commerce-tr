@@ -557,12 +557,12 @@
     }
   });
 
-  /* Mobile-only scroll-triggered spring reveal for cards and sections (<= 760px) */
-  if (!motion.matches && 'IntersectionObserver' in window && window.matchMedia('(max-width: 760px)').matches) {
-    var mobileTargets = document.querySelectorAll(
-      '.qct-edge-story, .qct-edge-launch, .qct-edge-benefits article, .qct-pathway-grid article, .qct-benefit-grid article, .qct-offer-grid a, .qct-image-story figure, .qct-pricing-edge-card, .qct-price-rows article, .premium-grid article, .premium-launch__plan, .premium-process__grid article'
+  /* Sitewide (Desktop + Mobile) scroll-triggered spring reveal for cards and sections */
+  if (!motion.matches && 'IntersectionObserver' in window) {
+    var revealTargets = document.querySelectorAll(
+      '.qct-edge-story, .qct-edge-launch, .qct-edge-benefits article, .qct-pathway-grid article, .qct-benefit-grid article, .qct-offer-grid a, .qct-image-story figure, .qct-pricing-edge-card, .qct-price-rows article, .premium-grid article, .premium-launch__plan, .premium-process__grid article, .qct-svc-card, .qct-svc-step, .service-card, .process-grid article, .az-page-card, .marketplace-card, .calc__card, .qct-work-card, .qct-blog-list article'
     );
-    if (mobileTargets.length) {
+    if (revealTargets.length) {
       var mObserver = new IntersectionObserver(function (entries, obs) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -570,9 +570,9 @@
             obs.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '0px 0px -20px 0px', threshold: 0.06 });
+      }, { rootMargin: '0px 0px -24px 0px', threshold: 0.06 });
 
-      mobileTargets.forEach(function (el, idx) {
+      revealTargets.forEach(function (el, idx) {
         var rect = el.getBoundingClientRect();
         if (rect.top > window.innerHeight * 0.92) {
           el.classList.add('qct-m-reveal');

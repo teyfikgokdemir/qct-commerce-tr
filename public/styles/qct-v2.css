@@ -1895,8 +1895,168 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
   }
 }
 
-/* Motion-enabled animations strictly for mobile viewports with no reduced-motion preference */
-@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+/* Motion-enabled animations for BOTH Desktop and Mobile viewports with no reduced-motion preference */
+@media (min-width: 761px) {
+  .qct-v2 > .qct-hero {
+    position: relative;
+    isolation: isolate;
+    background:
+      radial-gradient(65% 55% at 78% 14%, rgba(37, 99, 235, 0.08) 0%, rgba(56, 189, 248, 0.03) 45%, transparent 72%),
+      radial-gradient(50% 45% at 15% 28%, rgba(0, 47, 167, 0.05) 0%, transparent 68%),
+      linear-gradient(180deg, #f8faff 0%, #fafafc 100%) !important;
+  }
+
+  .qct-v2 > .qct-hero::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: 4%;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.11) 0%, rgba(56, 189, 248, 0.04) 48%, transparent 72%);
+    filter: blur(28px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .qct-v2 .qct-hero-copy > .qct-eyebrow {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 14px !important;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #eff5ff 0%, #e6effe 100%) !important;
+    border: 1px solid rgba(37, 99, 235, 0.22) !important;
+    color: #002fa7 !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+    box-shadow: 0 4px 14px rgba(0, 47, 167, 0.07), inset 0 1px 0 #ffffff !important;
+  }
+
+  .qct-v2 .qct-hero-copy > .qct-eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #002fa7;
+    flex-shrink: 0;
+  }
+
+  .qct-v2 .qct-hero h1 em,
+  html[lang="en"] .site-main .qct-v2 .qct-hero h1 em,
+  [data-qct-az] .qct-hero h1 em {
+    background: linear-gradient(120deg, #002fa7 0%, #2563eb 38%, #0284c7 68%, #002fa7 100%) !important;
+    background-size: 220% auto !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  .qct-v2 .qct-proof-line {
+    gap: 10px !important;
+  }
+
+  .qct-v2 .qct-proof-line span {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 13px 6px 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+    border: 1px solid #d8e3f4;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 650;
+    color: #334155;
+    box-shadow: 0 2px 8px rgba(0, 47, 167, 0.05), inset 0 1px 0 #ffffff;
+  }
+
+  .qct-v2 .qct-proof-line span:before {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: #002fa7;
+  }
+
+  /* Desktop Calculator Neon-Edge & Active Cards */
+  [data-qct-v2] .qct-calculator,
+  .qct-v2 .qct-calculator {
+    position: relative;
+    background: linear-gradient(170deg, #ffffff 0%, #f6f9ff 100%) !important;
+    border: 1px solid #cddbf0 !important;
+    box-shadow: 0 28px 72px -12px rgba(12, 30, 62, 0.13), 0 0 0 1px rgba(255, 255, 255, 0.9) inset !important;
+  }
+
+  [data-qct-v2] .qct-calculator::before,
+  .qct-v2 .qct-calculator::before {
+    content: "";
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    width: auto !important;
+    height: 3.5px !important;
+    border-radius: 0 0 999px 999px !important;
+    background: linear-gradient(90deg, #002fa7 0%, #38bdf8 50%, #4f46e5 75%, #002fa7 100%) !important;
+    background-size: 200% 100% !important;
+    box-shadow: 0 2px 12px rgba(56, 189, 248, 0.35);
+  }
+
+  [data-qct-v2] .qct-check:has(input:checked),
+  .qct-v2 .qct-check:has(input:checked) {
+    background: linear-gradient(145deg, #eff5ff 0%, #e2edff 100%) !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 6px 16px -4px rgba(37, 99, 235, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  }
+
+  /* Desktop QCT EDGE 2027 Console Glass Icons & Laser Bar */
+  .qct-v2 .qct-edge-launch:before {
+    height: 3px !important;
+    background: linear-gradient(90deg, #002fa7 0%, #38bdf8 35%, #818cf8 65%, #38bdf8 85%, #002fa7 100%) !important;
+    background-size: 200% 100% !important;
+  }
+
+  .qct-v2 .qct-edge-launch__list li {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 8px 12px !important;
+    border-radius: 12px !important;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%) !important;
+    border: 1px solid rgba(147, 197, 253, 0.14) !important;
+  }
+
+  .qct-v2 .qct-edge-launch__list li > span {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.26);
+    font-size: 13.5px !important;
+    flex-shrink: 0;
+  }
+
+  /* Desktop Offer Price Pills */
+  .qct-v2 .qct-offer-price strong,
+  .qct-v2 .qct-offer-grid strong {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #eff4ff;
+    border: 1px solid rgba(0, 47, 167, 0.15);
+    color: #002fa7;
+    font-size: 17px !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
   .qct-v2 > .qct-hero::before {
     animation: qct-mobile-ambient-glow 8s ease-in-out infinite alternate;
   }
@@ -1925,6 +2085,7 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
     pointer-events: none;
   }
 
+  [data-qct-v2] .qct-calculator::before,
   .qct-v2 .qct-calculator::before,
   .qct-v2 .qct-edge-launch:before,
   .qct-v2 .qct-pricing-edge-card:before {
@@ -1936,7 +2097,7 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
     animation: qct-mobile-gift-glow 3.2s ease-in-out infinite;
   }
 
-  /* Staggered spring entrance for mobile hero & calculator */
+  /* Staggered spring entrance for hero & calculator on both Desktop and Mobile */
   .qct-v2 .qct-hero-copy > .qct-eyebrow {
     animation: qct-mobile-spring-up 0.42s cubic-bezier(0.22, 1, 0.36, 1) both !important;
   }
@@ -1956,7 +2117,7 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
     animation: qct-mobile-spring-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both !important;
   }
 
-  /* Tactile touch-feedback micro-interactions on mobile cards & buttons */
+  /* Tactile touch-feedback micro-interactions */
   .qct-v2 .qct-btn:active,
   .qct-v2 .qct-text-link:active,
   .qct-v2 .qct-check:active,
@@ -1966,10 +2127,10 @@ html[lang="en"] .site-main .qct-v2 .qct-hero h1 em{
     transform: scale(0.985) !important;
   }
 
-  /* Scroll-triggered mobile card reveal (progressive enhancement; stays visible for crawlers/tests) */
+  /* Scroll-triggered card reveal across Desktop & Mobile */
   .qct-m-reveal {
     opacity: 0.92;
-    transform: translate3d(0, 18px, 0) scale(0.985);
+    transform: translate3d(0, 18px, 0) scale(0.988);
     transition:
       opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
       transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
