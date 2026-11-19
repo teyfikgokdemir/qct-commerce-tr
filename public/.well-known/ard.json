@@ -34,7 +34,7 @@
         "QCT Commerce Azərbaycanda hansı rəqəmsal xidmətləri təqdim edir?"
       ],
       "version": "1.1.0",
-      "updatedAt": "2026-10-30T00:00:00Z"
+      "updatedAt": "2026-11-19T00:00:00Z"
     },
     {
       "identifier": "urn:air:qctcommerce.com:resource:llms-full",
@@ -61,7 +61,7 @@
         "Are English and Azerbaijani translations available for every service?"
       ],
       "version": "1.1.0",
-      "updatedAt": "2026-10-30T00:00:00Z"
+      "updatedAt": "2026-11-19T00:00:00Z"
     }
   ]
 }
