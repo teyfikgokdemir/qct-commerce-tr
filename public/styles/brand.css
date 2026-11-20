@@ -1344,3 +1344,303 @@ body:has(.qct-cookie-settings:not([hidden])) .site-footer__inner {
 .qct-image-story figcaption span {
   color: #cbd5e1 !important;
 }
+
+/* ==========================================================================
+   SITEWIDE 2027 KINETIC & MODERN INNER-PAGE DESIGN SYSTEM (DESKTOP + MOBILE)
+   Covers all inner service pages, marketplace pages, calculators, work, blog,
+   contact, and desktop floating obsidian cookie dock.
+   ========================================================================== */
+@keyframes qctSitewideSpringUp {
+  0% {
+    opacity: 0.01;
+    transform: translate3d(0, 16px, 0) scale(0.986);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes qctSitewidePulse {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+@keyframes qctSitewideBluePulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 47, 167, 0.45); }
+  70% { box-shadow: 0 0 0 7px rgba(0, 47, 167, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 47, 167, 0); }
+}
+
+@keyframes qctSitewideShimmer {
+  0%, 20% { transform: translateX(-130%) skewX(-18deg); }
+  48%, 100% { transform: translateX(220%) skewX(-18deg); }
+}
+
+/* Desktop Floating Obsidian Glass Cookie Dock (>= 721px) */
+@media (min-width: 721px) {
+  .qct-cookie-consent {
+    left: 50% !important;
+    right: auto !important;
+    bottom: 18px !important;
+    transform: translateX(-50%) !important;
+    width: min(940px, calc(100vw - 36px)) !important;
+    background: rgba(9, 13, 22, 0.96) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(56, 189, 248, 0.26) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    padding: 13px 20px !important;
+    gap: 18px !important;
+  }
+
+  .qct-cookie-consent__content {
+    white-space: normal !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .qct-cookie-consent strong {
+    font-size: 0.82rem !important;
+    color: #f8fafc !important;
+  }
+
+  .qct-cookie-consent p {
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+    color: #94a3b8 !important;
+  }
+
+  .qct-cookie-consent a {
+    color: #60a5fa !important;
+  }
+
+  .qct-cookie-consent button {
+    min-height: 38px !important;
+    padding: 0 16px !important;
+    border-radius: 10px !important;
+    font-size: 0.8rem !important;
+    font-weight: 750 !important;
+  }
+
+  .qct-cookie-consent button:not(.is-primary) {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #cbd5e1 !important;
+    font-size: 0.8rem !important;
+  }
+
+  .qct-cookie-consent button.is-primary {
+    background: linear-gradient(135deg, #002fa7 0%, #2563eb 100%) !important;
+    border: 1px solid rgba(96, 165, 250, 0.45) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(0, 47, 167, 0.38) !important;
+  }
+}
+
+/* Inner-Page Eyebrow Pills & Modern Hero Surfaces */
+.marketplace-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.marketplace-hero > .marketplace-eyebrow,
+.qct-work-index .qct-work-eyebrow,
+.qct-blog-hero .qct-section__eyebrow {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #eff5ff 0%, #e6effe 100%);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  color: #002fa7 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  box-shadow: 0 3px 10px rgba(0, 47, 167, 0.06);
+}
+
+.marketplace-hero > .marketplace-eyebrow::before,
+.qct-work-index .qct-work-eyebrow::before,
+.qct-blog-hero .qct-section__eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #002fa7;
+  flex-shrink: 0;
+}
+
+.marketplace-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #002fa7 0%, #1d4ed8 100%) !important;
+  border: 1px solid rgba(96, 165, 250, 0.35) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 28px -6px rgba(0, 47, 167, 0.38) !important;
+  color: #ffffff !important;
+}
+
+.marketplace-secondary {
+  border-radius: 12px !important;
+  border: 1px solid #cbd5e1 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* Inner-Page Elevated Cards (Service, Marketplace, AZ, International, Blog, Work) */
+.site-main .qct-svc-grid > .qct-svc-card,
+.qct-svc-timeline > .qct-svc-step,
+.marketplace-card,
+.az-page-card,
+:is(html[lang="en"], html[lang="az"]) .site-main .service-card,
+:is(html[lang="en"], html[lang="az"]) .site-main .process-grid article {
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%) !important;
+  border: 1px solid #dce6f5 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff !important;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, border-color 0.22s ease !important;
+}
+
+.site-main .qct-svc-grid > .qct-svc-card:hover,
+.qct-svc-timeline > .qct-svc-step:hover,
+.marketplace-card:hover,
+.az-page-card:hover,
+:is(html[lang="en"], html[lang="az"]) .site-main .service-card:hover,
+:is(html[lang="en"], html[lang="az"]) .site-main .process-grid article:hover {
+  transform: translateY(-4px) !important;
+  border-color: #93b4e8 !important;
+  box-shadow: 0 20px 42px -10px rgba(0, 47, 167, 0.12), inset 0 1px 0 #ffffff !important;
+}
+
+@media (max-width: 760px) {
+  .qct-blog-list__grid {
+    border-top: 0 !important;
+    display: grid !important;
+    gap: 14px !important;
+  }
+
+  .qct-blog-list article {
+    background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%) !important;
+    border: 1px solid #dce6f5 !important;
+    border-radius: 18px !important;
+    padding: 20px 18px !important;
+    box-shadow: 0 10px 26px -8px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .marketplace-hero {
+    padding-top: 28px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .marketplace-actions {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .marketplace-primary,
+  .marketplace-secondary {
+    width: 100% !important;
+  }
+
+  .az-page-hero {
+    padding: 32px 0 38px !important;
+  }
+
+  .az-page-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Sitewide Motion & Scroll Reveal Rules (Desktop + Mobile, respects reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .qct-svc-hero__kicker-dot,
+  .qct-svc-final__badge-dot {
+    animation: qctSitewidePulse 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .marketplace-hero > .marketplace-eyebrow::before,
+  .qct-work-index .qct-work-eyebrow::before,
+  .qct-blog-hero .qct-section__eyebrow::before {
+    animation: qctSitewideBluePulse 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  /* Staggered Spring Entrance on All Inner-Page Heroes */
+  .qct-svc-hero__kicker,
+  .page-hero .eyebrow,
+  .az-page-hero .eyebrow,
+  .calc__hero-tag,
+  .qct-work-eyebrow,
+  .qct-blog-hero .qct-section__eyebrow {
+    animation: qctSitewideSpringUp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .qct-svc-hero__title,
+  .page-hero h1,
+  .az-page-hero h1,
+  .marketplace-hero h1,
+  .calc__hero h1,
+  .qct-work-index h1,
+  .qct-blog-hero h1 {
+    animation: qctSitewideSpringUp 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+  }
+
+  .qct-svc-hero__lead,
+  .page-hero .page-hero__lead,
+  .az-page-lead,
+  .marketplace-lead,
+  .calc__hero-desc,
+  .qct-work-index__lead,
+  .qct-blog-hero > .container > p:last-child {
+    animation: qctSitewideSpringUp 0.52s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  }
+
+  .qct-svc-hero__actions,
+  .page-hero .hero__actions,
+  .az-page-actions,
+  .marketplace-actions {
+    animation: qctSitewideSpringUp 0.56s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  }
+
+  /* Shimmer Sweep on Inner-Page Primary CTA Buttons */
+  .qct-svc-hero__actions .qct-btn--primary,
+  .qct-svc-final__btn-primary,
+  .marketplace-primary {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .qct-svc-hero__actions .qct-btn--primary::after,
+  .qct-svc-final__btn-primary::after,
+  .marketplace-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 45%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.26) 50%, transparent 100%);
+    transform: translateX(-130%) skewX(-18deg);
+    animation: qctSitewideShimmer 4.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    pointer-events: none;
+  }
+
+  /* Global Scroll-Triggered Spring Reveal Class (used by main.js across all pages) */
+  .qct-m-reveal {
+    opacity: 0.92;
+    transform: translate3d(0, 18px, 0) scale(0.988);
+    transition:
+      opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--qct-m-delay, 0ms);
+    will-change: transform, opacity;
+  }
+
+  .qct-m-reveal.is-m-inview {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
